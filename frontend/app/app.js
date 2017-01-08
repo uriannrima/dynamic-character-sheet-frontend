@@ -4,11 +4,8 @@
 // Dependencias da aplicação.
 var appDependencies = [
     'ngRoute',
-    'ngResource',,
-    'dcs-app.directives',
-    'dcs-app.controllers',
-    'dcs-app.services',
-    'dcs-app.models',
+    'ngResource',
+    'dcs-app.character-details'
 ];
 
 // Criar aplicação.

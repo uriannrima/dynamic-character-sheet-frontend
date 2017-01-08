@@ -21,7 +21,7 @@ module.exports = function() {
     // Configurações do servidor:
 
     // Definir caminho "root":
-    app.use(express.static('/home/ubuntu/workspace/frontend'));
+    app.use(express.static('/home/ubuntu/workspace/frontend/app'));
     
     // Permitir todo e qualquer tipo de request, indo de qualquer origem
     // Meio perigoso, mas vai servir por enquanto.

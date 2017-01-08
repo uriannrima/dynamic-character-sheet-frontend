@@ -1,10 +1,10 @@
-/* Test service. */
+/* Template Service. */
 'use strict';
 
 /**
  * Service declaration.
  */
-function TestService($resource) {
+function TemplateService($resource) {
 
     // Service URL.
     var serviceURL = "/api/test";
@@ -27,5 +27,5 @@ function TestService($resource) {
     return $resource(serviceURL, {}, serviceMethods);
 }
 
-// Register Test Service.
-dcsServices.factory('TestService', ['$resource', TestService]);
+// Register Template Service.
+dcsServices.factory('TemplateService', TemplateService);
