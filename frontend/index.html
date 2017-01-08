@@ -1,0 +1,44 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="dcs-app">
+
+<head>
+    <!-- External Scripts -->
+    <!-- Angular -->
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-route/angular-route.js"></script>
+    <script src="/node_modules/angular-resource/angular-resource.js"></script>
+    
+    <!-- JQuery -->
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    
+    <!-- Bootstrap -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    
+    <!-- External Css -->
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" />
+</head>
+
+<body ng-controller="IndexController as indexCtrl">
+    <div id="main">
+        <h1 ng-bind="indexCtrl.MyTitle"></h1>
+    </div>
+    
+    <!-- Application Scripts  -->
+    <script src="/app/app.js"></script>
+    <script src="/app/core/app.config.js"></script>
+    <script src="/app/core/app.modules.js"></script>
+    <script src="/app/core/app.modules.js"></script>
+    
+    <!-- Directives Scripts -->
+    
+    <!-- Services Scripts -->
+    <script src="/app/services/testService.js"></script>
+    
+    <!-- Controllers Scripts -->
+    <script src="/app/controllers/indexController.js"></script>
+    
+</body>
+
+</html>

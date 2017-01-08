@@ -1,0 +1,21 @@
+{
+  "name": "dynamic-character-sheet-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect-multiparty": "^2.0.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-load": "^1.1.15",
+    "method-override": "^2.3.7",
+    "morgan": "^1.7.0"
+  }
+}
