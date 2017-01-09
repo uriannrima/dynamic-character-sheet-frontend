@@ -1,40 +1,38 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html ng-app="dcs-app">
+<html lang="en" ng-app="dcs-app">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dynamic Character Sheet - 3.5e</title>
+
     <!-- External Scripts -->
     <!-- Angular -->
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-route/angular-route.js"></script>
     <script src="/node_modules/angular-resource/angular-resource.js"></script>
-    
+
     <!-- JQuery -->
     <script src="/node_modules/jquery/dist/jquery.js"></script>
-    
+
     <!-- Bootstrap -->
     <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    
+
     <!-- External Css -->
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/style/components.css"
 </head>
 
 <body>
-    
-    <character-sheet>
-        <character-details>Name, Class, Size</character-details>
-        <mission-logo>D&D Logo</mission-logo>
-        <ability-scores>Abilities</ability-scores>
-        <vital-scores>HP, AC</vital-scores>
-        <movement-scores>Speed, Init</movement-scores>
-        <saving-scores>Fortitude</saving-scores>
-        <combat-scores>Base Attack Bonus, Grapple</combat-scores>
-        <attack-list>List of Attacks</attack-list>
-        <skill-list>List of Skills</skill-list>
-    </character-sheet>
-    
+   
+    <div class="container">
+        <character-sheet/>
+    </div>
 </body>
+
 <!-- Application Scripts  -->
 <script src="app.js"></script>
 <script src="app.config.js"></script>
@@ -42,10 +40,15 @@
 <!-- Components Scripts -->
 <script src="/character-details/character-details.module.js"></script>
 <script src="/character-details/character-details.component.js"></script>
+<script src="/character-sheet/character-sheet.module.js"></script>
+<script src="/character-sheet/character-sheet.component.js"></script>
+<script src="/ability-scores/ability-scores.module.js"></script>
+<script src="/ability-scores/ability-scores.component.js"></script>
 
 <!-- Directives Scripts -->
 
 <!-- Services Scripts -->
 
 <!-- Controllers Scripts -->
+.
 </html>

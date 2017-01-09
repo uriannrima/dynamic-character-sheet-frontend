@@ -5,7 +5,9 @@
 var appDependencies = [
     'ngRoute',
     'ngResource',
-    'dcs-app.character-details'
+    'dcs-app.character-details',
+    'dcs-app.character-sheet',
+    'dcs-app.ability-scores'
 ];
 
 // Criar aplicação.
