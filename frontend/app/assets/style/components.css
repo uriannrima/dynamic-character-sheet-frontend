@@ -22,9 +22,9 @@ label {
     border-bottom: 1px solid;
     border-radius: 0;
     -webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	padding: 2px;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 2px;
 }
 
 .ability-score-list {
@@ -38,12 +38,17 @@ label {
     vertical-align: middle;
 }
 
+.vitality-score-title {
+    text-align: center;
+}
+
 .ability-score-square {
     background-color: #000;
     color: #fff;
     font-weight: bold;
     margin-bottom: 2px;
     height: 30px;
+    text-align: center;
 }
 
 .ability-score-square label {
@@ -52,16 +57,44 @@ label {
     top: -10px;
 }
 
-.ability-score-field-square {
+.ability-score-field-square,
+.ability-score-field-square * {
     height: 30px;
     margin-bottom: 2px;
 }
 
-.ability-score-field {
+.ability-score-field,
+.vitality-score-field {
     height: 100%;
     border: 1px solid #000;
 }
 
+.vitality-score-field {
+    width: 37.9px;
+    display: inline;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+}
+
+.vitality-plus-sign {
+    font-size: 21px;
+    font-weight: normal;
+}
+
 .temporary-scores {
     background-color: #DCDCDC
+}
+
+.form-group {
+    display: inline-block;
+    text-align: center;
+}
+
+.form-group label {
+    display: block;
+}
+
+span.vitality-plus-sign {
+    display: inline-block;
+    vertical-align: top;
 }
