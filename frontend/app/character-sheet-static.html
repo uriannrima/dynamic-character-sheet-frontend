@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dcs-app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dynamic Character Sheet - 3.5e</title>
+
+    <!-- External Scripts -->
+
+    <!-- JQuery -->
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- External Css -->
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/style/components.css" />
+</head>
+<style type="text/css">
+    .col {
+        background-color: 000;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row header-row">
+            <!-- Player Details -->
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row  inner-container">
+                            <div class="form-group">
+                                <input type="text" value="" class="form-control"></input>
+                                <label>Character Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="text" value="" class="form-control"></input>
+                                <label>Class & Level</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Size</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Age</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Gender</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Height</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row inner-container">
+                            <div class="form-group">
+                                <input type="text" value="" class="form-control"></input>
+                                <label>Player Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Race</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Alignment</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Deity</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Weight</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Eyes</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Hair</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input type="text" value="" class="form-control"></input>
+                                        <label>Skin</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mission Logo-->
+            <div class="col-md-4 hidden-sm hidden-xs">
+                <img class="mission-logo" src="http://orig09.deviantart.net/8d40/f/2016/141/0/1/dungeons_n_dragons_logo_old_black_by_banesbox-da3bhbw.png">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <table class="table-sm ability-table">
+                        <thead>
+                            <tr>
+                                <th>Ability Name</th>
+                                <th>Ability Score</th>
+                                <th>Ability Modifier</th>
+                                <th class="temporary-section">Temporary Score</th>
+                                <th class="temporary-section">Temporary Modifier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="black-square">
+                                    <label>STR</label>
+                                    <label class="small-label">Strength</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black-square">
+                                    <label>DEX</label>
+                                    <label class="small-label">Dexterity</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black-square">
+                                    CON
+                                    <label class="small-label">Constitution</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black-square">
+                                    INT
+                                    <label class="small-label">Intelligence</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black-square">
+                                    WIS
+                                    <label class="small-label">Wisdom</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black-square">
+                                    CHA
+                                    <label class="small-label">Charisma</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                                <td class="temporary-section">
+                                    <input type="text" class="form-control ability-score-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <table class="table-sm vitality-table">
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                <th>Total</th>
+                                <th>Wounds / Current HP</th>
+                                <th>Nonlethal Damage</th>
+                                <th>Speed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="black-square">
+                                    <label>HP</label>
+                                    <label class="small-label">Hit Points</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

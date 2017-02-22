@@ -1,21 +1,3 @@
-.sheet-header {
-    margin-bottom: 10px;
-}
-
-.mission-logo {
-    max-width: 388px;
-    max-height: 135px;
-}
-
-[class*="col-"] {
-    padding-left: 2px;
-    padding-right: 2px;
-}
-
-label {
-    margin-bottom: 0;
-}
-
 .form-control {
     height: 25px;
     border: 0 solid #fff;
@@ -24,77 +6,143 @@ label {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    padding: 2px;
 }
 
-.ability-score-list {
-    text-align: center;
-}
-
-.ability-score-title {
-    font-size: x-small;
-    font-weight: bold;
-    line-height: 0.9;
-    vertical-align: middle;
-}
-
-.vitality-score-title {
-    text-align: center;
-}
-
-.ability-score-square {
-    background-color: #000;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 2px;
-    height: 30px;
-    text-align: center;
-}
-
-.ability-score-square label {
-    font-size: x-small;
-    position: relative;
-    top: -10px;
-}
-
-.ability-score-field-square,
-.ability-score-field-square * {
-    height: 30px;
-    margin-bottom: 2px;
-}
-
-.ability-score-field,
-.vitality-score-field {
-    height: 100%;
-    border: 1px solid #000;
-}
-
-.vitality-score-field {
-    width: 37.9px;
-    display: inline;
-    margin-right: 2.5px;
-    margin-left: 2.5px;
-}
-
-.vitality-plus-sign {
-    font-size: 21px;
-    font-weight: normal;
-}
-
-.temporary-scores {
-    background-color: #DCDCDC
+.row {
+    padding-right: 2.5px;
+    padding-left: 2.5px;
 }
 
 .form-group {
-    display: inline-block;
-    text-align: center;
+    margin-bottom: 0px;
 }
 
-.form-group label {
+.mission-logo {
+    width: 100%;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+.header-row {
+    margin-bottom: 10px;
+}
+
+
+/* Ability Score Components */
+
+.ability-table {
+    border-collapse: separate;
+    border-spacing: 0px 2px;
+}
+
+.ability-table tr {
+    margin-bottom: 5px;
+}
+
+.ability-table th,
+.ability-table td {
+    padding: 3px;
+    text-align: center;
+    text-align: -webkit-center;
+    vertical-align: middle !important;
+}
+
+.ability-table th {
+    font-size: x-small;
+    padding: 0px !important;
+    width: 78px;
+    height: 30px;
+}
+
+.ability-table td {
+    line-height: 10px;
+    height: 30px;
+}
+
+.ability-table .form-control {
+    width: 40px;
+    border: 1px solid;
+}
+
+.ability-table .temporary-section {
+    background-color: lightgray;
+}
+
+.black-square {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    line-height: 10px !important;
+}
+
+.black-square .small-label {
+    font-size: x-small;
     display: block;
 }
 
-span.vitality-plus-sign {
-    display: inline-block;
-    vertical-align: top;
+
+/* Vitality Components */
+
+.vitality-table {
+    border-collapse: separate;
+    border-spacing: 0px 2px;
+}
+
+.vitality-table tr {
+    margin-bottom: 5px;
+}
+
+.vitality-table th,
+.vitality-table td {
+    padding: 3px;
+    text-align: center;
+    text-align: -webkit-center;
+    vertical-align: middle !important;
+}
+
+.vitality-table th {
+    font-size: x-small;
+    padding: 0px !important;
+    width: 78px;
+    height: 30px;
+}
+
+.vitality-table td {
+    line-height: 10px;
+    height: 30px;
+}
+
+.vitality-table .form-control {
+    width: 40px;
+    border: 1px solid;
+}
+
+.vitality-table .temporary-section {
+    background-color: lightgray;
+}
+
+.black-square {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    line-height: 10px !important;
+}
+
+.black-square .small-label {
+    font-size: x-small;
+    display: block;
+}
+
+.wounds-control {
+    width: 300px !important;
+}
+
+.nonlethal-control {
+    width: 100px !important;
+}
+
+.speed-control {
+    width: 205px !important;
 }
