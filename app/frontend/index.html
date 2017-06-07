@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DCSApp</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .main-field {
+            border-width: 0 0 1px 0;
+            border-style: solid;
+            border-color: black;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .table thead th {
+            border-bottom: 0 !important;
+        }
+
+        .table tbody td {
+            border-top: 0 !important;
+            border-bottom: 0 !important;
+        }
+
+        .table thead th,
+        .table tbody th {
+            line-height: 15px !important;
+        }
+
+        .table thead th,
+        .table tbody th,
+        .table tbody td {
+            text-align: center;
+        }
+
+        .table tbody th {
+            background-color: #000000;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .table tbody th span {
+            display: block;
+        }
+
+        .table tbody th small {
+            font-size: 65%;
+        }
+
+        .table tbody td:nth-child(4),
+        .table tbody td:nth-child(5) {
+            background-color: #ccc;
+        }
+
+        .attribute-field {
+            width: 50px;
+            height: 33px;
+        }
+
+        .small-label {
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+
+        .small-logo {
+            display: none;
+        }
+
+        @media only screen and (max-width: 500px) {
+            .small-logo {
+                display: block;
+            }
+
+            .large-logo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Character Basic Details -->
+        <div class="row">
+            <div class="col-md-4 small-logo">
+                <img src="https://img.clippp.com/51948dd469b05e24b63327e2edc04c05_dungeons-and-dragons-logo-dungeons-and-dragons-logo_1859-707.png"
+                    alt="" width="100%">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control main-field"></input>
+                <label>Character Name</label>
+                <input type="text" class="form-control main-field"></input>
+                <label>Class and Level</label>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Size</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Age</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Gender</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Height</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control main-field"></input>
+                <label>Player Name</label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Race</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Alignment</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Deity</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Weight</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Eyes</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Hair</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Skin</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 large-logo">
+                <img src="https://img.clippp.com/51948dd469b05e24b63327e2edc04c05_dungeons-and-dragons-logo-dungeons-and-dragons-logo_1859-707.png"
+                    alt="" width="100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="small-label">Ability Name</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Ability Score</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Ability Modifier</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Temp Score</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Temp Modifier</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <span>STR</span>
+                                <small>strength</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>DEX</span>
+                                <small>dexterity</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>CON</span>
+                                <small>constitution</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>INT</span>
+                                <small>intelligence</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>WIS</span>
+                                <small>wisdom</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                <span>CHA</span>
+                                <small>charisma</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-8">
+                B
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
