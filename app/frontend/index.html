@@ -20,7 +20,8 @@
             border-bottom: 0 !important;
         }
 
-        .table tbody td {
+        .table tbody td,
+        .table tfoot th {
             border-top: 0 !important;
             border-bottom: 0 !important;
         }
@@ -32,7 +33,8 @@
 
         .table thead th,
         .table tbody th,
-        .table tbody td {
+        .table tbody td,
+        .table tfoot th {
             text-align: center;
         }
 
@@ -55,9 +57,46 @@
             background-color: #ccc;
         }
 
+        .status-table {
+            margin-bottom: 0px;
+        }
+
+        .status-table thead tr {
+            height: 48px;
+        }
+
+        .status-table tbody tr th,
+        .armor-table tbody tr th {
+            width: 85px;
+        }
+
+        .armor-table tfoot tr th {
+            line-height: 10px;
+        }
+
+        .status-table tbody td:nth-child(4),
+        .status-table tbody td:nth-child(5),
+        .armor-table tbody td:nth-child(4),
+        .armor-table tbody td:nth-child(5) {
+            background-color: #fff;
+        }
+
+        .armor-table {
+            margin-bottom: 0px;
+        }
+
+        .armor-table tbody tr td {
+            width: 9.1%;
+        }
+
         .attribute-field {
             width: 50px;
             height: 33px;
+        }
+
+        .large-label {
+            text-transform: uppercase;
+            font-size: 12px;
         }
 
         .small-label {
@@ -67,6 +106,27 @@
 
         .small-logo {
             display: none;
+        }
+
+        .status-field {
+            width: 100%;
+        }
+
+        .static-armor-td {
+            width: 7%
+        }
+
+        .static-armor {
+            font-weight: bolder;
+            font-size: 23px;
+            text-align: center;
+        }
+
+        .plus-sign::before {
+            content: "+";
+            font-weight: bolder;
+            font-size: 23px;
+            position: absolute;
         }
 
         @media only screen and (max-width: 500px) {
@@ -290,7 +350,120 @@
                 </table>
             </div>
             <div class="col-md-8">
-                B
+                <table class="table status-table">
+                    <thead>
+                        <tr>
+                            <th>
+
+                            </th>
+                            <th>
+                                <span class="large-label">Total</span>
+                            </th>
+                            <th colspan="5">
+                                <span class="small-label">Wounds/Current HP</span>
+                            </th>
+                            <th colspan="3">
+                                <span class="small-label">Nonlethal Damage</span>
+                            </th>
+                            <th colspan="1">
+                                Speed
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <span>HP</span>
+                                <small>Hit Points</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td colspan="5">
+                                <input type="text" class="attribute-field status-field">
+                            </td>
+                            <td colspan="3">
+                                <input type="text" class="attribute-field status-field">
+                            </td>
+                            <td colspan="1">
+                                <input type="text" class="attribute-field status-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>AC</span>
+                                <small>Armor Class</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td class="static-armor-td">
+                                <span class="static-armor"> = 10</span>
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field status-field">
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>
+
+                            </th>
+                            <th>
+                                <span class="large-label">Total</span>
+                            </th>
+                            <th>
+
+                            </th>
+                            <th>
+                                <span class="small-label">Armor Bonus</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Shield Bonus</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Dex Modifier</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Size Modifier</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Natural Armor</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Deflection Modifier</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Misc Modifier</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Damage Reduction</span>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
