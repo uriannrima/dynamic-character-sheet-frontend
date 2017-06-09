@@ -52,8 +52,8 @@
             font-size: 65%;
         }
 
-        .table tbody td:nth-child(4),
-        .table tbody td:nth-child(5) {
+        .ability-table tbody td:nth-child(4),
+        .ability-table tbody td:nth-child(5) {
             background-color: #ccc;
         }
 
@@ -127,6 +127,8 @@
             font-weight: bolder;
             font-size: 23px;
             position: absolute;
+            position: absolute;
+            margin-left: -16px;
         }
 
         @media only screen and (max-width: 500px) {
@@ -216,7 +218,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <table class="table">
+                <table class="table ability-table">
                     <thead>
                         <tr>
                             <th>
@@ -372,7 +374,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th>
+                            <th style="width: 85px">
                                 <span>HP</span>
                                 <small>Hit Points</small>
                             </th>
@@ -389,36 +391,40 @@
                                 <input type="text" class="attribute-field status-field">
                             </td>
                         </tr>
+                    </tbody>
+                </table>
+                <table class="table" style="width:100%">
+                    <tbody>
                         <tr>
-                            <th>
+                            <th style="width: 85px">
                                 <span>AC</span>
                                 <small>Armor Class</small>
                             </th>
-                            <td>
+                            <td style="width: 86px">
                                 <input type="text" class="attribute-field">
                             </td>
                             <td class="static-armor-td">
                                 <span class="static-armor"> = 10</span>
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
-                            <td>
+                            <td class="plus-sign">
                                 <input type="text" class="attribute-field">
                             </td>
                             <td>
@@ -426,7 +432,7 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tfoot>
+                     <tfoot>
                         <tr>
                             <th>
 
@@ -438,25 +444,25 @@
 
                             </th>
                             <th>
-                                <span class="small-label">Armor Bonus</span>
+                                <span class="small-label">Armor</span>
                             </th>
                             <th>
-                                <span class="small-label">Shield Bonus</span>
+                                <span class="small-label">Shield</span>
                             </th>
                             <th>
-                                <span class="small-label">Dex Modifier</span>
+                                <span class="small-label">Dex</span>
                             </th>
                             <th>
-                                <span class="small-label">Size Modifier</span>
+                                <span class="small-label">Size</span>
                             </th>
                             <th>
-                                <span class="small-label">Natural Armor</span>
+                                <span class="small-label">Natural</span>
                             </th>
                             <th>
-                                <span class="small-label">Deflection Modifier</span>
+                                <span class="small-label">Deflect</span>
                             </th>
                             <th>
-                                <span class="small-label">Misc Modifier</span>
+                                <span class="small-label">Misc</span>
                             </th>
                             <th>
                                 <span class="small-label">Damage Reduction</span>
