@@ -7,13 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DCSApp</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <!-- Debug -->
     <style>
-        .main-field {
-            border-width: 0 0 1px 0;
-            border-style: solid;
-            border-color: black;
-            border-radius: 0;
-            box-shadow: none;
+        .debug::before {
+            content: '\00a0 '
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var elements = document.querySelectorAll(".debug");
+            elements.forEach(element => {
+                var randomColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+                element.setAttribute('style', 'background-color: ' + randomColor);
+            });
+        }
+    </script>
+
+    <!-- Table -->
+    <style>
+        body span {
+            font-size: 12px;
+        }
+
+        .table {
+            margin-bottom: 15px;
         }
 
         .table thead th {
@@ -49,51 +67,28 @@
         }
 
         .table tbody th small {
-            font-size: 65%;
+            font-size: 60%;
         }
+    </style>
 
-        .ability-table tbody td:nth-child(4),
-        .ability-table tbody td:nth-child(5) {
-            background-color: #ccc;
-        }
-
-        .status-table {
-            margin-bottom: 0px;
-        }
-
-        .status-table thead tr {
-            height: 48px;
-        }
-
-        .status-table tbody tr th,
-        .armor-table tbody tr th {
-            width: 85px;
-        }
-
-        .armor-table tfoot tr th {
-            line-height: 10px;
-        }
-
-        .status-table tbody td:nth-child(4),
-        .status-table tbody td:nth-child(5),
-        .armor-table tbody td:nth-child(4),
-        .armor-table tbody td:nth-child(5) {
-            background-color: #fff;
-        }
-
-        .armor-table {
-            margin-bottom: 0px;
-        }
-
-        .armor-table tbody tr td {
-            width: 9.1%;
+    <!-- Fields -->
+    <style>
+        .main-field {
+            border-width: 0 0 1px 0;
+            border-style: solid;
+            border-color: black;
+            border-radius: 0;
+            box-shadow: none;
         }
 
         .attribute-field {
             width: 50px;
             height: 33px;
         }
+    </style>
 
+    <!-- Labels -->
+    <style>
         .large-label {
             text-transform: uppercase;
             font-size: 12px;
@@ -101,19 +96,11 @@
 
         .small-label {
             text-transform: uppercase;
-            font-size: 10px;
-        }
-
-        .small-logo {
-            display: none;
+            font-size: 8px;
         }
 
         .status-field {
             width: 100%;
-        }
-
-        .static-armor-td {
-            width: 7%
         }
 
         .static-armor {
@@ -121,17 +108,15 @@
             font-size: 23px;
             text-align: center;
         }
+    </style>
 
-        .plus-sign::before {
-            content: "+";
-            font-weight: bolder;
-            font-size: 23px;
-            position: absolute;
-            position: absolute;
-            margin-left: -16px;
+    <!-- Logos -->
+    <style>
+        .small-logo {
+            display: none;
         }
 
-        @media only screen and (max-width: 500px) {
+        @media only screen and (max-width: 992px) {
             .small-logo {
                 display: block;
             }
@@ -218,6 +203,15 @@
         </div>
         <div class="row">
             <div class="col-md-4">
+                <style>
+                    .ability-table {
+                        margin-bottom: 10px;    
+                    }
+                    .ability-table tbody td:nth-child(4),
+                    .ability-table tbody td:nth-child(5) {
+                        background-color: #ccc;
+                    }
+                </style>
                 <table class="table ability-table">
                     <thead>
                         <tr>
@@ -352,124 +346,283 @@
                 </table>
             </div>
             <div class="col-md-8">
-                <table class="table status-table">
-                    <thead>
-                        <tr>
-                            <th>
+                <div style="overflow-x:auto">
+                    <table class="table status-table" style="width: 869px">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    <span class="small-label" style="font-weight: bolder">Total</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Wounds</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Nonlethal Damage</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Speed</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <div>
+                                        <span>HP</span>
+                                        <small>Health Points</small>
+                                    </div>
+                                </th>
+                                <td style="width: 8.5%">
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td style="width: 40%">
+                                    <input type="text" class="attribute-field" style="width:100%">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field" style="width:100%">
+                                </td>
+                                <td style="width: 13%">
+                                    <input type="text" class="attribute-field" style="width:100%">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="overflow-x:auto">
+                    <style>
+                        .armor-table tbody td {
+                            width: 8%;
+                        }
 
-                            </th>
+                        .armor-table tfoot th {
+                            padding: 0px !important;
+                            line-height: 6px !important;
+                        }
+                    </style>
+                    <table class="table armor-table" style="width: 869px">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <div>
+                                        <span>AC</span>
+                                        <small>Armor Class</small>
+                                    </div>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <span style="font-size: 23px; white-space: nowrap">= 10 +</span>
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" class="attribute-field" style="width: 116px">
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    <span class="small-label" style="font-weight: bolder">Total</span>
+                                </th>
+                                <th></th>
+                                <th>
+                                    <span class="small-label">Armor Bonus</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Shield Bonus</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Dex Modifier</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Size Modifier</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Natural Armor</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Deflection Modifier</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Misc Modifier</span>
+                                </th>
+                                <th>
+                                    <span class="small-label">Damage Reduction</span>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div>
+                    <table class="table misc-table" style="width:340px;">
+                        <tbody>
+                            <tr>
+                                <th style="width:30%">
+                                    <div>
+                                        <span>Touch</span>
+                                        <small>Armor Class</small>
+                                    </div>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <th style="width:30%;">
+                                    <div>
+                                        <span>Flat-Footed</span>
+                                        <small>Armor Class</small>
+                                    </div>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <div>
+                                        <span style="margin-top: 10px">Initiative</span>
+                                    </div>
+                                </th>
+                                <style>
+                                    .initiative-input {
+                                        width: 40px;
+                                    }
+                                </style>
+                                <td colspan="2">
+                                    <input type="text" class="attribute-field initiative-input"> =
+                                    <input type="text" class="attribute-field initiative-input"> +
+                                    <input type="text" class="attribute-field initiative-input">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div style="overflow-x: auto">
+                    <table class="table saving-table" style="width: 756px">
+                        <thead>
                             <th>
-                                <span class="large-label">Total</span>
+                                Saving Throws
                             </th>
-                            <th colspan="5">
-                                <span class="small-label">Wounds/Current HP</span>
-                            </th>
-                            <th colspan="3">
-                                <span class="small-label">Nonlethal Damage</span>
-                            </th>
-                            <th colspan="1">
-                                Speed
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th style="width: 85px">
-                                <span>HP</span>
-                                <small>Hit Points</small>
-                            </th>
-                            <td>
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td colspan="5">
-                                <input type="text" class="attribute-field status-field">
-                            </td>
-                            <td colspan="3">
-                                <input type="text" class="attribute-field status-field">
-                            </td>
-                            <td colspan="1">
-                                <input type="text" class="attribute-field status-field">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table" style="width:100%">
-                    <tbody>
-                        <tr>
-                            <th style="width: 85px">
-                                <span>AC</span>
-                                <small>Armor Class</small>
-                            </th>
-                            <td style="width: 86px">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="static-armor-td">
-                                <span class="static-armor"> = 10</span>
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td class="plus-sign">
-                                <input type="text" class="attribute-field">
-                            </td>
-                            <td>
-                                <input type="text" class="attribute-field status-field">
-                            </td>
-                        </tr>
-                    </tbody>
-                     <tfoot>
-                        <tr>
-                            <th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <span>Fortitude</span>
+                                    <small>Constitution</small>
+                                </th>
+                                <td style="width: 55%">
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px;">Total</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>=</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Base</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Ability</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Magic</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Misc</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Temp</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                </td>
+                                <td rowspan="3">
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Condition Modifiers</label>
+                                        <input type="text" style="width: 150px; height: 130px; display:block">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span>Reflex</span>
+                                    <small>Dexterity</small>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                    <span>=</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span>Will</span>
+                                    <small>Wisdom</small>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                    <span>=</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-5" style="margin-top:-158px">
+                <div class="debug">
 
-                            </th>
-                            <th>
-                                <span class="large-label">Total</span>
-                            </th>
-                            <th>
-
-                            </th>
-                            <th>
-                                <span class="small-label">Armor</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Shield</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Dex</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Size</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Natural</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Deflect</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Misc</span>
-                            </th>
-                            <th>
-                                <span class="small-label">Damage Reduction</span>
-                            </th>
-                        </tr>
-                    </tfoot>
-                </table>
+                </div>
             </div>
         </div>
     </div>
