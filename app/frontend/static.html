@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DCSApp</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <!-- Debug -->
+    <style>
+        .debug::before {
+            content: '\00a0 '
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var elements = document.querySelectorAll(".debug");
+            elements.forEach(element => {
+                var randomColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+                element.setAttribute('style', 'background-color: ' + randomColor);
+            });
+        }
+    </script>
+
+    <!-- Table -->
+    <style>
+        body span {
+            font-size: 12px;
+        }
+
+        .table {
+            margin-bottom: 15px;
+        }
+
+        .table thead th {
+            border-bottom: 0 !important;
+        }
+
+        .table tbody td,
+        .table tfoot th {
+            border-top: 0 !important;
+            border-bottom: 0 !important;
+        }
+
+        .table thead th,
+        .table tbody th {
+            line-height: 15px !important;
+            vertical-align: middle !important;
+        }
+
+        .table thead th,
+        .table tbody th,
+        .table tbody td,
+        .table tfoot th {
+            text-align: center;
+        }
+
+        .table tbody th {
+            background-color: #000000;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .table tbody th span {
+            display: block;
+        }
+
+        .table tbody th small {
+            font-size: 60%;
+        }
+    </style>
+
+    <!-- Attack Table -->
+    <style>
+        .attack-table thead th {
+            background-color: #000000;
+            color: #ffffff;
+            text-transform: uppercase;
+            border-left-style: solid;
+            border-left-color: #ffffff !important;
+            border-left-width: 1px !important;
+        }
+
+        .attack-table tbody td {
+            padding: 0px !important;
+        }
+
+        .attack-table tbody div {
+            display: inline-block;
+            width: 50%;
+            float: left;
+        }
+    </style>
+
+    <!-- Fields -->
+    <style>
+        .main-field {
+            border-width: 0 0 1px 0;
+            border-style: solid;
+            border-color: black;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .attribute-field {
+            width: 50px;
+            height: 33px;
+        }
+    </style>
+
+    <!-- Labels -->
+    <style>
+        .large-label {
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .small-label {
+            text-transform: uppercase;
+            font-size: 8px;
+        }
+
+        .status-field {
+            width: 100%;
+        }
+
+        .static-armor {
+            font-weight: bolder;
+            font-size: 23px;
+            text-align: center;
+        }
+    </style>
+
+    <!-- Logos -->
+    <style>
+        .small-logo {
+            display: none;
+        }
+
+        @media only screen and (max-width: 992px) {
+            .small-logo {
+                display: block;
+            }
+
+            .large-logo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Character Basic Details -->
+        <div class="row">
+            <div class="col-md-4 small-logo">
+                <img src="https://img.clippp.com/51948dd469b05e24b63327e2edc04c05_dungeons-and-dragons-logo-dungeons-and-dragons-logo_1859-707.png"
+                    alt="" width="100%">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control main-field"></input>
+                <label>Character Name</label>
+                <input type="text" class="form-control main-field"></input>
+                <label>Class and Level</label>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Size</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Age</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Gender</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Height</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control main-field"></input>
+                <label>Player Name</label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Race</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Alignment</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Deity</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Weight</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Eyes</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Hair</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control main-field"></input>
+                        <label>Skin</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 large-logo">
+                <img src="https://img.clippp.com/51948dd469b05e24b63327e2edc04c05_dungeons-and-dragons-logo-dungeons-and-dragons-logo_1859-707.png"
+                    alt="" width="100%">
+            </div>
+        </div>
+        <!-- Ability Score, Status, Armor, Misc  -->
+        <div class="row">
+            <!-- Ability Score -->
+            <div class="col-md-4">
+                <style>
+                    .ability-table {
+                        margin-bottom: 10px;
+                    }
+
+                    .ability-table tbody td:nth-child(4),
+                    .ability-table tbody td:nth-child(5) {
+                        background-color: #ccc;
+                    }
+                </style>
+                <table class="table ability-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="small-label">Ability Name</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Ability Score</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Ability Modifier</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Temp Score</span>
+                            </th>
+                            <th>
+                                <span class="small-label">Temp Modifier</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <span>STR</span>
+                                <small>strength</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>DEX</span>
+                                <small>dexterity</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>CON</span>
+                                <small>constitution</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>INT</span>
+                                <small>intelligence</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span>WIS</span>
+                                <small>wisdom</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                <span>CHA</span>
+                                <small>charisma</small>
+                            </th>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                            <td>
+                                <input type="text" class="attribute-field">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Status, Armor, Misc -->
+            <div class="col-md-8">
+                <!-- Status -->
+                <div style="overflow-x:auto">
+                    <style>
+                        .status-table {
+                            width: 918px;
+                            margin-bottom: 0px;
+                        }
+                    </style>
+                    <table class="table status-table">
+                        <thead>
+                            <tr>
+                                <th>&nbsp</th>
+                                <th> </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th style="width: 10%">
+                                    <div style="width:88px;">
+                                        <span>HP</span>
+                                        <small>Health Points</small>
+                                    </div>
+                                </th>
+                                <td style="width: 7%">
+                                    <div style="display:inline-block">
+                                        <span for="" style="display:block; margin-top:-25px; font-weight: bold">Total</span>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                </td>
+                                <td style="text-align:left; padding-right: 0px;">
+                                    <input type="text" class="attribute-field" style="width: 50%;">
+                                    <input type="text" class="attribute-field" style="width: 16%;">
+                                    <input type="text" class="attribute-field" style="width: 31.5%;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Main Armor -->
+                <div style="overflow-x:auto">
+                    <style>
+                        .armor-table {
+                            width: 918px;
+                        }
+
+                        .armor-table tbody td {
+                            padding-bottom: 0px !important;
+                        }
+
+                        .armor-table tbody th,
+                        .armor-table tbody td {
+                            vertical-align: middle !important;
+                        }
+
+                        .armor-input {
+                            display: inline-block;
+                        }
+
+                        .armor-span {
+                            display: inline-block;
+                            font-weight: bold;
+                            font-size: 23px;
+                            vertical-align: middle;
+                        }
+                    </style>
+                    <table class="table armor-table">
+                        <tbody>
+                            <tr>
+                                <th style="width: 10%">
+                                    <div style="width:88px;">
+                                        <span>AC</span>
+                                        <small>Armor Class</small>
+                                    </div>
+                                </th>
+                                <td style="width: 7%">
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Total<br>&nbsp</span>
+                                    </div>
+                                </td>
+                                <style>
+                                    .armor-div {
+                                        display: inline-block;
+                                        text-align: center;
+                                        vertical-align: top;
+                                    }
+
+                                    .armor-description-span {
+                                        display: block;
+                                        font-weight: bold;
+                                    }
+                                </style>
+                                <td style="text-align: left">
+                                    <span class="armor-span">= 10 +</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Armor<br>Bonus</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Shield<br>Bonus</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Dex<br>Modifier</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Size<br>Modifier</brb></span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Natural<br>Armor</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Deflection<br>Modifier</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Misc<br>Modifier</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field" style="width: 160px">
+                                        <span class="armor-description-span">Damage<br>Reduction</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Second Armor, Misc-->
+                <div>
+                    <table class="table misc-table" style="width:340px;">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <div style="width:88px;">
+                                        <span>Touch</span>
+                                        <small>Armor Class</small>
+                                    </div>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <th>
+                                    <div>
+                                        <span>Flat-Footed</span>
+                                        <small>Armor Class</small>
+                                    </div>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <div>
+                                        <span>Initiative</span>
+                                    </div>
+                                </th>
+                                <style>
+                                    .initiative-input {
+                                        width: 40px;
+                                    }
+                                </style>
+                                <td colspan="2">
+                                    <input type="text" class="attribute-field initiative-input"> =
+                                    <input type="text" class="attribute-field initiative-input"> +
+                                    <input type="text" class="attribute-field initiative-input">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Saving Throws, BAB, BAB Related, Attacks, Skills-->
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Saving Throws -->
+                <div style="overflow-x: auto">
+                    <table class="table saving-table" style="width: 756px">
+                        <thead>
+                            <th>
+                                Saving Throws
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <span>Fortitude</span>
+                                    <small>Constitution</small>
+                                </th>
+                                <td style="width: 55%">
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px;">Total</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>=</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Base</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Ability</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Magic</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Misc</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                    <span>+</span>
+                                    <div style="display:inline-block">
+                                        <label for="" style="display:block; margin-top:-25px; font-size:12px">Temp</label>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
+                                </td>
+                                <td rowspan="3">
+                                    <div style="display:inline-block">
+                                        <textarea rows="3" style="height: 130px; display:block"></textarea>
+                                        <label for="">Condition Modifiers</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span>Reflex</span>
+                                    <small>Dexterity</small>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                    <span>=</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span>Will</span>
+                                    <small>Wisdom</small>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                    <span>=</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                    <span>+</span>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- BAB -->
+                <div>
+                    <table class="table bab-table">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <span>Base Attack Bonus</span>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                                <th>
+                                    <span>Spell Resistance</span>
+                                </th>
+                                <td>
+                                    <input type="text" class="attribute-field">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Grapple -->
+                <style>
+                    .grapple-div {
+                        display: inline-block;
+                        text-align: center;
+                        vertical-align: top;
+                    }
+
+                    .grapple-field {
+                        width: 75px;
+                    }
+                </style>
+                <div style="overflow-x: auto">
+                    <table class="table bab-table" style="width:756px">
+                        <tbody>
+                            <tr>
+                                <th style="width: 36%">
+                                    <span>Grapple</span>
+                                    <small>Modifier</small>
+                                </th>
+                                <td style="text-align:left">
+                                    <div class="grapple-div" style="margin-left: 24px;">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Total</span>
+                                    </div>
+                                    <span class="armor-span">=</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Base Attack<br>Bonus</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Strength<br>Modifier</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Size<br>Modifier</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Misc<br>Modifier</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Attacks -->
+                <div>
+                    <div>
+                        <style>
+                            .details-input {
+                                height: 20px;
+                                border-width: 0px 0px 1px 0px;
+                                border-bottom-color: black;
+                                width: 22%;
+                            }
+
+                            @media only screen and (max-width: 510px) {
+                                .details-input {
+                                    width: 100%;
+                                }
+                            }
+                        </style>
+                        <table class="table attack-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Attack</span>
+                                    </th>
+                                    <th>
+                                        <span>Attack Bonus</span>
+                                    </th>
+                                    <th>
+                                        <span>Damage</span>
+                                    </th>
+                                    <th>
+                                        <span>Critical</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:30%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:30%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:20%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:20%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div>
+                                            <span>Range</span>
+                                        </div>
+                                        <div>
+                                            <span>Type</span>
+                                        </div>
+                                    </th>
+                                    <th colspan="3">
+                                        <span>Notes:</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="text" style="width:100%">
+                                        </div>
+                                        <div>
+                                            <input type="text" style="width:100%">
+                                        </div>
+                                    </td>
+                                    <td colspan="3">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align:center">
+                                        <label>Ammunition:</label>
+                                        <input type="text" class="details-input">
+                                        <label>Quantity:</label>
+                                        <input type="text" class="details-input">
+                                        <label>Notes:</label>
+                                        <input type="text" class="details-input">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="table attack-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Attack</span>
+                                    </th>
+                                    <th>
+                                        <span>Attack Bonus</span>
+                                    </th>
+                                    <th>
+                                        <span>Damage</span>
+                                    </th>
+                                    <th>
+                                        <span>Critical</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:30%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:30%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:20%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:20%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div>
+                                            <span>Range</span>
+                                        </div>
+                                        <div>
+                                            <span>Type</span>
+                                        </div>
+                                    </th>
+                                    <th colspan="3">
+                                        <span>Notes:s:</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="text" style="width:100%">
+                                        </div>
+                                        <div>
+                                            <input type="text" style="width:100%">
+                                        </div>
+                                    </td>
+                                    <td colspan="3">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align:center">
+                                        <label>Ammunition:</label>
+                                        <input type="text" class="details-input">
+                                        <label>Quantity:</label>
+                                        <input type="text" class="details-input">
+                                        <label>Notes:</label>
+                                        <input type="text" class="details-input">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="table attack-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Attack</span>
+                                    </th>
+                                    <th>
+                                        <span>Attack Bonus</span>
+                                    </th>
+                                    <th>
+                                        <span>Damage</span>
+                                    </th>
+                                    <th>
+                                        <span>Critical</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:30%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:30%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:20%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                    <td style="width:20%">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div>
+                                            <span>Range</span>
+                                        </div>
+                                        <div>
+                                            <span>Type</span>
+                                        </div>
+                                    </th>
+                                    <th colspan="3">
+                                        <span>Notes:s:</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="text" style="width:100%">
+                                        </div>
+                                        <div>
+                                            <input type="text" style="width:100%">
+                                        </div>
+                                    </td>
+                                    <td colspan="3">
+                                        <input type="text" style="width:100%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align:center">
+                                        <label>Ammunition:</label>
+                                        <input type="text" class="details-input">
+                                        <label>Quantity:</label>
+                                        <input type="text" class="details-input">
+                                        <label>Notes:</label>
+                                        <input type="text" class="details-input">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Skills -->
+            <style>
+                .skills-column {
+                    margin-top: -155px;
+                }
+
+                .untrained-skill::after {
+                    content: '';
+                    display: inline-block;
+                    width: 8px;
+                    height: 8px;
+                    margin-left: 4px;
+                    border: 1px solid rgba(0, 0, 0, .2);
+                    background-color: black;
+                    vertical-align: middle;
+                }
+
+                .skill-name-label {
+                    font-size: 15px;
+                }
+
+                @media only screen and (max-width:992px) {
+                    .skills-column {
+                        margin-top: 0px;
+                    }
+
+                    .skill-name-label {
+                        font-size: 10px;
+                    }
+
+                    .untrained-skill::after {
+                        content: '';
+                        display: inline-block;
+                        width: 4px;
+                        height: 4px;
+                        margin-left: 4px;
+                        border: 1px solid rgba(0, 0, 0, .2);
+                        background-color: black;
+                        vertical-align: middle;
+                    }
+                }
+            </style>
+            <div class="col-md-5 skills-column">
+                <div class="row">
+                    <style>
+                        .skills-table thead th {
+                            border-color: black !important;
+                            border-style: solid !important;
+                            border-width: 1px 1px 1px 1px !important;
+                        }
+
+                        .skills-table tbody th {
+                            background-color: white;
+                            color: black;
+                            border-color: black;
+                            border-width: 1px 1px 1px 1px;
+                            border-style: solid;
+                        }
+
+                        .skills-table tbody td {
+                            padding: 0px !important;
+                        }
+
+                        .skills-table thead th {
+                            background-color: black;
+                            color: white;
+                        }
+
+                        .skills-table tbody input {
+                            width: 45px;
+                        }
+
+                        .skills-label {
+                            font-size: 23px;
+                            text-transform: uppercase;
+                            vertical-align: middle;
+                        }
+
+                        .armor-check-penalty::after {
+                            content: '*';
+                        }
+
+                        .skills-table-header {
+                            font-size: 10px;
+                        }
+
+                        .max-ranks-label {
+                            font-size: 12px;
+                            display: block;
+                        }
+                    </style>
+                    <table class="table skills-table">
+                        <thead>
+                            <tr>
+                                <th colspan="6">
+                                    <span class="skills-label">Skills</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th style="width:40%">
+                                    <span class="skills-table-header">
+                                        Skill Name
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="skills-table-header">Key Ability</span>
+                                </th>
+                                <th>
+                                    <span class="skills-table-header">Skill Modifier</span>
+                                </th>
+                                <th>
+                                    <span class="skills-table-header">Ability Modifier</span>
+                                </th>
+                                <th>
+                                    <span class="skills-table-header">Ranks</span>
+                                </th>
+                                <th>
+                                    <span class="skills-table-header">Misc Modifier</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Appraise</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Balance</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Bluff</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Climp</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">STR</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Concentration</span>
+                                </td>
+                                <td>
+                                    <span>CON</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Craft</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Decipher Script</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Diplomacy</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Disable Device</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Disguise</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Escape Artist</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Forgery</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Gather Information</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Handle Animal</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Heal</span>
+                                </td>
+                                <td>
+                                    <span>WIS</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Hide</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Intimidade</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Jump</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">STR</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Knowledge</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Listen</span>
+                                </td>
+                                <td>
+                                    <span>WIS</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Move Silently</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Open Lock</span>
+                                </td>
+                                <td>
+                                    <span>DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Perform</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Profession</span>
+                                </td>
+                                <td>
+                                    <span>WIS</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Hide</span>
+                                </td>
+                                <td>
+                                    <span>DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Search</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Sense Motive</span>
+                                </td>
+                                <td>
+                                    <span>WIS</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Sleight of Hands</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Spellcraft</span>
+                                </td>
+                                <td>
+                                    <span>INT</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Spot</span>
+                                </td>
+                                <td>
+                                    <span>WIS</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Survival</span>
+                                </td>
+                                <td>
+                                    <span>WIS</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Swim</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">STR</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Tumble</span>
+                                </td>
+                                <td>
+                                    <span class="armor-check-penalty">DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label">Use Magic Device</span>
+                                </td>
+                                <td>
+                                    <span>CHA</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <input type="checkbox" style="width:5%; vertical-align: inherit; margin-left: 2px">
+                                    <span class="skill-name-label untrained-skill">Use Rope</span>
+                                </td>
+                                <td>
+                                    <span>DEX</span>
+                                </td>
+                                <td>
+                                    <input type="text"> =
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
