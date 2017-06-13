@@ -670,6 +670,16 @@
                         </tbody>
                     </table>
                 </div>
+                <style>
+                    .grapple-div {
+                        display: inline-block;
+                        text-align: center;
+                        vertical-align: top;
+                    }
+                    .grapple-field {
+                        width: 75px;
+                    }
+                </style>
                 <div style="overflow-x: auto">
                     <table class="table bab-table" style="width:756px">
                         <tbody>
@@ -679,15 +689,30 @@
                                     <small>Modifier</small>
                                 </th>
                                 <td style="text-align:left">
-                                    <input type="text" class="attribute-field" style="margin-left:24px">
-                                    <span>=</span>
-                                    <input type="text" class="attribute-field">
-                                    <span>+</span>
-                                    <input type="text" class="attribute-field">
-                                    <span>+</span>
-                                    <input type="text" class="attribute-field">
-                                    <span>+</span>
-                                    <input type="text" class="attribute-field">
+                                    <div class="grapple-div" style="margin-left: 24px;">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Total</span>
+                                    </div>
+                                    <span class="armor-span">=</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Base Attack<br>Bonus</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Strength<br>Modifier</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Size<br>Modifier</span>
+                                    </div>
+                                    <span class="armor-span">+</span>
+                                    <div class="grapple-div">
+                                        <input type="text" class="attribute-field grapple-field">
+                                        <span class="armor-description-span">Misc<br>Modifier</span>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
