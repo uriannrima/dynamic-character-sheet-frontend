@@ -380,10 +380,8 @@
                     <table class="table status-table">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>
-                                    <span>TOTAL</span>
-                                </th>
+                                <th>&nbsp</th>
+                                <th> </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -396,12 +394,15 @@
                                     </div>
                                 </th>
                                 <td style="width: 7%">
-                                    <input type="text" class="attribute-field">
+                                    <div style="display:inline-block">
+                                        <span for="" style="display:block; margin-top:-25px; font-weight: bold">Total</span>
+                                        <input type="text" class="attribute-field" style="display:block">
+                                    </div>
                                 </td>
                                 <td style="text-align:left; padding-right: 0px;">
                                     <input type="text" class="attribute-field" style="width: 50%;">
                                     <input type="text" class="attribute-field" style="width: 16%;">
-                                    <input type="text" class="attribute-field" style="width: 32%;">
+                                    <input type="text" class="attribute-field" style="width: 31.5%;">
                                 </td>
                             </tr>
                         </tbody>
@@ -409,6 +410,10 @@
                 </div>
                 <div style="overflow-x:auto">
                     <style>
+                        .armor-table tbody td {
+                            padding-bottom: 0px !important;
+                        }
+
                         .armor-table tbody th,
                         .armor-table tbody td {
                             vertical-align: middle !important;
@@ -421,10 +426,8 @@
                         .armor-span {
                             display: inline-block;
                             font-weight: bold;
-                            vertical-align: inherit;
                             font-size: 23px;
-                            margin-left: 3px;
-                            margin-right: 3px;
+                            vertical-align: middle;
                         }
                     </style>
                     <table class="table armor-table" style="width: 100%">
@@ -437,53 +440,68 @@
                                     </div>
                                 </th>
                                 <td style="width: 7%">
-                                    <input type="text" class="attribute-field armor-input">
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field">
+                                        <span class="armor-description-span">Total<br>&nbsp</span>
+                                    </div>
                                 </td>
+                                <style>
+                                    .armor-div {
+                                        display: inline-block;
+                                        text-align: center;
+                                        vertical-align: top;
+                                    }
+
+                                    .armor-description-span {
+                                        display: block;
+                                        font-weight: bold;
+                                    }
+                                </style>
                                 <td style="text-align: left">
                                     <span class="armor-span">= 10 +</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Armor<br>Bonus</span>
                                     </div>
                                     <span class="armor-span">+</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Shield<br>Bonus</span>
                                     </div>
                                     <span class="armor-span">+</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Dex<br>Modifier</span>
                                     </div>
                                     <span class="armor-span">+</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Size<br>Modifier</brb></span>
                                     </div>
                                     <span class="armor-span">+</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Natural<br>Armor</span>
                                     </div>
                                     <span class="armor-span">+</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Deflection<br>Modifier</span>
                                     </div>
                                     <span class="armor-span">+</span>
-                                    <div style="display:inline-block; text-align: center">
+                                    <div class="armor-div">
                                         <input type="text" class="attribute-field">
-                                        <label class="small-label" style="display:block">Armor Bonus</label>
+                                        <span class="armor-description-span">Misc<br>Modifier</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="armor-div">
+                                        <input type="text" class="attribute-field" style="width: 110px">
+                                        <span class="armor-description-span">Damage<br>Reduction</span>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                                <th><span>TOTAL</span></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <div>
@@ -904,7 +922,7 @@
             </div>
             <style>
                 .skills-column {
-                    margin-top: -158px;
+                    margin-top: -155px;
                 }
 
                 @media only screen and (max-width:992px) {
