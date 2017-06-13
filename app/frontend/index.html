@@ -373,7 +373,7 @@
                 <div style="overflow-x:auto">
                     <style>
                         .status-table {
-                            width: 100%;
+                            width: 918px;
                             margin-bottom: 0px;
                         }
                     </style>
@@ -410,6 +410,10 @@
                 </div>
                 <div style="overflow-x:auto">
                     <style>
+                        .armor-table {
+                            width: 918px;
+                        }
+
                         .armor-table tbody td {
                             padding-bottom: 0px !important;
                         }
@@ -430,7 +434,7 @@
                             vertical-align: middle;
                         }
                     </style>
-                    <table class="table armor-table" style="width: 100%">
+                    <table class="table armor-table">
                         <tbody>
                             <tr>
                                 <th style="width: 10%">
@@ -496,7 +500,7 @@
                                 </td>
                                 <td>
                                     <div class="armor-div">
-                                        <input type="text" class="attribute-field" style="width: 110px">
+                                        <input type="text" class="attribute-field" style="width: 160px">
                                         <span class="armor-description-span">Damage<br>Reduction</span>
                                     </div>
                                 </td>
@@ -700,7 +704,7 @@
 
                         @media only screen and (max-width: 510px) {
                             .details-input {
-                                width: 17%;
+                                width: 100%;
                             }
                         }
                     </style>
@@ -925,14 +929,44 @@
                     margin-top: -155px;
                 }
 
+                .untrained-skill::after {
+                    content: '';
+                    display: inline-block;
+                    width: 8px;
+                    height: 8px;
+                    margin-left: 4px;
+                    border: 1px solid rgba(0, 0, 0, .2);
+                    background-color: black;
+                    vertical-align: middle;
+                }
+
+                .skill-name-label {
+                    font-size: 15px;
+                }
+
                 @media only screen and (max-width:992px) {
                     .skills-column {
                         margin-top: 0px;
                     }
+
+                    .skill-name-label {
+                        font-size: 10px;
+                    }
+
+                    .untrained-skill::after {
+                        content: '';
+                        display: inline-block;
+                        width: 4px;
+                        height: 4px;
+                        margin-left: 4px;
+                        border: 1px solid rgba(0, 0, 0, .2);
+                        background-color: black;
+                        vertical-align: middle;
+                    }
                 }
             </style>
             <div class="col-md-5 skills-column">
-                <div>
+                <div class="row">
                     <style>
                         .skills-table thead th {
                             border-color: black !important;
@@ -964,21 +998,6 @@
                         .skills-label {
                             font-size: 23px;
                             text-transform: uppercase;
-                            vertical-align: middle;
-                        }
-
-                        .skill-name-label {
-                            font-size: 15px;
-                        }
-
-                        .untrained-skill::after {
-                            content: '';
-                            display: inline-block;
-                            width: 8px;
-                            height: 8px;
-                            margin-left: 4px;
-                            border: 1px solid rgba(0, 0, 0, .2);
-                            background-color: black;
                             vertical-align: middle;
                         }
 

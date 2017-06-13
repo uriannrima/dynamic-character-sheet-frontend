@@ -1,4 +1,6 @@
 {
+    "name": "dcs-app",
+    "version": "1.0.0",
     "scripts": {
         "dev": "cd app/frontend && npm run dev"
     }
