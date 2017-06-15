@@ -377,7 +377,7 @@
                 <div style="overflow-x:auto">
                     <style>
                         .status-table {
-                            width: 918px;
+                            width: 100%;
                             margin-bottom: 0px;
                         }
                     </style>
@@ -392,7 +392,7 @@
                         <tbody>
                             <tr>
                                 <th style="width: 10%">
-                                    <div style="width:88px;">
+                                    <div style="width:70px;">
                                         <span>HP</span>
                                         <small>Health Points</small>
                                     </div>
@@ -416,7 +416,7 @@
                 <div style="overflow-x:auto">
                     <style>
                         .armor-table {
-                            width: 918px;
+                            width: 100%;
                         }
 
                         .armor-table tbody td {
@@ -438,12 +438,18 @@
                             font-size: 23px;
                             vertical-align: middle;
                         }
+
+                        @media screen and (max-width: 992px) {
+                            .armor-table {
+                                width: 869px;
+                            }
+                        }
                     </style>
                     <table class="table armor-table">
                         <tbody>
                             <tr>
                                 <th style="width: 10%">
-                                    <div style="width:88px;">
+                                    <div style="width:70px;">
                                         <span>AC</span>
                                         <small>Armor Class</small>
                                     </div>
@@ -505,7 +511,7 @@
                                 </td>
                                 <td>
                                     <div class="armor-div">
-                                        <input type="text" class="attribute-field" style="width: 160px">
+                                        <input type="text" class="attribute-field" style="width: 100px">
                                         <span class="armor-description-span">Damage<br>Reduction</span>
                                     </div>
                                 </td>
@@ -515,11 +521,11 @@
                 </div>
                 <!-- Second Armor, Misc-->
                 <div>
-                    <table class="table misc-table" style="width:340px;">
+                    <table class="table misc-table" style="width:320px;">
                         <tbody>
                             <tr>
                                 <th>
-                                    <div style="width:88px;">
+                                    <div style="width:70px;">
                                         <span>Touch</span>
                                         <small>Armor Class</small>
                                     </div>
@@ -966,7 +972,7 @@
             <!-- Skills -->
             <style>
                 .skills-column {
-                    margin-top: -155px;
+                    margin-top: -166px;
                 }
 
                 .untrained-skill::after {
