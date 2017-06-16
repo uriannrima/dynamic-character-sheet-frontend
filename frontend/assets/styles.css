@@ -171,20 +171,6 @@
      font-weight: bold;
  }
  
- .initiative-input {
-     width: 40px;
- }
- 
- .grapple-div {
-     display: inline-block;
-     text-align: center;
-     vertical-align: top;
- }
- 
- .grapple-field {
-     width: 75px;
- }
- 
  .details-input {
      height: 20px;
      border-width: 0px 0px 1px 0px;
@@ -198,96 +184,11 @@
      }
  }
  
- .skills-column {
-     margin-top: -166px;
- }
- 
- .untrained-skill::after {
-     content: '';
-     display: inline-block;
-     width: 8px;
-     height: 8px;
-     margin-left: 4px;
-     border: 1px solid rgba(0, 0, 0, .2);
-     background-color: black;
-     vertical-align: middle;
- }
- 
- .skill-name-label {
-     font-size: 15px;
- }
- 
- @media only screen and (max-width:992px) {
-     .skills-column {
-         margin-top: 0px;
-     }
-     .skill-name-label {
-         font-size: 10px;
-     }
-     .untrained-skill::after {
-         content: '';
-         display: inline-block;
-         width: 4px;
-         height: 4px;
-         margin-left: 4px;
-         border: 1px solid rgba(0, 0, 0, .2);
-         background-color: black;
-         vertical-align: middle;
-     }
- }
- 
- .skills-table thead th {
-     border-color: black !important;
-     border-style: solid !important;
-     border-width: 1px 1px 1px 1px !important;
- }
- 
- .skills-table tbody th {
-     background-color: white;
-     color: black;
-     border-color: black;
-     border-width: 1px 1px 1px 1px;
-     border-style: solid;
- }
- 
- .skills-table tbody td {
-     padding: 0px !important;
- }
- 
- .skills-table thead th {
-     background-color: black;
-     color: white;
- }
- 
- .skills-table tbody input {
-     width: 45px;
- }
- 
- .skills-label {
-     font-size: 23px;
-     text-transform: uppercase;
-     vertical-align: middle;
- }
- 
  .armor-check-penalty::after {
      content: '*';
- }
- 
- .skills-table-header {
-     font-size: 10px;
  }
  
  .max-ranks-label {
      font-size: 12px;
      display: block;
- }
- 
- .grapple-table tbody th {
-     width: 36%;
- }
- 
- @media only screen and (max-width:992px) {
-     .grapple-table tbody th {
-         width: 1   .5%;
-     }
  }

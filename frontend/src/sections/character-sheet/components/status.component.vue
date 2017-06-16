@@ -1,6 +1,7 @@
 <script>
-export default {
-}
+    export default {
+    }
+
 </script>
 
 <template>
@@ -23,23 +24,23 @@ export default {
                     </th>
                     <td style="width: 7%">
                         <div style="display:inline-block">
-                            <span for=""
-                                style="display:block; margin-top:-25px; font-weight: bold">Total</span>
-                            <input type="text"
-                                class="attribute-field"
-                                style="display:block">
+                            <span for="" style="display:block; margin-top:-25px; font-weight: bold">Total</span>
+                            <input type="text" class="attribute-field" style="display:block">
                         </div>
                     </td>
-                    <td style="text-align:left; padding-right: 0px;">
-                        <input type="text"
-                            class="attribute-field"
-                            style="width: 50%;">
-                        <input type="text"
-                            class="attribute-field"
-                            style="width: 16%;">
-                        <input type="text"
-                            class="attribute-field"
-                            style="width: 31.5%;">
+                    <td style="text-align: center;">
+                        <div style="display:inline-block; width: 50%">
+                            <span for="" style="display:block; margin-top:-25px; font-weight: bold">Wounds</span>
+                            <input type="text" class="attribute-field" style="width:100%;">
+                        </div>
+                        <div style="display:inline-block; width:    33%">
+                            <span for="" style="display:block; margin-top:-25px; font-weight: bold">Nonlethal Damage</span>
+                            <input type="text" class="attribute-field" style="width:100%;">
+                        </div>
+                        <div style="display:inline-block; width: 15%">
+                            <span for="" style="display:block; margin-top:-25px; font-weight: bold">Speed</span>
+                            <input type="text" class="attribute-field" style="width:100%;">
+                        </div>
                     </td>
                 </tr>
             </tbody>

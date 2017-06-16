@@ -5,7 +5,19 @@ export default {
 </script>
 
 <style>
+.initiative-div {
+    display: inline-block;
+}
 
+.initiative-input {
+    width: 40px;
+    display: block;
+}
+
+.initiative-description {
+    display: block;
+    font-weight: bold;
+}
 </style>
 
 <template>
@@ -45,12 +57,25 @@ export default {
                         </div>
                     </th>
                     <td colspan="2">
-                        <input type="text"
-                            class="attribute-field initiative-input"> =
-                        <input type="text"
-                            class="attribute-field initiative-input"> +
-                        <input type="text"
-                            class="attribute-field initiative-input">
+                        <div class="initiative-div">
+                            <span class="initiative-description">Total</span>
+                            <input type="text"
+                                class="attribute-field initiative-input">
+                        </div>
+                        <span>=</span>
+                        <div class="initiative-div">
+                            <span class="initiative-description">Dex
+                            </span>
+                            <input type="text"
+                                class="attribute-field initiative-input">
+                        </div>
+                        <span>+</span>
+                        <div class="initiative-div">
+                            <span class="initiative-description">Misc
+                            </span>
+                            <input type="text"
+                                class="attribute-field initiative-input">
+                        </div>
                     </td>
                 </tr>
             </tbody>
