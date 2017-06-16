@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -10,6 +9,10 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.vue$/,
+                use: 'vue-loader'
+            },
             {
                 test: /\.(eot|woff2|woff|ttf|svg)$/,
                 use: 'url-loader'
@@ -25,7 +28,9 @@ module.exports = {
         ]
     },
     resolve: {
+        extensions: ['*', '.js', '.html', '.css', '.vue'],
         alias: {
+            'Services': path.resolve(__dirname, '../src/services/'),
             'vue$': 'vue/dist/vue.js',
             'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
         }
