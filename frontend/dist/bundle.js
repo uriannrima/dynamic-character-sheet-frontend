@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -9756,10 +9756,46 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sections_home_home_component_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sections_character_sheet_character_sheet_component_js__ = __webpack_require__(7);
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    template: __webpack_require__(4),
+    components: {
+        'dcs-home': __WEBPACK_IMPORTED_MODULE_0__sections_home_home_component_js__["a" /* default */],
+        'dcs-character-sheet': __WEBPACK_IMPORTED_MODULE_1__sections_character_sheet_character_sheet_component_js__["a" /* default */]
+    }
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>{{title}}</h1>";
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>{{title}}</h1>";
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n    <dcs-home></dcs-home>\r\n    <dcs-character-sheet></dcs-character-sheet>\r\n</div>";
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -9786,19 +9822,52 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_layout_component_js__ = __webpack_require__(1);
+
 
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: "#dcs-app",
+    components: {
+        'dcs-layout': __WEBPACK_IMPORTED_MODULE_1__shared_layout_component_js__["a" /* default */]
+    },
     data: {
         title: 'Hello'
+    }
+});
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    template: __webpack_require__(2),
+    data: function () {
+        return {
+            title: 'Character Sheet'
+        }
+    }
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    template: __webpack_require__(3),
+    data: function () {
+        return {
+            title: 'Home'
+        }
     }
 });
 

@@ -8,9 +8,26 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../dist')
     },
+    module: {
+        rules: [
+            {
+                test: /\.(eot|woff2|woff|ttf|svg)$/,
+                use: 'url-loader'
+            },
+            {
+                test: /\.html$/,
+                use: 'html-loader'
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.js'
+            'vue$': 'vue/dist/vue.js',
+            'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
         }
     },
     plugins: [

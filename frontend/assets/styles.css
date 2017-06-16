@@ -1,0 +1,267 @@
+ body span {
+     font-size: 12px;
+ }
+ 
+ .table {
+     margin-bottom: 15px;
+ }
+ 
+ .table thead th {
+     border-bottom: 0 !important;
+ }
+ 
+ .table tbody td, .table tfoot th {
+     border-top: 0 !important;
+     border-bottom: 0 !important;
+ }
+ 
+ .table thead th, .table tbody th {
+     line-height: 15px !important;
+     vertical-align: middle !important;
+ }
+ 
+ .table thead th, .table tbody th, .table tbody td, .table tfoot th {
+     text-align: center;
+ }
+ 
+ .table tbody th {
+     background-color: #000000;
+     color: #ffffff;
+     text-transform: uppercase;
+ }
+ 
+ .table tbody th span {
+     display: block;
+ }
+ 
+ .table tbody th small {
+     font-size: 60%;
+ }
+ 
+ .attack-table thead th {
+     background-color: #000000;
+     color: #ffffff;
+     text-transform: uppercase;
+     border-left-style: solid;
+     border-left-color: #ffffff !important;
+     border-left-width: 1px !important;
+ }
+ 
+ .attack-table tbody td {
+     padding: 0px !important;
+ }
+ 
+ .attack-table tbody div {
+     display: inline-block;
+     width: 50%;
+ }
+ 
+ .main-field {
+     border-width: 0 0 1px 0;
+     border-style: solid;
+     border-color: black;
+     border-radius: 0;
+     box-shadow: none;
+ }
+ 
+ .attribute-field {
+     width: 50px;
+     height: 33px;
+ }
+ 
+ .large-label {
+     text-transform: uppercase;
+     font-size: 12px;
+ }
+ 
+ .small-label {
+     text-transform: uppercase;
+     font-size: 8px;
+ }
+ 
+ .status-field {
+     width: 100%;
+ }
+ 
+ .static-armor {
+     font-weight: bolder;
+     font-size: 23px;
+     text-align: center;
+ }
+ 
+ .small-logo {
+     display: none;
+ }
+ 
+ @media only screen and (max-width: 992px) {
+     .small-logo {
+         display: block;
+     }
+     .large-logo {
+         display: none;
+     }
+ }
+ 
+ .ability-table {
+     margin-bottom: 10px;
+ }
+ 
+ .ability-table tbody td:nth-child(4), .ability-table tbody td:nth-child(5) {
+     background-color: #ccc;
+ }
+ 
+ .status-table {
+     width: 100%;
+     margin-bottom: 0px;
+ }
+ 
+ .armor-table {
+     width: 100%;
+ }
+ 
+ .armor-table tbody td {
+     padding-bottom: 0px !important;
+ }
+ 
+ .armor-table tbody th, .armor-table tbody td {
+     vertical-align: middle !important;
+ }
+ 
+ .armor-input {
+     display: inline-block;
+ }
+ 
+ .armor-span {
+     display: inline-block;
+     font-weight: bold;
+     font-size: 23px;
+     vertical-align: middle;
+ }
+ 
+ @media screen and (max-width: 992px) {
+     .armor-table {
+         width: 869px;
+     }
+ }
+ 
+ .armor-div {
+     display: inline-block;
+     text-align: center;
+     vertical-align: top;
+ }
+ 
+ .armor-description-span {
+     display: block;
+     font-weight: bold;
+ }
+ 
+ .initiative-input {
+     width: 40px;
+ }
+ 
+ .grapple-div {
+     display: inline-block;
+     text-align: center;
+     vertical-align: top;
+ }
+ 
+ .grapple-field {
+     width: 75px;
+ }
+ 
+ .details-input {
+     height: 20px;
+     border-width: 0px 0px 1px 0px;
+     border-bottom-color: black;
+     width: 22%;
+ }
+ 
+ @media only screen and (max-width: 510px) {
+     .details-input {
+         width: 100%;
+     }
+ }
+ 
+ .skills-column {
+     margin-top: -166px;
+ }
+ 
+ .untrained-skill::after {
+     content: '';
+     display: inline-block;
+     width: 8px;
+     height: 8px;
+     margin-left: 4px;
+     border: 1px solid rgba(0, 0, 0, .2);
+     background-color: black;
+     vertical-align: middle;
+ }
+ 
+ .skill-name-label {
+     font-size: 15px;
+ }
+ 
+ @media only screen and (max-width:992px) {
+     .skills-column {
+         margin-top: 0px;
+     }
+     .skill-name-label {
+         font-size: 10px;
+     }
+     .untrained-skill::after {
+         content: '';
+         display: inline-block;
+         width: 4px;
+         height: 4px;
+         margin-left: 4px;
+         border: 1px solid rgba(0, 0, 0, .2);
+         background-color: black;
+         vertical-align: middle;
+     }
+ }
+ 
+ .skills-table thead th {
+     border-color: black !important;
+     border-style: solid !important;
+     border-width: 1px 1px 1px 1px !important;
+ }
+ 
+ .skills-table tbody th {
+     background-color: white;
+     color: black;
+     border-color: black;
+     border-width: 1px 1px 1px 1px;
+     border-style: solid;
+ }
+ 
+ .skills-table tbody td {
+     padding: 0px !important;
+ }
+ 
+ .skills-table thead th {
+     background-color: black;
+     color: white;
+ }
+ 
+ .skills-table tbody input {
+     width: 45px;
+ }
+ 
+ .skills-label {
+     font-size: 23px;
+     text-transform: uppercase;
+     vertical-align: middle;
+ }
+ 
+ .armor-check-penalty::after {
+     content: '*';
+ }
+ 
+ .skills-table-header {
+     font-size: 10px;
+ }
+ 
+ .max-ranks-label {
+     font-size: 12px;
+     display: block;
+ }

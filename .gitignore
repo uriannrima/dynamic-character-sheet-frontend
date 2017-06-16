@@ -1,4 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+# logs
+/.log/
 
 # compiled output
 /dist
@@ -17,6 +19,7 @@ bower_components/
 /coverage/*
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 testem.log
 /typings
 
