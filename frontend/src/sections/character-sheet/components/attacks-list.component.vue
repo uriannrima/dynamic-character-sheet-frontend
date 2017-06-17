@@ -6,7 +6,6 @@ export default {
 }
 </script>
 
-
 <template>
     <div>
         <dcs-attack></dcs-attack>

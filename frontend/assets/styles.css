@@ -49,26 +49,7 @@
  .table tbody th small {
      font-size: 60%;
  }
- 
- .attack-table thead th {
-     background-color: #000000;
-     color: #ffffff;
-     text-transform: uppercase;
-     border-left-style: solid;
-     border-left-color: #ffffff !important;
-     border-left-width: 1px !important;
- }
- 
- .attack-table tbody td {
-     padding: 0px !important;
- }
- 
- .attack-table tbody div {
-     display: inline-block;
-     width: 50%;
-     float: left;
- }
- 
+  
  .main-field {
      border-width: 0 0 1px 0;
      border-style: solid;
