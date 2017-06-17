@@ -1,8 +1,20 @@
 <script>
-    export default {
-    }
+export default {
+}
 
 </script>
+<style>
+.status-table {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: 992px) {
+    .status-table {
+        width: 869px;
+    }
+}
+</style>
 
 <template>
     <div style="overflow-x:auto">

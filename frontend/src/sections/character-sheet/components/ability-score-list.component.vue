@@ -3,6 +3,23 @@ export default {
   
 }
 </script>
+
+<style>
+ .ability-table {
+     margin-bottom: 10px;
+ }
+ 
+ .ability-table tbody td:nth-child(4), .ability-table tbody td:nth-child(5) {
+     background-color: #ccc;
+ }
+ 
+ .small-label {
+     text-transform: uppercase;
+     font-size: 8px;
+ }
+</style>
+
+
 <template>
   <!-- Ability Score -->
 <table class="table ability-table">

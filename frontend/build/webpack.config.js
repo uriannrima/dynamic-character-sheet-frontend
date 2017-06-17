@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
@@ -14,7 +15,7 @@ module.exports = {
                 use: 'vue-loader'
             },
             {
-                test: /\.(eot|woff2|woff|ttf|svg)$/,
+                test: /\.(eot|woff2|woff|ttf|svg|png)$/,
                 use: 'url-loader'
             },
             {
@@ -38,6 +39,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "index.html"
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: './assets',
+                to: 'assets'
+            }
+        ])
     ]
 }

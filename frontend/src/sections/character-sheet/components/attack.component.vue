@@ -1,24 +1,37 @@
 <style>
-    .attack-table thead th {
-        background-color: #000000;
-        color: #ffffff;
-        text-transform: uppercase;
-        border-left-style: solid;
-        border-left-color: #ffffff !important;
-        border-left-width: 1px !important;
-    }
+.attack-table thead th {
+    background-color: #000000;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-left-style: solid;
+    border-left-color: #ffffff !important;
+    border-left-width: 1px !important;
+}
 
-    .attack-table tbody td,
-    .attack-table-mobile tbody td {
-        padding: 0px !important;
-    }
+.attack-table tbody td,
+.attack-table-mobile tbody td {
+    padding: 0px !important;
+}
 
-    .attack-table tbody div,
-    .attack-table-mobile tbody div {
-        display: inline-block;
-        width: 50%;
-        float: left;
+.attack-table tbody div,
+.attack-table-mobile tbody div {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.details-input {
+    height: 20px;
+    border-width: 0px 0px 1px 0px;
+    border-bottom-color: black;
+    width: 22%;
+}
+
+@media only screen and (max-width: 510px) {
+    .details-input {
+        width: 100%;
     }
+}
 </style>
 
 <template>
@@ -151,7 +164,7 @@
                 </tr>
                 <tr>
                     <th colspan="3">
-                        <span>Notes:</span>                            
+                        <span>Notes:</span>
                     </th>
                 </tr>
                 <tr>
