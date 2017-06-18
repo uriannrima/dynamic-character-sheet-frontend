@@ -10,6 +10,8 @@ import DcsGrapple from './components/grapple.component';
 import DcsAttacksList from './components/attacks-list.component';
 import DcsSkillsList from './components/skills-list.component';
 
+import CharacterService from 'Services/character.service';
+
 export default {
     components: {
         DcsDescription, DcsAbilityScoreList,
@@ -17,6 +19,19 @@ export default {
         DcsMisc, DcsSavingThrows,
         DcsBab, DcsGrapple,
         DcsAttacksList, DcsSkillsList
+    },
+    data: function () {
+        return {
+            character: CharacterService.empty()
+        }
+    },
+    beforeRouteEnter(to, from, next) {
+        CharacterService.get().then(function (character) {
+            next(vm => {
+                vm.character = character;
+                window.character = vm.character;
+            });
+        });
     }
 }
 </script>
@@ -24,21 +39,21 @@ export default {
 <template>
     <div class="container-fluid">
         <!-- Character Description -->
-        <dcs-description></dcs-description>
+        <dcs-description v-bind:character="character"></dcs-description>
         <!-- Ability Score, Status, Armor, Misc  -->
         <div class="row">
             <div class="col-md-4">
                 <!-- Ability Score -->
-                <dcs-ability-score-list></dcs-ability-score-list>
+                <dcs-ability-score-list v-bind:ability-scores="character.abilityScore"></dcs-ability-score-list>
             </div>
             <!-- Status, Armor, Misc -->
             <div class="col-md-8">
                 <!-- Status -->
-                <dcs-status></dcs-status>
+                <dcs-status v-bind:status="character.status"></dcs-status>
                 <!-- Main Armor -->
-                <dcs-armor></dcs-armor>
+                <dcs-armor v-bind:armor-class="character.armorClass"></dcs-armor>
                 <!-- Second Armor, Misc-->
-                <dcs-misc></dcs-misc>
+                <dcs-misc v-bind:armor-class="character.armorClass"></dcs-misc>
             </div>
         </div>
         <!-- Saving Throws, BAB, BAB Related, Attacks, Skills-->

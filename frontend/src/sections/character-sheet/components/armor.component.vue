@@ -1,6 +1,15 @@
 <script>
 export default {
-
+    props: ["armorClass"],
+    computed: {
+        getTotalArmor: function () {
+            var result = 0;
+            for (var key in this.armorClass) {
+                result += parseInt(this.armorClass[key]);
+            }
+            return result;
+        }
+    }
 }
 </script>
 
@@ -60,7 +69,7 @@ export default {
                     </th>
                     <td style="width: 7%">
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="text" class="attribute-field" v-bind:value="getTotalArmor">
                             <span class="armor-description-span">Total
                                 <br>&nbsp</span>
                         </div>
@@ -68,51 +77,51 @@ export default {
                     <td style="text-align: left">
                         <span class="armor-span">= 10 +</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.armorBonus">
                             <span class="armor-description-span">Armor
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.shieldBonus">
                             <span class="armor-description-span">Shield
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.dexModifier">
                             <span class="armor-description-span">Dex
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.sizeModifier">
                             <span class="armor-description-span">Size
                                 <br>Modifier</brb>
                             </span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.naturalArmor">
                             <span class="armor-description-span">Natural
                                 <br>Armor</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.deflectionModifier">
                             <span class="armor-description-span">Deflection
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field">
+                            <input type="number" class="attribute-field" v-model="armorClass.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>
                     </td>
                     <td>
                         <div class="armor-div">
-                            <input type="text" class="attribute-field" style="width: 100px">
+                            <input type="number" class="attribute-field" style="width: 100px">
                             <span class="armor-description-span">Damage
                                 <br>Reduction</span>
                         </div>

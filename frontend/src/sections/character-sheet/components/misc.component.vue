@@ -1,6 +1,19 @@
 <script>
 export default {
-
+    props: ['armorClass'],
+    computed: {
+        getTouchArmor: function () {
+            return parseInt(this.armorClass.base + this.armorClass.dexModifier * 1);
+        },
+        getFlatFooted: function () {
+            var result = 0;
+            for (var key in this.armorClass) {
+                if (key === "dexModifier") continue;
+                result += parseInt(this.armorClass[key]);
+            }
+            return result;
+        }
+    }
 }
 </script>
 
@@ -22,8 +35,7 @@ export default {
 
 <template>
     <div>
-        <table class="table misc-table"
-            style="width:320px;">
+        <table class="table misc-table" style="width:320px;">
             <tbody>
                 <tr>
                     <th>
@@ -33,8 +45,7 @@ export default {
                         </div>
                     </th>
                     <td>
-                        <input type="text"
-                            class="attribute-field">
+                        <input type="text" class="attribute-field" v-bind:value="getTouchArmor">
                     </td>
                     <th>
                         <div>
@@ -43,8 +54,7 @@ export default {
                         </div>
                     </th>
                     <td>
-                        <input type="text"
-                            class="attribute-field">
+                        <input type="text" class="attribute-field" v-bind:value="getFlatFooted">
                     </td>
                 </tr>
                 <tr>
@@ -59,22 +69,19 @@ export default {
                     <td colspan="2">
                         <div class="initiative-div">
                             <span class="initiative-description">Total</span>
-                            <input type="text"
-                                class="attribute-field initiative-input">
+                            <input type="text" class="attribute-field initiative-input">
                         </div>
                         <span>=</span>
                         <div class="initiative-div">
                             <span class="initiative-description">Dex
                             </span>
-                            <input type="text"
-                                class="attribute-field initiative-input">
+                            <input type="text" class="attribute-field initiative-input">
                         </div>
                         <span>+</span>
                         <div class="initiative-div">
                             <span class="initiative-description">Misc
                             </span>
-                            <input type="text"
-                                class="attribute-field initiative-input">
+                            <input type="text" class="attribute-field initiative-input">
                         </div>
                     </td>
                 </tr>
