@@ -4,7 +4,7 @@ import DcsAbilityScoreList from './components/ability-score-list.component';
 import DcsStatus from './components/status.component';
 import DcsArmor from './components/armor.component';
 import DcsMisc from './components/misc.component';
-import DcsSavingThrows from './components/saving-throws.component';
+import DcsSavingThrowsList from './components/saving-throws-list.component';
 import DcsBab from './components/bab.component';
 import DcsGrapple from './components/grapple.component';
 import DcsAttacksList from './components/attacks-list.component';
@@ -16,13 +16,13 @@ export default {
     components: {
         DcsDescription, DcsAbilityScoreList,
         DcsStatus, DcsArmor,
-        DcsMisc, DcsSavingThrows,
+        DcsMisc, DcsSavingThrowsList,
         DcsBab, DcsGrapple,
         DcsAttacksList, DcsSkillsList
     },
     data: function () {
         return {
-            character: CharacterService.empty()
+            character: null
         }
     },
     watch: {
@@ -45,7 +45,7 @@ export default {
 </script>
   
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid" v-if="character">
         <!-- Character Description -->
         <dcs-description v-bind:character="character"></dcs-description>
         <!-- Ability Score, Status, Armor, Misc  -->
@@ -68,7 +68,7 @@ export default {
         <div class="row">
             <div class="col-md-7">
                 <!-- Saving Throws -->
-                <dcs-saving-throws></dcs-saving-throws>
+                <dcs-saving-throws-list v-bind:saving-throws="character.savingThrows"></dcs-saving-throws-list>
                 <!-- BAB -->
                 <dcs-bab></dcs-bab>
                 <!-- Grapple -->

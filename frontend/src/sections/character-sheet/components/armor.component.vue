@@ -68,44 +68,44 @@ export default {
                     <td style="text-align: left">
                         <span class="armor-span">= 10 +</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.armorBonus" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.armorBonus" readonly>
                             <span class="armor-description-span">Armor
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.shieldBonus" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.shieldBonus" readonly>
                             <span class="armor-description-span">Shield
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.dexModifier" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.dexModifier" readonly>
                             <span class="armor-description-span">Dex
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.sizeModifier" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.sizeModifier" readonly>
                             <span class="armor-description-span">Size
                                 <br>Modifier</brb>
                             </span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.naturalArmor" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.naturalArmor" readonly>
                             <span class="armor-description-span">Natural
                                 <br>Armor</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.deflectionModifier" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.deflectionModifier" readonly>
                             <span class="armor-description-span">Deflection
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.miscModifier">
+                            <input type="number" class="attribute-field" attention v-model.number="armorClass.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>

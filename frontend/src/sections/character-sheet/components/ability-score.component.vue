@@ -11,13 +11,13 @@ export default {
             <small>{{ abilityScore.name }}</small>
         </th>
         <td>
-            <input type="number" class="attribute-field" v-model="abilityScore.value">
+            <input type="number" class="attribute-field" v-model.number="abilityScore.value">
         </td>
         <td>
             <input type="number" class="attribute-field" readonly v-bind:value="abilityScore.getModifier()">
         </td>
         <td>
-            <input type="number" class="attribute-field" v-model="abilityScore.tempValue">
+            <input type="number" class="attribute-field" attention v-model.number="abilityScore.tempValue">
         </td>
         <td>
             <input type="number" class="attribute-field" readonly v-bind:value="abilityScore.getTempModifier()">
