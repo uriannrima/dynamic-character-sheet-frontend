@@ -70,15 +70,15 @@ export default {
                 <!-- Saving Throws -->
                 <dcs-saving-throws-list v-bind:saving-throws="character.savingThrows"></dcs-saving-throws-list>
                 <!-- BAB -->
-                <dcs-bab></dcs-bab>
+                <dcs-bab v-bind:base-attack-bonus="character.baseAttackBonus" v-bind:spell-resistance="character.spellResistance"></dcs-bab>
                 <!-- Grapple -->
-                <dcs-grapple></dcs-grapple>
+                <dcs-grapple v-bind:grapple="character.grapple"></dcs-grapple>
                 <!-- Attacks -->
                 <dcs-attacks-list></dcs-attacks-list>
             </div>
             <!-- Skills -->
             <div class="col-md-5 skills-column">
-                <dcs-skills-list></dcs-skills-list>
+                <dcs-skills-list v-bind:skills="character.skills"></dcs-skills-list>
             </div>
         </div>
     </div>

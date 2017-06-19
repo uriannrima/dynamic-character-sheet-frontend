@@ -1,14 +1,20 @@
+<script>
+export default {
+    props: ['grapple']
+}
+</script>
+
+
 <style>
- 
- .grapple-div {
-     display: inline-block;
-     text-align: center;
-     vertical-align: top;
- }
- 
- .grapple-field {
-     width: 75px;
- }
+.grapple-div {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.grapple-field {
+    width: 75px;
+}
 
 .grapple-table tbody th {
     width: 36%;
@@ -34,8 +40,7 @@
 
 <template>
     <div style="overflow-x: auto">
-        <table class="table grapple-table hidden-xs"
-            style="width:756px">
+        <table class="table grapple-table hidden-xs" style="width:756px">
             <tbody>
                 <tr>
                     <th>
@@ -43,37 +48,31 @@
                         <small>Modifier</small>
                     </th>
                     <td style="text-align:left">
-                        <div class="grapple-div"
-                            style="margin-left: 24px;">
-                            <input type="text"
-                                class="attribute-field">
+                        <div class="grapple-div" style="margin-left: 24px;">
+                            <input type="number" class="attribute-field" readonly v-bind:value="grapple.getTotal()">
                             <span class="armor-description-span">Total</span>
                         </div>
                         <span class="armor-span">=</span>
                         <div class="grapple-div">
-                            <input type="text"
-                                class="attribute-field grapple-field">
+                            <input type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.baseAttackBonus">
                             <span class="armor-description-span">Base Attack
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="text"
-                                class="attribute-field grapple-field">
+                            <input type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.strengthModifier">
                             <span class="armor-description-span">Strength
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="text"
-                                class="attribute-field grapple-field">
+                            <input type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.sizeModifier">
                             <span class="armor-description-span">Size
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="text"
-                                class="attribute-field grapple-field">
+                            <input type="number" class="attribute-field grapple-field" attention v-model.number="grapple.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>
@@ -96,16 +95,12 @@
                 <tr style="text-align: center;">
                     <td>
                         <div class="grapple-div">
-                            <input style="display:block"
-                                type="text"
-                                class="attribute-field grapple-field">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.getTotal()">
                             <label class="grapple-description">Total</label>
                         </div>
                         <span class="grapple-sign">=</span>
                         <div class="grapple-div">
-                            <input style="display:block"
-                                type="text"
-                                class="attribute-field grapple-field">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.baseAttackBonus">
                             <label class="grapple-description">
                                 Attack
                                 <br>Bonus
@@ -113,25 +108,19 @@
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block"
-                                type="text"
-                                class="attribute-field grapple-field">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.strengthModifier">
                             <label class="grapple-description">Strength
                                 <br>Modifier</label>
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block"
-                                type="text"
-                                class="attribute-field grapple-field">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.sizeModifier">
                             <label class="grapple-description">Size
                                 <br>Modifier</label>
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block"
-                                type="text"
-                                class="attribute-field grapple-field">
+                            <input style="display:block" type="number" attention class="attribute-field grapple-field" v-model.number="grapple.miscModifier">
                             <label class="grapple-description">Misc
                                 <br>Modifier</label>
                         </div>

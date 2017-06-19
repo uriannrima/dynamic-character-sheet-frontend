@@ -68,7 +68,7 @@ export default {
                         <div class="initiative-div">
                             <span class="initiative-description">Misc
                             </span>
-                            <input type="number" class="attribute-field initiative-input" v-model.number="initiative.miscModifier">
+                            <input type="number" class="attribute-field initiative-input" attention v-model.number="initiative.miscModifier">
                         </div>
                     </td>
                 </tr>

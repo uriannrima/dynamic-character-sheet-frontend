@@ -13,7 +13,7 @@ export default {
         <td style="width: 55%">
             <div style="display:inline-block">
                 <label for="" style="display:block; margin-top:-25px;" v-if="firstRow">Total</label>
-                <input type="number" class="attribute-field" style="display:block" v-bind:value="savingThrow.getTotal()">
+                <input type="number" class="attribute-field" style="display:block" readonly v-bind:value="savingThrow.getTotal()">
             </div>
             <span>=</span>
             <div style="display:inline-block">

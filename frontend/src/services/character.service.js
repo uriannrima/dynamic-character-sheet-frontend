@@ -8,6 +8,34 @@ var charClass = function (name, level, updateFn) {
     }
 }
 
+var warriorClass = function (level) {
+    this.__proto__ = new charClass("Warrior", level);
+
+
+    // Update character saving throws
+    this.updateSavingThrows = function (character) {
+        for (var index = 0; index < character.savingThrows.length; index++) {
+            var savingThrow = character.savingThrows[index];
+            if (savingThrow.name === "fortitude") {
+                savingThrow.base = 2 + (Math.floor(this.level / 2));
+            } else if (savingThrow.name === "reflex" || savingThrow.name === "will") {
+                savingThrow.base = (Math.floor(this.level / 3));
+            }
+        }
+    }
+
+    // Update character bab.
+    this.updateBaseAttackBonus = function (character) {
+        character.baseAttackBonus = this.level;
+        character.grapple.baseAttackBonus = this.level;
+    }
+
+    this.update = function (character) {
+        this.updateSavingThrows(character);
+        this.updateBaseAttackBonus(character);
+    }
+}
+
 var abilityScore = function (name, value, updateFn) {
     return {
         name,
@@ -28,6 +56,13 @@ var abilityScore = function (name, value, updateFn) {
             var savingThrowsToUpdate = character.savingThrows.filter(savingThrow => savingThrow.keyAbility === this.name);
             savingThrowsToUpdate.forEach(savingThrow => {
                 savingThrow.abilityModifier = modifier;
+            });
+        },
+        updateSkills: function (character) {
+            character.skills.forEach(skill => {
+                if (skill.keyAbility === this.name) {
+                    skill.abilityModifier = this.getModifier();
+                }
             });
         }
     };
@@ -53,20 +88,38 @@ var savingThrow = function (name, keyAbility, base, abilityModifier, magicModifi
     }
 }
 
+var skill = function (name, keyAbility, untrained, armorCheckPenalty, classSkill, subValue, rank, abilityModifier, miscModifier) {
+    return {
+        name,
+        keyAbility,
+        untrained,
+        armorCheckPenalty,
+        classSkill,
+        subValue,
+        rank: rank || 0,
+        abilityModifier: abilityModifier || 0,
+        miscModifier: miscModifier || 0,
+        getTotal: function () {
+            var result = 0;
+            for (var key in this) {
+                if (typeof this[key] !== "number") continue;
+                if (key !== "rank" || this.classSkill) {
+                    result += this[key];
+                } else {
+                    result += Math.floor(this[key] / 2);
+                }
+            }
+            return result;
+        }
+    }
+}
+
 var characters = [
     {
         name: 'Buck Anvilhead',
         playerName: 'Peres',
         classes: [
-            new charClass("Warrior", 1, function (character) {
-                for (var index = 0; index < character.savingThrows.length; index++) {
-                    console.log();
-                    var savingThrow = character.savingThrows[index];
-                    if (savingThrow.name === "fortitude") {
-                        savingThrow.base = 2 + (Math.floor(this.level / 2));
-                    }
-                }
-            })
+            new warriorClass(1)
         ],
         race: "Dwarf",
         alignment: "True Neutral",
@@ -80,14 +133,26 @@ var characters = [
         hair: "Grey",
         skin: "White",
         update: function () {
+            // Be updated by char class.
+            for (var index = 0; index < this.classes.length; index++) {
+                var charClass = this.classes[index];
+                charClass.update(this);
+            }
+
+            // Be updated by char ability score.
             for (var index = 0; index < this.abilityScores.length; index++) {
                 var abilityScore = this.abilityScores[index];
                 abilityScore.update(this);
             }
         },
         abilityScores: [
-            new abilityScore("strength", 18),
+            new abilityScore("strength", 18, function (character) {
+                this.updateSkills(character);
+                // Update grapple.
+                character.grapple.strengthModifier = this.getModifier();
+            }),
             new abilityScore("dexterity", 14, function (character) {
+                this.updateSkills(character);
                 this.updateSavingThrows(character);
 
                 const modifier = this.getModifier();
@@ -98,13 +163,18 @@ var characters = [
                 character.initiative.dexModifier = modifier;
             }),
             new abilityScore("constitution", 18, function (character) {
+                this.updateSkills(character);
                 this.updateSavingThrows(character);
             }),
-            new abilityScore("intelligence", 13),
+            new abilityScore("intelligence", 13, function () {
+                this.updateSkills(character);
+            }),
             new abilityScore("wisdom", 13, function (character) {
                 this.updateSavingThrows(character);
             }),
-            new abilityScore("charisma", 10)
+            new abilityScore("charisma", 10, function (character) {
+                this.updateSkills(character);
+            })
         ],
         status: {
             healthPoints: 28,
@@ -149,9 +219,62 @@ var characters = [
             }
         },
         savingThrows: [
-            new savingThrow("fortitude", "constitution", 2),
+            new savingThrow("fortitude", "constitution"),
             new savingThrow("reflex", "dexterity"),
             new savingThrow("will", "wisdom")
+        ],
+        baseAttackBonus: 0,
+        spellResistance: 1,
+        grapple: {
+            baseAttackBonus: 0,
+            strengthModifier: 0,
+            sizeModifier: 0,
+            miscModifier: 0,
+            getTotal: function () {
+                var result = 0;
+                for (var key in this) {
+                    if (typeof this[key] !== "number") continue;
+                    result += this[key];
+                }
+                return result;
+            }
+        },
+        skills: [
+            new skill('Appraise', 'intelligence', true, false, true),
+            new skill('Balance', 'dexterity', true, true),
+            new skill('Bluff', 'charisma', true, false),
+            new skill('Climb', 'strength', true, true),
+            new skill('Concentration', 'constitution', true, false),
+            new skill('Craft', 'intelligence', true, false, false, true),
+            new skill('Decipher Script', 'intelligence', false, false),
+            new skill('Diplomacy', 'charisma', true, false),
+            new skill('Disable Device', 'intelligence', false, false),
+            new skill('Disguise', 'charisma', true, false),
+            new skill('Escape Artist', 'dexterity', true, true),
+            new skill('Forgery', 'intelligence', true, false),
+            new skill('Gather Information', 'charisma', true, false),
+            new skill('Handle Animal', 'charisma', false, false),
+            new skill('Heal', 'wisdom', true, false),
+            new skill('Hide', 'dexterity', true, true),
+            new skill('Intimidate', 'charisma', true, false),
+            new skill('Jump', 'strength', true, true),
+            new skill('Knowledge', 'intelligence', false, false, false, true),
+            new skill('Listen', 'wisdom', true, false),
+            new skill('Move Silently', 'dexterity', true, true),
+            new skill('Open Lock', 'dexterity', false, false),
+            new skill('Perform', 'charisma', false, false),
+            new skill('Profession', 'wisdom', false, false, false, true),
+            new skill('Ride', 'dexterity', true, false),
+            new skill('Search', 'intelligence', true, false),
+            new skill('Sense Motive', 'wisdom', true, false),
+            new skill('Sleight of Hands', 'dexterity', false, true),
+            new skill('Spellcraft', 'intelligence', false, false),
+            new skill('Spot', 'wisdom', true, false),
+            new skill('Survival', 'wisdom', true, false),
+            new skill('Swim', 'strength', true, true),
+            new skill('Tumble', 'dexterity', false, true),
+            new skill('Use Magic Device', 'charisma', false, false),
+            new skill('Use Rope', 'dexterity', true, false),
         ]
     },
 ];
