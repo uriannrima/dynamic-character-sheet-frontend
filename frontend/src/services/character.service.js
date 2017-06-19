@@ -1,3 +1,17 @@
+var abilityScore = function (name, value) {
+    return {
+        name,
+        value,
+        tempValue: value,
+        getModifier: function () {
+            return Math.floor((this.value - 10) / 2);
+        },
+        getTempModifier: function () {
+            return Math.floor((this.tempValue - 10) / 2);
+        }
+    };
+}
+
 var characters = [
     {
         name: 'Buck Anvilhead',
@@ -17,13 +31,24 @@ var characters = [
         eyes: "Black",
         hair: "Grey",
         skin: "White",
-        abilityScore: [
-            { name: "strength", value: 18 },
-            { name: "dexterity", value: 14 },
-            { name: "constitution", value: 18 },
-            { name: "intelligence", value: 13 },
-            { name: "wisdom", value: 13 },
-            { name: "charisma", value: 10 }
+        update: function () {
+            for (var index = 0; index < this.abilityScores.length; index++) {
+                var abilityScore = this.abilityScores[index];
+
+                if (abilityScore.name === "dexterity") {
+                    const dexModifier = abilityScore.getModifier();
+                    this.armorClass.dexModifier = dexModifier;
+                    this.initiative.dexModifier = dexModifier;                    
+                }
+            }
+        },
+        abilityScores: [
+            new abilityScore("strength", 18),
+            new abilityScore("dexterity", 14),
+            new abilityScore("constitution", 18),
+            new abilityScore("intelligence", 13),
+            new abilityScore("wisdom", 13),
+            new abilityScore("charisma", 10)
         ],
         status: {
             healthPoints: 28,
@@ -38,8 +63,36 @@ var characters = [
             sizeModifier: 0,
             naturalArmor: 0,
             deflectionModifier: 0,
-            miscModifier: 0
-        }
+            miscModifier: 0,
+            getTotalArmor: function () {
+                var result = 0;
+                for (var key in this) {
+                    if (typeof this[key] !== "number") continue;
+                    result += parseInt(this[key]);
+                }
+                return result;
+            },
+            getTouchArmor: function () {
+                return this.base + this.dexModifier + this.sizeModifier + this.miscModifier;
+            },
+            getFlatFooted: function () {
+                console.log(1);
+                var result = 0;
+                for (var key in this) {
+                    if (typeof this[key] !== "number") continue;
+                    if (key === "dexModifier") continue;
+                    result += parseInt(this[key]);
+                }
+                return result;
+            }
+        },
+        initiative: {
+            dexModifier: 2,
+            miscModifier: 0,
+            getTotal: function () {
+                return this.dexModifier + this.miscModifier;
+            }
+        },
     },
 ];
 
@@ -64,12 +117,12 @@ module.exports = {
             hair: "",
             skin: "",
             abilityScore: [
-                { name: "strength", value: 10 },
-                { name: "dexterity", value: 10 },
-                { name: "constitution", value: 10 },
-                { name: "intelligence", value: 10 },
-                { name: "wisdom", value: 10 },
-                { name: "charisma", value: 10 }
+                new abilityScore("strength", 10),
+                new abilityScore("dexterity", 10),
+                new abilityScore("constitution", 10),
+                new abilityScore("intelligence", 10),
+                new abilityScore("wisdom", 10),
+                new abilityScore("charisma", 10)
             ],
             status: {
                 healthPoints: 1,
@@ -84,8 +137,32 @@ module.exports = {
                 sizeModifier: 0,
                 naturalArmor: 0,
                 deflectionModifier: 0,
-                miscModifier: 0
-            }
+                miscModifier: 0,
+                getTotalArmor: function () {
+                    var result = 0;
+                    for (var key in this.armorClass) {
+                        result += parseInt(this.armorClass[key]);
+                    }
+                    return result;
+                },
+                getTouchArmor: function () {
+                    return this.base + this.dexModifier + this.sizeModifier + this.miscModifier;
+                },
+                getFlatFooted: function () {
+                    var result = 0;
+                    for (var key in this.armorClass) {
+                        result += parseInt(this.armorClass[key]);
+                    }
+                    return result;
+                }
+            },
+            initiative: {
+                dexModifier: 2,
+                miscModifier: 0,
+                getTotal: function () {
+                    return (this.dexModifier + this.miscModifier * 1);
+                }
+            },
         }
     },
     get: function (id) {

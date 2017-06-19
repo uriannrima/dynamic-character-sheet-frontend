@@ -18,12 +18,6 @@ export default {
 .ability-table tbody td:nth-child(5) {
     background-color: #ccc;
 }
-
-.ability-table tbody td:nth-child(3) input,
-.ability-table tbody td:nth-child(5) input {
-    background-color: #ccc;
-}
-
 .small-label {
     text-transform: uppercase;
     font-size: 8px;

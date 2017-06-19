@@ -1,15 +1,6 @@
 <script>
 export default {
-    props: ["armorClass"],
-    computed: {
-        getTotalArmor: function () {
-            var result = 0;
-            for (var key in this.armorClass) {
-                result += parseInt(this.armorClass[key]);
-            }
-            return result;
-        }
-    }
+    props: ["armorClass"]
 }
 </script>
 
@@ -69,7 +60,7 @@ export default {
                     </th>
                     <td style="width: 7%">
                         <div class="armor-div">
-                            <input type="text" class="attribute-field" v-bind:value="getTotalArmor">
+                            <input type="text" class="attribute-field" v-bind:value="armorClass.getTotalArmor()" readonly>
                             <span class="armor-description-span">Total
                                 <br>&nbsp</span>
                         </div>
@@ -77,38 +68,38 @@ export default {
                     <td style="text-align: left">
                         <span class="armor-span">= 10 +</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.armorBonus">
+                            <input type="number" class="attribute-field" v-model="armorClass.armorBonus" readonly>
                             <span class="armor-description-span">Armor
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.shieldBonus">
+                            <input type="number" class="attribute-field" v-model="armorClass.shieldBonus" readonly>
                             <span class="armor-description-span">Shield
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.dexModifier">
+                            <input type="number" class="attribute-field" v-model="armorClass.dexModifier" readonly>
                             <span class="armor-description-span">Dex
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.sizeModifier">
+                            <input type="number" class="attribute-field" v-model="armorClass.sizeModifier" readonly>
                             <span class="armor-description-span">Size
                                 <br>Modifier</brb>
                             </span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.naturalArmor">
+                            <input type="number" class="attribute-field" v-model="armorClass.naturalArmor" readonly>
                             <span class="armor-description-span">Natural
                                 <br>Armor</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model="armorClass.deflectionModifier">
+                            <input type="number" class="attribute-field" v-model="armorClass.deflectionModifier" readonly>
                             <span class="armor-description-span">Deflection
                                 <br>Modifier</span>
                         </div>

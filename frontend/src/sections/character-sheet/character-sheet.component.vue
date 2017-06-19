@@ -25,6 +25,14 @@ export default {
             character: CharacterService.empty()
         }
     },
+    watch: {
+        'character.abilityScores': {
+            handler: function (newVal, oldVal) {
+                this.character.update();
+            },
+            deep: true
+        }
+    },
     beforeRouteEnter(to, from, next) {
         CharacterService.get().then(function (character) {
             next(vm => {
@@ -44,7 +52,7 @@ export default {
         <div class="row">
             <div class="col-md-4">
                 <!-- Ability Score -->
-                <dcs-ability-score-list v-bind:ability-scores="character.abilityScore"></dcs-ability-score-list>
+                <dcs-ability-score-list v-bind:ability-scores="character.abilityScores"></dcs-ability-score-list>
             </div>
             <!-- Status, Armor, Misc -->
             <div class="col-md-8">
@@ -53,7 +61,7 @@ export default {
                 <!-- Main Armor -->
                 <dcs-armor v-bind:armor-class="character.armorClass"></dcs-armor>
                 <!-- Second Armor, Misc-->
-                <dcs-misc v-bind:armor-class="character.armorClass"></dcs-misc>
+                <dcs-misc v-bind:armor-class="character.armorClass" v-bind:initiative="character.initiative"></dcs-misc>
             </div>
         </div>
         <!-- Saving Throws, BAB, BAB Related, Attacks, Skills-->

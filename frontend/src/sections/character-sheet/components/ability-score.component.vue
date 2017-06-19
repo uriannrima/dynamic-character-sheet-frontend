@@ -1,22 +1,8 @@
 <script>
 export default {
-    props: ['abilityScore'],
-    data: function () {
-        return {
-            tempScore: this.abilityScore.value
-        }
-    },
-    computed: {
-        getAbilityModifier: function () {
-            return Math.floor((this.abilityScore.value - 10) / 2);
-        },
-        getTempModifier: function(){
-            return Math.floor((this.tempScore - 10) / 2);
-        }
-    }
+    props: ['abilityScore']
 }
 </script>
-
 
 <template>
     <tr>
@@ -28,13 +14,13 @@ export default {
             <input type="number" class="attribute-field" v-model="abilityScore.value">
         </td>
         <td>
-            <input type="number" class="attribute-field" readonly v-bind:value="getAbilityModifier">
+            <input type="number" class="attribute-field" readonly v-bind:value="abilityScore.getModifier()">
         </td>
         <td>
-            <input type="number" class="attribute-field" v-model="tempScore">
+            <input type="number" class="attribute-field" v-model="abilityScore.tempValue">
         </td>
         <td>
-            <input type="number" class="attribute-field" readonly v-bind:value="getTempModifier">
+            <input type="number" class="attribute-field" readonly v-bind:value="abilityScore.getTempModifier()">
         </td>
     </tr>
 </template>
