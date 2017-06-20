@@ -115,6 +115,7 @@ export default {
                     <tr>
                         <th colspan="6">
                             <span class="skills-label">Skills</span>
+                            <input type="checkbox" v-model="filter.hideNoBonus">
                         </th>
                     </tr>
                 </thead>
@@ -177,6 +178,7 @@ export default {
                     <tr>
                         <th>
                             <span class="skills-label">Skills</span>
+                            <input type="checkbox" v-model="filter.hideNoBonus">
                         </th>
                     </tr>
                     <tr>
