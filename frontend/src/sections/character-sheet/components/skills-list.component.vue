@@ -5,15 +5,19 @@ export default {
     props: ['skills'],
     data: function () {
         return {
+            showConfig: false,
             filter: {
-                hideNoBonus: false
+                hideNoBonus: false,
+                hideCrossClass: false
             }
         }
     },
     computed: {
         filteredSkills: function () {
-            if (this.filter.hideNoBonus) return this.skills.filter(skill => skill.getTotal() >= 1);
-            return this.skills;
+            var filtered = this.skills;
+            if (this.filter.hideNoBonus) filtered = filtered.filter(skill => skill.getTotal() >= 1);
+            if (this.filter.hideCrossClass) filtered = filtered.filter(skill => skill.classSkill);
+            return filtered;
         }
     }
 }
@@ -93,6 +97,16 @@ export default {
 .armor-check-penalty::after {
     content: '*';
 }
+
+.dropdown-menu li span {
+    color: black;
+    vertical-align: middle;
+}
+
+.dropdown-menu li input {
+    vertical-align: sub;
+}
+
 
 @media only screen and (max-width:992px) {
     .skills-column {
@@ -178,7 +192,23 @@ export default {
                     <tr>
                         <th>
                             <span class="skills-label">Skills</span>
-                            <input type="checkbox" v-model="filter.hideNoBonus">
+                            <div class="dropdown" style="float: right;" v-bind:class="{ 'open' : showConfig }">
+                                <span class="glyphicon glyphicon-cog" v-on:click="showConfig = !showConfig"></span>
+                                <ul class="dropdown-menu dropdown-menu-right" style="min-width: 190px; text-align: center;">
+                                    <li>
+                                        <div>
+                                            <span>Hide skills with no bonus?</span>
+                                            <input type="checkbox" v-model="filter.hideNoBonus">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <span>Hide cross-class skills?</span>
+                                            <input type="checkbox" v-model="filter.hideCrossClass">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </th>
                     </tr>
                     <tr>
