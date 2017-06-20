@@ -72,7 +72,7 @@ export default {
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="number" class="attribute-field grapple-field" attention v-model.number="grapple.miscModifier">
+                            <input type="number" class="attribute-field grapple-field" v-bind:class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>
@@ -120,7 +120,7 @@ export default {
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block" type="number" attention class="attribute-field grapple-field" v-model.number="grapple.miscModifier">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" v-bind:class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
                             <label class="grapple-description">Misc
                                 <br>Modifier</label>
                         </div>

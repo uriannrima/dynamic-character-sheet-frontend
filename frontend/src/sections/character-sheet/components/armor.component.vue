@@ -105,7 +105,7 @@ export default {
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" attention v-model.number="armorClass.miscModifier">
+                            <input type="number" class="attribute-field" v-bind:class="{ attention: armorClass.miscModifier > 0 }" v-model.number="armorClass.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>

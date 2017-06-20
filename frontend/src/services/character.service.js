@@ -275,6 +275,53 @@ var characters = [
             new skill('Tumble', 'dexterity', false, true),
             new skill('Use Magic Device', 'charisma', false, false),
             new skill('Use Rope', 'dexterity', true, false),
+        ],
+        attacks: [
+            {
+                name: "Dwarven Waraxe",
+                attackBonus: 6,
+                damage: "1d10+4",
+                critical: "x3",
+                range: 0,
+                type: "Slashing",
+                notes: "",
+                hasAmmunition: false,
+                ammunition: {
+                    name: "",
+                    quantity: 0,
+                    notes: ""
+                }
+            },
+            {
+                name: "Dwarven Waraxe",
+                attackBonus: 6,
+                damage: "1d10+4",
+                critical: "x3",
+                range: 0,
+                type: "Slashing",
+                notes: "",
+                hasAmmunition: false,
+                ammunition: {
+                    name: "",
+                    quantity: 0,
+                    notes: ""
+                }
+            },
+            {
+                name: "Dwarven Waraxe",
+                attackBonus: 6,
+                damage: "1d10+4",
+                critical: "x3",
+                range: 0,
+                type: "Slashing",
+                notes: "",
+                hasAmmunition: false,
+                ammunition: {
+                    name: "",
+                    quantity: 0,
+                    notes: ""
+                }
+            }
         ]
     },
 ];

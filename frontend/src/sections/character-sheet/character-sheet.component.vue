@@ -74,7 +74,7 @@ export default {
                 <!-- Grapple -->
                 <dcs-grapple v-bind:grapple="character.grapple"></dcs-grapple>
                 <!-- Attacks -->
-                <dcs-attacks-list></dcs-attacks-list>
+                <dcs-attacks-list v-bind:attacks="character.attacks"></dcs-attacks-list>
             </div>
             <!-- Skills -->
             <div class="col-md-5 skills-column">

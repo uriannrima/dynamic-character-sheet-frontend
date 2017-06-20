@@ -1,3 +1,10 @@
+<script>
+export default {
+    props: ['attack']
+}
+</script>
+
+
 <style>
 .attack-table thead th {
     background-color: #000000;
@@ -25,11 +32,13 @@
     border-width: 0px 0px 1px 0px;
     border-bottom-color: black;
     width: 22%;
+    text-align: center;
 }
 
 @media only screen and (max-width: 510px) {
     .details-input {
         width: 100%;
+        text-align: center;
     }
 }
 </style>
@@ -57,16 +66,16 @@
             <tbody>
                 <tr>
                     <td style="width:30%">
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%; text-align: center;" v-model="attack.name">
                     </td>
                     <td style="width:30%">
-                        <input type="text" style="width:100%">
+                        <input type="number" style="width:100%; text-align: center;" v-model.number="attack.attackBonus">
                     </td>
                     <td style="width:20%">
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%; text-align: center;" v-model="attack.critical">
                     </td>
                     <td style="width:20%">
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%; text-align: center;" v-model="attack.damage">
                     </td>
                 </tr>
                 <tr>
@@ -85,24 +94,31 @@
                 <tr>
                     <td>
                         <div>
-                            <input type="text" style="width:100%">
+                            <input type="number" style="width:100%; text-align: center;" v-model.number="attack.range">
                         </div>
                         <div>
-                            <input type="text" style="width:100%">
+                            <input type="text" style="width:100%; text-align: center;" v-model="attack.type">
                         </div>
                     </td>
                     <td colspan="3">
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%" v-model="attack.notes">
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="attack.hasAmmunition && attack.ammunition">
                     <td colspan="4" style="text-align:center">
+                        <input type="checkbox" v-model="attack.hasAmmunition">
                         <label>Ammunition:</label>
-                        <input type="text" class="details-input">
+                        <input type="text" class="details-input" v-model="attack.ammunition.name">
                         <label>Quantity:</label>
-                        <input type="text" class="details-input">
+                        <input type="text" class="details-input" v-model="attack.ammunition.quantity">
                         <label>Notes:</label>
-                        <input type="text" class="details-input">
+                        <input type="text" class="details-input" v-model="attack.ammunition.notes">
+                    </td>
+                </tr>
+                <tr v-if="!attack.hasAmmunition">
+                    <td colspan="4" style="text-align:center">
+                        <label>Has Ammunition?</label>
+                        <input type="checkbox" v-model="attack.hasAmmunition">
                     </td>
                 </tr>
             </tbody>
@@ -117,7 +133,7 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%; text-align: center;" v-model="attack.name">
                     </td>
                 </tr>
                 <tr>
@@ -133,13 +149,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" style="width:100%">
+                        <input type="number" style="width:100%; text-align: center;" v-model.number="attack.attackBonus">
                     </td>
                     <td>
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%; text-align: center;" v-model="attack.damage">
                     </td>
                     <td>
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%; text-align: center;" v-model="attack.critical">
                     </td>
                 </tr>
                 <tr>
@@ -155,10 +171,10 @@
                 <tr>
                     <td colspan="3">
                         <div>
-                            <input type="text" style="width:100%">
+                            <input type="number" style="width:100%; text-align: center;" v-model.number="attack.range">
                         </div>
                         <div>
-                            <input type="text" style="width:100%">
+                            <input type="text" style="width:100%; text-align: center;" v-model="attack.type">
                         </div>
                     </td>
                 </tr>
@@ -169,17 +185,30 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="text" style="width:100%">
+                        <input type="text" style="width:100%" v-model="attack.notes">
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="attack.hasAmmunition && attack.ammunition">
                     <td colspan="4" style="text-align:center">
-                        <label>Ammunition:</label>
-                        <input type="text" class="details-input">
-                        <label>Quantity:</label>
-                        <input type="text" class="details-input">
-                        <label>Notes:</label>
-                        <input type="text" class="details-input">
+                        <div style="width: 50%; padding: 0px 5px">
+                        <input type="checkbox" v-model="attack.hasAmmunition">
+                            <label>Ammunition:</label>
+                            <input type="text" class="details-input" v-model="attack.ammunition.name">
+                        </div>
+                        <div style="width: 50%; padding: 0px 5px">
+                            <label>Quantity:</label>
+                            <input type="text" class="details-input" v-model="attack.ammunition.quantity">
+                        </div>
+                        <div style="width:100%; padding: 0px 5px">
+                            <label>Notes:</label>
+                            <input type="text" class="details-input" style="text-align: left;" v-model="attack.ammunition.notes">
+                        </div>
+                    </td>
+                </tr>
+                <tr v-if="!attack.hasAmmunition">
+                    <td colspan="4" style="text-align:center">
+                        <label>Has Ammunition?</label>
+                        <input type="checkbox" v-model="attack.hasAmmunition">
                     </td>
                 </tr>
             </tbody>

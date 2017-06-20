@@ -33,12 +33,12 @@ export default {
             <span>+</span>
             <div style="display:inline-block">
                 <label for="" style="display:block; margin-top:-25px; font-size:12px" v-if="firstRow">Misc</label>
-                <input type="number" class="attribute-field" style="display:block" attention v-model.number="savingThrow.miscModifier">
+                <input type="number" class="attribute-field" style="display:block" v-bind:class="{ attention: savingThrow.miscModifier > 0 }" v-model.number="savingThrow.miscModifier">
             </div>
             <span>+</span>
             <div style="display:inline-block">
                 <label for="" style="display:block; margin-top:-25px; font-size:12px" v-if="firstRow">Temp</label>
-                <input type="number" class="attribute-field" style="display:block" attention v-model.number="savingThrow.tempModifier">
+                <input type="number" class="attribute-field" style="display:block" v-bind:class="{ attention: savingThrow.tempModifier > 0 }" v-model.number="savingThrow.tempModifier">
             </div>
         </td>    
         <td rowspan="3"  v-if="firstRow">

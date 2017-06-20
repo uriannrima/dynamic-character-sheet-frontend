@@ -2,14 +2,13 @@
 import DcsAttack from './attack.component';
 
 export default {
-    components: { DcsAttack }
+    components: { DcsAttack },
+    props: ['attacks']
 }
 </script>
 
 <template>
     <div>
-        <dcs-attack></dcs-attack>
-        <dcs-attack></dcs-attack>
-        <dcs-attack></dcs-attack>
+        <dcs-attack v-for="(attack, index) in attacks" :key="index" v-bind:attack="attack"></dcs-attack>
     </div>
 </template>

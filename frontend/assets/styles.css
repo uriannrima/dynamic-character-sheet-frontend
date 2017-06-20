@@ -55,6 +55,6 @@
      background-color: #ccc;
  }
 
- input[attention]{
+ .attention {
      background-color: yellow;
  }
