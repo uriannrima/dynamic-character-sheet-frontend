@@ -60,7 +60,7 @@ export default {
                     </th>
                     <td style="width: 7%">
                         <div class="armor-div">
-                            <input type="text" class="attribute-field" v-bind:value="armorClass.getTotalArmor()" readonly>
+                            <input type="text" class="attribute-field" :value="armorClass.getTotalArmor()" readonly>
                             <span class="armor-description-span">Total
                                 <br>&nbsp</span>
                         </div>
@@ -105,7 +105,7 @@ export default {
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-bind:class="{ attention: armorClass.miscModifier > 0 }" v-model.number="armorClass.miscModifier">
+                            <input type="number" class="attribute-field" :class="{ attention: armorClass.miscModifier > 0 }" v-model.number="armorClass.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>

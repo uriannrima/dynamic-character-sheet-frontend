@@ -20,7 +20,7 @@ export default {
             <input type="number" class="attribute-field" v-model.number="abilityScore.tempValue">
         </td>
         <td>
-            <input type="number" class="attribute-field" readonly v-bind:value="abilityScore.getTempModifier()">
+            <input type="number" class="attribute-field" readonly :value="abilityScore.getTempModifier()">
         </td>
     </tr>
 </template>

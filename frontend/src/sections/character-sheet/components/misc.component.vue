@@ -32,7 +32,7 @@ export default {
                         </div>
                     </th>
                     <td>
-                        <input type="number" class="attribute-field" v-bind:value="armorClass.getTouchArmor()" readonly>
+                        <input type="number" class="attribute-field" :value="armorClass.getTouchArmor()" readonly>
                     </td>
                     <th>
                         <div>
@@ -41,7 +41,7 @@ export default {
                         </div>
                     </th>
                     <td>
-                        <input type="number" class="attribute-field" v-bind:value="armorClass.getFlatFooted()" readonly>
+                        <input type="number" class="attribute-field" :value="armorClass.getFlatFooted()" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -56,19 +56,19 @@ export default {
                     <td colspan="2">
                         <div class="initiative-div">
                             <span class="initiative-description">Total</span>
-                            <input type="number" class="attribute-field initiative-input" v-bind:value="initiative.getTotal()" readonly>
+                            <input type="number" class="attribute-field initiative-input" :value="initiative.getTotal()" readonly>
                         </div>
                         <span>=</span>
                         <div class="initiative-div">
                             <span class="initiative-description">Dex
                             </span>
-                            <input type="number" class="attribute-field initiative-input" v-bind:value="initiative.dexModifier" readonly>
+                            <input type="number" class="attribute-field initiative-input" :value="initiative.dexModifier" readonly>
                         </div>
                         <span>+</span>
                         <div class="initiative-div">
                             <span class="initiative-description">Misc
                             </span>
-                            <input type="number" class="attribute-field initiative-input" v-bind:class="{ attention: initiative.miscModifier > 0 }" v-model.number="initiative.miscModifier">
+                            <input type="number" class="attribute-field initiative-input" :class="{ attention: initiative.miscModifier > 0 }" v-model.number="initiative.miscModifier">
                         </div>
                     </td>
                 </tr>

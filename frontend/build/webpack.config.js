@@ -4,9 +4,19 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
+    devtool: "#cheap-module-source-map",
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../dist')
+        path: path.resolve(__dirname, '../dist'),
+        devtoolModuleFilenameTemplate: info => {
+            if (info.resource.match(/\.vue$/)) {
+                $filename = info.allLoaders.match(/type=script/)
+                    ? info.resourcePath : 'generated';
+            } else {
+                $filename = info.resourcePath;
+            }
+            return $filename;
+        }
     },
     module: {
         rules: [
@@ -32,6 +42,7 @@ module.exports = {
         extensions: ['*', '.js', '.html', '.css', '.vue'],
         alias: {
             'Services': path.resolve(__dirname, '../src/services/'),
+            'Models': path.resolve(__dirname, '../src/models/'),
             'vue$': 'vue/dist/vue.js',
             'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
         }

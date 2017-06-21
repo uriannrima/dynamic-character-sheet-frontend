@@ -19,7 +19,7 @@ export default {
                 </th>
             </thead>
             <tbody>
-                <dcs-saving-throw v-for="(savingThrow, index) in savingThrows" v-bind:saving-throw="savingThrow" v-bind:first-row="index == 0" :key="savingThrow.name"></dcs-saving-throw>
+                <dcs-saving-throw v-for="(savingThrow, index) in savingThrows" :saving-throw="savingThrow" :first-row="index == 0" :key="savingThrow.name"></dcs-saving-throw>
             </tbody>
         </table>
     </div>

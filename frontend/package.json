@@ -19,8 +19,8 @@
     "vue-template-compiler": "^2.3.4"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config build/webpack.config.js --content-base src/ --port 3000 --hot --inline",
-    "serve":"webpack-dev-server --config build/webpack.config.js --content-base src/ --port 3000 --hot --inline --public 192.168.0.10:3000 --host 0.0.0.0 ",
+    "dev": "webpack-dev-server --config build/webpack.config.js --content-base src/ --port 3000",
+    "serve":"webpack-dev-server --config build/webpack.config.js --content-base src/ --port 3000 --public 192.168.0.10:3000 --host 0.0.0.0 ",
     "build": "webpack --config build/webpack.config.js"
   }
 }

@@ -49,30 +49,30 @@ export default {
                     </th>
                     <td style="text-align:left">
                         <div class="grapple-div" style="margin-left: 24px;">
-                            <input type="number" class="attribute-field" readonly v-bind:value="grapple.getTotal()">
+                            <input type="number" class="attribute-field" readonly :value="grapple.getTotal()">
                             <span class="armor-description-span">Total</span>
                         </div>
                         <span class="armor-span">=</span>
                         <div class="grapple-div">
-                            <input type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.baseAttackBonus">
+                            <input type="number" class="attribute-field grapple-field" readonly :value="grapple.baseAttackBonus">
                             <span class="armor-description-span">Base Attack
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.strengthModifier">
+                            <input type="number" class="attribute-field grapple-field" readonly :value="grapple.strengthModifier">
                             <span class="armor-description-span">Strength
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.sizeModifier">
+                            <input type="number" class="attribute-field grapple-field" readonly :value="grapple.sizeModifier">
                             <span class="armor-description-span">Size
                                 <br>Modifier</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
-                            <input type="number" class="attribute-field grapple-field" v-bind:class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
+                            <input type="number" class="attribute-field grapple-field" :class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
                             <span class="armor-description-span">Misc
                                 <br>Modifier</span>
                         </div>
@@ -95,12 +95,12 @@ export default {
                 <tr style="text-align: center;">
                     <td>
                         <div class="grapple-div">
-                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.getTotal()">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly :value="grapple.getTotal()">
                             <label class="grapple-description">Total</label>
                         </div>
                         <span class="grapple-sign">=</span>
                         <div class="grapple-div">
-                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.baseAttackBonus">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly :value="grapple.baseAttackBonus">
                             <label class="grapple-description">
                                 Attack
                                 <br>Bonus
@@ -108,19 +108,19 @@ export default {
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.strengthModifier">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly :value="grapple.strengthModifier">
                             <label class="grapple-description">Strength
                                 <br>Modifier</label>
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly v-bind:value="grapple.sizeModifier">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" readonly :value="grapple.sizeModifier">
                             <label class="grapple-description">Size
                                 <br>Modifier</label>
                         </div>
                         <span class="grapple-sign">+</span>
                         <div class="grapple-div">
-                            <input style="display:block" type="number" class="attribute-field grapple-field" v-bind:class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
+                            <input style="display:block" type="number" class="attribute-field grapple-field" :class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
                             <label class="grapple-description">Misc
                                 <br>Modifier</label>
                         </div>

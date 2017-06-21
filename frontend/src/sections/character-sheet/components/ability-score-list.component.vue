@@ -47,7 +47,7 @@ export default {
             </tr>
         </thead>
         <tbody>
-            <dcs-ability-score v-for="abilityScore in abilityScores" v-bind:ability-score="abilityScore" :key="abilityScore.name"></dcs-ability-score>
+            <dcs-ability-score v-for="abilityScore in abilityScores" :ability-score="abilityScore" :key="abilityScore.name"></dcs-ability-score>
         </tbody>
     </table>
 </template>

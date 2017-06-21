@@ -9,6 +9,6 @@ export default {
 
 <template>
     <div>
-        <dcs-attack v-for="(attack, index) in attacks" :key="index" v-bind:attack="attack"></dcs-attack>
+        <dcs-attack v-for="(attack, index) in attacks" :key="index" :attack="attack"></dcs-attack>
     </div>
 </template>

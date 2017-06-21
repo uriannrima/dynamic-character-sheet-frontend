@@ -36,7 +36,7 @@ const ALL_SKILLS = [
     { name: 'Use Rope', keyAbility: 'Dex', untrained: true, armorCheckPenalty: false }
 ];
 
-module.exports = {
+export default {
     get: function () {
         return ALL_SKILLS;
     }

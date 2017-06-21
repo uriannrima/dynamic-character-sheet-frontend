@@ -1,6 +1,13 @@
 <script>
+import SizeService from 'Services/size.service';
+
 export default {
     props: ['character'],
+    data: function () {
+        return {
+            sizes: SizeService.getAll()
+        }
+    },
     computed: {
         classesCombined: function () {
             var result = "";
@@ -11,6 +18,14 @@ export default {
             }
             return result;
         }
+    },
+    watch: {
+        'character.size': {
+            handler: function (newValue, oldValue) {
+                SizeService.update(character);
+            },
+            deep: true
+        }
     }
 }
 </script>
@@ -18,6 +33,7 @@ export default {
 .form-control {
     padding: 0px !important;
 }
+
 .main-field {
     border-width: 0 0 1px 0;
     border-style: solid;
@@ -50,7 +66,10 @@ export default {
             </div>
             <div class="row">
                 <div class="col-xs-3 col-md-3">
-                    <input type="text" class="form-control main-field" v-model="character.size"></input>
+                    <select class="form-control main-field" v-model="character.size">
+                        <option disabled value="">None</option>
+                        <option v-for="size in sizes">{{size.name}}</option>
+                    </select>
                     <label>Size</label>
                 </div>
                 <div class="col-xs-3 col-md-3">
@@ -58,7 +77,11 @@ export default {
                     <label>Age</label>
                 </div>
                 <div class="col-xs-3 col-md-3">
-                    <input type="text" class="form-control main-field" v-model="character.gender"></input>
+                    <select class="form-control main-field" v-model="character.gender">
+                        <option disabled value="">None</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
                     <label>Gender</label>
                 </div>
                 <div class="col-xs-3 col-md-3">
@@ -80,7 +103,17 @@ export default {
                     <label>Race</label>
                 </div>
                 <div class="col-xs-4 col-md-4">
-                    <input type="text" class="form-control main-field" v-model="character.alignment"></input>
+                    <select class="form-control main-field" v-model="character.alignment">
+                        <option>Lawful Good</option>
+                        <option>Lawful Neutral</option>
+                        <option>Lawful Evil</option>
+                        <option>Neutral Good</option>
+                        <option>True Neutral</option>
+                        <option>Neutral Good</option>
+                        <option>Chaotic Good</option>
+                        <option>Chaotic Neutral</option>
+                        <option>Chaotic Good</option>
+                    </select>
                     <label>Alignment</label>
                 </div>
                 <div class="col-xs-4 col-md-4">

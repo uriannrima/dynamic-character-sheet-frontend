@@ -15,7 +15,7 @@ export default {
     computed: {
         filteredSkills: function () {
             var filtered = this.skills;
-            if (this.filter.hideNoBonus) filtered = filtered.filter(skill => skill.getTotal() >= 1);
+            if (this.filter.hideNoBonus) filtered = filtered.filter(skill => skill.getTotal() != 0);
             if (this.filter.hideCrossClass) filtered = filtered.filter(skill => skill.classSkill);
             return filtered;
         }
@@ -129,7 +129,23 @@ export default {
                     <tr>
                         <th colspan="6">
                             <span class="skills-label">Skills</span>
-                            <input type="checkbox" v-model="filter.hideNoBonus">
+                            <div class="dropdown" style="float: right;" :class="{ 'open' : showConfig }">
+                                <span class="glyphicon glyphicon-cog" v-on:click="showConfig = !showConfig"></span>
+                                <ul class="dropdown-menu dropdown-menu-right" style="min-width: 190px; text-align: center;">
+                                    <li>
+                                        <div>
+                                            <span>Hide skills with no modifier?</span>
+                                            <input type="checkbox" v-model="filter.hideNoBonus">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <span>Hide cross-class skills?</span>
+                                            <input type="checkbox" v-model="filter.hideCrossClass">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </th>
                     </tr>
                 </thead>
@@ -159,19 +175,19 @@ export default {
                     <tr v-for="skill in filteredSkills">
                         <td style="text-align: left">
                             <input type="checkbox" style="width:12px; vertical-align: inherit; margin-left: 2px" v-model="skill.classSkill">
-                            <span class="skill-name-label" v-bind:class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
+                            <span class="skill-name-label" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
                         </td>
                         <td>
-                            <span v-bind:class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3).toUpperCase()}}</span>
+                            <span :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3).toUpperCase()}}</span>
                         </td>
                         <td>
                             <div class="equals-sign">
-                                <input type="number" style="text-align: center;" readonly v-bind:value="skill.getTotal()">
+                                <input type="number" style="text-align: center;" readonly :value="skill.getTotal()">
                             </div>
                         </td>
                         <td>
                             <div class="plus-sign">
-                                <input type="number" style="text-align: center;" readonly v-bind:value="skill.abilityModifier">
+                                <input type="number" style="text-align: center;" readonly :value="skill.abilityModifier">
                             </div>
                         </td>
                         <td>
@@ -180,7 +196,7 @@ export default {
                             </div>
                         </td>
                         <td>
-                            <input type="number" style="text-align: center;" v-bind:class="{ attention: skill.miscModifier > 0 }" v-model.number="skill.miscModifier">
+                            <input type="number" style="text-align: center;" :class="{ attention: skill.miscModifier > 0 }" v-model.number="skill.miscModifier">
                         </td>
                     </tr>
                 </tbody>
@@ -192,12 +208,12 @@ export default {
                     <tr>
                         <th>
                             <span class="skills-label">Skills</span>
-                            <div class="dropdown" style="float: right;" v-bind:class="{ 'open' : showConfig }">
+                            <div class="dropdown" style="float: right;" :class="{ 'open' : showConfig }">
                                 <span class="glyphicon glyphicon-cog" v-on:click="showConfig = !showConfig"></span>
                                 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 190px; text-align: center;">
                                     <li>
                                         <div>
-                                            <span>Hide skills with no bonus?</span>
+                                            <span>Hide skills with no modifier?</span>
                                             <input type="checkbox" v-model="filter.hideNoBonus">
                                         </div>
                                     </li>
@@ -222,17 +238,17 @@ export default {
                         <td>
                             <div style="display:inline-block;">
                                 <input type="checkbox" style="width: 12px; vertical-align: sub;" v-model="skill.classSkill">
-                                <span class="skill-name-label" v-bind:class="{ 'untrained-skill': skill.untrained }">{{skill.name}} (
-                                    <label v-bind:class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3).toUpperCase()}}</label>)</span>
+                                <span class="skill-name-label" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}} (
+                                    <label :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3).toUpperCase()}}</label>)</span>
                             </div>
                             <div>
-                                <input type="number" class="attribute-field skill-field" readonly v-bind:value="skill.getTotal()">
+                                <input type="number" class="attribute-field skill-field" readonly :value="skill.getTotal()">
                                 <span>=</span>
-                                <input type="number" class="attribute-field skill-field" readonly v-bind:value="skill.abilityModifier">
+                                <input type="number" class="attribute-field skill-field" readonly :value="skill.abilityModifier">
                                 <span>+</span>
                                 <input type="number" class="attribute-field skill-field" v-model.number="skill.rank">
                                 <span>+</span>
-                                <input type="number" class="attribute-field skill-field" v-bind:class="{ attention: skill.miscModifier > 0 }" v-model.number="skill.miscModifier">
+                                <input type="number" class="attribute-field skill-field" :class="{ attention: skill.miscModifier > 0 }" v-model.number="skill.miscModifier">
                             </div>
                         </td>
                     </tr>
