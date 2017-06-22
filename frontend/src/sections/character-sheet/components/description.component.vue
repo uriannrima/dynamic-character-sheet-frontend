@@ -1,15 +1,15 @@
 <script>
 import SizeService from 'Services/size.service';
 import ClassService from 'Services/class.service';
-import DcsModal from 'Shared/modal.component';
+import DcsLevelUpModal from './modals/level-up.modal.component';
 
 export default {
     props: ['character'],
-    components: { DcsModal },
+    components: { DcsLevelUpModal },
     data: function () {
         return {
             sizes: SizeService.getAll(),
-            showModal: false
+            showLevelUp: false
         }
     },
     computed: {
@@ -90,8 +90,8 @@ export default {
                 <div class="col-md-12">
                     <input type="text" class="form-control main-field" v-model.lazy="classesCombined"></input>
                     <label>Class (Level)</label>
-                    <dcs-modal v-if="showModal" @close="showModal = false"></dcs-modal>
-                    <button @click="showModal = true">Level up</button>
+                    <dcs-level-up-modal :show.sync="showLevelUp"></dcs-level-up-modal>
+                    <button @click="showLevelUp = true">Level up</button>
                 </div>
                 <div class="col-md-12 visible-xs">
                     <input type="text" class="form-control main-field" v-model="character.playerName"></input>

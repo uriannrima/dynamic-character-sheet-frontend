@@ -1,10 +1,23 @@
 <script>
 export default {
+    props: ['show', 'onClose'],
+    methods: {
+        close: function () {
+            this.onClose();
+        }
+    },
+    mounted: function () {
+        document.addEventListener("keydown", (e) => {
+            if (this.show && e.keyCode == 27) {
+                this.onClose();
+            }
+        });
+    }
 }
 </script>
 
 <style>
-.modal-mask {
+.v-modal-mask {
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -16,12 +29,12 @@ export default {
     transition: opacity .3s ease;
 }
 
-.modal-wrapper {
+.v-modal-wrapper {
     display: table-cell;
     vertical-align: middle;
 }
 
-.modal-container {
+.v-modal-container {
     width: 300px;
     margin: 0px auto;
     padding: 20px 30px;
@@ -30,20 +43,25 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
+    margin-top: 25px;
 }
 
-.modal-header h3 {
+.v-modal-header h3 {
     margin-top: 0;
     color: #42b983;
 }
 
-.modal-body {
+.v-modal-body {
     margin: 20px 0;
 }
 
-.modal-default-button {
+.v-modal-default-button {
     float: right;
 }
+
+
+
+
 
 
 /*
@@ -55,38 +73,33 @@ export default {
  * these styles.
  */
 
-.modal-enter {
+.v-modal-enter {
     opacity: 0;
 }
 
-.modal-leave-active {
+.v-modal-leave-active {
     opacity: 0;
 }
 
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
+.v-modal-enter .v-modal-container,
+.v-modal-leave-active .v-modal-container {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 </style>
 
 <template>
-    <transition name="modal">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <h3>custom header</h3>
-                    </div>
-                    <div class="modal-body">
-                        default body
-                    </div>
-                    <div class="modal-footere">
-                        default footer
-                        <button class="modal-default-button" @click="$emit('close')">
-                            OK
-                        </button>
-                    </div>
+    <transition name="v-modal">
+        <div class="v-modal-mask" @click="close" v-show="show">
+            <div class="v-modal-container" @click.stop>
+                <div class="v-modal-header">
+                    <slot name="header"></slot>
+                </div>
+                <div class="v-modal-body">
+                    <slot name="body"></slot>
+                </div>
+                <div class="v-modal-footer">
+                    <slot name="footer"></slot>
                 </div>
             </div>
         </div>
