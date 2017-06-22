@@ -1,11 +1,12 @@
 <script>
 import SkillService from 'Services/skill.service';
+import DcsSkillsDropdown from './skills-dropdown.vue';
 
 export default {
-    props: ['skills'],
+    props: ['skillPoints', 'skills'],
+    components: { DcsSkillsDropdown },
     data: function () {
         return {
-            showConfig: false,
             filter: {
                 hideNoBonus: false,
                 hideCrossClass: false
@@ -18,6 +19,13 @@ export default {
             if (this.filter.hideNoBonus) filtered = filtered.filter(skill => skill.getTotal() != 0);
             if (this.filter.hideCrossClass) filtered = filtered.filter(skill => skill.classSkill);
             return filtered;
+        },
+        totalRanks: function () {
+            var totalRanks = 0;
+            this.skills.forEach(skill => {
+                totalRanks += skill.rank;
+            });
+            return totalRanks;
         }
     }
 }
@@ -129,23 +137,7 @@ export default {
                     <tr>
                         <th colspan="6">
                             <span class="skills-label">Skills</span>
-                            <div class="dropdown" style="float: right;" :class="{ 'open' : showConfig }">
-                                <span class="glyphicon glyphicon-cog" v-on:click="showConfig = !showConfig"></span>
-                                <ul class="dropdown-menu dropdown-menu-right" style="min-width: 190px; text-align: center;">
-                                    <li>
-                                        <div>
-                                            <span>Hide skills with no modifier?</span>
-                                            <input type="checkbox" v-model="filter.hideNoBonus">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <span>Hide cross-class skills?</span>
-                                            <input type="checkbox" v-model="filter.hideCrossClass">
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <dcs-skills-dropdown :skill-points="skillPoints" :total-ranks="totalRanks" :filter="filter"></dcs-skills-dropdown>
                         </th>
                     </tr>
                 </thead>
@@ -208,23 +200,7 @@ export default {
                     <tr>
                         <th>
                             <span class="skills-label">Skills</span>
-                            <div class="dropdown" style="float: right;" :class="{ 'open' : showConfig }">
-                                <span class="glyphicon glyphicon-cog" v-on:click="showConfig = !showConfig"></span>
-                                <ul class="dropdown-menu dropdown-menu-right" style="min-width: 190px; text-align: center;">
-                                    <li>
-                                        <div>
-                                            <span>Hide skills with no modifier?</span>
-                                            <input type="checkbox" v-model="filter.hideNoBonus">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <span>Hide cross-class skills?</span>
-                                            <input type="checkbox" v-model="filter.hideCrossClass">
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <dcs-skills-dropdown :skill-points="skillPoints" :total-ranks="totalRanks" :filter="filter"></dcs-skills-dropdown>
                         </th>
                     </tr>
                     <tr>

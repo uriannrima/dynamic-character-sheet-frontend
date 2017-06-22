@@ -28,7 +28,7 @@ export default {
     watch: {
         'character.abilityScores': {
             handler: function (newVal, oldVal) {
-                this.character.update();
+                CharacterService.update(this.character);
             },
             deep: true
         }
@@ -78,7 +78,7 @@ export default {
             </div>
             <!-- Skills -->
             <div class="col-md-5 skills-column">
-                <dcs-skills-list :skills="character.skills"></dcs-skills-list>
+                <dcs-skills-list :skill-points="character.skillPoints" :skills="character.skills"></dcs-skills-list>
             </div>
         </div>
     </div>

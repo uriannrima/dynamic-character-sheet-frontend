@@ -1,12 +1,15 @@
 <script>
 import SizeService from 'Services/size.service';
 import ClassService from 'Services/class.service';
+import DcsModal from 'Shared/modal.component';
 
 export default {
     props: ['character'],
+    components: { DcsModal },
     data: function () {
         return {
-            sizes: SizeService.getAll()
+            sizes: SizeService.getAll(),
+            showModal: false
         }
     },
     computed: {
@@ -21,13 +24,29 @@ export default {
                 return result;
             },
             set: function (newValue) {
-                const classes = newValue.split(';');
-                classes.forEach(fieldClass => {
-                    if (fieldClass.trim() === '') return;
-                    var parsed = fieldClass.replace(/ /g,'');
-                    var regExp = /\(([^)]+)\)/;
-                    var level = regExp.exec(parsed);
-                    console.log(parsed, level);
+                this.character.classes = [];
+                const fieldValues = newValue.split(';');
+                fieldValues.forEach(fieldValue => {
+                    // If empty character
+                    if (fieldValue.trim() === '') return;
+
+                    // Clear whitespaces
+                    var classLevel = fieldValue.replace(/ /g, '');
+
+                    // Regex to get level
+                    var levelRegex = /\(([^)]+)\)/;
+
+                    // Get level data, 
+                    var levelData = levelRegex.exec(classLevel);
+                    // Extract level from data
+                    var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+
+                    // Remove level from field.
+                    var classOnly = classLevel.replace(levelRegex, '');
+                    this.character.classes.push({
+                        name: classOnly,
+                        level: level
+                    });
                 });
             }
         }
@@ -36,12 +55,6 @@ export default {
         'character.size': {
             handler: function (newValue, oldValue) {
                 SizeService.update(character);
-            },
-            deep: true
-        },
-        'character.class': {
-            handler: function (newVal, oldVal) {
-                ClassService.update(character);
             },
             deep: true
         }
@@ -75,8 +88,10 @@ export default {
                     <label>Character Name</label>
                 </div>
                 <div class="col-md-12">
-                    <input type="text" class="form-control main-field" v-model="classesCombined"></input>
+                    <input type="text" class="form-control main-field" v-model.lazy="classesCombined"></input>
                     <label>Class (Level)</label>
+                    <dcs-modal v-if="showModal" @close="showModal = false"></dcs-modal>
+                    <button @click="showModal = true">Level up</button>
                 </div>
                 <div class="col-md-12 visible-xs">
                     <input type="text" class="form-control main-field" v-model="character.playerName"></input>
@@ -87,7 +102,7 @@ export default {
                 <div class="col-xs-3 col-md-3">
                     <select class="form-control main-field" v-model="character.size">
                         <option disabled value="">None</option>
-                        <option v-for="size in sizes">{{size.name}}</option>
+                        <option v-for="(size, index) in sizes" :key="index">{{size.name}}</option>
                     </select>
                     <label>Size</label>
                 </div>

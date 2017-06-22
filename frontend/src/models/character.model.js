@@ -77,18 +77,8 @@ export default function character({ name, playerName, classes, race, alignment, 
 
             })
         ],
-        update: function () {
-            // Be updated by char class.
-            for (var index = 0; index < this.classes.length; index++) {
-                var charClass = this.classes[index];
-                charClass.update(this);
-            }
-
-            // Be updated by char ability score.
-            for (var index = 0; index < this.abilityScores.length; index++) {
-                var abilityScore = this.abilityScores[index];
-                abilityScore.update(this);
-            }
-        },
+        getAbilityScore: function (abilityScoreName) {
+            return this.abilityScores.filter(abilityScore => abilityScore.name === abilityScoreName)[0];
+        }
     }
 }
