@@ -6,7 +6,7 @@ export function ammunition({ name, quantity, notes }) {
     }
 }
 
-export function attack({ name, attackBonus, damage, critical, range, type, notes, hasAmmunition }) {
+export default function attack({ name, attackBonus, damage, critical, range, type, notes, hasAmmunition }) {
     return {
         name,
         attackBonus,
@@ -16,6 +16,8 @@ export function attack({ name, attackBonus, damage, critical, range, type, notes
         type,
         notes,
         hasAmmunition,
-        ammunition: new ammunition()
+        ammunition: new ammunition({
+            
+        })
     }
 }

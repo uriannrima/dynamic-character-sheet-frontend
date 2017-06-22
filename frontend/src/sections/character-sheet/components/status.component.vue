@@ -38,7 +38,7 @@ export default {
                     <td style="width: 7%">
                         <div style="display:inline-block">
                             <span for="" style="display:block; margin-top:-25px; font-weight: bold">Total</span>
-                            <input type="text" class="attribute-field" style="display:block" v-model="status.healthPoints">
+                            <input type="number" class="attribute-field" style="display:block" v-model.number="status.healthPoints">
                         </div>
                     </td>
                     <td style="text-align: center;">

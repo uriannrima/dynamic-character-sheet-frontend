@@ -6,12 +6,13 @@ import initiative from 'Models/initiative.model';
 import * as savingThrows from 'Models/saving-throw.model';
 import grapple from 'Models/grapple.model';
 import * as skills from 'Models/skill.model';
+import attack from 'Models/attack.model';
 
 export default function character({ name, playerName, classes, race, alignment, deity, size, age, gender, height, weight, eyes, hair, skin }) {
     return {
         name,
         playerName,
-        classes: new characterClass(),
+        classes,
         race,
         alignment,
         deity,
@@ -55,7 +56,7 @@ export default function character({ name, playerName, classes, race, alignment, 
             new savingThrows.reflex(),
             new savingThrows.will()
         ],
-        baseAttackBonus: [0, 0, 0, 0],
+        baseAttackBonus: 0,
         spellResistance: 1,
         grapple: new grapple({
             baseAttackBonus: 0,
@@ -63,7 +64,19 @@ export default function character({ name, playerName, classes, race, alignment, 
             sizeModifier: 0,
             miscModifier: 0
         }),
+        skillPoints: 0,
         skills: skills.DEFAULT_SKILLS,
+        attacks: [
+            new attack({
+
+            }),
+            new attack({
+
+            }),
+            new attack({
+
+            })
+        ],
         update: function () {
             // Be updated by char class.
             for (var index = 0; index < this.classes.length; index++) {

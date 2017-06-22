@@ -1,5 +1,6 @@
 <script>
 import SizeService from 'Services/size.service';
+import ClassService from 'Services/class.service';
 
 export default {
     props: ['character'],
@@ -9,20 +10,38 @@ export default {
         }
     },
     computed: {
-        classesCombined: function () {
-            var result = "";
-            const classes = this.character.classes;
-            for (var index = 0; index < classes.length; index++) {
-                var charClass = classes[index];
-                result = result + charClass.name + "(" + charClass.level + "); ";
+        classesCombined: {
+            get: function () {
+                var result = "";
+                const classes = this.character.classes;
+                for (var index = 0; index < classes.length; index++) {
+                    var charClass = classes[index];
+                    result = result + charClass.name + " (" + charClass.level + ");";
+                }
+                return result;
+            },
+            set: function (newValue) {
+                const classes = newValue.split(';');
+                classes.forEach(fieldClass => {
+                    if (fieldClass.trim() === '') return;
+                    var parsed = fieldClass.replace(/ /g,'');
+                    var regExp = /\(([^)]+)\)/;
+                    var level = regExp.exec(parsed);
+                    console.log(parsed, level);
+                });
             }
-            return result;
         }
     },
     watch: {
         'character.size': {
             handler: function (newValue, oldValue) {
                 SizeService.update(character);
+            },
+            deep: true
+        },
+        'character.class': {
+            handler: function (newVal, oldVal) {
+                ClassService.update(character);
             },
             deep: true
         }
@@ -57,7 +76,7 @@ export default {
                 </div>
                 <div class="col-md-12">
                     <input type="text" class="form-control main-field" v-model="classesCombined"></input>
-                    <label>Class and Level</label>
+                    <label>Class (Level)</label>
                 </div>
                 <div class="col-md-12 visible-xs">
                     <input type="text" class="form-control main-field" v-model="character.playerName"></input>

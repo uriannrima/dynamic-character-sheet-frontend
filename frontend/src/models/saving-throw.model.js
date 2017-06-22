@@ -19,15 +19,15 @@ export default function savingThrow({ name, keyAbility, base, abilityModifier, m
 }
 
 export function fortitude() {
-    this.__proto__ = new savingThrow({ name: "fortitude", keyAbility: "constitution" });
+    return new savingThrow({ name: "fortitude", keyAbility: "constitution" });
 }
 
 
 export function reflex() {
-    this.__proto__ = new savingThrow({ name: "reflex", keyAbility: "dexterity" });
+    return new savingThrow({ name: "reflex", keyAbility: "dexterity" });
 }
 
 
 export function will() {
-    this.__proto__ = new savingThrow({ name: "will", keyAbility: "wisdom" });
+    return new savingThrow({ name: "will", keyAbility: "wisdom" });
 }
