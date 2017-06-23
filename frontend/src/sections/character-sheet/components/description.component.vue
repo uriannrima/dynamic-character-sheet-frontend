@@ -12,6 +12,14 @@ export default {
             showLevelUp: false
         }
     },
+    methods: {
+        newCharacter: function () {
+            this.$emit('onNewCharacter');
+        },
+        saveCharacter: function () {
+            this.$emit('onSaveCharacter');
+        }
+    },
     computed: {
         classesCombined: {
             get: function () {
@@ -54,7 +62,7 @@ export default {
     watch: {
         'character.size': {
             handler: function (newValue, oldValue) {
-                SizeService.update(character);
+                SizeService.update(this.character);
             },
             deep: true
         }
@@ -86,12 +94,14 @@ export default {
                 <div class="col-md-12">
                     <input type="text" class="form-control main-field" v-model="character.name"></input>
                     <label>Character Name</label>
+                    <button @click="newCharacter">New</button>
+                    <button @click="saveCharacter">Save</button>
                 </div>
                 <div class="col-md-12">
                     <input type="text" class="form-control main-field" v-model.lazy="classesCombined"></input>
                     <label>Class (Level)</label>
-                    <dcs-level-up-modal :show.sync="showLevelUp"></dcs-level-up-modal>
-                    <button @click="showLevelUp = true">Level up</button>
+                    <!-- dcs-level-up-modal :show.sync="showLevelUp"></dcs-level-up-modal -->
+                    <!-- button @click="showLevelUp = true">Level up</button -->
                 </div>
                 <div class="col-md-12 visible-xs">
                     <input type="text" class="form-control main-field" v-model="character.playerName"></input>

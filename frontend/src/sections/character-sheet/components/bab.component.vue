@@ -26,7 +26,7 @@ export default {
                         <span>Base Attack Bonus</span>
                     </th>
                     <td>
-                        <input type="text" class="attribute-field" readonly :value="computedBab">
+                        <input type="number" class="attribute-field" v-model.number="baseAttackBonus">
                     </td>
                     <th>
                         <span>Spell Resistance</span>

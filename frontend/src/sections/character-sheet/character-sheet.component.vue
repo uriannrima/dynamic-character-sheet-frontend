@@ -25,6 +25,17 @@ export default {
             character: null
         }
     },
+    methods: {
+        newCharacter: function () {
+            this.character = CharacterService.new();
+        },
+        saveOrUpdate: function () {
+            this.$http.post('http://localhost:3003/api/characters', { character: this.character }).then(response => {
+                this.character.id = response.body.id;
+                console.log(response.body);
+            });
+        }
+    },
     watch: {
         'character.abilityScores': {
             handler: function (newVal, oldVal) {
@@ -37,7 +48,6 @@ export default {
         CharacterService.get().then(function (character) {
             next(vm => {
                 vm.character = character;
-                window.character = vm.character;
             });
         });
     }
@@ -47,7 +57,7 @@ export default {
 <template>
     <div class="container-fluid" v-if="character">
         <!-- Character Description -->
-        <dcs-description :character="character"></dcs-description>
+        <dcs-description :character="character" @onSaveCharacter="saveOrUpdate" @onNewCharacter="newCharacter"></dcs-description>
         <!-- Ability Score, Status, Armor, Misc  -->
         <div class="row">
             <div class="col-md-4">

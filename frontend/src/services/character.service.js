@@ -19,6 +19,9 @@ var characters = [
 window.characters = characters;
 
 export default {
+    new: function () {
+        return new characterModel({});
+    },
     get: function (id) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {

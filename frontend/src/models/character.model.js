@@ -8,11 +8,11 @@ import grapple from 'Models/grapple.model';
 import * as skills from 'Models/skill.model';
 import attack from 'Models/attack.model';
 
-export default function character({ name, playerName, classes, race, alignment, deity, size, age, gender, height, weight, eyes, hair, skin }) {
+export default function character({ id, name, playerName, race, alignment, deity, size, age, gender, height, weight, eyes, hair, skin }) {
     return {
+        id,
         name,
         playerName,
-        classes,
         race,
         alignment,
         deity,
@@ -24,6 +24,9 @@ export default function character({ name, playerName, classes, race, alignment, 
         eyes,
         hair,
         skin,
+        classes: [
+            new characterClass({})
+        ],
         abilityScores: [
             new abilityScore.strength(10),
             new abilityScore.dexterity(10),

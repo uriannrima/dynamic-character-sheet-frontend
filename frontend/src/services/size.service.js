@@ -70,6 +70,7 @@ export default {
         return ALL_SIZES.filter(size => size.name === sizeName)[0];
     },
     update: function (character) {
+        if (!character.size) return;
         const size = this.getByName(character.size);
         character.armorClass.sizeModifier = size.attack;
         character.grapple.sizeModifier = size.grapple;
