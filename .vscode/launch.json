@@ -5,7 +5,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/api/server.js"
+            "program": "${workspaceRoot}/api/server.js",
+            "cwd": "${workspaceRoot}/api"
         }
     ],
     "compounds": []

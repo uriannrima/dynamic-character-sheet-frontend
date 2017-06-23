@@ -1,3 +1,4 @@
+import axios from 'axios';
 import characterModel from 'Models/character.model';
 import characterClass from 'Models/characterClass.model';
 import ClassService from 'Services/class.service';
@@ -16,9 +17,8 @@ var characters = [
         })
 ];
 
-window.characters = characters;
-
 export default {
+    apiUrl: 'http://localhost:3003/api',
     new: function () {
         return new characterModel({});
     },
@@ -28,6 +28,17 @@ export default {
                 resolve(characters[0]);
             }, 200);
         });
+    },
+    saveOrUpdate: function (character) {
+        if (character.id) {
+            return axios.put('http://localhost:3003/api/characters', { character }).then(response => {
+                return response.data;
+            });
+        } else {
+            return axios.post('http://localhost:3003/api/characters', { character }).then(response => {
+                return response.data;
+            });
+        }
     },
     update: function (character) {
         // Be updated by char ability score.

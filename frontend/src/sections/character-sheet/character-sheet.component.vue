@@ -30,9 +30,8 @@ export default {
             this.character = CharacterService.new();
         },
         saveOrUpdate: function () {
-            this.$http.post('http://localhost:3003/api/characters', { character: this.character }).then(response => {
-                this.character.id = response.body.id;
-                console.log(response.body);
+            CharacterService.saveOrUpdate(this.character).then(savedCharacter => {
+                this.character.id = savedCharacter.id;
             });
         }
     },
