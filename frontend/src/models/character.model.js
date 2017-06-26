@@ -1,46 +1,46 @@
-import characterClass from 'Models/characterClass.model';
-import * as abilityScore from 'Models/ability-score.model';
-import status from 'Models/status.model';
-import armorClass from 'Models/armor-class.model';
-import initiative from 'Models/initiative.model';
-import * as savingThrows from 'Models/saving-throw.model';
-import grapple from 'Models/grapple.model';
-import * as skills from 'Models/skill.model';
-import attack from 'Models/attack.model';
+import Models from 'Models';
 
-export default function character({ id, name, playerName, race, alignment, deity, size, age, gender, height, weight, eyes, hair, skin }) {
-    return {
-        id,
-        name,
-        playerName,
-        race,
-        alignment,
-        deity,
-        size,
-        age,
-        gender,
-        height,
-        weight,
-        eyes,
-        hair,
-        skin,
+export class CharacterModel {
+    constructor(model) {
+        Object.assign(this, model);
+    }
+
+    getAbilityScore(abilityScoreName) {
+        return this.abilityScores.filter(abilityScore => abilityScore.name === abilityScoreName)[0];
+    }
+}
+
+export default function character(model) {
+    var extension = {
+
+    }
+
+    var o = new CharacterModel(model);
+    var character = Object.assign(extension, model);
+
+    var character = {
+        _id, name, playerName,
+        race, alignment, deity,
+        size, age, gender,
+        height, weight, eyes,
+        hair, skin,
         classes: [
-            new characterClass({})
+            new Models.characterClass({})
         ],
         abilityScores: [
-            new abilityScore.strength(10),
-            new abilityScore.dexterity(10),
-            new abilityScore.constitution(10),
-            new abilityScore.intelligence(10),
-            new abilityScore.wisdom(10),
-            new abilityScore.charisma(10)
+            new Models.abilityScore.strength(10),
+            new Models.abilityScore.dexterity(10),
+            new Models.abilityScore.constitution(10),
+            new Models.abilityScore.intelligence(10),
+            new Models.abilityScore.wisdom(10),
+            new Models.abilityScore.charisma(10)
         ],
-        status: new status({
+        status: new Models.status({
             healthPoints: 1,
             wounds: "",
             nonLethalDamage: 0,
         }),
-        armorClass: new armorClass({
+        armorClass: new Models.armorClass({
             base: 10,
             armorBonus: 0,
             shieldBonus: 0,
@@ -50,38 +50,29 @@ export default function character({ id, name, playerName, race, alignment, deity
             deflectionModifier: 0,
             miscModifier: 0
         }),
-        initiative: new initiative({
+        initiative: new Models.initiative({
             dexModifier: 0,
             miscModifier: 0
         }),
         savingThrows: [
-            new savingThrows.fortitude(),
-            new savingThrows.reflex(),
-            new savingThrows.will()
+            new Models.savingThrows.fortitude(),
+            new Models.savingThrows.reflex(),
+            new Models.savingThrows.will()
         ],
         baseAttackBonus: 0,
         spellResistance: 1,
-        grapple: new grapple({
+        grapple: new Models.grapple({
             baseAttackBonus: 0,
             strengthModifier: 0,
             sizeModifier: 0,
             miscModifier: 0
         }),
         skillPoints: 0,
-        skills: skills.DEFAULT_SKILLS,
+        skills: Models.skills.DEFAULT_SKILLS,
         attacks: [
-            new attack({
-
-            }),
-            new attack({
-
-            }),
-            new attack({
-
-            })
+            new Models.attack({}),
+            new Models.attack({}),
+            new Models.attack({})
         ],
-        getAbilityScore: function (abilityScoreName) {
-            return this.abilityScores.filter(abilityScore => abilityScore.name === abilityScoreName)[0];
-        }
     }
 }

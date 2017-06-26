@@ -31,7 +31,7 @@ export default {
         },
         saveOrUpdate: function () {
             CharacterService.saveOrUpdate(this.character).then(savedCharacter => {
-                this.character.id = savedCharacter.id;
+                this.character._id = savedCharacter._id;
             });
         }
     },
@@ -44,11 +44,17 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next) {
-        CharacterService.get().then(function (character) {
-            next(vm => {
-                vm.character = character;
+        if (to.params.id) {
+            CharacterService.get(to.params.id).then(character => {
+                next(vm => {
+                    vm.character = character;
+                });
             });
-        });
+        } else {
+            next(vm => {
+                vm.character = CharacterService.new();
+            });
+        }
     }
 }
 </script>
@@ -91,4 +97,5 @@ export default {
             </div>
         </div>
     </div>
+    <div v-else>No character selected.</div>
 </template>

@@ -18,7 +18,7 @@ export default {
             <span>=</span>
             <div style="display:inline-block">
                 <label for="" style="display:block; margin-top:-25px; font-size:12px" v-if="firstRow">Base</label>
-                <input type="number" class="attribute-field" style="display:block" readonly :value="savingThrow.base">
+                <input type="number" class="attribute-field" style="display:block" :value="savingThrow.base">
             </div>
             <span>+</span>
             <div style="display:inline-block">

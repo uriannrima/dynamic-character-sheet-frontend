@@ -1,3 +1,16 @@
+export function factory({ name, value, updateFn }) {
+    switch (name) {
+        case "fortitude":
+            return new fortitude(value);
+        case "reflex":
+            return new reflex(value);
+        case "will":
+            return new will(value);
+        default:
+            return new savingThrow({ name, value, updateFn });
+    }
+}
+
 export default function savingThrow({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
     return {
         name,

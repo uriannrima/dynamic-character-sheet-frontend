@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 
 var app = express();
 
+// app.use(express.static('../frontend/dist'));
+
 // Configure bodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies

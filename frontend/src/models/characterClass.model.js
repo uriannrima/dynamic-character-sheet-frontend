@@ -1,4 +1,4 @@
-export default function characterClass({ name, level, updateFn }) {
+export default function characterClass({ name, level }) {
     return {
         name,
         level

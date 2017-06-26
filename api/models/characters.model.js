@@ -16,7 +16,7 @@ exports.save = function (character, callBack) {
 
 exports.update = function (character, callBack) {
     var collection = database.get().collection('characters');
-    collection.update({ _id: character.id }, character, function (err, records) {
+    collection.update({ _id: character._id }, character, function (err, records) {
         callBack(err, records);
     });
 }

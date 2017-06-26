@@ -68,13 +68,13 @@ export default {
                     <td style="text-align: left">
                         <span class="armor-span">= 10 +</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model.number="armorClass.armorBonus" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.armorBonus">
                             <span class="armor-description-span">Armor
                                 <br>Bonus</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model.number="armorClass.shieldBonus" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.shieldBonus">
                             <span class="armor-description-span">Shield
                                 <br>Bonus</span>
                         </div>
@@ -93,13 +93,13 @@ export default {
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model.number="armorClass.naturalArmor" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.naturalArmor">
                             <span class="armor-description-span">Natural
                                 <br>Armor</span>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" v-model.number="armorClass.deflectionModifier" readonly>
+                            <input type="number" class="attribute-field" v-model.number="armorClass.deflectionModifier">
                             <span class="armor-description-span">Deflection
                                 <br>Modifier</span>
                         </div>

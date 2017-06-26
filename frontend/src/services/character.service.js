@@ -3,39 +3,23 @@ import characterModel from 'Models/character.model';
 import characterClass from 'Models/characterClass.model';
 import ClassService from 'Services/class.service';
 
-var characters = [
-    new characterModel(
-        {
-            name: "Buck Anvilhead",
-            playerName: "Peres",
-            classes: [
-                new characterClass({
-                    name: "Fighter",
-                    level: 1
-                })
-            ]
-        })
-];
-
 export default {
-    apiUrl: 'http://localhost:3003/api',
+    apiUrl: 'http://localhost:3003/',
     new: function () {
         return new characterModel({});
     },
     get: function (id) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(characters[0]);
-            }, 200);
+        return axios.get('http://localhost:3003/characters/' + id).then(response => {
+            return new characterModel(response.data);
         });
     },
     saveOrUpdate: function (character) {
-        if (character.id) {
-            return axios.put('http://localhost:3003/api/characters', { character }).then(response => {
+        if (character._id) {
+            return axios.put('http://localhost:3003/characters', { character }).then(response => {
                 return response.data;
             });
         } else {
-            return axios.post('http://localhost:3003/api/characters', { character }).then(response => {
+            return axios.post('http://localhost:3003/characters', { character }).then(response => {
                 return response.data;
             });
         }

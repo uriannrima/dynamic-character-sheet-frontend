@@ -1,4 +1,23 @@
-export function abilityScore(name, value, updateFn) {
+export function factory({ name, value, updateFn }) {
+    switch (name) {
+        case "strength":
+            return new strength(value);
+        case "dexterity":
+            return new dexterity(value);
+        case "constitution":
+            return new constitution(value);
+        case "intelligence":
+            return new intelligence(value);
+        case "wisdom":
+            return new wisdom(value);
+        case "charisma":
+            return new charisma(value);
+        default:
+            return new abilityScore({ name, value, updateFn });
+    }
+}
+
+export function abilityScore({ name, value, updateFn }) {
     return {
         name,
         value,
@@ -31,51 +50,75 @@ export function abilityScore(name, value, updateFn) {
 }
 
 export function strength(value) {
-    return new abilityScore("strength", value, function (character) {
-        this.updateSkills(character);
+    return new abilityScore({
+        name: "strength",
+        value,
+        updateFn: function (character) {
+            this.updateSkills(character);
 
-        // Update grapple.
-        character.grapple.strengthModifier = this.getModifier();
+            // Update grapple.
+            character.grapple.strengthModifier = this.getModifier();
+        }
     });
 }
 
 export function dexterity(value) {
-    return new abilityScore("dexterity", value, function (character) {
-        this.updateSkills(character);
-        this.updateSavingThrows(character);
+    return new abilityScore({
+        name: "dexterity",
+        value,
+        updateFn: function (character) {
+            this.updateSkills(character);
+            this.updateSavingThrows(character);
 
-        const modifier = this.getModifier();
-        
-        // Update armor class.
-        character.armorClass.dexModifier = modifier;
+            const modifier = this.getModifier();
 
-        // Update initiative.
-        character.initiative.dexModifier = modifier;
+            // Update armor class.
+            character.armorClass.dexModifier = modifier;
+
+            // Update initiative.
+            character.initiative.dexModifier = modifier;
+        }
     });
 }
 
 export function constitution(value) {
-    return new abilityScore("constitution", value, function (character) {
-        this.updateSkills(character);
-        this.updateSavingThrows(character);
+    return new abilityScore({
+        name: "constitution",
+        value,
+        updateFn: function (character) {
+            this.updateSkills(character);
+            this.updateSavingThrows(character);
+        }
     });
 }
 
 export function intelligence(value) {
-    return new abilityScore("intelligence", value, function (character) {
-        this.updateSkills(character);
+    return new abilityScore({
+        name: "intelligence",
+        value,
+        updateFn: function (character) {
+            this.updateSkills(character);
+        }
     });
 }
 
 export function wisdom(value) {
-    return new abilityScore("wisdom", value, function (character) {
-        this.updateSkills(character);
-        this.updateSavingThrows(character);
+    return new abilityScore({
+        name: "wisdom",
+        value,
+        updateFn: function (character) {
+            this.updateSkills(character);
+            this.updateSavingThrows(character);
+        }
     });
 }
 
 export function charisma(value) {
-    return new abilityScore("charisma", value, function (character) {
-        this.updateSkills(character);
+    return new abilityScore({
+        name: "charisma",
+        value,
+        updateFn: function (character) {
+            this.updateSkills(character);
+        }
     });
 }

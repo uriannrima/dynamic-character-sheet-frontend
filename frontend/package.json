@@ -23,6 +23,6 @@
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.config.js --content-base src/ --port 3000",
     "serve": "webpack-dev-server --config build/webpack.config.js --content-base src/ --port 3000 --public 192.168.0.10:3000 --host 0.0.0.0 ",
-    "build": "webpack --config build/webpack.config.js"
+    "build": "webpack --watch --config build/webpack.config.js"
   }
 }

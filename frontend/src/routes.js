@@ -4,6 +4,10 @@ const routes = [
     {
         path: '/character/:id',
         component: Character
+    },
+    {
+        path: '/character',
+        component: Character
     }
 ];
 
