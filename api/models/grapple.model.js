@@ -1,4 +1,4 @@
-export default function grapple({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
+module.exports = function grapple({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
     return {
         baseAttackBonus,
         strengthModifier,

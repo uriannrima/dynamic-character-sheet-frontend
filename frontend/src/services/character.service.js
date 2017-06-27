@@ -1,7 +1,6 @@
 import axios from 'axios';
 import characterModel from 'Models/character.model';
-import characterClass from 'Models/characterClass.model';
-import ClassService from 'Services/class.service';
+console.log(characterModel);
 
 export default {
     apiUrl: 'http://localhost:3003/',
@@ -30,5 +29,7 @@ export default {
             var abilityScore = character.abilityScores[index];
             abilityScore.update(character);
         }
+
+        character.grapple.baseAttackBonus = character.baseAttackBonus;
     }
 }

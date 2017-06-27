@@ -1,4 +1,32 @@
-export const DEFAULT_SKILLS = [
+
+var skill = function ({ name, keyAbility, untrained, armorCheckPenalty, classSkill, subValue, rank, abilityModifier, miscModifier, hiddenModifier }) {
+    return {
+        name,
+        keyAbility,
+        untrained,
+        armorCheckPenalty,
+        classSkill,
+        subValue,
+        rank: rank || 0,
+        abilityModifier: abilityModifier || 0,
+        miscModifier: miscModifier || 0,
+        hiddenModifier: hiddenModifier || 0,
+        getTotal: function () {
+            var result = 0;
+            for (var key in this) {
+                if (typeof this[key] !== "number") continue;
+                if (key !== "rank" || this.classSkill) {
+                    result += this[key];
+                } else {
+                    result += Math.floor(this[key] / 2);
+                }
+            }
+            return result;
+        }
+    }
+};
+
+exports.DEFAULT_SKILLS = [
     new skill({ name: 'Appraise', keyAbility: 'intelligence', untrained: true, armorCheckPenalty: false }),
     new skill({ name: 'Balance', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: true }),
     new skill({ name: 'Bluff', keyAbility: 'charisma', untrained: true, armorCheckPenalty: false }),
@@ -36,29 +64,4 @@ export const DEFAULT_SKILLS = [
     new skill({ name: 'Use Rope', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: false })
 ];
 
-export default function skill({ name, keyAbility, untrained, armorCheckPenalty, classSkill, subValue, rank, abilityModifier, miscModifier, hiddenModifier }) {
-    return {
-        name,
-        keyAbility,
-        untrained,
-        armorCheckPenalty,
-        classSkill,
-        subValue,
-        rank: rank || 0,
-        abilityModifier: abilityModifier || 0,
-        miscModifier: miscModifier || 0,
-        hiddenModifier: hiddenModifier || 0,
-        getTotal: function () {
-            var result = 0;
-            for (var key in this) {
-                if (typeof this[key] !== "number") continue;
-                if (key !== "rank" || this.classSkill) {
-                    result += this[key];
-                } else {
-                    result += Math.floor(this[key] / 2);
-                }
-            }
-            return result;
-        }
-    }
-}
+exports.skill = skill;

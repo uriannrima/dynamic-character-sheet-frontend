@@ -1,33 +1,28 @@
-import Models from 'Models';
+var Models = require('./');
 
-export class CharacterModel {
-    constructor(model) {
-        Object.assign(this, model);
-    }
+module.exports = function character({
+    _id, name, playerName,
+    race, alignment, deity,
+    size, age, gender, height,
+    weight, eyes, hair, skin,
+    classes, abilityScores,
+    status, armorClass, initiative,
+    savingThrows, baseAttackBonus,
+    spellResistance, grapple, skills,
+    attacks }) {
 
-    getAbilityScore(abilityScoreName) {
-        return this.abilityScores.filter(abilityScore => abilityScore.name === abilityScoreName)[0];
-    }
-}
+    var scores = abilityScores.map(abilityScore => Models.abilityScore.factory.create(abilityScore));
 
-export default function character(model) {
-    var extension = {
-
-    }
-
-    var o = new CharacterModel(model);
-    var character = Object.assign(extension, model);
-
-    var character = {
+    return {
         _id, name, playerName,
         race, alignment, deity,
         size, age, gender,
         height, weight, eyes,
         hair, skin,
-        classes: [
-            new Models.characterClass({})
+        classes: classes || [
+            new Models.classe({})
         ],
-        abilityScores: [
+        abilityScores: abilityScores.map(abilityScore => Models.abilityScore.factory.create(abilityScore)) || [
             new Models.abilityScore.strength(10),
             new Models.abilityScore.dexterity(10),
             new Models.abilityScore.constitution(10),
@@ -35,12 +30,12 @@ export default function character(model) {
             new Models.abilityScore.wisdom(10),
             new Models.abilityScore.charisma(10)
         ],
-        status: new Models.status({
+        status: status || new Models.status({
             healthPoints: 1,
             wounds: "",
             nonLethalDamage: 0,
         }),
-        armorClass: new Models.armorClass({
+        armorClass: armorClass ?  new Models.armorClass(armorClass) : new Models.armorClass({
             base: 10,
             armorBonus: 0,
             shieldBonus: 0,
@@ -50,26 +45,26 @@ export default function character(model) {
             deflectionModifier: 0,
             miscModifier: 0
         }),
-        initiative: new Models.initiative({
+        initiative: initiative ? new Models.initiative(initiative) : new Models.initiative({
             dexModifier: 0,
             miscModifier: 0
         }),
-        savingThrows: [
+        savingThrows: savingThrows.map(savingThrow => new Models.savingThrows.savingThrow(savingThrow)) || [
             new Models.savingThrows.fortitude(),
             new Models.savingThrows.reflex(),
             new Models.savingThrows.will()
         ],
-        baseAttackBonus: 0,
-        spellResistance: 1,
-        grapple: new Models.grapple({
+        baseAttackBonus: baseAttackBonus || 0,
+        spellResistance: spellResistance || 0,
+        grapple: grapple ? new Models.grapple(grapple) : new Models.grapple({
             baseAttackBonus: 0,
             strengthModifier: 0,
             sizeModifier: 0,
             miscModifier: 0
         }),
         skillPoints: 0,
-        skills: Models.skills.DEFAULT_SKILLS,
-        attacks: [
+        skills: skills ? skills.map(s => Models.skills.skill(s)) : Models.skills.DEFAULT_SKILLS,
+        attacks: attacks || [
             new Models.attack({}),
             new Models.attack({}),
             new Models.attack({})

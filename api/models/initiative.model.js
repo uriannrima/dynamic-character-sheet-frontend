@@ -1,4 +1,4 @@
-export default function initiative({ dexModifier, miscModifier }) {
+module.exports = function initiative({ dexModifier, miscModifier }) {
     return {
         dexModifier,
         miscModifier,

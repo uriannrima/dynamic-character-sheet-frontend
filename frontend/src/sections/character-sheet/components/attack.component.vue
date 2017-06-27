@@ -46,7 +46,7 @@ export default {
 <template>
     <div>
         <!-- Desktop Attack Table -->
-        <table class="table attack-table hidden-xs">
+        <table class="table attack-table">
             <thead>
                 <tr>
                     <th>
@@ -101,7 +101,7 @@ export default {
                         </div>
                     </td>
                     <td colspan="3">
-                        <input type="text" style="width:100%" v-model="attack.notes">
+                        <input type="text" style="width:100%" v-model="attack.notes">A
                     </td>
                 </tr>
                 <tr v-if="attack.hasAmmunition && attack.ammunition">
@@ -124,7 +124,7 @@ export default {
             </tbody>
         </table>
         <!-- Mobile Attack Table -->
-        <table class="table attack-table-mobile visible-xs">
+        <table class="table attack-table-mobile">
             <tbody>
                 <tr>
                     <th colspan="3">
@@ -185,7 +185,7 @@ export default {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="text" style="width:100%" v-model="attack.notes">
+                        <input type="text" style="width:100%" v-model="attack.notes">A
                     </td>
                 </tr>
                 <tr v-if="attack.hasAmmunition && attack.ammunition">

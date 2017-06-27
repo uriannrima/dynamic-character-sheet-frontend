@@ -42,7 +42,7 @@ module.exports = {
         extensions: ['*', '.js', '.html', '.css', '.vue'],
         alias: {
             'Services': path.resolve(__dirname, '../src/services/'),
-            'Models': path.resolve(__dirname, '../src/models/'),
+            'Models': path.resolve(__dirname, '../../api/models/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),
             'vue$': 'vue/dist/vue.js',
             'bootstrap$': 'bootstrap/dist/css/bootstrap.css'

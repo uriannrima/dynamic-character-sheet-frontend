@@ -41,6 +41,12 @@ export default {
                 CharacterService.update(this.character);
             },
             deep: true
+        },
+        'character.baseAttackBonus': {
+            handler: function (newVal, oldVal) {
+                CharacterService.update(this.character);
+            },
+            deep: true
         }
     },
     beforeRouteEnter(to, from, next) {
@@ -85,7 +91,7 @@ export default {
                 <!-- Saving Throws -->
                 <dcs-saving-throws-list :saving-throws="character.savingThrows"></dcs-saving-throws-list>
                 <!-- BAB -->
-                <dcs-bab :base-attack-bonus="character.baseAttackBonus" :spell-resistance="character.spellResistance"></dcs-bab>
+                <dcs-bab :character="character"></dcs-bab>
                 <!-- Grapple -->
                 <dcs-grapple :grapple="character.grapple"></dcs-grapple>
                 <!-- Attacks -->

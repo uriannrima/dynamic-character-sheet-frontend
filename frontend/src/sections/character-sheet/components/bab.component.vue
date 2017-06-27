@@ -9,12 +9,7 @@ function extract(bab) {
 }
 
 export default {
-    props: ['baseAttackBonus', 'spellResistance'],
-    computed: {
-        computedBab: function () {
-            return extract(this.baseAttackBonus);
-        }
-    }
+    props: ['character']
 }
 </script>
 <template>
@@ -26,13 +21,13 @@ export default {
                         <span>Base Attack Bonus</span>
                     </th>
                     <td>
-                        <input type="number" class="attribute-field" v-model.number="baseAttackBonus">
+                        <input type="number" class="attribute-field" v-model.number="character.baseAttackBonus">
                     </td>
                     <th>
                         <span>Spell Resistance</span>
                     </th>
                     <td>
-                        <input type="text" class="attribute-field" :value="spellResistance">
+                        <input type="text" class="attribute-field" :value="character.spellResistance">
                     </td>
                 </tr>
             </tbody>
