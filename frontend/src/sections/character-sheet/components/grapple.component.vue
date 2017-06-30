@@ -16,8 +16,18 @@ export default {
     width: 75px;
 }
 
+.grapple-table {
+    margin-bottom: 0;
+}
+
 .grapple-table tbody th {
     width: 36%;
+}
+
+.grapple-description {
+    display: block;
+    font-size: 12px;
+    margin-bottom: -34px;
 }
 
 @media only screen and (max-width:992px) {
@@ -50,35 +60,40 @@ export default {
                     <td style="text-align:left">
                         <div class="grapple-div" style="margin-left: 24px;">
                             <input type="number" class="attribute-field" readonly :value="grapple.getTotal()">
-                            <span class="armor-description-span">Total</span>
+                            <label class="grapple-description">Total</label>
                         </div>
                         <span class="armor-span">=</span>
                         <div class="grapple-div">
                             <input type="number" class="attribute-field grapple-field" readonly :value="grapple.baseAttackBonus">
-                            <span class="armor-description-span">Base Attack
-                                <br>Bonus</span>
+                            <label class="grapple-description">Base Attack
+                                <br>Bonus</label>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
                             <input type="number" class="attribute-field grapple-field" readonly :value="grapple.strengthModifier">
-                            <span class="armor-description-span">Strength
-                                <br>Modifier</span>
+                            <label class="grapple-description">Strength
+                                <br>Modifier</label>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
                             <input type="number" class="attribute-field grapple-field" readonly :value="grapple.sizeModifier">
-                            <span class="armor-description-span">Size
-                                <br>Modifier</span>
+                            <label class="grapple-description">Size
+                                <br>Modifier</label>
                         </div>
                         <span class="armor-span">+</span>
                         <div class="grapple-div">
                             <input type="number" class="attribute-field grapple-field" :class="{ attention: grapple.miscModifier > 0 }" v-model.number="grapple.miscModifier">
-                            <span class="armor-description-span">Misc
-                                <br>Modifier</span>
+                            <label class="grapple-description">Misc
+                                <br>Modifier</label>
                         </div>
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>&nbsp</th>
+                </tr>
+            </tfoot>
         </table>
         <table class="table grapple-table-mobile visible-xs">
             <thead>
@@ -127,6 +142,11 @@ export default {
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>&nbsp</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </template>

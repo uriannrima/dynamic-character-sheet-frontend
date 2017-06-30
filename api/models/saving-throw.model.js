@@ -35,15 +35,15 @@ exports.savingThrow = savingThrow;
 
 var factory = {
     create: function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
-        const template = this.templates.filter(t => t.name === name)[0];
+        const template = factory.templates.filter(t => t.name === name)[0];
         return new savingThrow(template);
     },
     templates: [],
     add: function (template) {
-        this.templates.push(template);
+        factory.templates.push(template);
     },
     clear: function () {
-        this.template = [];
+        factory.template = [];
     }
 }
 

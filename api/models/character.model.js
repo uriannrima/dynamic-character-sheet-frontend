@@ -11,8 +11,6 @@ module.exports = function character({
     spellResistance, grapple, skills,
     attacks }) {
 
-    var scores = abilityScores.map(abilityScore => Models.abilityScore.factory.create(abilityScore));
-
     return {
         _id, name, playerName,
         race, alignment, deity,
@@ -22,20 +20,20 @@ module.exports = function character({
         classes: classes || [
             new Models.classe({})
         ],
-        abilityScores: abilityScores.map(abilityScore => Models.abilityScore.factory.create(abilityScore)) || [
-            new Models.abilityScore.strength(10),
-            new Models.abilityScore.dexterity(10),
-            new Models.abilityScore.constitution(10),
-            new Models.abilityScore.intelligence(10),
-            new Models.abilityScore.wisdom(10),
-            new Models.abilityScore.charisma(10)
+        abilityScores: abilityScores ? abilityScores.map(abilityScore => Models.abilityScore.factory.create(abilityScore)) : [
+            new Models.abilityScore.factory.create({ name: 'strength' }),
+            new Models.abilityScore.factory.create({ name: 'dexterity' }),
+            new Models.abilityScore.factory.create({ name: 'constitution' }),
+            new Models.abilityScore.factory.create({ name: 'intelligence' }),
+            new Models.abilityScore.factory.create({ name: 'wisdom' }),
+            new Models.abilityScore.factory.create({ name: 'charisma' })
         ],
         status: status || new Models.status({
             healthPoints: 1,
             wounds: "",
             nonLethalDamage: 0,
         }),
-        armorClass: armorClass ?  new Models.armorClass(armorClass) : new Models.armorClass({
+        armorClass: armorClass ? new Models.armorClass(armorClass) : new Models.armorClass({
             base: 10,
             armorBonus: 0,
             shieldBonus: 0,
@@ -49,10 +47,10 @@ module.exports = function character({
             dexModifier: 0,
             miscModifier: 0
         }),
-        savingThrows: savingThrows.map(savingThrow => new Models.savingThrows.savingThrow(savingThrow)) || [
-            new Models.savingThrows.fortitude(),
-            new Models.savingThrows.reflex(),
-            new Models.savingThrows.will()
+        savingThrows: savingThrows ? savingThrows.map(savingThrow => new Models.savingThrows.savingThrow(savingThrow)) : [
+            new Models.savingThrows.factory.create({ name: 'fortitude' }),
+            new Models.savingThrows.factory.create({ name: 'reflex' }),
+            new Models.savingThrows.factory.create({ name: 'will' })
         ],
         baseAttackBonus: baseAttackBonus || 0,
         spellResistance: spellResistance || 0,

@@ -18,6 +18,7 @@ export default {
 .ability-table tbody td:nth-child(5) {
     background-color: #ccc;
 }
+
 .small-label {
     text-transform: uppercase;
     font-size: 8px;
@@ -26,28 +27,30 @@ export default {
 
 <template>
     <!-- Ability Score -->
-    <table class="table ability-table">
-        <thead>
-            <tr>
-                <th>
-                    <span class="small-label">Ability Name</span>
-                </th>
-                <th>
-                    <span class="small-label">Ability Score</span>
-                </th>
-                <th>
-                    <span class="small-label">Ability Modifier</span>
-                </th>
-                <th>
-                    <span class="small-label">Temp Score</span>
-                </th>
-                <th>
-                    <span class="small-label">Temp Modifier</span>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <dcs-ability-score v-for="abilityScore in abilityScores" :ability-score="abilityScore" :key="abilityScore.name"></dcs-ability-score>
-        </tbody>
-    </table>
+    <div>    
+        <table class="table ability-table">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="small-label">Ability Name</span>
+                    </th>
+                    <th>
+                        <span class="small-label">Ability Score</span>
+                    </th>
+                    <th>
+                        <span class="small-label">Ability Modifier</span>
+                    </th>
+                    <th>
+                        <span class="small-label">Temp Score</span>
+                    </th>
+                    <th>
+                        <span class="small-label">Temp Modifier</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <dcs-ability-score v-for="abilityScore in abilityScores" :ability-score="abilityScore" :key="abilityScore.name"></dcs-ability-score>
+            </tbody>
+        </table>
+    </div>
 </template>

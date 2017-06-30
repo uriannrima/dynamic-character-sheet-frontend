@@ -1,6 +1,12 @@
 <script>
 export default {
-    props: ['attack']
+    props: ['attack'],
+    data: function () {
+        return {
+            keyAbilities: ['Strength', 'Dexterity'],
+            showLevelUp: false
+        }
+    },
 }
 </script>
 
@@ -46,7 +52,7 @@ export default {
 <template>
     <div>
         <!-- Desktop Attack Table -->
-        <table class="table attack-table">
+        <table class="table attack-table hidden-xs">
             <thead>
                 <tr>
                     <th>
@@ -69,7 +75,15 @@ export default {
                         <input type="text" style="width:100%; text-align: center;" v-model="attack.name">
                     </td>
                     <td style="width:30%">
-                        <input type="number" style="width:100%; text-align: center;" v-model.number="attack.attackBonus">
+                        <div>
+                            <select style="width:100%; height: 26px; text-align-last: center;" v-model="attack.keyAbility">
+                                <option disabled value="">Key Ability</option>
+                                <option v-for="(keyAbility, index) in keyAbilities" :key="index">{{keyAbility}}</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="number" style="width:100%; text-align: center;" readonly :value="attack.attackBonus.getTotal()">
+                        </div>
                     </td>
                     <td style="width:20%">
                         <input type="text" style="width:100%; text-align: center;" v-model="attack.critical">
@@ -101,7 +115,7 @@ export default {
                         </div>
                     </td>
                     <td colspan="3">
-                        <input type="text" style="width:100%" v-model="attack.notes">A
+                        <input type="text" style="width:100%" v-model="attack.notes">
                     </td>
                 </tr>
                 <tr v-if="attack.hasAmmunition && attack.ammunition">
@@ -124,7 +138,7 @@ export default {
             </tbody>
         </table>
         <!-- Mobile Attack Table -->
-        <table class="table attack-table-mobile">
+        <table class="table attack-table-mobile visible-xs">
             <tbody>
                 <tr>
                     <th colspan="3">
@@ -185,13 +199,13 @@ export default {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="text" style="width:100%" v-model="attack.notes">A
+                        <input type="text" style="width:100%" v-model="attack.notes">
                     </td>
                 </tr>
                 <tr v-if="attack.hasAmmunition && attack.ammunition">
                     <td colspan="4" style="text-align:center">
                         <div style="width: 50%; padding: 0px 5px">
-                        <input type="checkbox" v-model="attack.hasAmmunition">
+                            <input type="checkbox" v-model="attack.hasAmmunition">
                             <label>Ammunition:</label>
                             <input type="text" class="details-input" v-model="attack.ammunition.name">
                         </div>

@@ -112,7 +112,7 @@ export default {
                     </td>
                     <td>
                         <div class="armor-div">
-                            <input type="number" class="attribute-field" style="width: 100px">
+                            <input type="number" class="attribute-field" style="width: 100%">
                             <span class="armor-description-span">Damage
                                 <br>Reduction</span>
                         </div>

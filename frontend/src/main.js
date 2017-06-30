@@ -4,7 +4,8 @@ import VueResource from 'vue-resource';
 import Routes from './routes';
 
 import Layout from './shared/layout.component';
-import bootstrap from 'bootstrap';
+// import bootstrap from 'bootstrap';
+import purecss from 'purecss';
 import css from '../assets/styles';
 
 Vue.use(VueResource);
