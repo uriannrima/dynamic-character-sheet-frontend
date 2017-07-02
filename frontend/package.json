@@ -5,7 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "^3.3.7",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "html-loader": "^0.4.5",

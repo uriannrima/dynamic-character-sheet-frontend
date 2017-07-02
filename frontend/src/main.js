@@ -4,8 +4,6 @@ import VueResource from 'vue-resource';
 import Routes from './routes';
 
 import Layout from './shared/layout.component';
-// import bootstrap from 'bootstrap';
-import purecss from 'purecss';
 import css from '../assets/styles';
 
 Vue.use(VueResource);
@@ -15,6 +13,9 @@ const router = new VueRouter(Routes);
 new Vue({
     el: "#dcs-app",
     router,
+    data: {
+        abilityScores: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+    },
     components: {
         'dcs-layout': Layout
     }
