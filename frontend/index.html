@@ -48,25 +48,25 @@
         }
         /* Hidden down */
 
-        @media screen and (max-width:567px) {
+        @media screen and (max-width:767px) {
             .hidden-sm-down {
                 display: none
             }
         }
 
-        @media screen and (max-width:767px) {
+        @media screen and (max-width:1023px) {
             .hidden-md-down {
                 display: none
             }
         }
 
-        @media screen and (max-width:1024px) {
+        @media screen and (max-width:1279px) {
             .hidden-lg-down {
                 display: none
             }
         }
 
-        @media screen and (max-width:1279px) {
+        @media screen and (max-width:1280px) {
             .hidden-xl-down {
                 display: none
             }
@@ -278,6 +278,12 @@
             width: 100%;
         }
 
+        .health-table tbody td {
+            border-bottom-color: white;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
         .health-table tbody th,
         .health-table tbody td {
             width: 20%;
@@ -294,7 +300,7 @@
             width: 10%;
         }
 
-        @media screen and (max-width:1024px) {
+        @media screen and (max-width:1023px) {
             .health-table thead th:nth-child(1),
             .health-table tbody th:nth-child(1) {
                 width: 20%;
@@ -339,6 +345,17 @@
         .speed-field {
             width: 100%;
         }
+        /* Wounds Table */
+
+        .wounds-table {
+            width: 100%;
+            border-bottom: solid 1px white;
+        }
+        /* Nonlethal Table */
+
+        .nonlethal-table {
+            width: 100%;
+        }
         /* Speed Table */
 
         .speed-table {
@@ -348,6 +365,12 @@
 
         .armor-table {
             width: 100%;
+        }
+
+        .armor-table tbody td {
+            border-bottom-color: white;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
         }
 
         .armor-table tbody th,
@@ -375,7 +398,7 @@
             display: block;
         }
 
-        @media screen and (max-width:1024px) {
+        @media screen and (max-width:1023px) {
             .armor-table tbody tr {
                 border-bottom: solid 2px white;
             }
@@ -384,7 +407,7 @@
             }
 
             .total-health-points-field {
-                width: 50%;                
+                width: 50%;
             }
 
             .armor-base-value {
@@ -411,6 +434,23 @@
             .damage-reduction-field {
                 width: 100%;
             }
+        }
+        /* Touch Table*/
+
+        .touch-table {
+            width: 22%
+        }
+
+        .touch-table tbody th,
+        .touch-table tbody td {
+            text-align: center;
+        }
+
+        .touch-table thead th:nth-child(1),
+        .touch-table tbody th:nth-child(1),
+        .touch-table thead td:nth-child(2),
+        .touch-table tbody td:nth-child(2) {
+            width: 50%;
         }
     </style>
 
@@ -472,7 +512,7 @@
                 </div>
                 <div class="pure-u-md-1-2 pure-u-lg-1-3">
                     <div class="pure-g">
-                        <div class="pure-u-1-1 hidden-md-down">
+                        <div class="pure-u-1-1 hidden-sm-down">
                             <div class="padding-box">
                                 <input type="text" class="description-field">
                                 <span class="description-span">Player Name</span>
@@ -522,7 +562,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pure-u-lg-1-3 hidden-lg-down">
+                <div class="pure-u-lg-1-3 hidden-md-down">
                     <img src="assets/images/dnd-logo.png" alt="" width="100%" height="100%">
                 </div>
             </div>
@@ -587,8 +627,11 @@
                     </div>
                 </div>
                 <div class="pure-u-1 pure-u-sm-1-2 pure-u-lg-2-3">
+                    <div style="height: 11%" class="hidden-lg-up">
+                        <span>&nbsp</span>
+                    </div>
                     <div class="padding-box">
-                        <table class="health-table">
+                        <table class="health-table hidden-md-down">
                             <thead>
                                 <tr>
                                     <th>
@@ -603,7 +646,7 @@
                                     <th>
                                         <span class="ability-score-description">Nonlethal<br>Damage</span>
                                     </th>
-                                    <th class="hidden-lg-down">
+                                    <th>
                                         <span class="ability-score-description">Speed</span>
                                     </th>
                                 </tr>
@@ -631,12 +674,50 @@
                                             <input type="text" class="ability-score-field">
                                         </div>
                                     </td>
-                                    <td class="hidden-lg-down">
+                                    <td>
                                         <div>
                                             <input type="text" class="speed-field">
                                         </div>
                                     </td>
                                 </tr>
+                            </tbody>
+                        </table>
+                        <table class="wounds-table hidden-lg-up">
+                            <tbody>
+                                <th style="width: 50%;">
+                                    <div class="black-box">
+                                        <span class="armor-class-abbreviation">HP</span>
+                                        <span class="health-points-description">Health Points</span>
+                                    </div>
+                                </th>
+                                <td style="text-align: center;">
+                                    <input type="text" style="width: 50%">
+                                </td>
+                            </tbody>
+                        </table>
+                        <table class="wounds-table hidden-lg-up">
+                            <tbody>
+                                <th style="width: 50%;">
+                                    <div class="black-box">
+                                        <span class="armor-class-abbreviation">Wounds</span>
+                                        <span class="health-points-description">Current HP</span>
+                                    </div>
+                                </th>
+                                <td style="text-align: center;">
+                                    <input type="text" style="width: 50%">
+                                </td>
+                            </tbody>
+                        </table>
+                        <table class="nonlethal-table hidden-lg-up">
+                            <tbody>
+                                <th style="width: 50%;">
+                                    <div class="black-box">
+                                        <span class="armor-class-abbreviation" style="font-size: 80%">Nonlethal<br>Damage</span>
+                                    </div>
+                                </th>
+                                <td style="text-align: center;">
+                                    <input type="text" style="width: 50%">
+                                </td>
                             </tbody>
                         </table>
                         <table class="speed-table hidden-lg-up">
@@ -652,7 +733,7 @@
                             </tbody>
                         </table>
                         <!-- Desktop Armor Table -->
-                        <table class="armor-table hidden-lg-down">
+                        <table class="armor-table hidden-md-down">
                             <tbody>
                                 <tr>
                                     <th>
@@ -795,6 +876,36 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        <div>
+                            <table class="touch-table hidden-md-down">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <div class="black-box">
+                                                <span class="health-points-abbreviation">Touch</span>
+                                                <span class="health-points-description">Armor Class</span>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div>
+                                                <input type="text" class="health-points-field">
+                                            </div>
+                                        </td>
+                                        <th>
+                                            <div class="black-box">
+                                                <span class="health-points-abbreviation">Flat-Footed</span>
+                                                <span class="health-points-description">Armor Class</span>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div>
+                                                <input type="text" class="health-points-field">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
