@@ -14,7 +14,17 @@ new Vue({
     el: "#dcs-app",
     router,
     data: {
-        abilityScores: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+        abilityScores: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
+        savingThrows: [{
+            name: 'Fortitude',
+            keyAbility: 'Constitution'
+        }, {
+            name: 'Reflex',
+            keyAbility: 'Dexterity',
+        }, {
+            name: 'Will',
+            keyAbility: 'Wisdom',
+        }]
     },
     components: {
         'dcs-layout': Layout

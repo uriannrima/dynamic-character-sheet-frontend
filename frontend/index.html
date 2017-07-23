@@ -173,6 +173,9 @@
     </style>
 
     <style>
+        textarea {
+            resize: none;
+        }
         /* Don't allow elements go outside of its boundries */
 
         html {
@@ -205,6 +208,7 @@
 
         .padding-box {
             padding: 0 1em;
+            width: 100%;
         }
 
         .black-box {
@@ -297,7 +301,7 @@
 
         .health-table thead th:nth-child(2),
         .health-table tbody td:nth-child(2) {
-            width: 10%;
+            width: 5%;
         }
 
         @media screen and (max-width:1023px) {
@@ -419,10 +423,13 @@
         @media screen and (min-width:1024px) {
 
             .armor-table thead th:nth-child(1),
-            .armor-table tbody th:nth-child(1),
+            .armor-table tbody th:nth-child(1) {
+                width: 11.6%;
+            }
+
             .armor-table thead td:nth-child(2),
             .armor-table tbody td:nth-child(2) {
-                width: 11%;
+                width: 6.5%;
             }
 
             .armor-class-description {
@@ -435,10 +442,19 @@
                 width: 100%;
             }
         }
+        /* Touch-Flat Container */
+
+        .touch-flat-container>div {
+            display: inline-block;
+        }
+
+        .touch-flat-container>div:nth-child(1) {
+            width: 18%;
+        }
         /* Touch Table*/
 
         .touch-table {
-            width: 22%
+            width: 100%
         }
 
         .touch-table tbody th,
@@ -447,10 +463,131 @@
         }
 
         .touch-table thead th:nth-child(1),
-        .touch-table tbody th:nth-child(1),
+        .touch-table tbody th:nth-child(1) {
+            width: 65%;
+        }
+
         .touch-table thead td:nth-child(2),
         .touch-table tbody td:nth-child(2) {
-            width: 50%;
+            width: 35%;
+        }
+        /* Flat Table */
+
+        .flat-table {
+            width: 100%;
+            text-align: center;
+        }
+        /* Initiative Table */
+
+        .initiative-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .initiative-table tfoot th {
+            line-height: 7px;
+        }
+        /* Saving Throw Table */
+
+        .saving-throw-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .saving-throw-table tbody th {
+            border-bottom-color: white;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        .saving-throw-table tbody th:nth-child(1) {
+            width: 20%
+        }
+
+        .saving-throw-table tbody td:nth-child(2) {
+            width: 56%;
+        }
+
+        .saving-throw-table tbody td div {
+            display: inline-block;
+        }
+
+        .saving-throw-table tbody td label {
+            display: block;
+            margin-top: -25px;
+            text-transform: uppercase;
+            font-size: 50%;
+        }
+
+        .saving-throw-table tbody td input {
+            display: block;
+            width: 47px;
+            height: 33px;
+            text-align: center;
+        }
+        /* Base Attack Bonus and Spell Resistance Container */
+
+        .bab-resistance-container>div {
+            display: inline-block;
+            width: 49.5%;
+        }
+        /* Basic Attack Bonus Table*/
+
+        .bab-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .bab-table tbody th:nth-child(1) {
+            width: 60%;
+        }
+        /* Spell Resistance Table */
+
+        .spell-resistance-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .spell-resistance-table tbody th:nth-child(1) {
+            width: 60%;
+        }
+
+        .bab-resistance-input {
+            width: 95%;
+        }
+        /* Grapple Container */
+
+        .grapple-container {
+            width: 100%;
+        }
+        /* Grapple Table */
+
+        .grapple-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .grapple-table tbody th:nth-child(1) {
+            width: 30%
+        }
+
+        .grapple-table tbody td input {
+            display: inline-block;
+            width: 47px;
+            height: 33px;
+        }
+
+        .grapple-table tbody td div {
+            display: inline-block;
+        }
+
+        .grapple-table tfoot th {
+            line-height: 7px;
+        }
+
+        .grapple-table tfoot th span {
+            text-transform: uppercase;
+            font-size: 50%;
         }
     </style>
 
@@ -786,10 +923,10 @@
                                         <span class="ability-score-description">&nbsp</span>
                                     </th>
                                     <th>
-                                        <span class="armor-description">Armor<br>Modifier</span>
+                                        <span class="armor-description">Armor<br>Bonus</span>
                                     </th>
                                     <th>
-                                        <span class="armor-description">Shield<br>Modifier</span>
+                                        <span class="armor-description">Shield<br>Bonus</span>
                                     </th>
                                     <th>
                                         <span class="armor-description">Dex<br>Modifier</span>
@@ -853,10 +990,10 @@
                             <tfoot>
                                 <tr>
                                     <th>
-                                        <span class="armor-description">Armor<br>Modifier</span>
+                                        <span class="armor-description">Armor<br>Bonus</span>
                                     </th>
                                     <th>
-                                        <span class="armor-description">Shield<br>Modifier</span>
+                                        <span class="armor-description">Shield<br>Bonus</span>
                                     </th>
                                     <th>
                                         <span class="armor-description">Dex<br>Modifier</span>
@@ -876,34 +1013,227 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <div>
-                            <table class="touch-table hidden-md-down">
+                        <div style="height: 15px">
+                            <span>&nbsp</span>
+                        </div>
+                        <!-- Touch and Flat-Footed -->
+                        <div class="touch-flat-container">
+                            <div>
+                                <table class="touch-table hidden-md-down">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                <div class="black-box">
+                                                    <span class="health-points-abbreviation">Touch</span>
+                                                    <span class="health-points-description">Armor Class</span>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <div>
+                                                    <input type="text" class="health-points-field">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="width: 25.5%">
+                                <table class="flat-table hidden-md-down">
+                                    <tbody>
+                                        <th>
+                                            <div class="black-box">
+                                                <span class="health-points-abbreviation" style="font-size:110%">Flat-Footed</span>
+                                                <span class="health-points-description">Armor Class</span>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div>
+                                                <input type="text" class="health-points-field">
+                                            </div>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="width:45%">
+                            <table class="initiative-table" style="width:100%; text-align: center">
                                 <tbody>
                                     <tr>
                                         <th>
                                             <div class="black-box">
-                                                <span class="health-points-abbreviation">Touch</span>
-                                                <span class="health-points-description">Armor Class</span>
+                                                <span class="health-points-abbreviation">Initiative</span>
+                                                <span class="health-points-description">Modifier</span>
                                             </div>
                                         </th>
                                         <td>
-                                            <div>
-                                                <input type="text" class="health-points-field">
-                                            </div>
+                                            <input type="text" class="health-points-field">
                                         </td>
-                                        <th>
-                                            <div class="black-box">
-                                                <span class="health-points-abbreviation">Flat-Footed</span>
-                                                <span class="health-points-description">Armor Class</span>
-                                            </div>
-                                        </th>
                                         <td>
-                                            <div>
-                                                <input type="text" class="health-points-field">
-                                            </div>
+                                            <input type="text" class="health-points-field">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="health-points-field">
                                         </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            <span>&nbsp</span>
+                                        </th>
+                                        <th>
+                                            <span class="armor-description">Total</span>
+                                        </th>
+                                        <th>
+                                            <span class="armor-description">Dex<br>Modifier</span>
+                                        </th>
+                                        <th>
+                                            <span class="armor-description">Misc<br>Modifier</span>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="padding-box">
+                    <div class="pure-u-lg-12-24" style="overflow-y: auto;">
+                        <table class="saving-throw-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="ability-score-description">
+                                            Saving Throws
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(savingThrow, index) in savingThrows" :key="index">
+                                    <th>
+                                        <div class="black-box">
+                                            <span class="health-points-abbreviation">{{savingThrow.name}}</span>
+                                            <span class="health-points-description">({{savingThrow.keyAbility}})</span>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div>
+                                            <label v-if="index == 0" for="">Total</label>
+                                            <input type="number">
+                                        </div>
+                                        <span>=</span>
+                                        <div>
+                                            <label v-if="index == 0" for="">Base<br>Save</label>
+                                            <input type="number">
+                                        </div>
+                                        <span>+</span>
+                                        <div>
+                                            <label v-if="index == 0" for="">Ability<br>Modifier</label>
+                                            <input type="number">
+                                        </div>
+                                        <span>+</span>
+                                        <div>
+                                            <label v-if="index == 0" for="">Magic<br>Modifier</label>
+                                            <input type="number">
+                                        </div>
+                                        <span>+</span>
+                                        <div>
+                                            <label v-if="index == 0" for="">Misc<br>Modifier</label>
+                                            <input type="number">
+                                        </div>
+                                        <span>+</span>
+                                        <div>
+                                            <label v-if="index == 0" for="">Temporary</label>
+                                            <input type="number">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pure-u-lg-3-24" style="height: 90%; text-align: center">
+                        <label style="display: block; font-size: 60%;">Condition Modifier</label>
+                        <textarea style="width:100%; height: 99%">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="padding-box">
+                    <div class="pure-u-lg-15-24">
+                        <div class="bab-resistance-container">
+                            <div>
+                                <table class="bab-table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                <div class="black-box">
+                                                    <span class="health-points-abbreviation">Base Attack Bonus</span>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <input type="text" class="bab-resistance-input">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <table class="spell-resistance-table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                <div class="black-box">
+                                                    <span class="health-points-abbreviation">Spell Resistance</span>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <input type="text" class="bab-resistance-input">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-u-lg-15-24">
+                        <div class="grapple-container">
+                            <table class="grapple-table" style="width: 100%">
+                                <tbody>
+                                    <th>
+                                        <div class="black-box">
+                                            <span class="health-points-abbreviation">Grapple</span>
+                                            <span class="health-points-description">Modifier</span>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <input type="number">
+                                    </td>
+                                    <td>
+                                        <input type="number">
+                                    </td>
+                                    <td>
+                                        <input type="number">
+                                    </td>
+                                    <td>
+                                        <input type="number">
+                                    </td>
+                                    <td>
+                                        <input type="number">
+                                    </td>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>&nbsp</th>
+                                        <th><span>Total</span></th>
+                                        <th><span>Base Attack<br>Bonus</span></th>
+                                        <th><span>Strength<br>Modifier</span></th>
+                                        <th><span>Size<br>Modifier</span></th>
+                                        <th><span>Misc<br>Modifier</span></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
