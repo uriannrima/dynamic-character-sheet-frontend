@@ -24,7 +24,8 @@ new Vue({
         }, {
             name: 'Will',
             keyAbility: 'Wisdom',
-        }]
+        }],
+        attacks: [{}, {}, {}]
     },
     components: {
         'dcs-layout': Layout
