@@ -360,6 +360,10 @@
         .nonlethal-table {
             width: 100%;
         }
+
+        .non-lethal-field {
+            width: 80%;
+        }
         /* Speed Table */
 
         .speed-table {
@@ -553,7 +557,7 @@
         }
 
         .bab-resistance-input {
-            width: 95%;
+            width: 65%;
         }
         /* Grapple Container */
 
@@ -588,6 +592,82 @@
         .grapple-table tfoot th span {
             text-transform: uppercase;
             font-size: 50%;
+        }
+        /* Attack Table */
+
+        .attack-table {
+            width: 100%;
+        }
+
+        .attack-table span {
+            font-size: 70%;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .attack-name {
+            font-size: 100% !important;
+        }
+
+        .attack-table thead th:nth-child(1) div {
+            height: 20px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .attack-table thead th {
+            vertical-align: bottom;
+        }
+
+        .attack-input {
+            width: 100%;
+            text-align: center;
+        }
+
+        .attack-table tbody tr:nth-child(2) th:nth-child(1) div {
+            width: 50%;
+            display: inline-block;
+            text-align: center;
+            float: left;
+        }
+
+        .attack-table tbody tr:nth-child(3) td:nth-child(1) div {
+            width: 50%;
+            display: inline-block;
+            float: left;
+        }
+
+        .attack-table tbody tr:nth-child(1) td input[type="text"],
+        .attack-table tbody tr:nth-child(3) td input[type="text"] {
+            width: 100%;
+            text-align: center;
+        }
+
+        .attack-table tbody tr:nth-child(4) div {
+            display: inline-block;
+            width: 49.6%;
+        }
+
+        .attack-table tbody tr:nth-child(4) td label {
+            font-size: 70%;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .attack-table tbody tr:nth-child(4) * {
+            vertical-align: middle;
+        }
+
+        .attack-table tbody tr:nth-child(4) input[type="text"] {
+            border-width: 0px 0px 1px 0px;
+            border-bottom-color: black;
+        }
+
+        .ammunition-input {
+            width: 70%
+        }
+
+        .ammunition-notes-input {
+            width: 87%
         }
     </style>
 
@@ -808,7 +888,7 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="text" class="ability-score-field">
+                                            <input type="text" class="non-lethal-field">
                                         </div>
                                     </td>
                                     <td>
@@ -1232,6 +1312,98 @@
                                         <th><span>Strength<br>Modifier</span></th>
                                         <th><span>Size<br>Modifier</span></th>
                                         <th><span>Misc<br>Modifier</span></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="pure-u-lg-15-24">
+                        <div v-for="(attack, index) in attacks" :key="index">
+                            <table class="attack-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="black-box">
+                                                <span class="attack-name">Attack</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="black-box">
+                                                <span>Attack Bonus</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="black-box">
+                                                <span>Damage</span>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="black-box">
+                                                <span>Critical</span>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="black-box">
+                                                <span>Range</span>
+                                            </div>
+                                            <div class="black-box">
+                                                <span>Type</span>
+                                            </div>
+                                        </th>
+                                        <th colspan="3">
+                                            <div class="black-box">
+                                                <span>Notes</span>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <input type="number">
+                                            </div>
+                                            <div>
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <input type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div>
+                                                <input type="checkbox">
+                                                <label>Ammunition:</label>
+                                                <input type="text" class="ammunition-input">
+                                            </div>
+                                            <div>
+                                                <label>Notes:</label>
+                                                <input type="text" class="ammunition-notes-input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>&nbsp</th>
                                     </tr>
                                 </tfoot>
                             </table>
