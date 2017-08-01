@@ -48,7 +48,7 @@
         }
         /* Hidden down */
 
-        @media screen and (max-width:767px) {
+        @media screen and (max-width:567px) {
             .hidden-sm-down {
                 display: none
             }
@@ -221,6 +221,34 @@
             background-color: black;
             color: white;
         }
+        /* Main Container */
+
+        .main-container {
+            min-width: 360px;
+            max-width: 1024px;
+            margin: 0 auto;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+        }
+
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            .main-container {
+                max-width: 768px;
+            }
+        }
+
+        @media screen and (min-width:568px) and (max-width:767px) {
+            .main-container {
+                max-width: 568px;
+            }
+        }
+
+        @media screen and (min-width:360px) and (max-width:567px) {
+            .main-container {
+                max-width: 360px;
+            }
+        }
         /* Description */
 
         .description-span {
@@ -326,6 +354,12 @@
             text-transform: uppercase;
             font-size: 120%;
             display: block;
+        }
+
+        @media screen and (min-width:360px) and (max-width:767px) {
+            .health-points-abbreviation {
+                font-size: 100%;
+            }
         }
 
         .health-points-description {
@@ -541,6 +575,12 @@
             display: inline-block;
             width: 49.5%;
         }
+
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            .bab-resistance-container {
+                margin-top: 5px;
+            }
+        }
         /* Basic Attack Bonus Table*/
 
         .bab-table {
@@ -550,6 +590,30 @@
 
         .bab-table tbody th:nth-child(1) {
             width: 60%;
+        }
+        /* Condition Modifier Container */
+
+        .condition-modifier-container {
+            height: 90%;
+            text-align: center;
+        }
+
+        @media screen and (min-width:360px) and (max-width:767px) {
+            .condition-modifier-container {
+                height: 120px;
+            }
+        }
+        /* Condition Modifier Area */
+
+        .condition-modifier-area {
+            width: 100%;
+            height: 99%;
+        }
+
+        @media screen and (min-width:360px) and (max-width:767px) {
+            .condition-modifier-area {
+                height: 85%;
+            }
         }
         /* Spell Resistance Table */
 
@@ -569,6 +633,12 @@
 
         .grapple-container {
             width: 100%;
+        }
+
+        @media screen and (min-width:360px) and (max-width:1023px) {
+            .grapple-container {
+                margin-top: 5px;
+            }
         }
         /* Grapple Table */
 
@@ -599,13 +669,28 @@
             text-transform: uppercase;
             font-size: 50%;
         }
+        /* Attack(s) Container */
+
+        @media screen and (min-width: 360px) and (max-width:568px) {
+            .attack-container {
+                margin-top: 10px;
+            }
+        }
+
+        @media screen and (min-width: 360px) and (max-width:1023px) {
+            .attacks-container {
+                margin-top: 5px;
+                padding: 0 1em;
+            }
+        }
         /* Attack Table */
 
         .attack-table {
             width: 100%;
         }
 
-        .attack-table span {
+        .attack-table span,
+        .attack-table-mobile span {
             font-size: 70%;
             text-transform: uppercase;
             display: block;
@@ -615,7 +700,8 @@
             font-size: 100% !important;
         }
 
-        .attack-table thead th:nth-child(1) div {
+        .attack-table thead th:nth-child(1) div,
+        .attack-table-mobile tbody tr:nth-child(1) div {
             height: 20px;
             border-radius: 5px 5px 0px 0px;
         }
@@ -629,21 +715,26 @@
             text-align: center;
         }
 
-        .attack-table tbody tr:nth-child(2) th:nth-child(1) div {
+        .attack-table tbody tr:nth-child(2) th:nth-child(1) div,
+        .attack-table-mobile tbody tr:nth-child(5) td:nth-child(1) div {
             width: 50%;
             display: inline-block;
             text-align: center;
             float: left;
         }
 
-        .attack-table tbody tr:nth-child(3) td:nth-child(1) div {
+        .attack-table tbody tr:nth-child(3) td:nth-child(1) div,
+        .attack-table-mobile tbody tr:nth-child(6) td:nth-child(1) div {
             width: 50%;
             display: inline-block;
             float: left;
         }
 
         .attack-table tbody tr:nth-child(1) td input[type="text"],
-        .attack-table tbody tr:nth-child(3) td input[type="text"] {
+        .attack-table tbody tr:nth-child(3) td input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(4) td input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(6) td input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(8) td input[type="text"] {
             width: 100%;
             text-align: center;
         }
@@ -667,6 +758,12 @@
             border-width: 0px 0px 1px 0px;
             border-bottom-color: black;
         }
+        /* Attack Table Mobile */
+
+        .attack-table-mobile {
+            width: 100%;
+            text-align: center;
+        }
 
         .ammunition-input {
             width: 70%
@@ -675,15 +772,27 @@
         .ammunition-notes-input {
             width: 87%
         }
+
+        @media screen and (min-width:360px) and (max-width:767px) {
+            .ammunition-input {
+                width: 60%
+            }
+
+            .ammunition-notes-input {
+                width: 75%
+            }
+        }
         /* Skills Table */
 
-        .skills-container {
-            padding-left: 10px;
+        @media screen and (min-width:360px) and (max-width:568px) {
+            .skills-container {
+                margin-top: 10px;
+            }
         }
 
         @media screen and (min-width:1024px) {
             .skills-container {
-                margin-top: -312px;
+                margin-top: -321px;
             }
         }
 
@@ -772,11 +881,17 @@
         }
 
         .skill-subvalue {
-            width: 45%;
+            width: 44%;
             font-size: 12px;
             text-align: center;
             border-width: 0 0 1px 0;
             border-color: black;
+        }
+
+        @media screen and (min-width:360px) and (max-width:567px) {
+            .skill-subvalue {
+                width: 38%;
+            }
         }
     </style>
 
@@ -785,7 +900,7 @@
 <body>
     <div id="dcs-app">
         <dcs-layout></dcs-layout>
-        <div style="min-width: 360px; max-width: 1024px; margin: 0 auto;">
+        <div class="main-container">
             <div class="pure-g">
                 <div class="pure-u-md-1-1 hidden-lg-up">
                     <img src="assets/images/dnd-logo.png" alt="" width="100%" height="100%">
@@ -948,7 +1063,7 @@
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-3">
-                    <div style="height: 11%" class="hidden-lg-up">
+                    <div style="height: 26px" class="hidden-lg-up">
                         <span>&nbsp</span>
                     </div>
                     <div class="padding-box">
@@ -1197,9 +1312,6 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <div style="height: 15px">
-                            <span>&nbsp</span>
-                        </div>
                         <!-- Touch and Flat-Footed -->
                         <div class="touch-flat-container">
                             <div>
@@ -1239,7 +1351,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div style="width:45%">
+                        <div class="hidden-md-down" style="width:45%">
                             <table class="initiative-table" style="width:100%; text-align: center">
                                 <tbody>
                                     <tr>
@@ -1281,7 +1393,7 @@
                     </div>
                 </div>
                 <div class="padding-box">
-                    <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-12-24" style="overflow-y: auto;">
+                    <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-12-24" style="overflow-y: auto;">
                         <table class="saving-throw-table">
                             <thead>
                                 <tr>
@@ -1335,9 +1447,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-24" style="height: 90%; text-align: center">
+                    <div class="pure-u-1 pure-u-md-1-5 pure-u-lg-3-24 condition-modifier-container">
                         <label style="display: block; font-size: 60%;">Condition Modifier</label>
-                        <textarea style="width:100%; height: 99%">
+                        <textarea class="condition-modifier-area">
                         </textarea>
                     </div>
                 </div>
@@ -1421,9 +1533,9 @@
                     </div>
                 </div>
                 <div class="pure-u-1-1 pure-u-lg-15-24">
-                    <div class="padding-left">
-                        <div v-for="(attack, index) in attacks" :key="index">
-                            <table class="attack-table">
+                    <div class="attacks-container">
+                        <div v-for="(attack, index) in attacks" :key="index" class="attack-container">
+                            <table class="attack-table hidden-sm-down">
                                 <thead>
                                     <tr>
                                         <th>
@@ -1511,66 +1623,159 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            <table class="attack-table-mobile hidden-sm-up">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="black-box">
+                                                <span class="attack-name">Attack</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="black-box">
+                                                <span>Attack Bonus</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="black-box">
+                                                <span>Damage</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="black-box">
+                                                <span>Critical</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="attack-input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="black-box">
+                                                <span>Range</span>
+                                            </div>
+                                            <div class="black-box">
+                                                <span>Type</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div>
+                                                <input type="number">
+                                            </div>
+                                            <div>
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="black-box">
+                                                <span>Notes</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div>
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div>
+                                                <input type="checkbox">
+                                                <label>Ammunition:</label>
+                                                <input type="text" class="ammunition-input">
+                                            </div>
+                                            <div>
+                                                <label>Notes:</label>
+                                                <input type="text" class="ammunition-notes-input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="pure-u-1-1 pure-u-lg-9-24">
                     <div class="skills-container">
-                        <table class="skills-table">
-                            <thead>
-                                <tr>
-                                    <th colspan="6">
-                                        <span class="health-points-abbreviation">Skills</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        <span>Skill Name</span>
-                                    </th>
-                                    <th>
-                                        <span>Key<br>Ability</span>
-                                    </th>
-                                    <th>
-                                        <span>Skill<br>Modifier</span>
-                                    </th>
-                                    <th>
-                                        <span>Ability<br>Modifier</span>
-                                    </th>
-                                    <th>
-                                        <span>Ranks</span>
-                                    </th>
-                                    <th>
-                                        <span>Misc<br>Modifier</span>
-                                    </th>
-                                </tr>
-                                <tr v-for="(skill, index) in skills" :key="index">
-                                    <td>
-                                        <input type="checkbox" class="class-skill-input">
-                                        <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
-                                        <div v-if="skill.subValue" style="display: inline;">
-                                            (<input type="text" class="skill-subvalue">)
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substr(0,3)}}</span>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="skill-modifier-input">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="skill-under-input">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="skill-under-input">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="skill-under-input">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="padding-box">
+                            <table class="skills-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="6">
+                                            <span class="health-points-abbreviation">Skills</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <span>Skill Name</span>
+                                        </th>
+                                        <th>
+                                            <span>Key<br>Ability</span>
+                                        </th>
+                                        <th>
+                                            <span>Skill<br>Modifier</span>
+                                        </th>
+                                        <th>
+                                            <span>Ability<br>Modifier</span>
+                                        </th>
+                                        <th>
+                                            <span>Ranks</span>
+                                        </th>
+                                        <th>
+                                            <span>Misc<br>Modifier</span>
+                                        </th>
+                                    </tr>
+                                    <tr v-for="(skill, index) in skills" :key="index">
+                                        <td>
+                                            <input type="checkbox" class="class-skill-input">
+                                            <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
+                                            <div v-if="skill.subValue" style="display: inline;">
+                                                (<input type="text" class="skill-subvalue">)
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substr(0,3)}}</span>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="skill-modifier-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="skill-under-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="skill-under-input">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="skill-under-input">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
