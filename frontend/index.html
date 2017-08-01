@@ -261,6 +261,18 @@
             border-width: 0 0 1px 0;
             border-color: black;
         }
+        /* Ability Score Container */
+
+        .ability-container {
+            padding: 0 0 0 1em;
+        }
+
+        @media screen and (min-width:360px) and (max-width:767px) {
+
+            .ability-container {
+                padding: 0 1em;
+            }
+        }
         /* Ability Score Table */
 
         .ability-table {
@@ -535,7 +547,17 @@
         /* Saving Throw Container  */
 
         .saving-throw-container {
-            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        /* Saving Throw Title */
+
+        .saving-throw-title {
+            text-align: center;
+        }
+
+        .saving-throw-title span {
+            font-size: 100%;
+            font-weight: bold;
         }
         /* Saving Throw Table */
 
@@ -620,7 +642,6 @@
         @media screen and (min-width:360px) and (max-width:767px) {
             .condition-modifier-container {
                 height: 120px;
-                margin-top: 10px;
             }
         }
         /* Condition Modifier Area */
@@ -829,7 +850,7 @@
 
         @media screen and (min-width:1024px) {
             .skills-container {
-                margin-top: -321px;
+                margin-top: -332px;
             }
         }
 
@@ -1044,7 +1065,7 @@
                     <img src="assets/images/dnd-logo.png" alt="" width="100%" height="100%">
                 </div>
                 <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-                    <div class="padding-left">
+                    <div class="ability-container">
                         <table class="ability-table">
                             <thead>
                                 <tr>
@@ -1350,9 +1371,9 @@
                             </tfoot>
                         </table>
                         <!-- Touch and Flat-Footed -->
-                        <div class="touch-flat-container">
+                        <div class="touch-flat-container hidden-md-down">
                             <div>
-                                <table class="touch-table hidden-md-down">
+                                <table class="touch-table">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -1388,7 +1409,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="hidden-md-down" style="width:45%">
+                        <div class="hidden-md-down pure-u-1 pure-u-lg-11-24">
                             <table class="initiative-table" style="width:100%; text-align: center">
                                 <tbody>
                                     <tr>
@@ -1430,6 +1451,45 @@
                     </div>
                 </div>
                 <div class="padding-box">
+                    <div class="hidden-lg-up pure-u-1">
+                        <table class="initiative-table" style="width:100%; text-align: center">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <div class="black-box">
+                                            <span class="health-points-abbreviation">Initiative</span>
+                                            <span class="health-points-description">Modifier</span>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <input type="text" class="health-points-field">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="health-points-field">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="health-points-field">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        <span>&nbsp</span>
+                                    </th>
+                                    <th>
+                                        <span class="armor-description">Total</span>
+                                    </th>
+                                    <th>
+                                        <span class="armor-description">Dex<br>Modifier</span>
+                                    </th>
+                                    <th>
+                                        <span class="armor-description">Misc<br>Modifier</span>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                     <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-12-24" style="overflow-y: auto;">
                         <table class="saving-throw-table hidden-sm-down">
                             <thead>
@@ -1483,7 +1543,12 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="hidden-sm-up">
+                        <div class="saving-throws-container hidden-sm-up">
+                            <div class="saving-throw-title">
+                                <span class="ability-score-description">
+                                    Saving Throws
+                                </span>
+                            </div>
                             <div class="saving-throw-container" v-for="(savingThrow, index) in savingThrows" :key="index">
                                 <table class="saving-throw-table-mobile hidden-sm-up">
                                     <tbody>
