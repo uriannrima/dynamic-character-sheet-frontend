@@ -354,6 +354,7 @@
             text-transform: uppercase;
             font-size: 120%;
             display: block;
+            font-weight: bold;
         }
 
         @media screen and (min-width:360px) and (max-width:767px) {
@@ -531,9 +532,15 @@
         .initiative-table tfoot th {
             line-height: 7px;
         }
+        /* Saving Throw Container  */
+
+        .saving-throw-container {
+            margin-top: 10px;
+        }
         /* Saving Throw Table */
 
-        .saving-throw-table {
+        .saving-throw-table,
+        .saving-throw-table-mobile {
             width: 100%;
             text-align: center;
         }
@@ -552,7 +559,8 @@
             width: 56%;
         }
 
-        .saving-throw-table tbody td div {
+        .saving-throw-table tbody td div,
+        .saving-throw-table-mobile tbody tr:nth-child(2) td div {
             display: inline-block;
         }
 
@@ -563,23 +571,34 @@
             font-size: 50%;
         }
 
+        .saving-throw-table-mobile tbody td label {
+            display: block;
+            text-transform: uppercase;
+            font-size: 50%;
+        }
+
         .saving-throw-table tbody td input {
             display: block;
             width: 47px;
             height: 33px;
             text-align: center;
         }
+
+        .saving-throw-table-mobile tbody td input {
+            display: block;
+            width: 40px;
+            height: 33px;
+            text-align: center;
+        }
         /* Base Attack Bonus and Spell Resistance Container */
+
+        .bab-resistance-container {
+            margin-top: 5px;
+        }
 
         .bab-resistance-container>div {
             display: inline-block;
             width: 49.5%;
-        }
-
-        @media screen and (min-width:768px) and (max-width:1023px) {
-            .bab-resistance-container {
-                margin-top: 5px;
-            }
         }
         /* Basic Attack Bonus Table*/
 
@@ -601,6 +620,7 @@
         @media screen and (min-width:360px) and (max-width:767px) {
             .condition-modifier-container {
                 height: 120px;
+                margin-top: 10px;
             }
         }
         /* Condition Modifier Area */
@@ -632,12 +652,14 @@
         /* Grapple Container */
 
         .grapple-container {
+            margin-top: 5px;
             width: 100%;
+            padding: 0 0 0 1em;
         }
 
         @media screen and (min-width:360px) and (max-width:1023px) {
             .grapple-container {
-                margin-top: 5px;
+                padding: 0 1em;
             }
         }
         /* Grapple Table */
@@ -657,6 +679,12 @@
             height: 33px;
         }
 
+        @media screen and (min-width:360px) and (max-width:567px) {
+            .grapple-table tbody td input {
+                width: 35px;
+            }
+        }
+
         .grapple-table tbody td div {
             display: inline-block;
         }
@@ -670,6 +698,10 @@
             font-size: 50%;
         }
         /* Attack(s) Container */
+
+        .attacks-container {
+            padding: 0 0 0 1em;
+        }
 
         @media screen and (min-width: 360px) and (max-width:568px) {
             .attack-container {
@@ -694,6 +726,7 @@
             font-size: 70%;
             text-transform: uppercase;
             display: block;
+            font-weight: bold;
         }
 
         .attack-name {
@@ -734,7 +767,9 @@
         .attack-table tbody tr:nth-child(3) td input[type="text"],
         .attack-table-mobile tbody tr:nth-child(4) td input[type="text"],
         .attack-table-mobile tbody tr:nth-child(6) td input[type="text"],
-        .attack-table-mobile tbody tr:nth-child(8) td input[type="text"] {
+        .attack-table-mobile tbody tr:nth-child(8) td input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(9) td input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(10) td input[type="text"] {
             width: 100%;
             text-align: center;
         }
@@ -754,7 +789,9 @@
             vertical-align: middle;
         }
 
-        .attack-table tbody tr:nth-child(4) input[type="text"] {
+        .attack-table tbody tr:nth-child(4) input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(9) input[type="text"],
+        .attack-table-mobile tbody tr:nth-child(10) input[type="text"] {
             border-width: 0px 0px 1px 0px;
             border-bottom-color: black;
         }
@@ -1394,7 +1431,7 @@
                 </div>
                 <div class="padding-box">
                     <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-12-24" style="overflow-y: auto;">
-                        <table class="saving-throw-table">
+                        <table class="saving-throw-table hidden-sm-down">
                             <thead>
                                 <tr>
                                     <th>
@@ -1446,6 +1483,55 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="hidden-sm-up">
+                            <div class="saving-throw-container" v-for="(savingThrow, index) in savingThrows" :key="index">
+                                <table class="saving-throw-table-mobile hidden-sm-up">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="black-box">
+                                                    <span class="health-points-abbreviation">{{savingThrow.name}}</span>
+                                                    <span class="health-points-description">({{savingThrow.keyAbility}})</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <label for="">Total</label>
+                                                    <input type="number">
+                                                </div>
+                                                <span>=</span>
+                                                <div>
+                                                    <label for="">Base<br>Save</label>
+                                                    <input type="number">
+                                                </div>
+                                                <span>+</span>
+                                                <div>
+                                                    <label for="">Ability<br>Modifier</label>
+                                                    <input type="number">
+                                                </div>
+                                                <span>+</span>
+                                                <div>
+                                                    <label for="">Magic<br>Modifier</label>
+                                                    <input type="number">
+                                                </div>
+                                                <span>+</span>
+                                                <div>
+                                                    <label for="">Misc<br>Modifier</label>
+                                                    <input type="number">
+                                                </div>
+                                                <span>+</span>
+                                                <div>
+                                                    <label for="">Temporary<br>Modifier</label>
+                                                    <input type="number">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="pure-u-1 pure-u-md-1-5 pure-u-lg-3-24 condition-modifier-container">
                         <label style="display: block; font-size: 60%;">Condition Modifier</label>
@@ -1492,44 +1578,42 @@
                     </div>
                 </div>
                 <div class="pure-u-1-1 pure-u-lg-15-24">
-                    <div class="padding-left">
-                        <div class="grapple-container">
-                            <table class="grapple-table" style="width: 100%">
-                                <tbody>
-                                    <th>
-                                        <div class="black-box">
-                                            <span class="health-points-abbreviation">Grapple</span>
-                                            <span class="health-points-description">Modifier</span>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <input type="number">
-                                    </td>
-                                    <td>
-                                        <input type="number">
-                                    </td>
-                                    <td>
-                                        <input type="number">
-                                    </td>
-                                    <td>
-                                        <input type="number">
-                                    </td>
-                                    <td>
-                                        <input type="number">
-                                    </td>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>&nbsp</th>
-                                        <th><span>Total</span></th>
-                                        <th><span>Base Attack<br>Bonus</span></th>
-                                        <th><span>Strength<br>Modifier</span></th>
-                                        <th><span>Size<br>Modifier</span></th>
-                                        <th><span>Misc<br>Modifier</span></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                    <div class="grapple-container">
+                        <table class="grapple-table" style="width: 100%">
+                            <tbody>
+                                <th>
+                                    <div class="black-box">
+                                        <span class="health-points-abbreviation">Grapple</span>
+                                        <span class="health-points-description">Modifier</span>
+                                    </div>
+                                </th>
+                                <td>
+                                    <input type="number">
+                                </td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>&nbsp</th>
+                                    <th><span>Total</span></th>
+                                    <th><span>Base Attack<br>Bonus</span></th>
+                                    <th><span>Strength<br>Modifier</span></th>
+                                    <th><span>Size<br>Modifier</span></th>
+                                    <th><span>Misc<br>Modifier</span></th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
                 <div class="pure-u-1-1 pure-u-lg-15-24">
@@ -1706,6 +1790,10 @@
                                                 <label>Ammunition:</label>
                                                 <input type="text" class="ammunition-input">
                                             </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
                                             <div>
                                                 <label>Notes:</label>
                                                 <input type="text" class="ammunition-notes-input">
