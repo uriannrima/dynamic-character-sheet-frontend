@@ -3,8 +3,8 @@
 /.log/
 
 # compiled output
-/dist
-/tmp
+/**/dist
+/**/tmp
 
 # dependencies
 node_modules/
@@ -18,8 +18,8 @@ bower_components/
 /connect.lock
 /coverage/*
 /libpeerconnection.log
-npm-debug.log
-yarn-error.log
+/**/npm-debug.log
+/**/yarn-error.log
 testem.log
 /typings
 
