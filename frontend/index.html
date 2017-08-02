@@ -221,6 +221,10 @@
             background-color: black;
             color: white;
         }
+
+        input[type="number"] {
+            text-align: center;
+        }
         /* Main Container */
 
         .main-container {
@@ -870,6 +874,10 @@
         }
         /* Skills Table */
 
+        .skills-container {
+            margin-bottom: 10px;
+        }
+
         @media screen and (min-width:360px) and (max-width:568px) {
             .skills-container {
                 margin-top: 5px;
@@ -878,7 +886,7 @@
 
         @media screen and (min-width:1024px) {
             .skills-container {
-                margin-top: -332px;
+                margin-top: -338px;
             }
         }
 
@@ -978,6 +986,14 @@
             .skill-subvalue {
                 width: 38%;
             }
+        }
+        /* Skill Caption */
+
+        .caption-container span {
+            text-align: center;
+            display: block;
+            font-style: italic;
+            font-size: 75%;
         }
     </style>
 
@@ -1126,22 +1142,22 @@
                                     </th>
                                     <td>
                                         <div>
-                                            <input type="text" class="ability-score-field">
+                                            <input type="number" value="10" class="ability-score-field">
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="text" class="ability-score-field">
+                                            <input type="number" value="0" class="ability-score-field">
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="text" class="ability-score-field">
+                                            <input type="number" value="10" class="ability-score-field">
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="text" class="ability-score-field">
+                                            <input type="number" value="0" class="ability-score-field">
                                         </div>
                                     </td>
                                 </tr>
@@ -1184,7 +1200,7 @@
                                     </th>
                                     <td>
                                         <div>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </div>
                                     </td>
                                     <td style="width: 30%">
@@ -1214,7 +1230,7 @@
                                     </div>
                                 </th>
                                 <td style="text-align: center;">
-                                    <input type="text" style="width: 50%">
+                                    <input type="number" value="0" style="width: 50%">
                                 </td>
                             </tbody>
                         </table>
@@ -1266,31 +1282,31 @@
                                         </div>
                                     </th>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="10" class="health-points-field">
                                     </td>
                                     <td>
                                         <span class="armor-base-value">= 10 +</span>
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td>
-                                        <input type="text" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field">
                                     </td>
                                     <td style="width:15%">
                                         <input type="text" class="damage-reduction-field">
@@ -1346,31 +1362,31 @@
                                                 <span class="health-points-description">Armor Class</span>
                                             </div>
                                             <div style="vertical-align: middle; width:50%; float:right; margin-top: 4px;">
-                                                <input type="text" class="health-points-field total-health-points-field">
+                                                <input type="number" value="10" class="health-points-field total-health-points-field">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1415,7 +1431,7 @@
                                             </th>
                                             <td>
                                                 <div>
-                                                    <input type="text" class="health-points-field">
+                                                    <input type="number" value="0" class="health-points-field">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1433,7 +1449,7 @@
                                         </th>
                                         <td>
                                             <div>
-                                                <input type="text" class="health-points-field">
+                                                <input type="number" value="0" class="health-points-field">
                                             </div>
                                         </td>
                                     </tbody>
@@ -1451,13 +1467,13 @@
                                             </div>
                                         </th>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1494,13 +1510,13 @@
                                             </div>
                                         </th>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                         <td>
-                                            <input type="text" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1547,32 +1563,32 @@
                                     <td>
                                         <div>
                                             <label v-if="index == 0" for="">Total</label>
-                                            <input type="number">
+                                            <input type="number" value="0">
                                         </div>
                                         <span>=</span>
                                         <div>
                                             <label v-if="index == 0" for="">Base<br>Save</label>
-                                            <input type="number">
+                                            <input type="number" value="0">
                                         </div>
                                         <span>+</span>
                                         <div>
                                             <label v-if="index == 0" for="">Ability<br>Modifier</label>
-                                            <input type="number">
+                                            <input type="number" value="0">
                                         </div>
                                         <span>+</span>
                                         <div>
                                             <label v-if="index == 0" for="">Magic<br>Modifier</label>
-                                            <input type="number">
+                                            <input type="number" value="0">
                                         </div>
                                         <span>+</span>
                                         <div>
                                             <label v-if="index == 0" for="">Misc<br>Modifier</label>
-                                            <input type="number">
+                                            <input type="number" value="0">
                                         </div>
                                         <span>+</span>
                                         <div>
                                             <label v-if="index == 0" for="">Temporary<br>Modifier</label>
-                                            <input type="number">
+                                            <input type="number" value="0">
                                         </div>
                                     </td>
                                 </tr>
@@ -1599,32 +1615,32 @@
                                             <td>
                                                 <div>
                                                     <label for="">Total</label>
-                                                    <input type="number">
+                                                    <input type="number" value="0">
                                                 </div>
                                                 <span>=</span>
                                                 <div>
                                                     <label for="">Base<br>Save</label>
-                                                    <input type="number">
+                                                    <input type="number" value="0">
                                                 </div>
                                                 <span>+</span>
                                                 <div>
                                                     <label for="">Ability<br>Modifier</label>
-                                                    <input type="number">
+                                                    <input type="number" value="0">
                                                 </div>
                                                 <span>+</span>
                                                 <div>
                                                     <label for="">Magic<br>Modifier</label>
-                                                    <input type="number">
+                                                    <input type="number" value="0">
                                                 </div>
                                                 <span>+</span>
                                                 <div>
                                                     <label for="">Misc<br>Modifier</label>
-                                                    <input type="number">
+                                                    <input type="number" value="0">
                                                 </div>
                                                 <span>+</span>
                                                 <div>
                                                     <label for="">Temporary<br>Modifier</label>
-                                                    <input type="number">
+                                                    <input type="number" value="0">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1688,19 +1704,19 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <input type="number">
+                                    <input type="number" value="0">
                                 </td>
                                 <td>
-                                    <input type="number">
+                                    <input type="number" value="0">
                                 </td>
                                 <td>
-                                    <input type="number">
+                                    <input type="number" value="0">
                                 </td>
                                 <td>
-                                    <input type="number">
+                                    <input type="number" value="0">
                                 </td>
                                 <td>
-                                    <input type="number">
+                                    <input type="number" value="0">
                                 </td>
                             </tbody>
                             <tfoot>
@@ -1949,21 +1965,26 @@
                                             <span class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substr(0,3)}}</span>
                                         </td>
                                         <td>
-                                            <input type="text" class="skill-modifier-input">
+                                            <input type="number" value="0" class="skill-modifier-input">
                                         </td>
                                         <td>
-                                            <input type="text" class="skill-under-input">
+                                            <input type="number" value="0" class="skill-under-input">
                                         </td>
                                         <td>
-                                            <input type="text" class="skill-under-input">
+                                            <input type="number" value="0" class="skill-under-input">
                                         </td>
                                         <td>
-                                            <input type="text" class="skill-under-input">
+                                            <input type="number" value="0" class="skill-under-input">
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="caption-container">
+                        <span>Mark this box with an X if the skill is a class skill for the character.</span>
+                        <span class="untrained-skill">Denotes a skill that can be used untrained.</span>
+                        <span class="armor-check-penalty">Armor check penalty, if any applies. <strong>(Double for Swim)</strong>.</span>
                     </div>
                 </div>
             </div>
