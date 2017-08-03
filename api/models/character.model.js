@@ -65,6 +65,8 @@ module.exports = function character({
         attacks: attacks || [
             new Models.attack({}),
             new Models.attack({}),
+            new Models.attack({}),
+            new Models.attack({}),
             new Models.attack({})
         ],
     }
