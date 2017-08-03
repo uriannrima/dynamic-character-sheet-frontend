@@ -2,6 +2,7 @@
     "name": "dcs-app",
     "version": "1.0.0",
     "scripts": {
-        "dev": "cd frontend && npm run dev"
+        "dev": "cd frontend && npm run dev",
+        "serve":"cd api && npm run dev"
     }
 }

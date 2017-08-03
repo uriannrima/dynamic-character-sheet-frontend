@@ -6,7 +6,7 @@ consign().include('database').then('services').then('controllers').then('routes'
 
 app.database.mongodb.connect(function () {
     // Then, starts the server.
-    app.listen(process.env.PORT, function () {
+    app.listen(process.env.PORT || 3000, function () {
         console.log('Listening.');
     });
 });
