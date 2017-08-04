@@ -7,5 +7,5 @@ module.exports = function (app) {
     router.post('/', app.controllers.characters.save);
     router.put('/', app.controllers.characters.update);
 
-    app.use('/characters', router);
+    app.use('/api/characters', router);
 }

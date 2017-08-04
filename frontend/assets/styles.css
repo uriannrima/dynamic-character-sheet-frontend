@@ -1,853 +1,921 @@
- body span {
-     font-size: 12px;
- }
- 
- .table {
-     margin-bottom: 15px;
- }
- 
- .table thead th {
-     border-bottom: 0 !important;
- }
- 
- .table tbody td, .table tfoot th {
-     border-top: 0 !important;
-     border-bottom: 0 !important;
- }
- 
- .table thead th, .table tbody th {
-     line-height: 15px !important;
-     vertical-align: middle !important;
- }
- 
- .table thead th, .table tbody th, .table tbody td, .table tfoot th {
-     text-align: center;
- }
- 
- .table tbody th {
-     background-color: #000000;
-     color: #ffffff;
-     text-transform: uppercase;
- }
- 
- .table tbody th span {
-     display: block;
- }
- 
- .table tbody th small {
-     font-size: 60%;
- }
- 
- .attribute-field {
-     width: 42px;
-     height: 33px;
-     text-align: center;
- }
- 
- input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-     /* display: none; <- Crashes Chrome on hover */
-     -webkit-appearance: none;
-     margin: 0;
-     /* <-- Apparently some margin are still there even though it's hidden */
- }
- 
- input[readonly] {
-     background-color: #ccc;
- }
- 
- .attention {
-     background-color: yellow;
- }
- 
- textarea {
-     resize: none;
- }
- /* Don't allow elements go outside of its boundries */
- 
- html {
-     box-sizing: border-box;
- }
- 
- html, button, input, select, textarea, .pure-g [class *="pure-u"] {
-     font-family: 'Source Sans Pro', sans-serif !important;
- }
- 
- *, *:after, *:before {
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
-     z-index: 0;
- }
- 
- .pure-g>div {
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
- }
- /* General */
- 
- .padding-left {
-     padding: 0 0 0 1em;
-     width: 100%;
- }
- 
- .padding-box {
-     padding: 0 1em;
-     width: 100%;
- }
- 
- .black-box {
-     background-color: black;
-     color: white;
- }
- 
- input[type="number"] {
-     text-align: center;
- }
- /* Main Container */
- 
- .main-container {
-     min-width: 360px;
-     max-width: 1024px;
-     margin: 0 auto;
-     border-style: solid;
-     border-color: black;
-     border-width: 1px;
- }
- 
- @media screen and (min-width:768px) and (max-width:1023px) {
-     .main-container {
-         max-width: 768px;
-     }
- }
- 
- @media screen and (min-width:568px) and (max-width:767px) {
-     .main-container {
-         max-width: 568px;
-     }
- }
- 
- @media screen and (max-width:567px) {
-     .main-container {
-         min-width: 378px;
-         max-width: 360px;
-     }
- }
- /* Description Container */
- 
- .description-container {
-     margin-bottom: 10px;
- }
- /* Description */
- 
- .description-span {
-     text-transform: uppercase;
-     font-weight: bolder;
- }
- 
- .description-field {
-     width: 100%;
-     border-width: 0 0 1px 0;
-     border-color: black;
- }
- /* Ability Score Container */
- 
- .ability-container {
-     padding: 0 0 0 1em;
- }
- 
- @media screen and (min-width:360px) and (max-width:767px) {
-     .ability-container {
-         padding: 0 1em;
-     }
- }
- /* Ability Score Table */
- 
- .ability-table {
-     width: 100%;
- }
- 
- .ability-table thead th {
-     width: 20%;
-     text-align: center;
-     line-height: 10px;
- }
- 
- .ability-table tbody th, .ability-table tbody td {
-     width: 20%;
-     text-align: center;
- }
- 
- .ability-table tbody th {
-     border-bottom-color: white;
-     border-bottom-width: 1px;
-     border-bottom-style: solid;
- }
- 
- .ability-table tbody td:nth-child(4), .ability-table tbody td:nth-child(5) {
-     background-color: #ccc;
- }
- 
- .ability-score-abbreviation {
-     text-transform: uppercase;
-     font-size: 120%;
-     display: block;
- }
- 
- .ability-score-name {
-     text-transform: uppercase;
-     font-size: 50%;
-     display: block;
- }
- 
- .ability-score-description {
-     text-transform: uppercase;
-     font-size: 60%;
- }
- 
- .ability-score-field {
-     width: 50%;
- }
- /* First Gutter */
- 
- .first-gutter {
-     height: 26px;
- }
- 
- @media screen and (min-width: 360px) and (max-width: 767px) {
-     .first-gutter {
-         height: 10px;
-     }
- }
- /* Health Table */
- 
- .health-table {
-     width: 100%;
- }
- 
- .health-table tbody td {
-     border-bottom-color: white;
-     border-bottom-width: 1px;
-     border-bottom-style: solid;
- }
- 
- .health-table tbody th, .health-table tbody td {
-     width: 20%;
-     text-align: center;
- }
- 
- .health-table thead th:nth-child(1), .health-table tbody th:nth-child(1) {
-     width: 10%;
- }
- 
- .health-table thead th:nth-child(2), .health-table tbody td:nth-child(2) {
-     width: 5%;
- }
- 
- @media screen and (max-width:1023px) {
-     .health-table thead th:nth-child(1), .health-table tbody th:nth-child(1) {
-         width: 20%;
-     }
-     .health-table thead th:nth-child(2), .health-table tbody td:nth-child(2) {
-         width: 20%;
-     }
- }
- 
- .health-points-abbreviation {
-     text-transform: uppercase;
-     font-size: 120%;
-     display: block;
-     font-weight: bold;
- }
- 
- @media screen and (min-width:360px) and (max-width:767px) {
-     .health-points-abbreviation {
-         font-size: 100%;
-     }
- }
- 
- .health-points-description {
-     text-transform: uppercase;
-     font-size: 50%;
-     display: block;
- }
- 
- .health-table thead th {
-     width: 20%;
-     text-align: center;
-     line-height: 10px;
- }
- 
- .health-point-block {
-     display: inline-block;
- }
- 
- .health-points-field {
-     width: 36px
- }
- 
- .wounds-field {
-     width: 100%;
- }
- 
- .speed-field {
-     width: 100%;
- }
- /* Wounds Table */
- 
- .wounds-table {
-     width: 100%;
-     border-bottom: solid 1px white;
- }
- /* Nonlethal Table */
- 
- .nonlethal-table {
-     width: 100%;
- }
- 
- .non-lethal-field {
-     width: 80%;
- }
- /* Speed Table */
- 
- .speed-table {
-     width: 100%;
- }
- /* Armor Container */
- 
- .armor-container {
-     margin-bottom: 10px;
- }
- /* Armor Table */
- 
- .armor-table {
-     width: 100%;
- }
- 
- .armor-table tbody td {
-     border-bottom-color: white;
-     border-bottom-width: 1px;
-     border-bottom-style: solid;
- }
- 
- .armor-table tbody th, .armor-table tbody td {
-     text-align: center;
- }
- 
- .armor-base-value {
-     font-size: 120%;
-     font-weight: bolder;
- }
- 
- .armor-description {
-     text-transform: uppercase;
-     font-size: 60%;
- }
- 
- .armor-table tfoot th {
-     line-height: 7px;
- }
- 
- .armor-class-abbreviation {
-     text-transform: uppercase;
-     font-size: 120%;
-     display: block;
- }
- 
- @media screen and (max-width:1023px) {
-     .armor-table tbody tr {
-         border-bottom: solid 2px white;
-     }
-     .armor-table tbody td {
-         width: 12.5%;
-     }
-     .total-health-points-field {
-         width: 50%;
-     }
-     .armor-base-value {
-         width: 45%;
-         display: inline-block;
-     }
- }
- 
- @media screen and (min-width:1024px) {
-     .armor-table thead th:nth-child(1), .armor-table tbody th:nth-child(1) {
-         width: 11.6%;
-     }
-     .armor-table thead td:nth-child(2), .armor-table tbody td:nth-child(2) {
-         width: 6.5%;
-     }
-     .armor-class-description {
-         text-transform: uppercase;
-         font-size: 50%;
-         display: block;
-     }
-     .damage-reduction-field {
-         width: 100%;
-     }
- }
- /* Touch-Flat Container */
- 
- .touch-flat-container>div {
-     display: inline-block;
- }
- 
- .touch-flat-container>div:nth-child(1) {
-     width: 18%;
- }
- 
- .touch-flat-container-mobile>div {
-     width: 49%;
-     display: inline-block;
- }
- /* Touch Table*/
- 
- .touch-table {
-     width: 100%
- }
- 
- .touch-table tbody th, .touch-table tbody td {
-     text-align: center;
- }
- 
- .touch-table thead th:nth-child(1), .touch-table tbody th:nth-child(1) {
-     width: 65%;
- }
- 
- .touch-table thead td:nth-child(2), .touch-table tbody td:nth-child(2) {
-     width: 35%;
- }
- /* Flat Table */
- 
- .flat-table {
-     width: 100%;
-     text-align: center;
- }
- /* Initiative Container */
- 
- .initiative-container {
-     margin-bottom: 10px;
- }
- /* Initiative Table */
- 
- .initiative-table {
-     width: 100%;
-     text-align: center;
- }
- 
- .initiative-table tfoot th {
-     line-height: 7px;
- }
- /* Saving Throw Container  */
- 
- .saving-throw-container {
-     margin-bottom: 10px;
- }
- /* Saving Throw Title */
- 
- .saving-throw-title {
-     text-align: center;
- }
- 
- .saving-throw-title span {
-     font-size: 100%;
-     font-weight: bold;
- }
- /* Saving Throw Table */
- 
- .saving-throw-table, .saving-throw-table-mobile {
-     width: 100%;
-     text-align: center;
- }
- 
- .saving-throw-table tbody th {
-     border-bottom-color: white;
-     border-bottom-width: 1px;
-     border-bottom-style: solid;
- }
- 
- .saving-throw-table tbody th:nth-child(1) {
-     width: 20%
- }
- 
- .saving-throw-table tbody td:nth-child(2) {
-     width: 56%;
- }
- 
- .saving-throw-table tbody td div, .saving-throw-table-mobile tbody tr:nth-child(2) td div {
-     display: inline-block;
- }
- 
- .saving-throw-table tbody td label {
-     display: block;
-     margin-top: -25px;
-     text-transform: uppercase;
-     font-size: 50%;
- }
- 
- @media screen and (min-width: 360px) and (max-width: 767px) {
-     .saving-throw-table tbody td label {
-         margin-top: -22px;
-     }
- }
- 
- .saving-throw-table-mobile tbody td label {
-     display: block;
-     text-transform: uppercase;
-     font-size: 50%;
- }
- 
- .saving-throw-table tbody td input {
-     display: block;
-     width: 47px;
-     height: 33px;
-     text-align: center;
- }
- 
- .saving-throw-table-mobile tbody td input {
-     display: block;
-     width: 40px;
-     height: 33px;
-     text-align: center;
- }
- 
- .saving-throw-signs {
-     font-size: 14px;
- }
- /* Base Attack Bonus and Spell Resistance Container */
- 
- .bab-resistance-container {
-     margin-top: 5px;
-     margin-bottom: 10px;
- }
- 
- .bab-resistance-container>div {
-     display: inline-block;
-     width: 49.5%;
- }
- /* Basic Attack Bonus Table*/
- 
- .bab-table {
-     width: 100%;
-     text-align: center;
- }
- 
- .bab-table tbody th:nth-child(1) {
-     width: 60%;
- }
- /* Condition Modifier Container */
- 
- .condition-modifier-container {
-     height: 90%;
-     text-align: center;
- }
- 
- @media screen and (min-width:360px) and (max-width:767px) {
-     .condition-modifier-container {
-         height: 120px;
-     }
- }
- /* Condition Modifier Area */
- 
- .condition-modifier-area {
-     width: 100%;
-     height: 99%;
- }
- 
- @media screen and (min-width:360px) and (max-width:767px) {
-     .condition-modifier-area {
-         height: 85%;
-     }
- }
- /* Spell Resistance Table */
- 
- .spell-resistance-table {
-     width: 100%;
-     text-align: center;
- }
- 
- .spell-resistance-table tbody th:nth-child(1) {
-     width: 60%;
- }
- 
- .bab-resistance-input {
-     width: 65%;
- }
- /* Grapple Container */
- 
- .grapple-container {
-     margin-bottom: 10px;
-     width: 100%;
-     padding: 0 0 0 1em;
- }
- 
- @media screen and (min-width:360px) and (max-width:1023px) {
-     .grapple-container {
-         padding: 0 1em;
-     }
- }
- /* Grapple Table */
- 
- .grapple-table {
-     width: 100%;
-     text-align: center;
- }
- 
- .grapple-table tbody th:nth-child(1) {
-     width: 30%
- }
- 
- .grapple-table tbody td input {
-     display: inline-block;
-     width: 47px;
-     height: 33px;
- }
- 
- @media screen and (min-width:360px) and (max-width:567px) {
-     .grapple-table tbody td input {
-         width: 35px;
-     }
- }
- 
- .grapple-table tbody td div {
-     display: inline-block;
- }
- 
- .grapple-table tfoot th {
-     line-height: 7px;
- }
- 
- .grapple-table tfoot th span {
-     text-transform: uppercase;
-     font-size: 50%;
- }
- /* Attack(s) Container */
- 
- .attacks-container {
-     padding: 0 0 0 1em;
-     max-height: 650px;
-     overflow-y: auto;
- }
- 
- @media screen and (min-width: 360px) and (max-width:568px) {
-     .attack-container {
-         margin-bottom: 10px;
-     }
- }
- 
- @media screen and (min-width: 360px) and (max-width:1023px) {
-     .attacks-container {
-         margin-bottom: 10px;
-         padding: 0 1em;
-     }
- }
- /* Attack Table */
- 
- .attack-table {
-     width: 100%;
- }
- 
- .attack-table span, .attack-table-mobile span {
-     font-size: 70%;
-     text-transform: uppercase;
-     display: block;
-     font-weight: bold;
- }
- 
- .attack-name {
-     font-size: 100% !important;
- }
- 
- .attack-table thead th:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(1) div {
-     height: 20px;
-     border-radius: 5px 5px 0px 0px;
- }
- 
- .attack-table thead th {
-     vertical-align: bottom;
- }
- 
- .attack-input {
-     width: 100%;
-     text-align: center;
- }
- 
- .attack-table tbody tr:nth-child(2) th:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(5) td:nth-child(1) div {
-     width: 50%;
-     display: inline-block;
-     text-align: center;
-     float: left;
- }
- 
- .attack-table tbody tr:nth-child(3) td:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(6) td:nth-child(1) div {
-     width: 50%;
-     display: inline-block;
-     float: left;
- }
- 
- .attack-table tbody tr:nth-child(1) td input[type="text"], .attack-table tbody tr:nth-child(3) td input[type="text"], .attack-table-mobile tbody tr:nth-child(4) td input[type="text"], .attack-table-mobile tbody tr:nth-child(6) td input[type="text"], .attack-table-mobile tbody tr:nth-child(8) td input[type="text"], .attack-table-mobile tbody tr:nth-child(9) td input[type="text"], .attack-table-mobile tbody tr:nth-child(10) td input[type="text"] {
-     width: 100%;
-     text-align: center;
- }
- 
- .attack-table tbody tr:nth-child(4) div {
-     display: inline-block;
-     width: 49.6%;
- }
- 
- .attack-table tbody tr:nth-child(4) td label {
-     font-size: 70%;
-     text-transform: uppercase;
-     font-weight: bold;
- }
- 
- .attack-table tbody tr:nth-child(4) * {
-     vertical-align: middle;
- }
- 
- .attack-table tbody tr:nth-child(4) input[type="text"], .attack-table-mobile tbody tr:nth-child(9) input[type="text"], .attack-table-mobile tbody tr:nth-child(10) input[type="text"] {
-     border-width: 0px 0px 1px 0px;
-     border-bottom-color: black;
- }
- /* Attack Table Mobile */
- 
- .attack-table-mobile {
-     width: 100%;
-     text-align: center;
- }
- 
- .ammunition-input {
-     width: 70%
- }
- 
- .ammunition-notes-input {
-     width: 87%
- }
- 
- @media screen and (min-width:360px) and (max-width:767px) {
-     .ammunition-input {
-         width: 60%
-     }
-     .ammunition-notes-input {
-         width: 75%
-     }
- }
- /* Skills Table */
- 
- .skills-container {
-     margin-bottom: 10px;
-     max-height: 964px;
-     overflow-y: auto;
- }
- 
- @media screen and (min-width:360px) and (max-width:568px) {
-     .skills-container {
-         margin-top: 5px;
-     }
- }
- 
- @media screen and (min-width:1024px) {
-     .skills-container {
-         margin-top: -340px;
-     }
- }
- 
- .skills-table {
-     text-align: center;
-     width: 100%;
- }
- 
- .skills-table tbody tr td span {
-     text-transform: uppercase;
- }
- 
- .skills-table tbody tr th:nth-child(1), .skills-table tbody tr td:nth-child(1) {
-     text-align: left;
- }
- 
- .skills-table tbody tr th:nth-child(1) span {
-     margin-left: 1em;
- }
- 
- .skills-table thead tr th {
-     background-color: black;
-     color: white;
-     height: 32px;
- }
- 
- .skills-table thead tr th, .skills-table tbody tr th {
-     border-width: 1px;
-     border-color: black;
-     border-style: solid;
- }
- 
- .skills-table tbody tr:nth-child(1) th {
-     line-height: 7px;
- }
- 
- .skills-table tbody tr:nth-child(1) span {
-     text-transform: uppercase;
-     font-size: 50%;
- }
- 
- .skills-table tbody tr:nth-child(1) th:nth-last-child(1), .skills-table tbody tr:nth-child(1) th:nth-last-child(2), .skills-table tbody tr:nth-child(1) th:nth-last-child(3), .skills-table tbody tr:nth-child(1) th:nth-last-child(4), .skills-table tbody tr:nth-child(1) th:nth-last-child(5) {
-     width: 10%;
- }
- 
- .skill-key-ability {
-     text-transform: uppercase;
- }
- 
- .skill-modifier-input {
-     width: 80%
- }
- 
- .skill-under-input {
-     width: 80%;
-     border-width: 0 0 1px 0;
-     border-color: black;
- }
- 
- .class-skill-input {
-     width: 6%;
-     display: inline-block;
-     vertical-align: middle;
-     margin-left: 5px;
- }
- 
- .untrained-skill::after {
-     content: '';
-     display: inline-block;
-     width: 8px;
-     height: 8px;
-     margin-left: 4px;
-     border: 1px solid rgba(0, 0, 0, .2);
-     background-color: black;
-     vertical-align: middle;
- }
- 
- .armor-check-penalty::after {
-     content: '*';
- }
- 
- .skill-subvalue {
-     width: 44%;
-     font-size: 12px;
-     text-align: center;
-     border-width: 0 0 1px 0;
-     border-color: black;
- }
- 
- @media screen and (min-width:360px) and (max-width:567px) {
-     .skill-subvalue {
-         width: 38%;
-     }
- }
- /* Skill Caption */
- 
- .caption-container span {
-     text-align: center;
-     display: block;
-     font-style: italic;
-     font-size: 75%;
- }
+body span {
+    font-size: 12px;
+}
+
+.table {
+    margin-bottom: 15px;
+}
+
+.table thead th {
+    border-bottom: 0 !important;
+}
+
+.table tbody td, .table tfoot th {
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
+
+.table thead th, .table tbody th {
+    line-height: 15px !important;
+    vertical-align: middle !important;
+}
+
+.table thead th, .table tbody th, .table tbody td, .table tfoot th {
+    text-align: center;
+}
+
+.table tbody th {
+    background-color: #000000;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.table tbody th span {
+    display: block;
+}
+
+.table tbody th small {
+    font-size: 60%;
+}
+
+.attribute-field {
+    width: 42px;
+    height: 33px;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[readonly] {
+    background-color: #ccc;
+}
+
+.attention {
+    background-color: yellow;
+}
+
+textarea {
+    resize: none;
+}
+
+
+/* Don't allow elements go outside of its boundries */
+
+html {
+    box-sizing: border-box;
+}
+
+html, button, input, select, textarea, .pure-g [class *="pure-u"] {
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+.pure-g>div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* General */
+
+.padding-left {
+    padding: 0 0 0 1em;
+    width: 100%;
+}
+
+.padding-box {
+    padding: 0 1em;
+    width: 100%;
+}
+
+.black-box {
+    background-color: black;
+    color: white;
+}
+
+input[type="number"] {
+    text-align: center;
+}
+
+
+/* Main Container */
+
+.main-container {
+    min-width: 360px;
+    max-width: 1024px;
+    margin: 0 auto;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .main-container {
+        max-width: 768px;
+    }
+}
+
+@media screen and (min-width:568px) and (max-width:767px) {
+    .main-container {
+        max-width: 568px;
+    }
+}
+
+@media screen and (max-width:567px) {
+    .main-container {
+        min-width: 378px;
+        max-width: 360px;
+    }
+}
+
+
+/* Description Container */
+
+.description-container {
+    margin-bottom: 10px;
+}
+
+
+/* Description */
+
+.description-span {
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.description-field {
+    width: 100%;
+    border-width: 0 0 1px 0;
+    border-color: black;
+}
+
+
+/* Ability Score Container */
+
+.ability-container {
+    padding: 0 0 0 1em;
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .ability-container {
+        padding: 0 1em;
+    }
+}
+
+
+/* Ability Score Table */
+
+.ability-table {
+    width: 100%;
+}
+
+.ability-table thead th {
+    width: 20%;
+    text-align: center;
+    line-height: 10px;
+}
+
+.ability-table tbody th, .ability-table tbody td {
+    width: 20%;
+    text-align: center;
+}
+
+.ability-table tbody th {
+    border-bottom-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.ability-table tbody td:nth-child(4), .ability-table tbody td:nth-child(5) {
+    background-color: #ccc;
+}
+
+.ability-score-abbreviation {
+    text-transform: uppercase;
+    font-size: 120%;
+    display: block;
+}
+
+.ability-score-name {
+    text-transform: uppercase;
+    font-size: 50%;
+    display: block;
+}
+
+.ability-score-description {
+    text-transform: uppercase;
+    font-size: 60%;
+}
+
+.ability-score-field {
+    width: 50%;
+}
+
+
+/* First Gutter */
+
+.first-gutter {
+    height: 26px;
+}
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .first-gutter {
+        height: 10px;
+    }
+}
+
+
+/* Health Table */
+
+.health-table {
+    width: 100%;
+}
+
+.health-table tbody td {
+    border-bottom-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.health-table tbody th, .health-table tbody td {
+    width: 20%;
+    text-align: center;
+}
+
+.health-table thead th:nth-child(1), .health-table tbody th:nth-child(1) {
+    width: 10%;
+}
+
+.health-table thead th:nth-child(2), .health-table tbody td:nth-child(2) {
+    width: 5%;
+}
+
+@media screen and (max-width:1023px) {
+    .health-table thead th:nth-child(1), .health-table tbody th:nth-child(1) {
+        width: 20%;
+    }
+    .health-table thead th:nth-child(2), .health-table tbody td:nth-child(2) {
+        width: 20%;
+    }
+}
+
+.health-points-abbreviation {
+    text-transform: uppercase;
+    font-size: 120%;
+    display: block;
+    font-weight: bold;
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .health-points-abbreviation {
+        font-size: 100%;
+    }
+}
+
+.health-points-description {
+    text-transform: uppercase;
+    font-size: 50%;
+    display: block;
+}
+
+.health-table thead th {
+    width: 20%;
+    text-align: center;
+    line-height: 10px;
+}
+
+.health-point-block {
+    display: inline-block;
+}
+
+.health-points-field {
+    width: 36px
+}
+
+.wounds-field {
+    width: 100%;
+}
+
+.speed-field {
+    width: 100%;
+}
+
+
+/* Wounds Table */
+
+.wounds-table {
+    width: 100%;
+    border-bottom: solid 1px white;
+}
+
+
+/* Nonlethal Table */
+
+.nonlethal-table {
+    width: 100%;
+}
+
+.non-lethal-field {
+    width: 80%;
+}
+
+
+/* Speed Table */
+
+.speed-table {
+    width: 100%;
+}
+
+
+/* Armor Container */
+
+.armor-container {
+    margin-bottom: 10px;
+}
+
+
+/* Armor Table */
+
+.armor-table {
+    width: 100%;
+}
+
+.armor-table tbody td {
+    border-bottom-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.armor-table tbody th, .armor-table tbody td {
+    text-align: center;
+}
+
+.armor-base-value {
+    font-size: 120%;
+    font-weight: bolder;
+}
+
+.armor-description {
+    text-transform: uppercase;
+    font-size: 60%;
+}
+
+.armor-table tfoot th {
+    line-height: 7px;
+}
+
+.armor-class-abbreviation {
+    text-transform: uppercase;
+    font-size: 120%;
+    display: block;
+}
+
+@media screen and (max-width:1023px) {
+    .armor-table tbody tr {
+        border-bottom: solid 2px white;
+    }
+    .armor-table tbody td {
+        width: 12.5%;
+    }
+    .total-health-points-field {
+        width: 50%;
+    }
+    .armor-base-value {
+        width: 45%;
+        display: inline-block;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .armor-table thead th:nth-child(1), .armor-table tbody th:nth-child(1) {
+        width: 11.6%;
+    }
+    .armor-table thead td:nth-child(2), .armor-table tbody td:nth-child(2) {
+        width: 6.5%;
+    }
+    .armor-class-description {
+        text-transform: uppercase;
+        font-size: 50%;
+        display: block;
+    }
+    .damage-reduction-field {
+        width: 100%;
+    }
+}
+
+
+/* Touch-Flat Container */
+
+.touch-flat-container>div {
+    display: inline-block;
+}
+
+.touch-flat-container>div:nth-child(1) {
+    width: 18%;
+}
+
+.touch-flat-container-mobile>div {
+    width: 49%;
+    display: inline-block;
+}
+
+
+/* Touch Table*/
+
+.touch-table {
+    width: 100%
+}
+
+.touch-table tbody th, .touch-table tbody td {
+    text-align: center;
+}
+
+.touch-table thead th:nth-child(1), .touch-table tbody th:nth-child(1) {
+    width: 65%;
+}
+
+.touch-table thead td:nth-child(2), .touch-table tbody td:nth-child(2) {
+    width: 35%;
+}
+
+
+/* Flat Table */
+
+.flat-table {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* Initiative Container */
+
+.initiative-container {
+    margin-bottom: 10px;
+}
+
+
+/* Initiative Table */
+
+.initiative-table {
+    width: 100%;
+    text-align: center;
+}
+
+.initiative-table tfoot th {
+    line-height: 7px;
+}
+
+
+/* Saving Throw Container  */
+
+.saving-throw-container {
+    margin-bottom: 10px;
+}
+
+
+/* Saving Throw Title */
+
+.saving-throw-title {
+    text-align: center;
+}
+
+.saving-throw-title span {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+
+/* Saving Throw Table */
+
+.saving-throw-table, .saving-throw-table-mobile {
+    width: 100%;
+    text-align: center;
+}
+
+.saving-throw-table tbody th {
+    border-bottom-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.saving-throw-table tbody th:nth-child(1) {
+    width: 20%
+}
+
+.saving-throw-table tbody td:nth-child(2) {
+    width: 56%;
+}
+
+.saving-throw-table tbody td div, .saving-throw-table-mobile tbody tr:nth-child(2) td div {
+    display: inline-block;
+}
+
+.saving-throw-table tbody td label {
+    display: block;
+    margin-top: -25px;
+    text-transform: uppercase;
+    font-size: 50%;
+}
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .saving-throw-table tbody td label {
+        margin-top: -22px;
+    }
+}
+
+.saving-throw-table-mobile tbody td label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 50%;
+}
+
+.saving-throw-table tbody td input {
+    display: block;
+    width: 47px;
+    height: 33px;
+    text-align: center;
+}
+
+.saving-throw-table-mobile tbody td input {
+    display: block;
+    width: 40px;
+    height: 33px;
+    text-align: center;
+}
+
+.saving-throw-signs {
+    font-size: 14px;
+}
+
+
+/* Base Attack Bonus and Spell Resistance Container */
+
+.bab-resistance-container {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.bab-resistance-container>div {
+    display: inline-block;
+    width: 49.5%;
+}
+
+
+/* Basic Attack Bonus Table*/
+
+.bab-table {
+    width: 100%;
+    text-align: center;
+}
+
+.bab-table tbody th:nth-child(1) {
+    width: 60%;
+}
+
+
+/* Condition Modifier Container */
+
+.condition-modifier-container {
+    height: 90%;
+    text-align: center;
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .condition-modifier-container {
+        height: 120px;
+    }
+}
+
+
+/* Condition Modifier Area */
+
+.condition-modifier-area {
+    width: 100%;
+    height: 99%;
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .condition-modifier-area {
+        height: 85%;
+    }
+}
+
+
+/* Spell Resistance Table */
+
+.spell-resistance-table {
+    width: 100%;
+    text-align: center;
+}
+
+.spell-resistance-table tbody th:nth-child(1) {
+    width: 60%;
+}
+
+.bab-resistance-input {
+    width: 65%;
+}
+
+
+/* Grapple Container */
+
+.grapple-container {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 0 0 0 1em;
+}
+
+@media screen and (min-width:360px) and (max-width:1023px) {
+    .grapple-container {
+        padding: 0 1em;
+    }
+}
+
+
+/* Grapple Table */
+
+.grapple-table {
+    width: 100%;
+    text-align: center;
+}
+
+.grapple-table tbody th:nth-child(1) {
+    width: 30%
+}
+
+.grapple-table tbody td input {
+    display: inline-block;
+    width: 47px;
+    height: 33px;
+}
+
+@media screen and (min-width:360px) and (max-width:567px) {
+    .grapple-table tbody td input {
+        width: 35px;
+    }
+}
+
+.grapple-table tbody td div {
+    display: inline-block;
+}
+
+.grapple-table tfoot th {
+    line-height: 7px;
+}
+
+.grapple-table tfoot th span {
+    text-transform: uppercase;
+    font-size: 50%;
+}
+
+
+/* Attack(s) Container */
+
+.attacks-container {
+    padding: 0 0 0 1em;
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+@media screen and (min-width: 360px) and (max-width:568px) {
+    .attack-container {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width:1023px) {
+    .attacks-container {
+        margin-bottom: 10px;
+        padding: 0 1em;
+    }
+}
+
+
+/* Attack Table */
+
+.attack-table {
+    width: 100%;
+}
+
+.attack-table span, .attack-table-mobile span {
+    font-size: 70%;
+    text-transform: uppercase;
+    display: block;
+    font-weight: bold;
+}
+
+.attack-name {
+    font-size: 100% !important;
+}
+
+.attack-table thead th:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(1) div {
+    height: 20px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.attack-table thead th {
+    vertical-align: bottom;
+}
+
+.attack-input {
+    width: 100%;
+    text-align: center;
+}
+
+.attack-table tbody tr:nth-child(2) th:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(5) td:nth-child(1) div {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    float: left;
+}
+
+.attack-table tbody tr:nth-child(3) td:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(6) td:nth-child(1) div {
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+
+.attack-table tbody tr:nth-child(1) td input[type="text"], .attack-table tbody tr:nth-child(3) td input[type="text"], .attack-table-mobile tbody tr:nth-child(4) td input[type="text"], .attack-table-mobile tbody tr:nth-child(6) td input[type="text"], .attack-table-mobile tbody tr:nth-child(8) td input[type="text"], .attack-table-mobile tbody tr:nth-child(9) td input[type="text"], .attack-table-mobile tbody tr:nth-child(10) td input[type="text"] {
+    width: 100%;
+    text-align: center;
+}
+
+.attack-table tbody tr:nth-child(4) div {
+    display: inline-block;
+    width: 49.6%;
+}
+
+.attack-table tbody tr:nth-child(4) td label {
+    font-size: 70%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.attack-table tbody tr:nth-child(4) * {
+    vertical-align: middle;
+}
+
+.attack-table tbody tr:nth-child(4) input[type="text"], .attack-table-mobile tbody tr:nth-child(9) input[type="text"], .attack-table-mobile tbody tr:nth-child(10) input[type="text"] {
+    border-width: 0px 0px 1px 0px;
+    border-bottom-color: black;
+}
+
+
+/* Attack Table Mobile */
+
+.attack-table-mobile {
+    width: 100%;
+    text-align: center;
+}
+
+.ammunition-input {
+    width: 70%
+}
+
+.ammunition-notes-input {
+    width: 87%
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .ammunition-input {
+        width: 60%
+    }
+    .ammunition-notes-input {
+        width: 75%
+    }
+}
+
+
+/* Skills Table */
+
+.skills-container {
+    margin-bottom: 10px;
+    max-height: 964px;
+    overflow-y: auto;
+}
+
+@media screen and (min-width:360px) and (max-width:568px) {
+    .skills-container {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .skills-container {
+        margin-top: -340px;
+    }
+}
+
+.skills-table {
+    text-align: center;
+    width: 100%;
+}
+
+.skills-table tbody tr td span {
+    text-transform: uppercase;
+}
+
+.skills-table tbody tr th:nth-child(1), .skills-table tbody tr td:nth-child(1) {
+    text-align: left;
+}
+
+.skills-table tbody tr th:nth-child(1) span {
+    margin-left: 1em;
+}
+
+.skills-table thead tr th {
+    background-color: black;
+    color: white;
+    height: 32px;
+}
+
+.skills-table thead tr th, .skills-table tbody tr th {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+.skills-table tbody tr:nth-child(1) th {
+    line-height: 7px;
+}
+
+.skills-table tbody tr:nth-child(1) span {
+    text-transform: uppercase;
+    font-size: 50%;
+}
+
+.skills-table tbody tr:nth-child(1) th:nth-last-child(1), .skills-table tbody tr:nth-child(1) th:nth-last-child(2), .skills-table tbody tr:nth-child(1) th:nth-last-child(3), .skills-table tbody tr:nth-child(1) th:nth-last-child(4), .skills-table tbody tr:nth-child(1) th:nth-last-child(5) {
+    width: 10%;
+}
+
+.skill-key-ability {
+    text-transform: uppercase;
+}
+
+.skill-modifier-input {
+    width: 80%
+}
+
+.skill-under-input {
+    width: 80%;
+    border-width: 0 0 1px 0;
+    border-color: black;
+}
+
+.class-skill-input {
+    width: 6%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.untrained-skill::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    background-color: black;
+    vertical-align: middle;
+}
+
+.armor-check-penalty::after {
+    content: '*';
+}
+
+.skill-subvalue {
+    width: 44%;
+    font-size: 12px;
+    text-align: center;
+    border-width: 0 0 1px 0;
+    border-color: black;
+}
+
+@media screen and (min-width:360px) and (max-width:567px) {
+    .skill-subvalue {
+        width: 38%;
+    }
+}
+
+
+/* Skill Caption */
+
+.caption-container span {
+    text-align: center;
+    display: block;
+    font-style: italic;
+    font-size: 75%;
+}

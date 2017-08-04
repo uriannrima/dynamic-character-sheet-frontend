@@ -19,7 +19,9 @@ bower_components/
 /coverage/*
 /libpeerconnection.log
 /**/npm-debug.log
+/**/npm-debug.log.*
 /**/yarn-error.log
+/**/yarn-error.log.*
 testem.log
 /typings
 

@@ -11,21 +11,6 @@
             "args": [
                 "debug"
             ]
-        },
-        {
-            "name": "Nodemon Launch Server",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceRoot}/api",
-            "runtimeExecutable": "nodemon",
-            "runtimeArgs": [
-                "--debug=5858"
-            ],
-            "program": "${workspaceRoot}/api/server.js",
-            "restart": true,
-            "port": 5858,
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
         }
     ],
     "compounds": []

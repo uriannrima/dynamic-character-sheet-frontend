@@ -21,6 +21,6 @@ module.exports = function (app) {
             res.json(character);
         });
     }
-    app.controllers = app.controller || {};
-    app.controllers.characters = controller;
+    
+    app.createController('characters', controller);
 }

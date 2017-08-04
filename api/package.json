@@ -3,12 +3,13 @@
     "body-parser": "^1.17.2",
     "consign": "^0.1.6",
     "express": "^4.15.3",
-    "mongodb": "^2.2.29"
+    "mongodb": "^2.2.29",
+    "pm2": "^2.6.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js --debug=5858"
   }
 }

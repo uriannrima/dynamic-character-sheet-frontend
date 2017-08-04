@@ -11,6 +11,7 @@ module.exports = function (app) {
             MongoClient
                 .connect(this.connectionString + this.databaseName)
                 .then(database => {
+                    console.log('Connected to Mongolab.');
                     this.database = database;
                     callback();
                 })
@@ -20,6 +21,7 @@ module.exports = function (app) {
                     return MongoClient.connect(this.fallbackConnectionString + this.databaseName);
                 })
                 .then(database => {
+                    console.log('Connected to local database.');
                     this.database = database;
                     callback();
                 });
