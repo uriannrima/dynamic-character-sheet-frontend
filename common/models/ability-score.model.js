@@ -1,8 +1,8 @@
-var abilityScore = function ({ name, value, updateFn }) {
+var abilityScore = function ({ name, value, tempValue, updateFn }) {
     return {
         name,
         value: value || 10,
-        tempValue: value || 10,
+        tempValue: tempValue || value,
         getModifier: function () {
             return Math.floor((this.value - 10) / 2);
         },
@@ -33,11 +33,11 @@ var abilityScore = function ({ name, value, updateFn }) {
 exports.abilityScore = abilityScore;
 
 var factory = {
-    create: function ({ name, value }) {
+    create: function ({ name, value, tempValue }) {
         const template = factory.templates.filter(t => t.name === name)[0];
         return new abilityScore({
             name: template.name,
-            value,
+            value, tempValue,
             updateFn: template.updateFn
         });
     },

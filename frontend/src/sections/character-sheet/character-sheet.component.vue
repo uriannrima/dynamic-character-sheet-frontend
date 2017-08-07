@@ -811,7 +811,7 @@ export default {
                 </div>
                 <div class="pure-u-1 pure-u-md-1-5 pure-u-lg-3-24 condition-modifier-container">
                     <label style="display: block; font-size: 60%;">Condition Modifier</label>
-                    <textarea class="condition-modifier-area" v-model="character.conditionModifier">
+                    <textarea class="condition-modifier-area text-area-rules" v-model="character.conditionModifier">
                     </textarea>
                 </div>
             </div>
