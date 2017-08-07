@@ -95,6 +95,11 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     width: 100%;
 }
 
+.small-padding-box {
+    padding: 0 0.2em;
+    width: 100%;
+}
+
 .padding-box {
     padding: 0 1em;
     width: 100%;
@@ -145,6 +150,18 @@ input[type="number"] {
 
 .description-container {
     margin-bottom: 10px;
+}
+
+.first-description-container {
+    padding: 0 0 0 1em;
+    width: 100%;
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .first-description-container {
+        padding: 0 1em;
+        width: 100%;
+    }
 }
 
 

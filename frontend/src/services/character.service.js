@@ -12,12 +12,12 @@ export default {
     charactersOffline: {
 
     },
-    apiUrl: 'http://localhost:3003/',
+    apiUrl: 'http://localhost:5000/api',
     new: function () {
         return new characterModel({});
     },
     get: function (id) {
-        return axios.get('http://localhost:3003/characters/' + id).then(response => {
+        return axios.get(this.apiUrl + '/characters/' + id).then(response => {
             return new characterModel(response.data);
         }, reason => {
             return this.charactersOffline[_id];
@@ -25,13 +25,13 @@ export default {
     },
     saveOrUpdate: function (character) {
         if (character._id) {
-            return axios.put('http://localhost:3003/characters', { character }).then(response => {
+            return axios.put(this.apiUrl + '/characters', { character }).then(response => {
                 return response.data;
             }, reason => {
                 return this.charactersOffline[character._id] = character;
             });
         } else {
-            return axios.post('http://localhost:3003/characters', { character }).then(response => {
+            return axios.post(this.apiUrl + '/characters', { character }).then(response => {
                 return response.data;
             }, reason => {
                 character._id = generateGuid();

@@ -4,9 +4,9 @@ module.exports = function character({
     _id, name, playerName,
     race, alignment, deity,
     size, age, gender, height,
-    weight, eyes, hair, skin,
-    classes, abilityScores,
-    status, armorClass, initiative,
+    weight, eyes, hair, skin, speed,
+    damageReduction, classes, abilityScores,
+    status, armorClass, initiative, conditionModifier,
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
     attacks }) {
@@ -16,7 +16,9 @@ module.exports = function character({
         race, alignment, deity,
         size, age, gender,
         height, weight, eyes,
-        hair, skin,
+        hair, skin, speed,
+        damageReduction,
+        conditionModifier,
         classes: classes || [
             new Models.classe({})
         ],

@@ -1,119 +1,187 @@
 <script>
 
 import CharacterService from 'Services/character.service';
+import SizeService from 'Services/size.service';
+import RaceService from 'Services/race.service';
+import AlignmentService from 'Services/alignment.service';
 
 export default {
     data: function () {
         return {
-            character: CharacterService.new()
+            character: CharacterService.new(),
+            allSizes: SizeService.getAll(),
+            allRaces: RaceService.getAll(),
+            allAlignments: AlignmentService.getAll()
         };
     },
     computed: {
-        classLevel: {
+        classesCombined: {
             get: function () {
-
+                return this.character.classes.map(classe => {
+                    if (!classe.name || !classe.level) return "";
+                    return classe.name + " (" + classe.level + ")";
+                });
             },
-            set: function () {
+            set: function (newValue) {
+                this.character.classes = [];
+                const fieldValues = newValue.split(',');
+                fieldValues.forEach(fieldValue => {
+                    // If empty character
+                    if (fieldValue.trim() === '') return;
 
+                    // Clear whitespaces
+                    var classLevel = fieldValue.replace(/ /g, '');
+
+                    // Regex to get level
+                    var levelRegex = /\(([^)]+)\)/;
+
+                    // Get level data, 
+                    var levelData = levelRegex.exec(classLevel);
+                    // Extract level from data
+                    var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+
+                    // Remove level from field.
+                    var classOnly = classLevel.replace(levelRegex, '');
+                    this.character.classes.push({
+                        name: classOnly,
+                        level: level
+                    });
+                });
             }
+        }
+    },
+    methods: {
+        saveOrUpdate: function () {
+            CharacterService.saveOrUpdate(this.character).then(data => {
+                this.character._id = data._id;
+            });
+        }
+    },
+    beforeRouteEnter(to, from, next) {
+        if (to.params.id) {
+            CharacterService.get(to.params.id).then(character => {
+                next(vm => {
+                    vm.character = character;
+                });
+            });
+        } else {
+            next(vm => {
+                vm.character = CharacterService.new();
+            });
         }
     }
 };
 </script>
 <template>
     <div class="main-container">
+        <div class="controls-container">
+            <button @click="saveOrUpdate">Salvar</button>
+        </div>
         <div class="pure-g">
             <div class="description-container">
                 <div class="pure-u-md-1-1 hidden-lg-up">
                     <img src="assets/images/dnd-logo.png" alt="" width="100%" height="100%">
                 </div>
                 <div class="pure-u-md-1-2 pure-u-lg-1-3">
-                    <div class="pure-g">
+                    <div class="pure-g first-description-container">
                         <div class="pure-u-1-1">
-                            <div class="padding-box">
+                            <div class="small-padding-box">
                                 <input type="text" class="description-field" v-model="character.name">
                                 <span class="description-span">Character Name</span>
                             </div>
                         </div>
                         <div class="pure-u-1-1">
-                            <div class="padding-box">
-                                <input type="text" class="description-field" :classLevel="c">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model.lazy="classesCombined">
                                 <span class="description-span">Class And Level</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <select class="description-field" v-model="character.size">
+                                    <option disabled value="">None</option>
+                                    <option v-for="(size, index) in allSizes" :key="index">{{size.name}}</option>
+                                </select>
                                 <span class="description-span">Size</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.age">
                                 <span class="description-span">Age</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <select class="description-field" v-model="character.gender">
+                                    <option disabled value="">None</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
                                 <span class="description-span">Gender</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.height">
                                 <span class="description-span">Height</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="pure-u-md-1-2 pure-u-lg-1-3">
-                    <div class="pure-g">
+                    <div class="pure-g padding-box">
                         <div class="pure-u-1-1">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.playerName">
                                 <span class="description-span">Player Name</span>
                             </div>
                         </div>
                         <div class="pure-u-1-3">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <select class="description-field" v-model="character.race">
+                                    <option disabled value="">None</option>
+                                    <option v-for="(race, index) in allRaces" :key="index">{{race}}</option>
+                                </select>
                                 <span class="description-span">Race</span>
                             </div>
                         </div>
                         <div class="pure-u-1-3">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <select class="description-field" v-model="character.alignment">
+                                    <option disabled value="">None</option>
+                                    <option v-for="(alignment, index) in allAlignments" :key="index">{{alignment}}</option>
+                                </select>
                                 <span class="description-span">Alignment</span>
                             </div>
                         </div>
                         <div class="pure-u-1-3">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.deity">
                                 <span class="description-span">Deity</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.weight">
                                 <span class="description-span">Weight</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.eyes">
                                 <span class="description-span">Eyes</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.hair">
                                 <span class="description-span">Hair</span>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
-                            <div class="padding-box">
-                                <input type="text" class="description-field">
+                            <div class="small-padding-box">
+                                <input type="text" class="description-field" v-model="character.skin">
                                 <span class="description-span">Skin</span>
                             </div>
                         </div>
@@ -159,22 +227,22 @@ export default {
                                 </th>
                                 <td>
                                     <div>
-                                        <input type="number" value="10" class="ability-score-field">
+                                        <input type="number" value="10" class="ability-score-field" v-model.number="abilityScore.value">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="number" value="0" class="ability-score-field">
+                                        <input type="number" value="0" class="ability-score-field" readonly :value="abilityScore.getModifier()">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="number" value="10" class="ability-score-field">
+                                        <input type="number" value="10" class="ability-score-field" v-model.number="abilityScore.tempValue">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="number" value="0" class="ability-score-field">
+                                        <input type="number" value="0" class="ability-score-field" readonly :value="abilityScore.getTempModifier()">
                                     </div>
                                 </td>
                             </tr>
@@ -218,22 +286,22 @@ export default {
                                 </th>
                                 <td>
                                     <div>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.status.healthPoints">
                                     </div>
                                 </td>
                                 <td style="width: 30%">
                                     <div>
-                                        <input type="text" class="wounds-field">
+                                        <input type="text" class="wounds-field" v-model="character.status.wounds">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="text" class="non-lethal-field">
+                                        <input type="number" value="0" class="non-lethal-field" v-model.number="character.status.nonLethalDamage">
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="text" class="speed-field">
+                                        <input type="text" class="speed-field" v-model="character.speed">
                                     </div>
                                 </td>
                             </tr>
@@ -248,7 +316,7 @@ export default {
                                 </div>
                             </th>
                             <td style="text-align: center;">
-                                <input type="number" value="0" style="width: 50%">
+                                <input type="number" value="0" style="width: 50%" v-model.number="character.status.healthPoints">
                             </td>
                         </tbody>
                     </table>
@@ -261,7 +329,7 @@ export default {
                                 </div>
                             </th>
                             <td style="text-align: center;">
-                                <input type="text" style="width: 50%">
+                                <input type="text" style="width: 50%" v-model="character.status.wounds">
                             </td>
                         </tbody>
                     </table>
@@ -274,7 +342,7 @@ export default {
                                 </div>
                             </th>
                             <td style="text-align: center;">
-                                <input type="text" style="width: 50%">
+                                <input type="number" value="0" style="width: 50%" v-model.number="character.status.nonLethalDamage">
                             </td>
                         </tbody>
                     </table>
@@ -286,7 +354,7 @@ export default {
                                 </div>
                             </th>
                             <td style="text-align: center;">
-                                <input type="text" style="width: 50%">
+                                <input type="text" style="width: 50%" v-model="character.speed">
                             </td>
                         </tbody>
                     </table>
@@ -301,34 +369,34 @@ export default {
                                     </div>
                                 </th>
                                 <td>
-                                    <input type="number" value="10" class="health-points-field">
+                                    <input type="number" value="10" class="health-points-field" readonly :value="character.armorClass.getTotalArmor()">
                                 </td>
                                 <td>
                                     <span class="armor-base-value">= 10 +</span>
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.armorBonus">
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.shieldBonus">
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.dexModifier">
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.sizeModifier">
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.naturalArmor">
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.deflectionModifier">
                                 </td>
                                 <td>
-                                    <input type="number" value="0" class="health-points-field">
+                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.miscModifier">
                                 </td>
                                 <td style="width:15%">
-                                    <input type="text" class="damage-reduction-field">
+                                    <input type="text" class="damage-reduction-field" v-model="character.damageReduction">
                                 </td>
                             </tr>
                         </tbody>
@@ -388,31 +456,31 @@ export default {
                                             <span class="health-points-description">Armor Class</span>
                                         </div>
                                         <div style="vertical-align: middle; width:50%; float:right; margin-top: 4px;">
-                                            <input type="number" value="10" class="health-points-field total-health-points-field">
+                                            <input type="number" value="10" class="health-points-field total-health-points-field" readonly :value="character.armorClass.getTotalArmor()">
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.armorBonus">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.shieldBonus">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.dexModifier">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.sizeModifier">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.naturalArmor">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.deflectionModifier">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.miscModifier">
                                     </td>
                                 </tr>
                             </tbody>
@@ -466,7 +534,7 @@ export default {
                                                 </th>
                                                 <td>
                                                     <div>
-                                                        <input type="number" value="0" class="health-points-field">
+                                                        <input type="number" value="0" class="health-points-field" readonly :value="character.armorClass.getTouchArmor()">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -484,7 +552,7 @@ export default {
                                             </th>
                                             <td>
                                                 <div>
-                                                    <input type="number" value="0" class="health-points-field">
+                                                    <input type="number" value="0" class="health-points-field" readonly :value="character.armorClass.getFlatFooted()">
                                                 </div>
                                             </td>
                                         </tbody>
@@ -504,13 +572,13 @@ export default {
                                         </div>
                                     </th>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" readonly :value="character.initiative.getTotal()">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.initiative.dexModifier">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.initiative.miscModifier">
                                     </td>
                                 </tr>
                             </tbody>
@@ -551,7 +619,7 @@ export default {
                                         </th>
                                         <td>
                                             <div>
-                                                <input type="number" value="0" class="health-points-field">
+                                                <input type="number" value="0" class="health-points-field" readonly :value="character.armorClass.getTouchArmor()">
                                             </div>
                                         </td>
                                     </tr>
@@ -569,7 +637,7 @@ export default {
                                     </th>
                                     <td>
                                         <div>
-                                            <input type="number" value="0" class="health-points-field">
+                                            <input type="number" value="0" class="health-points-field" readonly :value="character.armorClass.getFlatFooted()">
                                         </div>
                                     </td>
                                 </tbody>
@@ -590,13 +658,13 @@ export default {
                                         </div>
                                     </th>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" readonly :value="character.initiative.getTotal()">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.initiative.dexModifier">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="health-points-field">
+                                        <input type="number" value="0" class="health-points-field" v-model.number="character.initiative.miscModifier">
                                     </td>
                                 </tr>
                             </tbody>
@@ -645,37 +713,37 @@ export default {
                                 <td>
                                     <div>
                                         <label v-if="index == 0" for="">Total</label>
-                                        <input type="number" value="0">
+                                        <input type="number" value="0" readonly :value="savingThrow.getTotal()">
                                     </div>
                                     <span class="saving-throw-signs">=</span>
                                     <div>
                                         <label v-if="index == 0" for="">Base
                                             <br>Save</label>
-                                        <input type="number" value="0">
+                                        <input type="number" value="0" v-model.number="savingThrow.base">
                                     </div>
                                     <span class="saving-throw-signs">+</span>
                                     <div>
                                         <label v-if="index == 0" for="">Ability
                                             <br>Modifier</label>
-                                        <input type="number" value="0">
+                                        <input type="number" value="0" v-model.number="savingThrow.abilityModifier">
                                     </div>
                                     <span class="saving-throw-signs">+</span>
                                     <div>
                                         <label v-if="index == 0" for="">Magic
                                             <br>Modifier</label>
-                                        <input type="number" value="0">
+                                        <input type="number" value="0" v-model.number="savingThrow.magicModifier">
                                     </div>
                                     <span class="saving-throw-signs">+</span>
                                     <div>
                                         <label v-if="index == 0" for="">Misc
                                             <br>Modifier</label>
-                                        <input type="number" value="0">
+                                        <input type="number" value="0" v-model.number="savingThrow.miscModifier">
                                     </div>
                                     <span class="saving-throw-signs">+</span>
                                     <div>
                                         <label v-if="index == 0" for="">Temporary
                                             <br>Modifier</label>
-                                        <input type="number" value="0">
+                                        <input type="number" value="0" v-model.number="savingThrow.tempModifier">
                                     </div>
                                 </td>
                             </tr>
@@ -702,37 +770,37 @@ export default {
                                         <td>
                                             <div>
                                                 <label for="">Total</label>
-                                                <input type="number" value="0">
+                                                <input type="number" value="0" readonly :value="savingThrow.getTotal()">
                                             </div>
                                             <span class="saving-throw-signs">=</span>
                                             <div>
                                                 <label for="">Base
                                                     <br>Save</label>
-                                                <input type="number" value="0">
+                                                <input type="number" value="0" v-model.number="savingThrow.base">
                                             </div>
                                             <span class="saving-throw-signs">+</span>
                                             <div>
                                                 <label for="">Ability
                                                     <br>Modifier</label>
-                                                <input type="number" value="0">
+                                                <input type="number" value="0" v-model.number="savingThrow.abilityModifier">
                                             </div>
                                             <span class="saving-throw-signs">+</span>
                                             <div>
                                                 <label for="">Magic
                                                     <br>Modifier</label>
-                                                <input type="number" value="0">
+                                                <input type="number" value="0" v-model.number="savingThrow.magicModifier">
                                             </div>
                                             <span class="saving-throw-signs">+</span>
                                             <div>
                                                 <label for="">Misc
                                                     <br>Modifier</label>
-                                                <input type="number" value="0">
+                                                <input type="number" value="0" v-model.number="savingThrow.miscModifier">
                                             </div>
                                             <span class="saving-throw-signs">+</span>
                                             <div>
                                                 <label for="">Temporary
                                                     <br>Modifier</label>
-                                                <input type="number" value="0">
+                                                <input type="number" value="0" v-model.number="savingThrow.tempModifier">
                                             </div>
                                         </td>
                                     </tr>
@@ -743,7 +811,7 @@ export default {
                 </div>
                 <div class="pure-u-1 pure-u-md-1-5 pure-u-lg-3-24 condition-modifier-container">
                     <label style="display: block; font-size: 60%;">Condition Modifier</label>
-                    <textarea class="condition-modifier-area">
+                    <textarea class="condition-modifier-area" v-model="character.conditionModifier">
                     </textarea>
                 </div>
             </div>
@@ -760,7 +828,7 @@ export default {
                                             </div>
                                         </th>
                                         <td>
-                                            <input type="text" class="bab-resistance-input">
+                                            <input type="text" class="bab-resistance-input" v-model="character.baseAttackBonus">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -776,7 +844,7 @@ export default {
                                             </div>
                                         </th>
                                         <td>
-                                            <input type="text" class="bab-resistance-input">
+                                            <input type="text" class="bab-resistance-input" v-model="character.spellResistance">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -796,19 +864,19 @@ export default {
                                 </div>
                             </th>
                             <td>
-                                <input type="number" value="0">
+                                <input type="number" value="0" readonly :value="character.grapple.getTotal()">
                             </td>
                             <td>
-                                <input type="number" value="0">
+                                <input type="number" value="0" v-model.number="character.grapple.baseAttackBonus">
                             </td>
                             <td>
-                                <input type="number" value="0">
+                                <input type="number" value="0" v-model.number="character.grapple.strengthModifier">
                             </td>
                             <td>
-                                <input type="number" value="0">
+                                <input type="number" value="0" v-model.number="character.grapple.sizeModifier">
                             </td>
                             <td>
-                                <input type="number" value="0">
+                                <input type="number" value="0" v-model.number="character.grapple.miscModifier">
                             </td>
                         </tbody>
                         <tfoot>
@@ -869,16 +937,16 @@ export default {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.name">
                                     </td>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.attackBonus">
                                     </td>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.damage">
                                     </td>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.critical">
                                     </td>
                                 </tr>
                                 <tr>
@@ -899,14 +967,14 @@ export default {
                                 <tr>
                                     <td>
                                         <div>
-                                            <input type="text">
+                                            <input type="text" v-model="attack.range">
                                         </div>
                                         <div>
-                                            <input type="text">
+                                            <input type="text" v-model="attack.type">
                                         </div>
                                     </td>
                                     <td colspan="3">
-                                        <input type="text">
+                                        <input type="text" v-model="attack.notes">
                                     </td>
                                 </tr>
                                 <tr>
@@ -914,11 +982,11 @@ export default {
                                         <div>
                                             <input type="checkbox">
                                             <label>Ammunition:</label>
-                                            <input type="text" class="ammunition-input">
+                                            <input type="text" class="ammunition-input" v-model="attack.ammunition.name">
                                         </div>
                                         <div>
                                             <label>Notes:</label>
-                                            <input type="text" class="ammunition-notes-input">
+                                            <input type="text" class="ammunition-notes-input" v-model="attack.ammunition.notes">
                                         </div>
                                     </td>
                                 </tr>
@@ -940,7 +1008,7 @@ export default {
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.name">
                                     </td>
                                 </tr>
                                 <tr>
@@ -962,13 +1030,13 @@ export default {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.attackBonus">
                                     </td>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.damage">
                                     </td>
                                     <td>
-                                        <input type="text" class="attack-input">
+                                        <input type="text" class="attack-input" v-model="attack.critical">
                                     </td>
                                 </tr>
                                 <tr>
@@ -984,10 +1052,10 @@ export default {
                                 <tr>
                                     <td colspan="3">
                                         <div>
-                                            <input type="text">
+                                            <input type="text" v-model="attack.range">
                                         </div>
                                         <div>
-                                            <input type="text">
+                                            <input type="text" v-model="attack.type">
                                         </div>
                                     </td>
                                 </tr>
@@ -1001,7 +1069,7 @@ export default {
                                 <tr>
                                     <td colspan="3">
                                         <div>
-                                            <input type="text">
+                                            <input type="text" v-model="attack.notes">
                                         </div>
                                     </td>
                                 </tr>
@@ -1010,7 +1078,7 @@ export default {
                                         <div>
                                             <input type="checkbox">
                                             <label>Ammunition:</label>
-                                            <input type="text" class="ammunition-input">
+                                            <input type="text" class="ammunition-input" v-model="attack.ammunition.name">
                                         </div>
                                     </td>
                                 </tr>
@@ -1018,7 +1086,7 @@ export default {
                                     <td colspan="3">
                                         <div>
                                             <label>Notes:</label>
-                                            <input type="text" class="ammunition-notes-input">
+                                            <input type="text" class="ammunition-notes-input" v-model="attack.ammunition.notes">
                                         </div>
                                     </td>
                                 </tr>
@@ -1065,27 +1133,26 @@ export default {
                                 </tr>
                                 <tr v-for="(skill, index) in character.skills" :key="index">
                                     <td>
-                                        <input type="checkbox" class="class-skill-input">
+                                        <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
                                         <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
-                                        <div v-if="skill.subValue" style="display: inline;">
-                                            (
-                                            <input type="text" class="skill-subvalue">)
+                                        <div v-if="skill.hasSubValue" style="display: inline;">
+                                            (<input type="text" class="skill-subvalue" v-model="skill.subValue">)
                                         </div>
                                     </td>
                                     <td>
                                         <span class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substr(0,3)}}</span>
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="skill-modifier-input">
+                                        <input type="number" value="0" class="skill-modifier-input" readonly :value="skill.getTotal()">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="skill-under-input">
+                                        <input type="number" value="0" class="skill-under-input" v-model.number="skill.abilityModifier">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="skill-under-input">
+                                        <input type="number" value="0" class="skill-under-input" v-model.number="skill.rank">
                                     </td>
                                     <td>
-                                        <input type="number" value="0" class="skill-under-input">
+                                        <input type="number" value="0" class="skill-under-input" v-model.number="skill.miscModifier">
                                     </td>
                                 </tr>
                             </tbody>
