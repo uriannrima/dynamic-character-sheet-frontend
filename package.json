@@ -1,0 +1,14 @@
+{
+    "name": "dynamic-character-sheet-frontend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "server": "cd server && npm run dev",
+        "frontend": "cd frontend && npm run dev",
+        "dev": "npm-run-all --parallel server frontend"
+    },
+    "dependencies": {
+        "npm-run-all": "^4.0.2"
+    }
+}

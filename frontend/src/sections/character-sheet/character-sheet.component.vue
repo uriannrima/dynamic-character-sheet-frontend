@@ -5,8 +5,18 @@ import CharacterService from 'Services/character.service';
 export default {
     data: function () {
         return {
-            character : CharacterService.new()
+            character: CharacterService.new()
         };
+    },
+    computed: {
+        classLevel: {
+            get: function () {
+
+            },
+            set: function () {
+
+            }
+        }
     }
 };
 </script>
@@ -21,13 +31,13 @@ export default {
                     <div class="pure-g">
                         <div class="pure-u-1-1">
                             <div class="padding-box">
-                                <input type="text" class="description-field">
+                                <input type="text" class="description-field" v-model="character.name">
                                 <span class="description-span">Character Name</span>
                             </div>
                         </div>
                         <div class="pure-u-1-1">
                             <div class="padding-box">
-                                <input type="text" class="description-field">
+                                <input type="text" class="description-field" :classLevel="c">
                                 <span class="description-span">Class And Level</span>
                             </div>
                         </div>
@@ -1058,7 +1068,8 @@ export default {
                                         <input type="checkbox" class="class-skill-input">
                                         <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
                                         <div v-if="skill.subValue" style="display: inline;">
-                                            (<input type="text" class="skill-subvalue">)
+                                            (
+                                            <input type="text" class="skill-subvalue">)
                                         </div>
                                     </td>
                                     <td>

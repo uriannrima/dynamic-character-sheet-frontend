@@ -7,7 +7,7 @@ module.exports = function (app) {
             'content-type': 'text/html; charset=utf-8'
         };
 
-        res.status(200).set(contentType).sendfile('index.html');
+        res.status(200).set(contentType).sendFile('index.html');
     };
 
     app.createController('home', controller);

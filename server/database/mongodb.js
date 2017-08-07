@@ -18,17 +18,14 @@ module.exports = function (app) {
                 .catch(error => {
                     console.info("Error while trying to connect to Mongolab");
                     console.info("Trying to connect to local database.");
-                    return MongoClient.connect(this.fallbackConnectionString + this.databaseName);
-                })
-                .then(database => {
-                    console.log('Connected to local database.');
-                    this.database = database;
-                    callback();
+                    return MongoClient.connect(this.fallbackConnectionString + this.databaseName).then(database => {
+                        console.log('Connected to local database.');
+                        this.database = database;
+                        callback();
+                    });
                 });
         }
     };
 
     app.mongodb = mongodb;
-
-    return mongodb;
 }

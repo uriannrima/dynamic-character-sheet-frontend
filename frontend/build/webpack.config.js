@@ -7,7 +7,7 @@ module.exports = {
     devtool: "#cheap-module-source-map",
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, '../../public'),
         devtoolModuleFilenameTemplate: info => {
             if (info.resource.match(/\.vue$/)) {
                 $filename = info.allLoaders.match(/type=script/)
@@ -42,7 +42,7 @@ module.exports = {
         extensions: ['*', '.js', '.html', '.css', '.vue'],
         alias: {
             'Services': path.resolve(__dirname, '../src/services/'),
-            'Models': path.resolve(__dirname, '../../api/models/'),
+            'Models': path.resolve(__dirname, '../../common/models/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),
             'vue$': 'vue/dist/vue.js',
             'bootstrap$': 'bootstrap/dist/css/bootstrap.css'

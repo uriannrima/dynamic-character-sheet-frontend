@@ -1,5 +1,6 @@
+const path = require('path');
 var ObjectId = require('mongodb').ObjectID;
-var character = require('../models/character.model');
+var character = require('models/character.model');
 
 module.exports = function (app) {
     var service = {};
@@ -20,6 +21,5 @@ module.exports = function (app) {
         });
     };
 
-    app.services = app.services || {};
-    app.services.characters = service;
+    app.createService('characters', service);
 }
