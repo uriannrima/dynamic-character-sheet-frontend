@@ -955,14 +955,13 @@ input[type="number"] {
     grid-template-areas: "campaign feats spells" "gear feats spells" "protections special-abilities spells" "possessions special-abilities spells" "possessions special-abilities spells-save" "possessions languages spells-save";
 }
 
-@media screen and (max-width:568px) {
+@media screen and (max-width: 767px) {
     .second-page-container {
-        display: grid;
-        height: 1000px;
         grid-template-columns: 100%;
-        grid-template-areas: "campaign" "gear" "protections" "possessions";
+        grid-template-areas: "campaign" "gear" "protections" "possessions" "feats" "special-abilities" "languages" "spells" "spells-save";
     }
 }
+
 
 .campaign-container {
     grid-area: campaign;
