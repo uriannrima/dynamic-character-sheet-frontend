@@ -16,6 +16,9 @@ export default {
     new: function () {
         return new characterModel({});
     },
+    load: function (characterData) {
+        return new characterModel(characterData);
+    },
     get: function (id) {
         return axios.get(this.apiUrl + '/characters/' + id).then(response => {
             return new characterModel(response.data);

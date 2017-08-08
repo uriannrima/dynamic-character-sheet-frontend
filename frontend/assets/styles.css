@@ -620,9 +620,8 @@ input[type="number"] {
 
 .text-area-rules {
     background-attachment: local;
-    background-image: linear-gradient(to right, white 10px, transparent 10px), linear-gradient(to left, white 10px, transparent 10px), repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
-    line-height: 31px;
-    padding: 8px 10px;
+    background-image: repeating-linear-gradient(white, white 17px, black 17px, black 18px, white 18px);
+    padding: 3px 6px;
 }
 
 .condition-modifier-area {
@@ -943,4 +942,69 @@ input[type="number"] {
     display: block;
     font-style: italic;
     font-size: 75%;
+}
+
+
+/* Second Page */
+
+.second-page-container {
+    display: grid;
+    height: 1000px;
+    grid-template-columns: 50% 20% 30%;
+    grid-template-rows: 5% 18% 10% 18% 18% auto;
+    grid-template-areas: "campaign feats spells" "gear feats spells" "protections special-abilities spells" "possessions special-abilities spells" "possessions special-abilities spells-save" "possessions languages spells-save";
+}
+
+@media screen and (max-width:568px) {
+    .second-page-container {
+        display: grid;
+        height: 1000px;
+        grid-template-columns: 100%;
+        grid-template-areas: "campaign" "gear" "protections" "possessions";
+    }
+}
+
+.campaign-container {
+    grid-area: campaign;
+    background-color: purple;
+}
+
+.gear-container {
+    grid-area: gear;
+    background-color: blue;
+}
+
+.protection-container {
+    grid-area: protections;
+    background-color: aqua;
+}
+
+.possessions-container {
+    grid-area: possessions;
+    background-color: bisque;
+}
+
+.feats-container {
+    grid-area: feats;
+    background-color: gray;
+}
+
+.special-abilities-container {
+    grid-area: special-abilities;
+    background-color: burlywood;
+}
+
+.languages-container {
+    grid-area: languages;
+    background-color: chartreuse;
+}
+
+.spells-container {
+    grid-area: spells;
+    background-color: lemonchiffon;
+}
+
+.spells-save-container {
+    grid-area: spells-save;
+    background-color: darkseagreen;
 }
