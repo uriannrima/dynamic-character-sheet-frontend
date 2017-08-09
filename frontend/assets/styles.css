@@ -51,6 +51,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 input[readonly] {
     background-color: #ccc;
 }
@@ -150,6 +159,7 @@ input[type="number"] {
 
 .description-container {
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .first-description-container {
@@ -809,7 +819,7 @@ input[type="number"] {
 }
 
 .ammunition-notes-input {
-    width: 87%
+    width: 86%
 }
 
 @media screen and (min-width:360px) and (max-width:767px) {
@@ -826,7 +836,7 @@ input[type="number"] {
 
 .skills-container {
     margin-bottom: 10px;
-    max-height: 964px;
+    max-height: 968px;
     overflow-y: auto;
 }
 
@@ -921,7 +931,7 @@ input[type="number"] {
 }
 
 .skill-subvalue {
-    width: 44%;
+    width: 40%;
     font-size: 12px;
     text-align: center;
     border-width: 0 0 1px 0;
@@ -961,7 +971,6 @@ input[type="number"] {
         grid-template-areas: "campaign" "gear" "protections" "possessions" "feats" "special-abilities" "languages" "spells" "spells-save";
     }
 }
-
 
 .campaign-container {
     grid-area: campaign;

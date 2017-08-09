@@ -1160,8 +1160,7 @@ export default {
                                             <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
                                             <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
                                             <div v-if="skill.hasSubValue" style="display: inline;">
-                                                (
-                                                <input type="text" class="skill-subvalue" v-model="skill.subValue">)
+                                                (<input type="text" class="skill-subvalue" v-model="skill.subValue">)
                                             </div>
                                         </td>
                                         <td>
