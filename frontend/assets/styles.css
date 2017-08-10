@@ -752,6 +752,8 @@ input[type="number"] {
 
 .attack-name {
     font-size: 100% !important;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .attack-table thead th:nth-child(1) div, .attack-table-mobile tbody tr:nth-child(1) div {
@@ -955,3 +957,67 @@ input[type="number"] {
 }
 
 
+/* Second Page */
+
+
+/* Left Container */
+
+.left-container {
+    padding-right: 15px;
+}
+
+
+/* Campaign */
+
+.campaign-container {
+    margin-bottom: 10px;
+}
+
+.campaign-input {
+    width: 100%;
+    border-width: 0 0 1px 0;
+    border-color: black;
+}
+
+
+/* Experience */
+
+.experience-input {
+    width: 100%;
+    border: 2px solid black;
+}
+
+
+/* Gear */
+
+.gear-container {
+    text-align: center;
+}
+
+.gear-header {
+    margin-bottom: 5px;
+}
+
+.armor-container span {
+    font-size: 70%;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+}
+
+.armor-container > div {
+    width: 100%;
+    vertical-align: bottom; 
+    height: 20px;
+}
+
+.armor-container > div div {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: -4px;
+}
+
+.armor-title {
+    height: 20px;
+    border-radius: 5px 5px 0px 0px;
+}

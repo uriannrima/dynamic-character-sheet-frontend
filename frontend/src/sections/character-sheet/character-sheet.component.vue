@@ -94,7 +94,7 @@ export default {
 </script>
 <template>
     <div>
-        <div class="first-page main-container">
+        <div class="first-page main-container" style="display: none">
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="exportCharacter">Exportar</button>
@@ -1195,7 +1195,100 @@ export default {
         </div>
         <div class="second-page main-container">
             <div class="padding-box">
-                
+                <div class="pure-g">
+                    <div class="pure-u-lg-1-2 pure-u-1">
+                        <div class="left-container">
+                            <div class="campaign-container">
+                                <input type="text" class="campaign-input">
+                                <span class="description-span">Campaign</span>
+                            </div>
+                            <div class="experience-container">
+                                <input type="text" class="experience-input">
+                                <span class="description-span">Experience Points</span>
+                            </div>
+                            <div class="gear-container">
+                                <div class="gear-header black-box">
+                                    <span class="health-points-abbreviation">Gear</span>
+                                </div>
+                                <div class="armor-container">
+                                    <div>
+                                        <div class="black-box armor-title" style="width:40%">
+                                            <span class="attack-name">Armor/Protective Item</span>
+                                        </div>
+                                        <div class="black-box" style="width:17.5%">
+                                            <span>Type</span>
+                                        </div>
+                                        <div class="black-box" style="width:25%">
+                                            <span>AC Bonus</span>
+                                        </div>
+                                        <div class="black-box" style="width:17.5%">
+                                            <span>Max Dex</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="width:40%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:17.5%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:25%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:17.5%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="black-box" style="width:20%">
+                                            <span>Check Penalty</span>
+                                        </div>
+                                        <div class="black-box" style="width:20%">
+                                            <span>Spell Failure</span>
+                                        </div>
+                                        <div class="black-box" style="width:10%">
+                                            <span>Speed</span>
+                                        </div>
+                                        <div class="black-box" style="width:10%">
+                                            <span>Weight</span>
+                                        </div>
+                                        <div class="black-box" style="width:40%">
+                                            <span>Special Properties</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="width:20%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:20%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:10%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:10%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                        <div style="width:40%">
+                                            <input type="text" style="width: 100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="possessions-container">
+                                D
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 pure-sm-u-1" style="display:flex">
+                        <div class="pure-u-2-5">
+                            E
+                        </div>
+                        <div class="pure-u-3-5">
+                            F
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
