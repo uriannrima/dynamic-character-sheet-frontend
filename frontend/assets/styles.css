@@ -97,6 +97,49 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 }
 
 
+/* Don't know... */
+
+div.pure-g div.pure-1-10 {
+    width: 10%;
+}
+
+div.pure-g div.pure-2-10 {
+    width: 10%;
+}
+
+div.pure-g div.pure-3-10 {
+    width: 10%;
+}
+
+div.pure-g div.pure-4-10 {
+    width: 10%;
+}
+
+div.pure-g div.pure-5-10 {
+    width: 50%;
+}
+
+div.pure-g div.pure-6-10 {
+    width: 60%;
+}
+
+div.pure-g div.pure-7-10 {
+    width: 70%;
+}
+
+div.pure-g div.pure-8-10 {
+    width: 80%;
+}
+
+div.pure-g div.pure-9-10 {
+    width: 90%;
+}
+
+div.pure-g div.pure-10-10 {
+    width: 100%;
+}
+
+
 /* General */
 
 .padding-left {
@@ -117,6 +160,7 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 .black-box {
     background-color: black;
     color: white;
+    word-spacing: 0;
 }
 
 input[type="number"] {
@@ -998,26 +1042,72 @@ input[type="number"] {
     margin-bottom: 5px;
 }
 
-.armor-container span {
+
+/* Armor Container */
+
+.full-input {
+    width: 100%;
+}
+
+.armor-container span, .armor-container-mobile span {
     font-size: 70%;
     text-transform: uppercase;
     font-weight: bold;
     display: block;
 }
 
-.armor-container > div {
+.armor-container > div, .armor-container-mobile > div {
     width: 100%;
-    vertical-align: bottom; 
+    vertical-align: bottom;
     height: 20px;
+    word-spacing: -4px;
 }
 
-.armor-container > div div {
+.armor-container > div div, .armor-container-mobile > div div {
     display: inline-block;
     vertical-align: bottom;
-    margin-right: -4px;
 }
 
 .armor-title {
-    height: 20px;
+    width: 40%;
     border-radius: 5px 5px 0px 0px;
+}
+
+.armor-type {
+    width: 18%;
+}
+
+.armor-bonus {
+    width: 25%;
+}
+
+.armor-max-dex {
+    width: 17%;
+}
+
+.armor-penalty, .armor-spell-failure {
+    width: 20%;
+}
+
+.armor-speed, .armor-weight {
+    width: 10%;
+}
+
+.armor-properties {
+    width: 40%;
+}
+
+@media screen and (max-width:567px) {
+    .armor-container > div {
+        width: 100%;
+    }
+    .armor-title {
+        width: 99%;
+    }
+    .armor-type, .armor-bonus, .armor-max-dex {
+        width: 33.2%;
+    }
+    .armor-penalty, .armor-spell-failure, .armor-speed, .armor-weight {
+        width: 25%;
+    }
 }

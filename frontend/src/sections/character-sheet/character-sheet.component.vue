@@ -1210,67 +1210,130 @@ export default {
                                 <div class="gear-header black-box">
                                     <span class="health-points-abbreviation">Gear</span>
                                 </div>
-                                <div class="armor-container">
+                                <div class="armor-container hidden-sm-down">
                                     <div>
-                                        <div class="black-box armor-title" style="width:40%">
+                                        <div class="black-box armor-title" style="height: 20px">
                                             <span class="attack-name">Armor/Protective Item</span>
                                         </div>
-                                        <div class="black-box" style="width:17.5%">
+                                        <div class="black-box armor-type">
                                             <span>Type</span>
                                         </div>
-                                        <div class="black-box" style="width:25%">
+                                        <div class="black-box armor-bonus">
                                             <span>AC Bonus</span>
                                         </div>
-                                        <div class="black-box" style="width:17.5%">
+                                        <div class="black-box armor-max-dex">
                                             <span>Max Dex</span>
                                         </div>
                                     </div>
                                     <div>
-                                        <div style="width:40%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="armor-title">
+                                            <input type="text" class="full-input">
                                         </div>
-                                        <div style="width:17.5%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="armor-type">
+                                            <input type="text" class="full-input">
                                         </div>
-                                        <div style="width:25%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="armor-bonus">
+                                            <input type="text" class="full-input">
                                         </div>
-                                        <div style="width:17.5%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="armor-max-dex">
+                                            <input type="text" class="full-input">
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="black-box" style="width:20%">
+                                        <div class="black-box armor-penalty">
                                             <span>Check Penalty</span>
                                         </div>
-                                        <div class="black-box" style="width:20%">
+                                        <div class="black-box armor-spell-failure">
                                             <span>Spell Failure</span>
                                         </div>
-                                        <div class="black-box" style="width:10%">
+                                        <div class="black-box armor-speed">
                                             <span>Speed</span>
                                         </div>
-                                        <div class="black-box" style="width:10%">
+                                        <div class="black-box armor-weight">
                                             <span>Weight</span>
                                         </div>
-                                        <div class="black-box" style="width:40%">
+                                        <div class="black-box armor-properties">
                                             <span>Special Properties</span>
                                         </div>
                                     </div>
                                     <div>
-                                        <div style="width:20%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="black-box armor-penalty">
+                                            <input class="full-input" type="text">
                                         </div>
-                                        <div style="width:20%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="black-box armor-spell-failure">
+                                            <input type="text" class="full-input">
                                         </div>
-                                        <div style="width:10%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="black-box armor-speed">
+                                            <input type="text" class="full-input">
                                         </div>
-                                        <div style="width:10%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="black-box armor-weight">
+                                            <input type="text" class="full-input">
                                         </div>
-                                        <div style="width:40%">
-                                            <input type="text" style="width: 100%">
+                                        <div class="black-box armor-properties">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Armor/Protection Mobile -->
+                                <div class="armor-container hidden-sm-up">
+                                    <div>
+                                        <div class="black-box armor-title">
+                                            <span class="attack-name">Armor/Protective Item</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="armor-title">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="black-box armor-type">
+                                            <span>Type</span>
+                                        </div>
+                                        <div class="black-box armor-bonus">
+                                            <span>AC Bonus</span>
+                                        </div>
+                                        <div class="black-box armor-max-dex">
+                                            <span>Max Dex</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="armor-type">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                        <div class="armor-bonus">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                        <div class="armor-max-dex">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="black-box armor-penalty">
+                                            <span>Check Penalty</span>
+                                        </div>
+                                        <div class="black-box armor-spell-failure">
+                                            <span>Spell Failure</span>
+                                        </div>
+                                        <div class="black-box armor-speed">
+                                            <span>Speed</span>
+                                        </div>
+                                        <div class="black-box armor-weight">
+                                            <span>Weight</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="armor-penalty">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                        <div class="armor-spell-failure">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                        <div class="armor-speed">
+                                            <input type="text" class="full-input">
+                                        </div>
+                                        <div class="armor-weight">
+                                            <input type="text" class="full-input">
                                         </div>
                                     </div>
                                 </div>
