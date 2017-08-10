@@ -2,6 +2,9 @@
 import Es6Promise from 'es6-promise';
 Es6Promise.polyfill();
 
+// CSS Grid Polyfill
+// import './utils/css-grid-polyfill';
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';

@@ -1160,7 +1160,8 @@ export default {
                                             <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
                                             <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
                                             <div v-if="skill.hasSubValue" style="display: inline;">
-                                                (<input type="text" class="skill-subvalue" v-model="skill.subValue">)
+                                                (
+                                                <input type="text" class="skill-subvalue" v-model="skill.subValue">)
                                             </div>
                                         </td>
                                         <td>
@@ -1194,35 +1195,7 @@ export default {
         </div>
         <div class="second-page main-container">
             <div class="padding-box">
-                <div class="second-page-container">
-                    <div class="campaign-container">
-                        Campaign
-                    </div>
-                    <div class="gear-container">
-                        Gear
-                    </div>
-                    <div class="protection-container">
-                        Protection
-                    </div>
-                    <div class="possessions-container">
-                        Possessions
-                    </div>
-                    <div class="feats-container">
-                        Feats
-                    </div>
-                    <div class="special-abilities-container">
-                        Special Abilities
-                    </div>
-                    <div class="languages-container">
-                        Languages
-                    </div>
-                    <div class="spells-container">
-                        Spells
-                    </div>
-                    <div class="spells-save-container">
-                        Spells Save
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
