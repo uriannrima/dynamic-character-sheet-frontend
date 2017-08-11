@@ -1210,130 +1210,308 @@ export default {
                                 <div class="gear-header black-box">
                                     <span class="health-points-abbreviation">Gear</span>
                                 </div>
-                                <div class="armor-container hidden-sm-down">
-                                    <div>
-                                        <div class="black-box armor-title" style="height: 20px">
-                                            <span class="attack-name">Armor/Protective Item</span>
+                                <div class="vue-repeater">
+                                    <div class="armor-container hidden-sm-down">
+                                        <div>
+                                            <div class="black-box armor-title" style="height: 20px">
+                                                <span class="attack-name">Armor/Protective Item</span>
+                                            </div>
+                                            <div class="black-box armor-type">
+                                                <span>Type</span>
+                                            </div>
+                                            <div class="black-box armor-bonus">
+                                                <span>AC Bonus</span>
+                                            </div>
+                                            <div class="black-box armor-max-dex">
+                                                <span>Max Dex</span>
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-type">
-                                            <span>Type</span>
+                                        <div>
+                                            <div class="armor-title">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.name">
+                                            </div>
+                                            <div class="armor-type">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.type">
+                                            </div>
+                                            <div class="armor-bonus">
+                                                <input type="number" class="full-input" v-model.number="character.gear.armor.acBonus">
+                                            </div>
+                                            <div class="armor-max-dex">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.maxDex">
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-bonus">
-                                            <span>AC Bonus</span>
+                                        <div>
+                                            <div class="black-box armor-penalty">
+                                                <span>Check Penalty</span>
+                                            </div>
+                                            <div class="black-box armor-spell-failure">
+                                                <span>Spell Failure</span>
+                                            </div>
+                                            <div class="black-box armor-speed">
+                                                <span>Speed</span>
+                                            </div>
+                                            <div class="black-box armor-weight">
+                                                <span>Weight</span>
+                                            </div>
+                                            <div class="black-box armor-properties">
+                                                <span>Special Properties</span>
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-max-dex">
-                                            <span>Max Dex</span>
+                                        <div>
+                                            <div class="armor-penalty">
+                                                <input class="full-input" type="text" v-model="character.gear.armor.checkPenalty">
+                                            </div>
+                                            <div class="armor-spell-failure">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.spellFailure">
+                                            </div>
+                                            <div class="armor-speed">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.speed">
+                                            </div>
+                                            <div class="armor-weight">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.weight">
+                                            </div>
+                                            <div class="armor-properties">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.specialProperties">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="armor-title">
-                                            <input type="text" class="full-input">
+                                    <!-- Armor/Protection Mobile -->
+                                    <div class="armor-container hidden-sm-up">
+                                        <div>
+                                            <div class="black-box armor-title">
+                                                <span class="attack-name">Armor/Protective Item</span>
+                                            </div>
                                         </div>
-                                        <div class="armor-type">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="armor-title">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.name">
+                                            </div>
                                         </div>
-                                        <div class="armor-bonus">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="black-box armor-type">
+                                                <span>Type</span>
+                                            </div>
+                                            <div class="black-box armor-bonus">
+                                                <span>AC Bonus</span>
+                                            </div>
+                                            <div class="black-box armor-max-dex">
+                                                <span>Max Dex</span>
+                                            </div>
                                         </div>
-                                        <div class="armor-max-dex">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="armor-type">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.type">
+                                            </div>
+                                            <div class="armor-bonus">
+                                                <input type="number" class="full-input" v-model.number="character.gear.armor.acBonus">
+                                            </div>
+                                            <div class="armor-max-dex">
+                                                <input type="number" class="full-input" v-model.number="character.gear.armor.maxDex">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div class="black-box armor-penalty">
-                                            <span>Check Penalty</span>
+                                        <div>
+                                            <div class="black-box armor-penalty">
+                                                <span>Check Penalty</span>
+                                            </div>
+                                            <div class="black-box armor-spell-failure">
+                                                <span>Spell Failure</span>
+                                            </div>
+                                            <div class="black-box armor-speed">
+                                                <span>Speed</span>
+                                            </div>
+                                            <div class="black-box armor-weight">
+                                                <span>Weight</span>
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-spell-failure">
-                                            <span>Spell Failure</span>
+                                        <div>
+                                            <div class="armor-penalty">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.checkPenalty">
+                                            </div>
+                                            <div class="armor-spell-failure">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.spellFailure">
+                                            </div>
+                                            <div class="armor-speed">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.speed">
+                                            </div>
+                                            <div class="armor-weight">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.weight">
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-speed">
-                                            <span>Speed</span>
+                                        <div>
+                                            <div class="black-box armor-properties">
+                                                <span class="attack-name">Special Properties</span>
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-weight">
-                                            <span>Weight</span>
-                                        </div>
-                                        <div class="black-box armor-properties">
-                                            <span>Special Properties</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="black-box armor-penalty">
-                                            <input class="full-input" type="text">
-                                        </div>
-                                        <div class="black-box armor-spell-failure">
-                                            <input type="text" class="full-input">
-                                        </div>
-                                        <div class="black-box armor-speed">
-                                            <input type="text" class="full-input">
-                                        </div>
-                                        <div class="black-box armor-weight">
-                                            <input type="text" class="full-input">
-                                        </div>
-                                        <div class="black-box armor-properties">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="armor-properties">
+                                                <input type="text" class="full-input" v-model="character.gear.armor.specialProperties">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Armor/Protection Mobile -->
-                                <div class="armor-container hidden-sm-up">
-                                    <div>
-                                        <div class="black-box armor-title">
-                                            <span class="attack-name">Armor/Protective Item</span>
+                                <div class="vue-repeater">
+                                    <div class="shield-container hidden-sm-down">
+                                        <div>
+                                            <div class="black-box shield-title">
+                                                <span class="attack-name">Shield/Protective Item</span>
+                                            </div>
+                                            <div class="black-box shield-bonus">
+                                                <span>AC Bonus</span>
+                                            </div>
+                                            <div class="black-box shield-weight">
+                                                <span>Weight</span>
+                                            </div>
+                                            <div class="black-box shield-penalty">
+                                                <span>Check Penalty</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="shield-title">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.name">
+                                            </div>
+                                            <div class="shield-bonus">
+                                                <input type="number" class="full-input" v-model.number="character.gear.shield.acBonus">
+                                            </div>
+                                            <div class="shield-weight">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.weight">
+                                            </div>
+                                            <div class="shield-penalty">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.checkPenalty">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="black-box shield-spell-failure">
+                                                <span>Spell Failure</span>
+                                            </div>
+                                            <div class="black-box shield-properties">
+                                                <span>Shield Properties</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="shield-spell-failure">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.spellFailure">
+                                            </div>
+                                            <div class="shield-properties">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.specialProperties">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="armor-title">
-                                            <input type="text" class="full-input">
+                                    <!-- Shield/Protection Mobile-->
+                                    <div class="shield-container hidden-sm-up">
+                                        <div>
+                                            <div class="black-box shield-title">
+                                                <span class="attack-name">Shield/Protective Item</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="shield-title">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.name">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="black-box shield-bonus">
+                                                <span>AC Bonus</span>
+                                            </div>
+                                            <div class="black-box shield-weight">
+                                                <span>Weight</span>
+                                            </div>
+                                            <div class="black-box shield-penalty">
+                                                <span>Check Penalty</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="shield-bonus">
+                                                <input type="number" class="full-input" v-model.number="character.gear.shield.acBonus">
+                                            </div>
+                                            <div class="shield-weight">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.weight">
+                                            </div>
+                                            <div class="shield-penalty">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.checkPenalty">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="black-box shield-spell-failure">
+                                                <span>Spell Failure</span>
+                                            </div>
+                                            <div class="black-box shield-properties">
+                                                <span>Shield Properties</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="shield-spell-failure">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.spellFailure">
+                                            </div>
+                                            <div class="shield-properties">
+                                                <input type="text" class="full-input" v-model="character.gear.shield.specialProperties">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="black-box armor-type">
-                                            <span>Type</span>
+                                </div>
+                                <div class="vue-repeater" v-for="(protectiveItem, index) in character.gear.protectiveItems" :key="index">
+                                    <div class="protective-item-container hidden-sm-down">
+                                        <div>
+                                            <div class="black-box protective-item-title">
+                                                <span class="attack-name">Protective Item</span>
+                                            </div>
+                                            <div class="black-box protective-item-bonus">
+                                                <span>AC Bonus</span>
+                                            </div>
+                                            <div class="black-box protective-item-weight">
+                                                <span>Weight</span>
+                                            </div>
+                                            <div class="black-box protective-item-properties">
+                                                <span>Special Properties</span>
+                                            </div>
                                         </div>
-                                        <div class="black-box armor-bonus">
-                                            <span>AC Bonus</span>
-                                        </div>
-                                        <div class="black-box armor-max-dex">
-                                            <span>Max Dex</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="armor-type">
-                                            <input type="text" class="full-input">
-                                        </div>
-                                        <div class="armor-bonus">
-                                            <input type="text" class="full-input">
-                                        </div>
-                                        <div class="armor-max-dex">
-                                            <input type="text" class="full-input">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="black-box armor-penalty">
-                                            <span>Check Penalty</span>
-                                        </div>
-                                        <div class="black-box armor-spell-failure">
-                                            <span>Spell Failure</span>
-                                        </div>
-                                        <div class="black-box armor-speed">
-                                            <span>Speed</span>
-                                        </div>
-                                        <div class="black-box armor-weight">
-                                            <span>Weight</span>
+                                        <div>
+                                            <div class="protective-item-title">
+                                                <input type="text" class="full-input" v-model="protectiveItem.name">
+                                            </div>
+                                            <div class="protective-item-bonus">
+                                                <input type="number" class="full-input" v-model.number="protectiveItem.acBonus">
+                                            </div>
+                                            <div class="protective-item-weight">
+                                                <input type="text" class="full-input" v-model="protectiveItem.weight">
+                                            </div>
+                                            <div class="protective-item-properties">
+                                                <input type="text" class="full-input" v-model="protectiveItem.specialProperties">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="armor-penalty">
-                                            <input type="text" class="full-input">
+                                    <!-- Protective Item Mobile -->
+                                    <div class="protective-item-container hidden-sm-up">
+                                        <div>
+                                            <div class="black-box protective-item-title">
+                                                <span class="attack-name">Protective Item</span>
+                                            </div>
                                         </div>
-                                        <div class="armor-spell-failure">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="protective-item-title">
+                                                <input type="text" class="full-input" v-model="protectiveItem.name">
+                                            </div>
                                         </div>
-                                        <div class="armor-speed">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="black-box protective-item-bonus">
+                                                <span>AC Bonus</span>
+                                            </div>
+                                            <div class="black-box protective-item-weight">
+                                                <span>Weight</span>
+                                            </div>
+                                            <div class="black-box protective-item-properties">
+                                                <span>Special Properties</span>
+                                            </div>
                                         </div>
-                                        <div class="armor-weight">
-                                            <input type="text" class="full-input">
+                                        <div>
+                                            <div class="protective-item-bonus">
+                                                <input type="number" class="full-input" v-model.number="protectiveItem.acBonus">
+                                            </div>
+                                            <div class="protective-item-weight">
+                                                <input type="text" class="full-input" v-model="protectiveItem.weight">
+                                            </div>
+                                            <div class="protective-item-properties">
+                                                <input type="text" class="full-input" v-model="protectiveItem.specialProperties">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1343,7 +1521,7 @@ export default {
                             </div>
                         </div>
                     </div>
-                    <div class="pure-u-1-2 pure-sm-u-1" style="display:flex">
+                    <div class="pure-u-1-2 pure-sm-u-1">
                         <div class="pure-u-2-5">
                             E
                         </div>

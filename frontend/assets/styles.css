@@ -412,7 +412,7 @@ input[type="number"] {
 
 /* Armor Container */
 
-.armor-container {
+.armor-container, .shield-container, .protective-item-container {
     margin-bottom: 10px;
 }
 
@@ -1043,32 +1043,32 @@ input[type="number"] {
 }
 
 
-/* Armor Container */
+/* Armor/Shield/Protective Item Container */
 
 .full-input {
     width: 100%;
 }
 
-.armor-container span, .armor-container-mobile span {
+.armor-container span, .armor-container-mobile span, .shield-container span, .protective-item-container span {
     font-size: 70%;
     text-transform: uppercase;
     font-weight: bold;
     display: block;
 }
 
-.armor-container > div, .armor-container-mobile > div {
+.armor-container > div, .armor-container-mobile > div, .shield-container > div, .protective-item-container > div {
     width: 100%;
     vertical-align: bottom;
     height: 20px;
     word-spacing: -4px;
 }
 
-.armor-container > div div, .armor-container-mobile > div div {
+.armor-container > div div, .armor-container-mobile > div div, .shield-container > div div, .protective-item-container > div div {
     display: inline-block;
     vertical-align: bottom;
 }
 
-.armor-title {
+.armor-title, .shield-title, .protective-item-title {
     width: 40%;
     border-radius: 5px 5px 0px 0px;
 }
@@ -1077,7 +1077,7 @@ input[type="number"] {
     width: 18%;
 }
 
-.armor-bonus {
+.armor-bonus, .shield-bonus, .shield-penalty {
     width: 25%;
 }
 
@@ -1089,25 +1089,50 @@ input[type="number"] {
     width: 20%;
 }
 
-.armor-speed, .armor-weight {
+.armor-speed, .armor-weight, .shield-weight, .protective-item-weight {
     width: 10%;
 }
 
 .armor-properties {
-    width: 40%;
+    width: 40.4%;
+}
+
+.shield-spell-failure {
+    width: 19.9%;
+}
+
+.protective-item-bonus {
+    width: 15%;
+}
+
+.shield-properties {
+    width: 80%;
+}
+
+.protective-item-properties {
+    width: 35%;
 }
 
 @media screen and (max-width:567px) {
-    .armor-container > div {
+    .armor-container > div, .shield-container > div, .protective-item-container > div {
         width: 100%;
     }
-    .armor-title {
-        width: 99%;
+    .armor-title, .armor-properties, .shield-title, .protective-item-title, {
+        width: 100%;
     }
-    .armor-type, .armor-bonus, .armor-max-dex {
-        width: 33.2%;
+    .armor-type, .armor-bonus, .armor-max-dex, .shield-bonus, .shield-weight, .shield-penalty {
+        width: 33.5%;
     }
-    .armor-penalty, .armor-spell-failure, .armor-speed, .armor-weight {
+    .armor-penalty, .armor-spell-failure, .armor-speed, .armor-weight, .shield-spell-failure {
         width: 25%;
+    }
+    .shield-properties {
+        width: 75%;
+    }
+    .protective-item-bonus, .protective-item-weight {
+        width: 25.1%;
+    }
+    .protective-item-properties {
+        width: 50%;
     }
 }

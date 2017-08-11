@@ -9,6 +9,7 @@ var grapple = require('./grapple.model');
 var skills = require('./skill.model');
 var attack = require('./attack.model');
 var ammunition = require('./ammunition.model');
+var gear = require('./gear.model');
 
 module.exports = {
     classe,
@@ -20,5 +21,6 @@ module.exports = {
     grapple,
     skills,
     attack,
-    ammunition
+    ammunition,
+    gear
 }

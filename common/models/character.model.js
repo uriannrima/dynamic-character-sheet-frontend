@@ -9,7 +9,7 @@ module.exports = function character({
     status, armorClass, initiative, conditionModifier,
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
-    attacks }) {
+    attacks, gear }) {
 
     return {
         _id, name, playerName,
@@ -71,5 +71,6 @@ module.exports = function character({
             new Models.attack({}),
             new Models.attack({})
         ],
+        gear: gear || new Models.gear.gear({})
     }
 }
