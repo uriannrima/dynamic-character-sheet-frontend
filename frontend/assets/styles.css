@@ -1117,7 +1117,7 @@ input[type="number"] {
     .armor-container > div, .shield-container > div, .protective-item-container > div {
         width: 100%;
     }
-    .armor-title, .armor-properties, .shield-title, .protective-item-title, {
+    .armor-title, .armor-properties, .shield-title, .protective-item-title {
         width: 100%;
     }
     .armor-type, .armor-bonus, .armor-max-dex, .shield-bonus, .shield-weight, .shield-penalty {
@@ -1135,4 +1135,60 @@ input[type="number"] {
     .protective-item-properties {
         width: 50%;
     }
+}
+
+
+/* Other Possessions */
+
+.possessions-container {
+    text-align: center;
+}
+
+.dual-possession {
+    display: flex;
+}
+
+.single-possession {
+    width: 50%;
+    display: inline-block;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid gray;
+}
+
+.item-header {
+    display: flex;
+}
+
+.item-header > div {
+    display: inline-block;
+}
+
+.item-header span {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 70%;
+}
+
+.item-title {
+    width: 70%;
+}
+
+.item-page, .item-weight {
+    width: 15%;
+    border-left: 1px solid gray;
+}
+
+.total-weight {
+    width: 30%;
+    text-align: center;
+}
+
+.item-input {
+    border: 0px;
+}
+
+.total-weight-input {
+    width: 101%;
+    height: 22px;
 }

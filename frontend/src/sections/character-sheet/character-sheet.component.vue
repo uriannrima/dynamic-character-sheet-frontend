@@ -13,7 +13,9 @@ export default {
             character: CharacterService.new(),
             allSizes: SizeService.getAll(),
             allRaces: RaceService.getAll(),
-            allAlignments: AlignmentService.getAll()
+            allAlignments: AlignmentService.getAll(),
+            // Create items grid with 17 rows and 2 columns.
+            itemsGrid: [...Array(17).keys()].map(i => [...Array(2).keys()].map(i => new Object()))
         };
     },
     computed: {
@@ -50,9 +52,40 @@ export default {
                     });
                 });
             }
+        },
+        totalWeightCarried: function () {
+            console.log(this.character.items.map(i => i.weight));
+            var value  = this.character.items.map(i => i.weight).reduce((prev, next) => prev + next)
+            return value;
         }
     },
     methods: {
+        updateCharacterItem: function (rowIndex, columnIndex) {
+            var gridItem = this.itemsGrid[rowIndex][columnIndex];
+            var characterItem = this.character.items[rowIndex + (this.itemsGrid.length * columnIndex)];
+            ({
+                name: characterItem.name,
+                page: characterItem.page,
+                weight: characterItem.weight,
+            } = gridItem);
+        },
+        loadCharacter: function (character) {
+            this.character = character;
+            this.loadItemsToGrid(character.items);
+        },
+        loadItemsToGrid: function (itemArray) {
+            for (var index = 0; index < itemArray.length; index++) {
+                const rowIndex = index % this.itemsGrid.length;
+                const columnIndex = Math.floor(index / this.itemsGrid.length);
+                var gridItem = this.itemsGrid[rowIndex][columnIndex];
+                var charItem = itemArray[index];
+                ({
+                    name: gridItem.name,
+                    page: gridItem.page,
+                    weight: gridItem.weight,
+                } = charItem);
+            }
+        },
         saveOrUpdate: function () {
             CharacterService.saveOrUpdate(this.character).then(data => {
                 this.character._id = data._id;
@@ -81,7 +114,7 @@ export default {
         if (to.params.id) {
             CharacterService.get(to.params.id).then(character => {
                 next(vm => {
-                    vm.character = character;
+                    vm.loadCharacter(character);
                 });
             });
         } else {
@@ -94,7 +127,7 @@ export default {
 </script>
 <template>
     <div>
-        <div class="first-page main-container" style="display: none">
+        <div class="first-page main-container">
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="exportCharacter">Exportar</button>
@@ -1213,7 +1246,7 @@ export default {
                                 <div class="vue-repeater">
                                     <div class="armor-container hidden-sm-down">
                                         <div>
-                                            <div class="black-box armor-title" style="height: 20px">
+                                            <div class="black-box armor-title">
                                                 <span class="attack-name">Armor/Protective Item</span>
                                             </div>
                                             <div class="black-box armor-type">
@@ -1278,7 +1311,7 @@ export default {
                                     <!-- Armor/Protection Mobile -->
                                     <div class="armor-container hidden-sm-up">
                                         <div>
-                                            <div class="black-box armor-title">
+                                            <div class="black-box armor-title test">
                                                 <span class="attack-name">Armor/Protective Item</span>
                                             </div>
                                         </div>
@@ -1517,7 +1550,62 @@ export default {
                                 </div>
                             </div>
                             <div class="possessions-container">
-                                D
+                                <div class="possessions-header black-box">
+                                    <span class="health-points-abbreviation">Other Possessions</span>
+                                </div>
+                                <div class="dual-possession">
+                                    <div class="single-possession">
+                                        <div class="item-header">
+                                            <div class="item-title">
+                                                <span>Item</span>
+                                            </div>
+                                            <div class="item-page">
+                                                <span>Pg.</span>
+                                            </div>
+                                            <div class="item-weight">
+                                                <span>Wt.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-possession">
+                                        <div class="item-header">
+                                            <div class="item-title">
+                                                <span>Item</span>
+                                            </div>
+                                            <div class="item-page">
+                                                <span>Pg.</span>
+                                            </div>
+                                            <div class="item-weight">
+                                                <span>Wt.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dual-possession" v-for="(itemRow, rowIndex) in itemsGrid" :key="rowIndex">
+                                    <div class="single-possession" v-for="(itemColumn, columnIndex) in itemRow" :key="columnIndex" v-if="rowIndex != (itemsGrid.length - 1) || columnIndex != (itemsGrid[0].length - 1)">
+                                        <div class="item-header">
+                                            <div class="item-title">
+                                                <input type="text" class="full-input item-input" v-model="itemColumn.name" @change="updateCharacterItem(rowIndex, columnIndex)">
+                                            </div>
+                                            <div class="item-page">
+                                                <input type="number" class="full-input item-input" v-model.number="itemColumn.page" @change="updateCharacterItem(rowIndex, columnIndex)">
+                                            </div>
+                                            <div class="item-weight">
+                                                <input type="number" class="full-input item-input" v-model.number="itemColumn.weight" @change="updateCharacterItem(rowIndex, columnIndex)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-possession" v-else>
+                                        <div class="item-header">
+                                            <div class="item-title">
+                                                <span>Total Weight Carried</span>
+                                            </div>
+                                            <div class="total-weight">
+                                                <input type="number" class="full-input total-weight-input" readonly :value="totalWeightCarried">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

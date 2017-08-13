@@ -10,9 +10,6 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import Routes from './routes';
 
-import utilsCss from '../assets/utils';
-import stylesCss from '../assets/styles';
-
 import Layout from './shared/layout.component';
 
 Vue.use(VueResource);
