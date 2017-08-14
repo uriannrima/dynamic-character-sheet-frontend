@@ -977,17 +977,19 @@ input[type="number"] {
 }
 
 .skill-subvalue {
-    width: 40%;
+    width: 44%;
     font-size: 12px;
     text-align: center;
     border-width: 0 0 1px 0;
     border-color: black;
 }
 
-@media screen and (min-width:360px) and (max-width:567px) {
-    .skill-subvalue {
-        width: 38%;
-    }
+.subvalue-container::before {
+    content: "(";
+}
+
+.subvalue-container::after {
+    content: ")";
 }
 
 

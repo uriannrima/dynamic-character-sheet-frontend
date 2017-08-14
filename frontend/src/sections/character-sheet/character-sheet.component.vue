@@ -55,7 +55,7 @@ export default {
         },
         totalWeightCarried: function () {
             console.log(this.character.items.map(i => i.weight));
-            var value  = this.character.items.map(i => i.weight).reduce((prev, next) => prev + next)
+            var value = this.character.items.map(i => i.weight).reduce((prev, next) => prev + next)
             return value;
         }
     },
@@ -1192,9 +1192,8 @@ export default {
                                         <td>
                                             <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
                                             <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
-                                            <div v-if="skill.hasSubValue" style="display: inline;">
-                                                (
-                                                <input type="text" class="skill-subvalue" v-model="skill.subValue">)
+                                            <div class="subvalue-container" v-if="skill.hasSubValue" style="display: inline;">
+                                                <input type="text" class="skill-subvalue" v-model="skill.subValue">
                                             </div>
                                         </td>
                                         <td>
