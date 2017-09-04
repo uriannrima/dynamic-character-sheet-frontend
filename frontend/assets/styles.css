@@ -377,10 +377,12 @@ input[type="number"] {
 
 .wounds-field {
     width: 100%;
+    text-align: center;
 }
 
 .speed-field {
     width: 100%;
+    text-align: center;
 }
 
 
@@ -483,6 +485,7 @@ input[type="number"] {
     }
     .damage-reduction-field {
         width: 100%;
+        text-align: center;
     }
 }
 
@@ -704,6 +707,7 @@ input[type="number"] {
 
 .bab-resistance-input {
     width: 65%;
+    text-align: center;
 }
 
 
@@ -1087,6 +1091,10 @@ input[type="number"] {
     width: 17%;
 }
 
+.armor-penalty > input, .armor-spell-failure > input, .armor-speed > input, .armor-weight > input, .armor-properties > input, .shield-weight > input, .shield-penalty > input, .shield-spell-failure > input, .shield-properties > input, .protective-item-weight > input, .protective-item-properties > input {
+    text-align: center;
+}
+
 .armor-penalty, .armor-spell-failure {
     width: 20%;
 }
@@ -1188,6 +1196,9 @@ input[type="number"] {
 
 .item-input {
     border: 0px;
+    padding-left: 4px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .total-weight-input {

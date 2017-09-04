@@ -9,7 +9,8 @@ module.exports = function character({
     status, armorClass, initiative, conditionModifier,
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
-    attacks, gear, items }) {
+    attacks, gear, items, carryCapacity,
+    campaign, experience }) {
 
     return {
         _id, name, playerName,
@@ -72,6 +73,16 @@ module.exports = function character({
             new Models.attack({})
         ],
         gear: gear || new Models.gear.gear({}),
-        items: items || Models.item.factory(33)
+        items: items || Models.item.factory(33),
+        carryCapacity: carryCapacity || new Models.carryCapacity({
+            lightLoad: 0,
+            mediumLoad: 0,
+            heavyLoad: 0,
+            liftOverHead: 0,
+            liftOffGround: 0,
+            pushOrDrag: 0
+        }),
+        campaign: campaign || "",
+        experience: experience || 0
     }
 }

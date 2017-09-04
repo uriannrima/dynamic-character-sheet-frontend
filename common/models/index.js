@@ -11,6 +11,7 @@ var attack = require('./attack.model');
 var ammunition = require('./ammunition.model');
 var gear = require('./gear.model');
 var item = require('./item.model');
+var carryCapacity = require('./carry-capacity.model');
 
 module.exports = {
     classe,
@@ -24,5 +25,6 @@ module.exports = {
     attack,
     ammunition,
     gear,
-    item
+    item,
+    carryCapacity
 }

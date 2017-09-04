@@ -7,7 +7,7 @@ import AlignmentService from 'Services/alignment.service';
 import ExporterService from 'Services/exporter.service';
 
 export default {
-    data: function () {
+    data: function() {
         return {
             importFile: null,
             character: CharacterService.new(),
@@ -20,13 +20,13 @@ export default {
     },
     computed: {
         classesCombined: {
-            get: function () {
+            get: function() {
                 return this.character.classes.map(classe => {
                     if (!classe.name || !classe.level) return "";
                     return classe.name + " (" + classe.level + ")";
                 });
             },
-            set: function (newValue) {
+            set: function(newValue) {
                 this.character.classes = [];
                 const fieldValues = newValue.split(',');
                 fieldValues.forEach(fieldValue => {
@@ -53,14 +53,13 @@ export default {
                 });
             }
         },
-        totalWeightCarried: function () {
-            console.log(this.character.items.map(i => i.weight));
+        totalWeightCarried: function() {
             var value = this.character.items.map(i => i.weight).reduce((prev, next) => prev + next)
-            return value;
+            return value.toPrecision(3);
         }
     },
     methods: {
-        updateCharacterItem: function (rowIndex, columnIndex) {
+        updateCharacterItem: function(rowIndex, columnIndex) {
             var gridItem = this.itemsGrid[rowIndex][columnIndex];
             var characterItem = this.character.items[rowIndex + (this.itemsGrid.length * columnIndex)];
             ({
@@ -69,11 +68,11 @@ export default {
                 weight: characterItem.weight,
             } = gridItem);
         },
-        loadCharacter: function (character) {
+        loadCharacter: function(character) {
             this.character = character;
             this.loadItemsToGrid(character.items);
         },
-        loadItemsToGrid: function (itemArray) {
+        loadItemsToGrid: function(itemArray) {
             for (var index = 0; index < itemArray.length; index++) {
                 const rowIndex = index % this.itemsGrid.length;
                 const columnIndex = Math.floor(index / this.itemsGrid.length);
@@ -86,19 +85,19 @@ export default {
                 } = charItem);
             }
         },
-        saveOrUpdate: function () {
+        saveOrUpdate: function() {
             CharacterService.saveOrUpdate(this.character).then(data => {
                 this.character._id = data._id;
                 window.history.pushState("", "", '/#/character/' + this.character._id);
             });
         },
-        exportCharacter: function () {
+        exportCharacter: function() {
             this.saveOrUpdate();
             var fileName = this.character.name || this.character._id;
             fileName += '.json';
             ExporterService.exportText(this.character, fileName);
         },
-        importCharacter: function () {
+        importCharacter: function() {
             var element = document.getElementById('importField');
             if (element.files.length > 0) {
                 ExporterService.importFile(element.files[0]).then(characterData => {
@@ -127,7 +126,7 @@ export default {
 </script>
 <template>
     <div>
-        <div class="first-page main-container">
+        <div class="first-page main-container" style="display:none">
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="exportCharacter">Exportar</button>
@@ -701,7 +700,7 @@ export default {
                                 </table>
                             </div>
                         </div>
-    
+
                     </div>
                     <div class="pure-u-md-1-2 pure-u-1">
                         <div class="initiative-container">
@@ -1231,11 +1230,11 @@ export default {
                     <div class="pure-u-lg-1-2 pure-u-1">
                         <div class="left-container">
                             <div class="campaign-container">
-                                <input type="text" class="campaign-input">
+                                <input type="text" class="campaign-input" v-model="character.campaign">
                                 <span class="description-span">Campaign</span>
                             </div>
                             <div class="experience-container">
-                                <input type="text" class="experience-input">
+                                <input type="number" class="experience-input" v-model.number="character.experience">
                                 <span class="description-span">Experience Points</span>
                             </div>
                             <div class="gear-container">
@@ -1608,32 +1607,54 @@ export default {
                                 <div class="load-container">
                                     <div>
                                         <div>
-                                            <input type="text" class="full-input">
+                                            <input type="number" class="full-input" v-model.number="character.carryCapacity.lightLoad">
                                             <span class="load-span">Light<br>Load</span>
                                         </div>
                                         <div>
-                                            <input type="text" class="full-input">
+                                            <input type="number" class="full-input" v-model.number="character.carryCapacity.mediumLoad">
                                             <span class="load-span">Medium<br>Load</span>
                                         </div>
                                         <div>
-                                            <input type="text" class="full-input">
+                                            <input type="number" class="full-input" v-model.number="character.carryCapacity.heavyLoad">
                                             <span class="load-span">Heavy<br>Load</span>
                                         </div>
                                         <div>
-                                            <input type="text" class="full-input">
+                                            <input type="number" class="full-input" v-model.number="character.carryCapacity.liftOverHead">
                                             <span class="load-span">Lift Over<br>Head</span>
                                             <span class="load-span-sm">Equals<br>Max Load</span>
                                         </div>
                                         <div>
-                                            <input type="text" class="full-input">
+                                            <input type="number" class="full-input" v-model.number="character.carryCapacity.liftOffGround">
                                             <span class="load-span">Lift Off<br>Ground</span>
                                             <span class="load-span-sm">2 x<br>Max Load</span>
                                         </div>
                                         <div>
-                                            <input type="text" class="full-input">
+                                            <input type="number" class="full-input" v-model.number="character.carryCapacity.pushOrDrag">
                                             <span class="load-span">Push or<br>Drag</span>
                                             <span class="load-span-sm">5 x<br>Max Load</span>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="money-container">
+                                    <div class="money-header black-box">
+                                        <span class="health-points-abbreviation">Money</span>
+                                    </div>
+                                    <div class="coins-container" style="width: 50%">
+                                        <div style="height: 25%">
+                                            A
+                                        </div>
+                                        <div style="height: 25%">
+                                            b
+                                        </div>
+                                        <div style="height: 25%">
+                                            c
+                                        </div>
+                                        <div style="height: 25%">
+                                            d
+                                        </div>
+                                    </div>
+                                    <div class="treasure-container">
+
                                     </div>
                                 </div>
                             </div>
