@@ -1639,22 +1639,28 @@ export default {
                                     <div class="money-header black-box">
                                         <span class="health-points-abbreviation">Money</span>
                                     </div>
-                                    <div class="coins-container" style="width: 50%">
-                                        <div style="height: 25%">
-                                            A
+                                    <div style="display: flex">
+                                        <div class="coins-container" style="width: 50%">
+                                            <div>
+                                                <span class="coin-span">CP —</span>
+                                                <input type="number" class="coin-input" v-model.number="character.money.copper">
+                                            </div>
+                                            <div>
+                                                <span class="coin-span">SP —</span>
+                                                <input type="number" class="coin-input" v-model.number="character.money.silver">
+                                            </div>
+                                            <div>
+                                                <span class="coin-span">GP —</span>
+                                                <input type="number" class="coin-input" v-model.number="character.money.gold">
+                                            </div>
+                                            <div>
+                                                <span class="coin-span">PP —</span>
+                                                <input type="number" class="coin-input" v-model.number="character.money.platinum">
+                                            </div>
                                         </div>
-                                        <div style="height: 25%">
-                                            b
+                                        <div class="treasure-container" style="width: 50%">
+                                            <textarea class="treasure-area" v-model="character.money.treasure"></textarea>
                                         </div>
-                                        <div style="height: 25%">
-                                            c
-                                        </div>
-                                        <div style="height: 25%">
-                                            d
-                                        </div>
-                                    </div>
-                                    <div class="treasure-container">
-
                                     </div>
                                 </div>
                             </div>

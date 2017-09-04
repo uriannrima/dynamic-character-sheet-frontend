@@ -10,7 +10,7 @@ module.exports = function character({
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
     attacks, gear, items, carryCapacity,
-    campaign, experience }) {
+    campaign, experience, money }) {
 
     return {
         _id, name, playerName,
@@ -83,6 +83,13 @@ module.exports = function character({
             pushOrDrag: 0
         }),
         campaign: campaign || "",
-        experience: experience || 0
+        experience: experience || 0,
+        money: money || new Models.money({
+            copper: 0,
+            silver: 0,
+            gold: 0,
+            platinum: 0,
+            treasure: ""
+        })
     }
 }

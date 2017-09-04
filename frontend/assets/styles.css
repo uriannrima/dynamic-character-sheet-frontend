@@ -1091,7 +1091,7 @@ input[type="number"] {
     width: 17%;
 }
 
-.armor-penalty > input, .armor-spell-failure > input, .armor-speed > input, .armor-weight > input, .armor-properties > input, .shield-weight > input, .shield-penalty > input, .shield-spell-failure > input, .shield-properties > input, .protective-item-weight > input, .protective-item-properties > input {
+.armor-type > input, .armor-penalty > input, .armor-spell-failure > input, .armor-speed > input, .armor-weight > input, .armor-properties > input, .shield-weight > input, .shield-penalty > input, .shield-spell-failure > input, .shield-properties > input, .protective-item-weight > input, .protective-item-properties > input {
     text-align: center;
 }
 
@@ -1241,4 +1241,38 @@ input[type="number"] {
 .load-span-sm {
     text-transform: uppercase;
     font-size: 60%;
+}
+
+
+/* Money Container */
+
+.money-container {
+    border: solid 1px;
+}
+
+.coins-container {
+    width: 50%;
+}
+
+.coins-container > div {
+    height: 25%;
+}
+
+.coin-span {
+    font-weight: bold;
+}
+
+.coin-input {
+    width: 75%;
+    border: 0px;
+    text-align: left !important;
+    padding-left: 4px;
+}
+
+.treasure-area {
+    height: 90%;
+    width: 95%;
+    border: solid 2px;
+    margin-top: 5px;
+    font-size: 14px;
 }
