@@ -10,7 +10,7 @@ module.exports = function character({
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
     attacks, gear, items, carryCapacity,
-    campaign, experience, money }) {
+    campaign, experience, money, feats }) {
 
     return {
         _id, name, playerName,
@@ -90,6 +90,7 @@ module.exports = function character({
             gold: 0,
             platinum: 0,
             treasure: ""
-        })
+        }),
+        feats: feats || []
     }
 }

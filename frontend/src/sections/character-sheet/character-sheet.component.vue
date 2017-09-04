@@ -53,6 +53,21 @@ export default {
                 });
             }
         },
+        featsCombined: {
+            get: function() {
+                return this.character.feats.map(feat => {
+                    if (!feat) return "";
+                    return feat;
+                });
+            },
+            set: function(newValue) {
+                this.character.feats = [];
+                const newFeats = newValue.split(',');
+                newFeats.forEach(newFeat => {
+                    this.character.feats.push(newFeat);
+                });
+            }
+        },
         totalWeightCarried: function() {
             var value = this.character.items.map(i => i.weight).reduce((prev, next) => prev + next)
             return value.toPrecision(3);
@@ -1667,11 +1682,25 @@ export default {
                         </div>
                     </div>
                     <div class="pure-u-1-2 pure-sm-u-1">
-                        <div class="pure-u-2-5">
-                            E
-                        </div>
-                        <div class="pure-u-3-5">
-                            F
+                        <div class="pure-g">
+                            <div class="pure-u-2-5">
+                                <div class="feats-container">
+                                    <div class="feats-header black-box">
+                                        <span class="health-points-abbreviation">Feats</span>
+                                    </div>
+                                    <!-- 
+                                        <div class="feats-area">
+                                            <input type="text" style="width: 100%; border: 0; background: transparent;">
+                                        </div>
+                                    -->
+                                    <textarea class="feats-area" v-model.lazy="featsCombined">
+                                        <span>Spell Focus</span>
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="pure-u-3-5">
+                                F
+                            </div>
                         </div>
                     </div>
                 </div>
