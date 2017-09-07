@@ -91,6 +91,6 @@ module.exports = function character({
             platinum: 0,
             treasure: ""
         }),
-        feats: feats || []
+        feats: feats ? feats.map(f => new Models.feat(f)) : []
     }
 }

@@ -74,6 +74,23 @@ export default {
         }
     },
     methods: {
+        addFeat: function(event){
+            console.log(event);
+        },
+        featType: function(feat){
+            return "feat-" + feat.type.toLowerCase().replace(' ','-');
+        },
+        getFeatTooltip: function(feat){
+            var tooltip = "";
+            tooltip += feat.title + " [" + feat.type + "]";
+            
+            if (feat.prerequisite) tooltip += "\n\nPrerequisite: " + feat.prerequisite;
+            if (feat.benefit) tooltip += "\n\nBenefit: " + feat.benefit;
+            if (feat.normal) tooltip += "\n\nNormal: " + feat.normal;
+            if (feat.special) tooltip += "\n\nSpecial: " + feat.special;
+
+            return tooltip;
+        },
         updateCharacterItem: function(rowIndex, columnIndex) {
             var gridItem = this.itemsGrid[rowIndex][columnIndex];
             var characterItem = this.character.items[rowIndex + (this.itemsGrid.length * columnIndex)];
@@ -141,7 +158,7 @@ export default {
 </script>
 <template>
     <div>
-        <div class="first-page main-container" style="display:none">
+        <div class="first-page main-container">
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="exportCharacter">Exportar</button>
@@ -1688,14 +1705,12 @@ export default {
                                     <div class="feats-header black-box">
                                         <span class="health-points-abbreviation">Feats</span>
                                     </div>
-                                    <!-- 
-                                        <div class="feats-area">
-                                            <input type="text" style="width: 100%; border: 0; background: transparent;">
-                                        </div>
-                                    -->
-                                    <textarea class="feats-area" v-model.lazy="featsCombined">
-                                        <span>Spell Focus</span>
-                                    </textarea>
+                                    <div class="feats-area">
+                                        <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)">{{feat.title}}<small v-if="feat.subValue">({{feat.subValue}})</small></span>
+                                    </div>
+                                    <!-- textarea class="feats-area" v-model.lazy="featsCombined">
+                                            <span>Spell Focus</span>
+                                        </textarea -->
                                 </div>
                             </div>
                             <div class="pure-u-3-5">
