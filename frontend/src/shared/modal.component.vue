@@ -44,6 +44,8 @@ export default {
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
     margin-top: 25px;
+    overflow-y: auto;
+    height: 90%;
 }
 
 .v-modal-header h3 {
@@ -58,11 +60,6 @@ export default {
 .v-modal-default-button {
     float: right;
 }
-
-
-
-
-
 
 /*
  * The following styles are auto-applied to elements with

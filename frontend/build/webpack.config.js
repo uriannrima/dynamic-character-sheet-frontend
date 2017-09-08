@@ -54,6 +54,7 @@ module.exports = {
             'Services': path.resolve(__dirname, '../src/services/'),
             'Models': path.resolve(__dirname, '../../common/models/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),
+            'Constants$': path.resolve(__dirname, '../src/constants.js'),
             'vue$': 'vue/dist/vue.js',
             'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
         }

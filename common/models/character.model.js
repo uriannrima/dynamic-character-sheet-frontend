@@ -10,7 +10,8 @@ module.exports = function character({
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
     attacks, gear, items, carryCapacity,
-    campaign, experience, money, feats }) {
+    campaign, experience, money, feats, languages,
+    specialAbilities }) {
 
     return {
         _id, name, playerName,
@@ -91,6 +92,8 @@ module.exports = function character({
             platinum: 0,
             treasure: ""
         }),
-        feats: feats ? feats.map(f => new Models.feat(f)) : []
+        feats: feats ? feats.map(f => new Models.feat(f)) : [],
+        languages : languages || [],
+        specialAbilities : specialAbilities || ""
     }
 }

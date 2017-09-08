@@ -139,7 +139,6 @@ div.pure-g div.pure-10-10 {
     width: 100%;
 }
 
-
 /* General */
 
 .padding-left {
@@ -345,7 +344,7 @@ input[type="number"] {
 .health-points-abbreviation {
     text-transform: uppercase;
     font-size: 120%;
-    display: block;
+    display: inline-block;
     font-weight: bold;
 }
 
@@ -666,7 +665,7 @@ input[type="number"] {
     text-align: center;
 }
 
-@media screen and (min-width:360px) and (max-width:767px) {
+@media screen and (max-width:767px) {
     .condition-modifier-container {
         height: 120px;
     }
@@ -687,7 +686,7 @@ input[type="number"] {
     font-size: 85%;
 }
 
-@media screen and (min-width:360px) and (max-width:767px) {
+@media screen and (max-width:767px) {
     .condition-modifier-area {
         height: 85%;
     }
@@ -1016,6 +1015,11 @@ input[type="number"] {
     padding-right: 15px;
 }
 
+@media screen and (max-width:1023px) {
+    .left-container {
+        padding-right: 0px;
+    }    
+}
 
 /* Campaign */
 
@@ -1131,7 +1135,7 @@ input[type="number"] {
         width: 100%;
     }
     .armor-type, .armor-bonus, .armor-max-dex, .shield-bonus, .shield-weight, .shield-penalty {
-        width: 33.5%;
+        width: 33.4%;
     }
     .armor-penalty, .armor-spell-failure, .armor-speed, .armor-weight, .shield-spell-failure {
         width: 25%;
@@ -1146,7 +1150,6 @@ input[type="number"] {
         width: 50%;
     }
 }
-
 
 /* Other Possessions */
 
@@ -1301,24 +1304,72 @@ input[type="number"] {
     border-radius: 0.5em;
     padding: 0px 2px;
     border: solid 1px;
+    margin-right: 4px;
+}
+
+.add-feat-icon {
+    float: right;
+    margin: 5px;
 }
 
 .feat-general {
-    background-color: lightgray;
-    color: black;
+    background-color: rgba(211, 211, 211, 0.4);
 }
 
 .feat-item-creation {
-    background-color: brown;
-    color: white;
+    background-color: rgba(165, 42, 42, 0.4);
 }
 
 .feat-metamagic {
-    background-color: dodgerblue;
-    color: white;
+    background-color: rgba(30, 144, 255, 0.4);
 }
 
 .feat-reserve {
-    background-color: lightgreen;
-    color: black;
+    background-color: rgba(144, 238, 144, 0.4);
+}
+
+/* Special Abilities */
+
+ .special-abilities-area {
+    width: 100%;
+    height: 95%;
+    background-attachment: local;
+    background-image: repeating-linear-gradient(white, white 18px, black 19px);
+    line-height: 19px;
+    border: 0;
+    text-align: left;
+}
+
+.special-abilities-container {
+    text-align: center;
+    height: 540px;
+}
+
+/* Languages */
+
+.languages-container {
+    text-align: center;
+    height: 155px;
+}
+
+.languages-note {
+    font-size: 10px;
+    display: inline-block;
+    line-height: 12px;
+}
+
+.languages-area {
+    width: 100%;
+    height: 100%;
+    background-attachment: local;
+    background-image: repeating-linear-gradient(white, white 18px, black 19px);
+    line-height: 19px;
+    border: 0;
+    text-align: left;
+}
+
+@media screen and (max-width: 1023px) {
+    .languages-area {
+        height: 74%;
+    }
 }

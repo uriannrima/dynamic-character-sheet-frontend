@@ -26,7 +26,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --open --config build/webpack.config.js --content-base src/ --port 4000",
-    "serve": "webpack-dev-server --config build/webpack.config.js --content-base src/ --port 4000 --public 192.168.0.10:4000 --host 0.0.0.0 ",
+    "serve": "webpack-dev-server --config build/webpack.config.js --content-base src/ --port 4000 --public 192.168.0.23:4000 --host 0.0.0.0 ",
     "build": "webpack --config build/webpack.config.js"
   },
   "babel": {

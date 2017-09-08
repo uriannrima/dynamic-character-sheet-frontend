@@ -5,8 +5,9 @@ exports.FEAT_TYPES = [
     "Metamagic"
 ];
 
-module.exports = function feat({ title, benefit, type, prerequisite, normal, special, subValue }) {
+module.exports = function feat({ _id, title, benefit, type, prerequisite, normal, special, subValue }) {
     return {
+        _id,
         title,
         benefit,
         type,

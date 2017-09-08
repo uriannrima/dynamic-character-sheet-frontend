@@ -1,5 +1,6 @@
 import axios from 'axios';
 import characterModel from 'Models/character.model';
+import Constants from 'Constants';
 
 var generateGuid = function () {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -12,7 +13,6 @@ export default {
     charactersOffline: {
 
     },
-    apiUrl: 'http://localhost:5000/api',
     new: function () {
         return new characterModel({});
     },
@@ -20,7 +20,7 @@ export default {
         return new characterModel(characterData);
     },
     get: function (id) {
-        return axios.get(this.apiUrl + '/characters/' + id).then(response => {
+        return axios.get(Constants.API_URL + '/characters/' + id).then(response => {
             return new characterModel(response.data);
         }, reason => {
             return this.charactersOffline[_id];
@@ -28,13 +28,13 @@ export default {
     },
     saveOrUpdate: function (character) {
         if (character._id) {
-            return axios.put(this.apiUrl + '/characters', { character }).then(response => {
+            return axios.put(Constants.API_URL + '/characters', { character }).then(response => {
                 return response.data;
             }, reason => {
                 return this.charactersOffline[character._id] = character;
             });
         } else {
-            return axios.post(this.apiUrl + '/characters', { character }).then(response => {
+            return axios.post(Constants.API_URL + '/characters', { character }).then(response => {
                 return response.data;
             }, reason => {
                 character._id = generateGuid();
