@@ -1725,7 +1725,7 @@ export default {
                                 </div>
                             </div>
                         </div>
-                        <div class="pure-u-lg-1-2 pure-sm-u-1">
+                        <div class="pure-u-lg-1-2 pure-u-1">
                             <div class="pure-g">
                                 <div class="pure-u-lg-2-5 pure-u-1">
                                     <div class="feats-container">
