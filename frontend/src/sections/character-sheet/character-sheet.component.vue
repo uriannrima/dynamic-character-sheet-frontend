@@ -12,6 +12,7 @@ export default {
     data: function() {
         return {
             showFeatModal: false,
+            selectedFeat: null,
             character: CharacterService.new(),
             allSizes: SizeService.getAll(),
             allRaces: RaceService.getAll(),
@@ -111,6 +112,10 @@ export default {
             if (feat.special) tooltip += "\n\nSpecial: " + feat.special;
 
             return tooltip;
+        },
+        openFeatDescription: function(feat) {
+            this.selectedFeat = feat;
+            this.showFeatModal = true;
         },
         updateCharacterItem: function(rowIndex, columnIndex) {
             var gridItem = this.itemsGrid[rowIndex][columnIndex];
@@ -1730,13 +1735,10 @@ export default {
                                             <span class="add-feat-icon glyphicon glyphicon-plus" @click="showFeatModal = true"></span>
                                         </div>
                                         <div class="feats-area">
-                                            <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)">{{feat.title}}
+                                            <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)" @dblclick="openFeatDescription(feat)">{{feat.title}}
                                                 <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
                                             </span>
                                         </div>
-                                        <!-- textarea class="feats-area" v-model.lazy="featsCombined">
-                                                            <span>Spell Focus</span>
-                                                        </textarea -->
                                     </div>
                                     <div class="special-abilities-container">
                                         <div class="special-abilities-header black-box">
@@ -1762,7 +1764,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <dcs-feat-modal :show.sync="showFeatModal" @onFeatAdded="addNewFeat"></dcs-feat-modal>
+            <dcs-feat-modal :show.sync="showFeatModal" :describe-feat.sync="selectedFeat" @onFeatAdded="addNewFeat"></dcs-feat-modal>
         </div>
     </div>
 </template>

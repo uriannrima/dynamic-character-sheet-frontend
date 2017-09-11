@@ -3,7 +3,7 @@ import DcsModal from 'Shared/modal.component';
 import FeatService from 'Services/feat.service';
 
 export default {
-    props: ['show'],
+    props: ['show', 'describeFeat'],
     components: { DcsModal },
     data: function() {
         return {
@@ -32,9 +32,10 @@ export default {
         },
         close: function() {
             this.clear();
+            this.$emit('update:describeFeat', null);
             this.$emit('update:show', false);
         },
-        createNewFeat: function() {
+        addNewFeat: function() {
             // New feat being created.
             if (!this.selectedFeat) {
                 FeatService.saveOrUpdate(this.newFeat).then(feat => {
@@ -91,7 +92,47 @@ textarea {
                 <span class="health-points-abbreviation">Feat</span>
             </div>
         </div>
-        <div slot="body">
+        <!-- Feat Description -->
+        <div slot="body" v-if="describeFeat">
+            <div>
+                <span>
+                    <strong>Feat Title:</strong>
+                </span>
+                <span>{{describeFeat.title}} [{{describeFeat.type}}]</span>
+            </div>
+            <div>
+                <span>
+                    <strong>Benefit:</strong>
+                </span>
+                <span>{{describeFeat.benefit}}</span>
+            </div>
+            <div v-if="describeFeat.prerequisite">
+                <span>
+                    <strong>Prerequisite:</strong>
+                </span>
+                <span>{{describeFeat.prerequisite}}</span>
+            </div>
+            <div v-if="describeFeat.normal">
+                <span>
+                    <strong> Normal:</strong>
+                </span>
+                <span>{{describeFeat.normal}}</span>
+            </div>
+            <div v-if="describeFeat.special">
+                <span>
+                    <strong>Special:</strong>
+                </span>
+                <span>{{describeFeat.special}}</span>
+            </div>
+            <div v-if="describeFeat.hasSubValue">
+                <span>
+                    <strong>{{describeFeat.subValue.title}}:</strong>
+                </span>
+                <span>{{describeFeat.subValue.value}}</span>
+            </div>
+        </div>
+        <!-- Adding new feat -->
+        <div slot="body" v-else>
             <span>Select feat:</span>
             <select v-model="selectedFeat">
                 <option value="">New feat</option>
@@ -185,9 +226,9 @@ textarea {
                 </div>
             </div>
         </div>
-        <div slot="footer">
-            <button @click="cancel()">Cancel</button>
-            <button @click="createNewFeat()">Save</button>
+        <div slot="footer" style="text-align: center;">
+            <button @click="cancel()">Close</button>
+            <button @click="addNewFeat()" v-show="!describeFeat">Add</button>
         </div>
     </dcs-modal>
 </template>

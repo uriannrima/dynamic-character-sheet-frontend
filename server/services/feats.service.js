@@ -14,7 +14,7 @@ module.exports = function (app) {
 
     service.getAll = function (callback) {
         var collection = app.mongodb.database.collection('feats');
-        collection.find({ }).toArray(function (err, records) {
+        collection.find({ }).sort({ title : 1 }).toArray(function (err, records) {
             callback(records.map(data => new feat(data)));
         });
     }
