@@ -6,7 +6,9 @@
     "scripts": {
         "server": "cd server && npm run dev",
         "frontend": "cd frontend && npm run dev",
-        "dev": "npm-run-all --parallel server frontend"
+        "serve:frontend": "cd frontend && npm run serve",
+        "dev": "npm-run-all --parallel server frontend",
+        "serve": "npm-run-all --parallel server serve:frontend"
     },
     "dependencies": {
         "npm-run-all": "^4.0.2"

@@ -184,7 +184,6 @@ export default {
 </script>
 <template>
     <div>
-
         <div class="main-container">
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
@@ -1735,7 +1734,7 @@ export default {
                                             <span class="add-feat-icon glyphicon glyphicon-plus" @click="showFeatModal = true"></span>
                                         </div>
                                         <div class="feats-area">
-                                            <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)" @dblclick="openFeatDescription(feat)">{{feat.title}}
+                                            <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)" @click="openFeatDescription(feat)">{{feat.title}}
                                                 <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
                                             </span>
                                         </div>
