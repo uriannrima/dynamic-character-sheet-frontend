@@ -1731,7 +1731,7 @@ export default {
                                         </div>
                                         <div class="feats-area">
                                             <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)">{{feat.title}}
-                                                <small v-if="feat.subValue">({{feat.subValue}})</small>
+                                                <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
                                             </span>
                                         </div>
                                         <!-- textarea class="feats-area" v-model.lazy="featsCombined">

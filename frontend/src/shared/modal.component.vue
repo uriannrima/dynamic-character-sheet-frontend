@@ -2,11 +2,11 @@
 export default {
     props: ['show', 'onClose'],
     methods: {
-        close: function () {
+        close: function() {
             this.onClose();
         }
     },
-    mounted: function () {
+    mounted: function() {
         document.addEventListener("keydown", (e) => {
             if (this.show && e.keyCode == 27) {
                 this.onClose();
@@ -45,7 +45,7 @@ export default {
     font-family: Helvetica, Arial, sans-serif;
     margin-top: 25px;
     overflow-y: auto;
-    height: 90%;
+    max-height: 90%;
 }
 
 .v-modal-header h3 {
@@ -60,6 +60,7 @@ export default {
 .v-modal-default-button {
     float: right;
 }
+
 
 /*
  * The following styles are auto-applied to elements with

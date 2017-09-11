@@ -13,8 +13,7 @@ export default {
             has: {
                 prerequisite: false,
                 special: false,
-                normal: false,
-                subValue: false
+                normal: false
             }
         }
     },
@@ -25,27 +24,29 @@ export default {
             this.has = {
                 prerequisite: false,
                 special: false,
-                normal: false,
-                subValue: false
+                normal: false
             }
         },
         cancel: function() {
-            this.clear();
             this.close();
         },
         close: function() {
             this.clear();
             this.$emit('update:show', false);
         },
-        save: function() {
+        createNewFeat: function() {
             // New feat being created.
             if (!this.selectedFeat) {
                 FeatService.saveOrUpdate(this.newFeat).then(feat => {
-                    this.$emit('onFeatAdded', feat);
+                    this.newFeat._id = feat._id;
+                    this.$emit('onFeatAdded', this.newFeat);
                     this.clear();
                     this.close();
                 });
             } else {
+                if (this.selectedFeat.hasSubValue) {
+                    this.selectedFeat.subValue = this.newFeat.subValue;
+                }
                 this.$emit('onFeatAdded', this.selectedFeat);
                 this.clear();
                 this.close();
@@ -95,7 +96,6 @@ textarea {
             <select v-model="selectedFeat">
                 <option value="">New feat</option>
                 <option v-for="(feat, index) in allFeats" :value="feat" :key="index">{{feat.title}}
-                    <small v-if="feat.subValue">({{feat.subValue}})</small>
                 </option>
             </select>
             <div v-if="!selectedFeat">
@@ -137,16 +137,57 @@ textarea {
                 </div>
                 <div>
                     <span>Sub Value:</span>
-                    <input type="checkbox" v-model="has.subValue" style="vertical-align: middle">
+                    <input type="checkbox" v-model="newFeat.hasSubValue" style="vertical-align: middle">
                 </div>
-                <div v-if="has.subValue">
-                    <textarea type="text" v-model="newFeat.subValue"></textarea>
+                <div v-if="newFeat.hasSubValue">
+                    <span>Title:</span>
+                    <input type="text" v-model="newFeat.subValue.title"></input>
+                    <span>Value:</span>
+                    <input type="text" v-model="newFeat.subValue.value"></input>
+                </div>
+            </div>
+            <div v-else>
+                <div v-if="selectedFeat.hasSubValue">
+                    <span>
+                        <strong>{{selectedFeat.subValue.title}}:</strong>
+                    </span>
+                    <input type="text" v-model="newFeat.subValue.value"></input>
+                </div>
+                <div>
+                    <span>
+                        <strong>Feat Type:</strong>
+                    </span>
+                    <span>{{selectedFeat.type}}</span>
+                </div>
+                <div>
+                    <span>
+                        <strong>Benefit:</strong>
+                    </span>
+                    <span>{{selectedFeat.benefit}}</span>
+                </div>
+                <div v-if="selectedFeat.prerequisite">
+                    <span>
+                        <strong>Prerequisite:</strong>
+                    </span>
+                    <span>{{selectedFeat.prerequisite}}</span>
+                </div>
+                <div v-if="selectedFeat.normal">
+                    <span>
+                        <strong> Normal:</strong>
+                    </span>
+                    <span>{{selectedFeat.normal}}</span>
+                </div>
+                <div v-if="selectedFeat.special">
+                    <span>
+                        <strong>Special:</strong>
+                    </span>
+                    <span>{{selectedFeat.special}}</span>
                 </div>
             </div>
         </div>
         <div slot="footer">
             <button @click="cancel()">Cancel</button>
-            <button @click="save()">Save</button>
+            <button @click="createNewFeat()">Save</button>
         </div>
     </dcs-modal>
 </template>

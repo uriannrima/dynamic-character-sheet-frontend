@@ -14,6 +14,7 @@ var item = require('./item.model');
 var carryCapacity = require('./carry-capacity.model');
 var money = require('./money.model');
 var feat = require('./feat.model');
+var subValue = require('./sub-value.model');
 
 module.exports = {
     classe,
@@ -30,5 +31,6 @@ module.exports = {
     item,
     carryCapacity,
     money,
-    feat
+    feat,
+    subValue
 }

@@ -1,3 +1,5 @@
+var subValueModel = require('./sub-value.model');
+
 exports.FEAT_TYPES = [
     "General",
     "Item Creation",
@@ -5,7 +7,7 @@ exports.FEAT_TYPES = [
     "Metamagic"
 ];
 
-module.exports = function feat({ _id, title, benefit, type, prerequisite, normal, special, subValue }) {
+module.exports = function feat({ _id, title, benefit, type, prerequisite, normal, special, hasSubValue, subValue }) {
     return {
         _id,
         title,
@@ -14,6 +16,7 @@ module.exports = function feat({ _id, title, benefit, type, prerequisite, normal
         prerequisite,
         normal,
         special,
-        subValue
+        hasSubValue,
+        subValue: subValue || new subValueModel({})
     }
 }
