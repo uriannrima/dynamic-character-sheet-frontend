@@ -1,13 +1,19 @@
 import axios from 'axios';
-import featModel from 'Models/feat.model';
+import featModule from 'Modules/feat.module';
 import Constants from 'Constants';
+import guid from 'Utils/guid';
 
 export default {
     featsOffline: {
 
     },
     new: function () {
-        return new featModel({});
+        return new featModule.feat({});
+    },
+    toCharacterFeat: function(feat){
+        // Change it to become a character feat.
+        feat._id = guid.generate();
+        return new featModule.feat(feat);
     },
     getAll: function () {
         return axios.get(Constants.API_URL + '/feats').then(response => {

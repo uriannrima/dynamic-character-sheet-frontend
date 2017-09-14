@@ -1,4 +1,4 @@
-module.exports = function armorClass({ base, armorBonus, shieldBonus, dexModifier, sizeModifier, naturalArmor, deflectionModifier, miscModifier }) {
+exports.armorClass = function ({ base, armorBonus, shieldBonus, dexModifier, sizeModifier, naturalArmor, deflectionModifier, miscModifier }) {
     return {
         base,
         armorBonus,

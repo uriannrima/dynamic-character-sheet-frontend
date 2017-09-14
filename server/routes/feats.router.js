@@ -6,8 +6,8 @@ module.exports = function (app) {
     
     router.get('/:id', app.controllers.feats.get);
     router.get('/', app.controllers.feats.getAll);
-    router.post('/', app.controllers.feats.save);
-    router.put('/', app.controllers.feats.update);
+    router.post('/', app.controllers.feats.saveOrUpdate);
+    router.put('/', app.controllers.feats.saveOrUpdate);
 
     app.use('/api/feats', router);
 }

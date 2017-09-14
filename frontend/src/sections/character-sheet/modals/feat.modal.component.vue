@@ -1,9 +1,10 @@
 <script>
 import DcsModal from 'Shared/modal.component';
 import FeatService from 'Services/feat.service';
+import CharacterService from 'Services/character.service';
 
 export default {
-    props: ['show', 'describeFeat'],
+    props: ['show', 'describeFeat', 'characterFeats'],
     components: { DcsModal },
     data: function() {
         return {
@@ -38,9 +39,8 @@ export default {
         addNewFeat: function() {
             // New feat being created.
             if (!this.selectedFeat) {
-                FeatService.saveOrUpdate(this.newFeat).then(feat => {
-                    this.newFeat._id = feat._id;
-                    this.$emit('onFeatAdded', this.newFeat);
+                FeatService.saveOrUpdate(this.newFeat).then(featCreated => {
+                    this.$emit('onFeatAdded', featCreated);
                     this.clear();
                     this.close();
                 });
@@ -52,6 +52,11 @@ export default {
                 this.clear();
                 this.close();
             }
+        },
+        removeFeat: function() {
+            this.$emit('onFeatRemoved', this.describeFeat._id);
+            this.clear();
+            this.close();
         }
     },
     beforeUpdate() {
@@ -124,6 +129,14 @@ textarea {
                 </span>
                 <span>{{describeFeat.special}}</span>
             </div>
+            <div>
+                <span v-if="!describeFeat.unique">
+                    <strong>This feat can be aquired multiple times.</strong>
+                </span>
+                <span v-else>
+                    <strong>This feat cannot be aquired multiple times.</strong>
+                </span>
+            </div>
             <div v-if="describeFeat.hasSubValue">
                 <span>
                     <strong>{{describeFeat.subValue.title}}:</strong>
@@ -177,6 +190,10 @@ textarea {
                     <textarea type="text" v-model="newFeat.special"></textarea>
                 </div>
                 <div>
+                    <span>Unique:</span>
+                    <input type="checkbox" v-model="newFeat.unique" value="true" style="vertical-align: middle">
+                </div>
+                <div>
                     <span>Sub Value:</span>
                     <input type="checkbox" v-model="newFeat.hasSubValue" style="vertical-align: middle">
                 </div>
@@ -224,11 +241,20 @@ textarea {
                     </span>
                     <span>{{selectedFeat.special}}</span>
                 </div>
+                <div>
+                    <span v-if="!selectedFeat.unique">
+                        <strong>This feat can be aquired multiple times.</strong>
+                    </span>
+                    <span v-else>
+                        <strong>This feat cannot be aquired multiple times.</strong>
+                    </span>
+                </div>
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
             <button @click="cancel()">Close</button>
             <button @click="addNewFeat()" v-show="!describeFeat">Add</button>
+            <button @click="removeFeat()" v-show="describeFeat">Remove</button>
         </div>
     </dcs-modal>
 </template>

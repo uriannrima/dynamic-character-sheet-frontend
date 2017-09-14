@@ -1,4 +1,4 @@
-module.exports = function ammunition({ name, quantity, notes }) {
+exports.ammunition = function ({ name, quantity, notes }) {
     return {
         name: name,
         quantity: quantity,

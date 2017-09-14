@@ -3,24 +3,33 @@ module.exports = function (app) {
 
     controller.get = function (req, res) {
         var rId = req.params.id;
-        app.services.characters.getById(rId, function (character) {
+        app.services.characters.getById(rId, character => {
             res.json(character);
         });
     };
 
-    controller.save = function (req, res) {
+    controller.saveOrUpdate = function (req, res) {
         var rCharacter = req.body.character;
-        app.services.characters.saveOrUpdate(rCharacter, function (character) {
+        app.services.characters.saveOrUpdate(rCharacter, character => {
             res.json(character);
         });
     };
 
-    controller.update = function (req, res) {
+    controller.addFeat = function (req, res) {
         var rCharacter = req.body.character;
-        app.services.characters.saveOrUpdate(rCharacter, function (character) {
+        var rFeat = req.body.feat;
+        app.services.characters.addFeat(rCharacter, rFeat, feat => {
+            res.json(feat);
+        });
+    };
+
+    controller.removeFeat = function (req, res) {
+        var rCharacter = req.body.character;
+        var rFeatId = req.params.featId;
+        app.services.characters.removeFeat(rCharacter, rFeatId, character => {
             res.json(character);
         });
-    }
-    
+    };
+
     app.createController('characters', controller);
 }

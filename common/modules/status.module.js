@@ -1,4 +1,4 @@
-module.exports = function status({ healthPoints, wounds, nonLethalDamage }) {
+exports.status = function ({ healthPoints, wounds, nonLethalDamage }) {
     return {
         healthPoints,
         wounds,

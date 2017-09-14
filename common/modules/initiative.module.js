@@ -1,4 +1,4 @@
-module.exports = function initiative({ dexModifier, miscModifier }) {
+exports.initiative = function ({ dexModifier, miscModifier }) {
     return {
         dexModifier,
         miscModifier,

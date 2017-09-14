@@ -1,6 +1,6 @@
-var ammunition = require('./ammunition.model');
+var ammunitionModule = require('./ammunition.module');
 
-module.exports = function attack({ name, attackBonus, damage, critical, range, type, notes, keyAbility, hasAmmunition }) {
+exports.attack = function ({ name, attackBonus, damage, critical, range, type, notes, keyAbility, hasAmmunition }) {
     return {
         name,
         // attackBonus: {
@@ -25,7 +25,7 @@ module.exports = function attack({ name, attackBonus, damage, critical, range, t
         notes,
         hasAmmunition,
         keyAbility: keyAbility || "",
-        ammunition: new ammunition({
+        ammunition: new ammunitionModule.ammunition({
 
         })
     }

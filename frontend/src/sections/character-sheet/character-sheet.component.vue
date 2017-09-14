@@ -76,9 +76,9 @@ export default {
         /** A combination of the character languages. */
         languagesCombined: {
             get: function() {
-                return this.character.languages.map(language => {
+                return this.character.languages.map((language, index) => {
                     if (!language) return "";
-                    return language;
+                    return index > 0 ? " " + language : language;
                 });
             },
             set: function(newValue) {
@@ -96,8 +96,16 @@ export default {
         }
     },
     methods: {
-        addNewFeat: function(newFeat) {
-            this.character.feats.push(newFeat);
+        addNewFeat: function(featAdded) {
+            CharacterService.addFeat(this.character, featAdded).then(feat => {
+                console.debug(feat);
+                this.character.feats.push(feat);
+            });
+        },
+        removeFeat: function(featId) {
+            CharacterService.removeFeat(this.character, featId).then(character => {
+                this.character.feats = this.character.feats.filter(feat => feat._id != featId);
+            });
         },
         featType: function(feat) {
             return "feat-" + feat.type.toLowerCase().replace(' ', '-');
@@ -1734,7 +1742,8 @@ export default {
                                             <span class="add-feat-icon glyphicon glyphicon-plus" @click="showFeatModal = true"></span>
                                         </div>
                                         <div class="feats-area">
-                                            <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)" @click="openFeatDescription(feat)">{{feat.title}}
+                                            <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)"
+                                                @click="openFeatDescription(feat)">{{feat.title}}
                                                 <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
                                             </span>
                                         </div>
@@ -1763,7 +1772,8 @@ export default {
                     </div>
                 </div>
             </div>
-            <dcs-feat-modal :show.sync="showFeatModal" :describe-feat.sync="selectedFeat" @onFeatAdded="addNewFeat"></dcs-feat-modal>
+            <dcs-feat-modal :show.sync="showFeatModal" :describe-feat.sync="selectedFeat" :character-feats="character.feats" @onFeatAdded="addNewFeat"
+                @onFeatRemoved="removeFeat"></dcs-feat-modal>
         </div>
     </div>
 </template>

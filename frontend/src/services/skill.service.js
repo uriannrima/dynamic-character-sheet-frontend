@@ -1,4 +1,4 @@
-import DEFAULT_SKILLS from 'Models/skill.model';
+import DEFAULT_SKILLS from 'Module/skill.module';
 
 export default {
     get: function () {

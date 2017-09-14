@@ -1,27 +1,21 @@
 import axios from 'axios';
-import characterModel from 'Models/character.model';
+import characterModule from 'Modules/character.module';
 import Constants from 'Constants';
-
-var generateGuid = function () {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
+import guid from 'Utils/guid';
 
 export default {
     charactersOffline: {
 
     },
     new: function () {
-        return new characterModel({});
+        return new characterModule.character({});
     },
     load: function (characterData) {
-        return new characterModel(characterData);
+        return new characterModule.character(characterData);
     },
     get: function (id) {
         return axios.get(Constants.API_URL + '/characters/' + id).then(response => {
-            return new characterModel(response.data);
+            return new characterModule.character(response.data);
         }, reason => {
             return this.charactersOffline[_id];
         });
@@ -37,7 +31,7 @@ export default {
             return axios.post(Constants.API_URL + '/characters', { character }).then(response => {
                 return response.data;
             }, reason => {
-                character._id = generateGuid();
+                character._id = guid.generate();
                 return this.charactersOffline[character._id] = character;
             });
         }
@@ -50,5 +44,19 @@ export default {
         }
 
         character.grapple.baseAttackBonus = character.baseAttackBonus;
+    },
+    addFeat: function (character, feat) {
+        return axios.post(Constants.API_URL + '/characters/feat', { character, feat }).then(response => {
+            return response.data;
+        }, reason => {
+            console.log(reason);
+        });
+    },
+    removeFeat: function (character, featId) {
+        return axios.put(Constants.API_URL + '/characters/feat/' + featId, { character }).then(response => {
+            return response.data;
+        }, reason => {
+            console.log(reason);
+        });
     }
 }

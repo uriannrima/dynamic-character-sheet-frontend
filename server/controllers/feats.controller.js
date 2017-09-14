@@ -14,19 +14,12 @@ module.exports = function (app) {
         });
     };
 
-    controller.save = function (req, res) {
+    controller.saveOrUpdate = function (req, res) {
         var rFeat = req.body.feat;
         app.services.feats.saveOrUpdate(rFeat, function (feat) {
             res.json(feat);
         });
     };
-
-    controller.update = function (req, res) {
-        var rFeat = req.body.feat;
-        app.services.feats.saveOrUpdate(rFeat, function (feat) {
-            res.json(feat);
-        });
-    }
     
     app.createController('feats', controller);
 }

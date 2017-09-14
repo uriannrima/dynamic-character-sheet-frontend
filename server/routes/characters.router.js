@@ -4,8 +4,10 @@ module.exports = function (app) {
     var router = express.Router();
 
     router.get('/:id', app.controllers.characters.get);
-    router.post('/', app.controllers.characters.save);
-    router.put('/', app.controllers.characters.update);
+    router.post('/', app.controllers.characters.saveOrUpdate);
+    router.put('/', app.controllers.characters.saveOrUpdate);
+    router.post('/feat', app.controllers.characters.addFeat);
+    router.put('/feat/:featId', app.controllers.characters.removeFeat);
 
     app.use('/api/characters', router);
 }
