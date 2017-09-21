@@ -11,6 +11,7 @@ export default {
     components: { DcsFeatModal },
     data: function() {
         return {
+            sheetPage: 1,
             showFeatModal: false,
             selectedFeat: null,
             character: CharacterService.new(),
@@ -18,7 +19,8 @@ export default {
             allRaces: RaceService.getAll(),
             allAlignments: AlignmentService.getAll(),
             // Create items grid with 17 rows and 2 columns.
-            itemsGrid: [...Array(17).keys()].map(i => [...Array(2).keys()].map(i => new Object()))
+            itemsGrid: [...Array(17).keys()].map(i => [...Array(2).keys()].map(i => new Object())),
+            spellLevels: 10
         };
     },
     computed: {
@@ -51,7 +53,7 @@ export default {
                     // Remove level from field.
                     var classOnly = classLevel.replace(levelRegex, '');
                     this.character.classes.push({
-                        name: classOnly,
+                        name: classOnly.trim(),
                         level: level
                     });
                 });
@@ -85,7 +87,7 @@ export default {
                 this.character.languages = [];
                 const newLanguages = newValue.split(',');
                 newLanguages.forEach(newLanguage => {
-                    this.character.languages.push(newLanguage);
+                    this.character.languages.push(newLanguage.trim());
                 });
             }
         },
@@ -184,7 +186,7 @@ export default {
             });
         } else {
             next(vm => {
-                vm.character = CharacterService.new();
+                vm.loadCharacter(CharacterService.new());
             });
         }
     }
@@ -199,7 +201,12 @@ export default {
                 <button @click="importCharacter">Importar</button>
                 <input id="importField" type="file">
             </div>
-            <div class="first-page" style="display: none">
+            <div>
+                <button @click="sheetPage = 1">First Page</button>
+                <button @click="sheetPage = 2">Second Page</button>
+                <button @click="sheetPage = -1">Show All</button>
+            </div>
+            <div  v-if="sheetPage == 1 || sheetPage == -1" class="first-page">
                 <div class="pure-g">
                     <div class="description-container">
                         <div class="pure-u-md-1-1 hidden-lg-up">
@@ -1291,7 +1298,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="second-page">
+            <div v-if="sheetPage == 2 || sheetPage == -1" class="second-page">
                 <div class="padding-box">
                     <div class="pure-g">
                         <div class="pure-u-lg-1-2 pure-u-1">
@@ -1335,7 +1342,7 @@ export default {
                                                     <input type="number" class="full-input" v-model.number="character.gear.armor.acBonus">
                                                 </div>
                                                 <div class="armor-max-dex">
-                                                    <input type="text" class="full-input" v-model="character.gear.armor.maxDex">
+                                                    <input type="number" class="full-input" v-model="character.gear.armor.maxDex">
                                                 </div>
                                             </div>
                                             <div>
@@ -1765,7 +1772,82 @@ export default {
                                     </div>
                                 </div>
                                 <div class="pure-u-lg-3-5 pure-u-1">
-                                    F
+                                    <div class="third-region">
+                                        <div class="spells-container">
+                                            <div class="spells-header black-box">
+                                                <span class="health-points-abbreviation">Spells</span>
+                                            </div>
+                                            <span class="spells-note">Domains/Specialty School</span>
+                                            <input type="text" class="domain-specialty-school">
+                                            <textarea class="spells-area">
+                                            </textarea>
+                                        </div>
+                                        <div class="spell-save-container">
+                                            <div class="spell-save-header black-box">
+                                                <span class="health-points-abbreviation">Spell Save</span>
+                                            </div>
+                                            <input class="spell-save-input" type="text">
+                                        </div>
+                                        <div class="arcane-spell-failure-container">
+                                            <div class="arcane-spell-failure-header black-box">
+                                                <span class="health-points-abbreviation">Arcane Spell Failure</span>
+                                            </div>
+                                            <input class="arcane-spell-failure-input" type="text">
+                                            <span>%</span>
+                                        </div>
+                                        <div class="spell-condition-modifiers-container">
+                                            <span class="spell-condition-modifiers-span">Conditional Modifiers</span>
+                                            <textarea class="spell-condition-modifier-area">
+                                            </textarea>
+                                        </div>
+                                        <div class="daily-spells-container">
+                                            <table class="daily-spells-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <span class="spells-known">Spells<br>Known</span>
+                                                        </th>
+                                                        <th>
+                                                            <span class="spell-save-dc">Spell<br>Save DC</span>
+                                                        </th>
+                                                        <th>
+                                                            <span class="spell-level">Level</span>
+                                                        </th>
+                                                        <th>
+                                                            <span class="spells-per-day">Spells<br>Per Day</span>
+                                                        </th>
+                                                        <th>
+                                                            <span class="bonus-spells">Bonus<br>Spells</span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="spellLevel in spellLevels" :key="spellLevel - 1">
+                                                        <td>
+                                                            <input class="spells-known-input" type="number">
+                                                        </td>
+                                                        <td>
+                                                            <input class="spell-save-dc-input" type="number">
+                                                        </td>
+                                                        <td>
+                                                            <label v-if="spellLevel - 1 == 0" class="spell-level-label">0</label>
+                                                            <label v-if="spellLevel - 1 == 1" class="spell-level-label">1st</label>
+                                                            <label v-if="spellLevel - 1 == 2" class="spell-level-label">2nd</label>
+                                                            <label v-if="spellLevel - 1 == 3" class="spell-level-label">3rd</label>
+                                                            <label v-if="spellLevel - 1 > 3" class="spell-level-label">{{spellLevel - 1}}th</label>
+                                                        </td>
+                                                        <td>
+                                                            <input class="spells-per-day-input" type="number">
+                                                        </td>
+                                                        <td>
+                                                            <label v-if="spellLevel - 1 == 0">0</label>
+                                                            <input v-else class="bonus-spells-input" type="number">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

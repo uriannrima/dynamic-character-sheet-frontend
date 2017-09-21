@@ -2,7 +2,7 @@ var abilityScore = function ({ name, value, tempValue, updateFn }) {
     return {
         name,
         value: value || 10,
-        tempValue: tempValue || value,
+        tempValue: tempValue || value || 10,
         getModifier: function () {
             return Math.floor((this.value - 10) / 2);
         },

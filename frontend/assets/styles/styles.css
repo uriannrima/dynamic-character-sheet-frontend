@@ -139,6 +139,7 @@ div.pure-g div.pure-10-10 {
     width: 100%;
 }
 
+
 /* General */
 
 .padding-left {
@@ -170,7 +171,7 @@ input[type="number"] {
 /* Main Container */
 
 .main-container {
-    min-width: 360px;
+    min-width: 320px;
     max-width: 1024px;
     margin: 0 auto;
     border-style: solid;
@@ -192,8 +193,7 @@ input[type="number"] {
 
 @media screen and (max-width:567px) {
     .main-container {
-        min-width: 378px;
-        max-width: 360px;
+        min-width: 320px;
     }
 }
 
@@ -210,7 +210,7 @@ input[type="number"] {
     width: 100%;
 }
 
-@media screen and (min-width:360px) and (max-width:767px) {
+@media screen and (min-width:320px) and (max-width:767px) {
     .first-description-container {
         padding: 0 1em;
         width: 100%;
@@ -238,7 +238,7 @@ input[type="number"] {
     padding: 0 0 0 1em;
 }
 
-@media screen and (min-width:360px) and (max-width:767px) {
+@media screen and (min-width:320px) and (max-width:767px) {
     .ability-container {
         padding: 0 1em;
     }
@@ -300,7 +300,7 @@ input[type="number"] {
     height: 26px;
 }
 
-@media screen and (min-width: 360px) and (max-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
     .first-gutter {
         height: 10px;
     }
@@ -348,7 +348,7 @@ input[type="number"] {
     font-weight: bold;
 }
 
-@media screen and (min-width:360px) and (max-width:767px) {
+@media screen and (min-width:320px) and (max-width:767px) {
     .health-points-abbreviation {
         font-size: 100%;
     }
@@ -602,7 +602,7 @@ input[type="number"] {
     font-size: 50%;
 }
 
-@media screen and (min-width: 360px) and (max-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
     .saving-throw-table tbody td label {
         margin-top: -22px;
     }
@@ -718,7 +718,7 @@ input[type="number"] {
     padding: 0 0 0 1em;
 }
 
-@media screen and (min-width:360px) and (max-width:1023px) {
+@media screen and (min-width:320px) and (max-width:1023px) {
     .grapple-container {
         padding: 0 1em;
     }
@@ -742,7 +742,7 @@ input[type="number"] {
     height: 33px;
 }
 
-@media screen and (min-width:360px) and (max-width:567px) {
+@media screen and (min-width:320px) and (max-width:567px) {
     .grapple-table tbody td input {
         width: 35px;
     }
@@ -770,13 +770,13 @@ input[type="number"] {
     overflow-y: auto;
 }
 
-@media screen and (min-width: 360px) and (max-width:568px) {
+@media screen and (min-width: 320px) and (max-width:568px) {
     .attack-container {
         margin-bottom: 10px;
     }
 }
 
-@media screen and (min-width: 360px) and (max-width:1023px) {
+@media screen and (min-width: 320px) and (max-width:1023px) {
     .attacks-container {
         margin-bottom: 10px;
         padding: 0 1em;
@@ -871,7 +871,7 @@ input[type="number"] {
     width: 86%
 }
 
-@media screen and (min-width:360px) and (max-width:767px) {
+@media screen and (min-width:320px) and (max-width:767px) {
     .ammunition-input {
         width: 60%
     }
@@ -889,7 +889,7 @@ input[type="number"] {
     overflow-y: auto;
 }
 
-@media screen and (min-width:360px) and (max-width:568px) {
+@media screen and (min-width:320px) and (max-width:568px) {
     .skills-container {
         margin-top: 5px;
     }
@@ -1018,8 +1018,9 @@ input[type="number"] {
 @media screen and (max-width:1023px) {
     .left-container {
         padding-right: 0px;
-    }    
+    }
 }
+
 
 /* Campaign */
 
@@ -1081,6 +1082,12 @@ input[type="number"] {
 .armor-title, .shield-title, .protective-item-title {
     width: 40%;
     border-radius: 5px 5px 0px 0px;
+}
+
+.armor-title input,
+.shield-title input,
+.protective-item-title input {
+    text-align: center;
 }
 
 .armor-type {
@@ -1150,6 +1157,7 @@ input[type="number"] {
         width: 50%;
     }
 }
+
 
 /* Other Possessions */
 
@@ -1328,9 +1336,10 @@ input[type="number"] {
     background-color: rgba(144, 238, 144, 0.4);
 }
 
+
 /* Special Abilities */
 
- .special-abilities-area {
+.special-abilities-area {
     width: 100%;
     height: 95%;
     background-attachment: local;
@@ -1344,6 +1353,7 @@ input[type="number"] {
     text-align: center;
     height: 540px;
 }
+
 
 /* Languages */
 
@@ -1372,4 +1382,113 @@ input[type="number"] {
     .languages-area {
         height: 74%;
     }
+}
+
+
+/* Third Region */
+
+@media screen and (min-width: 1024px) {
+    .third-region {
+        padding-left: 15px;
+    }
+}
+
+
+/* Spells */
+
+.spells-note {
+    font-size: 11px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.spells-container {
+    text-align: center;
+    height: 570px;
+}
+
+.domain-specialty-school {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+
+.spells-area {
+    width: 100%;
+    height: 87%;
+    background-attachment: local;
+    background-image: repeating-linear-gradient(white, white 18px, black 19px);
+    line-height: 19px;
+    border: 0;
+    text-align: left;
+}
+
+.spell-save-container, .arcane-spell-failure-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.spell-save-header, .arcane-spell-failure-header {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.spell-save-input, .arcane-spell-failure-input {
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+    vertical-align: top;
+}
+
+.spell-condition-modifiers-container {
+    height: 78px;
+    margin-bottom: 5px;
+}
+
+.spell-condition-modifiers-span {
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.spell-condition-modifier-area {
+    width: 100%;
+    height: 100%;
+    border: solid 2px black;
+}
+
+.daily-spells-container {
+    text-align: center;
+}
+
+.daily-spells-table {
+    width: 100%;
+}
+
+.daily-spells-table thead th {
+    line-height: 10px;
+}
+
+.daily-spells-table thead span {
+    text-transform: uppercase;
+}
+
+.daily-spells-table tbody input {
+    width: 40px;
+}
+
+.daily-spells-table thead th, .daily-spells-table tbody td {
+    padding-bottom: 2px;
+}
+
+.daily-spells-table tbody label {
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.spell-level {
+    font-size: 18px;
 }
