@@ -11,7 +11,9 @@ exports.character = function ({
     spellResistance, grapple, skills,
     attacks, gear, items, carryCapacity,
     campaign, experience, money, feats, languages,
-    specialAbilities }) {
+    specialAbilities, domainSchool, spellSave,
+    arcaneSpellFailure, spellConditionModifier,
+    spellList, spellPerDayList }) {
 
     return {
         _id, name, playerName,
@@ -94,6 +96,14 @@ exports.character = function ({
         }),
         feats: feats ? feats.map(f => new Modules.featModule.feat(f)) : [],
         languages: languages || [],
-        specialAbilities: specialAbilities || ""
+        specialAbilities: specialAbilities || "",
+        domainSchool: domainSchool || "",
+        spellSave: spellSave || 0,
+        arcaneSpellFailure: arcaneSpellFailure || 0,
+        spellConditionModifier: spellConditionModifier || "",
+        spellList: spellList || [],
+        spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.spellsPerDayModule.spellsPerDay({
+            spellLevel: i
+        }))
     }
 }

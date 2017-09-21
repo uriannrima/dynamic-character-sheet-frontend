@@ -13,6 +13,8 @@
     "es6-promise": "^4.1.1",
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.28.0",
+    "lodash": "^4.17.4",
+    "lodash-webpack-plugin": "^0.11.4",
     "purecss": "^1.0.0",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",

@@ -15,6 +15,7 @@ const carryCapacityModule = require('./carry-capacity.module');
 const moneyModule = require('./money.module');
 const featModule = require('./feat.module');
 const subValueModule = require('./sub-value.module');
+const spellsPerDayModule = require('./spells-per-day.module');
 
 module.exports = {
     characterModule,
@@ -34,4 +35,5 @@ module.exports = {
     moneyModule,
     featModule,
     subValueModule,
+    spellsPerDayModule
 }

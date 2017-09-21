@@ -11,7 +11,7 @@ export default {
     components: { DcsFeatModal },
     data: function() {
         return {
-            sheetPage: 1,
+            sheetPage: -1,
             showFeatModal: false,
             selectedFeat: null,
             character: CharacterService.new(),
@@ -20,8 +20,11 @@ export default {
             allAlignments: AlignmentService.getAll(),
             // Create items grid with 17 rows and 2 columns.
             itemsGrid: [...Array(17).keys()].map(i => [...Array(2).keys()].map(i => new Object())),
-            spellLevels: 10
+            spellLevels: _.range(10)
         };
+    },
+    watch: {
+
     },
     computed: {
         /** A combination of character classes. */
@@ -88,6 +91,21 @@ export default {
                 const newLanguages = newValue.split(',');
                 newLanguages.forEach(newLanguage => {
                     this.character.languages.push(newLanguage.trim());
+                });
+            }
+        },
+        spellsCombined: {
+            get: function() {
+                return this.character.spellList.map((spell, index) => {
+                    if (!spell) return "";
+                    return index > 0 ? " " + spell : spell;
+                });
+            },
+            set: function(newValue) {
+                this.character.spellList = [];
+                const newSpells = newValue.split(',');
+                newSpells.forEach(newSpell => {
+                    this.character.spellList.push(newSpell.trim());
                 });
             }
         },
@@ -206,7 +224,7 @@ export default {
                 <button @click="sheetPage = 2">Second Page</button>
                 <button @click="sheetPage = -1">Show All</button>
             </div>
-            <div  v-if="sheetPage == 1 || sheetPage == -1" class="first-page">
+            <div v-if="sheetPage == 1 || sheetPage == -1" class="first-page">
                 <div class="pure-g">
                     <div class="description-container">
                         <div class="pure-u-md-1-1 hidden-lg-up">
@@ -1778,26 +1796,26 @@ export default {
                                                 <span class="health-points-abbreviation">Spells</span>
                                             </div>
                                             <span class="spells-note">Domains/Specialty School</span>
-                                            <input type="text" class="domain-specialty-school">
-                                            <textarea class="spells-area">
+                                            <input type="text" class="domain-specialty-school" v-model="character.domainSchool">
+                                            <textarea class="spells-area" v-model.lazy="spellsCombined">
                                             </textarea>
                                         </div>
                                         <div class="spell-save-container">
                                             <div class="spell-save-header black-box">
                                                 <span class="health-points-abbreviation">Spell Save</span>
                                             </div>
-                                            <input class="spell-save-input" type="text">
+                                            <input class="spell-save-input" type="number" v-model="character.spellSave">
                                         </div>
                                         <div class="arcane-spell-failure-container">
                                             <div class="arcane-spell-failure-header black-box">
                                                 <span class="health-points-abbreviation">Arcane Spell Failure</span>
                                             </div>
-                                            <input class="arcane-spell-failure-input" type="text">
+                                            <input class="arcane-spell-failure-input" type="number" v-model="character.arcaneSpellFailure">
                                             <span>%</span>
                                         </div>
                                         <div class="spell-condition-modifiers-container">
-                                            <span class="spell-condition-modifiers-span">Conditional Modifiers</span>
-                                            <textarea class="spell-condition-modifier-area">
+                                            <span class="spell-condition-modifiers-span" v-if="!character.spellConditionModifier">Conditional Modifiers</span>
+                                            <textarea class="spell-condition-modifier-area" v-model="character.spellConditionModifier">
                                             </textarea>
                                         </div>
                                         <div class="daily-spells-container">
@@ -1822,26 +1840,26 @@ export default {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="spellLevel in spellLevels" :key="spellLevel - 1">
+                                                    <tr v-for="perDay in character.spellPerDayList" :key="perDay.spellLevel">
                                                         <td>
-                                                            <input class="spells-known-input" type="number">
+                                                            <input class="spells-known-input" type="number" v-model="perDay.spellsKnown">
                                                         </td>
                                                         <td>
-                                                            <input class="spell-save-dc-input" type="number">
+                                                            <input class="spell-save-dc-input" type="number" v-model="perDay.spellSaveDC">
                                                         </td>
                                                         <td>
-                                                            <label v-if="spellLevel - 1 == 0" class="spell-level-label">0</label>
-                                                            <label v-if="spellLevel - 1 == 1" class="spell-level-label">1st</label>
-                                                            <label v-if="spellLevel - 1 == 2" class="spell-level-label">2nd</label>
-                                                            <label v-if="spellLevel - 1 == 3" class="spell-level-label">3rd</label>
-                                                            <label v-if="spellLevel - 1 > 3" class="spell-level-label">{{spellLevel - 1}}th</label>
+                                                            <label v-if="perDay.spellLevel == 0" class="spell-level-label">0</label>
+                                                            <label v-if="perDay.spellLevel == 1" class="spell-level-label">1st</label>
+                                                            <label v-if="perDay.spellLevel == 2" class="spell-level-label">2nd</label>
+                                                            <label v-if="perDay.spellLevel == 3" class="spell-level-label">3rd</label>
+                                                            <label v-if="perDay.spellLevel > 3" class="spell-level-label">{{perDay.spellLevel}}th</label>
                                                         </td>
                                                         <td>
-                                                            <input class="spells-per-day-input" type="number">
+                                                            <input class="spells-per-day-input" type="number" v-model="perDay.spellsPerDay">
                                                         </td>
                                                         <td>
-                                                            <label v-if="spellLevel - 1 == 0">0</label>
-                                                            <input v-else class="bonus-spells-input" type="number">
+                                                            <label v-if="perDay.spellLevel == 0">0</label>
+                                                            <input v-else class="bonus-spells-input" type="number" v-model="perDay.bonusSpells">
                                                         </td>
                                                     </tr>
                                                 </tbody>
