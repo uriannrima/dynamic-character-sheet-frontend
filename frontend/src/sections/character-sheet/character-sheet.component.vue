@@ -1,19 +1,30 @@
 <script>
-
 import CharacterService from 'Services/character.service';
 import SizeService from 'Services/size.service';
 import RaceService from 'Services/race.service';
 import AlignmentService from 'Services/alignment.service';
 import ExporterService from 'Services/exporter.service';
 import DcsFeatModal from './modals/feat.modal.component';
+import DcsSpellModal from './modals/spell.modal.component';
 
 export default {
-    components: { DcsFeatModal },
+    components: { DcsFeatModal, DcsSpellModal },
     data: function() {
         return {
-            sheetPage: -1,
-            showFeatModal: false,
-            selectedFeat: null,
+            sheetPage: 2,
+            show: {
+                featModal: false,
+                spellModal: false,
+                spells: [...Array(10).keys()].map(i => {
+                    return {
+                        collapse: false
+                    }
+                })
+            },
+            selected: {
+                feat: null,
+                spell: null
+            },
             character: CharacterService.new(),
             allSizes: SizeService.getAll(),
             allRaces: RaceService.getAll(),
@@ -116,19 +127,34 @@ export default {
         }
     },
     methods: {
+        range: function(from, to) {
+            return _.range(from, to);
+        },
         addNewFeat: function(featAdded) {
             CharacterService.addFeat(this.character, featAdded).then(feat => {
                 console.debug(feat);
                 this.character.feats.push(feat);
             });
         },
+        addNewSpell: function(spellAdded) {
+            var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
+            spellList.spells.push(spellAdded);
+        },
         removeFeat: function(featId) {
             CharacterService.removeFeat(this.character, featId).then(character => {
                 this.character.feats = this.character.feats.filter(feat => feat._id != featId);
             });
         },
+        removeSpell: function(spellRemoved) {
+            var spellList = _.filter(this.character.spellLists, o => o.level == spellRemoved.level)[0];
+            var spellIndex = _.findIndex(spellList.spells, spell => spell._id == spellRemoved._id);
+            spellList.spells.splice(spellIndex, 1);
+        },
         featType: function(feat) {
             return "feat-" + feat.type.toLowerCase().replace(' ', '-');
+        },
+        spellSchool: function(spell) {
+            return "spell-" + spell.school.toLowerCase().replace(' ', '-');
         },
         getFeatTooltip: function(feat) {
             var tooltip = "";
@@ -141,9 +167,20 @@ export default {
 
             return tooltip;
         },
+        getSpellTooltip: function(spell) {
+            var tooltip = "";
+            tooltip += spell.name + " [" + spell.school + "]";
+            tooltip += "\n\nLevel: " + spell.level;
+
+            return tooltip;
+        },
         openFeatDescription: function(feat) {
-            this.selectedFeat = feat;
-            this.showFeatModal = true;
+            this.selected.feat = feat;
+            this.show.featModal = true;
+        },
+        openSpellDescription: function(spell) {
+            this.selected.spell = spell;
+            this.show.spellModal = true;
         },
         updateCharacterItem: function(rowIndex, columnIndex) {
             var gridItem = this.itemsGrid[rowIndex][columnIndex];
@@ -1764,7 +1801,7 @@ export default {
                                     <div class="feats-container">
                                         <div class="feats-header black-box">
                                             <span class="health-points-abbreviation">Feats</span>
-                                            <span class="add-feat-icon glyphicon glyphicon-plus" @click="showFeatModal = true"></span>
+                                            <span class="add-feat-icon glyphicon glyphicon-plus" @click="show.featModal = true"></span>
                                         </div>
                                         <div class="feats-area">
                                             <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)"
@@ -1794,11 +1831,20 @@ export default {
                                         <div class="spells-container">
                                             <div class="spells-header black-box">
                                                 <span class="health-points-abbreviation">Spells</span>
+                                                <span class="add-spell-icon glyphicon glyphicon-plus" @click="show.spellModal = true"></span>
                                             </div>
                                             <span class="spells-note">Domains/Specialty School</span>
                                             <input type="text" class="domain-specialty-school" v-model="character.domainSchool">
-                                            <textarea class="spells-area" v-model.lazy="spellsCombined">
-                                            </textarea>
+                                            <div class="spells-area">
+                                                <div v-for="(spellList, index) in character.spellLists" v-if="spellList.spells.length > 0" :key="spellList" class="spell-list-container"
+                                                    :class="{ 'spell-list-container-collapsed' : show.spells[index].collapse}">
+                                                    <span @click="show.spells[index].collapse = !show.spells[index].collapse">{{spellList.level}}th: </span>
+                                                    <span class="spell" :class="spellSchool(spell)" v-for="spell in spellList.spells" :key="spell" @click="openSpellDescription(spell)"
+                                                        :title="getSpellTooltip(spell)">{{spell.name}}</span>
+                                                </div>
+                                            </div>
+                                            <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
+                                                                                            </textarea -->
                                         </div>
                                         <div class="spell-save-container">
                                             <div class="spell-save-header black-box">
@@ -1872,8 +1918,10 @@ export default {
                     </div>
                 </div>
             </div>
-            <dcs-feat-modal :show.sync="showFeatModal" :describe-feat.sync="selectedFeat" :character-feats="character.feats" @onFeatAdded="addNewFeat"
+            <dcs-feat-modal :show.sync="show.featModal" :describe-feat.sync="selected.feat" :character-feats="character.feats" @onFeatAdded="addNewFeat"
                 @onFeatRemoved="removeFeat"></dcs-feat-modal>
+            <dcs-spell-modal :show.sync="show.spellModal" :describe-spell.sync="selected.spell" :character-spells="character.spellLists"
+                @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></dcs-spell-modal>
         </div>
     </div>
 </template>
