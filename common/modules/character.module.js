@@ -101,7 +101,12 @@ exports.character = function ({
         spellSave: spellSave || 0,
         arcaneSpellFailure: arcaneSpellFailure || 0,
         spellConditionModifier: spellConditionModifier || "",
-        spellList: spellList || [],
+        spellList: spellList || [...Array(10).keys()].map(i => {
+            return {
+                level: i,
+                spells: []
+            };
+        }),
         spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.spellsPerDayModule.spellsPerDay({
             spellLevel: i
         }))
