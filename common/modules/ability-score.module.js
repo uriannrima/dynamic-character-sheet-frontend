@@ -9,11 +9,12 @@ var abilityScore = function ({ name, value, tempValue, updateFn }) {
         getTempModifier: function () {
             return Math.floor((this.tempValue - 10) / 2);
         },
-        update: updateFn || function (character) {
+        updateCharacter: updateFn || function (character) {
             return;
         },
         updateSavingThrows: function (character) {
-            const modifier = this.getModifier();
+            const modifier = this.getModifier() != this.getTempModifier() ? this.getTempModifier() : this.getModifier();
+            
             // Update saving throws.
             var savingThrowsToUpdate = character.savingThrows.filter(savingThrow => savingThrow.keyAbility === this.name);
             savingThrowsToUpdate.forEach(savingThrow => {
@@ -23,7 +24,11 @@ var abilityScore = function ({ name, value, tempValue, updateFn }) {
         updateSkills: function (character) {
             character.skills.forEach(skill => {
                 if (skill.keyAbility === this.name) {
-                    skill.abilityModifier = this.getModifier();
+                    if (this.getModifier() != this.getTempModifier()) {
+                        skill.abilityModifier = this.getTempModifier();
+                    } else {
+                        skill.abilityModifier = this.getModifier();
+                    }
                 }
             });
         }

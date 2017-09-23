@@ -1,4 +1,5 @@
 var Modules = require('./');
+_ = require('lodash');
 
 exports.character = function ({
     _id, name, playerName,
@@ -109,6 +110,11 @@ exports.character = function ({
         }),
         spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.spellsPerDayModule.spellsPerDay({
             spellLevel: i
-        }))
+        })),
+        updateAbilityScore: function () {
+            _.forEach(this.abilityScores, abilityScore => {
+                abilityScore.updateCharacter(this);
+            });
+        }
     }
 }
