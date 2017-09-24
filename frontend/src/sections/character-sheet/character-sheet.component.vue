@@ -7,13 +7,15 @@ import ExporterService from 'Services/exporter.service';
 import DcsFeatModal from './modals/feat.modal.component';
 import DcsSpellModal from './modals/spell.modal.component';
 import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
+import DcsSkillModal from './modals/skill.modal.component';
 
 export default {
-    components: { DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal },
+    components: { DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal, DcsSkillModal },
     data: function() {
         return {
-            sheetPage: 2,
+            sheetPage: 1,
             show: {
+                skillModal: false,
                 featModal: false,
                 spellModal: false,
                 specialAbilityModal: false,
@@ -24,6 +26,7 @@ export default {
                 })
             },
             selected: {
+                skill: null,
                 feat: null,
                 spell: null,
                 specialAbility: null
@@ -47,6 +50,9 @@ export default {
         }
     },
     computed: {
+        characterSkills: function() {
+            return _.sortBy(this.character.skills, skill => skill.name);
+        },
         /** A combination of character classes. */
         classesCombined: {
             get: function() {
@@ -155,6 +161,9 @@ export default {
         addNewSpecialAbility: function(specialAbilityAdded) {
             console.log(specialAbilityAdded);
         },
+        addNewSkill: function(skillAdded) {
+            this.character.skills.push(skillAdded);
+        },
         removeFeat: function(featId) {
             CharacterService.removeFeat(this.character, featId).then(character => {
                 this.character.feats = this.character.feats.filter(feat => feat._id != featId);
@@ -167,6 +176,9 @@ export default {
         },
         removeSpecialAbility: function(specialAbilityRemoved) {
             console.log(specialAbilityRemoved);
+        },
+        removeSkill: function(skillRemoved) {
+            console.log(skillRemoved);
         },
         featType: function(feat) {
             return "feat-" + feat.type.toLowerCase().replace(' ', '-');
@@ -1301,6 +1313,7 @@ export default {
                                             <tr>
                                                 <th colspan="6">
                                                     <span class="health-points-abbreviation">Skills</span>
+                                                    <span class="add-skill-icon glyphicon glyphicon-plus" @click="show.skillModal = true"></span>
                                                 </th>
                                             </tr>
                                         </thead>
@@ -1329,7 +1342,7 @@ export default {
                                                         <br>Modifier</span>
                                                 </th>
                                             </tr>
-                                            <tr v-for="(skill, index) in character.skills" :key="index">
+                                            <tr v-for="(skill, index) in characterSkills" :key="index">
                                                 <td>
                                                     <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
                                                     <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
@@ -1858,7 +1871,7 @@ export default {
                                                     </div>
                                                 </div>
                                                 <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
-                                                                                                                                                </textarea -->
+                                                                                                                                                    </textarea -->
                                             </div>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
@@ -1939,11 +1952,13 @@ export default {
                 @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></dcs-spell-modal>
             <dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
                 :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal>
+            <dcs-skill-modal :show.sync="show.skillModal" :describe-special-ability.sync="selected.skill"
+                :character-special-abilities="character.skills" @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill"></dcs-skill-modal>
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                    <button @click="importCharacter">Importar</button>
-                    <input id="importField" type="file" -->
+                        <button @click="importCharacter">Importar</button>
+                        <input id="importField" type="file" -->
             </div>
         </div>
     </div>

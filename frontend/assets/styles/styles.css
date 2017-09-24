@@ -1363,7 +1363,7 @@ input[type="number"] {
     margin: 1px;
 }
 
-.add-feat-icon, .add-spell-icon, .add-special-ability-icon {
+.add-feat-icon, .add-spell-icon, .add-special-ability-icon, .add-skill-icon {
     float: right;
     margin: 5px;
 }

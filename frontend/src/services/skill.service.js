@@ -1,7 +1,42 @@
-import DEFAULT_SKILLS from 'Module/skill.module';
+import axios from 'axios';
+import skillModule from 'Modules/skill.module';
+import Constants from 'Constants';
+import guid from 'Utils/guid';
 
 export default {
-    get: function () {
-        return DEFAULT_SKILLS;
+    skillsOffline: {
+
+    },
+    new: function () {
+        return new skillModule.skill({});
+    },
+    toCharacterFeat: function(skill){
+        // Change it to become a character skill.
+        skill._id = guid.generate();
+        return new skillModule.skill(skill);
+    },
+    get: function () {        
+        return skillModule.DEFAULT_SKILLS;
+    },
+    getAll: function () {        
+        return axios.get(Constants.API_URL + '/skills').then(response => {
+            return response.data;
+        });
+    },
+    saveOrUpdate: function (skill) {
+        if (skill._id) {
+            return axios.put(Constants.API_URL + '/skills', { skill }).then(response => {
+                return response.data;
+            }, reason => {
+                return this.skillsOffline[skill._id] = skill;
+            });
+        } else {
+            return axios.post(Constants.API_URL + '/skills', { skill }).then(response => {
+                return response.data;
+            }, reason => {
+                skill._id = generateGuid();
+                return this.skillsOffline[skill._id] = skill;
+            });
+        }
     }
 }
