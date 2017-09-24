@@ -198,6 +198,32 @@ input[type="number"] {
 }
 
 
+/* Panels */
+
+.character-sheet-panels {
+    position: fixed;
+    display: flex;
+    margin-bottom: 5px;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.character-sheet-panels button {
+    width: 34%;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+
+/* Character Sheet */
+
+.character-sheet {
+    margin-top: 30px;
+}
+
+
 /* Description Container */
 
 .description-container {
@@ -350,7 +376,7 @@ input[type="number"] {
 
 @media all and (min-width:320px) and (max-width:767px) {
     .health-points-abbreviation {
-        font-size: 100%;
+        font-size: 90%;
     }
 }
 
@@ -623,7 +649,7 @@ input[type="number"] {
 
 .saving-throw-table-mobile tbody td input {
     display: block;
-    width: 40px;
+    width: 35px;
     height: 33px;
     text-align: center;
 }
@@ -892,6 +918,7 @@ input[type="number"] {
 @media all and (min-width:320px) and (max-width:568px) {
     .skills-container {
         margin-top: 5px;
+        max-height: none;
     }
 }
 
@@ -908,7 +935,7 @@ input[type="number"] {
 
 .skills-table tbody tr td span {
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .skills-table tbody tr th:nth-child(1), .skills-table tbody tr td:nth-child(1) {
@@ -990,6 +1017,12 @@ input[type="number"] {
     border-color: black;
 }
 
+@media all and (max-width:320px) {
+    .skill-subvalue {
+        width: 34%;
+    }
+}
+
 .subvalue-container::before {
     content: "(";
 }
@@ -1063,21 +1096,27 @@ input[type="number"] {
     width: 100%;
 }
 
-.armor-container span, .armor-container-mobile span, .shield-container span, .protective-item-container span {
+.armor-equipped-container span, .armor-equipped-container-mobile span, .shield-container span, .protective-item-container span {
     font-size: 70%;
     text-transform: uppercase;
     font-weight: bold;
     display: block;
 }
 
-.armor-container > div, .armor-container-mobile > div, .shield-container > div, .protective-item-container > div {
+@media all and (max-width:320px) {
+    .armor-equipped-container span, .armor-equipped-container-mobile span, .shield-container span, .protective-item-container span {
+        font-size: 60%;
+    }
+}
+
+.armor-equipped-container > div, .armor-equipped-container-mobile > div, .shield-container > div, .protective-item-container > div {
     width: 100%;
     vertical-align: bottom;
     height: 20px;
     word-spacing: -4px;
 }
 
-.armor-container > div div, .armor-container-mobile > div div, .shield-container > div div, .protective-item-container > div div {
+.armor-equipped-container > div div, .armor-equipped-container-mobile > div div, .shield-container > div div, .protective-item-container > div div {
     display: inline-block;
     vertical-align: bottom;
 }
@@ -1136,7 +1175,7 @@ input[type="number"] {
 }
 
 @media all and (max-width:567px) {
-    .armor-container > div, .shield-container > div, .protective-item-container > div {
+    .armor-equipped-container > div, .shield-container > div, .protective-item-container > div {
         width: 100%;
     }
     .armor-title, .armor-properties, .shield-title, .protective-item-title {
@@ -1190,6 +1229,10 @@ input[type="number"] {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 70%;
+}
+
+.total-weight-carried {
+    font-size: 60%;
 }
 
 .item-title {
@@ -1295,11 +1338,12 @@ input[type="number"] {
 .feats-container {
     text-align: center;
     height: 285px;
+    margin-bottom: 5px;
 }
 
 .feats-area {
     width: 100%;
-    height: 100%;
+    height: 90%;
     /* background-attachment: local; */
     /* background-image: repeating-linear-gradient(white, white 20.5px, black 21.5px); */
     line-height: 19px;
@@ -1319,7 +1363,7 @@ input[type="number"] {
     margin: 1px;
 }
 
-.add-feat-icon, .add-spell-icon {
+.add-feat-icon, .add-spell-icon, .add-special-ability-icon {
     float: right;
     margin: 5px;
 }
@@ -1356,6 +1400,7 @@ input[type="number"] {
 .special-abilities-container {
     text-align: center;
     height: 540px;
+    margin-bottom: 15px;
 }
 
 

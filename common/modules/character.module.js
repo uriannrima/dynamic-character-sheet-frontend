@@ -97,7 +97,7 @@ exports.character = function ({
         }),
         feats: feats ? feats.map(f => new Modules.featModule.feat(f)) : [],
         languages: languages || [],
-        specialAbilities: specialAbilities || "",
+        specialAbilities: specialAbilities || [],
         domainSchool: domainSchool || "",
         spellSave: spellSave || 0,
         arcaneSpellFailure: arcaneSpellFailure || 0,

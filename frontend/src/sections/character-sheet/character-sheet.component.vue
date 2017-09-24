@@ -6,15 +6,17 @@ import AlignmentService from 'Services/alignment.service';
 import ExporterService from 'Services/exporter.service';
 import DcsFeatModal from './modals/feat.modal.component';
 import DcsSpellModal from './modals/spell.modal.component';
+import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
 
 export default {
-    components: { DcsFeatModal, DcsSpellModal },
+    components: { DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal },
     data: function() {
         return {
-            sheetPage: 1,
+            sheetPage: 2,
             show: {
                 featModal: false,
                 spellModal: false,
+                specialAbilityModal: false,
                 spells: [...Array(10).keys()].map(i => {
                     return {
                         collapse: false
@@ -23,7 +25,8 @@ export default {
             },
             selected: {
                 feat: null,
-                spell: null
+                spell: null,
+                specialAbility: null
             },
             character: CharacterService.new(),
             allSizes: SizeService.getAll(),
@@ -149,6 +152,9 @@ export default {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
             spellList.spells.push(spellAdded);
         },
+        addNewSpecialAbility: function(specialAbilityAdded) {
+            console.log(specialAbilityAdded);
+        },
         removeFeat: function(featId) {
             CharacterService.removeFeat(this.character, featId).then(character => {
                 this.character.feats = this.character.feats.filter(feat => feat._id != featId);
@@ -158,6 +164,9 @@ export default {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellRemoved.level)[0];
             var spellIndex = _.findIndex(spellList.spells, spell => spell._id == spellRemoved._id);
             spellList.spells.splice(spellIndex, 1);
+        },
+        removeSpecialAbility: function(specialAbilityRemoved) {
+            console.log(specialAbilityRemoved);
         },
         featType: function(feat) {
             return "feat-" + feat.type.toLowerCase().replace(' ', '-');
@@ -259,16 +268,10 @@ export default {
 <template>
     <div>
         <div class="main-container">
-            <div class="controls-container">
-                <button @click="saveOrUpdate">Salvar</button>
-                <button @click="exportCharacter">Exportar</button>
-                <button @click="importCharacter">Importar</button>
-                <input id="importField" type="file">
-            </div>
-            <div>
-                <button @click="sheetPage = 1">First Page</button>
-                <button @click="sheetPage = 2">Second Page</button>
-                <button @click="sheetPage = -1">Show All</button>
+            <div class="character-sheet-panels">
+                <button @click="sheetPage = 1">Front</button>
+                <button @click="sheetPage = 2">Cover</button>
+                <button @click="sheetPage = -1">All</button>
             </div>
             <div id="character-sheet" class="character-sheet">
                 <div v-if="sheetPage == 1 || sheetPage == -1" class="first-page">
@@ -549,7 +552,7 @@ export default {
                                             </div>
                                         </th>
                                         <td style="text-align: center;">
-                                            <input type="text" style="width: 50%" v-model="character.speed">
+                                            <input type="text" style="width: 50%; text-align: center" v-model="character.speed">
                                         </td>
                                     </tbody>
                                 </table>
@@ -1192,7 +1195,7 @@ export default {
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <table class="attack-table-mobile hidden-sm-up">
+                                    <table class="attack-table-mobile hidden-sm-up" v-if="attack.name">
                                         <tbody>
                                             <tr>
                                                 <td colspan="3">
@@ -1381,7 +1384,7 @@ export default {
                                             <span class="health-points-abbreviation">Gear</span>
                                         </div>
                                         <div class="vue-repeater">
-                                            <div class="armor-container hidden-sm-down">
+                                            <div class="armor-equipped-container hidden-sm-down">
                                                 <div>
                                                     <div class="black-box armor-title">
                                                         <span class="attack-name">Armor/Protective Item</span>
@@ -1446,7 +1449,7 @@ export default {
                                                 </div>
                                             </div>
                                             <!-- Armor/Protection Mobile -->
-                                            <div class="armor-container hidden-sm-up">
+                                            <div class="armor-equipped-container hidden-sm-up">
                                                 <div>
                                                     <div class="black-box armor-title test">
                                                         <span class="attack-name">Armor/Protective Item</span>
@@ -1735,7 +1738,7 @@ export default {
                                             <div class="single-possession" v-else>
                                                 <div class="item-header">
                                                     <div class="item-title">
-                                                        <span>Total Weight Carried</span>
+                                                        <span class="total-weight-carried">Total Weight Carried</span>
                                                     </div>
                                                     <div class="total-weight">
                                                         <input type="number" class="full-input total-weight-input" readonly :value="totalWeightCarried">
@@ -1823,6 +1826,7 @@ export default {
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
+                                                <span class="add-special-ability-icon glyphicon glyphicon-plus" @click="show.specialAbilityModal = true"></span>
                                             </div>
                                             <textarea class="special-abilities-area" v-model.lazy="character.specialAbilities">
                                             </textarea>
@@ -1854,7 +1858,7 @@ export default {
                                                     </div>
                                                 </div>
                                                 <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
-                                                                                                                                        </textarea -->
+                                                                                                                                                </textarea -->
                                             </div>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
@@ -1933,6 +1937,14 @@ export default {
                 @onFeatRemoved="removeFeat"></dcs-feat-modal>
             <dcs-spell-modal :show.sync="show.spellModal" :describe-spell.sync="selected.spell" :character-spells="character.spellLists"
                 @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></dcs-spell-modal>
+            <dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
+                :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal>
+            <div class="controls-container">
+                <button @click="saveOrUpdate">Salvar</button>
+                <!-- button @click="exportCharacter">Exportar</button>
+                    <button @click="importCharacter">Importar</button>
+                    <input id="importField" type="file" -->
+            </div>
         </div>
     </div>
 </template>

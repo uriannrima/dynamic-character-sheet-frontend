@@ -14,7 +14,7 @@ module.exports = function (app) {
 
     service.getAll = function (callback) {
         var collection = app.mongodb.database.collection('feats');
-        collection.find({ }).sort({ title : 1 }).toArray(function (err, records) {
+        collection.find({}).sort({ title: 1 }).toArray(function (err, records) {
             callback(records.map(data => new featModule.feat(data)));
         });
     }
@@ -22,6 +22,7 @@ module.exports = function (app) {
     service.saveOrUpdate = function (feat, callback) {
         const _id = new ObjectID(feat._id);
         delete feat._id;
+        if (feat.subValue) delete feat.subValue.value;
         var collection = app.mongodb.database.collection('feats');
         collection.findAndModify({ _id }, [], { $set: feat }, { new: true, upsert: true }, function (err, doc) {
             callback(doc.value);
