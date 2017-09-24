@@ -1,17 +1,16 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var { character } = require('Modules/character.module');
+var characterModule = require('modules/character.module');
 
 module.exports = function (app) {
     var service = {};
-    var collection =
 
-        service.getById = function (_id, callback) {
-            var collection = app.mongodb.database.collection('characters');
-            collection.find({ _id: new ObjectID(_id) }).toArray(function (err, records) {
-                callback(new character(records[0]));
-            });
-        };
+    service.getById = function (_id, callback) {
+        var collection = app.mongodb.database.collection('characters');
+        collection.find({ _id: new ObjectID(_id) }).toArray(function (err, records) {
+            callback(new characterModule.character(records[0]));
+        });
+    };
 
     service.saveOrUpdate = function (character, callback) {
         const _id = new ObjectID(character._id);

@@ -23,7 +23,7 @@ app.createController = function (controllerName, controller) {
 }
 
 // Configure static folder.
-// app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Configure bodyParser
 app.use(bodyParser.json());

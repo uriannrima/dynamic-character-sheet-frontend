@@ -1,6 +1,6 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var spellModule = require('Modules/spell.module');
+var spellModule = require('modules/spell.module');
 
 module.exports = function (app) {
     var service = {};

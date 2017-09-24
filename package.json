@@ -7,8 +7,10 @@
         "server": "cd server && npm run dev",
         "frontend": "cd frontend && npm run dev",
         "serve:frontend": "cd frontend && npm run serve",
+        "frontend:build":"cd frontend && npm run build",
         "dev": "npm-run-all --parallel server frontend",
-        "serve": "npm-run-all --parallel server serve:frontend"
+        "serve": "npm-run-all --parallel server serve:frontend",
+        "host" : "npm-run-all frontend:build server"
     },
     "dependencies": {
         "npm-run-all": "^4.0.2"

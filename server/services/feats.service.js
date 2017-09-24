@@ -1,6 +1,6 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var featModule = require('Modules/feat.module');
+var featModule = require('modules/feat.module');
 
 module.exports = function (app) {
     var service = {};

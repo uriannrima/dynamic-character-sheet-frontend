@@ -1,6 +1,6 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var specialAbilityModule = require('Modules/special-ability.module');
+var specialAbilityModule = require('modules/special-ability.module');
 
 module.exports = function (app) {
     var service = {};
