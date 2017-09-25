@@ -9,8 +9,15 @@ import DcsSpellModal from './modals/spell.modal.component';
 import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
 import DcsSkillModal from './modals/skill.modal.component';
 
+import SpellPerDayComponent from './components/spell-per-day.component';
+import SkillComponent from './components/skill.component';
+
 export default {
-    components: { DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal, DcsSkillModal },
+    components: {
+        DcsFeatModal, DcsSpellModal,
+        DcsSpecialAbilityModal, DcsSkillModal,
+        SpellPerDayComponent, SkillComponent
+    },
     data: function() {
         return {
             sheetPage: 1,
@@ -147,11 +154,6 @@ export default {
         },
         updateTemporaryScore: function(abilityScore) {
             abilityScore.tempValue = abilityScore.value;
-        },
-        getSpellSaveDC: function(spellLevel) {
-            var casterAbility = this.character.getCasterAbility();
-            var abilityScore = this.character.getAbilityScore(casterAbility);
-            return 10 + abilityScore.getTempModifier() + spellLevel;
         },
         addNewFeat: function(featAdded) {
             CharacterService.addFeat(this.character, featAdded).then(feat => {
@@ -1358,30 +1360,10 @@ export default {
                                                         <br>Modifier</span>
                                                 </th>
                                             </tr>
-                                            <tr v-for="(skill, index) in characterSkills" :key="index">
-                                                <td>
-                                                    <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
-                                                    <span class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</span>
-                                                    <div class="subvalue-container" v-if="skill.hasSubValue" style="display: inline;">
-                                                        <input type="text" class="skill-subvalue" v-model="skill.subValue">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substr(0,3)}}</span>
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="skill-modifier-input" readonly :value="skill.getTotal()">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="skill-under-input" v-model.number="skill.abilityModifier">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="skill-under-input" v-model.number="skill.rank">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="skill-under-input" v-model.number="skill.miscModifier">
-                                                </td>
-                                            </tr>
+                                            <skill-component v-for="(skill, index) in characterSkills" :key="index" :classSkill.sync="skill.classSkill" :untrained="skill.untrained"
+                                                :name="skill.name" :hasSubValue="skill.hasSubValue" :subValue.sync="skill.subValue"
+                                                :armorCheckPenalty="skill.armorCheckPenalty" :keyAbility="character.getAbilityScore(skill.keyAbility)"
+                                                :rank.sync="skill.rank" :miscModifier.sync="skill.miscModifier"></skill-component>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1930,13 +1912,13 @@ export default {
                                                     </div>
                                                 </div>
                                                 <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
-                                                                                                                                                                            </textarea -->
+                                                                                                                                                                                            </textarea -->
                                             </div>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
                                                 </div>
-                                                <input class="spell-save-input" type="number" readonly :value="getSpellSaveDC(0)">
+                                                <input class="spell-save-input" type="number" readonly :value="10">
                                             </div>
                                             <div class="arcane-spell-failure-container">
                                                 <div class="arcane-spell-failure-header black-box">
@@ -1972,28 +1954,9 @@ export default {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr v-for="(perDay, index) in character.spellPerDayList" :key="perDay.spellLevel">
-                                                            <td>
-                                                                <input class="spells-known-input" type="number" readonly :value="character.spellLists[index].spells.length">
-                                                            </td>
-                                                            <td>
-                                                                <input class="spell-save-dc-input" type="number" readonly :value="getSpellSaveDC(perDay.spellLevel)">
-                                                            </td>
-                                                            <td>
-                                                                <label v-if="perDay.spellLevel == 0" class="spell-level-label">0</label>
-                                                                <label v-if="perDay.spellLevel == 1" class="spell-level-label">1st</label>
-                                                                <label v-if="perDay.spellLevel == 2" class="spell-level-label">2nd</label>
-                                                                <label v-if="perDay.spellLevel == 3" class="spell-level-label">3rd</label>
-                                                                <label v-if="perDay.spellLevel > 3" class="spell-level-label">{{perDay.spellLevel}}th</label>
-                                                            </td>
-                                                            <td>
-                                                                <input class="spells-per-day-input" type="number" v-model="perDay.spellsPerDay">
-                                                            </td>
-                                                            <td>
-                                                                <label v-if="perDay.spellLevel == 0">0</label>
-                                                                <input v-else class="bonus-spells-input" type="number" v-model="perDay.bonusSpells">
-                                                            </td>
-                                                        </tr>
+                                                        <spell-per-day-component v-for="(perDay, index) in character.spellPerDayList" :key="perDay.spellLevel" :knownSpells="character.spellLists[index].spells.length"
+                                                            :spellLevel="perDay.spellLevel" :spellsPerDay.sync="perDay.spellsPerDay"
+                                                            :bonusSpells.sync="perDay.bonusSpells" :casterAbility="character.getCasterAbility()"></spell-per-day-component>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -2016,8 +1979,8 @@ export default {
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                <button @click="importCharacter">Importar</button>
-                                                <input id="importField" type="file" -->
+                                                                <button @click="importCharacter">Importar</button>
+                                                                <input id="importField" type="file" -->
             </div>
         </div>
     </div>

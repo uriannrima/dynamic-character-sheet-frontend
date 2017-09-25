@@ -112,9 +112,9 @@ exports.character = function ({
             spellLevel: i
         })),
         updateAbilityScore: function () {
-            _.forEach(this.abilityScores, abilityScore => {
-                abilityScore.updateCharacter(this);
-            });
+            // _.forEach(this.abilityScores, abilityScore => {
+            //     abilityScore.updateCharacter(this);
+            // });
         },
         getAbilityScore: function(abilityScoreName){
             return _.find(this.abilityScores, abilityScore => {
@@ -126,7 +126,7 @@ exports.character = function ({
             
             _.forEach(this.classes, classe => {
                 if (classe.isCaster) {
-                    casterAbility = classe.casterAbility;
+                    casterAbility = this.getAbilityScore(classe.casterAbility);
                 }
             });
 
