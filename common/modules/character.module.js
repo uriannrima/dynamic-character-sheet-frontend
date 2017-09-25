@@ -115,6 +115,22 @@ exports.character = function ({
             _.forEach(this.abilityScores, abilityScore => {
                 abilityScore.updateCharacter(this);
             });
+        },
+        getAbilityScore: function(abilityScoreName){
+            return _.find(this.abilityScores, abilityScore => {
+                return abilityScore.name.toUpperCase() == abilityScoreName.toUpperCase();
+            });
+        },
+        getCasterAbility: function () {
+            var casterAbility, casterLevel;
+            
+            _.forEach(this.classes, classe => {
+                if (classe.isCaster) {
+                    casterAbility = classe.casterAbility;
+                }
+            });
+
+            return casterAbility;
         }
     }
 }

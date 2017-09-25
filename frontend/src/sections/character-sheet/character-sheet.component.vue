@@ -148,6 +148,11 @@ export default {
         updateTemporaryScore: function(abilityScore) {
             abilityScore.tempValue = abilityScore.value;
         },
+        getSpellSaveDC:function(spellLevel){
+            var casterAbility = this.character.getCasterAbility();
+            var abilityScore = this.character.getAbilityScore(casterAbility);
+            return 10 + abilityScore.getTempModifier() + spellLevel;
+        },
         addNewFeat: function(featAdded) {
             CharacterService.addFeat(this.character, featAdded).then(feat => {
                 console.debug(feat);
@@ -1877,7 +1882,7 @@ export default {
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
                                                 </div>
-                                                <input class="spell-save-input" type="number" v-model="character.spellSave">
+                                                <input class="spell-save-input" type="number" readonly :value="getSpellSaveDC(0)">
                                             </div>
                                             <div class="arcane-spell-failure-container">
                                                 <div class="arcane-spell-failure-header black-box">
@@ -1913,12 +1918,12 @@ export default {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr v-for="perDay in character.spellPerDayList" :key="perDay.spellLevel">
+                                                        <tr v-for="(perDay, index) in character.spellPerDayList" :key="perDay.spellLevel">
                                                             <td>
-                                                                <input class="spells-known-input" type="number" v-model="perDay.spellsKnown">
+                                                                <input class="spells-known-input" type="number" readonly :value="character.spellLists[index].spells.length">
                                                             </td>
                                                             <td>
-                                                                <input class="spell-save-dc-input" type="number" v-model="perDay.spellSaveDC">
+                                                                <input class="spell-save-dc-input" type="number" readonly :value="getSpellSaveDC(perDay.spellLevel)">
                                                             </td>
                                                             <td>
                                                                 <label v-if="perDay.spellLevel == 0" class="spell-level-label">0</label>
