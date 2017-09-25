@@ -148,7 +148,7 @@ export default {
         updateTemporaryScore: function(abilityScore) {
             abilityScore.tempValue = abilityScore.value;
         },
-        getSpellSaveDC:function(spellLevel){
+        getSpellSaveDC: function(spellLevel) {
             var casterAbility = this.character.getCasterAbility();
             var abilityScore = this.character.getAbilityScore(casterAbility);
             return 10 + abilityScore.getTempModifier() + spellLevel;
@@ -225,6 +225,17 @@ export default {
                 page: characterItem.page,
                 weight: characterItem.weight,
             } = gridItem);
+        },
+        updateGridItem: function(itemIndex) {
+            const rowIndex = itemIndex % this.itemsGrid.length;
+            const columnIndex = Math.floor(itemIndex / this.itemsGrid.length);
+            var gridItem = this.itemsGrid[rowIndex][columnIndex];
+            var characterItem = this.character.items[itemIndex];
+            ({
+                name: gridItem.name,
+                page: gridItem.page,
+                weight: gridItem.weight,
+            } = characterItem);
         },
         loadCharacter: function(character) {
             this.character = character;
@@ -1707,7 +1718,8 @@ export default {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="possessions-container">
+                                    <!-- Desktop Other Possessions -->
+                                    <div class="possessions-container hidden-sm-down">
                                         <div class="possessions-header black-box">
                                             <span class="health-points-abbreviation">Other Possessions</span>
                                         </div>
@@ -1824,6 +1836,48 @@ export default {
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Mobile Other Possessions -->
+                                    <div class="possessions-container hidden-sm-up">
+                                        <div class="possessions-header black-box">
+                                            <span class="health-points-abbreviation">Other Possessions</span>
+                                        </div>
+                                        <div class="single-possession">
+                                            <div class="item-header">
+                                                <div class="item-title">
+                                                    <span>Item</span>
+                                                </div>
+                                                <div class="item-page">
+                                                    <span>Pg.</span>
+                                                </div>
+                                                <div class="item-weight">
+                                                    <span>Wt.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-possession" v-for="(item, itemIndex) in character.items" :key="itemIndex" v-if="itemIndex != character.items.length - 1">
+                                            <div class="item-header">
+                                                <div class="item-title">
+                                                    <input type="text" class="full-input item-input" v-model="item.name" @change="updateGridItem(itemIndex)">
+                                                </div>
+                                                <div class="item-page">
+                                                    <input type="number" class="full-input item-input" v-model.number="item.page" @change="updateGridItem(itemIndex)">
+                                                </div>
+                                                <div class="item-weight">
+                                                    <input type="number" class="full-input item-input" v-model.number="item.weight" @change="updateGridItem(itemIndex)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-possession" v-else>
+                                            <div class="item-header">
+                                                <div class="item-title">
+                                                    <span class="total-weight-carried">Total Weight Carried</span>
+                                                </div>
+                                                <div class="total-weight">
+                                                    <input type="number" class="full-input total-weight-input" readonly :value="totalWeightCarried">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="pure-u-lg-1-2 pure-u-1">
@@ -1876,7 +1930,7 @@ export default {
                                                     </div>
                                                 </div>
                                                 <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
-                                                                                                                                                    </textarea -->
+                                                                                                                                                                            </textarea -->
                                             </div>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
@@ -1957,13 +2011,13 @@ export default {
                 @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></dcs-spell-modal>
             <dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
                 :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal>
-            <dcs-skill-modal :show.sync="show.skillModal" :describe-special-ability.sync="selected.skill"
-                :character-special-abilities="character.skills" @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill"></dcs-skill-modal>
+            <dcs-skill-modal :show.sync="show.skillModal" :describe-special-ability.sync="selected.skill" :character-special-abilities="character.skills"
+                @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill"></dcs-skill-modal>
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                        <button @click="importCharacter">Importar</button>
-                        <input id="importField" type="file" -->
+                                                <button @click="importCharacter">Importar</button>
+                                                <input id="importField" type="file" -->
             </div>
         </div>
     </div>

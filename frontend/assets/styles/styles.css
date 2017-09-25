@@ -1203,6 +1203,7 @@ input[type="number"] {
 
 .possessions-container {
     text-align: center;
+    margin-bottom: 15px;
 }
 
 .dual-possession {
@@ -1217,6 +1218,12 @@ input[type="number"] {
     border-bottom: 1px solid gray;
 }
 
+@media all and (max-width: 568px) {
+    .single-possession {
+        width: 100%;
+    }
+}
+
 .item-header {
     display: flex;
 }
@@ -1229,10 +1236,6 @@ input[type="number"] {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 70%;
-}
-
-.total-weight-carried {
-    font-size: 60%;
 }
 
 .item-title {

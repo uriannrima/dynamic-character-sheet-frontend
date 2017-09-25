@@ -1,24 +1,24 @@
 /* Hidden up. */
 
-@media screen and (min-width:568px) {
+@media all and (min-width:568px) {
     .hidden-sm-up {
         display: none
     }
 }
 
-@media screen and (min-width:768px) {
+@media all and (min-width:768px) {
     .hidden-md-up {
         display: none
     }
 }
 
-@media screen and (min-width:1024px) {
+@media all and (min-width:1024px) {
     .hidden-lg-up {
         display: none
     }
 }
 
-@media screen and (min-width:1280px) {
+@media all and (min-width:1280px) {
     .hidden-xl-up {
         display: none
     }
@@ -27,25 +27,25 @@
 
 /* Hidden down */
 
-@media screen and (max-width:568px) {
+@media all and (max-width:568px) {
     .hidden-sm-down {
         display: none
     }
 }
 
-@media screen and (max-width:1023px) {
+@media all and (max-width:1023px) {
     .hidden-md-down {
         display: none
     }
 }
 
-@media screen and (max-width:1279px) {
+@media all and (max-width:1279px) {
     .hidden-lg-down {
         display: none
     }
 }
 
-@media screen and (max-width:1280px) {
+@media all and (max-width:1280px) {
     .hidden-xl-down {
         display: none
     }
@@ -57,7 +57,7 @@
 
 /* pure-hidden-xs */
 
-@media screen and (max-width:567px) {
+@media all and (max-width:567px) {
     .pure-visible-sm {
         display: none
     }
@@ -78,7 +78,7 @@
 
 /* pure-hidden-sm */
 
-@media screen and (min-width:568px) and (max-width:767px) {
+@media all and (min-width:568px) and (max-width:767px) {
     .pure-visible-xs {
         display: none
     }
@@ -99,7 +99,7 @@
 
 /* pure-hidden-md */
 
-@media screen and (min-width:768px) and (max-width:1023px) {
+@media all and (min-width:768px) and (max-width:1023px) {
     .pure-visible-xs {
         display: none
     }
@@ -120,7 +120,7 @@
 
 /* pure-hidden-lg */
 
-@media screen and (min-width:1024px) and (max-width:1279px) {
+@media all and (min-width:1024px) and (max-width:1279px) {
     .pure-visible-xs {
         display: none
     }
@@ -141,7 +141,7 @@
 
 /* pure-hidden-xl */
 
-@media screen and (min-width:1280px) {
+@media all and (min-width:1280px) {
     .pure-visible-xs {
         display: none
     }
