@@ -11,12 +11,14 @@ import DcsSkillModal from './modals/skill.modal.component';
 
 import SpellPerDayComponent from './components/spell-per-day.component';
 import SkillComponent from './components/skill.component';
+import SavingThrowComponent from './components/saving-throw.component';
 
 export default {
     components: {
         DcsFeatModal, DcsSpellModal,
         DcsSpecialAbilityModal, DcsSkillModal,
-        SpellPerDayComponent, SkillComponent
+        SpellPerDayComponent, SkillComponent,
+        SavingThrowComponent
     },
     data: function() {
         return {
@@ -920,120 +922,34 @@ export default {
                         </div>
                         <div class="padding-box">
                             <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-12-24" style="overflow-y: auto;">
-                                <table class="saving-throw-table hidden-sm-down">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <span class="ability-score-description">
-                                                    Saving Throws
-                                                </span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(savingThrow, index) in character.savingThrows" :key="index">
-                                            <th>
-                                                <div class="black-box">
-                                                    <span class="health-points-abbreviation">{{savingThrow.name}}</span>
-                                                    <span class="health-points-description">({{savingThrow.keyAbility}})</span>
-                                                </div>
-                                            </th>
-                                            <td>
-                                                <div>
-                                                    <label v-if="index == 0" for="">Total</label>
-                                                    <input type="number" value="0" readonly :value="savingThrow.getTotal()">
-                                                </div>
-                                                <span class="saving-throw-signs">=</span>
-                                                <div>
-                                                    <label v-if="index == 0" for="">Base
-                                                        <br>Save</label>
-                                                    <input type="number" value="0" v-model.number="savingThrow.base">
-                                                </div>
-                                                <span class="saving-throw-signs">+</span>
-                                                <div>
-                                                    <label v-if="index == 0" for="">Ability
-                                                        <br>Modifier</label>
-                                                    <input type="number" value="0" v-model.number="savingThrow.abilityModifier">
-                                                </div>
-                                                <span class="saving-throw-signs">+</span>
-                                                <div>
-                                                    <label v-if="index == 0" for="">Magic
-                                                        <br>Modifier</label>
-                                                    <input type="number" value="0" v-model.number="savingThrow.magicModifier">
-                                                </div>
-                                                <span class="saving-throw-signs">+</span>
-                                                <div>
-                                                    <label v-if="index == 0" for="">Misc
-                                                        <br>Modifier</label>
-                                                    <input type="number" value="0" v-model.number="savingThrow.miscModifier">
-                                                </div>
-                                                <span class="saving-throw-signs">+</span>
-                                                <div>
-                                                    <label v-if="index == 0" for="">Temporary
-                                                        <br>Modifier</label>
-                                                    <input type="number" value="0" v-model.number="savingThrow.tempModifier">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="saving-throws-container hidden-sm-up">
-                                    <div class="saving-throw-title">
-                                        <span class="ability-score-description">
-                                            Saving Throws
-                                        </span>
-                                    </div>
-                                    <div class="saving-throw-container" v-for="(savingThrow, index) in character.savingThrows" :key="index">
-                                        <table class="saving-throw-table-mobile hidden-sm-up">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="black-box">
-                                                            <span class="health-points-abbreviation">{{savingThrow.name}}</span>
-                                                            <span class="health-points-description">({{savingThrow.keyAbility}})</span>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div>
-                                                            <label for="">Total</label>
-                                                            <input type="number" value="0" readonly :value="savingThrow.getTotal()">
-                                                        </div>
-                                                        <span class="saving-throw-signs">=</span>
-                                                        <div>
-                                                            <label for="">Base
-                                                                <br>Save</label>
-                                                            <input type="number" value="0" v-model.number="savingThrow.base">
-                                                        </div>
-                                                        <span class="saving-throw-signs">+</span>
-                                                        <div>
-                                                            <label for="">Ability
-                                                                <br>Modifier</label>
-                                                            <input type="number" value="0" v-model.number="savingThrow.abilityModifier">
-                                                        </div>
-                                                        <span class="saving-throw-signs">+</span>
-                                                        <div>
-                                                            <label for="">Magic
-                                                                <br>Modifier</label>
-                                                            <input type="number" value="0" v-model.number="savingThrow.magicModifier">
-                                                        </div>
-                                                        <span class="saving-throw-signs">+</span>
-                                                        <div>
-                                                            <label for="">Misc
-                                                                <br>Modifier</label>
-                                                            <input type="number" value="0" v-model.number="savingThrow.miscModifier">
-                                                        </div>
-                                                        <span class="saving-throw-signs">+</span>
-                                                        <div>
-                                                            <label for="">Temporary
-                                                                <br>Modifier</label>
-                                                            <input type="number" value="0" v-model.number="savingThrow.tempModifier">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="saving-throws-container">
+                                    <div>
+                                        <div class="saving-throw-title hidden-sm-up">
+                                            <span class="ability-score-description">
+                                                Saving Throws
+                                            </span>
+                                        </div>
+                                        <div class="saving-throw-container">
+                                            <table class="saving-throw-table">
+                                                <!-- Mobile Header -->
+                                                <thead class="hidden-sm-down">
+                                                    <tr>
+                                                        <th>
+                                                            <span class="ability-score-description">
+                                                                Saving Throws
+                                                            </span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <saving-throw-component v-for="(savingThrow, index) in character.savingThrows" :key="index" :showInputLabel="index == 0"
+                                                        :name="savingThrow.name" :keyAbility="character.getAbilityScore(savingThrow.keyAbility)"
+                                                        :base.sync="savingThrow.base" :magicModifier.sync="savingThrow.magicModifier"
+                                                        :miscModifier.sync="savingThrow.miscModifier" :tempModifier.sync="savingThrow.tempModifier">
+                                                    </saving-throw-component>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1912,7 +1828,7 @@ export default {
                                                     </div>
                                                 </div>
                                                 <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
-                                                                                                                                                                                            </textarea -->
+                                                                                                                                                                                                                                        </textarea -->
                                             </div>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
@@ -1979,8 +1895,8 @@ export default {
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                <button @click="importCharacter">Importar</button>
-                                                                <input id="importField" type="file" -->
+                                                                                                            <button @click="importCharacter">Importar</button>
+                                                                                                            <input id="importField" type="file" -->
             </div>
         </div>
     </div>
