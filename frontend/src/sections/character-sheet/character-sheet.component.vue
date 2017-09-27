@@ -7,39 +7,21 @@ import ExporterService from 'Services/exporter.service';
 import DcsFeatModal from './modals/feat.modal.component';
 import DcsSpellModal from './modals/spell.modal.component';
 import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
-import DcsSkillModal from './modals/skill.modal.component';
 
-import SpellPerDayComponent from './components/spell-per-day.component';
-import SkillComponent from './components/skill.component';
-import SavingThrowComponent from './components/saving-throw.component';
+import FeatsContainer from './containers/feats.container';
+import SavingThrowsContainer from './containers/saving-throws.container';
+import SkillsContainer from './containers/skills.container';
+import PerDayContainer from './containers/per-day.container';
+import SpellsContainer from './containers/spells.container';
 
 export default {
     components: {
-        DcsFeatModal, DcsSpellModal,
-        DcsSpecialAbilityModal, DcsSkillModal,
-        SpellPerDayComponent, SkillComponent,
-        SavingThrowComponent
+        DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal,
+        FeatsContainer, PerDayContainer, SkillsContainer, SavingThrowsContainer, SpellsContainer
     },
     data: function() {
         return {
             sheetPage: 1,
-            show: {
-                skillModal: false,
-                featModal: false,
-                spellModal: false,
-                specialAbilityModal: false,
-                spells: [...Array(10).keys()].map(i => {
-                    return {
-                        collapse: false
-                    }
-                })
-            },
-            selected: {
-                skill: null,
-                feat: null,
-                spell: null,
-                specialAbility: null
-            },
             character: CharacterService.new(),
             allSizes: SizeService.getAll(),
             allRaces: RaceService.getAll(),
@@ -59,9 +41,6 @@ export default {
         }
     },
     computed: {
-        characterSkills: function() {
-            return _.sortBy(this.character.skills, skill => skill.name);
-        },
         /** A combination of character classes. */
         classesCombined: {
             get: function() {
@@ -188,38 +167,6 @@ export default {
         },
         removeSkill: function(skillRemoved) {
             console.log(skillRemoved);
-        },
-        featType: function(feat) {
-            return "feat-" + feat.type.toLowerCase().replace(' ', '-');
-        },
-        spellSchool: function(spell) {
-            return "spell-" + spell.school.toLowerCase().replace(' ', '-');
-        },
-        getFeatTooltip: function(feat) {
-            var tooltip = "";
-            tooltip += feat.title + " [" + feat.type + "]";
-
-            if (feat.prerequisite) tooltip += "\n\nPrerequisite: " + feat.prerequisite;
-            if (feat.benefit) tooltip += "\n\nBenefit: " + feat.benefit;
-            if (feat.normal) tooltip += "\n\nNormal: " + feat.normal;
-            if (feat.special) tooltip += "\n\nSpecial: " + feat.special;
-
-            return tooltip;
-        },
-        getSpellTooltip: function(spell) {
-            var tooltip = "";
-            tooltip += spell.name + " [" + spell.school + "]";
-            tooltip += "\n\nLevel: " + spell.level;
-
-            return tooltip;
-        },
-        openFeatDescription: function(feat) {
-            this.selected.feat = feat;
-            this.show.featModal = true;
-        },
-        openSpellDescription: function(spell) {
-            this.selected.spell = spell;
-            this.show.spellModal = true;
         },
         updateCharacterItem: function(rowIndex, columnIndex) {
             var gridItem = this.itemsGrid[rowIndex][columnIndex];
@@ -922,36 +869,7 @@ export default {
                         </div>
                         <div class="padding-box">
                             <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-12-24" style="overflow-y: auto;">
-                                <div class="saving-throws-container">
-                                    <div>
-                                        <div class="saving-throw-title hidden-sm-up">
-                                            <span class="ability-score-description">
-                                                Saving Throws
-                                            </span>
-                                        </div>
-                                        <div class="saving-throw-container">
-                                            <table class="saving-throw-table">
-                                                <!-- Mobile Header -->
-                                                <thead class="hidden-sm-down">
-                                                    <tr>
-                                                        <th>
-                                                            <span class="ability-score-description">
-                                                                Saving Throws
-                                                            </span>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <saving-throw-component v-for="(savingThrow, index) in character.savingThrows" :key="index" :showInputLabel="index == 0"
-                                                        :name="savingThrow.name" :keyAbility="character.getAbilityScore(savingThrow.keyAbility)"
-                                                        :base.sync="savingThrow.base" :magicModifier.sync="savingThrow.magicModifier"
-                                                        :miscModifier.sync="savingThrow.miscModifier" :tempModifier.sync="savingThrow.tempModifier">
-                                                    </saving-throw-component>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <saving-throws-container :character="character"></saving-throws-container>
                             </div>
                             <div class="pure-u-1 pure-u-md-1-5 pure-u-lg-3-24 condition-modifier-container">
                                 <label style="display: block; font-size: 60%;">Condition Modifier</label>
@@ -1240,56 +1158,7 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <div class="skills-container">
-                                <div class="padding-box">
-                                    <table class="skills-table">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="6">
-                                                    <span class="health-points-abbreviation">Skills</span>
-                                                    <span class="add-skill-icon glyphicon glyphicon-plus" @click="show.skillModal = true"></span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>
-                                                    <span>Skill Name</span>
-                                                </th>
-                                                <th>
-                                                    <span>Key
-                                                        <br>Ability</span>
-                                                </th>
-                                                <th>
-                                                    <span>Skill
-                                                        <br>Modifier</span>
-                                                </th>
-                                                <th>
-                                                    <span>Ability
-                                                        <br>Modifier</span>
-                                                </th>
-                                                <th>
-                                                    <span>Ranks</span>
-                                                </th>
-                                                <th>
-                                                    <span>Misc
-                                                        <br>Modifier</span>
-                                                </th>
-                                            </tr>
-                                            <skill-component v-for="(skill, index) in characterSkills" :key="index" :classSkill.sync="skill.classSkill" :untrained="skill.untrained"
-                                                :name="skill.name" :hasSubValue="skill.hasSubValue" :subValue.sync="skill.subValue"
-                                                :armorCheckPenalty="skill.armorCheckPenalty" :keyAbility="character.getAbilityScore(skill.keyAbility)"
-                                                :rank.sync="skill.rank" :miscModifier.sync="skill.miscModifier"></skill-component>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="caption-container">
-                                <span>Mark this box with an X if the skill is a class skill for the character.</span>
-                                <span class="untrained-skill">Denotes a skill that can be used untrained.</span>
-                                <span class="armor-check-penalty">Armor check penalty, if any applies.
-                                    <strong>(Double for Swim)</strong>.</span>
-                            </div>
+                            <skills-container :character="character" @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill"></skills-container>
                         </div>
                     </div>
                 </div>
@@ -1781,18 +1650,7 @@ export default {
                             <div class="pure-u-lg-1-2 pure-u-1">
                                 <div class="pure-g">
                                     <div class="pure-u-lg-2-5 pure-u-1">
-                                        <div class="feats-container">
-                                            <div class="feats-header black-box">
-                                                <span class="health-points-abbreviation">Feats</span>
-                                                <span class="add-feat-icon glyphicon glyphicon-plus" @click="show.featModal = true"></span>
-                                            </div>
-                                            <div class="feats-area">
-                                                <span class="feat" :class="featType(feat)" v-for="(feat, index) in character.feats" :key="index" :title="getFeatTooltip(feat)"
-                                                    @click="openFeatDescription(feat)">{{feat.title}}
-                                                    <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <feats-container :character="character"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
@@ -1812,24 +1670,7 @@ export default {
                                     </div>
                                     <div class="pure-u-lg-3-5 pure-u-1">
                                         <div class="third-region">
-                                            <div class="spells-container">
-                                                <div class="spells-header black-box">
-                                                    <span class="health-points-abbreviation">Spells</span>
-                                                    <span class="add-spell-icon glyphicon glyphicon-plus" @click="show.spellModal = true"></span>
-                                                </div>
-                                                <span class="spells-note">Domains/Specialty School</span>
-                                                <input type="text" class="domain-specialty-school" v-model="character.domainSchool">
-                                                <div class="spells-area">
-                                                    <div v-for="(spellList, index) in character.spellLists" v-if="spellList.spells.length > 0" :key="spellList" class="spell-list-container"
-                                                        :class="{ 'spell-list-container-collapsed' : show.spells[index].collapse}">
-                                                        <span @click="show.spells[index].collapse = !show.spells[index].collapse">{{spellList.level}}th: </span>
-                                                        <span class="spell" :class="spellSchool(spell)" v-for="spell in spellList.spells" :key="spell" @click="openSpellDescription(spell)"
-                                                            :title="getSpellTooltip(spell)">{{spell.name}}</span>
-                                                    </div>
-                                                </div>
-                                                <!-- textarea class="spells-area" v-model.lazy="spellsCombined">
-                                                                                                                                                                                                                                        </textarea -->
-                                            </div>
+                                            <spells-container :character="character" @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></spells-container>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
@@ -1848,34 +1689,7 @@ export default {
                                                 <textarea class="spell-condition-modifier-area" v-model="character.spellConditionModifier">
                                                 </textarea>
                                             </div>
-                                            <div class="daily-spells-container">
-                                                <table class="daily-spells-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>
-                                                                <span class="spells-known">Spells<br>Known</span>
-                                                            </th>
-                                                            <th>
-                                                                <span class="spell-save-dc">Spell<br>Save DC</span>
-                                                            </th>
-                                                            <th>
-                                                                <span class="spell-level">Level</span>
-                                                            </th>
-                                                            <th>
-                                                                <span class="spells-per-day">Spells<br>Per Day</span>
-                                                            </th>
-                                                            <th>
-                                                                <span class="bonus-spells">Bonus<br>Spells</span>
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <spell-per-day-component v-for="(perDay, index) in character.spellPerDayList" :key="perDay.spellLevel" :knownSpells="character.spellLists[index].spells.length"
-                                                            :spellLevel="perDay.spellLevel" :spellsPerDay.sync="perDay.spellsPerDay"
-                                                            :bonusSpells.sync="perDay.bonusSpells" :casterAbility="character.getCasterAbility()"></spell-per-day-component>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            <per-day-container :character="character"></per-day-container>
                                         </div>
                                     </div>
                                 </div>
@@ -1884,19 +1698,13 @@ export default {
                     </div>
                 </div>
             </div>
-            <dcs-feat-modal :show.sync="show.featModal" :describe-feat.sync="selected.feat" :character-feats="character.feats" @onFeatAdded="addNewFeat"
-                @onFeatRemoved="removeFeat"></dcs-feat-modal>
-            <dcs-spell-modal :show.sync="show.spellModal" :describe-spell.sync="selected.spell" :character-spells="character.spellLists"
-                @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></dcs-spell-modal>
-            <dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal>
-            <dcs-skill-modal :show.sync="show.skillModal" :describe-special-ability.sync="selected.skill" :character-special-abilities="character.skills"
-                @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill"></dcs-skill-modal>
+            <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
+                :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                                                            <button @click="importCharacter">Importar</button>
-                                                                                                            <input id="importField" type="file" -->
+                                <button @click="importCharacter">Importar</button>
+                                <input id="importField" type="file" -->
             </div>
         </div>
     </div>
