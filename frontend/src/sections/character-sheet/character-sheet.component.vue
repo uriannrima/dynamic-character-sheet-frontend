@@ -74,22 +74,6 @@ export default {
                 });
             }
         },
-        /** A combination of the character feats. */
-        featsCombined: {
-            get: function() {
-                return this.character.feats.map(feat => {
-                    if (!feat) return "";
-                    return feat;
-                });
-            },
-            set: function(newValue) {
-                this.character.feats = [];
-                const newFeats = newValue.split(',');
-                newFeats.forEach(newFeat => {
-                    this.character.feats.push(newFeat);
-                });
-            }
-        },
         /** A combination of the character languages. */
         languagesCombined: {
             get: function() {
@@ -105,35 +89,11 @@ export default {
                     this.character.languages.push(newLanguage.trim());
                 });
             }
-        },
-        spellsCombined: {
-            get: function() {
-                return this.character.spellList.map((spell, index) => {
-                    if (!spell) return "";
-                    return index > 0 ? " " + spell : spell;
-                });
-            },
-            set: function(newValue) {
-                this.character.spellList = [];
-                const newSpells = newValue.split(',');
-                newSpells.forEach(newSpell => {
-                    this.character.spellList.push(newSpell.trim());
-                });
-            }
         }
     },
     methods: {
-        range: function(from, to) {
-            return _.range(from, to);
-        },
         updateTemporaryScore: function(abilityScore) {
             abilityScore.tempValue = abilityScore.value;
-        },
-        addNewFeat: function(featAdded) {
-            CharacterService.addFeat(this.character, featAdded).then(feat => {
-                console.debug(feat);
-                this.character.feats.push(feat);
-            });
         },
         addNewSpell: function(spellAdded) {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
@@ -1454,7 +1414,7 @@ export default {
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
-                                                <span class="add-special-ability-icon glyphicon glyphicon-plus" @click="show.specialAbilityModal = true"></span>
+                                                <span class="add-special-ability-icon glyphicon glyphicon-plus"></span>
                                             </div>
                                             <textarea class="special-abilities-area" v-model.lazy="character.specialAbilities">
                                             </textarea>

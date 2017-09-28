@@ -122,7 +122,8 @@ exports.character = function ({
             });
         },
         getCasterAbility: function () {
-            var casterAbility, casterLevel;
+            var casterAbility;
+            casterAbility = this.getAbilityScore('intelligence');
             
             _.forEach(this.classes, classe => {
                 if (classe.isCaster) {

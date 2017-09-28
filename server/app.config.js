@@ -1,11 +1,17 @@
 // Configure "common" alias.
 require('app-module-path').addPath('../common');
 
+// Usar API Morgan Logger.
+var morgan = require('morgan');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
 var app = express();
+
+// log every req to the console
+app.use(morgan('dev'));
 
 app.create = function (type, name, instance) {
     app[type] = app[type] || {};

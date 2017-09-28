@@ -26,7 +26,7 @@ export default {
         <div class="feats-container">
             <div class="feats-header black-box">
                 <span class="health-points-abbreviation">Feats</span>
-                <span class="add-feat-icon glyphicon glyphicon-plus" @click="show.featModal = true"></span>
+                <span class="add-feat-icon glyphicon glyphicon-plus" @click="showModal = true"></span>
             </div>
             <div class="feats-area">
                 <feat-component v-for="(feat, index) in character.feats" :key="index" :feat="feat" @onFeatSelected="openFeatDescription"></feat-component>
