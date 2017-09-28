@@ -8,6 +8,7 @@ import DcsFeatModal from './modals/feat.modal.component';
 import DcsSpellModal from './modals/spell.modal.component';
 import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
 
+import PossessionsContainer from './containers/possessions.container';
 import FeatsContainer from './containers/feats.container';
 import SavingThrowsContainer from './containers/saving-throws.container';
 import SkillsContainer from './containers/skills.container';
@@ -17,7 +18,7 @@ import SpellsContainer from './containers/spells.container';
 export default {
     components: {
         DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal,
-        FeatsContainer, PerDayContainer, SkillsContainer, SavingThrowsContainer, SpellsContainer
+        FeatsContainer, PerDayContainer, SkillsContainer, SavingThrowsContainer, SpellsContainer, PossessionsContainer
     },
     data: function() {
         return {
@@ -25,10 +26,7 @@ export default {
             character: CharacterService.new(),
             allSizes: SizeService.getAll(),
             allRaces: RaceService.getAll(),
-            allAlignments: AlignmentService.getAll(),
-            // Create items grid with 17 rows and 2 columns.
-            itemsGrid: [...Array(17).keys()].map(i => [...Array(2).keys()].map(i => new Object())),
-            spellLevels: _.range(10)
+            allAlignments: AlignmentService.getAll()
         };
     },
     watch: {
@@ -122,11 +120,6 @@ export default {
                     this.character.spellList.push(newSpell.trim());
                 });
             }
-        },
-        /** Calculated value of total weight carried by the character. */
-        totalWeightCarried: function() {
-            var value = this.character.items.map(i => i.weight).reduce((prev, next) => prev + next)
-            return value.toPrecision(3);
         }
     },
     methods: {
@@ -168,42 +161,8 @@ export default {
         removeSkill: function(skillRemoved) {
             console.log(skillRemoved);
         },
-        updateCharacterItem: function(rowIndex, columnIndex) {
-            var gridItem = this.itemsGrid[rowIndex][columnIndex];
-            var characterItem = this.character.items[rowIndex + (this.itemsGrid.length * columnIndex)];
-            ({
-                name: characterItem.name,
-                page: characterItem.page,
-                weight: characterItem.weight,
-            } = gridItem);
-        },
-        updateGridItem: function(itemIndex) {
-            const rowIndex = itemIndex % this.itemsGrid.length;
-            const columnIndex = Math.floor(itemIndex / this.itemsGrid.length);
-            var gridItem = this.itemsGrid[rowIndex][columnIndex];
-            var characterItem = this.character.items[itemIndex];
-            ({
-                name: gridItem.name,
-                page: gridItem.page,
-                weight: gridItem.weight,
-            } = characterItem);
-        },
         loadCharacter: function(character) {
             this.character = character;
-            this.loadItemsToGrid(character.items);
-        },
-        loadItemsToGrid: function(itemArray) {
-            for (var index = 0; index < itemArray.length; index++) {
-                const rowIndex = index % this.itemsGrid.length;
-                const columnIndex = Math.floor(index / this.itemsGrid.length);
-                var gridItem = this.itemsGrid[rowIndex][columnIndex];
-                var charItem = itemArray[index];
-                ({
-                    name: gridItem.name,
-                    page: gridItem.page,
-                    weight: gridItem.weight,
-                } = charItem);
-            }
         },
         saveOrUpdate: function() {
             CharacterService.saveOrUpdate(this.character).then(data => {
@@ -1485,166 +1444,7 @@ export default {
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Desktop Other Possessions -->
-                                    <div class="possessions-container hidden-sm-down">
-                                        <div class="possessions-header black-box">
-                                            <span class="health-points-abbreviation">Other Possessions</span>
-                                        </div>
-                                        <div class="dual-possession">
-                                            <div class="single-possession">
-                                                <div class="item-header">
-                                                    <div class="item-title">
-                                                        <span>Item</span>
-                                                    </div>
-                                                    <div class="item-page">
-                                                        <span>Pg.</span>
-                                                    </div>
-                                                    <div class="item-weight">
-                                                        <span>Wt.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="single-possession">
-                                                <div class="item-header">
-                                                    <div class="item-title">
-                                                        <span>Item</span>
-                                                    </div>
-                                                    <div class="item-page">
-                                                        <span>Pg.</span>
-                                                    </div>
-                                                    <div class="item-weight">
-                                                        <span>Wt.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="dual-possession" v-for="(itemRow, rowIndex) in itemsGrid" :key="rowIndex">
-                                            <div class="single-possession" v-for="(itemColumn, columnIndex) in itemRow" :key="columnIndex" v-if="rowIndex != (itemsGrid.length - 1) || columnIndex != (itemsGrid[0].length - 1)">
-                                                <div class="item-header">
-                                                    <div class="item-title">
-                                                        <input type="text" class="full-input item-input" v-model="itemColumn.name" @change="updateCharacterItem(rowIndex, columnIndex)">
-                                                    </div>
-                                                    <div class="item-page">
-                                                        <input type="number" class="full-input item-input" v-model.number="itemColumn.page" @change="updateCharacterItem(rowIndex, columnIndex)">
-                                                    </div>
-                                                    <div class="item-weight">
-                                                        <input type="number" class="full-input item-input" v-model.number="itemColumn.weight" @change="updateCharacterItem(rowIndex, columnIndex)">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="single-possession" v-else>
-                                                <div class="item-header">
-                                                    <div class="item-title">
-                                                        <span class="total-weight-carried">Total Weight Carried</span>
-                                                    </div>
-                                                    <div class="total-weight">
-                                                        <input type="number" class="full-input total-weight-input" readonly :value="totalWeightCarried">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="load-container">
-                                            <div>
-                                                <div>
-                                                    <input type="number" class="full-input" v-model.number="character.carryCapacity.lightLoad">
-                                                    <span class="load-span">Light<br>Load</span>
-                                                </div>
-                                                <div>
-                                                    <input type="number" class="full-input" v-model.number="character.carryCapacity.mediumLoad">
-                                                    <span class="load-span">Medium<br>Load</span>
-                                                </div>
-                                                <div>
-                                                    <input type="number" class="full-input" v-model.number="character.carryCapacity.heavyLoad">
-                                                    <span class="load-span">Heavy<br>Load</span>
-                                                </div>
-                                                <div>
-                                                    <input type="number" class="full-input" v-model.number="character.carryCapacity.liftOverHead">
-                                                    <span class="load-span">Lift Over<br>Head</span>
-                                                    <span class="load-span-sm">Equals<br>Max Load</span>
-                                                </div>
-                                                <div>
-                                                    <input type="number" class="full-input" v-model.number="character.carryCapacity.liftOffGround">
-                                                    <span class="load-span">Lift Off<br>Ground</span>
-                                                    <span class="load-span-sm">2 x<br>Max Load</span>
-                                                </div>
-                                                <div>
-                                                    <input type="number" class="full-input" v-model.number="character.carryCapacity.pushOrDrag">
-                                                    <span class="load-span">Push or<br>Drag</span>
-                                                    <span class="load-span-sm">5 x<br>Max Load</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="money-container">
-                                            <div class="money-header black-box">
-                                                <span class="health-points-abbreviation">Money</span>
-                                            </div>
-                                            <div style="display: flex">
-                                                <div class="coins-container" style="width: 50%">
-                                                    <div>
-                                                        <span class="coin-span" title="Cooper Coins">CP —</span>
-                                                        <input type="number" class="coin-input" v-model.number="character.money.copper">
-                                                    </div>
-                                                    <div>
-                                                        <span class="coin-span" title="Silver Coins = 10 Cooper Coins">SP —</span>
-                                                        <input type="number" class="coin-input" v-model.number="character.money.silver">
-                                                    </div>
-                                                    <div>
-                                                        <span class="coin-span" title="Gold Coins = 10 Silver Coins">GP —</span>
-                                                        <input type="number" class="coin-input" v-model.number="character.money.gold">
-                                                    </div>
-                                                    <div>
-                                                        <span class="coin-span" title="Platinum Coins = 100 Gold Coins">PP —</span>
-                                                        <input type="number" class="coin-input" v-model.number="character.money.platinum">
-                                                    </div>
-                                                </div>
-                                                <div class="treasure-container" style="width: 50%">
-                                                    <textarea class="treasure-area" v-model="character.money.treasure"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Mobile Other Possessions -->
-                                    <div class="possessions-container hidden-sm-up">
-                                        <div class="possessions-header black-box">
-                                            <span class="health-points-abbreviation">Other Possessions</span>
-                                        </div>
-                                        <div class="single-possession">
-                                            <div class="item-header">
-                                                <div class="item-title">
-                                                    <span>Item</span>
-                                                </div>
-                                                <div class="item-page">
-                                                    <span>Pg.</span>
-                                                </div>
-                                                <div class="item-weight">
-                                                    <span>Wt.</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single-possession" v-for="(item, itemIndex) in character.items" :key="itemIndex" v-if="itemIndex != character.items.length - 1">
-                                            <div class="item-header">
-                                                <div class="item-title">
-                                                    <input type="text" class="full-input item-input" v-model="item.name" @change="updateGridItem(itemIndex)">
-                                                </div>
-                                                <div class="item-page">
-                                                    <input type="number" class="full-input item-input" v-model.number="item.page" @change="updateGridItem(itemIndex)">
-                                                </div>
-                                                <div class="item-weight">
-                                                    <input type="number" class="full-input item-input" v-model.number="item.weight" @change="updateGridItem(itemIndex)">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single-possession" v-else>
-                                            <div class="item-header">
-                                                <div class="item-title">
-                                                    <span class="total-weight-carried">Total Weight Carried</span>
-                                                </div>
-                                                <div class="total-weight">
-                                                    <input type="number" class="full-input total-weight-input" readonly :value="totalWeightCarried">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <possessions-container :possessions="character.items" :money="character.money" :carryCapacity="character.carryCapacity"></possessions-container>
                                 </div>
                             </div>
                             <div class="pure-u-lg-1-2 pure-u-1">
@@ -1699,12 +1499,12 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                <button @click="importCharacter">Importar</button>
-                                <input id="importField" type="file" -->
+                                        <button @click="importCharacter">Importar</button>
+                                        <input id="importField" type="file" -->
             </div>
         </div>
     </div>
