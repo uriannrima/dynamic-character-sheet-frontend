@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -65,9 +64,6 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             _: 'lodash'
-        }),
-        new HtmlWebpackPlugin({
-            template: "index.html"
         }),
         new CopyWebpackPlugin([
             {
