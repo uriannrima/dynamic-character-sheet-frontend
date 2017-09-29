@@ -5,6 +5,16 @@ var characterModule = require('modules/character.module');
 module.exports = function (app) {
     var service = {};
 
+    service.getAll = function (callback) {
+        var collection = app.mongodb.database.collection('characters');
+        collection.find({}).toArray(function (err, records) {
+            var characters = records.map(record => {
+                return new characterModule.character(record);
+            })
+            callback(characters);
+        });
+    };
+
     service.getById = function (_id, callback) {
         var collection = app.mongodb.database.collection('characters');
         collection.find({ _id: new ObjectID(_id) }).toArray(function (err, records) {

@@ -13,6 +13,15 @@ export default {
     load: function (characterData) {
         return new characterModule.character(characterData);
     },
+    getAll: function (id) {
+        return axios.get(Constants.API_URL + '/characters/').then(response => {
+            return response.data.map(characterData => {
+                return new characterModule.character(characterData);
+            });
+        }, reason => {
+            return this.charactersOffline[_id];
+        });
+    },
     get: function (id) {
         return axios.get(Constants.API_URL + '/characters/' + id).then(response => {
             return new characterModule.character(response.data);

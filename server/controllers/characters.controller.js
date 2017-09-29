@@ -1,6 +1,12 @@
 module.exports = function (app) {
     var controller = {};
 
+    controller.getAll = function (req, res) {
+        app.services.characters.getAll(characters => {
+            res.json(characters);
+        });
+    };
+
     controller.get = function (req, res) {
         var rId = req.params.id;
         app.services.characters.getById(rId, character => {
