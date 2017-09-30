@@ -18,6 +18,7 @@ const specialAbilityModule = require('./special-ability.module');
 const subValueModule = require('./sub-value.module');
 const spellsPerDayModule = require('./spells-per-day.module');
 const spellModule = require('./spell.module');
+const sizeModule = require('./size.module');
 
 module.exports = {
     characterModule,
@@ -39,5 +40,6 @@ module.exports = {
     subValueModule,
     spellsPerDayModule,
     spellModule,
-    specialAbilityModule
+    specialAbilityModule,
+    sizeModule
 }

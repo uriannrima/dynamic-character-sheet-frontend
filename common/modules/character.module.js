@@ -18,12 +18,18 @@ exports.character = function ({
 
     return {
         _id, name, playerName,
-        race, alignment, deity,
-        size, age, gender,
+        race, alignment, deity, age, gender,
         height, weight, eyes,
         hair, skin, speed,
         damageReduction,
         conditionModifier,
+        size: size || new Modules.sizeModule.size({
+            name: "Medium",
+            attackDCBonus: "0",
+            grappleBonus: "0",
+            hideBonus: "0",
+            carryBonus: "1"
+        }),
         classes: classes || [
             new Modules.classeModule.classe({})
         ],
@@ -116,7 +122,7 @@ exports.character = function ({
                 abilityScore.updateCharacter(this);
             });
         },
-        getAbilityScore: function(abilityScoreName){
+        getAbilityScore: function (abilityScoreName) {
             return _.find(this.abilityScores, abilityScore => {
                 return abilityScore.name.toUpperCase() == abilityScoreName.toUpperCase();
             });
@@ -124,7 +130,7 @@ exports.character = function ({
         getCasterAbility: function () {
             var casterAbility;
             casterAbility = this.getAbilityScore('intelligence');
-            
+
             _.forEach(this.classes, classe => {
                 if (classe.isCaster) {
                     casterAbility = this.getAbilityScore(classe.casterAbility);

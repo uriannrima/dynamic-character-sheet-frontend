@@ -9,6 +9,7 @@ import DcsSpellModal from './modals/spell.modal.component';
 import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
 
 import AbilityScoresContainer from './containers/ability-scores.container';
+import ArmorClassContainer from './containers/armor-class.container';
 import FeatsContainer from './containers/feats.container';
 import PerDayContainer from './containers/per-day.container';
 import PossessionsContainer from './containers/possessions.container';
@@ -19,13 +20,13 @@ import SpellsContainer from './containers/spells.container';
 export default {
     components: {
         DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal,
-        AbilityScoresContainer, FeatsContainer, PerDayContainer, PossessionsContainer, SavingThrowsContainer, SkillsContainer, SpellsContainer
+        AbilityScoresContainer, ArmorClassContainer, FeatsContainer, PerDayContainer, PossessionsContainer, SavingThrowsContainer, SkillsContainer, SpellsContainer
     },
     data: function() {
         return {
             sheetPage: 1,
             character: CharacterService.new(),
-            allSizes: SizeService.getAll(),
+            allSizes: [],
             allRaces: RaceService.getAll(),
             allAlignments: AlignmentService.getAll()
         };
@@ -147,17 +148,21 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next) {
-        if (to.params.id) {
-            CharacterService.get(to.params.id).then(character => {
-                next(vm => {
-                    vm.loadCharacter(character);
+        SizeService.getAll().then(sizes => {
+            if (to.params.id) {
+                CharacterService.get(to.params.id).then(character => {
+                    next(vm => {
+                        vm.allSizes = sizes;
+                        vm.loadCharacter(character);
+                    });
                 });
-            });
-        } else {
-            next(vm => {
-                vm.loadCharacter(CharacterService.new());
-            });
-        }
+            } else {
+                next(vm => {
+                    vm.allSizes = sizes;
+                    vm.loadCharacter(CharacterService.new());
+                });
+            }
+        });
     }
 };
 </script>
@@ -193,8 +198,7 @@ export default {
                                     <div class="pure-u-1-4">
                                         <div class="small-padding-box">
                                             <select class="description-field" v-model="character.size">
-                                                <option disabled value="">None</option>
-                                                <option v-for="(size, index) in allSizes" :key="index">{{size.name}}</option>
+                                                <option v-for="(size, index) in allSizes" :key="index" :value="size">{{size.name}}</option>
                                             </select>
                                             <span class="description-span">Size</span>
                                         </div>
@@ -396,166 +400,9 @@ export default {
                                         </td>
                                     </tbody>
                                 </table>
-                                <!-- Desktop Armor Table -->
-                                <table class="armor-table hidden-md-down">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                <div class="black-box">
-                                                    <span class="armor-class-abbreviation">AC</span>
-                                                    <span class="armor-class-description">Armor Class</span>
-                                                </div>
-                                            </th>
-                                            <td>
-                                                <input type="number" value="10" class="health-points-field" readonly :value="character.armorClass.getTotalArmor()">
-                                            </td>
-                                            <td>
-                                                <span class="armor-base-value">= 10 +</span>
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.armorBonus">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.shieldBonus">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.dexModifier">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.sizeModifier">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.naturalArmor">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.deflectionModifier">
-                                            </td>
-                                            <td>
-                                                <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.miscModifier">
-                                            </td>
-                                            <td style="width:15%">
-                                                <input type="text" class="damage-reduction-field" v-model="character.damageReduction">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>
-                                                <span>&nbsp</span>
-                                            </th>
-                                            <th>
-                                                <span class="ability-score-description">Total</span>
-                                            </th>
-                                            <th>
-                                                <span class="ability-score-description">&nbsp</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Armor
-                                                    <br>Bonus</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Shield
-                                                    <br>Bonus</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Dex
-                                                    <br>Modifier</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Size
-                                                    <br>Modifier</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Natural
-                                                    <br>Armor</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Deflection
-                                                    <br>Modifier</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Misc
-                                                    <br>Modifier</span>
-                                            </th>
-                                            <th>
-                                                <span class="armor-description">Damage Reduction</span>
-                                            </th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                                <!-- Mobile Armor Table -->
-                                <div class="armor-container">
-                                    <table class="armor-table hidden-lg-up">
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="9">
-                                                    <div class="black-box" style="width:50%; float:left">
-                                                        <span class="health-points-abbreviation">AC</span>
-                                                        <span class="health-points-description">Armor Class</span>
-                                                    </div>
-                                                    <div style="vertical-align: middle; width:50%; float:right; margin-top: 4px;">
-                                                        <input type="number" value="10" class="health-points-field total-health-points-field" readonly :value="character.armorClass.getTotalArmor()">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.armorBonus">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.shieldBonus">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.dexModifier">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.sizeModifier">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.naturalArmor">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.deflectionModifier">
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="0" class="health-points-field" v-model.number="character.armorClass.miscModifier">
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>
-                                                    <span class="armor-description">Armor
-                                                        <br>Bonus</span>
-                                                </th>
-                                                <th>
-                                                    <span class="armor-description">Shield
-                                                        <br>Bonus</span>
-                                                </th>
-                                                <th>
-                                                    <span class="armor-description">Dex
-                                                        <br>Modifier</span>
-                                                </th>
-                                                <th>
-                                                    <span class="armor-description">Size
-                                                        <br>Modifier</span>
-                                                </th>
-                                                <th>
-                                                    <span class="armor-description">Natural
-                                                        <br>Armor</span>
-                                                </th>
-                                                <th>
-                                                    <span class="armor-description">Deflection
-                                                        <br>Modifier</span>
-                                                </th>
-                                                <th>
-                                                    <span class="armor-description">Misc
-                                                        <br>Modifier</span>
-                                                </th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
+                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')"
+                                    :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield"
+                                    :size="character.size"></armor-class-container>
                                 <!-- Touch and Flat-Footed -->
                                 <div>
                                     <div class="pure-u-lg-11-24 hidden-md-down">
@@ -1401,12 +1248,12 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                            <button @click="importCharacter">Importar</button>
-                                            <input id="importField" type="file" -->
+                                                                        <button @click="importCharacter">Importar</button>
+                                                                        <input id="importField" type="file" -->
             </div>
         </div>
     </div>
