@@ -18,6 +18,15 @@ export default {
             }
         }
     },
+    watch: {
+        show: function(val) {
+            if (val) {
+                FeatService.getAll().then(feats => {
+                    this.allFeats = feats;
+                });
+            }
+        }
+    },
     methods: {
         clear: function() {
             this.selectedFeat = "";
@@ -57,13 +66,6 @@ export default {
             this.$emit('onFeatRemoved', this.describeFeat._id);
             this.clear();
             this.close();
-        }
-    },
-    beforeUpdate() {
-        if (this.show) {
-            FeatService.getAll().then(feats => {
-                this.allFeats = feats;
-            });
         }
     }
 }

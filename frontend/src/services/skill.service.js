@@ -34,7 +34,7 @@ export default {
             return axios.post(Constants.API_URL + '/skills', { skill }).then(response => {
                 return response.data;
             }, reason => {
-                skill._id = generateGuid();
+                skill._id = guid.generate();
                 return this.skillsOffline[skill._id] = skill;
             });
         }

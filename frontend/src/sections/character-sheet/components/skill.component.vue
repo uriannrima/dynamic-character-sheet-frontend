@@ -13,11 +13,6 @@ export default {
             var rankValue = this.classSkill ? this.rank : Math.floor(this.rank / 2);
             return this.keyAbility.getTempModifier() + rankValue + this.miscModifier;
         }
-    },
-    methods: {
-        test: function(event) {
-            console.log(event.target.value);
-        }
     }
 };
 </script>
@@ -25,7 +20,7 @@ export default {
     <tr>
         <td>
             <input type="checkbox" class="class-skill-input" :checked="classSkill" @change="$emit('update:classSkill', $event.target.checked)">
-            <span class="skill-name" :class="{ 'untrained-skill': untrained }">{{name}}</span>
+            <span class="skill-name" :class="{ 'untrained-skill': untrained }" @dblclick="$emit('onSkillSelected', $event)">{{name}}</span>
             <div class="subvalue-container" v-if="hasSubValue" style="display: inline;">
                 <input type="text" class="skill-subvalue" :value="subValue" @input="$emit('update:subValue', $event.target.value)">
             </div>

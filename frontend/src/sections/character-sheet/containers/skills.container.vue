@@ -8,13 +8,19 @@ export default {
     data: function() {
         return {
             showModal: false,
-            selectedSkill: null
+            selected: null
         };
     },
     computed: {
         characterSkills: function() {
             return _.sortBy(this.character.skills, skill => skill.name);
-        },
+        }
+    },
+    methods: {
+        openSkillDescription: function(skill) {
+            this.selected = skill;
+            this.showModal = true;
+        }
     }
 }
 </script>
@@ -58,7 +64,8 @@ export default {
                         </tr>
                         <skill-component v-for="(skill, index) in characterSkills" :key="index" :classSkill.sync="skill.classSkill" :untrained="skill.untrained"
                             :name="skill.name" :hasSubValue="skill.hasSubValue" :subValue.sync="skill.subValue" :armorCheckPenalty="skill.armorCheckPenalty"
-                            :keyAbility="character.getAbilityScore(skill.keyAbility)" :rank.sync="skill.rank" :miscModifier.sync="skill.miscModifier"></skill-component>
+                            :keyAbility="character.getAbilityScore(skill.keyAbility)" :rank.sync="skill.rank" :miscModifier.sync="skill.miscModifier"
+                            @onSkillSelected="openSkillDescription(skill)"></skill-component>
                     </tbody>
                 </table>
             </div>
@@ -69,7 +76,7 @@ export default {
             <span class="armor-check-penalty">Armor check penalty, if any applies.
                 <strong>(Double for Swim)</strong>.</span>
         </div>
-        <dcs-skill-modal :show.sync="showModal" :describe-special-ability.sync="selectedSkill" :character-special-abilities="character.skills"
+        <dcs-skill-modal :show.sync="showModal" :describe-skill.sync="selected" :character-skills="character.skills"
             @onSkillAdded="$emit('onSkillAdded', $event)" @onSkillRemoved="$emit('onSkillRemoved', $event)"></dcs-skill-modal>
     </div>
 </template>

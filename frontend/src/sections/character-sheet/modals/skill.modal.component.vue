@@ -9,13 +9,34 @@ export default {
         return {
             selectedSkill: "",
             newSkill: SkillService.new(),
-            allSkills: []
+            allSkills: [],
+            has: {
+                tryAgain: false,
+                special: false,
+                synergy: false,
+                untrained: false
+            }
+        }
+    },
+    watch: {
+        show: function(val) {
+            if (val) {
+                SkillService.getAll().then(skills => {
+                    this.allSkills = skills;
+                });
+            }
         }
     },
     methods: {
         clear: function() {
             this.selectedSkill = "";
             this.newSkill = SkillService.new();
+            this.has = {
+                tryAgain: false,
+                special: false,
+                synergy: false,
+                untrained: false
+            }
         },
         cancel: function() {
             this.close();
@@ -28,13 +49,11 @@ export default {
         addNewSkill: function() {
             // New skill being created.
             if (!this.selectedSkill) {
-                // SkillService.saveOrUpdate(this.newSkill).then(skillCreated => {
-                //     
-                // });
-
-                this.$emit('onSkillAdded', this.newSkill);
-                this.clear();
-                this.close();
+                SkillService.saveOrUpdate(this.newSkill).then(skillCreated => {
+                    this.$emit('onSkillAdded', this.newSkill);
+                    this.clear();
+                    this.close();
+                });
             } else {
                 this.$emit('onSkillAdded', this.selectedSkill);
                 this.clear();
@@ -45,13 +64,6 @@ export default {
             this.$emit('onSkillRemoved', this.describeSkill);
             this.clear();
             this.close();
-        }
-    },
-    beforeUpdate() {
-        if (this.show) {
-            // SkillService.getAll().then(skills => {
-            //     this.allSkills = skills;
-            // });
         }
     }
 }
@@ -86,18 +98,54 @@ textarea {
             </div>
         </div>
         <!-- Skill Description -->
-        <div slot="body" v-if="selectedSkill">
+        <div slot="body" v-if="describeSkill">
             <div>
                 <span>
                     <strong>Name:</strong>
                 </span>
-                <span>{{selectedSkill.name}} [{{selectedSkill.keyAbility}}]</span>
+                <span>{{describeSkill.name}} [{{describeSkill.keyAbility}}]</span>
             </div>
             <div>
                 <span>
-                    <strong>Description:</strong>
+                    <strong>Check:</strong>
                 </span>
-                <span>{{selectedSkill.description}}</span>
+                <span>{{describeSkill.check}}</span>
+            </div>
+            <div>
+                <span>
+                    <strong>Action:</strong>
+                </span>
+                <span>{{describeSkill.action}}</span>
+            </div>
+            <div v-if="describeSkill.tryAgain">
+                <span>
+                    <strong>Try Again:</strong>
+                </span>
+                <span>{{describeSkill.tryAgain}}</span>
+            </div>
+            <div v-if="describeSkill.special">
+                <span>
+                    <strong>Special:</strong>
+                </span>
+                <span>{{describeSkill.special}}</span>
+            </div>
+            <div v-if="describeSkill.synergy">
+                <span>
+                    <strong>Synergy:</strong>
+                </span>
+                <span>{{describeSkill.synergy}}</span>
+            </div>
+            <div v-if="describeSkill.synergy">
+                <span>
+                    <strong>Untrained Description:</strong>
+                </span>
+                <span>{{describeSkill.untrainedDescription}}</span>
+            </div>
+            <div v-if="describeSkill.subValue">
+                <span>
+                    <strong>Sub Value:</strong>
+                </span>
+                <span>{{describeSkill.subValue}}</span>
             </div>
         </div>
         <!-- Adding new skill -->
@@ -124,11 +172,42 @@ textarea {
                         <option value="charisma">Charisma</option>
                     </select>
                 </div>
-                <span style="display:block">Description:</span>
-                <textarea type="text" v-model="newSkill.description"></textarea>
+                <div>
+                    <span>Check:</span>
+                    <textarea type="text" v-model="newSkill.check"></textarea>
+                </div>
+                <div>
+                    <span>Action:</span>
+                    <textarea type="text" v-model="newSkill.action"></textarea>
+                </div>
+                <div>
+                    <span>Try Again:</span>
+                    <input type="checkbox" v-model="has.tryAgain" style="vertical-align: middle">
+                </div>
+                <div v-if="has.tryAgain">
+                    <textarea type="text" v-model="newSkill.tryAgain"></textarea>
+                </div>
+                <div>
+                    <span>Special:</span>
+                    <input type="checkbox" v-model="has.special" style="vertical-align: middle">
+                </div>
+                <div v-if="has.special">
+                    <textarea type="text" v-model="newSkill.special"></textarea>
+                </div>
+                <div>
+                    <span>Synergy:</span>
+                    <input type="checkbox" v-model="has.synergy" style="vertical-align: middle">
+                </div>
+                <div v-if="has.synergy">
+                    <textarea type="text" v-model="newSkill.synergy"></textarea>
+                </div>
                 <div>
                     <span>Untrained:</span>
                     <input type="checkbox" v-model="newSkill.untrained" style="vertical-align: middle">
+                </div>
+                <div v-if="newSkill.untrained">
+                    <span>Untrained Description:</span>
+                    <textarea type="text" v-model="newSkill.untrainedDescription"></textarea>
                 </div>
                 <div>
                     <span>Armor Check Penalty:</span>
@@ -141,6 +220,58 @@ textarea {
                 <div v-if="newSkill.hasSubValue">
                     <span>Value:</span>
                     <input type="text" v-model="newSkill.subValue"></input>
+                </div>
+            </div>
+            <div v-else>
+                <div>
+                    <span>
+                        <strong>Name:</strong>
+                    </span>
+                    <span>{{selectedSkill.name}} [{{selectedSkill.keyAbility}}]</span>
+                </div>
+                <div>
+                    <span>Sub Value:</span>
+                    <input type="checkbox" v-model="selectedSkill.hasSubValue" style="vertical-align: middle">
+                </div>
+                <div v-if="selectedSkill.hasSubValue">
+                    <span>Value:</span>
+                    <input type="text" v-model="selectedSkill.subValue"></input>
+                </div>
+                <div>
+                    <span>
+                        <strong>Check:</strong>
+                    </span>
+                    <span>{{selectedSkill.check}}</span>
+                </div>
+                <div>
+                    <span>
+                        <strong>Action:</strong>
+                    </span>
+                    <span>{{selectedSkill.action}}</span>
+                </div>
+                <div v-if="selectedSkill.tryAgain">
+                    <span>
+                        <strong>Try Again:</strong>
+                    </span>
+                    <span>{{selectedSkill.tryAgain}}</span>
+                </div>
+                <div v-if="selectedSkill.special">
+                    <span>
+                        <strong>Special:</strong>
+                    </span>
+                    <span>{{selectedSkill.special}}</span>
+                </div>
+                <div v-if="selectedSkill.synergy">
+                    <span>
+                        <strong>Synergy:</strong>
+                    </span>
+                    <span>{{selectedSkill.synergy}}</span>
+                </div>
+                <div v-if="selectedSkill.synergy">
+                    <span>
+                        <strong>Untrained Description:</strong>
+                    </span>
+                    <span>{{selectedSkill.untrainedDescription}}</span>
                 </div>
             </div>
         </div>

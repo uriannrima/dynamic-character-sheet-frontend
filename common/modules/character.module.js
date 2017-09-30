@@ -74,7 +74,7 @@ exports.character = function ({
             miscModifier: 0
         }),
         skillPoints: 0,
-        skills: skills ? skills.map(s => Modules.skillsModule.skill(s)) : Modules.skillsModule.DEFAULT_SKILLS,
+        skills: skills ? skills.map(s => new Modules.skillsModule.skill(s)) : Modules.skillsModule.DEFAULT_SKILLS,
         attacks: attacks || [
             new Modules.attackModule.attack({}),
             new Modules.attackModule.attack({}),
