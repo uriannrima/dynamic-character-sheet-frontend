@@ -8,17 +8,18 @@ import DcsFeatModal from './modals/feat.modal.component';
 import DcsSpellModal from './modals/spell.modal.component';
 import DcsSpecialAbilityModal from './modals/special-ability.modal.component';
 
-import PossessionsContainer from './containers/possessions.container';
+import AbilityScoresContainer from './containers/ability-scores.container';
 import FeatsContainer from './containers/feats.container';
+import PerDayContainer from './containers/per-day.container';
+import PossessionsContainer from './containers/possessions.container';
 import SavingThrowsContainer from './containers/saving-throws.container';
 import SkillsContainer from './containers/skills.container';
-import PerDayContainer from './containers/per-day.container';
 import SpellsContainer from './containers/spells.container';
 
 export default {
     components: {
         DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal,
-        FeatsContainer, PerDayContainer, SkillsContainer, SavingThrowsContainer, SpellsContainer, PossessionsContainer
+        AbilityScoresContainer, FeatsContainer, PerDayContainer, PossessionsContainer, SavingThrowsContainer, SkillsContainer, SpellsContainer
     },
     data: function() {
         return {
@@ -92,9 +93,6 @@ export default {
         }
     },
     methods: {
-        updateTemporaryScore: function(abilityScore) {
-            abilityScore.tempValue = abilityScore.value;
-        },
         addNewSpell: function(spellAdded) {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
             spellList.spells.push(spellAdded);
@@ -288,63 +286,7 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-                            <div class="ability-container">
-                                <table class="ability-table">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <span class="ability-score-description">Ability Name</span>
-                                            </th>
-                                            <th>
-                                                <span class="ability-score-description">Ability
-                                                    <br>Score</span>
-                                            </th>
-                                            <th>
-                                                <span class="ability-score-description">Ability
-                                                    <br>Modifier</span>
-                                            </th>
-                                            <th>
-                                                <span class="ability-score-description">Temporary
-                                                    <br>Score</span>
-                                            </th>
-                                            <th>
-                                                <span class="ability-score-description">Temporary
-                                                    <br>Modifier</span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(abilityScore, index) in character.abilityScores" :key="index">
-                                            <th>
-                                                <div class="black-box">
-                                                    <span class="ability-score-abbreviation">{{abilityScore.name.substring(0,3)}}</span>
-                                                    <span class="ability-score-name">{{abilityScore.name}}</span>
-                                                </div>
-                                            </th>
-                                            <td>
-                                                <div>
-                                                    <input type="number" value="10" class="ability-score-field" v-model.number="abilityScore.value" @change="updateTemporaryScore(abilityScore)">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <input type="number" value="0" class="ability-score-field" readonly :value="abilityScore.getModifier()">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <input type="number" value="10" class="ability-score-field" v-model.number="abilityScore.tempValue">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <input type="number" value="0" class="ability-score-field" readonly :value="abilityScore.getTempModifier()">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <ability-scores-container :abilityScores="character.abilityScores"></ability-scores-container>
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-3">
                             <div class="first-gutter hidden-lg-up">
@@ -1459,12 +1401,12 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                        <button @click="importCharacter">Importar</button>
-                                        <input id="importField" type="file" -->
+                                            <button @click="importCharacter">Importar</button>
+                                            <input id="importField" type="file" -->
             </div>
         </div>
     </div>
