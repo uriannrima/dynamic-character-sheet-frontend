@@ -21,7 +21,7 @@ export default {
         <td>
             <input type="checkbox" class="class-skill-input" :checked="classSkill" @change="$emit('update:classSkill', $event.target.checked)">
             <span class="skill-name" :class="{ 'untrained-skill': untrained }" @dblclick="$emit('onSkillSelected', $event)">{{name}}</span>
-            <div class="subvalue-container" v-if="hasSubValue" style="display: inline;">
+            <div class="subvalue-container" v-if="hasSubValue || subValue" style="display: inline;">
                 <input type="text" class="skill-subvalue" :value="subValue" @input="$emit('update:subValue', $event.target.value)">
             </div>
         </td>

@@ -78,6 +78,12 @@ export default {
 
 
 
+
+
+
+
+
+
 /*
  * The following styles are auto-applied to elements with
  * transition="modal" when their visibility is toggled
@@ -100,6 +106,12 @@ export default {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+
+.modal-close-button {
+    color: white;
+    margin-right: 5px;
+    margin-top: 4px;
+}
 </style>
 
 <template>
@@ -107,7 +119,11 @@ export default {
         <div class="v-modal-mask" @click="close" v-show="show">
             <div class="v-modal-container" @click.stop>
                 <div class="v-modal-header">
-                    <slot name="header"></slot>
+                    <div @click="close" style="float: right;">
+                        <span class="modal-close-button glyphicon glyphicon-remove"></span>
+                    </div>
+                    <slot name="header">
+                    </slot>
                 </div>
                 <div class="v-modal-body">
                     <slot name="body"></slot>

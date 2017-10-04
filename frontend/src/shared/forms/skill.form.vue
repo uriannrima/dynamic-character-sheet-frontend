@@ -1,6 +1,8 @@
 <script>
+import { FormBus } from './';
+
 export default {
-    props: ['skill', 'edit', 'describeSkill'],
+    props: ['skill', 'describeSkill'],
     inject: {
         $validator: '$validator'
     },
@@ -10,9 +12,31 @@ export default {
                 tryAgain: false,
                 special: false,
                 synergy: false,
-                untrained: false
+                untrained: false,
+                restriction: false,
+                miscellaneous: false
             }
         };
+    },
+    methods: {
+        clear: function() {
+            this.has = {
+                tryAgain: false,
+                special: false,
+                synergy: false,
+                untrained: false,
+                restriction: false,
+                miscellaneous: false
+            };
+        }
+    },
+    created: function() {
+        FormBus.$on('skill:clear', () => {
+            this.clear();
+        });
+    },
+    destroyed: function() {
+        FormBus.$off('skill:clear');
     }
 }
 </script>
@@ -65,6 +89,12 @@ export default {
                 </span>
                 <span>{{describeSkill.special}}</span>
             </div>
+            <div class="skill-form-component-restriction-container" v-if="describeSkill.restriction">
+                <span>
+                    <strong>Restriction:</strong>
+                </span>
+                <span>{{describeSkill.restriction}}</span>
+            </div>
             <div class="skill-form-component-synergy-container" v-if="describeSkill.synergy">
                 <span>
                     <strong>Synergy:</strong>
@@ -83,11 +113,17 @@ export default {
                 </span>
                 <span>{{describeSkill.subValue}}</span>
             </div>
+            <div class="skill-form-component-miscellaneous-container" v-if="describeSkill.miscellaneous">
+                <span>
+                    <strong>Miscellaneous:</strong>
+                </span>
+                <span>{{describeSkill.miscellaneous}}</span>
+            </div>
         </div>
         <div v-else>
             <div class="skill-form-component-name-container">
                 <span>Name:</span>
-                <input type="text" v-validate="'required'" v-model="skill.name" name="name">
+                <input type="text" v-validate="'required'" v-model.trim="skill.name" name="name">
                 <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
             </div>
             <div class="skill-form-component-key-ability-container">
@@ -122,6 +158,11 @@ export default {
                 <input type="checkbox" v-model="has.special">
                 <textarea v-if="has.special" type="text" v-model.trim="skill.special"></textarea>
             </div>
+            <div class="skill-form-component-restriction-container">
+                <span>Restriction:</span>
+                <input type="checkbox" v-model="has.restriction">
+                <textarea v-if="has.restriction" type="text" v-model.trim="skill.restriction"></textarea>
+            </div>
             <div class="skill-form-component-synergy-container">
                 <span>Synergy:</span>
                 <input type="checkbox" v-model="has.synergy" style="vertical-align: middle">
@@ -143,9 +184,14 @@ export default {
                 <span>Sub Value:</span>
                 <input type="checkbox" v-model.trim="skill.hasSubValue" style="vertical-align: middle">
             </div>
-            <div class="skill-form-component-sub-value-container" v-if="skill.hasSubValue">
+            <div class="skill-form-component-sub-value-container" v-if="skill.hasSubValue || skill.subValue">
                 <span>Value:</span>
                 <input type="text" v-model.trim="skill.subValue"></input>
+            </div>
+            <div class="skill-form-component-synergy-container">
+                <span>Miscellaneous:</span>
+                <input type="checkbox" v-model="has.miscellaneous" style="vertical-align: middle">
+                <textarea v-if="has.miscellaneous" type="text" v-model.trim="skill.miscellaneous"></textarea>
             </div>
         </div>
     </div>

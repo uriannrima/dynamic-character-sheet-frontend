@@ -7,7 +7,7 @@ module.exports = function (app) {
 
     service.getAll = function (callback) {
         var collection = app.mongodb.database.collection('skills');
-        collection.find({}).toArray(function (err, records) {
+        collection.find({}).sort({ name: 1 }).toArray(function (err, records) {
             var skills = records.map(record => {
                 return new skillModule.skill(record);
             })

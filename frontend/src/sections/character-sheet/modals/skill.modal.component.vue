@@ -1,7 +1,7 @@
 <script>
 import DcsModal from 'Shared/modal.component';
 import SkillService from 'Services/skill.service';
-import SkillForm from 'Shared/forms/skill.form';
+import { FormBus, SkillForm } from 'Shared/forms/';
 
 export default {
     props: ['show', 'describeSkill', 'characterSkills'],
@@ -10,41 +10,36 @@ export default {
         return {
             selectedSkill: "",
             newSkill: SkillService.new(),
-            allSkills: [],
-            has: {
-                tryAgain: false,
-                special: false,
-                synergy: false,
-                untrained: false
-            }
+            editing: false,
+            allSkills: []
         }
     },
     watch: {
         show: function(val) {
             if (val) {
-                SkillService.getAll().then(skills => {
-                    this.allSkills = skills;
-                });
+                this.updateAllSkills();
             }
         }
     },
     methods: {
+        updateAllSkills: function() {
+            SkillService.getAll().then(skills => {
+                this.allSkills = skills;
+            });
+        },
         clear: function() {
             this.selectedSkill = "";
-            this.newSkill = SkillService.new();
-            this.has = {
-                tryAgain: false,
-                special: false,
-                synergy: false,
-                untrained: false
-            }
+            this.newSkill = SkillService.new();;
+            this.editing = false;
+            this.errors.clear();
+            FormBus.$emit('skill:clear');
         },
         cancel: function() {
             this.close();
         },
         close: function() {
             this.clear();
-            this.$emit('update:describeSkill', null);
+            this.clearDescription();
             this.$emit('update:show', false);
         },
         addNewSkill: function() {
@@ -70,6 +65,27 @@ export default {
             this.$emit('onSkillRemoved', this.describeSkill);
             this.clear();
             this.close();
+        },
+        saveSkill: function() {
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                    SkillService.saveOrUpdate(this.newSkill).then(skillSaved => {
+                        this.updateAllSkills();
+                        this.editing = false;
+                        this.clear();
+                    });
+                }
+            });
+        },
+        editSkill: function() {
+            var data = this.describeSkill || this.selectedSkill;
+            this.newSkill = SkillService.new(data);
+            this.editing = true;
+            this.clearDescription();
+        },
+        clearDescription: function() {
+            this.$emit('update:describeSkill', null);
+            this.selectedSkill = "";
         }
     }
 }
@@ -118,6 +134,10 @@ select {
                     </option>
                 </select>
             </div>
+            <div v-if="selectedSkill">
+                <span>Sub Value:</span>
+                <input type="text" v-model.trim="selectedSkill.subValue">
+            </div>
             <skill-form :skill="newSkill" :describeSkill="selectedSkill || describeSkill"></skill-form>
             <div v-show="errors.any()">
                 <ul>
@@ -126,8 +146,9 @@ select {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
-            <button @click="cancel()">Close</button>
-            <button @click="addNewSkill()" v-show="!describeSkill">Add</button>
+            <button @click="saveSkill()" v-show="editing || !selectedSkill">Save</button>
+            <button @click="addNewSkill()" v-show="!describeSkill && !editing">Add</button>
+            <button @click="editSkill()" v-show="describeSkill || selectedSkill">Edit</button>
             <button @click="removeSkill()" v-show="describeSkill">Remove</button>
         </div>
     </dcs-modal>

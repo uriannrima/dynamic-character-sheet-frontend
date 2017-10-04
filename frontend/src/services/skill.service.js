@@ -7,18 +7,18 @@ export default {
     skillsOffline: {
 
     },
-    new: function () {
-        return new skillModule.skill({});
+    new: function (data = {}) {
+        return new skillModule.skill(data);
     },
-    toCharacterFeat: function(skill){
+    toCharacterFeat: function (skill) {
         // Change it to become a character skill.
         skill._id = guid.generate();
         return new skillModule.skill(skill);
     },
-    get: function () {        
+    get: function () {
         return skillModule.DEFAULT_SKILLS;
     },
-    getAll: function () {        
+    getAll: function () {
         return axios.get(Constants.API_URL + '/skills').then(response => {
             return response.data;
         });
