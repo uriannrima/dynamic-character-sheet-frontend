@@ -7,13 +7,14 @@ Es6Promise.polyfill();
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import VueResource from 'vue-resource';
+import VeeValidate from 'vee-validate';
 import Routes from './routes';
 
 import Layout from './shared/layout.component';
 
-Vue.use(VueResource);
+Vue.use(VeeValidate);
 Vue.use(VueRouter);
+
 const router = new VueRouter(Routes);
 
 new Vue({

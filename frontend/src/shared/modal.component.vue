@@ -1,6 +1,9 @@
 <script>
 export default {
     props: ['show', 'onClose'],
+    inject: {
+        $validator: '$validator'
+    },
     methods: {
         close: function() {
             this.onClose();

@@ -1006,7 +1006,7 @@ input[type="number"] {
 }
 
 .skill-subvalue {
-    width: 44%;
+    width: 40%;
     font-size: 12px;
     text-align: center;
     border-width: 0 0 1px 0;
@@ -1015,7 +1015,7 @@ input[type="number"] {
 
 @media all and (max-width:320px) {
     .skill-subvalue {
-        width: 34%;
+        width: 25%;
     }
 }
 

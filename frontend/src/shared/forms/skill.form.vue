@@ -1,6 +1,9 @@
 <script>
 export default {
     props: ['skill', 'edit', 'describeSkill'],
+    inject: {
+        $validator: '$validator'
+    },
     data: function() {
         return {
             has: {
@@ -13,18 +16,19 @@ export default {
     }
 }
 </script>
-<!-- style scoped>
+<style scoped>
 .skill-form-component span {
     white-space: pre-line;
 }
 
-.skill-form-component > div > div {
+.skill-form-component>div>div {
     margin-bottom: 10px;
 }
+
 .skill-form-component-name-container small {
     text-transform: capitalize;
 }
-</style -->
+</style>
 
 <template>
     <div class="skill-form-component">
@@ -33,7 +37,9 @@ export default {
                 <span>
                     <strong>Name:</strong>
                 </span>
-                <span>{{describeSkill.name}} <small>[{{describeSkill.keyAbility}}]</small></span>
+                <span>{{describeSkill.name}}
+                    <small>[{{describeSkill.keyAbility}}]</small>
+                </span>
             </div>
             <div class="skill-form-component-check-container">
                 <span>
@@ -81,11 +87,12 @@ export default {
         <div v-else>
             <div class="skill-form-component-name-container">
                 <span>Name:</span>
-                <input type="text" v-model="skill.name">
+                <input type="text" v-validate="'required'" v-model="skill.name" name="name">
+                <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
             </div>
             <div class="skill-form-component-key-ability-container">
                 <span>Key Ability:</span>
-                <select v-model="skill.keyAbility">
+                <select v-model="skill.keyAbility" v-validate="'required'" name="key ability">
                     <option value="strength">Strength</option>
                     <option value="dexterity">Dexterity</option>
                     <option value="constitution">Constitution</option>
@@ -93,49 +100,52 @@ export default {
                     <option value="wisdom">Wisdom</option>
                     <option value="charisma">Charisma</option>
                 </select>
+                <span v-show="errors.has('key ability')">{{ errors.first('key ability') }}</span>
             </div>
             <div class="skill-form-component-check-container">
                 <span>Check:</span>
-                <textarea type="text" v-model="skill.check"></textarea>
+                <textarea type="text" v-model.trim="skill.check" v-validate="'required'" name="check"></textarea>
+                <span v-show="errors.has('check')">{{ errors.first('check') }}</span>
             </div>
             <div class="skill-form-component-action-container">
                 <span>Action:</span>
-                <textarea type="text" v-model="skill.action"></textarea>
+                <textarea type="text" v-model.trim="skill.action" v-validate="'required'" name="action"></textarea>
+                <span v-show="errors.has('action')">{{ errors.first('action') }}</span>
             </div>
             <div class="skill-form-component-special-container">
                 <span>Try Again:</span>
                 <input type="checkbox" v-model="has.tryAgain">
-                <textarea v-if="has.tryAgain" type="text" v-model="skill.tryAgain"></textarea>
+                <textarea v-if="has.tryAgain" type="text" v-model.trim="skill.tryAgain"></textarea>
             </div>
             <div class="skill-form-component-special-container">
                 <span>Special:</span>
                 <input type="checkbox" v-model="has.special">
-                <textarea v-if="has.special" type="text" v-model="skill.special"></textarea>
+                <textarea v-if="has.special" type="text" v-model.trim="skill.special"></textarea>
             </div>
             <div class="skill-form-component-synergy-container">
                 <span>Synergy:</span>
                 <input type="checkbox" v-model="has.synergy" style="vertical-align: middle">
-                <textarea v-if="has.synergy" type="text" v-model="skill.synergy"></textarea>
+                <textarea v-if="has.synergy" type="text" v-model.trim="skill.synergy"></textarea>
             </div>
             <div class="skill-form-component-untrained-container">
                 <span>Untrained:</span>
-                <input type="checkbox" v-model="skill.untrained" style="vertical-align: middle">
+                <input type="checkbox" v-model.trim="skill.untrained" style="vertical-align: middle">
             </div>
             <div class="skill-form-component-untrained-description-container" v-if="skill.untrained">
                 <span>Untrained Description:</span>
-                <textarea type="text" v-model="skill.untrainedDescription"></textarea>
+                <textarea type="text" v-model.trim="skill.untrainedDescription"></textarea>
             </div>
             <div class="skill-form-component-armor-check-penaly-container">
                 <span>Armor Check Penalty:</span>
-                <input type="checkbox" v-model="skill.armorCheckPenalty" style="vertical-align: middle">
+                <input type="checkbox" v-model.trim="skill.armorCheckPenalty" style="vertical-align: middle">
             </div>
             <div class="skill-form-component-has-sub-value-container">
                 <span>Sub Value:</span>
-                <input type="checkbox" v-model="skill.hasSubValue" style="vertical-align: middle">
+                <input type="checkbox" v-model.trim="skill.hasSubValue" style="vertical-align: middle">
             </div>
             <div class="skill-form-component-sub-value-container" v-if="skill.hasSubValue">
                 <span>Value:</span>
-                <input type="text" v-model="skill.subValue"></input>
+                <input type="text" v-model.trim="skill.subValue"></input>
             </div>
         </div>
     </div>

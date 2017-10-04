@@ -50,16 +50,21 @@ export default {
         addNewSkill: function() {
             // New skill being created.
             if (!this.selectedSkill) {
-                SkillService.saveOrUpdate(this.newSkill).then(skillCreated => {
-                    this.$emit('onSkillAdded', this.newSkill);
-                    this.clear();
-                    this.close();
+                this.$validator.validateAll().then(result => {
+                    if (result) {
+                        SkillService.saveOrUpdate(this.newSkill).then(skillCreated => {
+                            this.$emit('onSkillAdded', this.newSkill);
+                            this.clear();
+                            this.close();
+                        });
+                    }
                 });
             } else {
                 this.$emit('onSkillAdded', this.selectedSkill);
                 this.clear();
                 this.close();
             }
+
         },
         removeSkill: function() {
             this.$emit('onSkillRemoved', this.describeSkill);
@@ -70,20 +75,9 @@ export default {
 }
 </script>
 
-<!-- style scoped>
-input[type="text"],
-textarea,
+<style scoped>
 select {
     width: 100%;
-}
-
-textarea {
-    height: 80px;
-    font-size: 12px;
-}
-
-.v-modal-container {
-    width: 360px;
 }
 
 .skills-header {
@@ -93,7 +87,7 @@ textarea {
 .skill-form-component>>>textarea {
     display: block;
     width: 100%;
-    height: 200px;
+    height: 80px;
     font-size: 12px;
 }
 
@@ -106,7 +100,7 @@ textarea {
 .skill-form-component>>>strong {
     display: block;
 }
-</style -->
+</style>
 
 <template>
     <dcs-modal :show.sync="show" :on-close="close">
@@ -125,6 +119,11 @@ textarea {
                 </select>
             </div>
             <skill-form :skill="newSkill" :describeSkill="selectedSkill || describeSkill"></skill-form>
+            <div v-show="errors.any()">
+                <ul>
+                    <li v-for="(error,index) in errors.all()" :key="index">{{error}}</li>
+                </ul>
+            </div>
         </div>
         <div slot="footer" style="text-align: center;">
             <button @click="cancel()">Close</button>
