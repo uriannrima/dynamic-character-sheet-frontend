@@ -1,4 +1,5 @@
 import Character from './sections/character-sheet/character-sheet.component';
+import Skills from './sections/skills/skills.section';
 import Home from './sections/home/home.component';
 
 const routes = [
@@ -9,6 +10,10 @@ const routes = [
     {
         path: '/character',
         component: Character
+    },
+    {
+        path: '/skills',
+        component: Skills
     },
     {
         path: '/',

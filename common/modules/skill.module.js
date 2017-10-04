@@ -1,8 +1,8 @@
-var skill = function ({ name, keyAbility, untrained, armorCheckPenalty, classSkill, hasSubValue, check, action, tryAgain, special, synergy, untrainedDescription, subValue, rank, abilityModifier, miscModifier, hiddenModifier }) {
+var skill = function ({ name, keyAbility, untrained, armorCheckPenalty, classSkill, hasSubValue, check, action, tryAgain, special, synergy, untrainedDescription, restriction, subValue, rank, abilityModifier, miscModifier, hiddenModifier }) {
     return {
         name,
         keyAbility,
-        untrained,
+        untrained: untrained || true,
         armorCheckPenalty,
         classSkill,
         hasSubValue,
@@ -12,6 +12,7 @@ var skill = function ({ name, keyAbility, untrained, armorCheckPenalty, classSki
         special,
         synergy,
         untrainedDescription,
+        restriction,
         subValue: subValue || "",
         rank: rank || 0,
         abilityModifier: abilityModifier || 0,
