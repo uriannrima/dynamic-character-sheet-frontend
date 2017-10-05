@@ -20,6 +20,7 @@ module.exports = function (app) {
         
         delete skill._id;
         delete skill.classSkill;
+        delete skill.hasSubValue;
         delete skill.subValue;
         delete skill.rank;
         delete skill.abilityModifier;

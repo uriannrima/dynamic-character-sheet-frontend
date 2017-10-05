@@ -45,6 +45,11 @@ export default {
             });
         }
     },
+    resetSkills: function (character) {
+        return axios.put(Constants.API_URL + '/characters/skill/reset', { character }).then(response => {
+            return response.data;
+        });
+    },
     update: function (character) {
         // Be updated by char ability score.
         for (var index = 0; index < character.abilityScores.length; index++) {

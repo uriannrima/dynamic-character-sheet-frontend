@@ -11,6 +11,7 @@ export default {
             selectedSkill: "",
             newSkill: SkillService.new(),
             editing: false,
+            isCharacterSkill: false,
             allSkills: []
         }
     },
@@ -31,6 +32,7 @@ export default {
             this.selectedSkill = "";
             this.newSkill = SkillService.new();;
             this.editing = false;
+            this.isCharacterSkill = false;
             this.errors.clear();
             FormBus.$emit('skill:clear');
         },
@@ -49,36 +51,41 @@ export default {
                     if (result) {
                         SkillService.saveOrUpdate(this.newSkill).then(skillCreated => {
                             this.$emit('onSkillAdded', this.newSkill);
-                            this.clear();
                             this.close();
                         });
                     }
                 });
             } else {
                 this.$emit('onSkillAdded', this.selectedSkill);
-                this.clear();
                 this.close();
             }
 
         },
         removeSkill: function() {
             this.$emit('onSkillRemoved', this.describeSkill);
-            this.clear();
             this.close();
         },
         saveSkill: function() {
             this.$validator.validateAll().then(result => {
                 if (result) {
-                    SkillService.saveOrUpdate(this.newSkill).then(skillSaved => {
-                        this.updateAllSkills();
-                        this.editing = false;
-                        this.clear();
-                    });
+                    if (!this.isCharacterSkill) {
+                        SkillService.saveOrUpdate(this.newSkill).then(skillSaved => {
+                            this.updateAllSkills();
+                            this.editing = false;
+                            this.clear();
+                        });
+                    } else {
+                        this.$emit('onSkillUpdated', this.newSkill);
+                        this.close();
+                    }
                 }
             });
         },
         editSkill: function() {
             var data = this.describeSkill || this.selectedSkill;
+            if (this.describeSkill) {
+                this.isCharacterSkill = true;
+            }
             this.newSkill = SkillService.new(data);
             this.editing = true;
             this.clearDescription();
@@ -146,7 +153,7 @@ select {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
-            <button @click="saveSkill()" v-show="editing || !selectedSkill">Save</button>
+            <button @click="saveSkill()" v-show="editing">Save</button>
             <button @click="addNewSkill()" v-show="!describeSkill && !editing">Add</button>
             <button @click="editSkill()" v-show="describeSkill || selectedSkill">Edit</button>
             <button @click="removeSkill()" v-show="describeSkill">Remove</button>

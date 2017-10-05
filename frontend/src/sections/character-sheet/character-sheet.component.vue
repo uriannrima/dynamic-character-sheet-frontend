@@ -118,7 +118,10 @@ export default {
             console.log(specialAbilityRemoved);
         },
         removeSkill: function(skillRemoved) {
-            console.log(skillRemoved);
+            this.character.skills = _.filter(this.character.skills, skill => skill.name !== skillRemoved.name);
+        },
+        updateSkill: function(skillUpdated) {
+            var skill = _.filter(this.character.skills, skill => skill.name === skillUpdated.name)[0];
         },
         loadCharacter: function(character) {
             this.character = character;
@@ -127,6 +130,11 @@ export default {
             CharacterService.saveOrUpdate(this.character).then(data => {
                 this.character._id = data._id;
                 window.history.pushState("", "", '/#/character/' + this.character._id);
+            });
+        },
+        resetSkills: function() {
+            CharacterService.resetSkills(this.character).then(data => {
+                console.log(data);
             });
         },
         exportCharacter: function() {
@@ -866,7 +874,7 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <skills-container :character="character" @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill"></skills-container>
+                            <skills-container :character="character" @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill" @onSkillUpdated="updateSkill"></skills-container>
                         </div>
                     </div>
                 </div>
@@ -1248,12 +1256,13 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
+                <button @click="resetSkills">Reset Skills</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                        <button @click="importCharacter">Importar</button>
-                                                                        <input id="importField" type="file" -->
+                                                                                            <button @click="importCharacter">Importar</button>
+                                                                                            <input id="importField" type="file" -->
             </div>
         </div>
     </div>

@@ -37,5 +37,12 @@ module.exports = function (app) {
         });
     };
 
+    controller.resetSkills = function (req, res) {
+        var rCharacter = req.body.character;
+        app.services.characters.resetSkills(rCharacter, character => {
+            res.json(character);
+        });
+    };
+
     app.createController('characters', controller);
 }

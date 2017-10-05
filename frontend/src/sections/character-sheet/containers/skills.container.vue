@@ -76,7 +76,7 @@ export default {
             <span class="armor-check-penalty">Armor check penalty, if any applies.
                 <strong>(Double for Swim)</strong>.</span>
         </div>
-        <dcs-skill-modal :show.sync="showModal" :describe-skill.sync="selected" :character-skills="character.skills"
-            @onSkillAdded="$emit('onSkillAdded', $event)" @onSkillRemoved="$emit('onSkillRemoved', $event)"></dcs-skill-modal>
+        <dcs-skill-modal :show.sync="showModal" :describe-skill.sync="selected" :character-skills="character.skills" @onSkillAdded="$emit('onSkillAdded', $event)"
+            @onSkillRemoved="$emit('onSkillRemoved', $event)" @onSkillUpdated="$emit('onSkillUpdated', $event)"></dcs-skill-modal>
     </div>
 </template>

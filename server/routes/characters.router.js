@@ -9,6 +9,7 @@ module.exports = function (app) {
     router.put('/', app.controllers.characters.saveOrUpdate);
     router.post('/feat', app.controllers.characters.addFeat);
     router.put('/feat/:featId', app.controllers.characters.removeFeat);
+    router.put('/skill/reset', app.controllers.characters.resetSkills);
 
     app.use('/api/characters', router);
 }

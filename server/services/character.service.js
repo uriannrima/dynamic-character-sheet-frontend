@@ -1,6 +1,7 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
 var characterModule = require('modules/character.module');
+var skillModule = require('modules/skill.module');
 
 module.exports = function (app) {
     var service = {};
@@ -45,6 +46,18 @@ module.exports = function (app) {
             callback(character);
         });
     };
+
+    service.resetSkills = function(character, callback) {
+        var skillsColl = app.mongodb.database.collection('skills');
+        skillsColl.find({ default: true }).toArray(function (err, records) {
+            var skills = records.map(record => {
+                delete record._id;
+                return new skillModule.skill(record);
+            });
+            character.skills = skills;
+            service.saveOrUpdate(character, callback);
+        });
+    }
 
     app.createService('characters', service);
 }
