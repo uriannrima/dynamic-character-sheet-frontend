@@ -50,11 +50,7 @@ module.exports = function (app) {
     service.resetSkills = function(character, callback) {
         var skillsColl = app.mongodb.database.collection('skills');
         skillsColl.find({ default: true }).toArray(function (err, records) {
-            var skills = records.map(record => {
-                delete record._id;
-                return new skillModule.skill(record);
-            });
-            character.skills = skills;
+            character.skills = records;
             service.saveOrUpdate(character, callback);
         });
     }

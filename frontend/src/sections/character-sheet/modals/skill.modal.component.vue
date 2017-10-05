@@ -123,6 +123,20 @@ select {
 .skill-form-component>>>strong {
     display: block;
 }
+
+.sub-value-container {
+    margin-bottom: 5px;
+}
+
+.sub-value-container>span,
+.sub-value-container>input[type="text"] {
+    display: block;
+    width: 100%;
+}
+
+.select-skill-container {
+    margin-bottom: 10px;
+}
 </style>
 
 <template>
@@ -133,7 +147,7 @@ select {
             </div>
         </div>
         <div slot="body">
-            <div v-if="!describeSkill">
+            <div class="select-skill-container" v-if="!describeSkill && !editing">
                 <span>Select skill:</span>
                 <select v-model="selectedSkill">
                     <option value="">New skill</option>
@@ -141,9 +155,9 @@ select {
                     </option>
                 </select>
             </div>
-            <div v-if="selectedSkill">
+            <div class="sub-value-container" v-if="selectedSkill">
                 <span>Sub Value:</span>
-                <input type="text" v-model.trim="selectedSkill.subValue">
+                <input v-if="selectedSkill" type="text" v-model.trim="selectedSkill.subValue">
             </div>
             <skill-form :skill="newSkill" :describeSkill="selectedSkill || describeSkill"></skill-form>
             <div v-show="errors.any()">

@@ -32,9 +32,10 @@ app.createController = function (controllerName, controller) {
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Configure bodyParser
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-    extended: true
+    extended: true,
+    limit: '50mb'
 }));
 
 // Configure cors.

@@ -121,7 +121,8 @@ export default {
             this.character.skills = _.filter(this.character.skills, skill => skill.name !== skillRemoved.name);
         },
         updateSkill: function(skillUpdated) {
-            var skill = _.filter(this.character.skills, skill => skill.name === skillUpdated.name)[0];
+            var index = _.findIndex(this.character.skills, skill => skill._id == skillUpdated._id);
+            this.character.skills.splice(index, 1, skillUpdated);
         },
         loadCharacter: function(character) {
             this.character = character;
