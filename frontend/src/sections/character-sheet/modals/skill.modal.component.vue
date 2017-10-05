@@ -33,7 +33,7 @@ export default {
             this.newSkill = SkillService.new();;
             this.editing = false;
             this.isCharacterSkill = false;
-            this.errors.clear();
+            this.$validator.reset();
             FormBus.$emit('skill:clear');
         },
         cancel: function() {

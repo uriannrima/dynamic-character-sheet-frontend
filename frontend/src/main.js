@@ -12,7 +12,19 @@ import Routes from './routes';
 
 import Layout from './shared/layout.component';
 
-Vue.use(VeeValidate);
+
+const veeConfig = {
+    classes: true,
+    classNames: {
+        touched: 'touched', // the control has been blurred
+        untouched: 'untouched', // the control hasn't been blurred
+        valid: 'valid', // model is valid
+        invalid: 'invalid', // model is invalid
+        pristine: 'pristine', // control has not been interacted with
+        dirty: 'dirty' // control has been interacted with
+    }
+}
+Vue.use(VeeValidate, veeConfig);
 Vue.use(VueRouter);
 
 const router = new VueRouter(Routes);
