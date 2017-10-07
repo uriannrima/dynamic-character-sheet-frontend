@@ -5,12 +5,13 @@
     "license": "MIT",
     "scripts": {
         "server": "cd server && npm run dev",
+        "server:host": "cd server && npm run host",
         "frontend": "cd frontend && npm run dev",
         "serve:frontend": "cd frontend && npm run serve",
         "frontend:build": "cd frontend && npm run build",
         "dev": "npm-run-all --parallel server frontend",
         "serve": "npm-run-all --parallel server serve:frontend",
-        "host": "npm-run-all frontend:build server"
+        "host": "npm-run-all frontend:build server:host"
     },
     "dependencies": {
         "npm-run-all": "^4.0.2",
