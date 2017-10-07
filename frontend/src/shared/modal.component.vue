@@ -4,6 +4,11 @@ export default {
     inject: {
         $validator: '$validator'
     },
+    watch: {
+        show: function(value) {
+            document.body.style = value ? "overflow-y:hidden;" : "";
+        }
+    },
     methods: {
         resetScroll: function() {
             this.$el.querySelector('.v-modal-container').scrollTop = 0;
@@ -62,7 +67,7 @@ export default {
     max-height: 90%;
 }
 
-@media all and (max-width:567px) {
+@media all and (max-width:1023px) {
     .v-modal-container {
         margin-top: 0px;
         width: 100%;
@@ -83,6 +88,8 @@ export default {
 .v-modal-default-button {
     float: right;
 }
+
+
 
 
 
