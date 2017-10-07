@@ -78,7 +78,9 @@ export default {
                 if (result) {
                     if (!this.isCharacterSkill) {
                         SkillService.saveOrUpdate(this.newSkill).then(skillSaved => {
-                            this.updateAllSkills();
+                            // this.updateAllSkills();
+                            var index = this.allSkills.findIndex(s => s._id === skillSaved._id);
+                            this.allSkills.splice(index, 1, skillSaved);
                             this.editing = false;
                             this.clear();
                             this.selectedSkill = skillSaved;

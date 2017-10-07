@@ -1,4 +1,5 @@
-body span {
+body span,
+body label {
     font-size: 12px;
 }
 

@@ -43,6 +43,10 @@ export default {
 }
 </script>
 <style>
+.skill-form-component input[type="checkbox"] {
+    vertical-align: middle;
+}
+
 .skill-form-component span {
     white-space: pre-line;
 }
@@ -192,53 +196,44 @@ export default {
                 <span v-show="errors.has('action')">{{ errors.first('action') }}</span>
             </div>
             <div class="skill-form-component-special-container">
-                <input type="checkbox" v-model="has.tryAgain">
-                <span>Try Again:</span>
+                <label><input type="checkbox" v-model="has.tryAgain">Try Again:</label>
                 <textarea v-if="has.tryAgain" type="text" v-model.trim="skill.tryAgain"></textarea>
             </div>
             <div class="skill-form-component-special-container">
-                <input type="checkbox" v-model="has.special">
-                <span>Special:</span>
+                <label><input type="checkbox" v-model="has.special">Special:</label>
                 <textarea v-if="has.special || skill.special" type="text" v-model.trim="skill.special"></textarea>
             </div>
             <div class="skill-form-component-restriction-container">
-                <input type="checkbox" v-model="has.restriction">
-                <span>Restriction:</span>
+                <label><input type="checkbox" v-model="has.restriction">Restriction:</label>
                 <textarea v-if="has.restriction || skill.restriction" type="text" v-model.trim="skill.restriction"></textarea>
             </div>
             <div class="skill-form-component-synergy-container">
-                <input type="checkbox" v-model="has.synergy" style="vertical-align: middle">
-                <span>Synergy:</span>
+                <label><input type="checkbox" v-model="has.synergy">Synergy:</label>
                 <textarea v-if="has.synergy || skill.synergy" type="text" v-model.trim="skill.synergy"></textarea>
             </div>
             <div class="skill-form-component-untrained-container">
-                <input type="checkbox" v-model.trim="skill.untrained" style="vertical-align: middle">
-                <span>Untrained:</span>
+                <label><input type="checkbox" v-model.trim="skill.untrained">Untrained:</label>
             </div>
             <div class="skill-form-component-untrained-description-container" v-if="skill.untrained">
                 <span>Untrained Description:</span>
                 <textarea type="text" v-model.trim="skill.untrainedDescription"></textarea>
             </div>
             <div class="skill-form-component-armor-check-penaly-container">
-                <input type="checkbox" v-model.trim="skill.armorCheckPenalty" style="vertical-align: middle">
-                <span>Armor Check Penalty:</span>
+                <label><input type="checkbox" v-model.trim="skill.armorCheckPenalty">Armor Check Penalty:</label>
             </div>
             <div class="skill-form-component-has-sub-value-container">
-                <input type="checkbox" v-model.trim="skill.hasSubValue" style="vertical-align: middle">
-                <span>Sub Value:</span>
+                <label><input type="checkbox" v-model.trim="skill.hasSubValue">Sub Value:</label>
             </div>
             <div class="skill-form-component-sub-value-container" v-if="skill.hasSubValue || skill.subValue">
                 <span>Value:</span>
                 <input type="text" v-model.trim="skill.subValue"></input>
             </div>
             <div class="skill-form-component-miscellaneous-container">
-                <input type="checkbox" v-model="has.miscellaneous" style="vertical-align: middle">
-                <span>Miscellaneous:</span>
+                <label><input type="checkbox" v-model="has.miscellaneous">Miscellaneous:</label>
                 <textarea v-if="has.miscellaneous || skill.miscellaneous" type="text" v-model.trim="skill.miscellaneous"></textarea>
             </div>
             <div class="skill-form-component-html-container">
-                <input type="checkbox" v-model="has.aditionalInformation" style="vertical-align: middle">
-                <span>Aditional Information (as HTML):</span>
+                <label><input type="checkbox" v-model="has.aditionalInformation">Aditional Information (as HTML):</label>
                 <textarea class="skill-aditional-information-text-area" v-if="has.aditionalInformation || skill.aditionalInformation" type="text"
                     v-model.trim="skill.aditionalInformation"></textarea>
             </div>
