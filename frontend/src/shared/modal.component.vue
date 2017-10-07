@@ -5,7 +5,11 @@ export default {
         $validator: '$validator'
     },
     methods: {
+        resetScroll: function() {
+            this.$el.querySelector('.v-modal-container').scrollTop = 0;
+        },
         close: function() {
+            this.resetScroll();
             this.onClose();
         }
     },
@@ -54,9 +58,17 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
-    margin-top: 25px;
     overflow-y: auto;
     max-height: 90%;
+}
+
+@media all and (max-width:567px) {
+    .v-modal-container {
+        margin-top: 0px;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+    }
 }
 
 .v-modal-header h3 {
@@ -71,12 +83,6 @@ export default {
 .v-modal-default-button {
     float: right;
 }
-
-
-
-
-
-
 
 
 

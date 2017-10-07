@@ -4,10 +4,13 @@ import SkillService from 'Services/skill.service';
 import { FormBus, SkillForm } from 'Shared/forms/';
 
 export default {
+    // Need to fix to this...
+    // extends: DcsModal, 
     props: ['show', 'describeSkill', 'characterSkills'],
     components: { DcsModal, SkillForm },
     data: function() {
         return {
+            backupSkill: null,
             selectedSkill: "",
             newSkill: SkillService.new(),
             editing: false,
@@ -23,12 +26,17 @@ export default {
         }
     },
     methods: {
+        resetScroll: function() {
+            this.$el.querySelector('.v-modal-container').scrollTop = 0;
+        },
         updateAllSkills: function() {
             SkillService.getAll().then(skills => {
                 this.allSkills = skills;
+                this.selectedSkill = this.selectedSkill;
             });
         },
         clear: function() {
+            this.backupSkill = null;
             this.selectedSkill = "";
             this.newSkill = SkillService.new();;
             this.editing = false;
@@ -73,6 +81,8 @@ export default {
                             this.updateAllSkills();
                             this.editing = false;
                             this.clear();
+                            this.selectedSkill = skillSaved;
+                            this.resetScroll();
                         });
                     } else {
                         this.$emit('onSkillUpdated', this.newSkill);
@@ -82,6 +92,8 @@ export default {
             });
         },
         editSkill: function() {
+            this.backupSkill = this.selectedSkill || this.describeSkill;
+            this.resetScroll();
             var data = this.describeSkill || this.selectedSkill;
             if (this.describeSkill) {
                 this.isCharacterSkill = true;
@@ -89,6 +101,14 @@ export default {
             this.newSkill = SkillService.new(data);
             this.editing = true;
             this.clearDescription();
+        },
+        cancelEdit: function() {
+            this.editing = false;
+            if (this.isCharacterSkill) {
+                this.$emit('update:describeSkill', this.backupSkill);
+            } else {
+                this.selectedSkill = this.backupSkill;
+            }
         },
         clearDescription: function() {
             this.$emit('update:describeSkill', null);
@@ -168,6 +188,7 @@ select {
         </div>
         <div slot="footer" style="text-align: center;">
             <button @click="saveSkill()" v-show="editing">Save</button>
+            <button @click="cancelEdit()" v-show="editing">Cancel</button>
             <button @click="addNewSkill()" v-show="!describeSkill && !editing">Add</button>
             <button @click="editSkill()" v-show="describeSkill || selectedSkill">Edit</button>
             <button @click="removeSkill()" v-show="describeSkill">Remove</button>

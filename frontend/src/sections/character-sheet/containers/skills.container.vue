@@ -71,6 +71,7 @@ export default {
             </div>
         </div>
         <div class="caption-container">
+            <span>Double click on skill name to edit or see description.</span>
             <span>Mark this box with an X if the skill is a class skill for the character.</span>
             <span class="untrained-skill">Denotes a skill that can be used untrained.</span>
             <span class="armor-check-penalty">Armor check penalty, if any applies.

@@ -14,7 +14,8 @@ export default {
                 synergy: false,
                 untrained: false,
                 restriction: false,
-                miscellaneous: false
+                miscellaneous: false,
+                aditionalInformation: false,
             }
         };
     },
@@ -26,7 +27,8 @@ export default {
                 synergy: false,
                 untrained: false,
                 restriction: false,
-                miscellaneous: false
+                miscellaneous: false,
+                aditionalInformation: false,
             };
         }
     },
@@ -40,7 +42,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
 .skill-form-component span {
     white-space: pre-line;
 }
@@ -51,6 +53,41 @@ export default {
 
 .skill-form-component-name-container small {
     text-transform: capitalize;
+}
+
+.skill-aditional-information-text-area {
+    height: 200px !important;
+}
+
+.skill-form-component-html-container table {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.skill-form-component-html-container table thead,
+.skill-form-component-html-container table tbody {
+    text-align: center;
+}
+
+.skill-form-component-html-container table,
+.skill-form-component-html-container table thead,
+.skill-form-component-html-container table tfoot,
+.skill-form-component-html-container table tbody {
+    border: solid 1px gray;
+}
+
+.skill-form-component-html-container table thead tr:nth-child(1) {
+    background-color: gray;
+    border: solid 1px black;
+}
+
+.skill-form-component-html-container table tbody tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+.skill-form-component-html-container table caption {
+    font-weight: bold;
 }
 </style>
 
@@ -119,6 +156,12 @@ export default {
                 </span>
                 <span>{{describeSkill.miscellaneous}}</span>
             </div>
+            <div class="skill-form-component-html-container" v-if="describeSkill.aditionalInformation">
+                <span>
+                    <strong>Aditional Information:</strong>
+                </span>
+                <div v-html="describeSkill.aditionalInformation"></div>
+            </div>
         </div>
         <div v-else>
             <div class="skill-form-component-name-container">
@@ -149,49 +192,55 @@ export default {
                 <span v-show="errors.has('action')">{{ errors.first('action') }}</span>
             </div>
             <div class="skill-form-component-special-container">
-                <span>Try Again:</span>
                 <input type="checkbox" v-model="has.tryAgain">
+                <span>Try Again:</span>
                 <textarea v-if="has.tryAgain" type="text" v-model.trim="skill.tryAgain"></textarea>
             </div>
             <div class="skill-form-component-special-container">
-                <span>Special:</span>
                 <input type="checkbox" v-model="has.special">
-                <textarea v-if="has.special" type="text" v-model.trim="skill.special"></textarea>
+                <span>Special:</span>
+                <textarea v-if="has.special || skill.special" type="text" v-model.trim="skill.special"></textarea>
             </div>
             <div class="skill-form-component-restriction-container">
-                <span>Restriction:</span>
                 <input type="checkbox" v-model="has.restriction">
-                <textarea v-if="has.restriction" type="text" v-model.trim="skill.restriction"></textarea>
+                <span>Restriction:</span>
+                <textarea v-if="has.restriction || skill.restriction" type="text" v-model.trim="skill.restriction"></textarea>
             </div>
             <div class="skill-form-component-synergy-container">
-                <span>Synergy:</span>
                 <input type="checkbox" v-model="has.synergy" style="vertical-align: middle">
-                <textarea v-if="has.synergy" type="text" v-model.trim="skill.synergy"></textarea>
+                <span>Synergy:</span>
+                <textarea v-if="has.synergy || skill.synergy" type="text" v-model.trim="skill.synergy"></textarea>
             </div>
             <div class="skill-form-component-untrained-container">
-                <span>Untrained:</span>
                 <input type="checkbox" v-model.trim="skill.untrained" style="vertical-align: middle">
+                <span>Untrained:</span>
             </div>
             <div class="skill-form-component-untrained-description-container" v-if="skill.untrained">
                 <span>Untrained Description:</span>
                 <textarea type="text" v-model.trim="skill.untrainedDescription"></textarea>
             </div>
             <div class="skill-form-component-armor-check-penaly-container">
-                <span>Armor Check Penalty:</span>
                 <input type="checkbox" v-model.trim="skill.armorCheckPenalty" style="vertical-align: middle">
+                <span>Armor Check Penalty:</span>
             </div>
             <div class="skill-form-component-has-sub-value-container">
-                <span>Sub Value:</span>
                 <input type="checkbox" v-model.trim="skill.hasSubValue" style="vertical-align: middle">
+                <span>Sub Value:</span>
             </div>
             <div class="skill-form-component-sub-value-container" v-if="skill.hasSubValue || skill.subValue">
                 <span>Value:</span>
                 <input type="text" v-model.trim="skill.subValue"></input>
             </div>
-            <div class="skill-form-component-synergy-container">
-                <span>Miscellaneous:</span>
+            <div class="skill-form-component-miscellaneous-container">
                 <input type="checkbox" v-model="has.miscellaneous" style="vertical-align: middle">
-                <textarea v-if="has.miscellaneous" type="text" v-model.trim="skill.miscellaneous"></textarea>
+                <span>Miscellaneous:</span>
+                <textarea v-if="has.miscellaneous || skill.miscellaneous" type="text" v-model.trim="skill.miscellaneous"></textarea>
+            </div>
+            <div class="skill-form-component-html-container">
+                <input type="checkbox" v-model="has.aditionalInformation" style="vertical-align: middle">
+                <span>Aditional Information (as HTML):</span>
+                <textarea class="skill-aditional-information-text-area" v-if="has.aditionalInformation || skill.aditionalInformation" type="text"
+                    v-model.trim="skill.aditionalInformation"></textarea>
             </div>
         </div>
     </div>
