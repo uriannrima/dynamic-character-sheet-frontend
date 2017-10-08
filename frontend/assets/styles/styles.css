@@ -1,5 +1,8 @@
-body span,
-body label {
+.first-page, .second-page {
+    background-color: white !important;
+}
+
+body span, body label {
     font-size: 12px;
 }
 

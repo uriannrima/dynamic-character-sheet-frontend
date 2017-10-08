@@ -1,71 +1,116 @@
 <script>
 import DcsModal from 'Shared/modal.component';
 import FeatService from 'Services/feat.service';
-import CharacterService from 'Services/character.service';
+import { FormBus, FeatForm } from 'Shared/forms/';
 
 export default {
     props: ['show', 'describeFeat', 'characterFeats'],
-    components: { DcsModal },
+    components: { DcsModal, FeatForm },
     data: function() {
         return {
+            backupFeat: null,
             selectedFeat: "",
             newFeat: FeatService.new(),
-            allFeats: [],
-            has: {
-                prerequisite: false,
-                special: false,
-                normal: false
-            }
+            editing: false,
+            isCharacterFeat: false,
+            allFeats: []
         }
     },
     watch: {
         show: function(val) {
             if (val) {
-                FeatService.getAll().then(feats => {
-                    this.allFeats = feats;
-                });
+                this.updateAllFeats();
             }
         }
     },
     methods: {
+        resetScroll: function() {
+            this.$el.querySelector('.v-modal-container').scrollTop = 0;
+        },
+        updateAllFeats: function() {
+            FeatService.getAll().then(feats => {
+                this.allFeats = feats;
+            });
+        },
         clear: function() {
+            this.backupFeat = null;
             this.selectedFeat = "";
-            this.newFeat = FeatService.new();
-            this.has = {
-                prerequisite: false,
-                special: false,
-                normal: false
-            }
+            this.newFeat = FeatService.new();;
+            this.editing = false;
+            this.isCharacterFeat = false;
+            this.$validator.reset();
+            FormBus.$emit('feat:clear');
         },
         cancel: function() {
             this.close();
         },
         close: function() {
             this.clear();
-            this.$emit('update:describeFeat', null);
+            this.clearDescription();
             this.$emit('update:show', false);
         },
         addNewFeat: function() {
             // New feat being created.
             if (!this.selectedFeat) {
-                FeatService.saveOrUpdate(this.newFeat).then(featCreated => {
-                    this.$emit('onFeatAdded', featCreated);
-                    this.clear();
-                    this.close();
+                this.$validator.validateAll().then(result => {
+                    if (result) {
+                        FeatService.saveOrUpdate(this.newFeat).then(featCreated => {
+                            this.$emit('onFeatAdded', this.newFeat);
+                            this.close();
+                        });
+                    }
                 });
             } else {
-                if (this.selectedFeat.hasSubValue) {
-                    this.selectedFeat.subValue = this.newFeat.subValue;
-                }
                 this.$emit('onFeatAdded', this.selectedFeat);
-                this.clear();
                 this.close();
             }
         },
         removeFeat: function() {
-            this.$emit('onFeatRemoved', this.describeFeat._id);
-            this.clear();
+            this.$emit('onFeatRemoved', this.describeFeat);
             this.close();
+        },
+        saveFeat: function() {
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                    if (!this.isCharacterFeat) {
+                        FeatService.saveOrUpdate(this.newFeat).then(featSaved => {
+                            // this.updateAllFeats();
+                            var index = this.allFeats.findIndex(s => s._id === featSaved._id);
+                            this.allFeats.splice(index, 1, featSaved);
+                            this.editing = false;
+                            this.clear();
+                            this.selectedFeat = featSaved;
+                            this.resetScroll();
+                        });
+                    } else {
+                        this.$emit('onFeatUpdated', this.newFeat);
+                        this.close();
+                    }
+                }
+            });
+        },
+        editFeat: function() {
+            this.backupFeat = this.selectedFeat || this.describeFeat;
+            this.resetScroll();
+            var data = this.describeFeat || this.selectedFeat;
+            if (this.describeFeat) {
+                this.isCharacterFeat = true;
+            }
+            this.newFeat = FeatService.new(data);
+            this.editing = true;
+            this.clearDescription();
+        },
+        cancelEdit: function() {
+            this.editing = false;
+            if (this.isCharacterFeat) {
+                this.$emit('update:describeFeat', this.backupFeat);
+            } else {
+                this.selectedFeat = this.backupFeat;
+            }
+        },
+        clearDescription: function() {
+            this.$emit('update:describeFeat', null);
+            this.selectedFeat = "";
         }
     }
 }
@@ -90,6 +135,37 @@ textarea {
 .feats-header {
     text-align: center;
 }
+
+.feat-form-component>>>textarea {
+    display: block;
+    width: 100%;
+    height: 80px;
+    font-size: 12px;
+}
+
+.feat-form-component>>>input[type="text"],
+.feat-form-component>>>select {
+    display: block;
+    width: 100%;
+}
+
+.feat-form-component>>>strong {
+    display: block;
+}
+
+.sub-value-container {
+    margin-bottom: 5px;
+}
+
+.sub-value-container>span,
+.sub-value-container>input[type="text"] {
+    display: block;
+    width: 100%;
+}
+
+.select-feat-container {
+    margin-bottom: 10px;
+}
 </style>
 
 <template>
@@ -99,163 +175,31 @@ textarea {
                 <span class="health-points-abbreviation">Feat</span>
             </div>
         </div>
-        <!-- Feat Description -->
-        <div slot="body" v-if="describeFeat">
-            <div>
-                <span>
-                    <strong>Feat Title:</strong>
-                </span>
-                <span>{{describeFeat.title}} [{{describeFeat.type}}]</span>
+        <div slot="body">
+            <div class="select-feat-container" v-if="!describeFeat">
+                <span>Select feat:</span>
+                <select v-model="selectedFeat">
+                    <option value="">New feat</option>
+                    <option v-for="(feat, index) in allFeats" :value="feat" :key="index">{{feat.title}}
+                    </option>
+                </select>
             </div>
-            <div>
-                <span>
-                    <strong>Benefit:</strong>
-                </span>
-                <span>{{describeFeat.benefit}}</span>
+            <div class="sub-value-container" v-if="selectedFeat.subValue && selectedFeat.subValue.title">
+                <span>{{selectedFeat.subValue.title}}</span>
+                <input type="text" v-model.trim="selectedFeat.subValue.value"></input>
             </div>
-            <div v-if="describeFeat.prerequisite">
-                <span>
-                    <strong>Prerequisite:</strong>
-                </span>
-                <span>{{describeFeat.prerequisite}}</span>
-            </div>
-            <div v-if="describeFeat.normal">
-                <span>
-                    <strong> Normal:</strong>
-                </span>
-                <span>{{describeFeat.normal}}</span>
-            </div>
-            <div v-if="describeFeat.special">
-                <span>
-                    <strong>Special:</strong>
-                </span>
-                <span>{{describeFeat.special}}</span>
-            </div>
-            <div>
-                <span v-if="!describeFeat.unique">
-                    <strong>This feat can be aquired multiple times.</strong>
-                </span>
-                <span v-else>
-                    <strong>This feat cannot be aquired multiple times.</strong>
-                </span>
-            </div>
-            <div v-if="describeFeat.hasSubValue">
-                <span>
-                    <strong>{{describeFeat.subValue.title}}:</strong>
-                </span>
-                <span>{{describeFeat.subValue.value}}</span>
-            </div>
-        </div>
-        <!-- Adding new feat -->
-        <div slot="body" v-else>
-            <span>Select feat:</span>
-            <select v-model="selectedFeat">
-                <option value="">New feat</option>
-                <option v-for="(feat, index) in allFeats" :value="feat" :key="index">{{feat.title}}
-                </option>
-            </select>
-            <div v-if="!selectedFeat">
-                <div>
-                    <span style="display:block">Feat Title:</span>
-                    <input type="text" v-model="newFeat.title">
-                </div>
-                <div>
-                    <span style="display:block">Feat Type:</span>
-                    <select v-model="newFeat.type">
-                        <option value="General">General</option>
-                        <option value="Item Creation">Item Creation</option>
-                        <option value="Metamagic">Metamagic</option>
-                        <option value="Reserve">Reserve</option>
-                    </select>
-                </div>
-                <span style="display:block">Benefit:</span>
-                <textarea type="text" v-model="newFeat.benefit"></textarea>
-                <div>
-                    <span>Prerequisite:</span>
-                    <input type="checkbox" v-model="has.prerequisite" style="vertical-align: middle">
-                </div>
-                <div v-if="has.prerequisite">
-                    <textarea type="text" v-model="newFeat.prerequisite"></textarea>
-                </div>
-                <div>
-                    <span>Normal:</span>
-                    <input type="checkbox" v-model="has.normal" style="vertical-align: middle">
-                </div>
-                <div v-if="has.normal">
-                    <textarea type="text" v-model="newFeat.normal"></textarea>
-                </div>
-                <div>
-                    <span>Special:</span>
-                    <input type="checkbox" v-model="has.special" style="vertical-align: middle">
-                </div>
-                <div v-if="has.special">
-                    <textarea type="text" v-model="newFeat.special"></textarea>
-                </div>
-                <div>
-                    <span>Unique:</span>
-                    <input type="checkbox" v-model="newFeat.unique" value="true" style="vertical-align: middle">
-                </div>
-                <div>
-                    <span>Sub Value:</span>
-                    <input type="checkbox" v-model="newFeat.hasSubValue" style="vertical-align: middle">
-                </div>
-                <div v-if="newFeat.hasSubValue">
-                    <span>Title:</span>
-                    <input type="text" v-model="newFeat.subValue.title"></input>
-                    <span>Value:</span>
-                    <input type="text" v-model="newFeat.subValue.value"></input>
-                </div>
-            </div>
-            <div v-else>
-                <div v-if="selectedFeat.hasSubValue">
-                    <span>
-                        <strong>{{selectedFeat.subValue.title}}:</strong>
-                    </span>
-                    <input type="text" v-model="newFeat.subValue.value"></input>
-                </div>
-                <div>
-                    <span>
-                        <strong>Feat Type:</strong>
-                    </span>
-                    <span>{{selectedFeat.type}}</span>
-                </div>
-                <div>
-                    <span>
-                        <strong>Benefit:</strong>
-                    </span>
-                    <span>{{selectedFeat.benefit}}</span>
-                </div>
-                <div v-if="selectedFeat.prerequisite">
-                    <span>
-                        <strong>Prerequisite:</strong>
-                    </span>
-                    <span>{{selectedFeat.prerequisite}}</span>
-                </div>
-                <div v-if="selectedFeat.normal">
-                    <span>
-                        <strong> Normal:</strong>
-                    </span>
-                    <span>{{selectedFeat.normal}}</span>
-                </div>
-                <div v-if="selectedFeat.special">
-                    <span>
-                        <strong>Special:</strong>
-                    </span>
-                    <span>{{selectedFeat.special}}</span>
-                </div>
-                <div>
-                    <span v-if="!selectedFeat.unique">
-                        <strong>This feat can be aquired multiple times.</strong>
-                    </span>
-                    <span v-else>
-                        <strong>This feat cannot be aquired multiple times.</strong>
-                    </span>
-                </div>
+            <feat-form :feat="newFeat" :describeFeat="selectedFeat || describeFeat"></feat-form>
+            <div v-show="errors.any()">
+                <ul>
+                    <li v-for="(error,index) in errors.all()" :key="index">{{error}}</li>
+                </ul>
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
-            <button @click="cancel()">Close</button>
-            <button @click="addNewFeat()" v-show="!describeFeat">Add</button>
+            <button @click="saveFeat()" v-show="editing">Save</button>
+            <button @click="cancelEdit()" v-show="editing">Cancel</button>
+            <button @click="addNewFeat()" v-show="!describeFeat && !editing">Add</button>
+            <button @click="editFeat()" v-show="describeFeat || selectedFeat">Edit</button>
             <button @click="removeFeat()" v-show="describeFeat">Remove</button>
         </div>
     </dcs-modal>

@@ -7,8 +7,8 @@ export default {
     featsOffline: {
 
     },
-    new: function () {
-        return new featModule.feat({});
+    new: function (data = {}) {
+        return new featModule.feat(data);
     },
     toCharacterFeat: function(feat){
         // Change it to become a character feat.

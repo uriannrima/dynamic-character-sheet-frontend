@@ -33,6 +33,6 @@ export default {
             </div>
         </div>
         <dcs-feat-modal :show.sync="showModal" :describe-feat.sync="selected" :character-feats="character.feats" @onFeatAdded="$emit('onFeatAdded', $event)"
-            @onFeatRemoved="$emit('onFeatRemoved', $event)"></dcs-feat-modal>
+            @onFeatUpdated="$emit('onFeatUpdated', $event)" @onFeatRemoved="$emit('onFeatRemoved', $event)"></dcs-feat-modal>
     </div>
 </template>

@@ -18,6 +18,6 @@ exports.feat = function ({ _id, title, benefit, type, prerequisite, normal, spec
         special,
         unique: unique || true,
         hasSubValue,
-        subValue: subValue || new subValueModule.subValue({})
+        subValue: subValue ? new subValueModule.subValue(subValue) : new subValueModule.subValue({})
     }
 }

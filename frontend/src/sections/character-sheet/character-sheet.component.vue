@@ -24,7 +24,7 @@ export default {
     },
     data: function() {
         return {
-            sheetPage: 1,
+            sheetPage: 2,
             character: CharacterService.new(),
             allSizes: [],
             allRaces: RaceService.getAll(),
@@ -94,35 +94,30 @@ export default {
         }
     },
     methods: {
-        addNewSpell: function(spellAdded) {
+        addToCharacter: function(arrayName, added) {
+            this.character[arrayName].push(added);
+        },
+        updateOnCharacter: function(arrayName, updated) {
+            console.log(arrayName, updated);
+            var index = _.findIndex(this.character[arrayName], p => p._id == updated._id);
+            this.character[arrayName].splice(index, 1, updated);
+        },
+        removeFromCharacter: function(arrayName, removed) {
+            this.character[arrayName] = _.filter(this.character[arrayName], p => p._id !== removed._id);
+        },
+        resetSkills: function() {
+            CharacterService.resetSkills(this.character).then(data => {
+                console.log(data);
+            });
+        },
+        addSpell: function(spellAdded) {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
             spellList.spells.push(spellAdded);
-        },
-        addNewSpecialAbility: function(specialAbilityAdded) {
-            console.log(specialAbilityAdded);
-        },
-        addNewSkill: function(skillAdded) {
-            this.character.skills.push(skillAdded);
-        },
-        removeFeat: function(featId) {
-            CharacterService.removeFeat(this.character, featId).then(character => {
-                this.character.feats = this.character.feats.filter(feat => feat._id != featId);
-            });
         },
         removeSpell: function(spellRemoved) {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellRemoved.level)[0];
             var spellIndex = _.findIndex(spellList.spells, spell => spell._id == spellRemoved._id);
             spellList.spells.splice(spellIndex, 1);
-        },
-        removeSpecialAbility: function(specialAbilityRemoved) {
-            console.log(specialAbilityRemoved);
-        },
-        removeSkill: function(skillRemoved) {
-            this.character.skills = _.filter(this.character.skills, skill => skill.name !== skillRemoved.name);
-        },
-        updateSkill: function(skillUpdated) {
-            var index = _.findIndex(this.character.skills, skill => skill._id == skillUpdated._id);
-            this.character.skills.splice(index, 1, skillUpdated);
         },
         loadCharacter: function(character) {
             this.character = character;
@@ -131,11 +126,6 @@ export default {
             CharacterService.saveOrUpdate(this.character).then(data => {
                 this.character._id = data._id;
                 window.history.pushState("", "", '/#/character/' + this.character._id);
-            });
-        },
-        resetSkills: function() {
-            CharacterService.resetSkills(this.character).then(data => {
-                console.log(data);
             });
         },
         exportCharacter: function() {
@@ -154,6 +144,23 @@ export default {
                     this.saveOrUpdate();
                 });
             }
+        },
+        printSheet: function() {
+            console.log('Fon.');
+            // http://www.techumber.com/how-to-convert-html-to-pdf-using-javascript-multipage/
+            // html2canvas(document.getElementById('character-sheet'), {
+            //     onrendered: function(canvas) {
+            //         document.body.appendChild(canvas);
+            //     },
+            // });
+
+            // var pdf = new jsPDF('p', 'pt', 'letter');
+            // pdf.addHTML(document.getElementsByClassName('first-page'), function() {
+            //     pdf.addPage();
+            //     pdf.addHTML(document.getElementsByClassName('second-page'), function() {
+            //         pdf.save('Test.pdf');
+            //     });
+            // });
         }
     },
     beforeRouteEnter(to, from, next) {
@@ -177,14 +184,14 @@ export default {
 </script>
 <template>
     <div>
-        <div class="main-container">
+        <div id="main-content" class="main-container">
             <div class="character-sheet-panels">
                 <button @click="sheetPage = 1">Front</button>
                 <button @click="sheetPage = 2">Cover</button>
                 <button @click="sheetPage = -1">All</button>
             </div>
             <div id="character-sheet" class="character-sheet">
-                <div v-if="sheetPage == 1 || sheetPage == -1" class="first-page">
+                <div v-show="sheetPage == 1 || sheetPage == -1" class="first-page">
                     <div class="pure-g">
                         <div class="description-container">
                             <div class="pure-u-md-1-1 hidden-lg-up">
@@ -875,11 +882,12 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <skills-container :character="character" @onSkillAdded="addNewSkill" @onSkillRemoved="removeSkill" @onSkillUpdated="updateSkill"></skills-container>
+                            <skills-container :character="character" @onSkillAdded="addToCharacter('skills', $event)" @onSkillRemoved="removeFromCharacter('skills', $event)"
+                                @onSkillUpdated="updateOnCharacter('skills', $event)"></skills-container>
                         </div>
                     </div>
                 </div>
-                <div v-if="sheetPage == 2 || sheetPage == -1" class="second-page">
+                <div v-show="sheetPage == 2 || sheetPage == -1" class="second-page">
                     <div class="padding-box">
                         <div class="pure-g">
                             <div class="pure-u-lg-1-2 pure-u-1">
@@ -1208,7 +1216,8 @@ export default {
                             <div class="pure-u-lg-1-2 pure-u-1">
                                 <div class="pure-g">
                                     <div class="pure-u-lg-2-5 pure-u-1">
-                                        <feats-container :character="character"></feats-container>
+                                        <feats-container :character="character" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)"
+                                            @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
@@ -1228,7 +1237,7 @@ export default {
                                     </div>
                                     <div class="pure-u-lg-3-5 pure-u-1">
                                         <div class="third-region">
-                                            <spells-container :character="character" @onSpellAdded="addNewSpell" @onSpellRemoved="removeSpell"></spells-container>
+                                            <spells-container :character="character" @onSpellAdded="addSpell" @onSpellRemoved="removeSpell"></spells-container>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
@@ -1257,13 +1266,14 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                                                                                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="resetSkills">Reset Skills</button>
+                <button @click="printSheet">Print</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                                            <button @click="importCharacter">Importar</button>
-                                                                                            <input id="importField" type="file" -->
+                                                                                                                                            <button @click="importCharacter">Importar</button>
+                                                                                                                                            <input id="importField" type="file" -->
             </div>
         </div>
     </div>

@@ -32,7 +32,6 @@ export default {
         updateAllSkills: function() {
             SkillService.getAll().then(skills => {
                 this.allSkills = skills;
-                this.selectedSkill = this.selectedSkill;
             });
         },
         clear: function() {
@@ -43,9 +42,6 @@ export default {
             this.isCharacterSkill = false;
             this.$validator.reset();
             FormBus.$emit('skill:clear');
-        },
-        cancel: function() {
-            this.close();
         },
         close: function() {
             this.clear();
@@ -179,7 +175,8 @@ select {
             </div>
             <div class="sub-value-container" v-if="selectedSkill">
                 <span>Sub Value:</span>
-                <input v-if="selectedSkill" type="text" v-model.trim="selectedSkill.subValue">
+                <input type="text" v-model.trim="selectedSkill.subValue">
+                {{selectedSkill}}
             </div>
             <skill-form :skill="newSkill" :describeSkill="selectedSkill || describeSkill"></skill-form>
             <div v-show="errors.any()">

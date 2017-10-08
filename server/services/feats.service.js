@@ -22,7 +22,11 @@ module.exports = function (app) {
     service.saveOrUpdate = function (feat, callback) {
         const _id = new ObjectID(feat._id);
         delete feat._id;
-        if (feat.subValue) delete feat.subValue.value;
+        if (feat.subValue && feat.subValue.title) {
+            delete feat.subValue.value;
+        } else {
+            delete feat.subValue;
+        }
         var collection = app.mongodb.database.collection('feats');
         collection.findAndModify({ _id }, [], { $set: feat }, { new: true, upsert: true }, function (err, doc) {
             callback(doc.value);
