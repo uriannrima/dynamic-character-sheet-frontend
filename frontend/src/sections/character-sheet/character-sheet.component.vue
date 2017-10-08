@@ -104,7 +104,7 @@ export default {
         },
         removeFromCharacter: function(arrayName, removed) {
             this.character[arrayName] = _.filter(this.character[arrayName], p => {
-                return p._id !== removed._id || (removed['subValue'] && removed.subValue !== p.subValue);
+                return p._id !== removed._id || (removed.subValue && removed.subValue != p.subValue);
             });
         },
         resetSkills: function() {

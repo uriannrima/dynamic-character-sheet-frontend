@@ -50,7 +50,7 @@ export default {
         },
         addNewSkill: function() {
             // New skill being created.
-            if (!this.selectedSkill) {
+            if (this.selectedSkill) {
                 this.$emit('onSkillAdded', this.selectedSkill);
                 this.close();
             } else {
@@ -174,7 +174,7 @@ select {
             </div>
             <div class="sub-value-container" v-if="selectedSkill">
                 <span>Sub Value:</span>
-                <input type="text" v-model.trim="selectedSkill.subValue"> {{selectedSkill}}
+                <input type="text" v-model.trim="selectedSkill.subValue">
             </div>
             <skill-form :skill="newSkill" :describeSkill="selectedSkill || describeSkill"></skill-form>
             <div v-show="errors.any()">
