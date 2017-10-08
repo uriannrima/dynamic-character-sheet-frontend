@@ -13,7 +13,8 @@ export default {
             newFeat: FeatService.new(),
             editing: false,
             isCharacterFeat: false,
-            allFeats: []
+            allFeats: [],
+            duplicate: false
         }
     },
     watch: {
@@ -21,6 +22,9 @@ export default {
             if (val) {
                 this.updateAllFeats();
             }
+        },
+        selectedFeat: function() {
+            this.duplicate = false;
         }
     },
     methods: {
@@ -37,6 +41,7 @@ export default {
             this.selectedFeat = "";
             this.newFeat = FeatService.new();;
             this.editing = false;
+            this.duplicate = false;
             this.isCharacterFeat = false;
             this.$validator.reset();
             FormBus.$emit('feat:clear');
@@ -51,17 +56,24 @@ export default {
         },
         addNewFeat: function() {
             // New feat being created.
-            if (!this.selectedFeat) {
+            if (this.selectedFeat) {
+                this.addToCharacter(this.selectedFeat);
+            } else {
                 this.$validator.validateAll().then(result => {
                     if (result) {
                         FeatService.saveOrUpdate(this.newFeat).then(featCreated => {
-                            this.$emit('onFeatAdded', this.newFeat);
-                            this.close();
+                            this.addToCharacter(this.newFeat);
                         });
                     }
                 });
+            }
+        },
+        addToCharacter: function(feat) {
+            var characterFeat = this.characterFeats.find(f => f._id === feat._id);
+            if (characterFeat && characterFeat.subValue.value === feat.subValue.value) {
+                this.duplicate = true;
             } else {
-                this.$emit('onFeatAdded', this.selectedFeat);
+                this.$emit('onFeatAdded', feat);
                 this.close();
             }
         },
@@ -201,6 +213,9 @@ textarea {
             <button @click="addNewFeat()" v-show="!describeFeat && !editing">Add</button>
             <button @click="editFeat()" v-show="describeFeat || selectedFeat">Edit</button>
             <button @click="removeFeat()" v-show="describeFeat">Remove</button>
+            <div v-show="duplicate">
+                <span style="color: red; font-weight: bold;">Character already has this feat.</span>
+            </div>
         </div>
     </dcs-modal>
 </template>

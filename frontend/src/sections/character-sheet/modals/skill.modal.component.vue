@@ -51,6 +51,9 @@ export default {
         addNewSkill: function() {
             // New skill being created.
             if (!this.selectedSkill) {
+                this.$emit('onSkillAdded', this.selectedSkill);
+                this.close();
+            } else {
                 this.$validator.validateAll().then(result => {
                     if (result) {
                         SkillService.saveOrUpdate(this.newSkill).then(skillCreated => {
@@ -59,11 +62,7 @@ export default {
                         });
                     }
                 });
-            } else {
-                this.$emit('onSkillAdded', this.selectedSkill);
-                this.close();
             }
-
         },
         removeSkill: function() {
             this.$emit('onSkillRemoved', this.describeSkill);
@@ -175,8 +174,7 @@ select {
             </div>
             <div class="sub-value-container" v-if="selectedSkill">
                 <span>Sub Value:</span>
-                <input type="text" v-model.trim="selectedSkill.subValue">
-                {{selectedSkill}}
+                <input type="text" v-model.trim="selectedSkill.subValue"> {{selectedSkill}}
             </div>
             <skill-form :skill="newSkill" :describeSkill="selectedSkill || describeSkill"></skill-form>
             <div v-show="errors.any()">

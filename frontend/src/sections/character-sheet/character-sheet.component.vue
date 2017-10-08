@@ -103,7 +103,9 @@ export default {
             this.character[arrayName].splice(index, 1, updated);
         },
         removeFromCharacter: function(arrayName, removed) {
-            this.character[arrayName] = _.filter(this.character[arrayName], p => p._id !== removed._id);
+            this.character[arrayName] = _.filter(this.character[arrayName], p => {
+                return p._id !== removed._id || (removed['subValue'] && removed.subValue !== p.subValue);
+            });
         },
         resetSkills: function() {
             CharacterService.resetSkills(this.character).then(data => {
@@ -1266,14 +1268,14 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                                                                                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                                                                                                :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="resetSkills">Reset Skills</button>
                 <button @click="printSheet">Print</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                                                                                            <button @click="importCharacter">Importar</button>
-                                                                                                                                            <input id="importField" type="file" -->
+                                                                                                                                                <button @click="importCharacter">Importar</button>
+                                                                                                                                                <input id="importField" type="file" -->
             </div>
         </div>
     </div>
