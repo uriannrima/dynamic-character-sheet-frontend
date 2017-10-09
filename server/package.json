@@ -13,6 +13,6 @@
   },
   "scripts": {
     "dev": "nodemon --debug --watch ../common --watch ../server server.js",
-    "host": "pm2 start server.js"
+    "host": "pm2 start server.js --name 'web-dcs'"
   }
 }
