@@ -32,7 +32,6 @@ export default {
                 <feat-component v-for="(feat, index) in character.feats" :key="index" :feat="feat" @onFeatSelected="openFeatDescription"></feat-component>
             </div>
         </div>
-        <dcs-feat-modal :show.sync="showModal" :describe-feat.sync="selected" :character-feats="character.feats" @onFeatAdded="$emit('onFeatAdded', $event)"
-            @onFeatUpdated="$emit('onFeatUpdated', $event)" @onFeatRemoved="$emit('onFeatRemoved', $event)"></dcs-feat-modal>
+        <dcs-feat-modal :show.sync="showModal" :describe.sync="selected" :reference-list="character.feats" @onAdded="$emit('onFeatAdded', $event)" @onUpdated="$emit('onFeatUpdated', $event)" @onRemoved="$emit('onFeatRemoved', $event)"></dcs-feat-modal>
     </div>
 </template>

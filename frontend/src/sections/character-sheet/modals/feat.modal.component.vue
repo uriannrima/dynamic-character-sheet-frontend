@@ -1,129 +1,14 @@
 <script>
-import DcsModal from 'Shared/modal.component';
 import FeatService from 'Services/feat.service';
-import { FormBus, FeatForm } from 'Shared/forms/';
+import { FeatForm } from 'Shared/forms/';
+import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {
-    props: ['show', 'describeFeat', 'characterFeats'],
-    components: { DcsModal, FeatForm },
-    data: function() {
-        return {
-            backupFeat: null,
-            selectedFeat: "",
-            newFeat: FeatService.new(),
-            editing: false,
-            isCharacterFeat: false,
-            allFeats: [],
-            duplicate: false
-        }
-    },
-    watch: {
-        show: function(val) {
-            if (val) {
-                this.updateAllFeats();
-            }
-        },
-        selectedFeat: function() {
-            this.duplicate = false;
-        }
-    },
-    methods: {
-        resetScroll: function() {
-            this.$el.querySelector('.v-modal-container').scrollTop = 0;
-        },
-        updateAllFeats: function() {
-            FeatService.getAll().then(feats => {
-                this.allFeats = feats;
-            });
-        },
-        clear: function() {
-            this.backupFeat = null;
-            this.selectedFeat = "";
-            this.newFeat = FeatService.new();;
-            this.editing = false;
-            this.duplicate = false;
-            this.isCharacterFeat = false;
-            this.$validator.reset();
-            FormBus.$emit('feat:clear');
-        },
-        cancel: function() {
-            this.close();
-        },
-        close: function() {
-            this.clear();
-            this.clearDescription();
-            this.$emit('update:show', false);
-        },
-        addNewFeat: function() {
-            // New feat being created.
-            if (this.selectedFeat) {
-                this.addToCharacter(this.selectedFeat);
-            } else {
-                this.$validator.validateAll().then(result => {
-                    if (result) {
-                        FeatService.saveOrUpdate(this.newFeat).then(featCreated => {
-                            this.addToCharacter(this.newFeat);
-                        });
-                    }
-                });
-            }
-        },
-        addToCharacter: function(feat) {
-            var characterFeat = this.characterFeats.find(f => f._id === feat._id);
-            if (characterFeat && characterFeat.subValue.value === feat.subValue.value) {
-                this.duplicate = true;
-            } else {
-                this.$emit('onFeatAdded', feat);
-                this.close();
-            }
-        },
-        removeFeat: function() {
-            this.$emit('onFeatRemoved', this.describeFeat);
-            this.close();
-        },
-        saveFeat: function() {
-            this.$validator.validateAll().then(result => {
-                if (result) {
-                    if (!this.isCharacterFeat) {
-                        FeatService.saveOrUpdate(this.newFeat).then(featSaved => {
-                            // this.updateAllFeats();
-                            var index = this.allFeats.findIndex(s => s._id === featSaved._id);
-                            this.allFeats.splice(index, 1, featSaved);
-                            this.editing = false;
-                            this.clear();
-                            this.selectedFeat = featSaved;
-                            this.resetScroll();
-                        });
-                    } else {
-                        this.$emit('onFeatUpdated', this.newFeat);
-                        this.close();
-                    }
-                }
-            });
-        },
-        editFeat: function() {
-            this.backupFeat = this.selectedFeat || this.describeFeat;
-            this.resetScroll();
-            var data = this.describeFeat || this.selectedFeat;
-            if (this.describeFeat) {
-                this.isCharacterFeat = true;
-            }
-            this.newFeat = FeatService.new(data);
-            this.editing = true;
-            this.clearDescription();
-        },
-        cancelEdit: function() {
-            this.editing = false;
-            if (this.isCharacterFeat) {
-                this.$emit('update:describeFeat', this.backupFeat);
-            } else {
-                this.selectedFeat = this.backupFeat;
-            }
-        },
-        clearDescription: function() {
-            this.$emit('update:describeFeat', null);
-            this.selectedFeat = "";
-        }
+    components: { FeatForm },
+    mixins: [ModalModelMixin],
+    created: function() {
+        this.service = FeatService;
+        this.modelName = 'feat';
     }
 }
 </script>
@@ -188,19 +73,19 @@ textarea {
             </div>
         </div>
         <div slot="body">
-            <div class="select-feat-container" v-if="!describeFeat">
+            <div class="select-feat-container" v-if="!describe">
                 <span>Select feat:</span>
-                <select v-model="selectedFeat">
+                <select v-model="selected">
                     <option value="">New feat</option>
-                    <option v-for="(feat, index) in allFeats" :value="feat" :key="index">{{feat.title}}
+                    <option v-for="(feat, index) in all" :value="feat" :key="index">{{feat.title}}
                     </option>
                 </select>
             </div>
-            <div class="sub-value-container" v-if="selectedFeat.subValue && selectedFeat.subValue.title">
-                <span>{{selectedFeat.subValue.title}}</span>
-                <input type="text" v-model.trim="selectedFeat.subValue.value"></input>
+            <div class="sub-value-container" v-if="selected.subValue && selected.subValue.title">
+                <span>{{selected.subValue.title}}</span>
+                <input type="text" v-model.trim="selected.subValue.value"></input>
             </div>
-            <feat-form :feat="newFeat" :describeFeat="selectedFeat || describeFeat"></feat-form>
+            <feat-form :feat="model" :describeFeat="selected || describe"></feat-form>
             <div v-show="errors.any()">
                 <ul>
                     <li v-for="(error,index) in errors.all()" :key="index">{{error}}</li>
@@ -208,11 +93,11 @@ textarea {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
-            <button @click="saveFeat()" v-show="editing">Save</button>
+            <button @click="save()" v-show="editing">Save</button>
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
-            <button @click="addNewFeat()" v-show="!describeFeat && !editing">Add</button>
-            <button @click="editFeat()" v-show="describeFeat || selectedFeat">Edit</button>
-            <button @click="removeFeat()" v-show="describeFeat">Remove</button>
+            <button @click="addNew()" v-show="!describe && !editing">Add</button>
+            <button @click="edit()" v-show="describe || selected">Edit</button>
+            <button @click="remove()" v-show="describe">Remove</button>
             <div v-show="duplicate">
                 <span style="color: red; font-weight: bold;">Character already has this feat.</span>
             </div>
