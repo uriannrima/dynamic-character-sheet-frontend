@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname, '../'),
     entry: './src/main.js',
     devtool: "#cheap-module-source-map",
     output: {

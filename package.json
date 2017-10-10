@@ -4,17 +4,52 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "server": "cd server && npm run dev",
-        "server:host": "cd server && npm run host",
-        "frontend": "cd frontend && npm run dev",
-        "serve:frontend": "cd frontend && npm run serve",
+        "dev": "npm-run-all --parallel server:dev frontend:dev",
+        "host": "npm-run-all --parallel server:host frontend:build",
+        "frontend:dev": "cd frontend && npm run dev",
         "frontend:build": "cd frontend && npm run build",
-        "dev": "npm-run-all --parallel server frontend",
-        "serve": "npm-run-all --parallel server serve:frontend",
-        "host": "npm-run-all --parallel frontend:build server:host"
+        "server:dev": "cd server && npm run dev",
+        "server:host": "cd server && npm run host"
     },
     "dependencies": {
+        "app-module-path": "^2.2.0",
+        "axios": "^0.16.2",
+        "body-parser": "^1.17.2",
+        "consign": "^0.1.6",
+        "es6-promise": "^4.1.1",
+        "express": "^4.15.3",
+        "lodash": "^4.17.4",
+        "mongodb": "^2.2.29",
+        "morgan": "^1.9.0",
+        "purecss": "^1.0.0",
+        "vee-validate": "^2.0.0-rc.18",
+        "vue": "^2.3.4",
+        "vue-router": "^2.6.0"
+    },
+    "devDependencies": {
+        "babel-core": "^6.25.0",
+        "babel-loader": "^7.1.1",
+        "babel-preset-env": "^1.6.0",
+        "copy-webpack-plugin": "^4.0.1",
+        "css-loader": "^0.28.4",
+        "html-loader": "^0.4.5",
+        "html-webpack-plugin": "^2.28.0",
+        "lodash-webpack-plugin": "^0.11.4",
+        "nodemon": "^1.11.0",
         "npm-run-all": "^4.0.2",
-        "uglifyjs-webpack-plugin": "^0.4.6"
+        "pm2": "^2.6.1",
+        "style-loader": "^0.18.2",
+        "uglifyjs-webpack-plugin": "^0.4.6",
+        "url-loader": "^0.5.9",
+        "vue-loader": "^12.2.1",
+        "vue-template-compiler": "^2.3.4",
+        "webpack": "3.6.0",
+        "webpack-dev-server": "^2.4.5",
+        "webpack-merge": "^4.1.0"
+    },
+    "babel": {
+        "presets": [
+            "env"
+        ]
     }
 }

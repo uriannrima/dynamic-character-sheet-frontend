@@ -1,18 +1,6 @@
 {
-  "dependencies": {
-    "app-module-path": "^2.2.0",
-    "body-parser": "^1.17.2",
-    "consign": "^0.1.6",
-    "express": "^4.15.3",
-    "mongodb": "^2.2.29",
-    "morgan": "^1.9.0",
-    "pm2": "^2.6.1"
-  },
-  "devDependencies": {
-    "nodemon": "^1.11.0"
-  },
   "scripts": {
-    "dev": "nodemon --debug --watch ../common --watch ../server server.js",
+    "dev": "nodemon --debug --watch ../common --watch ../server server.main.js",
     "host": "pm2 start server.js --name 'web-dcs'"
   }
 }
