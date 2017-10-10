@@ -53,6 +53,7 @@ module.exports = {
     resolve: {
         extensions: ['*', '.js', '.html', '.css', '.vue'],
         alias: {
+            'Assets': path.resolve(__dirname, '../assets/'),
             'Services': path.resolve(__dirname, '../src/services/'),
             'Modules': path.resolve(__dirname, '../../common/modules/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),

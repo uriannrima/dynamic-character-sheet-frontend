@@ -3,7 +3,7 @@ import SkillComponent from '../components/skill.component';
 import DcsSkillModal from '../modals/skill.modal.component';
 
 export default {
-    props: ['character'],
+    props: ['character', 'addEnabled'],
     components: { SkillComponent, DcsSkillModal },
     data: function() {
         return {
@@ -33,7 +33,7 @@ export default {
                         <tr>
                             <th colspan="6">
                                 <span class="health-points-abbreviation">Skills</span>
-                                <span class="add-skill-icon glyphicon glyphicon-plus" @click="showModal = true"></span>
+                                <span class="add-skill-icon glyphicon glyphicon-plus" v-if="addEnabled" @click="showModal = true"></span>
                             </th>
                         </tr>
                     </thead>
@@ -62,10 +62,7 @@ export default {
                                     <br>Modifier</span>
                             </th>
                         </tr>
-                        <skill-component v-for="(skill, index) in characterSkills" :key="index" :classSkill.sync="skill.classSkill" :untrained="skill.untrained"
-                            :name="skill.name" :hasSubValue="skill.hasSubValue" :subValue.sync="skill.subValue" :armorCheckPenalty="skill.armorCheckPenalty"
-                            :keyAbility="character.getAbilityScore(skill.keyAbility)" :rank.sync="skill.rank" :miscModifier.sync="skill.miscModifier"
-                            @onSkillSelected="openSkillDescription(skill)"></skill-component>
+                        <skill-component v-for="(skill, index) in characterSkills" :key="index" :classSkill.sync="skill.classSkill" :untrained="skill.untrained" :name="skill.name" :hasSubValue="skill.hasSubValue" :subValue.sync="skill.subValue" :armorCheckPenalty="skill.armorCheckPenalty" :keyAbility="character.getAbilityScore(skill.keyAbility)" :rank.sync="skill.rank" :miscModifier.sync="skill.miscModifier" @onSkillSelected="openSkillDescription(skill)"></skill-component>
                     </tbody>
                 </table>
             </div>
@@ -77,7 +74,6 @@ export default {
             <span class="armor-check-penalty">Armor check penalty, if any applies.
                 <strong>(Double for Swim)</strong>.</span>
         </div>
-        <dcs-skill-modal :show.sync="showModal" :describe.sync="selected" :reference-list="character.skills" @onAdded="$emit('onSkillAdded', $event)"
-            @onRemoved="$emit('onSkillRemoved', $event)" @onUpdated="$emit('onSkillUpdated', $event)"></dcs-skill-modal>
+        <dcs-skill-modal v-if="addNeabled" :show.sync="showModal" :describe.sync="selected" :reference-list="character.skills" @onAdded="$emit('onSkillAdded', $event)" @onRemoved="$emit('onSkillRemoved', $event)" @onUpdated="$emit('onSkillUpdated', $event)"></dcs-skill-modal>
     </div>
 </template>
