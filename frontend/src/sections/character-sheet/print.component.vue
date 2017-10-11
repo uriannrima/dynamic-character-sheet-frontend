@@ -1,5 +1,5 @@
 <script>
-import 'Assets/styles/print.css';
+// import 'Assets/styles/print.css';
 
 import CharacterService from 'Services/character.service';
 import SizeService from 'Services/size.service';
@@ -26,7 +26,7 @@ export default {
     },
     data: function() {
         return {
-            sheetPage: 2,
+            sheetPage: -1,
             character: CharacterService.new(),
             allSizes: [],
             allRaces: RaceService.getAll(),

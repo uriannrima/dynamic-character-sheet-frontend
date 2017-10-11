@@ -165,22 +165,20 @@ export default {
             // });
         }
     },
-    beforeRouteEnter(to, from, next) {
-        SizeService.getAll().then(sizes => {
-            if (to.params.id) {
-                CharacterService.get(to.params.id).then(character => {
-                    next(vm => {
-                        vm.allSizes = sizes;
-                        vm.loadCharacter(character);
-                    });
-                });
-            } else {
-                next(vm => {
-                    vm.allSizes = sizes;
-                    vm.loadCharacter(CharacterService.new());
-                });
-            }
-        });
+    beforeRouteEnter: async function(to, from, next) {
+        var sizes = SizeService.getAll();
+        if (to.params.id) {
+            var character = await CharacterService.get(to.params.id);
+            next(async vm => {
+                vm.allSizes = await sizes;
+                vm.loadCharacter(character);
+            });
+        } else {
+            next(async vm => {
+                vm.allSizes = await sizes;
+                vm.loadCharacter(CharacterService.new());
+            });
+        }
     }
 };
 </script>
@@ -418,9 +416,7 @@ export default {
                                         </td>
                                     </tbody>
                                 </table>
-                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')"
-                                    :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield"
-                                    :size="character.size"></armor-class-container>
+                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')" :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield" :size="character.size"></armor-class-container>
                                 <!-- Touch and Flat-Footed -->
                                 <div>
                                     <div class="pure-u-lg-11-24 hidden-md-down">
@@ -884,8 +880,7 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <skills-container :character="character" @onSkillAdded="addToCharacter('skills', $event)" @onSkillRemoved="removeFromCharacter('skills', $event)"
-                                @onSkillUpdated="updateOnCharacter('skills', $event)"></skills-container>
+                            <skills-container :character="character" @onSkillAdded="addToCharacter('skills', $event)" @onSkillRemoved="removeFromCharacter('skills', $event)" @onSkillUpdated="updateOnCharacter('skills', $event)"></skills-container>
                         </div>
                     </div>
                 </div>
@@ -1218,8 +1213,7 @@ export default {
                             <div class="pure-u-lg-1-2 pure-u-1">
                                 <div class="pure-g">
                                     <div class="pure-u-lg-2-5 pure-u-1">
-                                        <feats-container :character="character" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)"
-                                            @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
+                                        <feats-container :character="character" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)" @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
@@ -1268,14 +1262,14 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                                                                                                :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                                                                                                                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="resetSkills">Reset Skills</button>
                 <button @click="printSheet">Print</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                                                                                                <button @click="importCharacter">Importar</button>
-                                                                                                                                                <input id="importField" type="file" -->
+                                                                                                                                                                        <button @click="importCharacter">Importar</button>
+                                                                                                                                                                        <input id="importField" type="file" -->
             </div>
         </div>
     </div>
