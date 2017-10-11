@@ -29,7 +29,7 @@ export default {
             <span class="spells-note">Domains/Specialty School</span>
             <input type="text" class="domain-specialty-school" v-model="character.domainSchool">
             <div class="spells-area">
-                <spell-list-component v-for="(spellList, index) in character.spellLists" :key="spellList" :spellList="spellList" @onSpellSelected="openSpellDescription">
+                <spell-list-component v-for="(spellList, index) in character.spellLists" :key="index" :spellList="spellList" @onSpellSelected="openSpellDescription">
                 </spell-list-component>
             </div>
         </div>

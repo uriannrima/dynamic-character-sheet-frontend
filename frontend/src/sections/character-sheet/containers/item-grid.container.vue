@@ -29,7 +29,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="item-header-container hidden-sm-down">
+            <div class="item-header-container">
                 <div class="item-header">
                     <div class="item-title">
                         <span>Item</span>

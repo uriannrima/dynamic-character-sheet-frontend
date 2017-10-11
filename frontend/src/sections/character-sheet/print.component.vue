@@ -1065,12 +1065,12 @@ export default {
                             </div>
                             <div class="pure-u-1-2">
                                 <div class="pure-g">
-                                    <div class="pure-u-2-5">
+                                    <div class="pure-u-2-5 left-container">
                                         <feats-container :character="character" :add-enabled="false" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)" @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
-                                                <span class="add-special-ability-icon glyphicon glyphicon-plus"></span>
+                                                <!-- span class="add-special-ability-icon glyphicon glyphicon-plus"></span -->
                                             </div>
                                             <textarea class="special-abilities-area" v-model.lazy="character.specialAbilities">
                                             </textarea>

@@ -443,7 +443,7 @@ input[type="number"] {
 
 /* Armor Container */
 
-.armor-container, .shield-container, .protective-item-container {
+.armor-equipped-container, .shield-container, .protective-item-container {
     margin-bottom: 10px;
 }
 

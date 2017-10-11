@@ -175,30 +175,9 @@ input[type="number"] {
 /* Main Container */
 
 .main-container {
-    min-width: 210px;
-    max-width: 1024px;
+    width: 568px;
+    min-width: 568px;
     margin: 0 auto;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-}
-
-@media all and (min-width:768px) and (max-width:1023px) {
-    .main-container {
-        max-width: 768px;
-    }
-}
-
-@media all and (min-width:568px) and (max-width:767px) {
-    .main-container {
-        max-width: 568px;
-    }
-}
-
-@media all and (max-width:567px) {
-    .main-container {
-        min-width: 320px;
-    }
 }
 
 
@@ -373,15 +352,9 @@ input[type="number"] {
 
 .health-points-abbreviation {
     text-transform: uppercase;
-    font-size: 120%;
+    font-size: 90%;
     display: inline-block;
     font-weight: bold;
-}
-
-@media all and (min-width:320px) and (max-width:767px) {
-    .health-points-abbreviation {
-        font-size: 90%;
-    }
 }
 
 .health-points-description {
@@ -443,7 +416,7 @@ input[type="number"] {
 
 /* Armor Container */
 
-.armor-container, .shield-container, .protective-item-container {
+.armor-equipped-container, .shield-container, .protective-item-container {
     margin-bottom: 10px;
 }
 
@@ -1051,12 +1024,6 @@ input[type="number"] {
     padding-right: 15px;
 }
 
-@media all and (max-width:1023px) {
-    .left-container {
-        padding-right: 0px;
-    }
-}
-
 
 /* Campaign */
 
@@ -1122,6 +1089,8 @@ input[type="number"] {
 
 .armor-title input, .shield-title input, .protective-item-title input {
     text-align: center;
+    font-size: 80%;
+    height: 26px;
 }
 
 .armor-type {
@@ -1138,6 +1107,8 @@ input[type="number"] {
 
 .armor-type > input, .armor-penalty > input, .armor-spell-failure > input, .armor-speed > input, .armor-weight > input, .armor-properties > input, .shield-weight > input, .shield-penalty > input, .shield-spell-failure > input, .shield-properties > input, .protective-item-weight > input, .protective-item-properties > input {
     text-align: center;
+    font-size: 80%;
+    height: 26px;
 }
 
 .armor-penalty, .armor-spell-failure {
@@ -1168,6 +1139,7 @@ input[type="number"] {
     width: 35%;
 }
 
+
 /* Other Possessions */
 
 .possessions-container {
@@ -1186,40 +1158,24 @@ input[type="number"] {
     border-bottom: 1px solid gray;
 }
 
-@media all and (max-width: 568px) {
-    .item-header-container {
-        width: 100%;
-    }
-}
-
 .single-possession {
-    width: 100%;
+    width: 50%;
+    height: 21px;
     display: inline-block;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid gray;
 }
 
-@media all and (min-width: 569px) {
-    .single-possession {
-        width: 50%;
-    }
+.single-possession input {
+    font-size: 70%;
 }
 
 .possesion-dynamic-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 374px;
-}
-
-@media all and (max-width: 568px) {
-    .possesion-dynamic-container {
-        display: unset;
-        flex-direction: unset;
-        flex-wrap: unset;
-        height: unset;
-    }
+    height: 357px;
 }
 
 .item-header {
@@ -1396,6 +1352,7 @@ input[type="number"] {
     line-height: 19px;
     border: 0;
     text-align: left;
+    font-size: 80%;
 }
 
 .special-abilities-container {
@@ -1433,16 +1390,6 @@ input[type="number"] {
         height: 74%;
     }
 }
-
-
-/* Third Region */
-
-@media all and (min-width: 1024px) {
-    .third-region {
-        padding-left: 15px;
-    }
-}
-
 
 /* Spells */
 
@@ -1552,13 +1499,13 @@ input[type="number"] {
 }
 
 .spell-save-container, .arcane-spell-failure-container {
-    text-align: center;
+    text-align: left;
     margin-bottom: 5px;
 }
 
 .spell-save-header, .arcane-spell-failure-header {
     display: inline-block;
-    width: 200px;
+    width: 170px;
     text-align: center;
     vertical-align: top;
 }
@@ -1566,7 +1513,7 @@ input[type="number"] {
 .spell-save-input, .arcane-spell-failure-input {
     display: inline-block;
     width: 40px;
-    height: 25px;
+    height: 20px;
     vertical-align: top;
 }
 
