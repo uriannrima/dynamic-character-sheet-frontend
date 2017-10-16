@@ -7,11 +7,10 @@ export default {
             characters: []
         }
     },
-    beforeRouteEnter(to, from, next) {
-        CharacterService.getAll().then(data => {
-            next(vm => {
-                vm.characters = data;
-            });
+    beforeRouteEnter: async function(to, from, next) {
+        var characters = await CharacterService.getAll();
+        next(vm => {
+            vm.characters = characters;
         });
     }
 }
@@ -20,7 +19,9 @@ export default {
     <div>
         <h1> {{title}}</h1>
         <ul>
-            <li v-for="character in characters" :key="character.id"><a :href="'#/character/' + character._id">{{character.name}}</a></li>
+            <li v-for="character in characters" :key="character.id">
+                <a :href="'#/character/' + character._id">{{character.name}}</a>
+            </li>
         </ul>
     </div>
 </template>

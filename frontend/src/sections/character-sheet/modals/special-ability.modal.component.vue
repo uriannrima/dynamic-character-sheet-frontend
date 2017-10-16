@@ -36,14 +36,13 @@ export default {
             this.$emit('update:describeSpecialAbility', null);
             this.$emit('update:show', false);
         },
-        addNewSpecialAbility: function() {
+        addNewSpecialAbility: async function() {
             // New special ability being created.
             if (!this.selectedSpecialAbility) {
-                SpecialAbilityService.saveOrUpdate(this.newSpecialAbility).then(specialAbilityCreated => {
-                    this.$emit('onSpecialAbilityAdded', specialAbilityCreated);
-                    this.clear();
-                    this.close();
-                });
+                var specialAbilityCreated = await SpecialAbilityService.saveOrUpdate(this.newSpecialAbility)
+                this.$emit('onSpecialAbilityAdded', specialAbilityCreated);
+                this.clear();
+                this.close();
             } else {
                 this.$emit('onSpecialAbilityAdded', this.selectedSpecialAbility);
                 this.clear();
@@ -56,11 +55,10 @@ export default {
             this.close();
         }
     },
-    beforeUpdate() {
+    beforeUpdate: async function() {
         if (this.show) {
-            SpecialAbilityService.getAll().then(specialAbilities => {
-                this.allSpecialAbilities = specialAbilities;
-            });
+            var specialAbiblities = await SpecialAbilityService.getAll();
+            this.allSpecialAbilities = specialAbilities;
         }
     }
 }

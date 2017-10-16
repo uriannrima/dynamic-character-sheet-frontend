@@ -109,10 +109,9 @@ export default {
                 return p._id !== removed._id || (removed.subValue && removed.subValue != p.subValue);
             });
         },
-        resetSkills: function() {
-            CharacterService.resetSkills(this.character).then(data => {
-                console.log(data);
-            });
+        resetSkills: async function() {
+            var data = await CharacterService.resetSkills(this.character);
+            console.log(data);
         },
         addSpell: function(spellAdded) {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];

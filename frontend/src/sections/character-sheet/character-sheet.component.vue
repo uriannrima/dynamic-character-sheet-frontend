@@ -107,10 +107,8 @@ export default {
                 return p._id !== removed._id || (removed.subValue && removed.subValue != p.subValue);
             });
         },
-        resetSkills: function() {
-            CharacterService.resetSkills(this.character).then(data => {
-                console.log(data);
-            });
+        resetSkills: async function() {
+            var data = await CharacterService.resetSkills(this.character);
         },
         addSpell: function(spellAdded) {
             var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
@@ -124,11 +122,10 @@ export default {
         loadCharacter: function(character) {
             this.character = character;
         },
-        saveOrUpdate: function() {
-            CharacterService.saveOrUpdate(this.character).then(data => {
-                this.character._id = data._id;
-                window.history.pushState("", "", '/#/character/' + this.character._id);
-            });
+        saveOrUpdate: async function() {
+            var data = await CharacterService.saveOrUpdate(this.character);
+            this.character._id = data._id;
+            window.history.pushState("", "", '/#/character/' + this.character._id);
         },
         exportCharacter: function() {
             this.saveOrUpdate();
@@ -416,7 +413,9 @@ export default {
                                         </td>
                                     </tbody>
                                 </table>
-                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')" :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield" :size="character.size"></armor-class-container>
+                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')"
+                                    :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield"
+                                    :size="character.size"></armor-class-container>
                                 <!-- Touch and Flat-Footed -->
                                 <div>
                                     <div class="pure-u-lg-11-24 hidden-md-down">
@@ -880,7 +879,8 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <skills-container :character="character" @onSkillAdded="addToCharacter('skills', $event)" @onSkillRemoved="removeFromCharacter('skills', $event)" @onSkillUpdated="updateOnCharacter('skills', $event)"></skills-container>
+                            <skills-container :character="character" :add-enabled="true" @onSkillAdded="addToCharacter('skills', $event)" @onSkillRemoved="removeFromCharacter('skills', $event)"
+                                @onSkillUpdated="updateOnCharacter('skills', $event)"></skills-container>
                         </div>
                     </div>
                 </div>
@@ -1213,7 +1213,8 @@ export default {
                             <div class="pure-u-lg-1-2 pure-u-1">
                                 <div class="pure-g">
                                     <div class="pure-u-lg-2-5 pure-u-1">
-                                        <feats-container :character="character" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)" @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
+                                        <feats-container :character="character" :add-enabled="true" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)"
+                                            @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
@@ -1233,7 +1234,7 @@ export default {
                                     </div>
                                     <div class="pure-u-lg-3-5 pure-u-1">
                                         <div class="third-region">
-                                            <spells-container :character="character" @onSpellAdded="addSpell" @onSpellRemoved="removeSpell"></spells-container>
+                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addSpell" @onSpellRemoved="removeSpell"></spells-container>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
@@ -1262,14 +1263,14 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                                                                                                                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                                                                                                                                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="resetSkills">Reset Skills</button>
                 <button @click="printSheet">Print</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                                                                                                                        <button @click="importCharacter">Importar</button>
-                                                                                                                                                                        <input id="importField" type="file" -->
+                                                                                                                                                                                        <button @click="importCharacter">Importar</button>
+                                                                                                                                                                                        <input id="importField" type="file" -->
             </div>
         </div>
     </div>

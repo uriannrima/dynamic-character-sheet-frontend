@@ -7,10 +7,10 @@ export default {
     spellsOffline: {
 
     },
-    new: function () {
-        return new spellModule.spell({});
+    new: function (data = {}) {
+        return new spellModule.spell(data);
     },
-    toCharacterspell: function(spell){
+    toCharacterspell: function (spell) {
         // Change it to become a character spell.
         spell._id = guid.generate();
         return new spellModule.spell(spell);
@@ -19,6 +19,24 @@ export default {
         return axios.get(Constants.API_URL + '/spells').then(response => {
             return response.data;
         });
+    },
+    getAllDescriptors: async function () {
+        return spellModule.descriptors;
+    },
+    getAllComponents: async function () {
+        return spellModule.components;
+    },
+    getAllCastingTimes: async function () {
+        return spellModule.castingTimes;
+    },
+    getAllRanges: async function () {
+        return spellModule.ranges;
+    },
+    getAllEffects: async function () {
+        return spellModule.effects;
+    },    
+    getAllDurations: async function () {
+        return spellModule.durations;
     },
     saveOrUpdate: function (spell) {
         if (spell._id) {

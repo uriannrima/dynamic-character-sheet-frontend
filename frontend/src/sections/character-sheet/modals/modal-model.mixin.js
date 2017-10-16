@@ -10,7 +10,7 @@ export default {
         this.modelName = '';
         this.isFromCharacter = false;
     },
-    mounted: function() {
+    mounted: function () {
         this.model = this.service.new();
     },
     data: function () {
@@ -37,11 +37,10 @@ export default {
         resetScroll: function () {
             this.$el.querySelector('.v-modal-container').scrollTop = 0;
         },
-        updateAll: function () {
+        updateAll: async function () {
             if (this.service) {
-                this.service.getAll().then(models => {
-                    this.all = models;
-                });
+                var models = await this.service.getAll();
+                this.all = models;
             }
         },
         clear: function () {
@@ -67,18 +66,15 @@ export default {
         cancel: function () {
             this.close();
         },
-        addNew: function () {
+        addNew: async function () {
             // model feat being created.
             if (this.selected) {
                 this.addToCharacter(this.selected);
             } else {
-                this.$validator.validateAll().then(result => {
-                    if (result) {
-                        this.service.saveOrUpdate(this.model).then(created => {
-                            this.addToCharacter(this.model);
-                        });
-                    }
-                });
+                if (await this.$validator.validateAll()) {
+                    var created = await this.service.saveOrUpdate(this.model);
+                    this.addToCharacter(this.model);
+                }
             }
         },
         addToCharacter: function (model) {
@@ -94,24 +90,21 @@ export default {
             this.$emit('onRemoved', this.describe);
             this.close();
         },
-        save: function () {
-            this.$validator.validateAll().then(result => {
-                if (result) {
-                    if (!this.isFromCharacter) {
-                        this.service.saveOrUpdate(this.model).then(saved => {
-                            // this.updateall();
-                            var index = this.all.findIndex(s => s._id === saved._id);
-                            this.all.splice(index, 1, saved);
-                            this.editing = false;
-                            this.clear();
-                            this.selected = saved;
-                        });
-                    } else {
-                        this.$emit('onUpdated', this.model);
-                        this.close();
-                    }
+        save: async function () {
+            if (await this.$validator.validateAll()) {
+                if (!this.isFromCharacter) {
+                    var saved = await this.service.saveOrUpdate(this.model);
+                    // this.updateall();
+                    var index = this.all.findIndex(s => s._id === saved._id);
+                    this.all.splice(index, 1, saved);
+                    this.editing = false;
+                    this.clear();
+                    this.selected = saved;
+                } else {
+                    this.$emit('onUpdated', this.model);
+                    this.close();
                 }
-            });
+            }
         },
         edit: function () {
             this.resetScroll();
