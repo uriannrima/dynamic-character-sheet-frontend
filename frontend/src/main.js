@@ -14,12 +14,13 @@ Array.prototype.groupBy = function (funcProp) {
 // import './utils/css-grid-polyfill';
 
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
 import Routes from './routes';
+import { store } from './store';
 
 import Layout from './shared/layout.component';
-
 
 const veeConfig = {
     classes: true,
@@ -32,12 +33,14 @@ const veeConfig = {
         dirty: 'dirty' // control has been interacted with
     }
 }
+
 Vue.use(VeeValidate, veeConfig);
 Vue.use(VueRouter);
 
 const router = new VueRouter(Routes);
 
 new Vue({
+    store,
     el: "#dcs-app",
     router,
     data: {

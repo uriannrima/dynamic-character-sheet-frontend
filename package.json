@@ -26,9 +26,11 @@
         "purecss": "^1.0.0",
         "vee-validate": "^2.0.0-rc.18",
         "vue": "^2.3.4",
-        "vue-router": "^2.6.0"
+        "vue-router": "^2.6.0",
+        "vuex": "^3.0.0"
     },
     "devDependencies": {
+        "babel-preset-stage-2": "^6.24.1",
         "babel-core": "^6.25.0",
         "babel-loader": "^7.1.1",
         "babel-preset-env": "^1.6.0",
@@ -51,7 +53,15 @@
     },
     "babel": {
         "presets": [
-            "env"
+            [
+                "env",
+                {
+                    "modules": false
+                }
+            ],
+            [
+                "stage-2"
+            ]
         ],
         "plugins": [
             [

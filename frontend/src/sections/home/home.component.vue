@@ -1,4 +1,5 @@
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import CharacterService from 'Services/character.service';
 export default {
     data: function() {
@@ -7,11 +8,22 @@ export default {
             characters: []
         }
     },
-    beforeRouteEnter: async function(to, from, next) {
-        var characters = await CharacterService.getAll();
-        next(vm => {
-            vm.characters = characters;
-        });
+    // beforeRouteEnter: async function(to, from, next) {
+    //     // var characters = await CharacterService.getAll();
+    //     // next(vm => {
+    //     //     vm.characters = characters;
+    //     // });
+    // },
+    computed: {
+        ...mapGetters([
+            'items',
+            'saleProducts'
+        ])
+    },
+    methods: {
+        ...mapActions([
+            'reducePrice'
+        ])
     }
 }
 </script>
@@ -19,9 +31,13 @@ export default {
     <div>
         <h1> {{title}}</h1>
         <ul>
-            <li v-for="character in characters" :key="character.id">
-                <a :href="'#/character/' + character._id">{{character.name}}</a>
+            <li v-for="(item, index) in items" :key="index">
+                {{item.name}} - {{item.price}}
+            </li>
+            <li v-for="(item, index) in saleProducts" :key="index">
+                {{item.name}} - {{item.price}}
             </li>
         </ul>
+        <button @click="reducePrice(4)">Reduce</button>
     </div>
 </template>
