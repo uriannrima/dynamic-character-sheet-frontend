@@ -28,8 +28,9 @@ export const store = new Vuex.Store({
         items: state => {
             return state.items;
         },
-        saleProducts: state => {
-            return state.items.map(item => {
+        // Get items from parameter, which is "state".
+        saleProducts: ({ items }) => {
+            return items.map(item => {
                 return {
                     name: "**" + item.name,
                     price: item.price / 2
@@ -39,9 +40,10 @@ export const store = new Vuex.Store({
     },
     /** Mutations that change SYNCHRONOUSLY the store */
     mutations: {
-        reducePrice: (state, payload) => {
-            state.items.forEach(item => {
-                item.price -= payload;
+        // Using deconstruction as example.
+        reducePrice: ({ items }, { amount }) => {
+            items.forEach(item => {
+                item.price -= amount;
             })
         }
     },
@@ -50,10 +52,14 @@ export const store = new Vuex.Store({
      * Is considered good practice to use Actions "instead" of Pure Mutations.
     */
     actions: {
-        reducePrice: (context, payload) => {
+        // Using deconstruction as example.
+        // You can get state from the context, if you need to access data from the actual state.
+        // Actions may return promises, so you may "chain" them using the "dispatch" method.
+        // And they may even be "async" => async reducePrice.
+        reducePrice: ({ dispatch, commit, state }, payload) => {
             setTimeout(() => {
                 // Param => mutation name.
-                context.commit('reducePrice', payload);
+                commit('reducePrice', payload);
             }, 3000);
         }
     }

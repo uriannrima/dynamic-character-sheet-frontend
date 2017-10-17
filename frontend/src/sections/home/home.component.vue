@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import CharacterService from 'Services/character.service';
 export default {
     data: function() {
@@ -21,6 +21,10 @@ export default {
         ])
     },
     methods: {
+        /** 
+         * You can also use ...mapMuttations(['methodName'])
+         * But let's stick to what is considered best practice.
+        */
         ...mapActions([
             'reducePrice'
         ])
@@ -38,6 +42,6 @@ export default {
                 {{item.name}} - {{item.price}}
             </li>
         </ul>
-        <button @click="reducePrice(4)">Reduce</button>
+        <button @click="reducePrice({amount: 4})">Reduce</button>
     </div>
 </template>
