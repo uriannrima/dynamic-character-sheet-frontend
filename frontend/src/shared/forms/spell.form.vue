@@ -10,7 +10,7 @@ export default {
             selectedRange: "",
             selectedEffect: "",
             savingThrows: ['Fortitude', 'Reflex', 'Will'],
-            allSpellSchools: [],
+            allSchools: [],
             allDescriptors: [],
             allComponents: [],
             allCastingTimes: [],
@@ -26,9 +26,12 @@ export default {
                 return this.selectedSchool;
             },
             set: function(value) {
+                var { name, description } = value;
                 this.model.school = Object.assign({
-                    subSchool: ""
-                }, value);
+                    subSchool: "",
+                    name,
+                    description
+                });
                 this.selectedSchool = value;
             }
         },
@@ -37,10 +40,7 @@ export default {
                 return this.selectedRange;
             },
             set: function(value) {
-                var { name, description } = value;
-                this.model.range = Object.assign({
-                    type: {}
-                }, { name, description });
+                this.model.range = Object.assign({}, value);
                 this.selectedRange = value;
             }
         },
@@ -51,9 +51,11 @@ export default {
             set: function(value) {
                 var { name, description } = value;
                 this.model.effect = Object.assign({
-                    type: {},
-                    format: {}
-                }, { name, description });
+                    type: "",
+                    format: "",
+                    name,
+                    description
+                });
                 this.selectedEffect = value;
             }
         },
@@ -71,7 +73,7 @@ export default {
     },
     methods: {
         fetchData: async function() {
-            this.allSpellSchools = await SpellSchoolService.getAll();
+            this.allSchools = await SpellSchoolService.getAll();
             this.allDescriptors = await SpellService.getAllDescriptors();
             this.allComponents = await SpellService.getAllComponents();
             this.allCastingTimes = await SpellService.getAllCastingTimes();
@@ -138,16 +140,52 @@ export default {
 
 <template>
     <div class="spell-form-component">
-        {{describe}}
         <div v-if="describe">
             <div class="spell-form-component-name-container">
                 <span>
-                    <strong>Name:</strong>
+                    <strong>School</strong>
                 </span>
-                <span>{{describe.name}}
-                    <small>[School: {{describe.school.name}}
-                        <span v-if="describe.school.subSchool">(describe.school.subSchool)</span>; Level: {{describe.level}}]</small>
+                <span :title="describe.school.description">{{describe.school.name}}</span>
+                <span v-if="describe.school.subSchool" :title="describe.school.subSchool.description"> ({{describe.school.subSchool.name}})</span>
+                <span v-if="describe.descriptors.length > 0">[
+                    <span v-for="(descriptor, index) of describe.descriptors" :key="index" :title="descriptor.description">{{descriptor.name}}</span>]</span>
+                <span>
+                    <strong>Level:</strong>
                 </span>
+                <span>{{describe.level}}</span>
+            </div>
+            <div class="spell-form-component-casting-time-container">
+                <span>
+                    <strong>Casting Time:</strong>
+                </span>
+                <span>{{describe.castingTimeAmount}} {{describe.castingTime}}</span>
+            </div>
+            <div class="spell-form-component-components-container">
+                <span>
+                    <strong>Components:</strong>
+                </span>
+                <span v-for="(component, index) of describe.components" :key="index" :title="component.description">{{component.name}}
+                    <span v-if="component.materials">({{component.materials}})</span>
+                </span>
+            </div>
+            <div class="spell-form-component-range-container">
+                <span>
+                    <strong>Range:</strong>
+                </span>
+                <span>{{describe.range.name}} <span v-if="describe.range.distance"> ({{describe.range.distance}})</span>
+                </span>
+            </div>
+            <div class="spell-form-component-targets-container" v-if="describe.targets">
+                <span>
+                    <strong>Targets:</strong>
+                </span>
+                <span>{{describe.targets}}</span>
+            </div>
+            <div class="spell-form-component-duration-container">
+                <span>
+                    <strong>Duration:</strong>
+                </span>
+                <span v-for="(duration, index) in describe.durations" :key="index" :title="duration.description" v-text="duration.duration || duration.name"></span>
             </div>
         </div>
         <div v-else>
@@ -165,7 +203,7 @@ export default {
                 <span>School:</span>
                 <select v-model="school" v-validate="'required'" name="spell school">
                     <option value="" selected>None</option>
-                    <option v-for="(spellSchool, index) in allSpellSchools" :value="spellSchool" :key="index">{{spellSchool.name}}
+                    <option v-for="(spellSchool, index) in allSchools" :value="spellSchool" :key="index">{{spellSchool.name}}
                     </option>
                 </select>
                 <span v-if="school.description">
@@ -206,8 +244,7 @@ export default {
             </div>
             <div class="spell-form-component-materials-container" v-if="model.components && model.components.find(c => c.name == 'Material')">
                 <span>Material(s):</span>
-                <input type="text" v-validate="'required'" v-model.trim="model.components[model.components.findIndex(c =>c.name == 'Material')].materials"
-                    name="materials"> {{model.components[model.components.findIndex(c =>c.name=='Material')].materials}}
+                <input type="text" v-validate="'required'" v-model.trim="model.components[model.components.findIndex(c =>c.name == 'Material')].materials" name="materials"> {{model.components[model.components.findIndex(c =>c.name=='Material')].materials}}
                 <span v-show="errors.has('materials')">{{ errors.first('materials') }}</span>
             </div>
             <div class="spell-form-component-casting-time-container">
@@ -230,14 +267,13 @@ export default {
                 </select>
                 <div v-if="range.name == 'Miscellaneous'">
                     <span>Range Distance:</span>
-                    <input type="number" v-model.number="range.distance">
+                    <input type="number" v-model.number="model.range.distance">
                 </div>
-                <div v-if="range.types">
-                    <span>Types:</span>
-                    <select v-model="model.range.type">
-                        <option v-for="(type, index) in range.types" :value="type" :key="index">{{type.name}}
-                        </option>
-                    </select>
+            </div>
+            <div class="spell-form-component-targets-container">
+                <span>Targets:</span>
+                <div>
+                    <input type="text" v-model.trim="model.targets">
                 </div>
             </div>
             <div class="spell-form-component-effect-container">

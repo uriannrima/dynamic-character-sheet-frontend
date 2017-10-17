@@ -21,29 +21,23 @@ exports.ranges = [{
     name: "Personal",
     description: "The spell affects only you."
 }, {
-    name: "Target(s)",
-    description: `Some spells have a target or targets. You cast these spells on creatures or objects, as defined by the spell itself. You must be able to see or touch the target, and you must specifically choose that target. You do not have to select your target until you finish casting the spell.
-    \nIf the target of a spell is yourself (the Target line of the spell description includes “You”), you do not receive a saving throw, and spell resistance does not apply.The saving throw and spell resistance lines are omitted from such spells.
-    \nSome spells restrict you to willing targets only.Declaring yourself as a willing target is something that can be done at any time (even if you’re flat- footed or it isn’t your turn). Unconscious creatures are automatically considered willing, but a character who is conscious but immobile or helpless (such as one who is bound, cowering, grappling, paralyzed, pinned, or stunned) is not automatically willing.
-    \nSome spells allow you to redirect the effect to new targets or areas after you cast the spell. Redirecting a spell is a move action that does not provoke attacks of opportunity.`,
-    types: [
-        {
-            name: "Touch",
-            description: "You must touch a creature or object to affect it. A touch spell that deals damage can score a critical hit just as a weapon can. A touch spell threatens a critical hit on a natural roll of 20 and deals double damage on a successful critical hit. Some touch spells allow you to touch multiple targets. You can touch up to 6 willing targets as part of the casting, but all targets of the spell must be touched in the same round that you finish casting the spell. If the spell allows you to touch targets over multiple rounds, touching 6 creatures is a full-round action."
-        }, {
-            name: "Close",
-            description: "The spell reaches as far as 25 units away from you. The maximum range increases by 5 units for every two full caster levels."
-        }, {
-            name: "Medium",
-            description: "The spell reaches as far as 100 units + 10 units per caster level."
-        }, {
-            name: "Long",
-            description: "The spell reaches as far as 400 units + 40 units per caster level."
-        }, {
-            name: "Unlimited",
-            description: "The spell reaches anywhere on the same plane of existence."
-        }
-    ]
+    name: "Touch",
+    description: "You must touch a creature or object to affect it. A touch spell that deals damage can score a critical hit just as a weapon can. A touch spell threatens a critical hit on a natural roll of 20 and deals double damage on a successful critical hit. Some touch spells allow you to touch multiple targets. You can touch up to 6 willing targets as part of the casting, but all targets of the spell must be touched in the same round that you finish casting the spell. If the spell allows you to touch targets over multiple rounds, touching 6 creatures is a full-round action."
+}, {
+    name: "Close",
+    description: "The spell reaches as far as 25 units away from you. The maximum range increases by 5 units for every two full caster levels.",
+    distance: "25 ft. + 5 ft./2 levels"
+}, {
+    name: "Medium",
+    description: "The spell reaches as far as 100 units + 10 units per caster level.",
+    distance: "100 ft. + 10 ft./level"
+}, {
+    name: "Long",
+    description: "The spell reaches as far as 400 units + 40 units per caster level.",
+    distance: "400 ft. + 40 ft./level"
+}, {
+    name: "Unlimited",
+    description: "The spell reaches anywhere on the same plane of existence."
 },
 {
     name: "Miscellaneous",
@@ -280,7 +274,7 @@ exports.castingTimes = [
 exports.spell = function ({
     _id, name, school = new spellSchoolModule.spellSchool({}),
     descriptors = [], level = 0, components = [],
-    castingTimeAmount = 1, castingTime = "Standard Action", range = exports.ranges[0], effect = "", durations = [],
+    castingTimeAmount = 1, castingTime = "Standard Action", range = exports.ranges[0], targets = "", effect = "", durations = [],
     savingThrow = { check: "", resolve: "" }, description, spellResistance = true, aditionalInformation }) {
     return {
         _id,
@@ -292,6 +286,7 @@ exports.spell = function ({
         castingTimeAmount,
         castingTime,
         range,
+        targets,
         effect,
         durations,
         savingThrow,
