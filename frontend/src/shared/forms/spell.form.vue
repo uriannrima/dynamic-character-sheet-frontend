@@ -6,26 +6,28 @@ export default {
     mixins: [FormMixin],
     data: function() {
         return {
-            selectedSchool: {},
-            selectedRange: {},
-            selectedEffect: {},
+            selectedSchool: "",
+            selectedRange: "",
+            selectedEffect: "",
+            savingThrows: ['Fortitude', 'Reflex', 'Will'],
             allSpellSchools: [],
             allDescriptors: [],
             allComponents: [],
             allCastingTimes: [],
             allRanges: [],
             allEffects: [],
-            allDurations: []
+            allDurations: [],
+            allSavingThrowResolve: [],
         }
     },
     computed: {
-        spellSchool: {
+        school: {
             get: function() {
                 return this.selectedSchool;
             },
             set: function(value) {
                 this.model.school = Object.assign({
-                    subSchool: {}
+                    subSchool: ""
                 }, value);
                 this.selectedSchool = value;
             }
@@ -55,6 +57,14 @@ export default {
                 this.selectedEffect = value;
             }
         },
+        savingThrow: {
+            get: function() {
+                return this.model.savingThrow;
+            },
+            set: function(value) {
+                this.model.savingThrow = value;
+            }
+        }
     },
     created: function() {
         this.fetchData();
@@ -68,6 +78,7 @@ export default {
             this.allRanges = await SpellService.getAllRanges();
             this.allEffects = await SpellService.getAllEffects();
             this.allDurations = await SpellService.getAllDurations();
+            this.allSavingThrowResolve = await SpellService.getAllSavingThrowResolve();
         }
     }
 }
@@ -127,13 +138,15 @@ export default {
 
 <template>
     <div class="spell-form-component">
+        {{describe}}
         <div v-if="describe">
             <div class="spell-form-component-name-container">
                 <span>
                     <strong>Name:</strong>
                 </span>
                 <span>{{describe.name}}
-                    <small>[{{describe.school}}]</small>
+                    <small>[School: {{describe.school.name}}
+                        <span v-if="describe.school.subSchool">(describe.school.subSchool)</span>; Level: {{describe.level}}]</small>
                 </span>
             </div>
         </div>
@@ -149,22 +162,22 @@ export default {
                 <span v-show="errors.has('level')">{{ errors.first('level') }}</span>
             </div>
             <div class="feat-form-component-spell-school-container">
-                <span>Spell School:</span>
-                <select v-model="spellSchool" v-validate="'required'" name="spellSchool">
-                    <option value=""></option>
+                <span>School:</span>
+                <select v-model="school" v-validate="'required'" name="spell school">
+                    <option value="" selected>None</option>
                     <option v-for="(spellSchool, index) in allSpellSchools" :value="spellSchool" :key="index">{{spellSchool.name}}
                     </option>
                 </select>
-                <span v-if="spellSchool.description">
+                <span v-if="school.description">
                     <strong>Description:</strong>
                 </span>
-                <span>{{spellSchool.description}} </span>
-                <span v-show="errors.has('spellSchool')">{{ errors.first('spellSchool') }}</span>
+                <span>{{school.description}} </span>
+                <span v-show="errors.has('spell school')">{{ errors.first('spell school') }}</span>
             </div>
             <div class="feat-form-component-sub-school-container" v-if="selectedSchool.subSchools">
                 <span>Sub School:</span>
                 <select v-model="model.school.subSchool">
-                    <option value=""></option>
+                    <option value="" selected>None</option>
                     <option v-for="(subSchool, index) in selectedSchool.subSchools" :value="subSchool" :key="index">{{subSchool.name}}
                     </option>
                 </select>
@@ -215,6 +228,10 @@ export default {
                     <option v-for="(range, index) in allRanges" :value="range" :key="index">{{range.name}}
                     </option>
                 </select>
+                <div v-if="range.name == 'Miscellaneous'">
+                    <span>Range Distance:</span>
+                    <input type="number" v-model.number="range.distance">
+                </div>
                 <div v-if="range.types">
                     <span>Types:</span>
                     <select v-model="model.range.type">
@@ -257,6 +274,35 @@ export default {
                 <span>Timed Duration:</span>
                 <input type="text" v-validate="'required'" name="timed duration" v-model.trim="model.durations[model.durations.findIndex(d => d.name == 'Timed')].duration">
                 <span v-show="errors.has('timed duration')">{{ errors.first('timed duration') }}</span>
+            </div>
+            <div class="spell-form-component-saving-throw-container" v-if="model.savingThrow">
+                <span>Saving Throw:</span>
+                <div style="display: flex">
+                    <select style="width: 50%" v-model="model.savingThrow.check">
+                        <option value="">None</option>
+                        <option v-for="(savingThrow, index) in savingThrows" :value="savingThrow" :key="index">{{savingThrow}}
+                        </option>
+                    </select>
+                    <select style="width: 50%" v-model="model.savingThrow.resolve">
+                        <option value="">None</option>
+                        <option v-for="(resolve, index) in allSavingThrowResolve" :value="resolve.name" :key="index">{{resolve.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="spell-form-component-spell-resistance-container">
+                <label>
+                    <input type="checkbox" v-model="model.spellResistance">Spell Resistance
+                </label>
+            </div>
+            <div class="spell-form-component-description-container">
+                <span>Description:</span>
+                <textarea type="text" v-model.trim="model.description" v-validate="'required'" name="description"></textarea>
+                <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
+            </div>
+            <div class="spell-form-component-html-container">
+                <label>Aditional Information (as HTML):</label>
+                <textarea class="spell-aditional-information-text-area" type="text" v-model.trim="model.aditionalInformation"></textarea>
             </div>
         </div>
     </div>

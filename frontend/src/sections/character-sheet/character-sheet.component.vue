@@ -1234,7 +1234,7 @@ export default {
                                     </div>
                                     <div class="pure-u-lg-3-5 pure-u-1">
                                         <div class="third-region">
-                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addSpell" @onSpellRemoved="removeSpell"></spells-container>
+                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addToCharacter('spells', $event)" @onSpellRemoved="removeFromCharacter('spells', $event)"></spells-container>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
@@ -1263,14 +1263,14 @@ export default {
                 </div>
             </div>
             <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                                                                                                                                        :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
+                                                                                                                                                                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="resetSkills">Reset Skills</button>
                 <button @click="printSheet">Print</button>
                 <!-- button @click="exportCharacter">Exportar</button>
-                                                                                                                                                                                        <button @click="importCharacter">Importar</button>
-                                                                                                                                                                                        <input id="importField" type="file" -->
+                                                                                                                                                                                            <button @click="importCharacter">Importar</button>
+                                                                                                                                                                                            <input id="importField" type="file" -->
             </div>
         </div>
     </div>

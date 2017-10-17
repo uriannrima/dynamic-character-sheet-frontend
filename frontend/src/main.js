@@ -2,6 +2,14 @@
 import Es6Promise from 'es6-promise';
 Es6Promise.polyfill();
 
+// Extend Array with Group By.
+Array.prototype.groupBy = function (funcProp) {
+    return this.reduce(function (acc, val) {
+        (acc[funcProp(val)] = acc[funcProp(val)] || []).push(val);
+        return acc;
+    }, {});
+};
+
 // CSS Grid Polyfill
 // import './utils/css-grid-polyfill';
 

@@ -16,6 +16,11 @@ export default {
             this.selected = spell;
             this.showModal = true;
         }
+    },
+    computed: {
+        spellsPerLevel: function() {
+            return this.character.spells.groupBy(s => s.level);
+        }
     }
 }
 </script>
@@ -29,11 +34,11 @@ export default {
             <span class="spells-note">Domains/Specialty School</span>
             <input type="text" class="domain-specialty-school" v-model="character.domainSchool">
             <div class="spells-area">
-                <spell-list-component v-for="(spellList, index) in character.spellLists" :key="index" :spellList="spellList" @onSpellSelected="openSpellDescription">
+                <spell-list-component v-for="(spells, spellsLevel, index) in spellsPerLevel" :key="index" :level="spellsLevel" :spells="spells" @onSpellSelected="openSpellDescription">
                 </spell-list-component>
             </div>
         </div>
-        <spell-modal v-if="addEnabled" :show.sync="showModal" :describe-spell.sync="selected" :character-spells="character.spellLists" @onSpellAdded="$emit('onSpellAdded', $event)"
-            @onSpellRemoved="$emit('onSpellRemoved', $event)"></spell-modal>
+        <spell-modal v-if="addEnabled" :show.sync="showModal" :describe.sync="selected" :reference-list="character.spells"
+            @onAdded="$emit('onSpellAdded', $event)" @onRemoved="$emit('onSpellRemoved', $event)"></spell-modal>
     </div>
 </template>

@@ -34,9 +34,12 @@ export default {
     },
     getAllEffects: async function () {
         return spellModule.effects;
-    },    
+    },
     getAllDurations: async function () {
         return spellModule.durations;
+    },
+    getAllSavingThrowResolve: async function () {
+        return spellModule.savingThrowResolve;
     },
     saveOrUpdate: function (spell) {
         if (spell._id) {

@@ -2,7 +2,12 @@
 import SpellPerDayComponent from '../components/spell-per-day.component';
 export default {
     props: ['character'],
-    components: { SpellPerDayComponent }
+    components: { SpellPerDayComponent },
+    computed: {
+        spellsPerLevel: function() {
+            return this.character.spells.groupBy(s => s.level);
+        }
+    }
 }
 </script>
 <template>
@@ -28,7 +33,7 @@ export default {
                 </tr>
             </thead>
             <tbody>
-                <spell-per-day-component v-for="(perDay, index) in character.spellPerDayList" :key="perDay.spellLevel" :knownSpells="character.spellLists[index].spells.length"
+                <spell-per-day-component v-for="(perDay, index) in character.spellPerDayList" :key="perDay.spellLevel" :knownSpells="spellsPerLevel[index] ? spellsPerLevel[index].length : 0"
                     :spellLevel="perDay.spellLevel" :spellsPerDay.sync="perDay.spellsPerDay" :bonusSpells.sync="perDay.bonusSpells"
                     :casterAbility="character.getCasterAbility()"></spell-per-day-component>
             </tbody>

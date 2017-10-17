@@ -46,7 +46,7 @@ exports.ranges = [{
     ]
 },
 {
-    name: "Miscenaleous",
+    name: "Miscellaneous",
     description: "Some spells have no standard range category, just a range expressed in distance."
 }];
 
@@ -207,7 +207,7 @@ exports.descriptors = [{
     description: "Spells that manipulate water or conjure creatures from water-dominant planes or with the water subtype should have the water descriptor."
 }];
 
-exports.savingThrows = [
+exports.savingThrowResolve = [
     {
         name: "Negates",
         description: "The spell has no effect on a subject that makes a successful saving throw."
@@ -217,9 +217,6 @@ exports.savingThrows = [
     }, {
         name: "Half",
         description: "The spell deals damage, and a successful saving throw halves the damage taken (round down)."
-    }, {
-        name: "None",
-        description: "No saving throw is allowed."
     }, {
         name: "Disbelief",
         description: "A successful save lets the subject ignore the spell’s effect."
@@ -283,8 +280,8 @@ exports.castingTimes = [
 exports.spell = function ({
     _id, name, school = new spellSchoolModule.spellSchool({}),
     descriptors = [], level = 0, components = [],
-    castingTimeAmount = 1, castingTime = "Standard Action", range = exports.ranges[0], effect, durations = [],
-    savingThrow, resistance, description, spellResistance = true }) {
+    castingTimeAmount = 1, castingTime = "Standard Action", range = exports.ranges[0], effect = "", durations = [],
+    savingThrow = { check: "", resolve: "" }, description, spellResistance = true, aditionalInformation }) {
     return {
         _id,
         name,
@@ -298,8 +295,8 @@ exports.spell = function ({
         effect,
         durations,
         savingThrow,
-        resistance,
         spellResistance,
-        description
+        description,
+        aditionalInformation
     }
 }

@@ -34,7 +34,7 @@ textarea {
 }
 
 
-.feat-form-component>>>textarea {
+.spell-form-component>>>textarea {
     display: block;
     width: 100%;
     height: 80px;
@@ -78,7 +78,7 @@ textarea {
         </div>
         <div slot="footer" style="text-align: center;">
             <button @click="cancel()">Close</button>
-            <button @click="add()" v-show="!describe">Add</button>
+            <button @click="addNew()" v-show="!describe">Add</button>
             <button @click="remove()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>
