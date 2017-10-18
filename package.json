@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "yarn install && run-p server:dev frontend:dev",
-        "host": "yarn install run-p server:host frontend:build",
+        "host": "yarn install && run-p server:host frontend:build",
         "frontend:dev": "cd frontend && npm run dev",
         "frontend:build": "cd frontend && npm run build",
         "server:dev": "cd server && npm run dev",
