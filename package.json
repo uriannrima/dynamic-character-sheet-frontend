@@ -4,8 +4,8 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "npm-run-all --parallel server:dev frontend:dev",
-        "host": "npm-run-all --parallel server:host frontend:build",
+        "dev": "yarn install && run-p server:dev frontend:dev",
+        "host": "yarn install run-p server:host frontend:build",
         "frontend:dev": "cd frontend && npm run dev",
         "frontend:build": "cd frontend && npm run build",
         "server:dev": "cd server && npm run dev",
