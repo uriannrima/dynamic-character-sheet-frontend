@@ -1,4 +1,4 @@
-var spellSchoolModule = require('Modules/spell-school.module');
+var spellSchoolModule = require('./spell-school.module');
 
 exports.components = [{
     name: "Verbal",
