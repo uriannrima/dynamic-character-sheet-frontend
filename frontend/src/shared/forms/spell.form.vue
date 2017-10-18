@@ -18,6 +18,10 @@ export default {
             allEffects: [],
             allDurations: [],
             allSavingThrowResolve: [],
+            has: {
+                targets : false,
+                additionalInformation: false,
+            }
         }
     },
     computed: {
@@ -66,6 +70,9 @@ export default {
             set: function(value) {
                 this.model.savingThrow = value;
             }
+        },
+        describeDescriptors: function() {
+            return this.describe.descriptors.map(d => d.name);
         }
     },
     created: function() {
@@ -90,7 +97,7 @@ export default {
     vertical-align: middle;
 }
 
-.spell-form-component span {
+.spell-form-component-description-container span {
     white-space: pre-line;
 }
 
@@ -147,8 +154,7 @@ export default {
                 </span>
                 <span :title="describe.school.description">{{describe.school.name}}</span>
                 <span v-if="describe.school.subSchool" :title="describe.school.subSchool.description"> ({{describe.school.subSchool.name}})</span>
-                <span v-if="describe.descriptors.length > 0">[
-                    <span v-for="(descriptor, index) of describe.descriptors" :key="index" :title="descriptor.description">{{descriptor.name}}</span>]</span>
+                <span v-if="describe.descriptors.length > 0" v-text="'[' + describeDescriptors + ']'"></span>
                 <span>
                     <strong>Level:</strong>
                 </span>
@@ -165,19 +171,40 @@ export default {
                     <strong>Components:</strong>
                 </span>
                 <span v-for="(component, index) of describe.components" :key="index" :title="component.description">{{component.name}}
-                    <span v-if="component.materials">({{component.materials}})</span>
+                    <span v-if="component.materials">({{component.materials}}) </span>
                 </span>
             </div>
             <div class="spell-form-component-range-container">
                 <span>
                     <strong>Range:</strong>
                 </span>
-                <span>{{describe.range.name}} <span v-if="describe.range.distance"> ({{describe.range.distance}})</span>
+                <span>{{describe.range.name}}
+                    <span v-if="describe.range.distance"> ({{describe.range.distance}} ft.)</span>
                 </span>
+                <div v-if="describe.effect">
+                    <div v-if="describe.effect.name == 'Area'">
+                        <span>
+                            <strong>Area:</strong>
+                        </span>
+                        <span>{{describe.effect.format.name}}-shaped {{describe.effect.type.name}}</span>
+                    </div>
+                    <div v-if="describe.effect.name == 'Miscellaneous'">
+                        <span>
+                            <strong>Effect:</strong>
+                        </span>
+                        <span>{{describe.effect.description}}</span>
+                    </div>
+                    <div v-else>
+                        <span>
+                            <strong>Effect:</strong>
+                        </span>
+                        <span>{{describe.effect.name}}</span>
+                    </div>
+                </div>
             </div>
             <div class="spell-form-component-targets-container" v-if="describe.targets">
                 <span>
-                    <strong>Targets:</strong>
+                    <strong>Target or Area:</strong>
                 </span>
                 <span>{{describe.targets}}</span>
             </div>
@@ -186,6 +213,36 @@ export default {
                     <strong>Duration:</strong>
                 </span>
                 <span v-for="(duration, index) in describe.durations" :key="index" :title="duration.description" v-text="duration.duration || duration.name"></span>
+            </div>
+            <div class="spell-form-component-saving-throw-container">
+                <span>
+                    <strong>Saving Throw:</strong>
+                </span>
+                <div v-if="describe.savingThrow.check">
+                    <span>{{describe.savingThrow.check}} {{describe.savingThrow.resolve}}</span>
+                </div>
+                <div v-else>
+                    <span>None</span>
+                </div>
+            </div>
+            <div class="spell-form-component-spell-resistance-container">
+                <span>
+                    <strong>Spell Resistance:</strong>
+                </span>
+                <span v-text="describe.spellResistance ? 'Yes' : 'No'"></span>
+            </div>
+            <div class="spell-form-component-description-container">
+                <span>
+                    <strong>Description:</strong>
+                </span>
+                <span>{{describe.description}}</span>
+            </div>
+            <div class="spell-form-component-html-container" v-if="describe.additionalInformation">
+                <label>
+                    <strong>
+                        Aditional Information (as HTML):</strong>
+                </label>
+                <div v-html="describe.additionalInformation"></div>
             </div>
         </div>
         <div v-else>
@@ -266,13 +323,13 @@ export default {
                     </option>
                 </select>
                 <div v-if="range.name == 'Miscellaneous'">
-                    <span>Range Distance:</span>
+                    <span>Distance:</span>
                     <input type="number" v-model.number="model.range.distance">
                 </div>
             </div>
             <div class="spell-form-component-targets-container">
-                <span>Targets:</span>
-                <div>
+                <label><input type="checkbox" v-model="has.targets">Non Standard Target or Area:</label>
+                <div v-if="has.targets">
                     <input type="text" v-model.trim="model.targets">
                 </div>
             </div>
@@ -282,7 +339,12 @@ export default {
                     <option value="">None</option>
                     <option v-for="(effect, index) in allEffects" :value="effect" :key="index">{{effect.name}}
                     </option>
+                    <option :value="{ name: 'Miscellaneous'}">Miscellaneous</option>
                 </select>
+                <div v-if="effect.name == 'Miscellaneous'">
+                    <span>Description:</span>
+                    <input type="text" v-model.trim="model.effect.description">
+                </div>
                 <div v-if="effect.types">
                     <span>Types:</span>
                     <select v-model="model.effect.type">
@@ -337,8 +399,9 @@ export default {
                 <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
             </div>
             <div class="spell-form-component-html-container">
-                <label>Aditional Information (as HTML):</label>
-                <textarea class="spell-aditional-information-text-area" type="text" v-model.trim="model.aditionalInformation"></textarea>
+                <label>
+                    <input type="checkbox" v-model="has.additionalInformation">Aditional Information (as HTML):</label>
+                <textarea v-if="has.additionalInformation" class="spell-aditional-information-text-area" type="text" v-model.trim="model.additionalInformation"></textarea>
             </div>
         </div>
     </div>
