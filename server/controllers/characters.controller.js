@@ -7,11 +7,11 @@ module.exports = function (app) {
         });
     };
 
-    controller.get = function (req, res) {
-        var rId = req.params.id;
-        app.services.characters.getById(rId, character => {
-            res.json(character);
-        });
+    controller.get = async function ({ params : { id : characterId } }, res) {
+        // Extract "id" from "params", that was extracted from "require"
+        // Them "export" it as "characterId".
+        var character = await app.services.characters.getById(characterId);
+        res.json(character);
     };
 
     controller.saveOrUpdate = function (req, res) {
