@@ -95,7 +95,8 @@ export default {
     },
     methods: {
         addToCharacter: function(arrayName, added) {
-            this.character[arrayName].push(added);
+            let feat = await CharacterService.addFeat(this.character._id, added._id);
+            this.character[arrayName].push(feat);
         },
         updateOnCharacter: function(arrayName, updated) {
             console.log(arrayName, updated);
