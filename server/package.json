@@ -1,6 +1,9 @@
 {
+  "engines": {
+    "node": ">=7"
+  },
   "scripts": {
-    "dev": "nodemon --debug --watch ../common --watch ../server server.main.js",
+    "dev": "nodemon --inspect --watch ../common --watch ../server server.main.js",
     "host": "pm2 start server.main.js --name 'web-dcs'"
   }
 }
