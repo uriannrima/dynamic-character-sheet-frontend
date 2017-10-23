@@ -10,16 +10,16 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../../public'),
-        // publicPath: '/',
-        // devtoolModuleFilenameTemplate: info => {
-        //     if (info.resource.match(/\.vue$/)) {
-        //         $filename = info.allLoaders.match(/type=script/)
-        //             ? info.resourcePath : 'generated';
-        //     } else {
-        //         $filename = info.resourcePath;
-        //     }
-        //     return $filename;
-        // }
+        publicPath: '/',
+        devtoolModuleFilenameTemplate: info => {
+            if (info.resource.match(/\.vue$/)) {
+                $filename = info.allLoaders.match(/type=script/)
+                    ? info.resourcePath : 'generated';
+            } else {
+                $filename = info.resourcePath;
+            }
+            return $filename;
+        }
     },
     module: {
         rules: [

@@ -1,6 +1,11 @@
 import axios from 'axios';
-import CharacterModule from 'Modules/character.module';
 import Constants from 'Constants';
+import CharacterModule from 'Modules/character.module';
+import AbstractService from 'Services/abstract.service';
+
+var CharacterService = function() {
+    return Object.assign(this, AbstractService(CharacterModule.Character, '/characters'));
+}
 
 export default {
     charactersOffline: {
@@ -20,6 +25,8 @@ export default {
         });
     },
     get: function (id) {
+        var c = new CharacterService();
+        c.get(id).then((data) => { console.log(data) });
         return axios.get(Constants.API_URL + '/characters/' + id).then(response => {
             return new CharacterModule.Character(response.data);
         });

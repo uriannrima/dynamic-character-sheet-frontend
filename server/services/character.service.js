@@ -8,7 +8,7 @@ module.exports = function(app) {
     service.getAll = async function() {
         var collection = app.mongodb.database.collection('characters');
         try {
-            let characters = await collection.find();
+            let characters = await collection.find({}).toArray();
             return characters.map(character => new CharacterModule.Character(character));
         } catch (e) {
             console.log(e);

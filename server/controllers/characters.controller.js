@@ -1,10 +1,9 @@
 module.exports = function (app) {
     var controller = {};
 
-    controller.getAll = function (req, res) {
-        app.services.characters.getAll(characters => {
-            res.json(characters);
-        });
+    controller.getAll = async function (req, res) {
+        let characters = await app.services.characters.getAll();
+        res.json(characters);
     };
 
     controller.get = async function ({ params: { id: characterId } }, res) {
