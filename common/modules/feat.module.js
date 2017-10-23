@@ -1,4 +1,4 @@
-var subValueModule = require('./sub-value.module');
+var SubValueModule = require('./sub-value.module');
 
 exports.FEAT_TYPES = [
     "General",
@@ -18,6 +18,6 @@ exports.Feat = function ({ _id, title, benefit, type, prerequisite, normal, spec
         special,
         unique: unique || true,
         hasSubValue,
-        subValue: subValue ? new subValueModule.subValue(subValue) : new subValueModule.subValue({})
+        subValue: subValue ? new SubValueModule.SubValue(subValue) : new SubValueModule.SubValue({})
     }
 }

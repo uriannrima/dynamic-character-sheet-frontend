@@ -1,4 +1,4 @@
-var subValueModule = require('./sub-value.module');
+var SubValueModule = require('./sub-value.module');
 
 exports.SpecialAbility = function ({ _id, name, description, type, hasSubValue, subValue }) {
     return {
@@ -7,6 +7,6 @@ exports.SpecialAbility = function ({ _id, name, description, type, hasSubValue, 
         description,
         type,
         hasSubValue,
-        subValue: subValue || new subValueModule.subValue({})
+        subValue: subValue || new SubValueModule.SubValue({})
     }
 }
