@@ -73,13 +73,13 @@ export default {
             } else {
                 if (await this.$validator.validateAll()) {
                     var created = await this.service.saveOrUpdate(this.model);
-                    this.addToCharacter(this.model);
+                    this.addToCharacter(created);
                 }
             }
         },
         addToCharacter: function (model) {
             var fromCharacter = this.referenceList.find(m => m._id === model._id);
-            if (fromCharacter && fromCharacter.subValue == model.subValue) {
+            if (fromCharacter && fromCharacter.subValue === model.subValue) {
                 this.duplicate = true;
             } else {
                 this.$emit('onAdded', model);

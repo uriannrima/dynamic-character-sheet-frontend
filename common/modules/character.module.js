@@ -119,7 +119,7 @@ exports.character = function ({
         },
         getAbilityScore: function (abilityScoreName) {
             return _.find(this.abilityScores, abilityScore => {
-                return abilityScore.name.toUpperCase() == abilityScoreName.toUpperCase();
+                return abilityScore.name.toUpperCase() === abilityScoreName.toUpperCase();
             });
         },
         getCasterAbility: function () {

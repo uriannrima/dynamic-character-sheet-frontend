@@ -25,14 +25,10 @@ export default {
         if (skill._id) {
             return axios.put(Constants.API_URL + '/skills', { skill }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.skillsOffline[skill._id] = skill;
             });
         } else {
             return axios.post(Constants.API_URL + '/skills', { skill }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.skillsOffline[skill._id] = skill;
             });
         }
     }

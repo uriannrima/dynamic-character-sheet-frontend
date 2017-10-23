@@ -22,14 +22,10 @@ export default {
         if (specialAbility._id) {
             return axios.put(Constants.API_URL + '/specialAbilities', { specialAbility }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.specialAbilitiesOffline[specialAbility._id] = specialAbility;
             });
         } else {
             return axios.post(Constants.API_URL + '/specialAbilities', { specialAbility }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.specialAbilitiesOffline[specialAbility._id] = specialAbility;
             });
         }
     }

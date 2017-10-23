@@ -23,6 +23,15 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
-  }
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // Allow use of 'new'
+    'no-new': 0,
+    // Allow extension functions to native objects.
+    'no-extend-native': 0,
+    // Constructor should not start with lowercase.
+    'new-cap' : 1
+  },
+  "globals": {
+    "_": true
+  },
 }

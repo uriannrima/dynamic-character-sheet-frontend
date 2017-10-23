@@ -84,7 +84,7 @@ module.exports = function(app) {
 
             if (!feat || !character) return false;
 
-            const index = character.feats.findIndex(f => f._id == featId);
+            const index = character.feats.findIndex(f => f._id === featId);
             character.feats = character.feats.splice(index, 1);
             
             return await service.saveOrUpdate(character);

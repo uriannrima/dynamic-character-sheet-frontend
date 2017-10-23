@@ -17,29 +17,21 @@ export default {
             return response.data.map(characterData => {
                 return new characterModule.character(characterData);
             });
-        }, reason => {
-            return this.charactersOffline[_id];
         });
     },
     get: function (id) {
         return axios.get(Constants.API_URL + '/characters/' + id).then(response => {
             return new characterModule.character(response.data);
-        }, reason => {
-            return this.charactersOffline[_id];
         });
     },
     saveOrUpdate: function (character) {
         if (character._id) {
             return axios.put(Constants.API_URL + '/characters', { character }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.charactersOffline[character._id] = character;
             });
         } else {
             return axios.post(Constants.API_URL + '/characters', { character }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.charactersOffline[character._id] = character;
             });
         }
     },
@@ -60,15 +52,11 @@ export default {
     addFeat: function (character, feat) {
         return axios.post(Constants.API_URL + '/characters/feat', { character, feat }).then(response => {
             return response.data;
-        }, reason => {
-            console.log(reason);
         });
     },
     removeFeat: function (character, featId) {
         return axios.put(Constants.API_URL + '/characters/feat/' + featId, { character }).then(response => {
             return response.data;
-        }, reason => {
-            console.log(reason);
         });
     }
 }

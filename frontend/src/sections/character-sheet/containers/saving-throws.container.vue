@@ -27,7 +27,7 @@ export default {
                         </tr>
                     </thead>
                     <tbody>
-                        <saving-throw-component v-for="(savingThrow, index) in character.savingThrows" :key="index" :showInputLabel="index == 0"
+                        <saving-throw-component v-for="(savingThrow, index) in character.savingThrows" :key="index" :showInputLabel="index === 0"
                             :name="savingThrow.name" :keyAbility="character.getAbilityScore(savingThrow.keyAbility)" :base.sync="savingThrow.base"
                             :magicModifier.sync="savingThrow.magicModifier" :miscModifier.sync="savingThrow.miscModifier" :tempModifier.sync="savingThrow.tempModifier">
                         </saving-throw-component>

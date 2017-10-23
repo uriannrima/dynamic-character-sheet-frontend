@@ -22,14 +22,10 @@ export default {
         if (spellSchool._id) {
             return axios.put(Constants.API_URL + '/spellSchools', { spellSchool }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.spellSchoolsOffline[spellSchool._id] = spellSchool;
             });
         } else {
             return axios.post(Constants.API_URL + '/spellSchools', { spellSchool }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.spellSchoolsOffline[spellSchool._id] = spellSchool;
             });
         }
     }

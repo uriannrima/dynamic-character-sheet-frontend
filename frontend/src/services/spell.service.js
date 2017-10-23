@@ -43,14 +43,10 @@ export default {
         if (spell._id) {
             return axios.put(Constants.API_URL + '/spells', { spell }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.spellsOffline[spell._id] = spell;
             });
         } else {
             return axios.post(Constants.API_URL + '/spells', { spell }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.spellsOffline[spell._id] = spell;
             });
         }
     }

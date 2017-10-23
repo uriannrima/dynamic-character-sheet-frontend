@@ -22,14 +22,10 @@ export default {
         if (feat._id) {
             return axios.put(Constants.API_URL + '/feats', { feat }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.featsOffline[feat._id] = feat;
             });
         } else {
             return axios.post(Constants.API_URL + '/feats', { feat }).then(response => {
                 return response.data;
-            }, reason => {
-                return this.featsOffline[feat._id] = feat;
             });
         }
     }

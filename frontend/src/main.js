@@ -1,5 +1,12 @@
 // Promise polyfill for IE11.
 import Es6Promise from 'es6-promise';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VeeValidate from 'vee-validate';
+import Routes from './routes';
+import { store } from './store';
+import Layout from './shared/layout.component';
+
 Es6Promise.polyfill();
 
 // Extend Array with Group By.
@@ -12,15 +19,6 @@ Array.prototype.groupBy = function (funcProp) {
 
 // CSS Grid Polyfill
 // import './utils/css-grid-polyfill';
-
-import Vue from 'vue';
-import Vuex from 'vuex';
-import VueRouter from 'vue-router';
-import VeeValidate from 'vee-validate';
-import Routes from './routes';
-import { store } from './store';
-
-import Layout from './shared/layout.component';
 
 const veeConfig = {
     classes: true,

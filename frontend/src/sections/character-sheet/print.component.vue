@@ -110,12 +110,12 @@ SpellsContainer
         },
         updateOnCharacter: function(arrayName, updated) {
             console.log(arrayName, updated);
-            var index = _.findIndex(this.character[arrayName], p => p._id == updated._id);
+            var index = _.findIndex(this.character[arrayName], p => p._id === updated._id);
             this.character[arrayName].splice(index, 1, updated);
         },
         removeFromCharacter: function(arrayName, removed) {
             this.character[arrayName] = _.filter(this.character[arrayName], p => {
-                return p._id !== removed._id || (removed.subValue && removed.subValue != p.subValue);
+                return p._id !== removed._id || (removed.subValue && removed.subValue !== p.subValue);
             });
         },
         resetSkills: async function() {
@@ -123,7 +123,7 @@ SpellsContainer
             console.log(data);
         },
         addSpell: function(spellAdded) {
-            var spellList = _.filter(this.character.spellLists, o => o.level == spellAdded.level)[0];
+            var spellList = _.filter(this.character.spellLists, o => o.level === spellAdded.level)[0];
             spellList.spells.push(spellAdded);
         },
         removeSpell: function(spellRemoved) {
@@ -211,7 +211,7 @@ SpellsContainer
     <div>
         <div id="main-content" class="main-container">
             <div id="character-sheet" class="character-sheet">
-                <div v-show="sheetPage == 1 || sheetPage == -1" class="page first-page">
+                <div v-show="sheetPage === 1 || sheetPage === -1" class="page first-page">
                     <div class="pure-g">
                         <div class="description-container">
                             <div class="pure-u-md-1-1 hidden-lg-up">
@@ -904,7 +904,7 @@ SpellsContainer
                         </div>
                     </div>
                 </div>
-                <div v-show="sheetPage == 2 || sheetPage == -1" class="page second-page">
+                <div v-show="sheetPage === 2 || sheetPage === -1" class="page second-page">
                     <div class="padding-box">
                         <div class="pure-g">
                             <div class="pure-u-1-2">

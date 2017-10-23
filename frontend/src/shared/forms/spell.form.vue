@@ -182,13 +182,13 @@ export default {
                     <span v-if="describe.range.distance"> ({{describe.range.distance}} ft.)</span>
                 </span>
                 <div v-if="describe.effect">
-                    <div v-if="describe.effect.name == 'Area'">
+                    <div v-if="describe.effect.name === 'Area'">
                         <span>
                             <strong>Area:</strong>
                         </span>
                         <span>{{describe.effect.format.name}}-shaped {{describe.effect.type.name}}</span>
                     </div>
-                    <div v-if="describe.effect.name == 'Miscellaneous'">
+                    <div v-if="describe.effect.name === 'Miscellaneous'">
                         <span>
                             <strong>Effect:</strong>
                         </span>
@@ -299,9 +299,9 @@ export default {
                     </label>
                 </div>
             </div>
-            <div class="spell-form-component-materials-container" v-if="model.components && model.components.find(c => c.name == 'Material')">
+            <div class="spell-form-component-materials-container" v-if="model.components && model.components.find(c => c.name === 'Material')">
                 <span>Material(s):</span>
-                <input type="text" v-validate="'required'" v-model.trim="model.components[model.components.findIndex(c =>c.name == 'Material')].materials" name="materials"> {{model.components[model.components.findIndex(c =>c.name=='Material')].materials}}
+                <input type="text" v-validate="'required'" v-model.trim="model.components[model.components.findIndex(c =>c.name === 'Material')].materials" name="materials"> {{model.components[model.components.findIndex(c =>c.name=='Material')].materials}}
                 <span v-show="errors.has('materials')">{{ errors.first('materials') }}</span>
             </div>
             <div class="spell-form-component-casting-time-container">
@@ -322,7 +322,7 @@ export default {
                     <option v-for="(range, index) in allRanges" :value="range" :key="index">{{range.name}}
                     </option>
                 </select>
-                <div v-if="range.name == 'Miscellaneous'">
+                <div v-if="range.name === 'Miscellaneous'">
                     <span>Distance:</span>
                     <input type="number" v-model.number="model.range.distance">
                 </div>
@@ -341,7 +341,7 @@ export default {
                     </option>
                     <option :value="{ name: 'Miscellaneous'}">Miscellaneous</option>
                 </select>
-                <div v-if="effect.name == 'Miscellaneous'">
+                <div v-if="effect.name === 'Miscellaneous'">
                     <span>Description:</span>
                     <input type="text" v-model.trim="model.effect.description">
                 </div>
@@ -368,9 +368,9 @@ export default {
                     </label>
                 </div>
             </div>
-            <div class="spell-form-component-timed-container" v-if="model.durations && model.durations.find(c => c.name == 'Timed')">
+            <div class="spell-form-component-timed-container" v-if="model.durations && model.durations.find(c => c.name === 'Timed')">
                 <span>Timed Duration:</span>
-                <input type="text" v-validate="'required'" name="timed duration" v-model.trim="model.durations[model.durations.findIndex(d => d.name == 'Timed')].duration">
+                <input type="text" v-validate="'required'" name="timed duration" v-model.trim="model.durations[model.durations.findIndex(d => d.name === 'Timed')].duration">
                 <span v-show="errors.has('timed duration')">{{ errors.first('timed duration') }}</span>
             </div>
             <div class="spell-form-component-saving-throw-container" v-if="model.savingThrow">

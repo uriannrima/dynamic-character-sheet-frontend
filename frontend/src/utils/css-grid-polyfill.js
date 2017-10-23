@@ -42,7 +42,7 @@
                         var jsonify = function (o) {
                             var seen = [];
                             var jso = JSON.stringify(o, function (k, v) {
-                                if (typeof v == 'object') {
+                                if (typeof v === 'object') {
                                     if (!seen.indexOf(v)) { return '__cycle__'; }
                                     if (v instanceof window.Node) { return elm(v); }
                                     seen.push(v);
@@ -179,11 +179,11 @@
         function lowercaseletter(code) { return between(code, 0x61, 0x7a); }
         function letter(code) { return uppercaseletter(code) || lowercaseletter(code); }
         function nonascii(code) { return code >= 0x80; }
-        function namestartchar(code) { return letter(code) || nonascii(code) || code == 0x5f; }
-        function namechar(code) { return namestartchar(code) || digit(code) || code == 0x2d; }
-        function nonprintable(code) { return between(code, 0, 8) || code == 0xb || between(code, 0xe, 0x1f) || code == 0x7f; }
-        function newline(code) { return code == 0xa; }
-        function whitespace(code) { return newline(code) || code == 9 || code == 0x20; }
+        function namestartchar(code) { return letter(code) || nonascii(code) || code === 0x5f; }
+        function namechar(code) { return namestartchar(code) || digit(code) || code === 0x2d; }
+        function nonprintable(code) { return between(code, 0, 8) || code === 0xb || between(code, 0xe, 0x1f) || code === 0x7f; }
+        function newline(code) { return code === 0xa; }
+        function whitespace(code) { return newline(code) || code === 9 || code === 0x20; }
         function badescape(code) { return newline(code) || isNaN(code); }
 
         var maximumallowedcodepoint = 0x10ffff;
@@ -200,11 +200,11 @@
             var codepoints = [];
             for (var i = 0; i < str.length; i++) {
                 var code = str.charCodeAt(i);
-                if (code == 0xd && str.charCodeAt(i + 1) == 0xa) {
+                if (code === 0xd && str.charCodeAt(i + 1) === 0xa) {
                     code = 0xa; i++;
                 }
-                if (code == 0xd || code == 0xc) code = 0xa;
-                if (code == 0x0) code = 0xfffd;
+                if (code === 0xd || code === 0xc) code = 0xa;
+                if (code === 0x0) code = 0xfffd;
                 if (between(code, 0xd800, 0xdbff) && between(str.charCodeAt(i + 1), 0xdc00, 0xdfff)) {
                     // Decode a surrogate pair into an astral codepoint.
                     var lead = code - 0xd800;
@@ -278,7 +278,7 @@
             };
             var eof = function (codepoint) {
                 if (codepoint === undefined) codepoint = code;
-                return codepoint == -1;
+                return codepoint === -1;
             };
             var donothing = function () { };
             var tokenizeerror = function () { console.log("Parse error at index " + i + ", processing codepoint 0x" + code.toString(16) + "."); return true; };
@@ -290,8 +290,8 @@
                     while (whitespace(next())) consume();
                     return new WhitespaceToken;
                 }
-                else if (code == 0x22) return consumeAStringToken();
-                else if (code == 0x23) {
+                else if (code === 0x22) return consumeAStringToken();
+                else if (code === 0x23) {
                     if (namechar(next()) || areAValidEscape(next(1), next(2))) {
                         var token = new HashToken();
                         if (wouldStartAnIdentifier(next(1), next(2), next(3))) token.type = "id";
@@ -301,26 +301,26 @@
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x24) {
-                    if (next() == 0x3d) {
+                else if (code === 0x24) {
+                    if (next() === 0x3d) {
                         consume();
                         return new SuffixMatchToken();
                     } else {
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x27) return consumeAStringToken();
-                else if (code == 0x28) return new OpenParenToken();
-                else if (code == 0x29) return new CloseParenToken();
-                else if (code == 0x2a) {
-                    if (next() == 0x3d) {
+                else if (code === 0x27) return consumeAStringToken();
+                else if (code === 0x28) return new OpenParenToken();
+                else if (code === 0x29) return new CloseParenToken();
+                else if (code === 0x2a) {
+                    if (next() === 0x3d) {
                         consume();
                         return new SubstringMatchToken();
                     } else {
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x2b) {
+                else if (code === 0x2b) {
                     if (startsWithANumber()) {
                         reconsume();
                         return consumeANumericToken();
@@ -328,12 +328,12 @@
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x2c) return new CommaToken();
-                else if (code == 0x2d) {
+                else if (code === 0x2c) return new CommaToken();
+                else if (code === 0x2d) {
                     if (startsWithANumber()) {
                         reconsume();
                         return consumeANumericToken();
-                    } else if (next(1) == 0x2d && next(2) == 0x3e) {
+                    } else if (next(1) === 0x2d && next(2) === 0x3e) {
                         consume(2);
                         return new CDCToken();
                     } else if (startsWithAnIdentifier()) {
@@ -343,7 +343,7 @@
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x2e) {
+                else if (code === 0x2e) {
                     if (startsWithANumber()) {
                         reconsume();
                         return consumeANumericToken();
@@ -351,25 +351,25 @@
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x3a) return new ColonToken;
-                else if (code == 0x3b) return new SemicolonToken;
-                else if (code == 0x3c) {
-                    if (next(1) == 0x21 && next(2) == 0x2d && next(3) == 0x2d) {
+                else if (code === 0x3a) return new ColonToken;
+                else if (code === 0x3b) return new SemicolonToken;
+                else if (code === 0x3c) {
+                    if (next(1) === 0x21 && next(2) === 0x2d && next(3) === 0x2d) {
                         consume(3);
                         return new CDOToken();
                     } else {
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x40) {
+                else if (code === 0x40) {
                     if (wouldStartAnIdentifier(next(1), next(2), next(3))) {
                         return new AtKeywordToken(consumeAName());
                     } else {
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x5b) return new OpenSquareToken();
-                else if (code == 0x5c) {
+                else if (code === 0x5b) return new OpenSquareToken();
+                else if (code === 0x5c) {
                     if (startsWithAValidEscape()) {
                         reconsume();
                         return consumeAnIdentlikeToken();
@@ -378,30 +378,30 @@
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x5d) return new CloseSquareToken();
-                else if (code == 0x5e) {
-                    if (next() == 0x3d) {
+                else if (code === 0x5d) return new CloseSquareToken();
+                else if (code === 0x5e) {
+                    if (next() === 0x3d) {
                         consume();
                         return new PrefixMatchToken();
                     } else {
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x7b) return new OpenCurlyToken();
-                else if (code == 0x7c) {
-                    if (next() == 0x3d) {
+                else if (code === 0x7b) return new OpenCurlyToken();
+                else if (code === 0x7c) {
+                    if (next() === 0x3d) {
                         consume();
                         return new DashMatchToken();
-                    } else if (next() == 0x7c) {
+                    } else if (next() === 0x7c) {
                         consume();
                         return new ColumnToken();
                     } else {
                         return new DelimToken(code);
                     }
                 }
-                else if (code == 0x7d) return new CloseCurlyToken();
-                else if (code == 0x7e) {
-                    if (next() == 0x3d) {
+                else if (code === 0x7d) return new CloseCurlyToken();
+                else if (code === 0x7e) {
+                    if (next() === 0x3d) {
                         consume();
                         return new IncludeMatchToken();
                     } else {
@@ -421,11 +421,11 @@
             };
 
             var consumeComments = function () {
-                while (next(1) == 0x2f && next(2) == 0x2a) {
+                while (next(1) === 0x2f && next(2) === 0x2a) {
                     consume(2);
                     while (true) {
                         consume();
-                        if (code == 0x2a && next() == 0x2f) {
+                        if (code === 0x2a && next() === 0x2f) {
                             consume();
                             break;
                         } else if (eof()) {
@@ -445,7 +445,7 @@
                     token.type = num.type;
                     token.unit = consumeAName();
                     return token;
-                } else if (next() == 0x25) {
+                } else if (next() === 0x25) {
                     consume();
                     var token = new PercentageToken();
                     token.value = num.value;
@@ -462,17 +462,17 @@
 
             var consumeAnIdentlikeToken = function () {
                 var str = consumeAName();
-                if (str.toLowerCase() == "url" && next() == 0x28) {
+                if (str.toLowerCase() === "url" && next() === 0x28) {
                     consume();
                     while (whitespace(next(1)) && whitespace(next(2))) consume();
-                    if (next() == 0x22 || next() == 0x27) {
+                    if (next() === 0x22 || next() === 0x27) {
                         return new FunctionToken(str);
-                    } else if (whitespace(next()) && (next(2) == 0x22 || next(2) == 0x27)) {
+                    } else if (whitespace(next()) && (next(2) === 0x22 || next(2) === 0x27)) {
                         return new FunctionToken(str);
                     } else {
                         return consumeAURLToken();
                     }
-                } else if (next() == 0x28) {
+                } else if (next() === 0x28) {
                     consume();
                     return new FunctionToken(str);
                 } else {
@@ -484,13 +484,13 @@
                 if (endingCodePoint === undefined) endingCodePoint = code;
                 var string = "";
                 while (consume()) {
-                    if (code == endingCodePoint || eof()) {
+                    if (code === endingCodePoint || eof()) {
                         return new StringToken(string);
                     } else if (newline(code)) {
                         tokenizeerror();
                         reconsume();
                         return new BadStringToken();
-                    } else if (code == 0x5c) {
+                    } else if (code === 0x5c) {
                         if (eof(next())) {
                             donothing();
                         } else if (newline(next())) {
@@ -509,22 +509,22 @@
                 while (whitespace(next())) consume();
                 if (eof(next())) return token;
                 while (consume()) {
-                    if (code == 0x29 || eof()) {
+                    if (code === 0x29 || eof()) {
                         return token;
                     } else if (whitespace(code)) {
                         while (whitespace(next())) consume();
-                        if (next() == 0x29 || eof(next())) {
+                        if (next() === 0x29 || eof(next())) {
                             consume();
                             return token;
                         } else {
                             consumeTheRemnantsOfABadURL();
                             return new BadURLToken();
                         }
-                    } else if (code == 0x22 || code == 0x27 || code == 0x28 || nonprintable(code)) {
+                    } else if (code === 0x22 || code === 0x27 || code === 0x28 || nonprintable(code)) {
                         tokenizeerror();
                         consumeTheRemnantsOfABadURL();
                         return new BadURLToken();
-                    } else if (code == 0x5c) {
+                    } else if (code === 0x5c) {
                         if (startsWithAValidEscape()) {
                             token.value += stringFromCode(consumeEscape());
                         } else {
@@ -565,7 +565,7 @@
             };
 
             var areAValidEscape = function (c1, c2) {
-                if (c1 != 0x5c) return false;
+                if (c1 !== 0x5c) return false;
                 if (newline(c2)) return false;
                 return true;
             };
@@ -574,11 +574,11 @@
             };
 
             var wouldStartAnIdentifier = function (c1, c2, c3) {
-                if (c1 == 0x2d) {
-                    return namestartchar(c2) || c2 == 0x2d || areAValidEscape(c2, c3);
+                if (c1 === 0x2d) {
+                    return namestartchar(c2) || c2 === 0x2d || areAValidEscape(c2, c3);
                 } else if (namestartchar(c1)) {
                     return true;
-                } else if (c1 == 0x5c) {
+                } else if (c1 === 0x5c) {
                     return areAValidEscape(c1, c2);
                 } else {
                     return false;
@@ -589,11 +589,11 @@
             };
 
             var wouldStartANumber = function (c1, c2, c3) {
-                if (c1 == 0x2b || c1 == 0x2d) {
+                if (c1 === 0x2b || c1 === 0x2d) {
                     if (digit(c2)) return true;
-                    if (c2 == 0x2e && digit(c3)) return true;
+                    if (c2 === 0x2e && digit(c3)) return true;
                     return false;
-                } else if (c1 == 0x2e) {
+                } else if (c1 === 0x2e) {
                     if (digit(c2)) return true;
                     return false;
                 } else if (digit(c1)) {
@@ -623,7 +623,7 @@
             var consumeANumber = function () {
                 var repr = '';
                 var type = "integer";
-                if (next() == 0x2b || next() == 0x2d) {
+                if (next() === 0x2b || next() === 0x2d) {
                     consume();
                     repr += stringFromCode(code);
                 }
@@ -631,7 +631,7 @@
                     consume();
                     repr += stringFromCode(code);
                 }
-                if (next(1) == 0x2e && digit(next(2))) {
+                if (next(1) === 0x2e && digit(next(2))) {
                     consume();
                     repr += stringFromCode(code);
                     consume();
@@ -643,7 +643,7 @@
                     }
                 }
                 var c1 = next(1), c2 = next(2), c3 = next(3);
-                if ((c1 == 0x45 || c1 == 0x65) && digit(c2)) {
+                if ((c1 === 0x45 || c1 === 0x65) && digit(c2)) {
                     consume();
                     repr += stringFromCode(code);
                     consume();
@@ -653,7 +653,7 @@
                         consume();
                         repr += stringFromCode(code);
                     }
-                } else if ((c1 == 0x45 || c1 == 0x65) && (c2 == 0x2b || c2 == 0x2d) && digit(c3)) {
+                } else if ((c1 === 0x45 || c1 === 0x65) && (c2 === 0x2b || c2 === 0x2d) && digit(c3)) {
                     consume();
                     repr += stringFromCode(code);
                     consume();
@@ -677,7 +677,7 @@
 
             var consumeTheRemnantsOfABadURL = function () {
                 while (consume()) {
-                    if (code == 0x2d || eof()) {
+                    if (code === 0x2d || eof()) {
                         return;
                     } else if (startsWithAValidEscape()) {
                         consumeEscape();
@@ -808,13 +808,13 @@
         DelimToken.prototype.tokenType = "DELIM";
         DelimToken.prototype.toString = function () { return "DELIM(" + this.value + ")"; }
         DelimToken.prototype.toCSSString = function () {
-            return (this.value == "\\") ? "\\\n" : this.value;
+            return (this.value === "\\") ? "\\\n" : this.value;
         }
 
         function StringValuedToken() { return this; }
         StringValuedToken.prototype = new CSSParserToken;
         StringValuedToken.prototype.ASCIIMatch = function (str) {
-            return this.value.toLowerCase() == str.toLowerCase();
+            return this.value.toLowerCase() === str.toLowerCase();
         }
 
         function IdentifierToken(val) {
@@ -856,7 +856,7 @@
         HashToken.prototype.tokenType = "HASH";
         HashToken.prototype.toString = function () { return "HASH(" + this.value + ")"; }
         HashToken.prototype.toCSSString = function () {
-            var escapeValue = (this.type == "id") ? escapeIdent : escapeHash;
+            var escapeValue = (this.type === "id") ? escapeIdent : escapeHash;
             return "#" + escapeValue(this.value);
         }
 
@@ -887,7 +887,7 @@
         NumberToken.prototype = new CSSParserToken;
         NumberToken.prototype.tokenType = "NUMBER";
         NumberToken.prototype.toString = function () {
-            if (this.type == "integer")
+            if (this.type === "integer")
                 return "INT(" + this.value + ")";
             return "NUMBER(" + this.value + ")";
         }
@@ -921,7 +921,7 @@
         DimensionToken.prototype.toCSSString = function () {
             var source = this.repr;
             var unit = escapeIdent(this.unit);
-            if (unit[0].toLowerCase() == "e" && (unit[1] == "-" || between(unit.charCodeAt(1), 0x30, 0x39))) {
+            if (unit[0].toLowerCase() === "e" && (unit[1] === "-" || between(unit.charCodeAt(1), 0x30, 0x39))) {
                 // Unit is ambiguous with scinot
                 // Remove the leading "e", replace with escape.
                 unit = "\\65 " + unit.slice(1, unit.length);
@@ -935,20 +935,20 @@
             var firstcode = string.charCodeAt(0);
             for (var i = 0; i < string.length; i++) {
                 var code = string.charCodeAt(i);
-                if (code == 0x0) {
+                if (code === 0x0) {
                     throw new InvalidCharacterError('Invalid character: the input contains U+0000.');
                 }
 
                 if (
-                    between(code, 0x1, 0x1f) || code == 0x7f ||
-                    (i == 0 && between(code, 0x30, 0x39)) ||
-                    (i == 1 && between(code, 0x30, 0x39) && firstcode == 0x2d)
+                    between(code, 0x1, 0x1f) || code === 0x7f ||
+                    (i === 0 && between(code, 0x30, 0x39)) ||
+                    (i === 1 && between(code, 0x30, 0x39) && firstcode === 0x2d)
                 ) {
                     result += '\\' + code.toString(16) + ' ';
                 } else if (
                     code >= 0x80 ||
-                    code == 0x2d ||
-                    code == 0x5f ||
+                    code === 0x2d ||
+                    code === 0x5f ||
                     between(code, 0x30, 0x39) ||
                     between(code, 0x41, 0x5a) ||
                     between(code, 0x61, 0x7a)
@@ -970,14 +970,14 @@
             var firstcode = string.charCodeAt(0);
             for (var i = 0; i < string.length; i++) {
                 var code = string.charCodeAt(i);
-                if (code == 0x0) {
+                if (code === 0x0) {
                     throw new InvalidCharacterError('Invalid character: the input contains U+0000.');
                 }
 
                 if (
                     code >= 0x80 ||
-                    code == 0x2d ||
-                    code == 0x5f ||
+                    code === 0x2d ||
+                    code === 0x5f ||
                     between(code, 0x30, 0x39) ||
                     between(code, 0x41, 0x5a) ||
                     between(code, 0x61, 0x7a)
@@ -996,13 +996,13 @@
             for (var i = 0; i < string.length; i++) {
                 var code = string.charCodeAt(i);
 
-                if (code == 0x0) {
+                if (code === 0x0) {
                     throw new InvalidCharacterError('Invalid character: the input contains U+0000.');
                 }
 
-                if (between(code, 0x1, 0x1f) || code == 0x7f) {
+                if (between(code, 0x1, 0x1f) || code === 0x7f) {
                     result += '\\' + code.toString(16) + ' ';
-                } else if (code == 0x22 || code == 0x5c) {
+                } else if (code === 0x22 || code === 0x5c) {
                     result += '\\' + string[i];
                 } else {
                     result += string[i];
@@ -1091,7 +1091,7 @@
                 } else if (s.token instanceof EOFToken) {
                     return rules;
                 } else if (s.token instanceof CDOToken || s.token instanceof CDCToken) {
-                    if (topLevel == "top-level") continue;
+                    if (topLevel === "top-level") continue;
                     s.reconsume();
                     if (rule = consumeAStyleRule(s)) rules.push(rule);
                 } else if (s.token instanceof AtKeywordToken) {
@@ -1113,7 +1113,7 @@
                 } else if (s.token instanceof OpenCurlyToken) {
                     rule.value = consumeASimpleBlock(s);
                     return rule;
-                } else if (s.token instanceof SimpleBlock && s.token.name == "{") {
+                } else if (s.token instanceof SimpleBlock && s.token.name === "{") {
                     rule.value = s.token;
                     return rule;
                 } else {
@@ -1132,7 +1132,7 @@
                 } else if (s.token instanceof OpenCurlyToken) {
                     rule.value = consumeASimpleBlock(s);
                     return rule;
-                } else if (s.token instanceof SimpleBlock && s.token.name == "{") {
+                } else if (s.token instanceof SimpleBlock && s.token.name === "{") {
                     rule.value = s.token;
                     return rule;
                 } else {
@@ -1187,7 +1187,7 @@
                     continue;
                 } else if (decl.value[i] instanceof IdentifierToken && decl.value[i].ASCIIMatch("important")) {
                     foundImportant = true;
-                } else if (foundImportant && decl.value[i] instanceof DelimToken && decl.value[i].value == "!") {
+                } else if (foundImportant && decl.value[i] instanceof DelimToken && decl.value[i].value === "!") {
                     decl.value.splice(i, decl.value.length);
                     decl.important = true;
                     break;
@@ -1211,7 +1211,7 @@
             var mirror = s.token.mirror;
             var block = new SimpleBlock(s.token.value);
             while (s.consume()) {
-                if (s.token instanceof EOFToken || (s.token instanceof GroupingToken && s.token.value == mirror))
+                if (s.token instanceof EOFToken || (s.token instanceof GroupingToken && s.token.value === mirror))
                     return block;
                 else {
                     s.reconsume();
@@ -1233,7 +1233,7 @@
         }
 
         function normalizeInput(input) {
-            if (typeof input == "string")
+            if (typeof input === "string")
                 return new TokenStream(tokenize(input));
             if (input instanceof TokenStream)
                 return input;
@@ -1425,7 +1425,7 @@
         Func.prototype.getArguments = function () {
             var args = new TokenList(); var arg = new TokenList(); var value = this.value;
             for (var i = 0; i < value.length; i++) {
-                if (value[i].tokenType == ',') {
+                if (value[i].tokenType === ',') {
                     args.push(arg); arg = new TokenList();
                 } else {
                     arg.push(value[i])
@@ -1518,7 +1518,7 @@
                 ne.initCustomEvent(e.type, e.canBubble || e.bubbles, e.cancelable, "detail" in e ? e.detail : e);
                 for (var prop in e) {
                     try {
-                        if (e[prop] != ne[prop] && e[prop] != e.target) {
+                        if (e[prop] !== ne[prop] && e[prop] !== e.target) {
                             try { ne[prop] = e[prop]; }
                             catch (ex) { Object.defineProperty(ne, prop, { get: function () { return e[prop] } }) }
                         }
@@ -1545,7 +1545,7 @@
             EventTarget: {
                 implementsIn: function (eventClass, static_class) {
 
-                    if (!static_class && typeof (eventClass) == "function") eventClass = eventClass.prototype;
+                    if (!static_class && typeof (eventClass) === "function") eventClass = eventClass.prototype;
 
                     eventClass.dispatchEvent = domEvents.EventTarget.prototype.dispatchEvent;
                     eventClass.addEventListener = domEvents.EventTarget.prototype.addEventListener;
@@ -1561,7 +1561,7 @@
             if (!this.eventListeners) this.eventListeners = [];
 
             var ls = (this.eventListeners[eventType] || (this.eventListeners[eventType] = []));
-            if (ls.indexOf(f) == -1) {
+            if (ls.indexOf(f) === -1) {
                 ls.push(f);
             }
 
@@ -1581,12 +1581,12 @@
             if (!this.eventListeners) this.eventListeners = [];
 
             // abort quickly when no listener has been set up
-            if (typeof (event_or_type) == "string") {
-                if (!this.eventListeners[event_or_type] || this.eventListeners[event_or_type].length == 0) {
+            if (typeof (event_or_type) === "string") {
+                if (!this.eventListeners[event_or_type] || this.eventListeners[event_or_type].length === 0) {
                     return;
                 }
             } else {
-                if (!this.eventListeners[event_or_type.type] || this.eventListeners[event_or_type.type].length == 0) {
+                if (!this.eventListeners[event_or_type.type] || this.eventListeners[event_or_type.type].length === 0) {
                     return;
                 }
             }
@@ -1597,7 +1597,7 @@
                 Object.defineProperty(ee, key, {
                     get: function () {
                         var v = e[key];
-                        if (typeof (v) == "function") {
+                        if (typeof (v) === "function") {
                             return v.bind(e);
                         } else {
                             return v;
@@ -1618,7 +1618,7 @@
                         var ee = Object.create(Object.getPrototypeOf(e));
                         ee = setUpTarget(ee, v);
                         for (key in e) {
-                            if (key != "target") setUpPropertyForwarding(e, ee, key);
+                            if (key !== "target") setUpPropertyForwarding(e, ee, key);
                         }
                         return ee;
 
@@ -1632,10 +1632,10 @@
             }
 
             // try to set the target
-            if (typeof (event) == "object") {
+            if (typeof (event) === "object") {
                 try { event = setUpTarget(event, this); } catch (ex) { }
 
-            } else if (typeof (event) == "string") {
+            } else if (typeof (event) === "string") {
                 event = document.createEvent("CustomEvent");
                 event.initCustomEvent(event_or_type, /*canBubble:*/ true, /*cancelable:*/ false, /*detail:*/this);
                 try { event = setUpTarget(event, this); } catch (ex) { }
@@ -1770,7 +1770,7 @@
         function TimeoutEventStream(options) {
 
             // flag that says whether the observer is still needed or not
-            var rid = 0; var timeout = (typeof (options) == "number") ? (+options) : ("timeout" in options ? +options.timeout : 333);
+            var rid = 0; var timeout = (typeof (options) === "number") ? (+options) : ("timeout" in options ? +options.timeout : 333);
 
             // start the event stream
             EventStream.call(
@@ -1954,7 +1954,7 @@
             var yieldEventDelayed = function () {
 
                 // if the focus didn't change
-                if (previousActiveElement == document.activeElement && previousHasFocus == document.hasFocus()) {
+                if (previousActiveElement === document.activeElement && previousHasFocus === document.hasFocus()) {
 
                     // then do not generate an event
                     setTimeout(yieldEventDelayed, 333); // focus that didn't move is expected to stay
@@ -1997,8 +1997,8 @@
             // fields
             var yieldEvent = null; var s1 = false, s2 = false;
             var yieldEventWrapper = function (s) {
-                if (s == stream1) s1 = true;
-                if (s == stream2) s2 = true;
+                if (s === stream1) s1 = true;
+                if (s === stream2) s2 = true;
                 if (s1 && s2) return;
                 yieldEvent(self);
             }
@@ -2143,7 +2143,7 @@
 
             // use the event stream that best matches our needs
             var simpleSelector = selector.replace(/:(dir|lang|root|empty|blank|nth-child|nth-last-child|first-child|last-child|only-child|nth-of-type|nth-last-of-child|fist-of-type|last-of-type|only-of-type|not|matches|default)\b/gi, '')
-            var eventStream; if (simpleSelector.indexOf(':') == -1) {
+            var eventStream; if (simpleSelector.indexOf(':') === -1) {
 
                 // static stuff only
                 eventStream = new DOMUpdateEventStream({ target: root });
@@ -2152,7 +2152,7 @@
 
                 // dynamic stuff too
                 eventStream = new DOMUpdateEventStream({ target: root });
-                if (DOMUpdateEventStream != AnimationFrameEventStream) {
+                if (DOMUpdateEventStream !== AnimationFrameEventStream) {
 
                     // detect the presence of focus-related pseudo-classes
                     var reg = /:(focus|active)\b/gi;
@@ -2278,7 +2278,7 @@
             // { the return value is an integer, with the same formula as webkit }
             //
             computeSelectorPriorityOf: function computeSelectorPriorityOf(selector) {
-                if (typeof selector == "string") selector = cssSyntax.parse(selector.trim() + "{}").value[0].selector;
+                if (typeof selector === "string") selector = cssSyntax.parse(selector.trim() + "{}").value[0].selector;
 
                 var numberOfIDs = 0;
                 var numberOfClasses = 0;
@@ -2291,7 +2291,7 @@
                         numberOfTags++;
 
                     } else if (selector[i] instanceof cssSyntax.DelimToken) {
-                        if (selector[i].value == ".") {
+                        if (selector[i].value === ".") {
                             numberOfClasses++; i++;
                         }
 
@@ -2311,7 +2311,7 @@
                         }
 
                     } else if (selector[i] instanceof cssSyntax.SimpleBlock) {
-                        if (selector[i].name == "[") {
+                        if (selector[i].name === "[") {
                             numberOfClasses++;
                         }
 
@@ -2371,20 +2371,20 @@
                                         var newLength = selector.length - pseudo.length - 1;
                                         if (newLength <= 0) continue;
 
-                                        if (selectorLow.lastIndexOf('::' + pseudo) == newLength - 1) {
+                                        if (selectorLow.lastIndexOf('::' + pseudo) === newLength - 1) {
                                             selector = selector.substr(0, newLength - 1);
-                                        } else if (selectorLow.lastIndexOf(':' + pseudo) == newLength) {
+                                        } else if (selectorLow.lastIndexOf(':' + pseudo) === newLength) {
                                             selector = selector.substr(0, newLength);
                                         } else {
                                             continue;
                                         }
 
                                         // fix selectors like "#element > :first-child ~ ::before"
-                                        if (selector.trim().length == 0) { selector = '*' }
-                                        else if (selector[selector.length - 1] == ' ') { selector += '*' }
-                                        else if (selector[selector.length - 1] == '+') { selector += '*' }
-                                        else if (selector[selector.length - 1] == '>') { selector += '*' }
-                                        else if (selector[selector.length - 1] == '~') { selector += '*' }
+                                        if (selector.trim().length === 0) { selector = '*' }
+                                        else if (selector[selector.length - 1] === ' ') { selector += '*' }
+                                        else if (selector[selector.length - 1] === '+') { selector += '*' }
+                                        else if (selector[selector.length - 1] === '>') { selector += '*' }
+                                        else if (selector[selector.length - 1] === '~') { selector += '*' }
 
                                     }
 
@@ -2405,7 +2405,7 @@
 
                                 }
 
-                            } else if (rule instanceof cssSyntax.AtRule && rule.name == "media") {
+                            } else if (rule instanceof cssSyntax.AtRule && rule.name === "media") {
 
                                 // visit them
                                 visit(rule.toStylesheet().value);
@@ -2441,8 +2441,8 @@
                 }
 
                 // FIX A BUG WHERE WEBKIT DOESN'T REPORT ALL PROPERTIES
-                if (ps.indexOf('content') == -1) { ps.push('content'); }
-                if (ps.indexOf('counter-reset') == -1) {
+                if (ps.indexOf('content') === -1) { ps.push('content'); }
+                if (ps.indexOf('counter-reset') === -1) {
 
                     ps.push('counter-reset');
                     ps.push('counter-increment');
@@ -2599,8 +2599,8 @@
                             if (rules[i] instanceof cssSyntax.StyleRule) {
                                 var decls = rules[i].getDeclarations();
                                 for (var j = decls.length - 1; j >= 0; j--) {
-                                    if (decls[j].type == "DECLARATION") {
-                                        if (decls[j].name == cssPropertyName) {
+                                    if (decls[j].type === "DECLARATION") {
+                                        if (decls[j].name === cssPropertyName) {
                                             // only works if selectors containing a "," are deduplicated
                                             var currentPriority = cssCascade.computeSelectorPriorityOf(rules[i].selector);
 
@@ -2629,7 +2629,7 @@
                                         }
                                     }
                                 }
-                            } else if ((rules[i] instanceof cssSyntax.AtRule) && (rules[i].name == "media")) {
+                            } else if ((rules[i] instanceof cssSyntax.AtRule) && (rules[i].name === "media")) {
 
                                 // visit them
                                 visit(rules[i].toStylesheet())
@@ -2680,7 +2680,7 @@
                     return;
                 }
 
-                if (stylesheet.tagName == 'LINK') {
+                if (stylesheet.tagName === 'LINK') {
 
                     // oh, no, we have to download it...
                     try {
@@ -2692,10 +2692,10 @@
                         var xhr = new XMLHttpRequest(); xhr.href = stylesheet.href;
                         xhr.open('GET', stylesheet.href, true); xhr.ruleIndex = i;
                         xhr.onreadystatechange = function () {
-                            if (this.readyState == 4) {
+                            if (this.readyState === 4) {
 
                                 // status 0 is a webkit bug for local files
-                                if (this.status == 200 || this.status == 0) {
+                                if (this.status === 200 || this.status === 0) {
                                     cssCascade.loadStyleSheet(this.responseText, this.ruleIndex)
                                 } else {
                                     cssConsole.log("css-cascade polyfill failled to load: " + this.href);
@@ -2757,7 +2757,7 @@
                     var mps = cssCascade.monitoredProperties;
                     var decls = rule.getDeclarations();
                     for (var j = decls.length - 1; j >= 0; j--) {
-                        if (decls[j].type == "DECLARATION") {
+                        if (decls[j].type === "DECLARATION") {
                             if (decls[j].name in mps) {
 
                                 // call all handlers waiting for this
@@ -2814,7 +2814,7 @@
                         // for that, let's see if we can find a declaration we should watch
                         var decls = rules[i].getDeclarations();
                         for (var j = decls.length - 1; j >= 0; j--) {
-                            if (decls[j].type == "DECLARATION") {
+                            if (decls[j].type === "DECLARATION") {
                                 if (decls[j].name in cssCascade.monitoredProperties) {
 
                                     // if we found some, start monitoring
@@ -2828,7 +2828,7 @@
                     } else if (rules[i] instanceof cssSyntax.AtRule) {
 
                         // handle @media
-                        if (rules[i].name == "media" && window.matchMedia) {
+                        if (rules[i].name === "media" && window.matchMedia) {
 
                             cssCascade.startMonitoringMedia(rules[i]);
 
@@ -2900,7 +2900,7 @@
                 // fill the array
                 var currentRule = new cssSyntax.StyleRule(); currentRule.disabled = rule.disabled;
                 for (var i = 0; i < rule.selector.length; i++) {
-                    if (rule.selector[i] instanceof cssSyntax.DelimToken && rule.selector[i].value == ",") {
+                    if (rule.selector[i] instanceof cssSyntax.DelimToken && rule.selector[i].value === ",") {
                         currentRule.value = rule.value; rules.push(currentRule);
                         currentRule = new cssSyntax.StyleRule(); currentRule.disabled = rule.disabled;
                     } else {
@@ -2999,7 +2999,7 @@
                         catch (ex) { setImmediate(function () { throw ex; }); return; }
 
                         // modify the local style of the element
-                        if (this.parentElement.getAttribute('data-style-' + cssPropertyName) != v) {
+                        if (this.parentElement.getAttribute('data-style-' + cssPropertyName) !== v) {
                             this.parentElement.setAttribute('data-style-' + cssPropertyName, v);
                         }
 
@@ -3116,7 +3116,7 @@
                 value = '' + value;
             }
 
-            if (usedValue != value) {
+            if (usedValue !== value) {
                 var style = runtimeStyleOf(element);
                 propertyBackup = {
                     value: style.getPropertyValue(property),
@@ -3209,7 +3209,7 @@
             }
             ss.addRule = ss.addRule || function (s, d, i) {
                 var rule = s + '{' + d + '}'
-                var index = typeof (i) == 'number' ? i : ss.cssRules.length;
+                var index = typeof (i) === 'number' ? i : ss.cssRules.length;
                 return ss.insertRule(rule, index);
             }
 
@@ -3247,7 +3247,7 @@
                     var rule = rules[i];
                     if (rule.enabled) {
                         ssIndex--;
-                        if (rule.stylesheet == stylesheet) {
+                        if (rule.stylesheet === stylesheet) {
                             ss.removeRule(ssIndex);
                             rule.enabled = false;
                         }
@@ -3262,7 +3262,7 @@
                     if (rule.enabled) {
                         ssIndex++;
                     } else {
-                        if (rule.stylesheet == stylesheet) {
+                        if (rule.stylesheet === stylesheet) {
                             ss.addRule(rule.selector, rule.declarations, ssIndex);
                             rule.enabled = true;
                             ssIndex++;
@@ -3277,7 +3277,7 @@
                     var rule = rules[i];
                     if (rule.enabled) {
                         ssIndex--;
-                        if (rule.stylesheet == stylesheet) {
+                        if (rule.stylesheet === stylesheet) {
                             ss.removeRule(ssIndex);
                             rules.splice(i, 1);
                         }
@@ -3629,7 +3629,7 @@
             // converts "cssLength" from its inherent unit to pixels, and returns the result as a float
             convertToPixels: function convertToPixels(cssLength, element, opts) {
 
-                if (typeof cssLength == "string") {
+                if (typeof cssLength === "string") {
 
                     var match = cssLength.match(/^\s*(-?\d+(?:\.\d+)?)(\S*)\s*$/);
                     var currentLength = match ? parseFloat(match[1]) : 0.0;
@@ -3811,7 +3811,7 @@
 
         GridTrackBreadth.prototype = {
             toString: function () {
-                if (this.minType == this.maxType && this.minValue == this.maxValue) {
+                if (this.minType === this.maxType && this.minValue === this.maxValue) {
                     switch (this.minType) {
                         case TRACK_BREADTH_AUTO: return "auto";
                         case TRACK_BREADTH_LENGTH: return this.minValue + "px";
@@ -3948,7 +3948,7 @@
                 var style = currentStyleOf(element);
                 var getStyle = function (prop) {
                     var value = style[prop];
-                    if (typeof (value) == "undefined") { return ""; }
+                    if (typeof (value) === "undefined") { return ""; }
                     return value;
                 }
 
@@ -4028,21 +4028,21 @@
                         data.index = value[I].value | 0;
 
                         // only accept integer values
-                        if (value[I].value != data.index) {
+                        if (value[I].value !== data.index) {
                             console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (non-integer number)");
                             this.buggy = true;
                             return true;
                         }
 
                         // do not accept zero
-                        if (data.index == 0) {
+                        if (data.index === 0) {
                             console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (line index can't be zero)");
                             this.buggy = true;
                             return true;
                         }
 
                         // do not accept negative spans
-                        if (data.index <= 0 && data.type == LOCATE_SPAN) {
+                        if (data.index <= 0 && data.type === LOCATE_SPAN) {
                             console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (negative spans not allowed)");
                             this.buggy = true;
                             return true;
@@ -4052,7 +4052,7 @@
 
                         return false;
 
-                    } else if (value[I] instanceof cssSyntax.DelimToken && value[I].value == "/") {
+                    } else if (value[I] instanceof cssSyntax.DelimToken && value[I].value === "/") {
 
                         // break grid-column-start detection
                         return true;
@@ -4087,7 +4087,7 @@
                 gridColumnStart: while (true) {
                     if (value[I] instanceof cssSyntax.IdentifierToken) {
 
-                        if (value[I].value == "span") {
+                        if (value[I].value === "span") {
 
                             if (!value[++I]) { console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (span is not a valid line name, more tokens expected)"); this.buggy = true; return; }
 
@@ -4098,7 +4098,7 @@
                             if (this.buggy) { return; }
                             break;
 
-                        } else if (value[I].value == "auto") {
+                        } else if (value[I].value === "auto") {
 
                             specifiedStart.type = LOCATE_AUTO;
                             specifiedStart.name = undefined;
@@ -4118,7 +4118,7 @@
 
                         }
 
-                    } else if (value[I] instanceof cssSyntax.DelimToken && value[I].value == "/") {
+                    } else if (value[I] instanceof cssSyntax.DelimToken && value[I].value === "/") {
 
                         // this is wrong
                         console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (no token to analyze before the slash token)");
@@ -4141,7 +4141,7 @@
                 // test whether there is a second part
                 if (value[I]) {
 
-                    if (value[I] instanceof cssSyntax.DelimToken && value[I].value == "/") {
+                    if (value[I] instanceof cssSyntax.DelimToken && value[I].value === "/") {
 
                         // second part will start now
                         if (!value[++I]) {
@@ -4163,7 +4163,7 @@
                 } else {
 
                     // end of declaration
-                    if (specifiedStart.type == LOCATE_LINE && specifiedStart.name != undefined && specifiedStart.index == undefined) {
+                    if (specifiedStart.type === LOCATE_LINE && specifiedStart.name !== undefined && specifiedStart.index === undefined) {
                         // a value consisting of a custom ident is duplicated to the other side
                         specifiedEnd.type = LOCATE_LINE;
                         specifiedEnd.name = specifiedStart.name;
@@ -4182,7 +4182,7 @@
 
                     if (value[I] instanceof cssSyntax.IdentifierToken) {
 
-                        if (value[I].value == "span") {
+                        if (value[I].value === "span") {
 
                             if (!value[++I]) { console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (span is not a valid line name, more tokens expected)"); this.buggy = true; return; }
 
@@ -4192,7 +4192,7 @@
                             gatherNameIndexPair.call(this, specifiedEnd);
                             if (this.buggy) { return; }
 
-                        } else if (value[I].value == "auto") {
+                        } else if (value[I].value === "auto") {
 
                             specifiedEnd.type = LOCATE_AUTO;
                             specifiedEnd.name = undefined;
@@ -4213,7 +4213,7 @@
 
                         }
 
-                    } else if (value[I] instanceof cssSyntax.DelimToken && value[I].value == "/") {
+                    } else if (value[I] instanceof cssSyntax.DelimToken && value[I].value === "/") {
 
                         // this is wrong
                         console.error("INVALID DECLARATION: grid-column/row: " + value.toCSSString() + " (no token to analyze before the slash token)");
@@ -4240,11 +4240,11 @@
                 }
 
                 // If the <integer> is omitted, it defaults to 1.
-                //if(specifiedStart.name && specifiedStart.index == undefined) { specifiedStart.index = 1; }
-                //if(specifiedEnd.name && specifiedEnd.index == undefined) { specifiedEnd.index = 1; }
+                //if(specifiedStart.name && specifiedStart.index === undefined) { specifiedStart.index = 1; }
+                //if(specifiedEnd.name && specifiedEnd.index === undefined) { specifiedEnd.index = 1; }
 
                 // If both grid-row/column-start and grid-row/column-end specify a span, the end span is ignored. 
-                if (specifiedEnd.type == LOCATE_SPAN && specifiedStart.type == LOCATE_SPAN) { specifiedEnd.type = LOCATE_AUTO; specifiedEnd.index = undefined; specifiedEnd.name = undefined; }
+                if (specifiedEnd.type === LOCATE_SPAN && specifiedStart.type === LOCATE_SPAN) { specifiedEnd.type = LOCATE_AUTO; specifiedEnd.index = undefined; specifiedEnd.name = undefined; }
 
                 return [specifiedStart, specifiedEnd];
 
@@ -4354,7 +4354,7 @@
 
                 // sort them by css order (desc) then by dom order (asc)
                 var sortableItems = this.items.map(function (item, i) { return { item: item, order: item.order, position: i } });
-                sortableItems.sort(function (a, b) { if (a.order == b.order) { return a.position - b.position } else if (a.order > b.order) { return +1 } else { return -1; } });
+                sortableItems.sort(function (a, b) { if (a.order === b.order) { return a.position - b.position } else if (a.order > b.order) { return +1 } else { return -1; } });
                 this.items = sortableItems.map(function (data) { return data.item; });
 
                 // reset the style
@@ -4419,17 +4419,17 @@
                 // try to match a pattern
                 if (cssToken instanceof cssSyntax.IdentifierToken) {
 
-                    if (cssToken.value == "auto") {
+                    if (cssToken.value === "auto") {
                         return { type: TRACK_BREADTH_AUTO, value: "auto" };
-                    } else if (cssToken.value == "min-content") {
+                    } else if (cssToken.value === "min-content") {
                         return { type: TRACK_BREADTH_MIN_CONTENT, value: "min-content" };
-                    } else if (cssToken.value == "max-content") {
+                    } else if (cssToken.value === "max-content") {
                         return { type: TRACK_BREADTH_MAX_CONTENT, value: "max-content" };
                     }
 
                 } else if (cssToken instanceof cssSyntax.DimensionToken) {
 
-                    if (cssToken.unit == "fr") {
+                    if (cssToken.unit === "fr") {
                         return { type: TRACK_BREADTH_FRACTION, value: cssToken.value };
                     } else {
                         return { type: TRACK_BREADTH_LENGTH, value: cssUnits.convertToPixels(cssToken.toCSSString(), this.element) };
@@ -4467,7 +4467,7 @@
 
                 }
 
-                if (value[I] instanceof cssSyntax.Func && value[I].name == "minmax") {
+                if (value[I] instanceof cssSyntax.Func && value[I].name === "minmax") {
 
                     // we need to parse two subvalues
                     var value_backup = value;
@@ -4475,7 +4475,7 @@
 
                     // check we have exactly two arguments
                     var args = value_backup[I_backup].getArguments();
-                    if (args.length != 2) {
+                    if (args.length !== 2) {
                         console.error("INVALID DECLARATION: grid-template-rows/columns: " + value_backup.toCSSString() + " (invalid number of arguments to the minmax function)");
                         buggy = true;
                         return;
@@ -4546,7 +4546,7 @@
                 // step 1: columns are defined before the slash, if any
                 var cssText = cssText.replace(/\/\*(.*?)\*\//g, "");
                 var cssTextSections = cssText.split("/");
-                if (cssTextSections.length == 2) {
+                if (cssTextSections.length === 2) {
                     if (this.parseColumnsTemplate(cssTextSections[0])) { return buggy = true; }
                     cssText = cssTextSections[1];
                 }
@@ -4603,11 +4603,11 @@
                     while (str !== '') {
 
                         // extract next token
-                        var data = regexp.exec(str); if (!data || data.length != 2) { return buggy = true; }
+                        var data = regexp.exec(str); if (!data || data.length !== 2) { return buggy = true; }
                         str = str.substr(data[0].length); var cell = data[1];
 
                         // update cell max pos (ignore empty cells)
-                        if (cell != '.' && cell[0] != '.') {
+                        if (cell !== '.' && cell[0] !== '.') {
                             if (!areas[cell]) { areas[cell] = { xStart: columns.length, xEnd: columns.length + 1, yStart: I - 1, yEnd: I }; }
                             if (areas[cell].xStart > columns.length) { return buggy = true; }
                             if (areas[cell].yStart > I - 1) { return buggy = true; }
@@ -4628,7 +4628,7 @@
                     var area = areas[a];
                     for (var y = area.yStart; y < area.yEnd; y++) {
                         for (var x = area.xStart; x < area.xEnd; x++) {
-                            if (grid[y][x] != a) { return buggy = true; }
+                            if (grid[y][x] !== a) { return buggy = true; }
                         }
                     }
                 }
@@ -4690,7 +4690,7 @@
 
                     var currentLineNames = []; // array of string
 
-                    if (value[I] instanceof cssSyntax.SimpleBlock && value[I].name == "(") {
+                    if (value[I] instanceof cssSyntax.SimpleBlock && value[I].name === "(") {
                         var tokens = value[I].value;
                         for (var J = tokens.length; J--;) {
 
@@ -4905,10 +4905,10 @@
                     var item = this.items[i];
 
                     // if the element has a specific column associated to it
-                    if (item.specifiedXStart.type == LOCATE_LINE) {
+                    if (item.specifiedXStart.type === LOCATE_LINE) {
 
                         // if the element has a specified row associated to it
-                        if (item.specifiedYStart.type == LOCATE_LINE) {
+                        if (item.specifiedYStart.type === LOCATE_LINE) {
 
                             // find the start position (x axis)
                             var xStart = this.findXStart(item);
@@ -4947,7 +4947,7 @@
                         var item = this.items[i];
 
                         // if the element has a specified row associated to it, but is not positioned yet
-                        if (item.specifiedYStart.type == LOCATE_LINE && (item.yStart == -1)) {
+                        if (item.specifiedYStart.type === LOCATE_LINE && (item.yStart === -1)) {
 
                             // find the start position (y axis)
                             var yStart = this.findYStart(item);
@@ -4957,7 +4957,7 @@
 
                             // assumption: X is either AUTO + SPAN or AUTO + AUTO
                             var spanX = 1;
-                            if (item.specifiedXEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedXEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedXEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanX = item.specifiedXEnd.index;
@@ -5010,7 +5010,7 @@
                         var item = this.items[i];
 
                         // if the element has a specified column associated to it, but is not positioned yet
-                        if (item.specifiedXStart.type == LOCATE_LINE && (item.xStart == -1)) {
+                        if (item.specifiedXStart.type === LOCATE_LINE && (item.xStart === -1)) {
 
                             // find the start position (x axis)
                             var xStart = this.findXStart(item);
@@ -5020,7 +5020,7 @@
 
                             // assumption: Y is either AUTO + SPAN or AUTO + AUTO
                             var spanY = 1;
-                            if (item.specifiedYEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedYEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedYEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanY = item.specifiedYEnd.index;
@@ -5107,7 +5107,7 @@
                     // CONSIDER: elements with a known location
 
                     // (x axis):
-                    if (item.specifiedXEnd.type == LOCATE_LINE || item.specifiedXStart.type == LOCATE_LINE) {
+                    if (item.specifiedXEnd.type === LOCATE_LINE || item.specifiedXStart.type === LOCATE_LINE) {
 
                         var xStart = this.findXStart(item);
                         var xEnd = this.findXEnd(item);
@@ -5116,7 +5116,7 @@
                     }
 
                     // (y axis):
-                    if (item.specifiedYEnd.type == LOCATE_LINE || item.specifiedYStart.type == LOCATE_LINE) {
+                    if (item.specifiedYEnd.type === LOCATE_LINE || item.specifiedYStart.type === LOCATE_LINE) {
 
                         var yStart = this.findYStart(item);
                         var yEnd = this.findYEnd(item);
@@ -5127,10 +5127,10 @@
 
                     // CONSIDER: known spans
                     // // NOTE: I don't support "grid-row/column-start: span X";
-                    if (item.specifiedXEnd.type == LOCATE_SPAN && item.specifiedXEnd.name === undefined) {
+                    if (item.specifiedXEnd.type === LOCATE_SPAN && item.specifiedXEnd.name === undefined) {
                         growX.call(this, item.specifiedXEnd.index);
                     }
-                    if (item.specifiedYEnd.type == LOCATE_SPAN && item.specifiedYEnd.name === undefined) {
+                    if (item.specifiedYEnd.type === LOCATE_SPAN && item.specifiedYEnd.name === undefined) {
                         growY.call(this, item.specifiedYEnd.index);
                     }
 
@@ -5184,13 +5184,13 @@
 
                     //For each grid item that hasnt been positioned by the previous steps, in order-modified document order:
                     for (var i = 0; i < this.items.length; i++) {
-                        var item = this.items[i]; if (item.xEnd != -1 && item.yEnd != -1) { continue; }
+                        var item = this.items[i]; if (item.xEnd !== -1 && item.yEnd !== -1) { continue; }
 
                         // reset the cursor if the algorithm is set to 'dense'
                         if (this.growDense) { cursor = { x: 0, y: 0 }; }
 
                         //If the item has a definite column position: 
-                        if (item.specifiedXStart.type == LOCATE_LINE) {
+                        if (item.specifiedXStart.type === LOCATE_LINE) {
 
                             // 1. Set the column position of the cursor to be equal to the inline-start index of the grid item. 
                             var xStart = this.findXStart(item); if (cursor.x > xStart) { cursor.y++; } cursor.x = xStart;
@@ -5199,7 +5199,7 @@
 
                             // assumption: Y is either AUTO + SPAN or AUTO + AUTO
                             var spanY = 1;
-                            if (item.specifiedYEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedYEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedYEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanY = item.specifiedYEnd.index;
@@ -5246,7 +5246,7 @@
 
                             // assumption: X is either AUTO + SPAN or AUTO + AUTO
                             var spanX = 1;
-                            if (item.specifiedXEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedXEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedXEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanX = item.specifiedXEnd.index;
@@ -5258,7 +5258,7 @@
 
                             // assumption: Y is either AUTO + SPAN or AUTO + AUTO
                             var spanY = 1;
-                            if (item.specifiedYEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedYEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedYEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanY = item.specifiedYEnd.index;
@@ -5316,13 +5316,13 @@
 
                     //For each grid item that hasnt been positioned by the previous steps, in order-modified document order:
                     for (var i = 0; i < this.items.length; i++) {
-                        var item = this.items[i]; if (item.xEnd != -1 && item.yEnd != -1) { continue; }
+                        var item = this.items[i]; if (item.xEnd !== -1 && item.yEnd !== -1) { continue; }
 
                         // reset the cursor if the algorithm is set to 'dense'
                         if (this.growDense) { cursor = { x: 0, y: 0 }; }
 
                         //If the item has a definite row position: 
-                        if (item.specifiedYStart.type == LOCATE_LINE) {
+                        if (item.specifiedYStart.type === LOCATE_LINE) {
 
                             // 1. Set the column position of the cursor to be equal to the inline-start index of the grid item. 
                             var yStart = this.findYStart(item); if (cursor.y > yStart) { cursor.x++; } cursor.y = yStart;
@@ -5331,7 +5331,7 @@
 
                             // assumption: X is either AUTO + SPAN or AUTO + AUTO
                             var spanX = 1;
-                            if (item.specifiedXEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedXEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedXEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanX = item.specifiedXEnd.index;
@@ -5378,7 +5378,7 @@
 
                             // assumption: Y is either AUTO + SPAN or AUTO + AUTO
                             var spanY = 1;
-                            if (item.specifiedYEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedYEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedYEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanY = item.specifiedYEnd.index;
@@ -5390,7 +5390,7 @@
 
                             // assumption: X is either AUTO + SPAN or AUTO + AUTO
                             var spanX = 1;
-                            if (item.specifiedXEnd.type == LOCATE_SPAN) {
+                            if (item.specifiedXEnd.type === LOCATE_SPAN) {
                                 if (item.specifiedXEnd.name === undefined) {
                                     // The span is defined as this value
                                     spanX = item.specifiedXEnd.index;
@@ -5507,7 +5507,7 @@
 
                     }
 
-                    return { base: base, limit: limit, breadth: 0, flags: ((limit == infinity) ? LIMIT_IS_INFINITE : 0) | 0 };
+                    return { base: base, limit: limit, breadth: 0, flags: ((limit === infinity) ? LIMIT_IS_INFINITE : 0) | 0 };
 
                 }
 
@@ -5518,7 +5518,7 @@
                     // Distribute space to base sizes
                     var trackAmount = tracks.length;
                     var spacePerTrack = spaceToDistribute / trackAmount;
-                    if (kind == 'base') {
+                    if (kind === 'base') {
 
                         // if we enforce the limit, grow up to the most limitating track
                         if (enforceLimit) {
@@ -5529,7 +5529,7 @@
                                 var newBase = xSizes[cx].base + spacePerTrack;
 
                                 // if limits are enfo
-                                if (enforceLimit && (xSizes[cx].flags & LIMIT_IS_INFINITE == 0) && newBase > xSizes[cx].limit) {
+                                if (enforceLimit && (xSizes[cx].flags & LIMIT_IS_INFINITE === 0) && newBase > xSizes[cx].limit) {
                                     spacePerTrack -= newBase - xSizes[cx].limit;
                                 }
                             }
@@ -5540,7 +5540,7 @@
                             xSizes[cx].base += spacePerTrack;
                         }
 
-                    } else if (kind == 'limit') {
+                    } else if (kind === 'limit') {
 
                         // Update the tracks' affected sizes by folding in the calculated increase so that the next round of space distribution will account for the increase.
                         for (var t = tracks.length; t--;) {
@@ -5548,7 +5548,7 @@
                             // If the growth limit is infinite...
                             if (xSizes[cx].flags & LIMIT_IS_INFINITE) {
                                 // set it to the tracks base size plus the calculated increase
-                                if (xSizes[cx].limit == infinity) {
+                                if (xSizes[cx].limit === infinity) {
                                     xSizes[cx].limit = xSizes[cx].base + spacePerTrack;
                                 } else {
                                     xSizes[cx].limit += spacePerTrack; // TODO: THERE IS A BUG HERE ?
@@ -5574,12 +5574,12 @@
                         var dontCountMaxItems = false;
 
                         // If the track has a min-content min track sizing function
-                        if (specifiedSizes[x].minType == TRACK_BREADTH_MIN_CONTENT || specifiedSizes[x].minType == TRACK_BREADTH_AUTO) {
+                        if (specifiedSizes[x].minType === TRACK_BREADTH_MIN_CONTENT || specifiedSizes[x].minType === TRACK_BREADTH_AUTO) {
 
                             // Consider the items in it with a span of 1: 
                             for (var i = this.items.length; i--;) {
                                 var item = this.items[i]; var item_xStart = getXStartOf(item); var item_xEnd = getXEndOf(item);
-                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart != 1) continue;
+                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart !== 1) continue;
 
                                 // Set its base size to the maximum of the items min-content contributions. 
                                 xSizes[x].base = Math.max(xSizes[x].base, getMinWidthOf(item)); items_done++; dontCountMaxItems = true;
@@ -5589,12 +5589,12 @@
                         }
 
                         // If the track has a max-content min track sizing function
-                        else if (specifiedSizes[x].minType == TRACK_BREADTH_MAX_CONTENT) {
+                        else if (specifiedSizes[x].minType === TRACK_BREADTH_MAX_CONTENT) {
 
                             // Consider the items in it with a span of 1: 
                             for (var i = this.items.length; i--;) {
                                 var item = this.items[i]; var item_xStart = getXStartOf(item); var item_xEnd = getXEndOf(item);
-                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart != 1) continue;
+                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart !== 1) continue;
 
                                 // Set its base size to the maximum of the items max-content contributions. 
                                 xSizes[x].base = Math.max(xSizes[x].base, getMaxWidthOf(item)); items_done++; dontCountMaxItems = true;
@@ -5604,15 +5604,15 @@
                         }
 
                         // If the track has a min-content max track sizing function
-                        if (specifiedSizes[x].maxType == TRACK_BREADTH_MIN_CONTENT) {
+                        if (specifiedSizes[x].maxType === TRACK_BREADTH_MIN_CONTENT) {
 
                             // Consider the items in it with a span of 1: 
                             for (var i = this.items.length; i--;) {
                                 var item = this.items[i]; var item_xStart = getXStartOf(item); var item_xEnd = getXEndOf(item);
-                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart != 1) continue;
+                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart !== 1) continue;
 
                                 // Set its growth limit to the maximum of the items min-content contributions. 
-                                if (xSizes[x].limit == infinity) { xSizes[x].limit = getMinWidthOf(item); }
+                                if (xSizes[x].limit === infinity) { xSizes[x].limit = getMinWidthOf(item); }
                                 else { xSizes[x].limit = Math.max(xSizes[x].limit, getMinWidthOf(item)); }
 
                                 if (!dontCountMaxItems) { items_done++; }
@@ -5622,15 +5622,15 @@
                         }
 
                         // If the track has a max-content max track sizing function
-                        else if (specifiedSizes[x].maxType == TRACK_BREADTH_MAX_CONTENT || specifiedSizes[x].minType == TRACK_BREADTH_AUTO) {
+                        else if (specifiedSizes[x].maxType === TRACK_BREADTH_MAX_CONTENT || specifiedSizes[x].minType === TRACK_BREADTH_AUTO) {
 
                             // Consider the items in it with a span of 1: 
                             for (var i = this.items.length; i--;) {
                                 var item = this.items[i]; var item_xStart = getXStartOf(item); var item_xEnd = getXEndOf(item);
-                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart != 1) continue;
+                                if (item_xStart > x || item_xEnd <= x || item_xEnd - item_xStart !== 1) continue;
 
                                 // Set its growth limit to the maximum of the items max-content contributions. 
-                                if (xSizes[x].limit == infinity) { xSizes[x].limit = getMaxWidthOf(item); }
+                                if (xSizes[x].limit === infinity) { xSizes[x].limit = getMaxWidthOf(item); }
                                 else { xSizes[x].limit = Math.max(xSizes[x].limit, getMaxWidthOf(item)); }
 
                                 if (!dontCountMaxItems) { items_done++; }
@@ -5640,7 +5640,7 @@
                         }
 
                         // update infinity flag
-                        if (xSizes[x].limit != infinity) {
+                        if (xSizes[x].limit !== infinity) {
                             xSizes[x].flags = xSizes[x].flags & ~LIMIT_IS_INFINITE;
                         }
 
@@ -5651,14 +5651,14 @@
                     for (var span = 2; items_done < this.items.length && span <= specifiedSizes.length; span++) {
                         ItemLoop: for (var i = this.items.length; i--;) {
                             var item = this.items[i]; var item_xStart = getXStartOf(item); var item_xEnd = getXEndOf(item);
-                            if (item_xEnd - item_xStart != span) continue ItemLoop;
+                            if (item_xEnd - item_xStart !== span) continue ItemLoop;
 
                             // gather some pieces of data about the tracks
                             var full_base = 0; var full_limit = 0;
                             for (var cx = item_xStart; cx < item_xEnd; cx++) {
 
                                 // 1. we want to make sure none is flexible
-                                if (specifiedSizes[cx].maxType == TRACK_BREADTH_FRACTION) continue ItemLoop;
+                                if (specifiedSizes[cx].maxType === TRACK_BREADTH_FRACTION) continue ItemLoop;
 
                                 // 2. compute aggregated sizes
                                 full_base += xSizes[cx].base;
@@ -5680,7 +5680,7 @@
                                     // if no space to distribute, just lock auto columns:
                                     if (spaceToDistribute <= 1 / 1024) { //due to double precision, this may never reach perfect 0
                                         for (var cx = item_xStart; cx < item_xEnd; cx++) {
-                                            if (xSizes[cx].limit == infinity) {
+                                            if (xSizes[cx].limit === infinity) {
                                                 xSizes[cx].limit = xSizes[cx].base;
                                             }
                                         }
@@ -5694,26 +5694,26 @@
                                             x: cx,
                                             base: xSizes[cx].base,
                                             limit: xSizes[cx].limit,
-                                            minIsMinContent: specifiedSizes[cx].minType == TRACK_BREADTH_MIN_CONTENT || specifiedSizes[cx].minType == TRACK_BREADTH_AUTO,
-                                            minIsMaxContent: specifiedSizes[cx].minType == TRACK_BREADTH_MAX_CONTENT,
-                                            maxIsMinContent: specifiedSizes[cx].maxType == TRACK_BREADTH_MIN_CONTENT,
-                                            maxIsMaxContent: specifiedSizes[cx].maxType == TRACK_BREADTH_MAX_CONTENT || specifiedSizes[cx].maxType == TRACK_BREADTH_AUTO
+                                            minIsMinContent: specifiedSizes[cx].minType === TRACK_BREADTH_MIN_CONTENT || specifiedSizes[cx].minType === TRACK_BREADTH_AUTO,
+                                            minIsMaxContent: specifiedSizes[cx].minType === TRACK_BREADTH_MAX_CONTENT,
+                                            maxIsMinContent: specifiedSizes[cx].maxType === TRACK_BREADTH_MIN_CONTENT,
+                                            maxIsMaxContent: specifiedSizes[cx].maxType === TRACK_BREADTH_MAX_CONTENT || specifiedSizes[cx].maxType === TRACK_BREADTH_AUTO
                                         });
                                     }
                                     rows_and_limits.sort(function (a, b) { return a.limit - b.limit; });
 
                                     // remove non-affected tracks
                                     rows_and_limits = rows_and_limits.filter(function (b) {
-                                        if (kind == 'base') {
-                                            if (target == 'min-content') {
+                                        if (kind === 'base') {
+                                            if (target === 'min-content') {
                                                 return b.minIsMinContent || b.minIsMaxContent;
-                                            } else if (target == 'max-content') {
+                                            } else if (target === 'max-content') {
                                                 return b.minIsMaxContent;
                                             }
-                                        } else if (kind == 'limit') {
-                                            if (target == 'min-content') {
+                                        } else if (kind === 'limit') {
+                                            if (target === 'min-content') {
                                                 return b.maxIsMinContent || b.maxIsMaxContent;
-                                            } else if (target == 'max-content') {
+                                            } else if (target === 'max-content') {
                                                 return b.maxIsMaxContent;
                                             }
                                         }
@@ -5721,10 +5721,10 @@
                                     });
 
                                     // check that there is at least one affected track
-                                    if (rows_and_limits.length == 0) { return; }
+                                    if (rows_and_limits.length === 0) { return; }
 
                                     // apply the algorithm
-                                    if (kind == 'base') {
+                                    if (kind === 'base') {
 
                                         // Distribute space up to growth limits
                                         var tracks = rows_and_limits.filter(function (b) { return b.base < b.limit; }, 0);
@@ -5740,7 +5740,7 @@
 
 
                                             // - when handling min-content base sizes: 
-                                            if (target == 'min-content') {
+                                            if (target === 'min-content') {
 
                                                 // any affected track that happens to also have an intrinsic max track sizing function; 
                                                 var tracks = rows_and_limits.filter(function (b) { return b.maxIsMinContent || b.maxIsMaxContent; }, 0);
@@ -5759,7 +5759,7 @@
                                             }
 
                                             // - when handling max-content base sizes: 
-                                            else if (target == 'max-content') {
+                                            else if (target === 'max-content') {
 
                                                 // any affected track that happens to also have a max-content max track sizing function;
                                                 var tracks = rows_and_limits.filter(function (b) { return b.maxIsMaxContent; }, 0);
@@ -5780,7 +5780,7 @@
 
                                     }
 
-                                    else if (kind == 'limit') {
+                                    else if (kind === 'limit') {
 
                                         // distribute among all tracks
                                         distributeEquallyAmongTracks(xSizes, kind, rows_and_limits, spaceToDistribute);
@@ -5791,7 +5791,7 @@
 
                             var updateInfiniteLimitFlag = function () {
                                 for (var x = xSizes.length; x--;) {
-                                    if (xSizes[x].limit != infinity) {
+                                    if (xSizes[x].limit !== infinity) {
                                         xSizes[x].flags = xSizes[x].flags & ~LIMIT_IS_INFINITE;
                                     }
                                 }
@@ -5838,10 +5838,10 @@
                             x: cx,
                             base: xSizes[cx].base,
                             limit: xSizes[cx].limit,
-                            minIsMinContent: specifiedSizes[cx].minType == TRACK_BREADTH_MIN_CONTENT || specifiedSizes[cx].minType == TRACK_BREADTH_AUTO,
-                            minIsMaxContent: specifiedSizes[cx].minType == TRACK_BREADTH_MAX_CONTENT,
-                            maxIsMinContent: specifiedSizes[cx].maxType == TRACK_BREADTH_MIN_CONTENT,
-                            maxIsMaxContent: specifiedSizes[cx].maxType == TRACK_BREADTH_MAX_CONTENT || specifiedSizes[cx].maxType == TRACK_BREADTH_AUTO
+                            minIsMinContent: specifiedSizes[cx].minType === TRACK_BREADTH_MIN_CONTENT || specifiedSizes[cx].minType === TRACK_BREADTH_AUTO,
+                            minIsMaxContent: specifiedSizes[cx].minType === TRACK_BREADTH_MAX_CONTENT,
+                            maxIsMinContent: specifiedSizes[cx].maxType === TRACK_BREADTH_MIN_CONTENT,
+                            maxIsMaxContent: specifiedSizes[cx].maxType === TRACK_BREADTH_MAX_CONTENT || specifiedSizes[cx].maxType === TRACK_BREADTH_AUTO
                         };
                     });
                     rows_and_limits.sort(function (a, b) { return a.limit - b.limit; });
@@ -5868,7 +5868,7 @@
                 var computeFlexibleTrackBreadth = function (xSizes, specifiedSizes, fullSize, getMinWidthOf, getMaxWidthOf, getXStartOf, getXEndOf) {
 
                     // If the free space is an indefinite length: 
-                    if (fullSize == 0) {
+                    if (fullSize === 0) {
 
                         //The used flex fraction is the maximum of: 
                         var currentFraction = 0;
@@ -5884,7 +5884,7 @@
                             var spaceToDistribute = getMaxWidthOf(item); var flexFactorSum = 0;
                             for (var cx = item_xStart; cx < item_xEnd; cx++) {
 
-                                if (specifiedSizes[cx].maxType == TRACK_BREADTH_FRACTION) {
+                                if (specifiedSizes[cx].maxType === TRACK_BREADTH_FRACTION) {
                                     // compute how much flexible tracks are required
                                     flexFactorSum += specifiedSizes[cx].maxValue;
                                 } else {
@@ -5903,7 +5903,7 @@
 
                         // for each flexible track
                         for (var x = xSizes.length; x--;) {
-                            if (specifiedSizes[x].maxType == TRACK_BREADTH_FRACTION) {
+                            if (specifiedSizes[x].maxType === TRACK_BREADTH_FRACTION) {
 
                                 // Compute the product of the hypothetical flex fraction and the tracks flex factor
                                 var trackSize = currentFraction * specifiedSizes[x].maxValue;
@@ -5933,7 +5933,7 @@
                         var spaceToDistribute = fullSize;
                         var tracks = []; var fractionSum = 0;
                         for (var x = xSizes.length; x--;) {
-                            if (specifiedSizes[x].maxType == TRACK_BREADTH_FRACTION) {
+                            if (specifiedSizes[x].maxType === TRACK_BREADTH_FRACTION) {
                                 tracks.push(x); fractionSum += specifiedSizes[x].maxValue;
                             } else {
                                 spaceToDistribute -= (xSizes[x].breadth = xSizes[x].base);
@@ -5997,7 +5997,7 @@
 
                     // ResolveContentBasedTrackSizingFunctions (step 4)
                     for (var x = this_xSizes.length; x--;) {
-                        if (xSizes[x].limit == infinity) { xSizes[x].limit = xSizes[x].base; }
+                        if (xSizes[x].limit === infinity) { xSizes[x].limit = xSizes[x].base; }
                     }
 
                     // grow tracks up to their max
@@ -6056,7 +6056,7 @@
                 var usedStyle = usedStyleOf(this.element);
                 var runtimeStyle = createRuntimeStyle('temp-position', this.element);
 
-                if (usedStyle.getPropertyValue('position') == 'static') {
+                if (usedStyle.getPropertyValue('position') === 'static') {
                     runtimeStyle.set(this.element, { "position": "relative" });
                 }
 
@@ -6163,10 +6163,10 @@
                 }
 
                 var runtimeStyleData = {};
-                if (["block", "inline-block"].indexOf(usedStyle.getPropertyValue("display")) == -1) {
+                if (["block", "inline-block"].indexOf(usedStyle.getPropertyValue("display")) === -1) {
                     runtimeStyleData["display"] = "block";
                 }
-                if (usedStyle.getPropertyValue('position') == 'static') {
+                if (usedStyle.getPropertyValue('position') === 'static') {
                     runtimeStyleData["position"] = "relative";
                 }
 
@@ -6272,7 +6272,7 @@
                         xStart = this.findXLine(item.specifiedXStart.name + "-start", 0, 0, /*dontFallback*/true);
 
                     }
-                    if (xStart == -1) {
+                    if (xStart === -1) {
 
                         // Otherwise, contributes the first named line with the specified name to the grid items placement. 
                         xStart = this.findXLine(item.specifiedXStart.name, 0, (item.specifiedXStart.index || 1) - 1);
@@ -6313,7 +6313,7 @@
                         yStart = this.findYLine(item.specifiedYStart.name + "-start", 0, 0, /*dontFallback*/true);
 
                     }
-                    if (yStart == -1) {
+                    if (yStart === -1) {
 
                         // Otherwise, contributes the first named line with the specified name to the grid items placement. 
                         yStart = this.findYLine(item.specifiedYStart.name, 0, (item.specifiedYStart.index || 1) - 1);
@@ -6351,7 +6351,7 @@
                                 xEnd = this.findXLine(item.specifiedXEnd.name + "-end", 0, 0, /*dontFallback*/true);
 
                             }
-                            if (xEnd == -1) {
+                            if (xEnd === -1) {
 
                                 // Otherwise, contributes the first named line with the specified name to the grid items placement. 
                                 xEnd = this.findXLine(item.specifiedXEnd.name, 0, (item.specifiedXEnd.index || 1) - 1);
@@ -6404,7 +6404,7 @@
                                 yEnd = this.findYLine(item.specifiedYEnd.name + "-end", 0, 0, /*dontFallback*/true);
 
                             }
-                            if (yEnd == -1) {
+                            if (yEnd === -1) {
 
                                 // Otherwise, contributes the first named line with the specified name to the grid items placement. 
                                 yEnd = this.findYLine(item.specifiedYEnd.name, 0, (item.specifiedYEnd.index || 1) - 1);
@@ -6429,7 +6429,7 @@
 
                             // TODO: I'm having the wrong behavior here, I sent a mail to csswg to get the spec changed
                             // "The spec is more what you'd call 'guidelines' than actual rules"
-                            if (yEnd == -1) { yEnd = 0; }
+                            if (yEnd === -1) { yEnd = 0; }
 
                         } else {
 
@@ -6647,7 +6647,7 @@
                             var lastHeight = element.offsetHeight;
                             var updateOnResize = function () {
                                 if (!element.gridLayout) { return; }
-                                if (lastWidth != element.offsetWidth || lastHeight != element.offsetHeight) {
+                                if (lastWidth !== element.offsetWidth || lastHeight !== element.offsetHeight) {
                                     // update last known size
                                     lastWidth = element.offsetWidth;
                                     lastHeight = element.offsetHeight;
