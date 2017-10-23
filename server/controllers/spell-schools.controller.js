@@ -6,6 +6,6 @@ module.exports = function (app) {
             res.json(spellSchools);
         });
     };
-    
+
     app.createController('spellSchools', controller);
 }

@@ -20,6 +20,6 @@ module.exports = function (app) {
             res.json(spell);
         });
     };
-    
+
     app.createController('spells', controller);
 }

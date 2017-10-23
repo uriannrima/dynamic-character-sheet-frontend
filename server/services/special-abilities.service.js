@@ -1,6 +1,5 @@
-const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var specialAbilityModule = require('modules/special-ability.module');
+const SpecialAbilityModule = require('modules/special-ability.module');
 
 module.exports = function (app) {
     var service = {};
@@ -8,6 +7,7 @@ module.exports = function (app) {
     service.getById = function (_id, callback) {
         var collection = app.mongodb.database.collection('specialAbilities');
         collection.find({ _id: new ObjectID(_id) }).toArray(function (err, records) {
+            if (err) throw err;
             callback(new SpecialAbilityModule.SpecialAbility(records[0]));
         });
     };
@@ -15,6 +15,7 @@ module.exports = function (app) {
     service.getAll = function (callback) {
         var collection = app.mongodb.database.collection('specialAbilities');
         collection.find({}).sort({ title: 1 }).toArray(function (err, records) {
+            if (err) throw err;
             callback(records.map(data => new SpecialAbilityModule.SpecialAbility(data)));
         });
     }
@@ -25,6 +26,7 @@ module.exports = function (app) {
         if (specialAbility.subValue) delete specialAbility.subValue.value;
         var collection = app.mongodb.database.collection('specialAbilities');
         collection.findAndModify({ _id }, [], { $set: specialAbility }, { new: true, upsert: true }, function (err, doc) {
+            if (err) throw err;
             callback(doc.value);
         });
     };

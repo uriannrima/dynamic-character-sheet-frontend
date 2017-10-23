@@ -20,6 +20,6 @@ module.exports = function (app) {
             res.json(feat);
         });
     };
-    
+
     app.createController('feats', controller);
 }

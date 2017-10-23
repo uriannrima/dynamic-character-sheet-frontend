@@ -1,21 +1,8 @@
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
-  env: {
-    browser: true,
-  },
-  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
-  // required to lint *.vue files
-  plugins: [
-    'html'
-  ],
-  // add your custom rules here
+    "extends": "standard",
+    // add your custom rules here
   'rules': {
-    // allow custom indent.
+      // allow custom indent.
     "indent": 0,
     // ignore extra semi collon.
     "semi": 0,
@@ -33,8 +20,5 @@ module.exports = {
     'no-extend-native': 0,
     // Constructor should not start with lowercase.
     'new-cap' : 1
-  },
-  "globals": {
-    "_": true
-  },
-}
+  }
+};

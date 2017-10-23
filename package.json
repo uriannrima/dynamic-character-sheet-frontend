@@ -9,7 +9,9 @@
         "frontend:dev": "cd frontend && npm run dev",
         "frontend:build": "cd frontend && npm run build",
         "server:dev": "cd server && npm run dev",
-        "server:host": "cd server && npm run host"
+        "server:host": "cd server && npm run host",
+        "server:lint": "cd server && npm run lint",
+        "server:lint:fix": "cd server && npm run lint:fix"
     },
     "dependencies": {
         "app-module-path": "^2.2.0",
@@ -29,6 +31,7 @@
         "eslint-plugin-node": "^5.2.0",
         "eslint-plugin-promise": "^3.4.0",
         "eslint-plugin-standard": "^3.0.1",
+        "eslint-watch": "^3.1.3",
         "express": "^4.15.3",
         "file-loader": "^1.1.5",
         "friendly-errors-webpack-plugin": "^1.6.1",

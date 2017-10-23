@@ -26,12 +26,10 @@ module.exports = function (app) {
             let feat = await app.services.characters.addFeat(characterId, featId);
             if (feat) {
                 res.status(200).json(feat);
-            }
-            else {
+            } else {
                 res.status(404).send('Character or Feat not found.');
             }
-        }
-        catch (e) {
+        } catch (e) {
             res.status(500).send(e);
         }
     };
@@ -41,12 +39,10 @@ module.exports = function (app) {
             let feat = await app.services.characters.removeFeat(characterId, featId);
             if (feat) {
                 res.status(200).json(feat);
-            }
-            else {
+            } else {
                 res.status(404).send('Character or Feat not found.');
             }
-        }
-        catch (e) {
+        } catch (e) {
             res.status(500).send(e);
         }
     };

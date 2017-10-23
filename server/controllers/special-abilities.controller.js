@@ -20,6 +20,6 @@ module.exports = function (app) {
             res.json(specialAbility);
         });
     };
-    
+
     app.createController('specialAbilities', controller);
 }

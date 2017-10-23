@@ -1,4 +1,3 @@
-const path = require('path');
 const ObjectID = require('mongodb').ObjectID;
 const FeatModule = require('modules/feat.module');
 
@@ -9,8 +8,7 @@ module.exports = function(app) {
         var collection = app.mongodb.database.collection('feats');
         try {
             return await collection.findOne({ _id: new ObjectID(id) });
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             throw e;
         }
@@ -19,6 +17,7 @@ module.exports = function(app) {
     service.getAll = function(callback) {
         var collection = app.mongodb.database.collection('feats');
         collection.find({}).sort({ title: 1 }).toArray(function(err, records) {
+            if (err) throw err;
             callback(records.map(data => new FeatModule.Feat(data)));
         });
     }
@@ -28,12 +27,12 @@ module.exports = function(app) {
         delete feat._id;
         if (feat.subValue && feat.subValue.title) {
             delete feat.subValue.value;
-        }
-        else {
+        } else {
             delete feat.subValue;
         }
         var collection = app.mongodb.database.collection('feats');
         collection.findAndModify({ _id }, [], { $set: feat }, { new: true, upsert: true }, function(err, doc) {
+            if (err) throw err;
             callback(doc.value);
         });
     };

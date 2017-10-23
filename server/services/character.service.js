@@ -1,9 +1,6 @@
-const path = require('path');
 const ObjectID = require('mongodb').ObjectID;
 const CharacterModule = require('modules/character.module');
-const SkillModule = require('modules/skill.module');
 const featService = require('./feat.service');
-
 
 module.exports = function(app) {
     var service = {};
@@ -13,8 +10,7 @@ module.exports = function(app) {
         try {
             let characters = await collection.find();
             return characters.map(character => new CharacterModule.Character(character));
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             return [];
         }
@@ -25,8 +21,7 @@ module.exports = function(app) {
             var collection = app.mongodb.database.collection('characters');
             let character = await collection.findOne({ _id: new ObjectID(id) });
             return new CharacterModule.Character(character);
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             throw e;
         }
@@ -39,13 +34,10 @@ module.exports = function(app) {
             var collection = app.mongodb.database.collection('characters');
             await collection.findAndModify({ _id }, [], { $set: character }, { new: true, upsert: true });
             return true;
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             throw e;
         }
-
-        return false;
     };
 
     service.addFeat = async function(characterId, featId) {
@@ -62,15 +54,12 @@ module.exports = function(app) {
             feat._id = new ObjectID();
             character.feats.push(feat);
             await service.saveOrUpdate(character);
-            
+
             return feat;
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             throw e;
         }
-
-        return false;
     };
 
     service.removeFeat = async function(characterId, featId) {
@@ -86,15 +75,12 @@ module.exports = function(app) {
 
             const index = character.feats.findIndex(f => f._id === featId);
             character.feats = character.feats.splice(index, 1);
-            
+
             return await service.saveOrUpdate(character);
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             throw e;
         }
-
-        return false;
     };
 
     service.resetSkills = function(character, callback) {

@@ -33,16 +33,16 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Configure bodyParser
 app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true,
     limit: '50mb'
 }));
 
 // Configure cors.
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
     next();
 });
 

@@ -2,7 +2,6 @@ module.exports = function (app) {
     var controller = {};
 
     controller.index = function (req, res) {
-        
         var contentType = {
             'content-type': 'text/html; charset=utf-8'
         };
