@@ -10,15 +10,15 @@ export const store = new Vuex.Store({
     state: {
         items: [
             {
-                name: "Item 1",
+                name: 'Item 1',
                 price: 10
             },
             {
-                name: "Item 2",
+                name: 'Item 2',
                 price: 11
             },
             {
-                name: "Item 3",
+                name: 'Item 3',
                 price: 13
             }
         ]
@@ -32,7 +32,7 @@ export const store = new Vuex.Store({
         saleProducts: ({ items }) => {
             return items.map(item => {
                 return {
-                    name: "**" + item.name,
+                    name: '**' + item.name,
                     price: item.price / 2
                 }
             });

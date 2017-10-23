@@ -18,7 +18,7 @@ export default {
         const size = this.getByName(character.size);
         character.armorClass.sizeModifier = size.attack;
         character.grapple.sizeModifier = size.grapple;
-        var hideSkill = character.skills.filter(skill => skill.name === "Hide")[0];
+        var hideSkill = character.skills.filter(skill => skill.name === 'Hide')[0];
         hideSkill.hiddenModifier = size.hide;
     }
 }

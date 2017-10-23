@@ -3,19 +3,19 @@ export default {
     props: ['feat'],
     computed: {
         featType: function() {
-            return "feat-" + this.feat.type.toLowerCase().replace(' ', '-');
+            return 'feat-' + this.feat.type.toLowerCase().replace(' ', '-');
         },
         getFeatTooltip: function() {
-            var tooltip = "";
-            tooltip += this.feat.title + " [" + this.feat.type + "]";
+            var tooltip = '';
+            tooltip += this.feat.title + ' [' + this.feat.type + ']';
 
-            if (this.feat.prerequisite) tooltip += "\n\nPrerequisite: " + this.feat.prerequisite;
-            if (this.feat.benefit) tooltip += "\n\nBenefit: " + this.feat.benefit;
-            if (this.feat.normal) tooltip += "\n\nNormal: " + this.feat.normal;
-            if (this.feat.special) tooltip += "\n\nSpecial: " + this.feat.special;
+            if (this.feat.prerequisite) tooltip += '\n\nPrerequisite: ' + this.feat.prerequisite;
+            if (this.feat.benefit) tooltip += '\n\nBenefit: ' + this.feat.benefit;
+            if (this.feat.normal) tooltip += '\n\nNormal: ' + this.feat.normal;
+            if (this.feat.special) tooltip += '\n\nSpecial: ' + this.feat.special;
 
             return tooltip;
-        },
+        }
     },
     methods: {
     }

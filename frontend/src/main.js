@@ -41,7 +41,7 @@ const router = new VueRouter(Routes);
 
 new Vue({
     store,
-    el: "#dcs-app",
+    el: '#dcs-app',
     router,
     data: {
     },

@@ -10,7 +10,7 @@ export default {
     data: function() {
         return {
             showModal: false,
-            selected: null,
+            selected: null
         }
     },
     methods: {

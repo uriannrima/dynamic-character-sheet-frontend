@@ -15,7 +15,7 @@ export default {
                 untrained: false,
                 restriction: false,
                 miscellaneous: false,
-                aditionalInformation: false,
+                aditionalInformation: false
             }
         };
     },
@@ -28,7 +28,7 @@ export default {
                 untrained: false,
                 restriction: false,
                 miscellaneous: false,
-                aditionalInformation: false,
+                aditionalInformation: false
             };
         }
     },

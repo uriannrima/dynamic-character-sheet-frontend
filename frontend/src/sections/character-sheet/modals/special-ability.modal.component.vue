@@ -1,14 +1,13 @@
 <script>
 import DcsModal from 'Shared/modal.component';
 import SpecialAbilityService from 'Services/special-ability.service';
-import CharacterService from 'Services/character.service';
 
 export default {
     props: ['show', 'describeSpecialAbility', 'characterSpecialAbilities'],
     components: { DcsModal },
     data: function() {
         return {
-            selectedSpecialAbility: "",
+            selectedSpecialAbility: '',
             newSpecialAbility: SpecialAbilityService.new(),
             allSpecialAbilities: [],
             has: {
@@ -20,7 +19,7 @@ export default {
     },
     methods: {
         clear: function() {
-            this.selectedSpecialAbility = "";
+            this.selectedSpecialAbility = '';
             this.newSpecialAbility = SpecialAbilityService.new();
             this.has = {
                 prerequisite: false,
@@ -57,7 +56,7 @@ export default {
     },
     beforeUpdate: async function() {
         if (this.show) {
-            var specialAbiblities = await SpecialAbilityService.getAll();
+            var specialAbilities = await SpecialAbilityService.getAll();
             this.allSpecialAbilities = specialAbilities;
         }
     }

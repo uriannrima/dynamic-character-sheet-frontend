@@ -1,11 +1,9 @@
 export default {
     exportText: function (data, fileName) {
         var file = new Blob([JSON.stringify(data)], { type: 'text/plain' });
-        if (window.navigator.msSaveOrOpenBlob)
-            window.navigator.msSaveOrOpenBlob(file, fileName);
-        else {
-            var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
+        if (window.navigator.msSaveOrOpenBlob) { window.navigator.msSaveOrOpenBlob(file, fileName); } else {
+            var a = document.createElement('a');
+            var url = URL.createObjectURL(file);
             a.href = url;
             a.download = fileName;
             document.body.appendChild(a);

@@ -21,8 +21,17 @@ import SpellsContainer from './containers/spells.container';
 
 export default {
     components: {
-        DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal,
-        AbilityScoresContainer, ArmorClassContainer, FeatsContainer, PerDayContainer, PossessionsContainer, SavingThrowsContainer, SkillsContainer, SpellsContainer
+        DcsFeatModal,
+DcsSpellModal,
+DcsSpecialAbilityModal,
+        AbilityScoresContainer,
+ArmorClassContainer,
+FeatsContainer,
+PerDayContainer,
+PossessionsContainer,
+SavingThrowsContainer,
+SkillsContainer,
+SpellsContainer
     },
     data: function() {
         return {
@@ -35,7 +44,7 @@ export default {
     },
     watch: {
         // Maybe find out a better way, but so far, it's what we've got.
-        "character.abilityScores": {
+        'character.abilityScores': {
             deep: true,
             handler: function(oldV, newV) {
                 this.character.updateAbilityScore();
@@ -47,8 +56,8 @@ export default {
         classesCombined: {
             get: function() {
                 return this.character.classes.map(classe => {
-                    if (!classe.name || !classe.level) return "";
-                    return classe.name + " (" + classe.level + ")";
+                    if (!classe.name || !classe.level) return '';
+                    return classe.name + ' (' + classe.level + ')';
                 });
             },
             set: function(newValue) {
@@ -82,8 +91,8 @@ export default {
         languagesCombined: {
             get: function() {
                 return this.character.languages.map((language, index) => {
-                    if (!language) return "";
-                    return index > 0 ? " " + language : language;
+                    if (!language) return '';
+                    return index > 0 ? ' ' + language : language;
                 });
             },
             set: function(newValue) {
@@ -118,8 +127,8 @@ export default {
             spellList.spells.push(spellAdded);
         },
         removeSpell: function(spellRemoved) {
-            var spellList = _.filter(this.character.spellLists, o => o.level == spellRemoved.level)[0];
-            var spellIndex = _.findIndex(spellList.spells, spell => spell._id == spellRemoved._id);
+            var spellList = _.filter(this.character.spellLists, o => o.level === spellRemoved.level)[0];
+            var spellIndex = _.findIndex(spellList.spells, spell => spell._id === spellRemoved._id);
             spellList.spells.splice(spellIndex, 1);
         },
         loadCharacter: function(character) {
@@ -128,7 +137,7 @@ export default {
         saveOrUpdate: function() {
             CharacterService.saveOrUpdate(this.character).then(data => {
                 this.character._id = data._id;
-                window.history.pushState("", "", '/#/character/' + this.character._id);
+                window.history.pushState('', '', '/#/character/' + this.character._id);
             });
         },
         exportCharacter: function() {
@@ -141,9 +150,9 @@ export default {
             var element = document.getElementById('importField');
             if (element.files.length > 0) {
                 ExporterService.importFile(element.files[0]).then(characterData => {
-                    element.value = "";
+                    element.value = '';
                     this.character = CharacterService.load(characterData);
-                    window.history.pushState("", "", '/#/character/' + this.character._id);
+                    window.history.pushState('', '', '/#/character/' + this.character._id);
                     this.saveOrUpdate();
                 });
             }

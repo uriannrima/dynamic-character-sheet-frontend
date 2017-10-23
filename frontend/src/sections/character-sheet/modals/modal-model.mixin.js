@@ -17,10 +17,10 @@ export default {
         return {
             all: [],
             backup: null,
-            selected: "",
+            selected: '',
             model: {},
             editing: false,
-            duplicate: false,
+            duplicate: false
         }
     },
     watch: {
@@ -46,7 +46,7 @@ export default {
         clear: function () {
             this.resetScroll();
             this.backup = null;
-            this.selected = "";
+            this.selected = '';
             this.model = this.service.new();
             this.editing = false;
             this.duplicate = false;
@@ -56,7 +56,7 @@ export default {
         },
         clearDescription: function () {
             this.$emit('update:describe', null);
-            this.selected = "";
+            this.selected = '';
         },
         close: function () {
             this.clear();
@@ -124,6 +124,6 @@ export default {
             } else {
                 this.selected = this.backup;
             }
-        },
+        }
     }
 }

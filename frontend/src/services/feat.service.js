@@ -1,7 +1,6 @@
 import axios from 'axios';
 import featModule from 'Modules/feat.module';
 import Constants from 'Constants';
-import guid from 'Utils/guid';
 
 export default {
     featsOffline: {
@@ -10,9 +9,8 @@ export default {
     new: function (data = {}) {
         return new featModule.feat(data);
     },
-    toCharacterFeat: function(feat){
+    toCharacterFeat: function(feat) {
         // Change it to become a character feat.
-        feat._id = guid.generate();
         return new featModule.feat(feat);
     },
     getAll: function () {
@@ -31,7 +29,6 @@ export default {
             return axios.post(Constants.API_URL + '/feats', { feat }).then(response => {
                 return response.data;
             }, reason => {
-                feat._id = generateGuid();
                 return this.featsOffline[feat._id] = feat;
             });
         }

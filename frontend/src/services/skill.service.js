@@ -1,7 +1,6 @@
 import axios from 'axios';
 import skillModule from 'Modules/skill.module';
 import Constants from 'Constants';
-import guid from 'Utils/guid';
 
 export default {
     skillsOffline: {
@@ -12,7 +11,6 @@ export default {
     },
     toCharacterFeat: function (skill) {
         // Change it to become a character skill.
-        skill._id = guid.generate();
         return new skillModule.skill(skill);
     },
     get: function () {
@@ -34,7 +32,6 @@ export default {
             return axios.post(Constants.API_URL + '/skills', { skill }).then(response => {
                 return response.data;
             }, reason => {
-                skill._id = guid.generate();
                 return this.skillsOffline[skill._id] = skill;
             });
         }

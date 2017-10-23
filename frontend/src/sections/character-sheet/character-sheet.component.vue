@@ -19,8 +19,17 @@ import SpellsContainer from './containers/spells.container';
 
 export default {
     components: {
-        DcsFeatModal, DcsSpellModal, DcsSpecialAbilityModal,
-        AbilityScoresContainer, ArmorClassContainer, FeatsContainer, PerDayContainer, PossessionsContainer, SavingThrowsContainer, SkillsContainer, SpellsContainer
+        DcsFeatModal,
+DcsSpellModal,
+DcsSpecialAbilityModal,
+        AbilityScoresContainer,
+ArmorClassContainer,
+FeatsContainer,
+PerDayContainer,
+PossessionsContainer,
+SavingThrowsContainer,
+SkillsContainer,
+SpellsContainer
     },
     data: function() {
         return {
@@ -33,7 +42,7 @@ export default {
     },
     watch: {
         // Maybe find out a better way, but so far, it's what we've got.
-        "character.abilityScores": {
+        'character.abilityScores': {
             deep: true,
             handler: function(oldV, newV) {
                 this.character.updateAbilityScore();
@@ -45,8 +54,8 @@ export default {
         classesCombined: {
             get: function() {
                 return this.character.classes.map(classe => {
-                    if (!classe.name || !classe.level) return "";
-                    return classe.name + " (" + classe.level + ")";
+                    if (!classe.name || !classe.level) return '';
+                    return classe.name + ' (' + classe.level + ')';
                 });
             },
             set: function(newValue) {
@@ -80,8 +89,8 @@ export default {
         languagesCombined: {
             get: function() {
                 return this.character.languages.map((language, index) => {
-                    if (!language) return "";
-                    return index > 0 ? " " + language : language;
+                    if (!language) return '';
+                    return index > 0 ? ' ' + language : language;
                 });
             },
             set: function(newValue) {
@@ -126,7 +135,7 @@ export default {
         saveOrUpdate: async function() {
             var data = await CharacterService.saveOrUpdate(this.character);
             this.character._id = data._id;
-            window.history.pushState("", "", '/#/character/' + this.character._id);
+            window.history.pushState('', '', '/#/character/' + this.character._id);
         },
         exportCharacter: function() {
             this.saveOrUpdate();
@@ -138,9 +147,9 @@ export default {
             var element = document.getElementById('importField');
             if (element.files.length > 0) {
                 ExporterService.importFile(element.files[0]).then(characterData => {
-                    element.value = "";
+                    element.value = '';
                     this.character = CharacterService.load(characterData);
-                    window.history.pushState("", "", '/#/character/' + this.character._id);
+                    window.history.pushState('', '', '/#/character/' + this.character._id);
                     this.saveOrUpdate();
                 });
             }

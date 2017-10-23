@@ -1,7 +1,6 @@
 import axios from 'axios';
 import characterModule from 'Modules/character.module';
 import Constants from 'Constants';
-import guid from 'Utils/guid';
 
 export default {
     charactersOffline: {
@@ -40,7 +39,6 @@ export default {
             return axios.post(Constants.API_URL + '/characters', { character }).then(response => {
                 return response.data;
             }, reason => {
-                character._id = guid.generate();
                 return this.charactersOffline[character._id] = character;
             });
         }

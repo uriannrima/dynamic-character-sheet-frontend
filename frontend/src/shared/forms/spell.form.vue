@@ -6,9 +6,9 @@ export default {
     mixins: [FormMixin],
     data: function() {
         return {
-            selectedSchool: "",
-            selectedRange: "",
-            selectedEffect: "",
+            selectedSchool: '',
+            selectedRange: '',
+            selectedEffect: '',
             savingThrows: ['Fortitude', 'Reflex', 'Will'],
             allSchools: [],
             allDescriptors: [],
@@ -19,8 +19,8 @@ export default {
             allDurations: [],
             allSavingThrowResolve: [],
             has: {
-                targets : false,
-                additionalInformation: false,
+                targets: false,
+                additionalInformation: false
             }
         }
     },
@@ -32,7 +32,7 @@ export default {
             set: function(value) {
                 var { name, description } = value;
                 this.model.school = Object.assign({
-                    subSchool: "",
+                    subSchool: '',
                     name,
                     description
                 });
@@ -55,8 +55,8 @@ export default {
             set: function(value) {
                 var { name, description } = value;
                 this.model.effect = Object.assign({
-                    type: "",
-                    format: "",
+                    type: '',
+                    format: '',
                     name,
                     description
                 });
