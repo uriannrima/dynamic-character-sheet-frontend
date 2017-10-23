@@ -2,7 +2,7 @@ const path = require('path');
 const ObjectID = require('mongodb').ObjectID;
 const characterModule = require('modules/character.module');
 const skillModule = require('modules/skill.module');
-const featService = require('./feat-service');
+const featService = require('./feat.service');
 
 
 module.exports = function(app) {
@@ -73,7 +73,7 @@ module.exports = function(app) {
         return false;
     };
 
-    service.removeFeat = function(characterId, featId) {
+    service.removeFeat = async function(characterId, featId) {
         try {
             // Query both feat and character at the same time.
             // But await for both of them to resolve.

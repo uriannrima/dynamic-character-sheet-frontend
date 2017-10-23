@@ -94,7 +94,7 @@ export default {
         }
     },
     methods: {
-        addToCharacter: function(arrayName, added) {
+        addToCharacter: async function(arrayName, added) {
             let feat = await CharacterService.addFeat(this.character._id, added._id);
             this.character[arrayName].push(feat);
         },

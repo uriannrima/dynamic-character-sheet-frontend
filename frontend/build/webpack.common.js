@@ -10,46 +10,91 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../../public'),
-        devtoolModuleFilenameTemplate: info => {
-            if (info.resource.match(/\.vue$/)) {
-                $filename = info.allLoaders.match(/type=script/)
-                    ? info.resourcePath : 'generated';
-            } else {
-                $filename = info.resourcePath;
-            }
-            return $filename;
-        }
+        // publicPath: '/',
+        // devtoolModuleFilenameTemplate: info => {
+        //     if (info.resource.match(/\.vue$/)) {
+        //         $filename = info.allLoaders.match(/type=script/)
+        //             ? info.resourcePath : 'generated';
+        //     } else {
+        //         $filename = info.resourcePath;
+        //     }
+        //     return $filename;
+        // }
     },
     module: {
         rules: [
             {
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+                enforce: 'pre',
+                include: [path.resolve('./src'), path.resolve('./test')],
+                options: {
+                    formatter: require('eslint-friendly-formatter')
+                }
+            },
+            {
                 test: /\.vue$/,
-                use: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        css: {
+                            loader: 'css-loader',
+                            options: {
+                                // minimize: process.env.NODE_ENV === 'production',
+                                minimize: false,
+                                sourceMap: false
+                            }
+                        },
+                        postcss: {
+                            loader: 'css-loader',
+                            options: {
+                                // minimize: process.env.NODE_ENV === 'production',
+                                minimize: false,
+                                sourceMap: false
+                            }
+                        }
+                    }
+                }
             },
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader'
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/img/[name].[hash:7].[ext]'
                 }
             },
             {
-                test: /\.(eot|woff2|woff|ttf|svg|png)$/,
-                use: 'url-loader'
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[hash:7].[ext]'
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/fonts/[name].[hash:7].[ext]'
+                }
             },
             {
                 test: /\.html$/,
-                use: 'html-loader'
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                loader: 'html-loader'
             }
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.html', '.css', '.vue'],
+        extensions: ['*', '.js', '.html', '.css', '.vue', '.json'],
         alias: {
+            '@': path.resolve(__dirname, '../src/'),
             'Assets': path.resolve(__dirname, '../assets/'),
             'Services': path.resolve(__dirname, '../src/services/'),
             'Modules': path.resolve(__dirname, '../../common/modules/'),

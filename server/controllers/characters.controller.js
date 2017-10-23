@@ -1,27 +1,27 @@
-module.exports = function(app) {
+module.exports = function (app) {
     var controller = {};
 
-    controller.getAll = function(req, res) {
+    controller.getAll = function (req, res) {
         app.services.characters.getAll(characters => {
             res.json(characters);
         });
     };
 
-    controller.get = async function({ params: { id: characterId } }, res) {
+    controller.get = async function ({ params: { id: characterId } }, res) {
         // Extract "id" from "params", that was extracted from "require"
         // Them "export" it as "characterId".
         var character = await app.services.characters.getById(characterId);
         res.json(character);
     };
 
-    controller.saveOrUpdate = function(req, res) {
+    controller.saveOrUpdate = function (req, res) {
         var rCharacter = req.body.character;
         app.services.characters.saveOrUpdate(rCharacter, character => {
             res.json(character);
         });
     };
 
-    controller.addFeat = function({ params: { characterId, featId } }, res) {
+    controller.addFeat = async function ({ params: { characterId, featId } }, res) {
         try {
             let feat = await app.services.characters.addFeat(characterId, featId);
             if (feat) {
@@ -36,7 +36,7 @@ module.exports = function(app) {
         }
     };
 
-    controller.removeFeat = function({ params: { characterId, featId } }, res) {
+    controller.removeFeat = async function ({ params: { characterId, featId } }, res) {
         try {
             let feat = await app.services.characters.removeFeat(characterId, featId);
             if (feat) {
@@ -51,7 +51,7 @@ module.exports = function(app) {
         }
     };
 
-    controller.resetSkills = function(req, res) {
+    controller.resetSkills = function (req, res) {
         var rCharacter = req.body.character;
         app.services.characters.resetSkills(rCharacter, character => {
             res.json(character);

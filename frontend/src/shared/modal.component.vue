@@ -6,7 +6,7 @@ export default {
     },
     watch: {
         show: function(value) {
-            document.body.style = value ? "overflow-y:hidden;" : "";
+            document.body.style = value ? 'overflow-y:hidden;' : '';
         }
     },
     methods: {
@@ -23,8 +23,8 @@ export default {
         document.body.appendChild(this.$el);
 
         // Add listener to the ESC button.
-        document.addEventListener("keydown", (e) => {
-            if (this.show && e.keyCode == 27) {
+        document.addEventListener('keydown', (e) => {
+            if (this.show && e.keyCode === 27) {
                 this.onClose();
             }
         });

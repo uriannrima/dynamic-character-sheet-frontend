@@ -3,7 +3,7 @@ export default {
     props: ['showInputLabel', 'name', 'keyAbility', 'base', 'magicModifier', 'miscModifier', 'tempModifier'],
     computed: {
         getTotal: function() {
-            return this.base + + this.keyAbility.getTempModifier() + this.magicModifier + this.miscModifier + this.tempModifier;
+            return this.base + this.keyAbility.getTempModifier() + this.magicModifier + this.miscModifier + this.tempModifier;
         }
     }
 }

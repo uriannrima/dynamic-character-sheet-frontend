@@ -12,8 +12,8 @@ module.exports = function (app) {
     router.put('/:characterId/feats/:featId', app.controllers.characters.addFeat);
     router.delete('/:characterId/feats/:featId', app.controllers.characters.removeFeat);
     
-    router.put('/:characterId/skills/:skillId', app.controllers.characters.addSkill);
-    router.delete('/:characterId/skills/:skillId', app.controllers.characters.removeSkill);
+    // router.put('/:characterId/skills/:skillId', app.controllers.characters.addSkill);
+    // router.delete('/:characterId/skills/:skillId', app.controllers.characters.removeSkill);
 
     app.use('/api/characters', router);
 }
