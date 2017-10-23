@@ -35,7 +35,7 @@ var abilityScore = function ({ name, value, tempValue, updateFn }) {
     };
 };
 
-exports.abilityScore = abilityScore;
+exports.AbilityScore = abilityScore;
 
 var factory = {
     create: function ({ name, value, tempValue }) {
@@ -55,7 +55,7 @@ var factory = {
     }
 }
 
-exports.factory = factory;
+exports.Factory = factory;
 
 factory.add({
     name: "strength",

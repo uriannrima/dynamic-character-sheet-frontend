@@ -1,5 +1,5 @@
 import axios from 'axios';
-import characterModule from 'Modules/character.module';
+import CharacterModule from 'Modules/character.module';
 import Constants from 'Constants';
 
 export default {
@@ -7,21 +7,21 @@ export default {
 
     },
     new: function () {
-        return new characterModule.character({});
+        return new CharacterModule.Character({});
     },
     load: function (characterData) {
-        return new characterModule.character(characterData);
+        return new CharacterModule.Character(characterData);
     },
     getAll: function (id) {
         return axios.get(Constants.API_URL + '/characters/').then(response => {
             return response.data.map(characterData => {
-                return new characterModule.character(characterData);
+                return new CharacterModule.Character(characterData);
             });
         });
     },
     get: function (id) {
         return axios.get(Constants.API_URL + '/characters/' + id).then(response => {
-            return new characterModule.character(response.data);
+            return new CharacterModule.Character(response.data);
         });
     },
     saveOrUpdate: function (character) {

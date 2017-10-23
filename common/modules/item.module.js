@@ -14,5 +14,5 @@ var factory = function (length) {
     return items;
 }
 
-exports.item = item;
-exports.factory = factory;
+exports.Item = item;
+exports.Factory = factory;

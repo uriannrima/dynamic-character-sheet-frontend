@@ -1,47 +1,47 @@
-const characterModule = require('./character.module');
-const classeModule = require('./classe.module');
-const abilityScoreModule = require('./ability-score.module');
-const statusModule = require('./status.module');
-const armorClassModule = require('./armor-class.module');
-const initiativeModule = require('./initiative.module');
-const savingThrowsModule = require('./saving-throw.module');
-const grappleModule = require('./grapple.module');
-const skillsModule = require('./skill.module');
-const attackModule = require('./attack.module');
-const ammunitionModule = require('./ammunition.module');
-const gearModule = require('./gear.module');
-const itemModule = require('./item.module');
-const carryCapacityModule = require('./carry-capacity.module');
-const moneyModule = require('./money.module');
-const featModule = require('./feat.module');
-const specialAbilityModule = require('./special-ability.module');
-const subValueModule = require('./sub-value.module');
-const spellsPerDayModule = require('./spells-per-day.module');
-const spellModule = require('./spell.module');
-const sizeModule = require('./size.module');
-const spellSchoolModule = require('./spell-school.module');
+const CharacterModule = require('./character.module');
+const ClasseModule = require('./classe.module');
+const AbilityScoreModule = require('./ability-score.module');
+const StatusModule = require('./status.module');
+const ArmorClassModule = require('./armor-class.module');
+const InitiativeModule = require('./initiative.module');
+const SavingThrowsModule = require('./saving-throw.module');
+const GrappleModule = require('./grapple.module');
+const SkillsModule = require('./skill.module');
+const AttackModule = require('./attack.module');
+const AmmunitionModule = require('./ammunition.module');
+const GearModule = require('./gear.module');
+const ItemModule = require('./item.module');
+const CarryCapacityModule = require('./carry-capacity.module');
+const MoneyModule = require('./money.module');
+const FeatModule = require('./feat.module');
+const SpecialAbilityModule = require('./special-ability.module');
+const SubValueModule = require('./sub-value.module');
+const SpellsPerDayModule = require('./spells-per-day.module');
+const SpellModule = require('./spell.module');
+const SizeModule = require('./size.module');
+const SpellSchoolModule = require('./spell-school.module');
 
 module.exports = {
-    characterModule,
-    classeModule,
-    abilityScoreModule,
-    statusModule,
-    armorClassModule,
-    initiativeModule,
-    savingThrowsModule,
-    grappleModule,
-    skillsModule,
-    attackModule,
-    ammunitionModule,
-    gearModule,
-    itemModule,
-    carryCapacityModule,
-    moneyModule,
-    featModule,
-    subValueModule,
-    spellsPerDayModule,
-    spellModule,
-    specialAbilityModule,
-    sizeModule, 
-    spellSchoolModule
+    CharacterModule,
+    ClasseModule,
+    AbilityScoreModule,
+    StatusModule,
+    ArmorClassModule,
+    InitiativeModule,
+    SavingThrowsModule,
+    GrappleModule,
+    SkillsModule,
+    AttackModule,
+    AmmunitionModule,
+    GearModule,
+    ItemModule,
+    CarryCapacityModule,
+    MoneyModule,
+    FeatModule,
+    SubValueModule,
+    SpellsPerDayModule,
+    SpellModule,
+    SpecialAbilityModule,
+    SizeModule,
+    SpellSchoolModule
 }

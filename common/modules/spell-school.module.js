@@ -1,4 +1,4 @@
-exports.spellSchool = function ({ _id, name, description, subject, subSchools = "" }) {
+exports.SpellSchool = function ({ _id, name, description, subject, subSchools = "" }) {
     return {
         _id,
         name,
@@ -8,7 +8,7 @@ exports.spellSchool = function ({ _id, name, description, subject, subSchools = 
     }
 }
 
-exports.subSchool = function ({ name, description }) {
+exports.SubSchool = function ({ name, description }) {
     return {
         name,
         description

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import spellSchoolModule from 'Modules/spell-school.module';
+import SpellSchoolModule from 'Modules/spell-school.module';
 import Constants from 'Constants';
 
 export default {
@@ -7,11 +7,11 @@ export default {
 
     },
     new: function () {
-        return new spellSchoolModule.spellSchool({});
+        return new SpellSchoolModule.SpellSchool({});
     },
     toCharacterSpecialAbility: function(spellSchool) {
         // Change it to become a character spell scholl.
-        return new spellSchoolModule.spellSchool(spellSchool);
+        return new SpellSchoolModule.SpellSchool(spellSchool);
     },
     getAll: function () {
         return axios.get(Constants.API_URL + '/spellSchools').then(response => {

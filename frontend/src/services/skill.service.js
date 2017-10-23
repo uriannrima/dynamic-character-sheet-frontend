@@ -1,5 +1,5 @@
 import axios from 'axios';
-import skillModule from 'Modules/skill.module';
+import SkillModule from 'Modules/skill.module';
 import Constants from 'Constants';
 
 export default {
@@ -7,14 +7,14 @@ export default {
 
     },
     new: function (data = {}) {
-        return new skillModule.skill(data);
+        return new SkillModule.Skill(data);
     },
     toCharacterFeat: function (skill) {
         // Change it to become a character skill.
-        return new skillModule.skill(skill);
+        return new SkillModule.Skill(skill);
     },
     get: function () {
-        return skillModule.DEFAULT_SKILLS;
+        return SkillModule.DEFAULT_SKILLS;
     },
     getAll: function () {
         return axios.get(Constants.API_URL + '/skills').then(response => {

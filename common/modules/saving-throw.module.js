@@ -31,7 +31,7 @@ var savingThrow = function ({ name, keyAbility, base, abilityModifier, magicModi
     }
 }
 
-exports.savingThrow = savingThrow;
+exports.SavingThrow = savingThrow;
 
 var factory = {
     create: function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
@@ -47,7 +47,7 @@ var factory = {
     }
 }
 
-exports.factory = factory;
+exports.Factory = factory;
 
 factory.add({
     name: "fortitude",

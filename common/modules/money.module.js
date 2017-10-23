@@ -1,4 +1,4 @@
-exports.money = function ({ copper, silver, gold, platinum, treasure }) {
+exports.Money = function ({ copper, silver, gold, platinum, treasure }) {
     return {
         copper: copper || 0,
         silver: silver || 0,

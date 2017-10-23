@@ -1,4 +1,4 @@
-exports.grapple = function ({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
+exports.Grapple = function ({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
     return {
         baseAttackBonus,
         strengthModifier,

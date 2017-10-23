@@ -1,5 +1,5 @@
 import axios from 'axios';
-import spellModule from 'Modules/spell.module';
+import SpellModule from 'Modules/spell.module';
 import Constants from 'Constants';
 
 export default {
@@ -7,11 +7,11 @@ export default {
 
     },
     new: function (data = {}) {
-        return new spellModule.spell(data);
+        return new SpellModule.Spell(data);
     },
     toCharacterspell: function (spell) {
         // Change it to become a character spell.
-        return new spellModule.spell(spell);
+        return new SpellModule.Spell(spell);
     },
     getAll: function () {
         return axios.get(Constants.API_URL + '/spells').then(response => {
@@ -19,25 +19,25 @@ export default {
         });
     },
     getAllDescriptors: async function () {
-        return spellModule.descriptors;
+        return SpellModule.descriptors;
     },
     getAllComponents: async function () {
-        return spellModule.components;
+        return SpellModule.components;
     },
     getAllCastingTimes: async function () {
-        return spellModule.castingTimes;
+        return SpellModule.castingTimes;
     },
     getAllRanges: async function () {
-        return spellModule.ranges;
+        return SpellModule.ranges;
     },
     getAllEffects: async function () {
-        return spellModule.effects;
+        return SpellModule.effects;
     },
     getAllDurations: async function () {
-        return spellModule.durations;
+        return SpellModule.durations;
     },
     getAllSavingThrowResolve: async function () {
-        return spellModule.savingThrowResolve;
+        return SpellModule.savingThrowResolve;
     },
     saveOrUpdate: function (spell) {
         if (spell._id) {

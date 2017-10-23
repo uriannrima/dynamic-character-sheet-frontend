@@ -8,14 +8,14 @@ module.exports = function (app) {
     service.getById = function (_id, callback) {
         var collection = app.mongodb.database.collection('specialAbilities');
         collection.find({ _id: new ObjectID(_id) }).toArray(function (err, records) {
-            callback(new specialAbilityModule.specialAbility(records[0]));
+            callback(new SpecialAbilityModule.SpecialAbility(records[0]));
         });
     };
 
     service.getAll = function (callback) {
         var collection = app.mongodb.database.collection('specialAbilities');
         collection.find({}).sort({ title: 1 }).toArray(function (err, records) {
-            callback(records.map(data => new specialAbilityModule.specialAbility(data)));
+            callback(records.map(data => new SpecialAbilityModule.SpecialAbility(data)));
         });
     }
 

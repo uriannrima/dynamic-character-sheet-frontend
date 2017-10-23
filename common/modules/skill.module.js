@@ -74,4 +74,4 @@ exports.DEFAULT_SKILLS = [
     new skill({ name: 'Use Rope', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: false })
 ];
 
-exports.skill = skill;
+exports.Skill = skill;

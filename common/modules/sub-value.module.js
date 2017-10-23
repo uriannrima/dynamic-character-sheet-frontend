@@ -1,4 +1,4 @@
-exports.subValue = function ({ title = "", value = "" }) {
+exports.SubValue = function ({ title = "", value = "" }) {
     return {
         title,
         value

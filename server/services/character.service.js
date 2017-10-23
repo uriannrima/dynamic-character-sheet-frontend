@@ -1,7 +1,7 @@
 const path = require('path');
 const ObjectID = require('mongodb').ObjectID;
-const characterModule = require('modules/character.module');
-const skillModule = require('modules/skill.module');
+const CharacterModule = require('modules/character.module');
+const SkillModule = require('modules/skill.module');
 const featService = require('./feat.service');
 
 
@@ -12,7 +12,7 @@ module.exports = function(app) {
         var collection = app.mongodb.database.collection('characters');
         try {
             let characters = await collection.find();
-            return characters.map(character => new characterModule.character(character));
+            return characters.map(character => new CharacterModule.Character(character));
         }
         catch (e) {
             console.log(e);
@@ -24,7 +24,7 @@ module.exports = function(app) {
         try {
             var collection = app.mongodb.database.collection('characters');
             let character = await collection.findOne({ _id: new ObjectID(id) });
-            return new characterModule.character(character);
+            return new CharacterModule.Character(character);
         }
         catch (e) {
             console.log(e);

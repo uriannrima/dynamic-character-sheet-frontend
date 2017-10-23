@@ -1,4 +1,4 @@
-exports.armorClass = function ({ base, armorBonus, shieldBonus, dexModifier, sizeModifier, naturalArmor, deflectionModifier, miscModifier }) {
+exports.ArmorClass = function ({ base, armorBonus, shieldBonus, dexModifier, sizeModifier, naturalArmor, deflectionModifier, miscModifier }) {
     return {
         base,
         armorBonus,

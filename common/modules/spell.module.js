@@ -1,4 +1,4 @@
-var spellSchoolModule = require('./spell-school.module');
+const SpellSchoolModule = require('./spell-school.module');
 
 exports.components = [{
     name: "Verbal",
@@ -271,8 +271,8 @@ exports.castingTimes = [
     "Custom"
 ];
 
-exports.spell = function ({
-    _id, name, school = new spellSchoolModule.spellSchool({}),
+exports.Spell = function ({
+    _id, name, school = new SpellSchoolModule.SpellSchool({}),
     descriptors = [], level = 0, components = [],
     castingTimeAmount = 1, castingTime = "Standard Action", range = exports.ranges[0], targets = "", effect = "", durations = [],
     savingThrow = { check: "", resolve: "" }, description, spellResistance = true, aditionalInformation }) {

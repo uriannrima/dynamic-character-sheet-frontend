@@ -12,7 +12,7 @@ var armor = function ({ name, type, acBonus, maxDex, checkPenalty, spellFailure,
     };
 };
 
-exports.armor = armor;
+exports.Armor = armor;
 
 var shield = function ({ name, acBonus, checkPenalty, spellFailure, weight, specialProperties }) {
     return {
@@ -25,7 +25,7 @@ var shield = function ({ name, acBonus, checkPenalty, spellFailure, weight, spec
     };
 }
 
-exports.shield = shield;
+exports.Shield = shield;
 
 var protectiveItem = function ({ name, acBonus, weight, specialProperties }) {
     return {
@@ -36,7 +36,7 @@ var protectiveItem = function ({ name, acBonus, weight, specialProperties }) {
     };
 }
 
-exports.protectiveItem = protectiveItem;
+exports.ProtectiveItem = protectiveItem;
 
 var gear = function ({ }) {
     return {
@@ -46,4 +46,4 @@ var gear = function ({ }) {
     }
 }
 
-exports.gear = gear;
+exports.Gear = gear;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import specialAbilityModule from 'Modules/special-ability.module';
+import SpecialAbilityModule from 'Modules/special-ability.module';
 import Constants from 'Constants';
 
 export default {
@@ -7,11 +7,11 @@ export default {
 
     },
     new: function () {
-        return new specialAbilityModule.specialAbility({});
+        return new SpecialAbilityModule.SpecialAbility({});
     },
     toCharacterSpecialAbility: function(specialAbility) {
         // Change it to become a character special ability.
-        return new specialAbilityModule.specialAbility(specialAbility);
+        return new SpecialAbilityModule.SpecialAbility(specialAbility);
     },
     getAll: function () {
         return axios.get(Constants.API_URL + '/specialAbilities').then(response => {

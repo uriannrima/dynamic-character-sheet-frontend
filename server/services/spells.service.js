@@ -1,6 +1,6 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var spellModule = require('modules/spell.module');
+var SpellModule = require('modules/spell.module');
 
 module.exports = function (app) {
     var service = {};
@@ -8,14 +8,14 @@ module.exports = function (app) {
     service.getById = function (_id, callback) {
         var collection = app.mongodb.database.collection('spells');
         collection.find({ _id: new ObjectID(_id) }).toArray(function (err, records) {
-            callback(new spellModule.spell(records[0]));
+            callback(new SpellModule.Spell(records[0]));
         });
     };
 
     service.getAll = function (callback) {
         var collection = app.mongodb.database.collection('spells');
         collection.find({ }).sort({ title : 1 }).toArray(function (err, records) {
-            callback(records.map(data => new spellModule.spell(data)));
+            callback(records.map(data => new SpellModule.Spell(data)));
         });
     }
 

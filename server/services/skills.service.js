@@ -1,6 +1,6 @@
 const path = require('path');
 var ObjectID = require('mongodb').ObjectID;
-var skillModule = require('modules/skill.module');
+var SkillModule = require('modules/skill.module');
 
 module.exports = function (app) {
     var service = {};
@@ -9,7 +9,7 @@ module.exports = function (app) {
         var collection = app.mongodb.database.collection('skills');
         collection.find({}).sort({ name: 1 }).toArray(function (err, records) {
             var skills = records.map(record => {
-                return new skillModule.skill(record);
+                return new SkillModule.Skill(record);
             })
             callback(skills);
         });

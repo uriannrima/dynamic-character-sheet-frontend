@@ -1,4 +1,4 @@
-exports.classe = function ({ name, level, isCaster, casterAbility, castingBonusAbility }) {
+exports.Classe = function ({ name, level, isCaster, casterAbility, castingBonusAbility }) {
     return {
         name,
         level,

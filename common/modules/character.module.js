@@ -1,7 +1,7 @@
 var Modules = require('./');
 _ = require('lodash');
 
-exports.character = function ({
+exports.Character = function ({
     _id, name, playerName,
     race, alignment, deity,
     size, age, gender, height,
@@ -23,7 +23,7 @@ exports.character = function ({
         hair, skin, speed,
         damageReduction,
         conditionModifier,
-        size: size || new Modules.sizeModule.size({
+        size: size || new Modules.SizeModule.Size({
             name: "Medium",
             attackDCBonus: "0",
             grappleBonus: "0",
@@ -31,22 +31,22 @@ exports.character = function ({
             carryBonus: "1"
         }),
         classes: classes || [
-            new Modules.classeModule.classe({})
+            new Modules.ClasseModule.Classe({})
         ],
-        abilityScores: abilityScores ? abilityScores.map(abilityScore => Modules.abilityScoreModule.factory.create(abilityScore)) : [
-            new Modules.abilityScoreModule.factory.create({ name: 'strength' }),
-            new Modules.abilityScoreModule.factory.create({ name: 'dexterity' }),
-            new Modules.abilityScoreModule.factory.create({ name: 'constitution' }),
-            new Modules.abilityScoreModule.factory.create({ name: 'intelligence' }),
-            new Modules.abilityScoreModule.factory.create({ name: 'wisdom' }),
-            new Modules.abilityScoreModule.factory.create({ name: 'charisma' })
+        abilityScores: abilityScores ? abilityScores.map(abilityScore => Modules.AbilityScoreModule.Factory.create(abilityScore)) : [
+            new Modules.AbilityScoreModule.Factory.create({ name: 'strength' }),
+            new Modules.AbilityScoreModule.Factory.create({ name: 'dexterity' }),
+            new Modules.AbilityScoreModule.Factory.create({ name: 'constitution' }),
+            new Modules.AbilityScoreModule.Factory.create({ name: 'intelligence' }),
+            new Modules.AbilityScoreModule.Factory.create({ name: 'wisdom' }),
+            new Modules.AbilityScoreModule.Factory.create({ name: 'charisma' })
         ],
-        status: status || new Modules.statusModule.status({
+        status: status || new Modules.StatusModule.Status({
             healthPoints: 1,
             wounds: "",
             nonLethalDamage: 0,
         }),
-        armorClass: armorClass ? new Modules.armorClassModule.armorClass(armorClass) : new Modules.armorClassModule.armorClass({
+        armorClass: armorClass ? new Modules.ArmorClassModule.ArmorClass(armorClass) : new Modules.ArmorClassModule.ArmorClass({
             base: 10,
             armorBonus: 0,
             shieldBonus: 0,
@@ -56,35 +56,35 @@ exports.character = function ({
             deflectionModifier: 0,
             miscModifier: 0
         }),
-        initiative: initiative ? new Modules.initiativeModule.initiative(initiative) : new Modules.initiativeModule.initiative({
+        initiative: initiative ? new Modules.InitiativeModule.Initiative(initiative) : new Modules.InitiativeModule.Initiative({
             dexModifier: 0,
             miscModifier: 0
         }),
-        savingThrows: savingThrows ? savingThrows.map(savingThrow => new Modules.savingThrowsModule.savingThrow(savingThrow)) : [
-            new Modules.savingThrowsModule.factory.create({ name: 'fortitude' }),
-            new Modules.savingThrowsModule.factory.create({ name: 'reflex' }),
-            new Modules.savingThrowsModule.factory.create({ name: 'will' })
+        savingThrows: savingThrows ? savingThrows.map(savingThrow => new Modules.SavingThrowsModule.SavingThrow(savingThrow)) : [
+            new Modules.SavingThrowsModule.Factory.create({ name: 'fortitude' }),
+            new Modules.SavingThrowsModule.Factory.create({ name: 'reflex' }),
+            new Modules.SavingThrowsModule.Factory.create({ name: 'will' })
         ],
         baseAttackBonus: baseAttackBonus || 0,
         spellResistance: spellResistance || 0,
-        grapple: grapple ? new Modules.grappleModule.grapple(grapple) : new Modules.grappleModule.grapple({
+        grapple: grapple ? new Modules.GrappleModule.Grapple(grapple) : new Modules.GrappleModule.Grapple({
             baseAttackBonus: 0,
             strengthModifier: 0,
             sizeModifier: 0,
             miscModifier: 0
         }),
         skillPoints: 0,
-        skills: skills ? skills.map(s => new Modules.skillsModule.skill(s)) : Modules.skillsModule.DEFAULT_SKILLS,
+        skills: skills ? skills.map(s => new Modules.SkillsModule.Skill(s)) : Modules.SkillsModule.DEFAULT_SKILLS,
         attacks: attacks || [
-            new Modules.attackModule.attack({}),
-            new Modules.attackModule.attack({}),
-            new Modules.attackModule.attack({}),
-            new Modules.attackModule.attack({}),
-            new Modules.attackModule.attack({})
+            new Modules.AttackModule.Attack({}),
+            new Modules.AttackModule.Attack({}),
+            new Modules.AttackModule.Attack({}),
+            new Modules.AttackModule.Attack({}),
+            new Modules.AttackModule.Attack({})
         ],
-        gear: gear || new Modules.gearModule.gear({}),
-        items: items || Modules.itemModule.factory(33),
-        carryCapacity: carryCapacity || new Modules.carryCapacityModule.carryCapacity({
+        gear: gear || new Modules.GearModule.Gear({}),
+        items: items || Modules.ItemModule.Factory(33),
+        carryCapacity: carryCapacity || new Modules.CarryCapacityModule.CarryCapacity({
             lightLoad: 0,
             mediumLoad: 0,
             heavyLoad: 0,
@@ -94,14 +94,14 @@ exports.character = function ({
         }),
         campaign: campaign || "",
         experience: experience || 0,
-        money: money || new Modules.moneyModule.money({
+        money: money || new Modules.MoneyModule.Money({
             copper: 0,
             silver: 0,
             gold: 0,
             platinum: 0,
             treasure: ""
         }),
-        feats: feats ? feats.map(f => new Modules.featModule.feat(f)) : [],
+        feats: feats ? feats.map(f => new Modules.FeatModule.Feat(f)) : [],
         languages: languages || [],
         specialAbilities: specialAbilities || [],
         domainSchool: domainSchool || "",
@@ -109,7 +109,7 @@ exports.character = function ({
         arcaneSpellFailure: arcaneSpellFailure || 0,
         spellConditionModifier: spellConditionModifier || "",
         spells,
-        spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.spellsPerDayModule.spellsPerDay({
+        spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.SpellsPerDayModule.SpellsPerDay({
             spellLevel: i
         })),
         updateAbilityScore: function () {

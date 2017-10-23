@@ -1,6 +1,6 @@
 const path = require('path');
 const ObjectID = require('mongodb').ObjectID;
-const featModule = require('modules/feat.module');
+const FeatModule = require('modules/feat.module');
 
 module.exports = function(app) {
     var service = {};
@@ -19,7 +19,7 @@ module.exports = function(app) {
     service.getAll = function(callback) {
         var collection = app.mongodb.database.collection('feats');
         collection.find({}).sort({ title: 1 }).toArray(function(err, records) {
-            callback(records.map(data => new featModule.feat(data)));
+            callback(records.map(data => new FeatModule.Feat(data)));
         });
     }
 
