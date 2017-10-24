@@ -4,7 +4,7 @@
   },
   "scripts": {
     "dev": "nodemon --inspect --watch ../common --watch ../server server.main.js --exec \"npm run lint && node\"",
-    "host": "pm2 start server.main.js --name 'web-dcs'",
+    "host": "pm2 stop 'web-dcs' && pm2 start server.main.js --name 'web-dcs'",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix"
   }

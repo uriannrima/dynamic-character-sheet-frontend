@@ -112,7 +112,11 @@ var webpackConfig = merge(common, {
             threshold: 10240,
             minRatio: 0.8
         }),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: 'report.html',
+            openAnalyzer: false
+        })
     ]
 });
 
