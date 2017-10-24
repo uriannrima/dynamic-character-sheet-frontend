@@ -40,6 +40,8 @@ export default {
         updateAll: async function () {
             if (this.service) {
                 var models = await this.service.getAll();
+                models.push({ name: 'New' });
+                console.log(models);
                 this.all = _.sortBy(models, m => m.name);
             }
         },

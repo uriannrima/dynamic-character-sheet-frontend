@@ -6,6 +6,7 @@ import VeeValidate from 'vee-validate';
 import Routes from './routes';
 import { store } from './store';
 import Layout from './shared/layout.component';
+import vSelect from 'vue-select';
 
 Es6Promise.polyfill();
 
@@ -32,6 +33,7 @@ const veeConfig = {
     }
 }
 
+Vue.component('v-select', vSelect);
 Vue.use(VeeValidate, veeConfig);
 Vue.use(VueRouter);
 

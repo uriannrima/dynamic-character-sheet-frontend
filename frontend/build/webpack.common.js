@@ -19,27 +19,7 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        css: {
-                            loader: 'css-loader',
-                            options: {
-                                // minimize: process.env.NODE_ENV === 'production',
-                                minimize: false,
-                                sourceMap: false
-                            }
-                        },
-                        postcss: {
-                            loader: 'css-loader',
-                            options: {
-                                // minimize: process.env.NODE_ENV === 'production',
-                                minimize: false,
-                                sourceMap: false
-                            }
-                        }
-                    }
-                }
+                loader: 'vue-loader'
             },
             {
                 test: /\.js$/,

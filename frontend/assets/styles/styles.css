@@ -91,7 +91,6 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    z-index: 0;
 }
 
 .pure-g>div {

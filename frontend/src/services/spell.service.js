@@ -13,10 +13,8 @@ export default {
         // Change it to become a character spell.
         return new SpellModule.Spell(spell);
     },
-    getAll: function () {
-        return axios.get(Constants.API_URL + '/spells').then(response => {
-            return response.data;
-        });
+    getAll: async function () {
+        return axios.get(Constants.API_URL + '/spells').then(response => response.data);
     },
     getAllDescriptors: async function () {
         return SpellModule.descriptors;

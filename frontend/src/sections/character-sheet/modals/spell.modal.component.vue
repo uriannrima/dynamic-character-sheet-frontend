@@ -63,11 +63,7 @@ textarea {
         <div slot="body">
             <div class="select-spell-container" v-if="!describe">
                 <span>Select spell:</span>
-                <select v-model="selected">
-                    <option value="">New spell</option>
-                    <option v-for="(spell, index) in all" :value="spell" :key="index">{{spell.name}}
-                    </option>
-                </select>
+                <v-select v-model="selected" :options="all" label="name"></v-select>
             </div>
             <spell-form :model="model" :describe="selected || describe"></spell-form>
             <div v-show="errors.any()">

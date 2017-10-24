@@ -286,17 +286,13 @@ export default {
             <div class="spell-form-component-descriptors-container">
                 <span>Descriptors:</span>
                 <div>
-                    <label v-for="(descriptor, index) in allDescriptors" :key="index" :title="descriptor.description">
-                        <input type="checkbox" :value="descriptor" v-model="model.descriptors">{{descriptor.name}}
-                    </label>
+                    <v-select multiple v-model="model.descriptors" :options="allDescriptors" label="name"></v-select>
                 </div>
             </div>
             <div class="spell-form-component-components-container">
                 <span>Components:</span>
                 <div>
-                    <label v-for="(component, index) in allComponents" :key="index" :title="component.description">
-                        <input type="checkbox" :value="component" v-model="model.components">{{component.name}}
-                    </label>
+                    <v-select multiple v-model="model.components" :options="allComponents" label="name"></v-select>
                 </div>
             </div>
             <div class="spell-form-component-materials-container" v-if="model.components && model.components.find(c => c.name === 'Material')">
@@ -363,9 +359,7 @@ export default {
             <div class="spell-form-component-duration-container">
                 <span>Durations:</span>
                 <div>
-                    <label v-for="(duration, index) in allDurations" :key="index" :title="duration.description">
-                        <input type="checkbox" :value="duration" v-model="model.durations">{{duration.name}}
-                    </label>
+                    <v-select multiple v-model="model.durations" :options="allDurations" label="name"></v-select>
                 </div>
             </div>
             <div class="spell-form-component-timed-container" v-if="model.durations && model.durations.find(c => c.name === 'Timed')">
