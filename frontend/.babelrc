@@ -16,27 +16,15 @@
         "stage-0"
     ],
     "plugins": [
+        "transform-async-to-generator",
         [
             "transform-runtime",
             {
-                "helpers": false,
+                "helpers": true,
                 "polyfill": false,
                 "regenerator": true,
                 "moduleName": "babel-runtime"
             }
-        ],
-        "transform-class-properties",
-        "transform-async-to-generator"
-    ],
-    "env": {
-        "test": {
-            "presets": [
-                "env",
-                "stage-2"
-            ],
-            "plugins": [
-                "istanbul"
-            ]
-        }
-    }
+        ]
+    ]
 }

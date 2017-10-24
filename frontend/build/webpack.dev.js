@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = merge(common, {
-    devtool: "#eval-source-map",
+    devtool: "#inline-source-map",
     resolve: {
         alias: {
             'Constants$': path.resolve(__dirname, '../src/constants.dev.js'),
@@ -22,4 +22,4 @@ module.exports = merge(common, {
             template: "index.html"
         })
     ]
-});
+});d

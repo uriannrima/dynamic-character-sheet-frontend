@@ -10,7 +10,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
-    devtool: "source-map",
+    devtool: "#source-map",
     resolve: {
         alias: {
             'Constants$': path.resolve(__dirname, '../src/constants.prd.js'),
