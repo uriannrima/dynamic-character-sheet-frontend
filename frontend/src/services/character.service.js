@@ -1,21 +1,15 @@
-import axios from 'axios';
-import Constants from 'Constants';
 import CharacterModule from 'Modules/character.module';
+import AbstractService from './abstract.service';
 
-async function foo() {
-    console.log('Aqui...');
-    return 1;
+class CharacterService extends AbstractService {
+    constructor() {
+        super({ creator: CharacterModule.Character, url: '/characters' });
+    }
 }
 
-async function bar() {
-    var x = await foo();
-    console.log(x)
-}
+export default new CharacterService();
 
-bar().then(() => {
-    console.log('Foi...');
-});
-
+/*
 export default {
     charactersOffline: {
 
@@ -74,3 +68,4 @@ export default {
         });
     }
 }
+*/

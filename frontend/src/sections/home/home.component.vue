@@ -1,20 +1,21 @@
 <script>
- /*, mapMutations */
-import { mapActions, mapGetters } from 'vuex';
+/* import { mapActions, mapGetters, mapMutations  } from 'vuex'; */
+import CharacterService from 'Services/character.service';
 
 export default {
-    data: function() {
-        return {
-            title: 'Home',
-            characters: []
-        }
-    },
-    // beforeRouteEnter: async function(to, from, next) {
-    //     // var characters = await CharacterService.getAll();
-    //     // next(vm => {
-    //     //     vm.characters = characters;
-    //     // });
-    // },
+  data: function() {
+    return {
+      title: 'Home',
+      characters: []
+    };
+  },
+  beforeRouteEnter: async function(to, from, next) {
+    var characters = await CharacterService.getAll();
+    next(vm => {
+      vm.characters = characters;
+    });
+  }
+  /*
     computed: {
         ...mapGetters([
             'items',
@@ -22,18 +23,17 @@ export default {
         ])
     },
     methods: {
-        /** 
-         * You can also use ...mapMuttations(['methodName'])
-         * But let's stick to what is considered best practice.
-        */
+         You can also use ...mapMuttations(['methodName'])
+         But let's stick to what is considered best practice.
         ...mapActions([
             'reducePrice'
         ])
     }
-}
+    */
+};
 </script>
 <template>
-    <div>
+    <!-- div>
         <h1> {{title}}</h1>
         <ul>
             <li v-for="(item, index) in items" :key="index">
@@ -44,5 +44,13 @@ export default {
             </li>
         </ul>
         <button @click="reducePrice({amount: 4})">Reduce</button>
+    </div -->
+    <div>
+        <h1>{{title}}</h1>
+         <ul>
+            <li v-for="character in characters" :key="character.id">
+                <a :href="'#/character/' + character._id">{{character.name}}</a>
+            </li>
+          </ul>
     </div>
 </template>
