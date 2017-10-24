@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --open --config build/webpack.dev.js --content-base src/ --port 4000",
-    "build": "webpack --watch --config build/webpack.prd.js"
+    "build": "webpack --config build/webpack.prd.js",
+    "host": "webpack --watch --config build/webpack.prd.js"
   },
   "engines": {
     "node": ">= 4.0.0",

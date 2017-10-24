@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production';
+
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -8,8 +10,25 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = merge(common, {
+var webpackConfig = merge(common, {
+    output: {
+        filename: 'js/[name].[chunkhash].js',
+        chunkFilename: 'js/[id].[chunkhash].js',
+        path: path.resolve(__dirname, '../../public'),
+        publicPath: '/',
+        devtoolModuleFilenameTemplate: info => {
+            if (info.resource.match(/\.vue$/)) {
+                $filename = info.allLoaders.match(/type=script/)
+                    ? info.resourcePath : 'generated';
+            } else {
+                $filename = info.resourcePath;
+            }
+            return $filename;
+        }
+    },
     devtool: "#source-map",
     resolve: {
         alias: {
@@ -17,6 +36,33 @@ module.exports = merge(common, {
         }
     },
     plugins: [
+        new CleanWebpackPlugin('../../public', {
+            allowExternal: true
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                screw_ie8: true,
+                warnings: false
+            },
+            mangle: {
+                screw_ie8: true
+            },
+            output: {
+                comments: false,
+                screw_ie8: true
+            }
+        }),
+        // extract css into its own file
+        new ExtractTextPlugin({
+            filename: '/static/css/[name].[contenthash].css'
+        }),
+        // Compress extracted CSS. We are using this plugin so that possible
+        // duplicated CSS from different components can be deduped.
+        new OptimizeCSSPlugin({
+            cssProcessorOptions: {
+                safe: true
+            }
+        }),
         new HtmlWebpackPlugin({
             title: "Web Dynamic Charactersheet - Production",
             template: "index.html",
@@ -31,31 +77,6 @@ module.exports = merge(common, {
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
         }),
-        new UglifyJSPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        }),
-        // extract css into its own file
-        new ExtractTextPlugin({
-            filename: utils.assetsPath('css/[name].[contenthash].css')
-        }),
-        // Compress extracted CSS. We are using this plugin so that possible
-        // duplicated CSS from different components can be deduped.
-        new OptimizeCSSPlugin({
-            cssProcessorOptions: {
-                safe: true
-            }
-        }),
         // keep module.id stable when vender modules does not change
         new webpack.HashedModuleIdsPlugin(),
         // split vendor js into its own file
@@ -67,7 +88,7 @@ module.exports = merge(common, {
                     module.resource &&
                     /\.js$/.test(module.resource) &&
                     module.resource.indexOf(
-                        path.join(__dirname, '../node_modules')
+                        path.join(__dirname, '../../node_modules')
                     ) === 0
                 )
             }
@@ -78,12 +99,14 @@ module.exports = merge(common, {
             name: 'manifest',
             chunks: ['vendor']
         }),
+        // keep module.id stable when vender modules does not change
+        new webpack.HashedModuleIdsPlugin(),
         new CompressionWebpackPlugin({
             asset: '[path].gz[query]',
             algorithm: 'gzip',
             test: new RegExp(
                 '\\.(' +
-                config.build.productionGzipExtensions.join('|') +
+                ['js', 'css'].join('|') +
                 ')$'
             ),
             threshold: 10240,
@@ -92,3 +115,5 @@ module.exports = merge(common, {
         new BundleAnalyzerPlugin()
     ]
 });
+
+module.exports = webpackConfig;

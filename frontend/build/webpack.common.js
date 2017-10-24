@@ -1,26 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: './src/main.js',
     devtool: "#cheap-module-source-map",
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, '../../public'),
-        publicPath: '/',
-        devtoolModuleFilenameTemplate: info => {
-            if (info.resource.match(/\.vue$/)) {
-                $filename = info.allLoaders.match(/type=script/)
-                    ? info.resourcePath : 'generated';
-            } else {
-                $filename = info.resourcePath;
-            }
-            return $filename;
-        }
-    },
     module: {
         rules: [
             {
@@ -108,7 +92,9 @@ module.exports = {
             'Constants$': path.resolve(__dirname, '../src/constants.js'),
             'Utils': path.resolve(__dirname, '../src/utils/'),
             'vue$': 'vue/dist/vue.js',
-            'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
+            'bootstrap$': 'bootstrap/dist/css/bootstrap.css',
+            // 'lodash$': 'lodash/lodash.min.js',
+            // 'vee-validate$': 'vee-validate/dist/vee-validate.min.js'
         }
     },
     plugins: [
