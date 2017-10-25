@@ -19,19 +19,12 @@ export default {
         }
     },
     mounted: function() {
-        // Guarantee that the modal component is at the end of body element.
-        document.body.appendChild(this.$el);
-
         // Add listener to the ESC button.
         document.addEventListener('keydown', (e) => {
             if (this.show && e.keyCode === 27) {
                 this.onClose();
             }
         });
-    },
-    destroyed: function() {
-        // Avoid duplication removing the component from body when destroyed.
-        document.body.removeChild(this.$el);
     }
 }
 </script>

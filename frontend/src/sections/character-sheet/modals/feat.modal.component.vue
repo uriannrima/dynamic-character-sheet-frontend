@@ -93,14 +93,15 @@ textarea {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
+            <div v-show="isDuplicated">
+                <span style="color: red; font-weight: bold;">Character already has this feat.</span>
+            </div>
             <button @click="save()" v-show="editing">Save</button>
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
             <button @click="addNew()" v-show="!describe && !editing">Add</button>
             <button @click="edit()" v-show="describe || selected">Edit</button>
             <button @click="remove()" v-show="describe">Remove</button>
-            <div v-show="duplicate">
-                <span style="color: red; font-weight: bold;">Character already has this feat.</span>
-            </div>
+            
         </div>
     </dcs-modal>
 </template>

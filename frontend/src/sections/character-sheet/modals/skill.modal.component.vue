@@ -82,6 +82,9 @@ select {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
+            <div v-show="isDuplicated">
+                <span style="color: red; font-weight: bold;">Character already has this skill.</span>
+            </div>
             <button @click="save()" v-show="editing">Save</button>
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
             <button @click="addNew()" v-show="!describe && !editing">Add</button>

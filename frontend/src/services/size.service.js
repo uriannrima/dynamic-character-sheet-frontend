@@ -1,13 +1,13 @@
-import axios from 'axios';
-import sizeModule from 'Modules/size.module';
-import Constants from 'Constants';
+import SizeModule from 'Modules/size.module';
+import AbstractService from './abstract.service';
 
-export default {
-    getAll: function () {
-        return axios.get(Constants.API_URL + '/sizes/').then(response => {
-            return response.data.map(sizeData => {
-                return new sizeModule.Size(sizeData);
-            });
+class SizeService extends AbstractService {
+    constructor() {
+        super({
+            model: SizeModule.Size,
+            url: '/size'
         });
     }
 }
+
+export default new SizeService();

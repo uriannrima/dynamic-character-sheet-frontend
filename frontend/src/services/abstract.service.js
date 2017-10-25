@@ -2,8 +2,8 @@ import axios from 'axios';
 import Constants from 'Constants';
 
 export default class AbstractService {
-    constructor({ creator, url }) {
-        Object.assign(this, { creator, url }, {
+    constructor({ model, url }) {
+        Object.assign(this, { model, url }, {
             service: axios.create({
                 baseURL: Constants.API_URL + '/'
             })
@@ -11,13 +11,13 @@ export default class AbstractService {
     }
 
     create(data = {}) {
-        return this.creator(data);
+        return this.model(data);
     }
 
     async get(id) {
         try {
             var response = await this.service.get(this.url + `/${id}`);
-            return this.creator(response.data);
+            return this.model(response.data);
         } catch (error) {
             throw error;
         }
@@ -26,7 +26,7 @@ export default class AbstractService {
     async getAll() {
         try {
             var response = await this.service.get(this.url);
-            return response.data.map(data => this.creator(data));
+            return response.data.map(data => this.model(data));
         } catch (error) {
             throw error;
         }

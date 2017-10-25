@@ -1,51 +1,38 @@
-import axios from 'axios';
 import SpellModule from 'Modules/spell.module';
-import Constants from 'Constants';
+import AbstractService from './abstract.service'
 
-export default {
-    spellsOffline: {
+class SpellService extends AbstractService {
+    constructor() {
+        super({ model: SpellModule.Spell, url: '/spell' });
+    }
 
-    },
-    new: function (data = {}) {
-        return new SpellModule.Spell(data);
-    },
-    toCharacterspell: function (spell) {
-        // Change it to become a character spell.
-        return new SpellModule.Spell(spell);
-    },
-    getAll: async function () {
-        return axios.get(Constants.API_URL + '/spells').then(response => response.data);
-    },
-    getAllDescriptors: async function () {
+    async getAllDescriptors() {
         return SpellModule.descriptors;
-    },
-    getAllComponents: async function () {
+    }
+
+    async getAllComponents() {
         return SpellModule.components;
-    },
-    getAllCastingTimes: async function () {
+    }
+
+    async getAllCastingTimes() {
         return SpellModule.castingTimes;
-    },
-    getAllRanges: async function () {
+    }
+
+    async getAllRanges() {
         return SpellModule.ranges;
-    },
-    getAllEffects: async function () {
+    }
+
+    async getAllEffects() {
         return SpellModule.effects;
-    },
-    getAllDurations: async function () {
+    }
+
+    async getAllDurations() {
         return SpellModule.durations;
-    },
-    getAllSavingThrowResolve: async function () {
+    }
+
+    async getAllSavingThrowResolve() {
         return SpellModule.savingThrowResolve;
-    },
-    saveOrUpdate: function (spell) {
-        if (spell._id) {
-            return axios.put(Constants.API_URL + '/spells', { spell }).then(response => {
-                return response.data;
-            });
-        } else {
-            return axios.post(Constants.API_URL + '/spells', { spell }).then(response => {
-                return response.data;
-            });
-        }
     }
 }
+
+export default new SpellService();

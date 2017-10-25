@@ -104,8 +104,8 @@ export default {
   },
   methods: {
     addToCharacter: async function(arrayName, added) {
-      let feat = await CharacterService.addFeat(this.character._id, added._id);
-      this.character[arrayName].push(feat);
+        console.log(arrayName, added);
+      this.character[arrayName].push(added);
     },
     updateOnCharacter: function(arrayName, updated) {
       console.log(arrayName, updated);
@@ -203,7 +203,7 @@ export default {
     } else {
       next(async vm => {
         vm.allSizes = await sizes;
-        vm.loadCharacter(CharacterService.new());
+        vm.loadCharacter(CharacterService.create());
       });
     }
   }
