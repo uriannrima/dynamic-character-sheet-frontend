@@ -16,6 +16,9 @@ module.exports = {
   // 0 => Off, 1 => Warning, 2 => Error.
   // add your custom rules here
   'rules': {
+    // Warning for unused variables.
+    "no-unused-vars": 1,
+    // Warning when not using "" on string.
     "quotes": [1, "double"],
     // allow custom indent.
     "indent": 0,

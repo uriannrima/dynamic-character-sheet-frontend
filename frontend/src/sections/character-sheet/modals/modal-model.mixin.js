@@ -66,23 +66,23 @@ export default {
         cancel: function () {
             this.close();
         },
-        addNew: async function () {
+        addNew: async function (actionName) {
             // model feat being created.
             if (this.selected) {
-                this.addToCharacter(this.selected);
+                this.addToCharacter(actionName, this.selected);
             } else {
                 if (await this.$validator.validateAll()) {
                     var created = await this.service.saveOrUpdate(this.model);
-                    this.addToCharacter(created);
+                    this.addToCharacter(actionName, created);
                 }
             }
         },
-        addToCharacter: function (model) {
+        addToCharacter: function (actionName, model) {
             var fromCharacter = this.referenceList.find(m => m._id === model._id);
             if (fromCharacter && fromCharacter.subValue === model.subValue) {
                 this.isDuplicated = true;
             } else {
-                this.$emit('onAdded', model);
+                this.$store.dispatch(actionName, { model });
                 this.close();
             }
         },

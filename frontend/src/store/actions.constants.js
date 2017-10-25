@@ -1,5 +1,8 @@
 export default {
     Character: {
-        Replace: "REPLACE_CHARACTER"
+        Replace: "REPLACE.CHARACTER",
+        AddSpell: "ADD.SPELL",
+        AddFeat: "ADD.FEAT",
+        AddSkill: "ADD.SKILL"
     }
 }

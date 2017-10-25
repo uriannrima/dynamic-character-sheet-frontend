@@ -2,14 +2,20 @@
 import SpellService from 'Services/spell.service';
 import { SpellForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
+import { Actions } from 'Store';
 
 export default {
-  components: { SpellForm },
-  mixins: [ModalModelMixin],
-  created: function() {
-    this.service = SpellService;
-    this.modelName = 'spell';
-  }
+    components: { SpellForm },
+    mixins: [ModalModelMixin],
+    methods: {
+        addSpell: function () {
+            this.addNew(Actions.Character.AddSpell);
+        }
+    },
+    created: function () {
+        this.service = SpellService;
+        this.modelName = 'spell';
+    }
 }
 </script>
 
@@ -76,7 +82,7 @@ textarea {
                 <span style="color: red; font-weight: bold;">Character already has this spell.</span>
             </div>
             <button @click="cancel()">Close</button>
-            <button @click="addNew()" v-show="!describe">Add</button>
+            <button @click="addSpell()" v-show="!describe">Add</button>
             <button @click="remove()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>

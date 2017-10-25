@@ -187,13 +187,11 @@ export default {
             var character = await CharacterService.getData(to.params.id);
             next(vm => {
                 vm.allSizes = sizes;
-                console.log('Loaded.');
                 vm.loadCharacter(character);
             });
         } else {
             next(vm => {
                 vm.allSizes = sizes;
-                console.log('Loaded empty.');
                 vm.loadCharacter({});
             });
         }
