@@ -13,8 +13,10 @@ module.exports = {
   plugins: [
     'html'
   ],
+  // 0 => Off, 1 => Warning, 2 => Error.
   // add your custom rules here
   'rules': {
+    "quotes": [1, "double"],
     // allow custom indent.
     "indent": 0,
     // ignore extra semi collon.
@@ -32,7 +34,7 @@ module.exports = {
     // Allow extension functions to native objects.
     'no-extend-native': 0,
     // Constructor should not start with lowercase.
-    'new-cap' : 1
+    'new-cap': 1
   },
   "globals": {
     "_": true

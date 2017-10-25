@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
 import Routes from './routes';
-import { store } from './store';
+import { store } from 'Store';
 import Layout from './shared/layout.component';
 import vSelect from 'vue-select';
 
