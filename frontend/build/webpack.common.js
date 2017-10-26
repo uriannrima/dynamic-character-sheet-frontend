@@ -14,7 +14,7 @@ module.exports = {
                 include: [path.resolve('./src'), path.resolve('./test')],
                 options: {
                     formatter: require('eslint-friendly-formatter'),
-                    fix: true
+                    // fix: true
                 }
             },
             {
@@ -69,6 +69,7 @@ module.exports = {
             'Services': path.resolve(__dirname, '../src/services/'),
             'Modules': path.resolve(__dirname, '../../common/modules/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),
+            'Store': path.resolve(__dirname, '../src/store/'),
             'Constants$': path.resolve(__dirname, '../src/constants.js'),
             'Utils': path.resolve(__dirname, '../src/utils/'),
             'vue$': 'vue/dist/vue.js',

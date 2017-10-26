@@ -2,55 +2,61 @@
 import SkillService from 'Services/skill.service';
 import { SkillForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
+import { Actions } from 'Store';
 
 export default {
     components: { SkillForm },
     mixins: [ModalModelMixin],
-    created: function() {
+    created: function () {
         this.service = SkillService;
         this.modelName = 'skill';
+    },
+    methods: {
+        addSkill: function () {
+            this.addNew(Actions.Character.AddSkill);
+        }
     }
 }
 </script>
 
 <style scoped>
 select {
-    width: 100%;
+  width: 100%;
 }
 
 .skills-header {
-    text-align: center;
+  text-align: center;
 }
 
 .skill-form-component>>>textarea {
-    display: block;
-    width: 100%;
-    height: 80px;
-    font-size: 12px;
+  display: block;
+  width: 100%;
+  height: 80px;
+  font-size: 12px;
 }
 
 .skill-form-component>>>input[type="text"],
 .skill-form-component>>>select {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .skill-form-component>>>strong {
-    display: block;
+  display: block;
 }
 
 .sub-value-container {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-.sub-value-container>span,
-.sub-value-container>input[type="text"] {
-    display: block;
-    width: 100%;
+.sub-value-container > span,
+.sub-value-container > input[type="text"] {
+  display: block;
+  width: 100%;
 }
 
 .select-skill-container {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 </style>
 
@@ -82,9 +88,12 @@ select {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
+            <div v-show="isDuplicated">
+                <span style="color: red; font-weight: bold;">Character already has this skill.</span>
+            </div>
             <button @click="save()" v-show="editing">Save</button>
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
-            <button @click="addNew()" v-show="!describe && !editing">Add</button>
+            <button @click="addSkill()" v-show="!describe && !editing">Add</button>
             <button @click="edit()" v-show="describe || selected">Edit</button>
             <button @click="remove()" v-show="describe">Remove</button>
         </div>

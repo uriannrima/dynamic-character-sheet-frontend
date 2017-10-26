@@ -2,11 +2,17 @@
 import SpellService from 'Services/spell.service';
 import { SpellForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
+import { Actions } from 'Store';
 
 export default {
     components: { SpellForm },
     mixins: [ModalModelMixin],
-    created: function() {
+    methods: {
+        addSpell: function () {
+            this.addNew(Actions.Character.AddSpell);
+        }
+    },
+    created: function () {
         this.service = SpellService;
         this.modelName = 'spell';
     }
@@ -17,39 +23,38 @@ export default {
 input[type="text"],
 textarea,
 select {
-    width: 100%;
+  width: 100%;
 }
 
 textarea {
-    height: 80px;
-    font-size: 12px;
+  height: 80px;
+  font-size: 12px;
 }
 
 .v-modal-container {
-    width: 360px;
+  width: 360px;
 }
 
 .spells-header {
-    text-align: center;
+  text-align: center;
 }
 
-
 .spell-form-component>>>textarea {
-    display: block;
-    width: 100%;
-    height: 80px;
-    font-size: 12px;
+  display: block;
+  width: 100%;
+  height: 80px;
+  font-size: 12px;
 }
 
 .spell-form-component>>>input[type="text"],
 .spell-form-component>>>input[type="number"],
 .spell-form-component>>>select {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .spell-form-component>>>strong {
-    display: block;
+  display: block;
 }
 </style>
 
@@ -73,8 +78,11 @@ textarea {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
+            <div v-show="isDuplicated">
+                <span style="color: red; font-weight: bold;">Character already has this spell.</span>
+            </div>
             <button @click="cancel()">Close</button>
-            <button @click="addNew()" v-show="!describe">Add</button>
+            <button @click="addSpell()" v-show="!describe">Add</button>
             <button @click="remove()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>

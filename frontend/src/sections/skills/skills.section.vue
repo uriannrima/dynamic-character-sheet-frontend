@@ -7,7 +7,7 @@ export default {
     components: { SkillForm },
     data: function() {
         return {
-            skill: SkillService.new()
+            skill: SkillService.create()
         }
     }
 }

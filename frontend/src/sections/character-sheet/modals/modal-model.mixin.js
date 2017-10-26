@@ -11,7 +11,7 @@ export default {
         this.isFromCharacter = false;
     },
     mounted: function () {
-        this.model = this.service.new();
+        this.model = this.service.create();
     },
     data: function () {
         return {
@@ -20,7 +20,7 @@ export default {
             selected: '',
             model: {},
             editing: false,
-            duplicate: false
+            isDuplicated: false
         }
     },
     watch: {
@@ -30,7 +30,7 @@ export default {
             }
         },
         selected: function () {
-            this.duplicate = false;
+            this.isDuplicated = false;
         }
     },
     methods: {
@@ -40,8 +40,6 @@ export default {
         updateAll: async function () {
             if (this.service) {
                 var models = await this.service.getAll();
-                models.push({ name: 'New' });
-                console.log(models);
                 this.all = _.sortBy(models, m => m.name);
             }
         },
@@ -49,9 +47,9 @@ export default {
             this.resetScroll();
             this.backup = null;
             this.selected = '';
-            this.model = this.service.new();
+            this.model = this.service.create();
             this.editing = false;
-            this.duplicate = false;
+            this.isDuplicated = false;
             this.isFromCharacter = false;
             this.$validator.reset();
             FormBus.$emit(this.modelName + ':clear');
@@ -68,23 +66,23 @@ export default {
         cancel: function () {
             this.close();
         },
-        addNew: async function () {
+        addNew: async function (actionName) {
             // model feat being created.
             if (this.selected) {
-                this.addToCharacter(this.selected);
+                this.addToCharacter(actionName, this.selected);
             } else {
                 if (await this.$validator.validateAll()) {
                     var created = await this.service.saveOrUpdate(this.model);
-                    this.addToCharacter(created);
+                    this.addToCharacter(actionName, created);
                 }
             }
         },
-        addToCharacter: function (model) {
+        addToCharacter: function (actionName, model) {
             var fromCharacter = this.referenceList.find(m => m._id === model._id);
             if (fromCharacter && fromCharacter.subValue === model.subValue) {
-                this.duplicate = true;
+                this.isDuplicated = true;
             } else {
-                this.$emit('onAdded', model);
+                this.$store.dispatch(actionName, { model });
                 this.close();
             }
         },

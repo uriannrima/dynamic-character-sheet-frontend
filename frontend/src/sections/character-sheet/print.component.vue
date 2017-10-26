@@ -36,7 +36,7 @@ SpellsContainer
     data: function() {
         return {
             sheetPage: -1,
-            character: CharacterService.new(),
+            character: CharacterService.create(),
             allSizes: [],
             allRaces: RaceService.getAll(),
             allAlignments: AlignmentService.getAll()
@@ -187,7 +187,7 @@ SpellsContainer
             } else {
                 next(vm => {
                     vm.allSizes = sizes;
-                    vm.loadCharacter(CharacterService.new());
+                    vm.loadCharacter(CharacterService.create());
                 });
             }
         });

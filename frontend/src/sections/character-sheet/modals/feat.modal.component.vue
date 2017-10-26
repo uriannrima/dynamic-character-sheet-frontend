@@ -2,13 +2,19 @@
 import FeatService from 'Services/feat.service';
 import { FeatForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
+import { Actions } from 'Store';
 
 export default {
     components: { FeatForm },
     mixins: [ModalModelMixin],
-    created: function() {
+    created: function () {
         this.service = FeatService;
         this.modelName = 'feat';
+    },
+    methods: {
+        addFeat: function () {
+            this.addNew(Actions.Character.AddFeat);
+        }
     }
 }
 </script>
@@ -17,51 +23,51 @@ export default {
 input[type="text"],
 textarea,
 select {
-    width: 100%;
+  width: 100%;
 }
 
 textarea {
-    height: 80px;
-    font-size: 12px;
+  height: 80px;
+  font-size: 12px;
 }
 
 .v-modal-container {
-    width: 360px;
+  width: 360px;
 }
 
 .feats-header {
-    text-align: center;
+  text-align: center;
 }
 
 .feat-form-component>>>textarea {
-    display: block;
-    width: 100%;
-    height: 80px;
-    font-size: 12px;
+  display: block;
+  width: 100%;
+  height: 80px;
+  font-size: 12px;
 }
 
 .feat-form-component>>>input[type="text"],
 .feat-form-component>>>select {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .feat-form-component>>>strong {
-    display: block;
+  display: block;
 }
 
 .sub-value-container {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-.sub-value-container>span,
-.sub-value-container>input[type="text"] {
-    display: block;
-    width: 100%;
+.sub-value-container > span,
+.sub-value-container > input[type="text"] {
+  display: block;
+  width: 100%;
 }
 
 .select-feat-container {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 </style>
 
@@ -93,14 +99,15 @@ textarea {
             </div>
         </div>
         <div slot="footer" style="text-align: center;">
-            <button @click="save()" v-show="editing">Save</button>
-            <button @click="cancelEdit()" v-show="editing">Cancel</button>
-            <button @click="addNew()" v-show="!describe && !editing">Add</button>
-            <button @click="edit()" v-show="describe || selected">Edit</button>
-            <button @click="remove()" v-show="describe">Remove</button>
-            <div v-show="duplicate">
+            <div v-show="isDuplicated">
                 <span style="color: red; font-weight: bold;">Character already has this feat.</span>
             </div>
+            <button @click="save()" v-show="editing">Save</button>
+            <button @click="cancelEdit()" v-show="editing">Cancel</button>
+            <button @click="addFeat()" v-show="!describe && !editing">Add</button>
+            <button @click="edit()" v-show="describe || selected">Edit</button>
+            <button @click="remove()" v-show="describe">Remove</button>
+            
         </div>
     </dcs-modal>
 </template>

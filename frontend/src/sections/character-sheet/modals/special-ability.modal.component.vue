@@ -8,7 +8,7 @@ export default {
     data: function() {
         return {
             selectedSpecialAbility: '',
-            newSpecialAbility: SpecialAbilityService.new(),
+            newSpecialAbility: SpecialAbilityService.create(),
             allSpecialAbilities: [],
             has: {
                 prerequisite: false,
@@ -20,7 +20,7 @@ export default {
     methods: {
         clear: function() {
             this.selectedSpecialAbility = '';
-            this.newSpecialAbility = SpecialAbilityService.new();
+            this.newSpecialAbility = SpecialAbilityService.create();
             this.has = {
                 prerequisite: false,
                 special: false,
