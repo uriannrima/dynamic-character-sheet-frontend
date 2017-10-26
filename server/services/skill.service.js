@@ -34,5 +34,5 @@ module.exports = function (app) {
         });
     };
 
-    app.createService('skills', service);
+    app.createService('skill', service);
 }

@@ -11,5 +11,5 @@ module.exports = function (app) {
         });
     }
 
-    app.createService('spellSchools', service);
+    app.createService('spellSchool', service);
 }

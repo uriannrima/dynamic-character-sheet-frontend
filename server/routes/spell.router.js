@@ -3,10 +3,10 @@ const express = require('express');
 module.exports = function (app) {
     var router = express.Router();
 
-    router.get('/:id', app.controllers.spells.get);
-    router.get('/', app.controllers.spells.getAll);
-    router.post('/', app.controllers.spells.saveOrUpdate);
-    router.put('/', app.controllers.spells.saveOrUpdate);
+    router.get('/:id', app.controllers.spell.get);
+    router.get('/', app.controllers.spell.getAll);
+    router.post('/', app.controllers.spell.saveOrUpdate);
+    router.put('/', app.controllers.spell.saveOrUpdate);
 
-    app.use('/api/spells', router);
+    app.use('/api/spell', router);
 }

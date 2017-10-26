@@ -14,5 +14,5 @@ module.exports = function (app) {
         });
     };
 
-    app.createService('sizes', service);
+    app.createService('size', service);
 }

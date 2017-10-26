@@ -31,5 +31,5 @@ module.exports = function (app) {
         });
     };
 
-    app.createService('specialAbilities', service);
+    app.createService('specialAbility', service);
 }

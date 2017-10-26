@@ -30,5 +30,5 @@ module.exports = function (app) {
         });
     };
 
-    app.createService('spells', service);
+    app.createService('spell', service);
 }

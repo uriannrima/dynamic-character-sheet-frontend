@@ -91,5 +91,5 @@ module.exports = function(app) {
         });
     }
 
-    app.createService('characters', service);
+    app.createService('character', service);
 }
