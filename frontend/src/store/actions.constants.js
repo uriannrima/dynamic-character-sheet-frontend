@@ -1,8 +1,15 @@
 export default {
     Character: {
         Replace: "REPLACE.CHARACTER",
-        AddSpell: "ADD.SPELL",
-        AddFeat: "ADD.FEAT",
-        AddSkill: "ADD.SKILL"
+        Add: {
+            Spell: "CHARACTER.ADD.SPELL",
+            Feat: "CHARACTER.ADD.FEAT",
+            Skill: "CHARACTER.ADD.SKILL"
+        },
+        Remove: {
+            Spell: "CHARACTER.REMOVE.SPELL",
+            Feat: "CHARACTER.REMOVE.FEAT",
+            Skill: "CHARACTER.REMOVE.SKILL"
+        }
     }
 }

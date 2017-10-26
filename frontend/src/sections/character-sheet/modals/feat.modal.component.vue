@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         addFeat: function () {
-            this.addNew(Actions.Character.AddFeat);
+            this.addNew(Actions.Character.Add.Feat);
         }
     }
 }

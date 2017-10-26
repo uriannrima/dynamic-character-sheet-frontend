@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         addSkill: function () {
-            this.addNew(Actions.Character.AddSkill);
+            this.addNew(Actions.Character.Add.Skill);
         }
     }
 }

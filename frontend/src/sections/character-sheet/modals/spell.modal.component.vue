@@ -9,7 +9,10 @@ export default {
     mixins: [ModalModelMixin],
     methods: {
         addSpell: function () {
-            this.addNew(Actions.Character.AddSpell);
+            this.addNew(Actions.Character.Add.Spell);
+        },
+        removeSpell() {
+            this.remove(Actions.Character.Remove.Spell);
         }
     },
     created: function () {
@@ -83,7 +86,7 @@ textarea {
             </div>
             <button @click="cancel()">Close</button>
             <button @click="addSpell()" v-show="!describe">Add</button>
-            <button @click="remove()" v-show="describe">Remove</button>
+            <button @click="removeSpell()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>
 </template>

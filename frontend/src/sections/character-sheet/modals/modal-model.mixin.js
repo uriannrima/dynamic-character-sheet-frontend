@@ -86,8 +86,8 @@ export default {
                 this.close();
             }
         },
-        remove: function () {
-            this.$emit('onRemoved', this.describe);
+        remove: function (actionName) {
+            this.$store.dispatch(actionName, { model: this.describe });
             this.close();
         },
         save: async function () {

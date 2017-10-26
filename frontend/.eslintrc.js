@@ -19,7 +19,7 @@ module.exports = {
     // Warning for unused variables.
     "no-unused-vars": 1,
     // Warning when not using "" on string.
-    "quotes": [1, "double"],
+    "quotes": 0,
     // allow custom indent.
     "indent": 0,
     // ignore extra semi collon.
