@@ -7,6 +7,7 @@ import Routes from './routes';
 import { store } from 'Store';
 import Layout from './shared/layout.component';
 import vSelect from 'vue-select';
+import './Shared/directives/dcs-model';
 
 Es6Promise.polyfill();
 

@@ -1,4 +1,5 @@
 export default {
+    Simple: 'SIMPLE.MUTATION',
     Character: {
         Replace: "REPLACE.CHARACTER",
         Add: {

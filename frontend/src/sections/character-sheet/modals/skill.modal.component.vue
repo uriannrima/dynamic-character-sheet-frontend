@@ -14,6 +14,9 @@ export default {
     methods: {
         addSkill: function () {
             this.addNew(Actions.Character.Add.Skill);
+        },
+        removeSkill: function () {
+            this.remove(Actions.Character.Remove.Skill);
         }
     }
 }
@@ -95,7 +98,7 @@ select {
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
             <button @click="addSkill()" v-show="!describe && !editing">Add</button>
             <button @click="edit()" v-show="describe || selected">Edit</button>
-            <button @click="remove()" v-show="describe">Remove</button>
+            <button @click="removeSkill()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>
 </template>

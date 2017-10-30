@@ -14,6 +14,9 @@ export default {
     methods: {
         addFeat: function () {
             this.addNew(Actions.Character.Add.Feat);
+        },
+        removeFeat: function () {
+            this.remove(Actions.Character.Remove.Feat);
         }
     }
 }
@@ -106,8 +109,7 @@ textarea {
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
             <button @click="addFeat()" v-show="!describe && !editing">Add</button>
             <button @click="edit()" v-show="describe || selected">Edit</button>
-            <button @click="remove()" v-show="describe">Remove</button>
-            
+            <button @click="removeFeat()" v-show="describe">Remove</button>            
         </div>
     </dcs-modal>
 </template>

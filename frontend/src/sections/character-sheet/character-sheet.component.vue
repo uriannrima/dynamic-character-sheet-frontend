@@ -34,7 +34,7 @@ export default {
     },
     data: function () {
         return {
-            sheetPage: 2,
+            sheetPage: 1,
             allSizes: [],
             allRaces: RaceService.getAll(),
             allAlignments: AlignmentService.getAll()
@@ -217,7 +217,7 @@ export default {
                                 <div class="pure-g first-description-container">
                                     <div class="pure-u-1-1">
                                         <div class="small-padding-box">
-                                            <input type="text" class="description-field" v-model="character.name">
+                                            <input type="text" class="description-field" v-model="character.name" v-dcs-model="character.name">
                                             <span class="description-span">Character Name</span>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@ export default {
                                     </div>
                                     <div class="pure-u-1-4">
                                         <div class="small-padding-box">
-                                            <select class="description-field" v-model="character.size">
+                                            <select class="description-field" v-model="character.size" v-dcs-model="character.size">
                                                 <option v-for="(size, index) in allSizes" :key="index" :value="size">{{size.name}}</option>
                                             </select>
                                             <span class="description-span">Size</span>
@@ -237,13 +237,13 @@ export default {
                                     </div>
                                     <div class="pure-u-1-4">
                                         <div class="small-padding-box">
-                                            <input type="text" class="description-field" v-model="character.age">
+                                            <input type="text" class="description-field" v-model="character.age" v-dcs-model="character.age">
                                             <span class="description-span">Age</span>
                                         </div>
                                     </div>
                                     <div class="pure-u-1-4">
                                         <div class="small-padding-box">
-                                            <select class="description-field" v-model="character.gender">
+                                            <select class="description-field" v-model="character.gender" v-dcs-model="character.gender">
                                                 <option disabled value="">None</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>

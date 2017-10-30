@@ -1,7 +1,7 @@
 import Actions from './actions.constants'
 import CharacterModule from 'Modules/character.module';
 
-const utils = {
+export var Utils = {
     removeFromCharacter(character, arrayName, model) {
         character[arrayName] = character[arrayName].filter(m => {
             return (m._id !== model._id || (model.subValue && model.subValue !== m.subValue));
@@ -9,7 +9,7 @@ const utils = {
     }
 }
 
-export default {
+window.sheetStore = {
     state: {
         character: {}
     },
@@ -34,13 +34,27 @@ export default {
         },
         /** Remove Mutations */
         [Actions.Character.Remove.Spell](state, { model }) {
-            utils.removeFromCharacter(state.character, 'spells', model);
+            Utils.removeFromCharacter(state.character, 'spells', model);
         },
         [Actions.Character.Remove.Feat](state, { model }) {
-            utils.removeFromCharacter(state.character, 'feats', model);
+            Utils.removeFromCharacter(state.character, 'feats', model);
         },
         [Actions.Character.Remove.Skill](state, { model }) {
-            utils.removeFromCharacter(state.character, 'skills', model);
+            Utils.removeFromCharacter(state.character, 'skills', model);
+        },
+        /** Simple Mutations */
+        [Actions.Simple](state, { expression, value }) {
+            var tree = expression.split('.');
+
+            var recursiveUpdate = function (previous, tree, value) {
+                if (tree.length === 1) {
+                    previous[tree.shift()] = value;
+                } else {
+                    recursiveUpdate(previous[tree.shift()], tree, value);
+                }
+            };
+
+            recursiveUpdate(state, tree, value);
         }
     },
     actions: {
@@ -69,3 +83,5 @@ export default {
         }
     }
 }
+
+export default window.sheetStore;
