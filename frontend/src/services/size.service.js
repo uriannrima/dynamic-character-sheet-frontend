@@ -8,6 +8,9 @@ class SizeService extends AbstractService {
             url: '/size'
         });
     }
+    async getAll() {
+        return SizeModule.Sizes;
+    }
 }
 
 export default new SizeService();

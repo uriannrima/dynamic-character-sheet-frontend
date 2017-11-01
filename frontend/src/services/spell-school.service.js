@@ -8,6 +8,9 @@ class SpellSchoolService extends AbstractService {
             url: '/spellSchool'
         });
     }
+    async getAll() {
+        return SpellSchoolModule.SpellSchools;
+    }
 }
 
 export default new SpellSchoolService();
