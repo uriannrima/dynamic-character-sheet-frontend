@@ -6,12 +6,24 @@ export var Utils = {
         character[arrayName] = character[arrayName].filter(m => {
             return (m._id !== model._id || (model.subValue && model.subValue !== m.subValue));
         });
+    },
+    setExpression(previous, tree, value) {
+        if (tree.length === 1) {
+            previous[tree.shift()] = value;
+        } else {
+            this.setExpression(previous[tree.shift()], tree, value);
+        }
+    },
+    getExpression(previous, tree) {
+        if (tree.length === 1) return previous[tree.shift()];
+        return this.getExpression(previous[tree.shift()], tree);
     }
 }
 
 window.sheetStore = {
     state: {
-        character: {}
+        character: {},
+        abilityScores: []
     },
     getters: {
         character: state => {
@@ -45,16 +57,13 @@ window.sheetStore = {
         /** Simple Mutations */
         [Actions.Simple](state, { expression, value }) {
             var tree = expression.split('.');
-
-            var recursiveUpdate = function (previous, tree, value) {
-                if (tree.length === 1) {
-                    previous[tree.shift()] = value;
-                } else {
-                    recursiveUpdate(previous[tree.shift()], tree, value);
-                }
-            };
-
-            recursiveUpdate(state, tree, value);
+            Utils.setExpression(state, tree, value);
+        },
+        /** Updates */
+        [Actions.Character.Update.AbilityScore](state, { updated }) {
+            var { abilityScores } = state.character;
+            var index = abilityScores.findIndex(score => score.name === updated.name);
+            abilityScores.splice(index, 1, updated);
         }
     },
     actions: {
@@ -80,6 +89,10 @@ window.sheetStore = {
         },
         [Actions.Character.Remove.Feat]: ({ dispatch, commit, state }, payload) => {
             commit(Actions.Character.Remove.Feat, payload);
+        },
+        /** Updates */
+        [Actions.Character.Update.AbilityScore]: ({ dispatch, commit, state }, payload) => {
+            commit(Actions.Character.Update.AbilityScore, payload);
         }
     }
 }

@@ -179,6 +179,9 @@ export default {
             //         pdf.save('Test.pdf');
             //     });
             // });
+        },
+        rollback() {
+            this.$store.commit('ROLLBACK');
         }
     },
     beforeRouteEnter: async function (to, from, next) {
@@ -217,7 +220,7 @@ export default {
                                 <div class="pure-g first-description-container">
                                     <div class="pure-u-1-1">
                                         <div class="small-padding-box">
-                                            <input type="text" class="description-field" v-model="character.name">
+                                            <input type="text" class="description-field" v-model="character.name" v-store-sync="character.name">
                                             <span class="description-span">Character Name</span>
                                         </div>
                                     </div>
@@ -229,7 +232,7 @@ export default {
                                     </div>
                                     <div class="pure-u-1-4">
                                         <div class="small-padding-box">
-                                            <select class="description-field" v-model="character.size" :value="character.size" v-dcs-model="character.size">
+                                            <select class="description-field" v-model="character.size">
                                                 <option v-for="(size, index) in allSizes" :key="index" :value="size">{{size.name}}</option>
                                             </select>
                                             <span class="description-span">Size</span>
@@ -1287,9 +1290,8 @@ export default {
                 <button @click="saveOrUpdate">Salvar</button>
                 <button @click="resetSkills">Reset Skills</button>
                 <button @click="printSheet">Print</button>
-                <!-- button @click="exportCharacter">Exportar</button>
-                                                                                                                                                                                            <button @click="importCharacter">Importar</button>
-                                                                                                                                                                                            <input id="importField" type="file" -->
+                <button @click="rollback">Rollback</button>
+                <!-- button @click="exportCharacter">Exportar</button>                                                                                                                      <input id="importField" type="file" -->
             </div>
         </div>
     </div>

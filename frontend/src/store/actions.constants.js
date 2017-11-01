@@ -11,6 +11,9 @@ export default {
             Spell: "CHARACTER.REMOVE.SPELL",
             Feat: "CHARACTER.REMOVE.FEAT",
             Skill: "CHARACTER.REMOVE.SKILL"
+        },
+        Update: {
+            AbilityScore: "CHARACTER.UPDATE.ABILITY_SCORE"
         }
     }
 }
