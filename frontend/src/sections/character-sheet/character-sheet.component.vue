@@ -901,8 +901,7 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <skills-container :character="character" :add-enabled="true" @onSkillAdded="addToCharacter('skills', $event)" @onSkillRemoved="removeFromCharacter('skills', $event)"
-                                @onSkillUpdated="updateOnCharacter('skills', $event)"></skills-container>
+                            <skills-container :character="character" :add-enabled="true"></skills-container>
                         </div>
                     </div>
                 </div>
@@ -1235,8 +1234,7 @@ export default {
                             <div class="pure-u-lg-1-2 pure-u-1">
                                 <div class="pure-g">
                                     <div class="pure-u-lg-2-5 pure-u-1">
-                                        <feats-container :character="character" :add-enabled="true" @onFeatAdded="addToCharacter('feats', $event)" @onFeatUpdated="updateOnCharacter('feats', $event)"
-                                            @onFeatRemoved="removeFromCharacter('feats', $event)"></feats-container>
+                                        <feats-container :character="character" :add-enabled="true"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
@@ -1256,7 +1254,7 @@ export default {
                                     </div>
                                     <div class="pure-u-lg-3-5 pure-u-1">
                                         <div class="third-region">
-                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addToCharacter('spells', $event)" @onSpellRemoved="removeFromCharacter('spells', $event)"></spells-container>
+                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addNewSpell($event)"></spells-container>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>

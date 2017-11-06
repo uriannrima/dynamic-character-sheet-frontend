@@ -88,14 +88,10 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 }
 
 *, *:after, *:before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .pure-g>div {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -1517,20 +1513,12 @@ input[type="number"] {
     padding: 2px;
     border-radius: 0.5em;
     /* Collapse Animation */
-    -webkit-transition: max-height 0.5s;
-    -moz-transition: max-height 0.5s;
-    -ms-transition: max-height 0.5s;
-    -o-transition: max-height 0.5s;
     transition: max-height 0.5s;
     max-height: 120px;
 }
 
 .spell-list-container-collapsed {
     /* Collapse Animation */
-    -webkit-transition: max-height 0.5s;
-    -moz-transition: max-height 0.5s;
-    -ms-transition: max-height 0.5s;
-    -o-transition: max-height 0.5s;
     transition: max-height 0.5s;
     max-height: 24px
 }

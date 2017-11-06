@@ -2,7 +2,6 @@
 import FeatService from 'Services/feat.service';
 import { FeatForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
-import { Actions } from 'Store';
 
 export default {
     components: { FeatForm },
@@ -10,14 +9,6 @@ export default {
     created: function () {
         this.service = FeatService;
         this.modelName = 'feat';
-    },
-    methods: {
-        addFeat: function () {
-            this.addNew(Actions.Character.Add.Feat);
-        },
-        removeFeat: function () {
-            this.remove(Actions.Character.Remove.Feat);
-        }
     }
 }
 </script>
@@ -107,9 +98,9 @@ textarea {
             </div>
             <button @click="save()" v-show="editing">Save</button>
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
-            <button @click="addFeat()" v-show="!describe && !editing">Add</button>
+            <button @click="add()" v-show="!describe && !editing">Add</button>
             <button @click="edit()" v-show="describe || selected">Edit</button>
-            <button @click="removeFeat()" v-show="describe">Remove</button>            
+            <button @click="remove()" v-show="describe">Remove</button>            
         </div>
     </dcs-modal>
 </template>

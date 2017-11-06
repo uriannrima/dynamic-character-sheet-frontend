@@ -2,7 +2,6 @@
 import SkillService from 'Services/skill.service';
 import { SkillForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
-import { Actions } from 'Store';
 
 export default {
     components: { SkillForm },
@@ -10,19 +9,12 @@ export default {
     created: function () {
         this.service = SkillService;
         this.modelName = 'skill';
-    },
-    methods: {
-        addSkill: function () {
-            this.addNew(Actions.Character.Add.Skill);
-        },
-        removeSkill: function () {
-            this.remove(Actions.Character.Remove.Skill);
-        }
     }
 }
 </script>
 
 <style scoped>
+
 select {
   width: 100%;
 }
@@ -96,9 +88,9 @@ select {
             </div>
             <button @click="save()" v-show="editing">Save</button>
             <button @click="cancelEdit()" v-show="editing">Cancel</button>
-            <button @click="addSkill()" v-show="!describe && !editing">Add</button>
+            <button @click="add()" v-show="!describe && !editing">Add</button>
             <button @click="edit()" v-show="describe || selected">Edit</button>
-            <button @click="removeSkill()" v-show="describe">Remove</button>
+            <button @click="remove()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>
 </template>

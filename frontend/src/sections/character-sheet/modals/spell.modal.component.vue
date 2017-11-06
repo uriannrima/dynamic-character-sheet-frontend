@@ -2,19 +2,10 @@
 import SpellService from 'Services/spell.service';
 import { SpellForm } from 'Shared/forms/';
 import { default as ModalModelMixin } from './modal-model.mixin';
-import { Actions } from 'Store';
 
 export default {
     components: { SpellForm },
     mixins: [ModalModelMixin],
-    methods: {
-        addSpell: function () {
-            this.addNew(Actions.Character.Add.Spell);
-        },
-        removeSpell() {
-            this.remove(Actions.Character.Remove.Spell);
-        }
-    },
     created: function () {
         this.service = SpellService;
         this.modelName = 'spell';
@@ -84,9 +75,8 @@ textarea {
             <div v-show="isDuplicated">
                 <span style="color: red; font-weight: bold;">Character already has this spell.</span>
             </div>
-            <button @click="cancel()">Close</button>
-            <button @click="addSpell()" v-show="!describe">Add</button>
-            <button @click="removeSpell()" v-show="describe">Remove</button>
+            <button @click="add()" v-show="!describe">Add</button>
+            <button @click="remove()" v-show="describe">Remove</button>
         </div>
     </dcs-modal>
 </template>

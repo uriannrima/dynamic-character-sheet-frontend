@@ -66,42 +66,42 @@ export default {
         cancel: function () {
             this.close();
         },
-        addNew: async function (actionName) {
+        add: async function () {
             // model feat being created.
             if (this.selected) {
-                this.addToCharacter(actionName, this.selected);
+                this.addToCharacter(this.selected);
             } else {
                 if (await this.$validator.validateAll()) {
                     var created = await this.service.saveOrUpdate(this.model);
-                    this.addToCharacter(actionName, created);
+                    this.addToCharacter(created);
                 }
             }
         },
-        addToCharacter: function (actionName, model) {
+        addToCharacter: function (model) {
             var fromCharacter = this.referenceList.find(m => m._id === model._id);
             if (fromCharacter && fromCharacter.subValue === model.subValue) {
                 this.isDuplicated = true;
             } else {
-                this.$store.dispatch(actionName, { model });
+                this.$emit('onAdded', { model });
                 this.close();
             }
         },
-        remove: function (actionName) {
-            this.$store.dispatch(actionName, { model: this.describe });
+        remove: function () {
+            let { describe: model } = this;
+            this.$emit('onRemoved', { model });
             this.close();
         },
         save: async function () {
             if (await this.$validator.validateAll()) {
                 if (!this.isFromCharacter) {
                     var saved = await this.service.saveOrUpdate(this.model);
-                    // this.updateall();
-                    var index = this.all.findIndex(s => s._id === saved._id);
-                    this.all.splice(index, 1, saved);
+                    this.all.splice(this.all.findIndex(s => s._id === saved._id), 1, saved);
                     this.editing = false;
                     this.clear();
                     this.selected = saved;
                 } else {
-                    this.$emit('onUpdated', this.model);
+                    let { model } = this;
+                    this.$emit('onUpdated', { model });
                     this.close();
                 }
             }
@@ -110,10 +110,8 @@ export default {
             this.resetScroll();
             this.backup = this.selected || this.describe;
             var data = this.describe || this.selected;
-            if (this.describe) {
-                this.isFromCharacter = true;
-            }
-            this.model = this.service.new(data);
+            if (this.describe) this.isFromCharacter = true;
+            this.model = this.service.create(data);
             this.editing = true;
             this.clearDescription();
         },

@@ -40,4 +40,14 @@ export default class AbstractService {
             throw error;
         }
     }
+
+    async saveOrUpdate(model) {
+        try {
+            var serverCall = model._id ? this.service.post : this.service.put;
+            var response = await serverCall(this.url, { model });
+            return this.model(response.data);
+        } catch (error) {
+            throw error;
+        }
+    }
 }

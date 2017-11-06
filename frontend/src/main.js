@@ -1,3 +1,9 @@
+// CSS Imports.
+import 'Assets/styles/utils.css';
+import 'Assets/styles/styles.css';
+import 'Assets/styles/tabs.css';
+import 'Assets/styles/form-validation.css';
+
 // Promise polyfill for IE11.
 import Es6Promise from 'es6-promise';
 import Vue from 'vue';
