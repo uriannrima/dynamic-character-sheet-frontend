@@ -1,0 +1,10 @@
+{
+  "host": "localhost",
+  "port": 5000,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://uriann:02402806@ds135912.mlab.com:35912/web-dcs"
+}

@@ -1,0 +1,11 @@
+{
+  "engines": {
+    "node": ">=7"
+  },
+  "scripts": {
+    "dev": "nodemon --inspect --watch ../common --watch ../server server.main.js --exec \"npm run lint && node\"",
+    "host": "pm2 kill && pm2 start server.main.js --name 'web-dcs'",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint **/*.js --fix"
+  }
+}

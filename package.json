@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "yarn install && run-p server:dev frontend:dev",
+        "dev": "yarn install && run-p feathers:dev frontend:dev",
         "build": "yarn install && run-p server:host frontend:build",
         "host": "yarn install && run-p server:host frontend:host",
         "frontend:dev": "cd frontend && npm run dev",
@@ -13,7 +13,8 @@
         "server:dev": "cd server && npm run dev",
         "server:host": "cd server && npm run host",
         "server:lint": "cd server && npm run lint",
-        "server:lint:fix": "cd server && npm run lint:fix"
+        "server:lint:fix": "cd server && npm run lint:fix",
+        "feathers:dev": "cd feathers-server && npm start"
     },
     "dependencies": {
         "app-module-path": "^2.2.0",
