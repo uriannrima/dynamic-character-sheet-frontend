@@ -6,7 +6,7 @@ class SkillService extends AbstractService {
     constructor() {
         super({
             model: SkillModule.Skill,
-            url: '/skill'
+            url: '/skills'
         });
     }
 }

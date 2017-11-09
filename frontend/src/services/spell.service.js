@@ -3,7 +3,10 @@ import AbstractService from './abstract.service'
 
 class SpellService extends AbstractService {
     constructor() {
-        super({ model: SpellModule.Spell, url: '/spell' });
+        super({
+            model: SpellModule.Spell,
+            url: '/spells'
+        });
     }
 
     async getAllDescriptors() {

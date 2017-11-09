@@ -5,7 +5,7 @@ class CharacterService extends AbstractService {
     constructor() {
         super({
             model: CharacterModule.Character,
-            url: '/character'
+            url: '/characters'
         });
     }
 }

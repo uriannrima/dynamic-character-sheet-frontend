@@ -23,15 +23,6 @@ export default class AbstractService {
         }
     }
 
-    async getData(id) {
-        try {
-            var response = await this.service.get(this.url + `/${id}`);
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    }
-
     async getAll() {
         try {
             var response = await this.service.get(this.url);

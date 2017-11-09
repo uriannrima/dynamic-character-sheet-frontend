@@ -187,7 +187,7 @@ export default {
     beforeRouteEnter: async function (to, from, next) {
         var sizes = await SizeService.getAll();
         if (to.params.id) {
-            var character = await CharacterService.getData(to.params.id);
+            var character = await CharacterService.get(to.params.id);
             next(vm => {
                 vm.allSizes = sizes;
                 vm.loadCharacter(character);

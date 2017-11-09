@@ -7,19 +7,15 @@
   "extends": "eslint:recommended",
   "rules": {
     "indent": [
-      "error",
+      1,
       2
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
     "quotes": [
-      "error",
+      1,
       "single"
     ],
     "semi": [
-      "error",
+      1,
       "always"
     ]
   }

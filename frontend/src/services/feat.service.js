@@ -5,7 +5,7 @@ class FeatService extends AbstractService {
     constructor() {
         super({
             model: FeatModule.Feat,
-            url: '/feat'
+            url: '/feats'
         });
     }
 }

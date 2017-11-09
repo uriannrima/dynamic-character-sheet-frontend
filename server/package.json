@@ -26,10 +26,8 @@
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "start": "node src/",
     "mocha": "mocha test/ --recursive --exit",
-
     "dev": "nodemon --inspect --watch ../common --watch ../server src/ --exec \"npm run lint && node\"",
     "host": "pm2 kill && pm2 start src/ --name 'web-dcs'",
-
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix"
   },
