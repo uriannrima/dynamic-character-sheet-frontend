@@ -11,7 +11,7 @@ import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
 import Routes from './routes';
 import { store } from 'Store';
-import Layout from './shared/layout.component';
+import Layout from './shared/sections//layout.section';
 import vSelect from 'vue-select';
 import './Shared/directives/store-sync.directive';
 

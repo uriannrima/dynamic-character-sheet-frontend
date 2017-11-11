@@ -1,7 +1,8 @@
 import Character from './sections/character-sheet/character-sheet.component';
 import Print from './sections/character-sheet/print.component';
 import Skills from './sections/skills/skills.section';
-import Home from './sections/home/home.component';
+import Home from './sections/home/home.section';
+import Login from './sections/login/login.section';
 
 const routes = [
     {
@@ -17,8 +18,12 @@ const routes = [
         component: Skills
     },
     {
-        path: '/',
+        path: '/home',
         component: Home
+    },
+    {
+        path: '/',
+        component: Login
     },
     {
         path: '/print/:id',

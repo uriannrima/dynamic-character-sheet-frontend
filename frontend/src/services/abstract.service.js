@@ -1,13 +1,9 @@
-import axios from 'axios';
-import Constants from 'Constants';
+import HttpServer from 'Shared/services/HttpServer';
 
-export default class AbstractService {
+export default class AbstractService extends HttpServer {
     constructor({ model, url }) {
-        Object.assign(this, { model, url }, {
-            service: axios.create({
-                baseURL: Constants.API_URL + '/'
-            })
-        });
+        super({ url });
+        Object.assign(this, { model });
     }
 
     create(data = {}) {
