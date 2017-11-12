@@ -8,5 +8,13 @@ export default class HttpService {
                 baseURL: Constants.API_URL + '/'
             })
         });
+
+        this.service.interceptors.response.use(undefined, error => {
+            if (error.response.data.code === 401) {
+                window.Router.push('/');
+            } else {
+                Promise.reject(error);
+            }
+        });
     }
 }

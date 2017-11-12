@@ -200,7 +200,6 @@ input[type="number"] {
 /* Panels */
 
 .character-sheet-panels {
-    position: fixed;
     display: flex;
     margin-bottom: 5px;
     z-index: 1;

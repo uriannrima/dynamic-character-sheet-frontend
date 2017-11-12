@@ -1,9 +1,18 @@
 import HttpServer from 'Shared/services/HttpServer';
+import AuthService from 'Services/AuthService';
 
 export default class AbstractService extends HttpServer {
     constructor({ model, url }) {
         super({ url });
         Object.assign(this, { model });
+    }
+
+    getHeaders() {
+        return {
+            headers: {
+                Authorization: AuthService.getAuthorization()
+            }
+        }
     }
 
     create(data = {}) {
@@ -12,7 +21,7 @@ export default class AbstractService extends HttpServer {
 
     async get(id) {
         try {
-            var response = await this.service.get(this.url + `/${id}`);
+            var response = await this.service.get(this.url + `/${id}`, this.getHeaders());
             return this.model(response.data);
         } catch (error) {
             throw error;
@@ -21,7 +30,7 @@ export default class AbstractService extends HttpServer {
 
     async getAll() {
         try {
-            var response = await this.service.get(this.url);
+            var response = await this.service.get(this.url, this.getHeaders());
             return response.data.map(data => this.model(data));
         } catch (error) {
             throw error;

@@ -3,6 +3,7 @@ import Print from './sections/character-sheet/print.component';
 import Skills from './sections/skills/skills.section';
 import Home from './sections/home/home.section';
 import Login from './sections/login/login.section';
+import Logout from './sections/login/logout.section';
 
 const routes = [
     {
@@ -24,6 +25,10 @@ const routes = [
     {
         path: '/',
         component: Login
+    },
+    {
+        path: '/logout',
+        component: Logout
     },
     {
         path: '/print/:id',

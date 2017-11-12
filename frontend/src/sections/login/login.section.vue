@@ -9,12 +9,13 @@
             <input type="password" v-model="login.password">
         </label>
         <button @click="doLogin()">Login</button>
+        <button @click="doRegistration()">Register</button>
     </div>
 </template>
 
 <script>
-import LoginService from 'Services/LoginService';
-console.log(LoginService);
+import AuthService from 'Services/AuthService';
+import UserService from 'Services/UserService';
 
 export default {
     data() {
@@ -26,12 +27,13 @@ export default {
         };
     },
     methods: {
-        doLogin: async () => {
-            let { email, password } = this;
-            var login = await LoginService.login({
-                email,
-                password
-            });
+        doLogin: async function () {
+            var accessToken = await AuthService.login(this.login);
+            if (accessToken) this.$router.push('home');
+        },
+        doRegistration: async function () {
+            var user = await UserService.register(this.login);
+            console.log(user);
         }
     }
 }

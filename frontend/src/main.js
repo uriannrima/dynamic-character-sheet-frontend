@@ -11,7 +11,7 @@ import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
 import Routes from './routes';
 import { store } from 'Store';
-import Layout from './shared/sections//layout.section';
+import Layout from './shared/sections/layout.section';
 import vSelect from 'vue-select';
 import './Shared/directives/store-sync.directive';
 
@@ -45,6 +45,7 @@ Vue.use(VeeValidate, veeConfig);
 Vue.use(VueRouter);
 
 const router = new VueRouter(Routes);
+window.Router = router;
 
 new Vue({
     store,
