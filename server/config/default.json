@@ -9,5 +9,6 @@
     "max": 100
   },
   */
-  "mongodb": "mongodb://uriann:02402806@ds135912.mlab.com:35912/web-dcs"
+  "mongodb": "mongodb://uriann:02402806@ds135912.mlab.com:35912/web-dcs",
+  "fallback":"mongodb://localhost/web-dcs"
 }

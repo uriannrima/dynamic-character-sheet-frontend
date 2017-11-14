@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
 const express = require('express');
 const logger = require('winston');
-const api = express();
 const app = require('./app');
-api.use('/api', app);
 const port = app.get('port');
-const server = api.listen(port);
+const server = express().use('/api', app).listen(port);
+app.setup(server);
 
 process.on('unhandledRejection', (reason, p) =>
   logger.error('Unhandled Rejection at: Promise ', p, reason)
