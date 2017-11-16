@@ -1,3 +1,8 @@
 {
-    "vetur.format.defaultFormatter.js": "vscode-typescript"
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "path-intellisense.mappings": {
+        "Services": "${workspaceRoot}/frontend/src/services",
+        "@": "${workspaceRoot}/frontend/src",
+        "Assets": "${workspaceRoot}/frontend/assets"
+    }
 }

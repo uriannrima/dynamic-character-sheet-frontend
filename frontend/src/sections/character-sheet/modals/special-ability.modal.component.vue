@@ -1,5 +1,5 @@
 <script>
-import DcsModal from 'Shared/modal.component';
+import DcsModal from 'Shared/components/modal.component';
 import SpecialAbilityService from 'Services/special-ability.service';
 
 export default {
