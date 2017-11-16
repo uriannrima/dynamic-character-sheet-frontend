@@ -1,6 +1,6 @@
-import HttpServer from 'Shared/services/HttpServer';
+import HttpService from 'Shared/services/HttpService';
 
-class UserService extends HttpServer {
+class UserService extends HttpService {
     constructor() {
         super({
             url: '/users'

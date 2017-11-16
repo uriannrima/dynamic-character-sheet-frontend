@@ -33,7 +33,8 @@ const routes = [
     {
         path: '/print/:id',
         component: Print
-    }, {
+    },
+    {
         path: '*',
         redirect: '/'
     }

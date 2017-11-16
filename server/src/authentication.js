@@ -2,14 +2,28 @@ const authentication = require('feathers-authentication');
 const jwt = require('feathers-authentication-jwt');
 const local = require('feathers-authentication-local');
 
-
 module.exports = function () {
   const app = this;
   const config = app.get('authentication');
 
   // Set up authentication with the secret
   app.configure(authentication(config));
-  app.configure(jwt());
+
+  // Extract jwt token from cookies.
+  // Require cookie-parser.
+  var cookieExtractor = function (req) {
+    var token = null;
+    if (req && req.cookies) {
+      token = req.cookies[config.cookie.name];
+    }
+    return token;
+  };
+
+  const jwtConfiguration = {
+    jwtFromRequest: cookieExtractor
+  };
+
+  app.configure(jwt(jwtConfiguration));
   app.configure(local());
 
   // The `authentication` service is used to create a JWT.

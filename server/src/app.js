@@ -4,6 +4,7 @@ const compress = require('compression');
 const cors = require('cors');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const feathers = require('feathers');
 const configuration = require('feathers-configuration');
@@ -27,9 +28,19 @@ const app = feathers();
 // Load app configuration
 app.configure(configuration());
 // Enable CORS, security, compression, favicon and body parsing
-app.use(cors());
+
+var corsConfiguration = {
+    credentials: true,
+    origin: 'http://localhost:4000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsConfiguration));
+app.options('*', cors(corsConfiguration)); // include before other routes
+
 app.use(helmet());
 app.use(compress());
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));

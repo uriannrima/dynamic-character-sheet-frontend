@@ -28,8 +28,8 @@ export default {
     },
     methods: {
         doLogin: async function () {
-            var accessToken = await AuthService.login(this.login);
-            if (accessToken) this.$router.push('home');
+            var loggedIn = await AuthService.login(this.login);
+            if (loggedIn) this.$router.push('home');
         },
         doRegistration: async function () {
             var user = await UserService.register(this.login);

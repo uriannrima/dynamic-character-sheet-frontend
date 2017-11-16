@@ -1,18 +1,22 @@
-import HttpServer from 'Shared/services/HttpServer';
+import HttpService from 'Shared/services/HttpService';
 
-class AuthService extends HttpServer {
+class AuthService extends HttpService {
     constructor() {
         super({
             url: '/authentication'
+        });
+
+        Object.assign(this, {
+            authenticated: false
         });
     }
 
     async login(payload) {
         try {
             payload.strategy = 'local';
-            var { data: { accessToken } } = await this.service.post(this.url, payload);
-            localStorage.setItem('access_token', accessToken);
-            return accessToken;
+            await this.service.post(this.url, payload);
+            this.authenticated = !this.authenticated;
+            return this.authenticated;
         } catch (error) {
             throw error;
         }
@@ -20,19 +24,16 @@ class AuthService extends HttpServer {
 
     async logout() {
         try {
-            localStorage.removeItem('access_token');
-            return true;
+            this.service.delete(this.url);
+            this.authenticated = !this.authenticated;
+            return this.authenticated;
         } catch (error) {
             throw error;
         }
     }
 
-    getAuthorization() {
-        return localStorage.getItem('access_token');
-    }
-
     isAuthenticated() {
-        return localStorage.getItem('access_token') !== null;
+        return this.authenticated;
     }
 }
 
