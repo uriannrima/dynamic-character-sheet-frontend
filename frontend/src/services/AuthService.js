@@ -7,15 +7,31 @@ class AuthService extends HttpService {
         });
 
         Object.assign(this, {
-            authenticated: false
+            authenticated: null
         });
+
+        this.check();
+    }
+
+    async check() {
+        if (this.authenticated == null) {
+            try {
+                var payload = {
+                    strategy: 'jwt'
+                };
+                await this.service.post(this.url, payload);
+                this.authenticated = true;
+            } catch (error) {
+                throw error;
+            }
+        }
     }
 
     async login(payload) {
         try {
             payload.strategy = 'local';
             await this.service.post(this.url, payload);
-            this.authenticated = !this.authenticated;
+            this.authenticated = true;
             return this.authenticated;
         } catch (error) {
             throw error;
@@ -25,10 +41,10 @@ class AuthService extends HttpService {
     async logout() {
         try {
             this.service.delete(this.url);
-            this.authenticated = !this.authenticated;
-            return this.authenticated;
+            this.authenticated = false;
+            return true;
         } catch (error) {
-            throw error;
+            return true;
         }
     }
 

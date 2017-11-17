@@ -10,7 +10,7 @@
 <script>
 import Home from '@/sections/home/home.section';
 import CharacterSheet from '@/sections/character-sheet/character-sheet.component';
-import AuthService from 'Services/AuthService'
+import AuthService from 'Services/AuthService';
 
 export default {
     components: {
@@ -19,8 +19,8 @@ export default {
     },
     methods: {
         doLogout: async function () {
-            var result = await AuthService.logout();
-            if (result) this.$router.push('/');
+            var loggedOut = await AuthService.logout();
+            if (loggedOut) this.$router.push('/');
         },
         isAuthenticated: function () {
             return AuthService.isAuthenticated();
