@@ -23,12 +23,14 @@ class AuthService extends HttpService {
     }
 
     async getAuthentication() {
-        return ApplicationDatabase.Instance.session.first();
+        let { session } = ApplicationDatabase.Instance;
+        return await session.toCollection().first();
     }
 
     async removeAuthentication() {
+        var { session } = ApplicationDatabase.Instance;
+        await session.toCollection().first().delete();
         this.authenticated = false;
-        // return await ApplicationDatabase.Instance.session.first().delete();
     }
 
     async refresh() {
@@ -60,7 +62,11 @@ class AuthService extends HttpService {
 
     async logout() {
         try {
-            this.service.delete(this.url);
+            var auth = await this.getAuthentication();
+            var headers = {
+                Authorization: auth.accessToken
+            }
+            this.service.delete(this.url, { headers });
             this.authenticated = false;
             return true;
         } catch (error) {

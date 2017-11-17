@@ -2,8 +2,7 @@ import axios from 'axios';
 import Constants from 'Constants';
 
 var service = axios.create({
-    baseURL: Constants.API_URL + '/',
-    withCredentials: true
+    baseURL: Constants.API_URL + '/'
 });
 
 export default class HttpService {

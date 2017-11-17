@@ -13,13 +13,15 @@ export default class AbstractService extends HttpService {
 
     async getHeaders() {
         var auth = await AuthService.getAuthentication();
-        console.log(auth);
+        return {
+            Authorization: auth.accessToken
+        };
     }
 
     async get(id) {
         try {
-            await this.getHeaders();
-            var response = await this.service.get(this.url + `/${id}`);
+            var headers = await this.getHeaders();
+            var response = await this.service.get(this.url + `/${id}`, { headers });
             return this.model(response.data);
         } catch (error) {
             throw error;
@@ -28,7 +30,8 @@ export default class AbstractService extends HttpService {
 
     async getAll() {
         try {
-            var response = await this.service.get(this.url);
+            var headers = await this.getHeaders();
+            var response = await this.service.get(this.url, { headers });
             return response.data.map(data => this.model(data));
         } catch (error) {
             throw error;
@@ -37,8 +40,9 @@ export default class AbstractService extends HttpService {
 
     async saveOrUpdate(model) {
         try {
+            var headers = await this.getHeaders();
             var serverCall = model._id ? this.service.post : this.service.put;
-            var response = await serverCall(this.url, model);
+            var response = await serverCall(this.url, model, { headers });
             return this.model(response.data);
         } catch (error) {
             throw error;
