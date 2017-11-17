@@ -7,9 +7,8 @@ import 'Assets/styles/form-validation.css';
 // Promise polyfill for IE11.
 import Es6Promise from 'es6-promise';
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
-import Routes from './routes';
+import router from './router';
 import { store } from 'Store';
 import Layout from './shared/sections/layout.section';
 import vSelect from 'vue-select';
@@ -42,9 +41,6 @@ const veeConfig = {
 
 Vue.component('v-select', vSelect);
 Vue.use(VeeValidate, veeConfig);
-Vue.use(VueRouter);
-
-const router = new VueRouter(Routes);
 
 new Vue({
     store,

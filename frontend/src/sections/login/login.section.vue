@@ -29,7 +29,13 @@ export default {
     methods: {
         doLogin: async function () {
             var loggedIn = await AuthService.login(this.login);
-            if (loggedIn) this.$router.push('home');
+            if (loggedIn) {
+                if (this.$route.query.redirect) {
+                    this.$router.push(this.$route.query.redirect);
+                } else {
+                    this.$router.push('home');
+                }
+            }
         },
         doRegistration: async function () {
             var user = await UserService.register(this.login);

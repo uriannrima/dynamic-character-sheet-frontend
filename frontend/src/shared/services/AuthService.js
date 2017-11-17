@@ -29,7 +29,7 @@ class AuthService extends HttpService {
 
     async removeAuthentication() {
         var { session } = ApplicationDatabase.Instance;
-        await session.toCollection().first().delete();
+        await session.where('accessToken').notEqual('').delete();
         this.authenticated = false;
     }
 
