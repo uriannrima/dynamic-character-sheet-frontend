@@ -30,9 +30,9 @@ app.configure(configuration());
 // Enable CORS, security, compression, favicon and body parsing
 
 var corsConfiguration = {
-    credentials: true,
-    origin: 'http://localhost:4000',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true,
+  origin: 'http://localhost:4000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 app.use(cors(corsConfiguration));
