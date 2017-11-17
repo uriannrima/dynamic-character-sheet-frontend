@@ -16,6 +16,8 @@ module.exports = {
   // 0 => Off, 1 => Warning, 2 => Error.
   // add your custom rules here
   'rules': {
+    // Avoid return await
+    "no-return-await": 0,
     // Warning for unused variables.
     "no-unused-vars": 1,
     // Warning when not using "" on string.

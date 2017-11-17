@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AuthService from 'Services/AuthService';
+import AuthService from 'Shared/services/AuthService';
 
 export default {
     beforeRouteEnter: async function (to, from, next) {

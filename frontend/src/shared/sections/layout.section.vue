@@ -10,7 +10,7 @@
 <script>
 import Home from '@/sections/home/home.section';
 import CharacterSheet from '@/sections/character-sheet/character-sheet.component';
-import AuthService from 'Services/AuthService';
+import AuthService from 'Shared/services/AuthService';
 
 export default {
     components: {

@@ -1,4 +1,5 @@
 import HttpService from 'Shared/services/HttpService';
+import AuthService from 'Shared/services/AuthService';
 
 export default class AbstractService extends HttpService {
     constructor({ model, url }) {
@@ -10,8 +11,14 @@ export default class AbstractService extends HttpService {
         return this.model(data);
     }
 
+    async getHeaders() {
+        var auth = await AuthService.getAuthentication();
+        console.log(auth);
+    }
+
     async get(id) {
         try {
+            await this.getHeaders();
             var response = await this.service.get(this.url + `/${id}`);
             return this.model(response.data);
         } catch (error) {

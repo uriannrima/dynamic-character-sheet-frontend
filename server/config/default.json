@@ -1,3 +1,12 @@
+/**
+  // To enable authentication with cookies.
+  "cookie": {
+    "enabled": true, // whether the cookie should be enabled
+    "name": "web-dcs-jwt", // the cookie name
+    "httpOnly": true, // whether the cookie should not be available to client side JavaScript
+    "secure": false // whether cookies should only be available over HTTPS
+  }
+**/
 {
   "host": "localhost",
   "port": 5000,
@@ -27,12 +36,6 @@
       "entity": "user",
       "usernameField": "email",
       "passwordField": "password"
-    },
-    "cookie": {
-      "enabled": true, // whether the cookie should be enabled
-      "name": "web-dcs-jwt", // the cookie name
-      "httpOnly": true, // whether the cookie should not be available to client side JavaScript
-      "secure": false // whether cookies should only be available over HTTPS
     }
   }
 }

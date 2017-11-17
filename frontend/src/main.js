@@ -45,7 +45,6 @@ Vue.use(VeeValidate, veeConfig);
 Vue.use(VueRouter);
 
 const router = new VueRouter(Routes);
-window.Router = router;
 
 new Vue({
     store,
