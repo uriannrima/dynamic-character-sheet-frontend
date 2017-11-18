@@ -34,7 +34,7 @@ export default {
     },
     data: function () {
         return {
-            sheetPage: 1,
+            sheetPage: -1,
             allSizes: [],
             allRaces: RaceService.getAll(),
             allAlignments: AlignmentService.getAll()
@@ -106,33 +106,18 @@ export default {
         }
     },
     methods: {
-        addToCharacter: async function (arrayName, added) {
-            console.log(arrayName, added);
-            this.character[arrayName].push(added);
+        addToCharacter: async function (arrayName, model) {
+            this.$store.dispatch(Actions.Character.Add.Generic, { arrayName, model });
         },
-        updateOnCharacter: function (arrayName, updated) {
-            console.log(arrayName, updated);
-            var index = _.findIndex(this.character[arrayName], p => p._id === updated._id);
-            this.character[arrayName].splice(index, 1, updated);
+        updateOnCharacter: function (arrayName, model) {
+            this.$store.dispatch(Actions.Character.Update.Generic, { arrayName, model });
         },
-        removeFromCharacter: function (arrayName, removed) {
-            this.character[arrayName] = _.filter(this.character[arrayName], p => {
-                return (p._id !== removed._id || (removed.subValue && removed.subValue !== p.subValue)
-                );
-            });
+        removeFromCharacter: function (arrayName, model) {
+            this.$store.dispatch(Actions.Character.Remove.Generic, { arrayName, model });
         },
         resetSkills: async function () {
             var data = await CharacterService.resetSkills(this.character);
             console.log(data);
-        },
-        addSpell: function (spellAdded) {
-            var spellList = _.filter(this.character.spellLists, o => o.level === spellAdded.level)[0];
-            spellList.spells.push(spellAdded);
-        },
-        removeSpell: function (spellRemoved) {
-            var spellList = _.filter(this.character.spellLists, o => o.level === spellRemoved.level)[0];
-            var spellIndex = _.findIndex(spellList.spells, spell => spell._id === spellRemoved._id);
-            spellList.spells.splice(spellIndex, 1);
         },
         loadCharacter: function (character) {
             this.$store.commit(Actions.Character.Replace, { character });
@@ -162,26 +147,6 @@ export default {
                     this.saveOrUpdate();
                 });
             }
-        },
-        printSheet: function () {
-            console.log("Fon.");
-            // http://www.techumber.com/how-to-convert-html-to-pdf-using-javascript-multipage/
-            // html2canvas(document.getElementById('character-sheet'), {
-            //     onrendered: function(canvas) {
-            //         document.body.appendChild(canvas);
-            //     },
-            // });
-
-            // var pdf = new jsPDF('p', 'pt', 'letter');
-            // pdf.addHTML(document.getElementsByClassName('first-page'), function() {
-            //     pdf.addPage();
-            //     pdf.addHTML(document.getElementsByClassName('second-page'), function() {
-            //         pdf.save('Test.pdf');
-            //     });
-            // });
-        },
-        rollback() {
-            this.$store.commit('ROLLBACK');
         }
     },
     beforeRouteEnter: async function (to, from, next) {
@@ -435,9 +400,7 @@ export default {
                                         </td>
                                     </tbody>
                                 </table>
-                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')"
-                                    :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield"
-                                    :size="character.size"></armor-class-container>
+                                <armor-class-container :armorClass="character.armorClass" :abilityScoreModifier="character.getAbilityScore('dexterity')" :damageReduction.sync="character.damageReduction" :armorItem="character.gear.armor" :shieldItem="character.gear.shield" :size="character.size"></armor-class-container>
                                 <!-- Touch and Flat-Footed -->
                                 <div>
                                     <div class="pure-u-lg-11-24 hidden-md-down">
@@ -901,7 +864,7 @@ export default {
                             </div>
                         </div>
                         <div class="pure-u-1-1 pure-u-lg-9-24">
-                            <skills-container :character="character" :add-enabled="true"></skills-container>
+                            <skills-container :character="character" :add-enabled="true" @onSkillAdded="addToCharacter('skills', $event.model)" @onSkillUpdated="updateOnCharacter('skills', $event.model)" @onSkillRemoved="removeFromCharacter('skills', $event.model)"></skills-container>
                         </div>
                     </div>
                 </div>
@@ -1234,7 +1197,7 @@ export default {
                             <div class="pure-u-lg-1-2 pure-u-1">
                                 <div class="pure-g">
                                     <div class="pure-u-lg-2-5 pure-u-1">
-                                        <feats-container :character="character" :add-enabled="true"></feats-container>
+                                        <feats-container :character="character" :add-enabled="true" @onFeatAdded="addToCharacter('feats', $event.model)" @onFeatUpdated="updateOnCharacter('feats', $event.model)" @onFeatRemoved="removeFromCharacter('feats', $event.model)"></feats-container>
                                         <div class="special-abilities-container">
                                             <div class="special-abilities-header black-box">
                                                 <span class="health-points-abbreviation">Special Abilities</span>
@@ -1254,7 +1217,7 @@ export default {
                                     </div>
                                     <div class="pure-u-lg-3-5 pure-u-1">
                                         <div class="third-region">
-                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addNewSpell($event)"></spells-container>
+                                            <spells-container :character="character" :add-enabled="true" @onSpellAdded="addToCharacter('spells', $event.model)" @onSpellUpdated="updateOnCharacter('spells', $event.model)" @onSpellRemoved="removeFromCharacter('spells', $event.model)"></spells-container>
                                             <div class="spell-save-container">
                                                 <div class="spell-save-header black-box">
                                                     <span class="health-points-abbreviation">Spell Save</span>
@@ -1282,14 +1245,8 @@ export default {
                     </div>
                 </div>
             </div>
-            <!-- dcs-special-ability-modal :show.sync="show.specialAbilityModal" :describe-special-ability.sync="selected.specialAbility"
-                                                                                                                                                                            :character-special-abilities="character.specialAbilities" @onSpecialAbilityAdded="addNewSpecialAbility" @onSpecialAbilityRemoved="removeSpecialAbility"></dcs-special-ability-modal -->
             <div class="controls-container">
                 <button @click="saveOrUpdate">Salvar</button>
-                <button @click="resetSkills">Reset Skills</button>
-                <button @click="printSheet">Print</button>
-                <button @click="rollback">Rollback</button>
-                <!-- button @click="exportCharacter">Exportar</button>                                                                                                                      <input id="importField" type="file" -->
             </div>
         </div>
     </div>
