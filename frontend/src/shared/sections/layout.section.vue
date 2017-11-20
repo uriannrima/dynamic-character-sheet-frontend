@@ -10,12 +10,14 @@
 <script>
 import Home from '@/sections/home/home.section';
 import CharacterSheet from '@/sections/character-sheet/character-sheet.component';
+import Ncs from '@/sections/ncs/ncs.component';
 import AuthService from 'Shared/services/AuthService';
 
 export default {
     components: {
         'dcs-home': Home,
-        'dcs-character-sheet': CharacterSheet
+        'dcs-character-sheet': CharacterSheet,
+        'ncs': Ncs
     },
     methods: {
         doLogout: async function () {

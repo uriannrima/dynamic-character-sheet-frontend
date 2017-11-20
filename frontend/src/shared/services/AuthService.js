@@ -10,8 +10,6 @@ class AuthService extends HttpService {
         Object.assign(this, {
             authenticated: null
         });
-
-        this.refresh();
     }
 
     async setAuthentication(accessToken = '') {
