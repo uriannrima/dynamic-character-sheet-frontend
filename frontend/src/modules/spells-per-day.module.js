@@ -1,4 +1,4 @@
-exports.SpellsPerDay = function ({ spellsKnown, spellSaveDC, spellLevel, spellsPerDay, bonusSpells }) {
+export const SpellsPerDay = function ({ spellsKnown, spellSaveDC, spellLevel, spellsPerDay, bonusSpells }) {
     return {
         spellsKnown: spellsKnown || 0,
         spellSaveDC: spellSaveDC || 0,

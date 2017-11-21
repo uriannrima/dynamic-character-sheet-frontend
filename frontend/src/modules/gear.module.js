@@ -1,4 +1,4 @@
-var armor = function ({ name, type, acBonus, maxDex, checkPenalty, spellFailure, speed, weight, specialProperties }) {
+export const Armor = function ({ name, type, acBonus, maxDex, checkPenalty, spellFailure, speed, weight, specialProperties }) {
     return {
         name: name || "",
         type: type || "",
@@ -12,9 +12,7 @@ var armor = function ({ name, type, acBonus, maxDex, checkPenalty, spellFailure,
     };
 };
 
-exports.Armor = armor;
-
-var shield = function ({ name, acBonus, checkPenalty, spellFailure, weight, specialProperties }) {
+export const Shield = function ({ name, acBonus, checkPenalty, spellFailure, weight, specialProperties }) {
     return {
         name: name || "",
         acBonus: acBonus || 0,
@@ -25,9 +23,7 @@ var shield = function ({ name, acBonus, checkPenalty, spellFailure, weight, spec
     };
 }
 
-exports.Shield = shield;
-
-var protectiveItem = function ({ name, acBonus, weight, specialProperties }) {
+export const ProtectiveItem = function ({ name, acBonus, weight, specialProperties }) {
     return {
         name: name || "",
         acBonus: acBonus || 0,
@@ -36,14 +32,10 @@ var protectiveItem = function ({ name, acBonus, weight, specialProperties }) {
     };
 }
 
-exports.ProtectiveItem = protectiveItem;
-
-var gear = function ({ }) {
+export const Gear = function () {
     return {
-        armor: new armor({}),
-        shield: new shield({}),
-        protectiveItems: [new protectiveItem({}), new protectiveItem({})]
+        armor: new Armor(),
+        shield: new Shield(),
+        protectiveItems: [new ProtectiveItem(), new ProtectiveItem()]
     }
 }
-
-exports.Gear = gear;

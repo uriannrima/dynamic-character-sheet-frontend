@@ -1,4 +1,4 @@
-var abilityScore = function ({ name, value, tempValue, updateFn }) {
+const AbilityScore = function ({ name, value, tempValue, updateFn }) {
     return {
         name,
         value: value || 10,
@@ -10,11 +10,11 @@ var abilityScore = function ({ name, value, tempValue, updateFn }) {
             return Math.floor((this.tempValue - 10) / 2);
         },
         updateCharacter: updateFn || function (character) {
-            return;
+
         },
         updateSavingThrows: function (character) {
             const modifier = this.getModifier() !== this.getTempModifier() ? this.getTempModifier() : this.getModifier();
-            
+
             // Update saving throws.
             var savingThrowsToUpdate = character.savingThrows.filter(savingThrow => savingThrow.keyAbility === this.name);
             savingThrowsToUpdate.forEach(savingThrow => {
@@ -35,29 +35,26 @@ var abilityScore = function ({ name, value, tempValue, updateFn }) {
     };
 };
 
-exports.AbilityScore = abilityScore;
-
-var factory = {
+const Factory = {
     create: function ({ name, value, tempValue }) {
-        const template = factory.templates.filter(t => t.name === name)[0];
-        return new abilityScore({
+        const template = Factory.templates.filter(t => t.name === name)[0];
+        return new AbilityScore({
             name: template.name,
-            value, tempValue,
+            value,
+            tempValue,
             updateFn: template.updateFn
         });
     },
     templates: [],
     add: function (template) {
-        factory.templates.push(template);
+        Factory.templates.push(template);
     },
     clear: function () {
-        factory.template = [];
+        Factory.template = [];
     }
 }
 
-exports.Factory = factory;
-
-factory.add({
+Factory.add({
     name: "strength",
     updateFn: function (character) {
         this.updateSkills(character);
@@ -67,7 +64,7 @@ factory.add({
     }
 });
 
-factory.add({
+Factory.add({
     name: "dexterity",
     updateFn: function (character) {
         this.updateSkills(character);
@@ -83,7 +80,7 @@ factory.add({
     }
 });
 
-factory.add({
+Factory.add({
     name: "constitution",
     updateFn: function (character) {
         this.updateSkills(character);
@@ -91,14 +88,14 @@ factory.add({
     }
 });
 
-factory.add({
+Factory.add({
     name: "intelligence",
     updateFn: function (character) {
         this.updateSkills(character);
     }
 });
 
-factory.add({
+Factory.add({
     name: "wisdom",
     updateFn: function (character) {
         this.updateSkills(character);
@@ -106,9 +103,14 @@ factory.add({
     }
 });
 
-factory.add({
+Factory.add({
     name: "charisma",
     updateFn: function (character) {
         this.updateSkills(character);
     }
 });
+
+export {
+    AbilityScore,
+    Factory
+}

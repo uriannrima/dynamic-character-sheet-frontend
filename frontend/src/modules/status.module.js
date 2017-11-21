@@ -1,4 +1,4 @@
-exports.Status = function ({ healthPoints, wounds, nonLethalDamage }) {
+export const Status = function ({ healthPoints, wounds, nonLethalDamage }) {
     return {
         healthPoints,
         wounds,

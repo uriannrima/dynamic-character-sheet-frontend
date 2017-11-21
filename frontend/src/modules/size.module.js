@@ -1,4 +1,4 @@
-exports.Sizes = [
+export const Sizes = [
     {
         "name": "Fine",
         "attackDCBonus": 8.0,
@@ -64,7 +64,7 @@ exports.Sizes = [
     }
 ];
 
-exports.Size = function ({ _id, name, attackDCBonus, grappleBonus, hideBonus, carryBonus }) {
+export const Size = function ({ _id, name, attackDCBonus, grappleBonus, hideBonus, carryBonus }) {
     return {
         _id,
         name,

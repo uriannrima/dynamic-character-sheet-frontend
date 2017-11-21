@@ -1,5 +1,4 @@
-
-import SkillModule from 'Modules/skill.module';
+import * as SkillModule from 'Modules/skill.module';
 import AbstractService from './abstract.service';
 
 class SkillService extends AbstractService {

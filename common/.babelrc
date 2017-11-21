@@ -1,4 +1,0 @@
-{
-    // Use frontend babel configuration if transpilation is required.
-    "extends": "../frontend/.babelrc"
-}

@@ -1,17 +1,4 @@
-exports.factory = function ({ name, value, updateFn }) {
-    switch (name) {
-        case "fortitude":
-            return new fortitude(value);
-        case "reflex":
-            return new reflex(value);
-        case "will":
-            return new will(value);
-        default:
-            return new savingThrow({ name, value, updateFn });
-    }
-}
-
-var savingThrow = function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
+export const SavingThrow = function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
     return {
         name,
         keyAbility,
@@ -31,35 +18,31 @@ var savingThrow = function ({ name, keyAbility, base, abilityModifier, magicModi
     }
 }
 
-exports.SavingThrow = savingThrow;
-
-var factory = {
+export const Factory = {
     create: function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
-        const template = factory.templates.filter(t => t.name === name)[0];
-        return new savingThrow(template);
+        const template = Factory.templates.filter(t => t.name === name)[0];
+        return new SavingThrow(template);
     },
     templates: [],
     add: function (template) {
-        factory.templates.push(template);
+        Factory.templates.push(template);
     },
     clear: function () {
-        factory.template = [];
+        Factory.template = [];
     }
 }
 
-exports.Factory = factory;
-
-factory.add({
+Factory.add({
     name: "fortitude",
     keyAbility: "constitution"
 });
 
-factory.add({
+Factory.add({
     name: "reflex",
     keyAbility: "dexterity"
 });
 
-factory.add({
+Factory.add({
     name: "will",
     keyAbility: "wisdom"
 });

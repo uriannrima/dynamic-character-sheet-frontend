@@ -23,9 +23,11 @@ export default {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 50% auto;
+  transition: all 1s;
 }
 
 .page {
+  transition: all 5s;
   height: 297mm;
 }
 

@@ -31,7 +31,6 @@
         },
         "development": {
             "presets": [
-                "es2017",
                 "stage-2"
             ]
         }

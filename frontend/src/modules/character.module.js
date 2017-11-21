@@ -1,7 +1,7 @@
 var Modules = require('./');
 _ = require('lodash');
 
-exports.Character = function ({
+export const Character = function ({
     _id, name, playerName,
     race, alignment, deity,
     size, age, gender, height,
@@ -15,12 +15,21 @@ exports.Character = function ({
     specialAbilities, domainSchool, spellSave,
     arcaneSpellFailure, spellConditionModifier,
     spells = [], spellPerDayList }) {
-
     return {
-        _id, name, playerName,
-        race, alignment, deity, age, gender,
-        height, weight, eyes,
-        hair, skin, speed,
+        _id,
+        name,
+        playerName,
+        race,
+        alignment,
+        deity,
+        age,
+        gender,
+        height,
+        weight,
+        eyes,
+        hair,
+        skin,
+        speed,
         damageReduction,
         conditionModifier,
         size: size || new Modules.SizeModule.Size({
@@ -44,7 +53,7 @@ exports.Character = function ({
         status: status || new Modules.StatusModule.Status({
             healthPoints: 1,
             wounds: "",
-            nonLethalDamage: 0,
+            nonLethalDamage: 0
         }),
         armorClass: armorClass ? new Modules.ArmorClassModule.ArmorClass(armorClass) : new Modules.ArmorClassModule.ArmorClass({
             base: 10,

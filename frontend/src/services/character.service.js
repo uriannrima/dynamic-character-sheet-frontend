@@ -1,4 +1,4 @@
-import CharacterModule from 'Modules/character.module';
+import * as CharacterModule from 'Modules/character.module';
 import AbstractService from './abstract.service';
 
 class CharacterService extends AbstractService {

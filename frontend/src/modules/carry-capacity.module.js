@@ -1,4 +1,4 @@
-exports.CarryCapacity = function ({ lightLoad, mediumLoad, heavyLoad, liftOverHead, liftOffGround, pushOrDrag }) {
+export const CarryCapacity = function ({ lightLoad, mediumLoad, heavyLoad, liftOverHead, liftOffGround, pushOrDrag }) {
     return {
         lightLoad: lightLoad || 0,
         mediumLoad: mediumLoad || 0,

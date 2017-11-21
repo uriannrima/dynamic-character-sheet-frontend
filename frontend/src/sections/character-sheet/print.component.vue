@@ -73,7 +73,7 @@ SpellsContainer
                     // Regex to get level
                     var levelRegex = /\(([^)]+)\)/;
 
-                    // Get level data, 
+                    // Get level data,
                     var levelData = levelRegex.exec(classLevel);
                     // Extract level from data
                     var level = levelData && levelData.length > 1 ? levelData[1] : 1;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import SpecialAbilityModule from 'Modules/special-ability.module';
+import * as SpecialAbilityModule from 'Modules/special-ability.module';
 import Constants from 'Constants';
 
 export default {

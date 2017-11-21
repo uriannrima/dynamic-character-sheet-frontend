@@ -1,6 +1,6 @@
 const SpellSchoolModule = require('./spell-school.module');
 
-exports.components = [{
+export const components = [{
     name: "Verbal",
     description: "A verbal component is a spoken incantation. To provide a verbal component, you must be able to speak in a strong voice. A silence spell or a gag spoils the incantation (and thus the spell). a spellcaster who has been deafened has a 20% chance of spoiling any spell with a verbal component that he tries to cast."
 }, {
@@ -17,7 +17,7 @@ exports.components = [{
     description: "A divine focus component is an item of spiritual significance. The divine focus for a cleric or a paladin is a holy symbol appropriate to the character’s faith. The divine focus for a druid or a ranger is a sprig of holly, or some other sacred plant. If the Components line includes F/ DF or M/ DF, the arcane version of the spell has a focus component or a material component (the abbreviation before the slash) and the divine version has a divine focus component (the abbreviation after the slash)."
 }];
 
-exports.ranges = [{
+export const ranges = [{
     name: "Personal",
     description: "The spell affects only you."
 }, {
@@ -44,7 +44,7 @@ exports.ranges = [{
     description: "Some spells have no standard range category, just a range expressed in distance."
 }];
 
-exports.effects = [
+export const effects = [
     {
         name: "Ray",
         description: "Some effects are rays. You aim a ray as if using a ranged weapon, though typically you make a ranged touch attack rather than a normal ranged attack. As with a ranged weapon, you can fire into the dark or at an invisible creature and hope you hit something. You don’t have to see the creature you’re trying to hit, as you do with a targeted spell. Intervening creatures and obstacles, however, can block your line of sight or provide cover for the creature at which you’re aiming.           \nIf a ray spell has a duration, it’s the duration of the effect that the ray causes, not the length of time the ray itself persists.                \nIf a ray spell deals damage, you can score a critical hit just as if it were a weapon. A ray spell threatens a critical hit on a natural roll of 20 and deals double damage on a successful critical hit."
@@ -105,7 +105,7 @@ exports.effects = [
     }
 ]
 
-exports.descriptors = [{
+export const descriptors = [{
     name: "Acid",
     description: "Acid effects deal damage with chemical reactions rather than cold, electricity, heat, or vibration. This descriptor includes both actual acids and their chemical opposites, called bases or alkalines (such as ammonia and lye)."
 }, {
@@ -201,7 +201,7 @@ exports.descriptors = [{
     description: "Spells that manipulate water or conjure creatures from water-dominant planes or with the water subtype should have the water descriptor."
 }];
 
-exports.savingThrowResolve = [
+export const savingThrowResolve = [
     {
         name: "Negates",
         description: "The spell has no effect on a subject that makes a successful saving throw."
@@ -223,7 +223,7 @@ exports.savingThrowResolve = [
     }
 ]
 
-exports.durations = [
+export const durations = [
     {
         name: "Timed",
         description: "Many durations are measured in rounds, minutes, hours, or other increments. When the time is up, the magic goes away and the spell ends. If a spell’s duration is variable, the duration is rolled secretly so the caster doesn’t know how long the spell will last.",
@@ -262,7 +262,7 @@ exports.durations = [
     }
 ];
 
-exports.castingTimes = [
+export const castingTimes = [
     "Standard Action",
     "Round(s)",
     "Minute(s)",
@@ -271,10 +271,10 @@ exports.castingTimes = [
     "Custom"
 ];
 
-exports.Spell = function ({
+export const Spell = function ({
     _id, name, school = new SpellSchoolModule.SpellSchool({}),
     descriptors = [], level = 0, components = [],
-    castingTimeAmount = 1, castingTime = "Standard Action", range = exports.ranges[0], targets = "", effect = "", durations = [],
+    castingTimeAmount = 1, castingTime = "Standard Action", range = ranges[0], targets = "", effect = "", durations = [],
     savingThrow = { check: "", resolve: "" }, description, spellResistance = true, aditionalInformation }) {
     return {
         _id,

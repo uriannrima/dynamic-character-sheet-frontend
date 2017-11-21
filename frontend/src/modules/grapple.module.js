@@ -1,4 +1,4 @@
-exports.Grapple = function ({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
+export const Grapple = function ({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
     return {
         baseAttackBonus,
         strengthModifier,

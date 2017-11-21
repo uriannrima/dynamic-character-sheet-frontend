@@ -1,4 +1,4 @@
-var item = function ({ name, page, weight }) {
+export const Item = function ({ name, page, weight }) {
     return {
         name: name || "",
         page: page || 0,
@@ -6,13 +6,10 @@ var item = function ({ name, page, weight }) {
     }
 }
 
-var factory = function (length) {
+export const Factory = function (length) {
     var items = [];
     for (var index = 0; index < length; index++) {
-        items.push(new item({}));
+        items.push(new Item({}));
     }
     return items;
 }
-
-exports.Item = item;
-exports.Factory = factory;

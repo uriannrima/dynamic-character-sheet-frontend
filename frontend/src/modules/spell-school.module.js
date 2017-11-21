@@ -1,4 +1,4 @@
-exports.SpellSchools = [
+export const SpellSchools = [
     {
         "name": "Abjuration",
         "description": "Abjuration spells are protective in nature, though some of them have aggressive uses. They create magical barriers, negate harmful effects, harm trespassers, or banish creatures to other planes of existence.",
@@ -101,7 +101,7 @@ exports.SpellSchools = [
     }
 ]
 
-exports.SpellSchool = function ({ _id, name, description, subject, subSchools = "" }) {
+export const SpellSchool = function ({ _id, name, description, subject, subSchools = "" }) {
     return {
         _id,
         name,
@@ -111,7 +111,7 @@ exports.SpellSchool = function ({ _id, name, description, subject, subSchools = 
     }
 }
 
-exports.SubSchool = function ({ name, description }) {
+export const SubSchool = function ({ name, description }) {
     return {
         name,
         description

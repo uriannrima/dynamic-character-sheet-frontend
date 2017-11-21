@@ -1,4 +1,4 @@
-exports.Initiative = function ({ dexModifier, miscModifier }) {
+export const Initiative = function ({ dexModifier, miscModifier }) {
     return {
         dexModifier,
         miscModifier,

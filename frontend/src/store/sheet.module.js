@@ -1,5 +1,5 @@
 import Actions from './actions.constants'
-import CharacterModule from 'Modules/character.module';
+import * as CharacterModule from 'Modules/character.module';
 
 export var Utils = {
     removeFromModel(model, arrayName, removed, field = '_id') {

@@ -15,8 +15,4 @@ export default {
   grid-area: description-area;
   background-color: aqua;
 }
-.description-area {
-  grid-area: description-area;
-  background-color: aqua;
-}
 </style>
