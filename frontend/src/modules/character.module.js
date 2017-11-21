@@ -42,13 +42,13 @@ export const Character = function ({
         classes: classes || [
             new Modules.ClasseModule.Classe({})
         ],
-        abilityScores: abilityScores ? abilityScores.map(abilityScore => Modules.AbilityScoreModule.Factory.create(abilityScore)) : [
-            new Modules.AbilityScoreModule.Factory.create({ name: 'strength' }),
-            new Modules.AbilityScoreModule.Factory.create({ name: 'dexterity' }),
-            new Modules.AbilityScoreModule.Factory.create({ name: 'constitution' }),
-            new Modules.AbilityScoreModule.Factory.create({ name: 'intelligence' }),
-            new Modules.AbilityScoreModule.Factory.create({ name: 'wisdom' }),
-            new Modules.AbilityScoreModule.Factory.create({ name: 'charisma' })
+        abilityScores: abilityScores ? abilityScores.map(abilityScore => Modules.AbilityScoreModule.Factory.Create(abilityScore)) : [
+            new Modules.AbilityScoreModule.Factory.Create({ name: 'strength' }),
+            new Modules.AbilityScoreModule.Factory.Create({ name: 'dexterity' }),
+            new Modules.AbilityScoreModule.Factory.Create({ name: 'constitution' }),
+            new Modules.AbilityScoreModule.Factory.Create({ name: 'intelligence' }),
+            new Modules.AbilityScoreModule.Factory.Create({ name: 'wisdom' }),
+            new Modules.AbilityScoreModule.Factory.Create({ name: 'charisma' })
         ],
         status: status || new Modules.StatusModule.Status({
             healthPoints: 1,
@@ -70,9 +70,9 @@ export const Character = function ({
             miscModifier: 0
         }),
         savingThrows: savingThrows ? savingThrows.map(savingThrow => new Modules.SavingThrowsModule.SavingThrow(savingThrow)) : [
-            new Modules.SavingThrowsModule.Factory.create({ name: 'fortitude' }),
-            new Modules.SavingThrowsModule.Factory.create({ name: 'reflex' }),
-            new Modules.SavingThrowsModule.Factory.create({ name: 'will' })
+            new Modules.SavingThrowsModule.Factory.Create({ name: 'fortitude' }),
+            new Modules.SavingThrowsModule.Factory.Create({ name: 'reflex' }),
+            new Modules.SavingThrowsModule.Factory.Create({ name: 'will' })
         ],
         baseAttackBonus: baseAttackBonus || 0,
         spellResistance: spellResistance || 0,

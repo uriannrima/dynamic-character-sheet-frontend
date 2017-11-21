@@ -36,7 +36,7 @@ const AbilityScore = function ({ name, value, tempValue, updateFn }) {
 };
 
 const Factory = {
-    create: function ({ name, value, tempValue }) {
+    Create: function ({ name, value, tempValue }) {
         const template = Factory.templates.filter(t => t.name === name)[0];
         return new AbilityScore({
             name: template.name,

@@ -19,7 +19,7 @@ export const SavingThrow = function ({ name, keyAbility, base, abilityModifier, 
 }
 
 export const Factory = {
-    create: function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
+    Create: function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
         const template = Factory.templates.filter(t => t.name === name)[0];
         return new SavingThrow(template);
     },
