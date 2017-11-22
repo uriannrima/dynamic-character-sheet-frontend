@@ -18,7 +18,6 @@ export default {
   display: grid;
   grid-template-columns: 66% auto;
   grid-template-areas: "description-component logo-component";
-  background-color: rgb(120, 183, 16);
 }
 
 @media screen and (max-width: 768px) {

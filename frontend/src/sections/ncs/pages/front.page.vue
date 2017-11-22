@@ -43,7 +43,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 567px) {
+@media screen and (max-width: 768px) {
   .front {
     grid-template-columns: 100%;
     grid-template-rows: auto;
