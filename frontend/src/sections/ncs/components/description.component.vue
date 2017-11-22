@@ -35,10 +35,6 @@ export default {
 </script>
 
 <style>
-div {
-  text-align: center;
-}
-
 .description-component {
   grid-area: description-component;
   display: grid;

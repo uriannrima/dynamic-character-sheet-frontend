@@ -1,21 +1,11 @@
-import Dexie from 'dexie';
+import LocalForage from 'localforage';
 
 export default class Database {
-    constructor(databaseName) {
+    constructor(name) {
         Object.assign(this, {
-            Instance: new Dexie(databaseName)
+            Instance: LocalForage.createInstance({
+                name
+            })
         });
-    }
-
-    configure(version = 1, schema) {
-        this.Instance.version(version).stores(schema);
-    }
-
-    async open() {
-        try {
-            return await this.Instance.open();
-        } catch (error) {
-            throw error;
-        }
     }
 }

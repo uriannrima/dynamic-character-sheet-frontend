@@ -12,9 +12,9 @@ export default class AbstractService extends HttpService {
     }
 
     async getHeaders() {
-        var auth = await AuthService.getAuthentication();
+        var accessToken = await AuthService.getAuthentication();
         return {
-            Authorization: auth.accessToken
+            Authorization: accessToken
         };
     }
 

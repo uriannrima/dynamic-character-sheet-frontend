@@ -85,9 +85,6 @@ module.exports = {
         new webpack.ProvidePlugin({
             _: 'lodash'
         }),
-        new webpack.ProvidePlugin({
-            Dexie: 'Dexie'
-        }),
         new CopyWebpackPlugin([
             {
                 from: './assets',

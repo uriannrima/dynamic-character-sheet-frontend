@@ -1,20 +1,19 @@
 <template>
   <div class="ability-area">
-    <ability-score-component/>
+    <abilities-score-component/>
   </div>
 </template>
 
 <script>
-import { AbilityScoreComponent } from '../components';
+import { AbilitiesScoreComponent } from '../components';
 
 export default {
-  components: { AbilityScoreComponent }
+  components: { AbilitiesScoreComponent }
 }
 </script>
 
 <style>
 .ability-area {
   grid-area: ability-area;
-  background-color: bisque;
 }
 </style>

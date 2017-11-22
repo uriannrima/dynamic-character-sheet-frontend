@@ -15,20 +15,15 @@ class AuthService extends HttpService {
     async setAuthentication(accessToken = '') {
         if (accessToken === '') throw new Error('Token must be provided.');
         this.authenticated = true;
-        return await ApplicationDatabase.Instance.session.add({
-            accessToken
-        });
+        return await ApplicationDatabase.Instance.setItem('accessToken', accessToken);
     }
 
     async getAuthentication() {
-        let { session } = ApplicationDatabase.Instance;
-        return await session.toCollection().first();
+        return await ApplicationDatabase.Instance.getItem('accessToken');
     }
 
     async removeAuthentication() {
-        var { session } = ApplicationDatabase.Instance;
-        await session.where('accessToken').notEqual('').delete();
-        this.authenticated = false;
+        return await ApplicationDatabase.Instance.removeItem('accessToken');
     }
 
     async refresh() {

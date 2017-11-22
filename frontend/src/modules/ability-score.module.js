@@ -1,4 +1,4 @@
-const AbilityScore = function ({ name, value, tempValue, updateFn }) {
+export const AbilityScore = function ({ name, value, tempValue, updateFn }) {
     return {
         name,
         value: value || 10,
@@ -35,7 +35,7 @@ const AbilityScore = function ({ name, value, tempValue, updateFn }) {
     };
 };
 
-const Factory = {
+export const Factory = {
     Create: function ({ name, value, tempValue }) {
         const template = Factory.templates.filter(t => t.name === name)[0];
         return new AbilityScore({
@@ -109,8 +109,3 @@ Factory.add({
         this.updateSkills(character);
     }
 });
-
-export {
-    AbilityScore,
-    Factory
-}
