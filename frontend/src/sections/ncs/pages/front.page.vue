@@ -60,12 +60,10 @@ export default {
 
 .ability-area {
   grid-area: ability-area;
-  background-color: rgb(149, 205, 240);
 }
 
 .armor-area {
   grid-area: armor-area;
-  background-color: blueviolet;
 }
 
 .initiative-area {

@@ -1,10 +1,12 @@
 <template>
-  <div>Armor Area</div>
+  <armor-component/>
 </template>
 
 <script>
-export default {
+import { ArmorComponent } from '../components';
 
+export default {
+  components: { ArmorComponent }
 }
 </script>
 
