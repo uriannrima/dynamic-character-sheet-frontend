@@ -38,7 +38,6 @@ export default {
   }
 }
 
-/** Common Desktop Resolution */
 @media screen and (max-width: 1439px) {
   .main-container {
     grid-template-columns: 100%;

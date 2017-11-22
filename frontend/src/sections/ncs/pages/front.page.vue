@@ -30,7 +30,7 @@ export default {
     "items-area items-area skills-area";
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   .front {
     grid-template-columns: 50% auto;
     grid-template-rows: 15% 20% 10% auto;

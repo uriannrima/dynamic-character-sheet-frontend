@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --open --config build/webpack.dev.js --content-base src/ --port 4000 --hot",
+    "dev": "yarn install && webpack-dev-server --open --config build/webpack.dev.js --content-base src/ --port 4000 --hot",
     "build": "webpack --config build/webpack.prd.js",
-    "host": "webpack -w --config build/webpack.prd.js"
+    "host": "yarn install && webpack -w --config build/webpack.prd.js"
   },
   "engines": {
     "node": ">= 4.0.0",

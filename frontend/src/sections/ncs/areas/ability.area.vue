@@ -1,12 +1,14 @@
 <template>
   <div class="ability-area">
-    Ability Area
+    <ability-score-component/>
   </div>
 </template>
 
 <script>
-export default {
+import { AbilityScoreComponent } from '../components';
 
+export default {
+  components: { AbilityScoreComponent }
 }
 </script>
 
