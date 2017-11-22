@@ -1,11 +1,11 @@
 <template>
-  <div class="page front">
-    <description-area/>
-    <ability-area/>
-    <armor-area/>
-    <initiative-area/>
-    <skills-area/>
-    <items-area/>
+  <div>
+    <description-area class="description-area" />
+    <ability-area class="ability-area" />
+    <armor-area class="armor-area" />
+    <initiative-area class="initiative-area" />
+    <skills-area class="skills-area" />
+    <items-area class="items-area" />
   </div>
 </template>
 
@@ -36,10 +36,10 @@ export default {
     grid-template-rows: 15% 20% 10% auto;
     /* prettier-ignore */
     grid-template-areas: 
-    "description-area description-area" 
-    "ability-area initiative-area"
-    "armor-area armor-area" 
-    "items-area skills-area";
+      "description-area description-area" 
+      "ability-area initiative-area"
+      "armor-area armor-area" 
+      "items-area skills-area";
   }
 }
 
@@ -49,12 +49,37 @@ export default {
     grid-template-rows: auto;
     /* prettier-ignore */
     grid-template-areas: 
-    "description-area" 
-    "ability-area"
-    "initiative-area"
-    "armor-area"
-    "skills-area"
-    "items-area";
+      "description-area" 
+      "ability-area"
+      "initiative-area"
+      "armor-area"
+      "skills-area"
+      "items-area";
   }
+}
+
+.ability-area {
+  grid-area: ability-area;
+  background-color: rgb(149, 205, 240);
+}
+
+.armor-area {
+  grid-area: armor-area;
+  background-color: blueviolet;
+}
+
+.initiative-area {
+  grid-area: initiative-area;
+  background-color: chocolate;
+}
+
+.items-area {
+  grid-area: items-area;
+  background-color: greenyellow;
+}
+
+.skills-area {
+  grid-area: skills-area;
+  background-color: orchid;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
-    <front-page/>
-    <cover-page/>
+    <front-page class="page front" />
+    <cover-page class="page cover" />
   </div>
 </template>
 
@@ -145,5 +145,71 @@ input[readonly] {
 
 textarea {
   resize: none;
+}
+
+/** Utils */
+/** Hide on X-Large */
+@media screen and (min-width: 1440px) {
+  .xl-h-up {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .xl-h-down {
+    display: none;
+  }
+}
+
+/** Hide on Large */
+@media screen and (min-width: 1024px) {
+  .lg-h-up {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .lg-h-down {
+    display: none;
+  }
+}
+
+/** Hide on Medium */
+@media screen and (min-width: 768px) {
+  .md-h-up {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-h-down {
+    display: none;
+  }
+}
+
+/** Hide on Small */
+@media screen and (min-width: 568px) {
+  .sm-h-up {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .sm-h-down {
+    display: none;
+  }
+}
+
+/** Hide on X-Small */
+@media screen and (min-width: 360px) {
+  .xs-h-up {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .xs-h-down {
+    display: none;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="items-area">
+  <div>
     Items Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.items-area {
-  grid-area: items-area;
-  background-color: greenyellow;
-}
 </style>

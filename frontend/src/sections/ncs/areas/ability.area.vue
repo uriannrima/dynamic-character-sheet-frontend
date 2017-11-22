@@ -1,5 +1,5 @@
 <template>
-  <div class="ability-area">
+  <div>
     <abilities-score-component/>
   </div>
 </template>
@@ -13,7 +13,5 @@ export default {
 </script>
 
 <style>
-.ability-area {
-  grid-area: ability-area;
-}
+
 </style>

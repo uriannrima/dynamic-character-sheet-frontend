@@ -1,5 +1,5 @@
 <template>
-  <div class="campaign-area">
+  <div>
     Campaign Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.campaign-area {
-  grid-area: campaign-area;
-  background-color: rgb(47, 91, 145);
-}
 </style>

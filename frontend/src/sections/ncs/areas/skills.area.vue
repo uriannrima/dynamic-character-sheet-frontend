@@ -1,5 +1,5 @@
 <template>
-  <div class="skills-area">
+  <div>
     Skills Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.skills-area {
-  grid-area: skills-area;
-  background-color: orchid;
-}
 </style>

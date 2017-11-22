@@ -1,5 +1,5 @@
 <template>
-  <div class="spells-area">
+  <div>
     Spells Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.spells-area {
-  grid-area: spells-area;
-  background-color: rgb(53, 24, 106);
-}
 </style>

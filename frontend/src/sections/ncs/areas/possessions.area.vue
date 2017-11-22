@@ -1,5 +1,5 @@
 <template>
-  <div class="possessions-area">
+  <div>
     Possessions Area
   </div>
 </template>
@@ -11,10 +11,4 @@ export default {
 </script>
 
 <style>
-
-.possessions-area {
-  grid-area: possessions-area;
-  background-color: rgb(224, 163, 31);
-}
-
 </style>

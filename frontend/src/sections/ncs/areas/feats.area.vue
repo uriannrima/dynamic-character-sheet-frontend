@@ -1,5 +1,5 @@
 <template>
-  <div class="feats-area">
+  <div>
     Feats Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.feats-area {
-  grid-area: feats-area;
-  background-color: rgb(177, 64, 138);
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="special-area">
+  <div>
     Special Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.special-area {
-  grid-area: special-area;
-  background-color: rgb(30, 147, 136);
-}
 </style>

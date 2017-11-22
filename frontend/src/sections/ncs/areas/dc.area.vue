@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-area">
+  <div>
     DC Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.dc-area {
-  grid-area: dc-area;
-  background-color: rgb(104,81,131);
-}
 </style>

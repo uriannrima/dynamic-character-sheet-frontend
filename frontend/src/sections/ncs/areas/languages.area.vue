@@ -1,5 +1,5 @@
 <template>
-  <div class="languages-area">
+  <div>
     Languages Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.languages-area {
-  grid-area: languages-area;
-  background-color: rgb(119, 252, 173);
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="initiative-area">
+  <div>
     Initiative Area
   </div>
 </template>
@@ -11,8 +11,4 @@ export default {
 </script>
 
 <style>
-.initiative-area {
-  grid-area: initiative-area;
-  background-color: chocolate;
-}
 </style>
