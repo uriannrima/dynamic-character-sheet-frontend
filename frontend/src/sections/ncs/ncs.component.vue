@@ -81,11 +81,16 @@ export default {
 }
 
 /** Global CSS */
+.debug {
+  background-color: rgb(255, 0, 255);
+}
+
 .black-box {
   text-align: center;
   background-color: black;
   color: white;
-  border-top: 1px solid white;
+  height: 96%;
+  width: 100%;
 }
 
 .black-box label {
@@ -99,7 +104,7 @@ export default {
 }
 
 .black-box label:nth-child(2) {
-  font-size: 55%;
+  font-size: 46%;
   margin-top: -3px;
 }
 
