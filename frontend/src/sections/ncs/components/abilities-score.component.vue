@@ -12,13 +12,13 @@
         <label>CON</label>
         <label>Constitution</label>
       </div>
-      <input type="number" value="10">
-      <input type="number" value="10" readonly>
+      <input type="number" value="10" class="ability-score-input">
+      <input type="number" value="10" class="ability-score-input" readonly>
       <div class="temporary-box">
-        <input type="number" value="10">
+        <input type="number" value="10" class="ability-score-temp-input">
       </div>
       <div class="temporary-box">
-        <input type="number" value="10" readonly>
+        <input type="number" value="10" class="ability-score-temp-input" readonly>
       </div>
     </div>
   </div>
@@ -46,6 +46,14 @@ export default {
   width: 75%;
   height: 75%;
   margin: 2px auto;
+}
+
+.ability-score-input {
+  border: solid 1px black;
+}
+
+.ability-score-temp-input {
+  border: none;
 }
 
 .ability-score-header > label {

@@ -100,7 +100,7 @@ export default {
 }
 
 .black-box label:nth-child(1) {
-  font-size: 120%;
+  font-size: 95%;
 }
 
 .black-box label:nth-child(2) {
