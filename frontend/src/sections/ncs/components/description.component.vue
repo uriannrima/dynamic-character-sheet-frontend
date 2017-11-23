@@ -90,7 +90,6 @@ export default {
 .description-component input {
   border-width: 0 0 1px 0;
   border-bottom: solid 1px black;
-  padding: 5px 0;
 }
 
 .three-part-area {

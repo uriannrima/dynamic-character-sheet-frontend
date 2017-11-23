@@ -14,11 +14,11 @@
             <input type="number">
             <input type="number">
             <input type="number">
-            <input type="text">
+            <input type="text" class="last-input damage-reduction-input">
         </div>
-        <div class="grid primary-armor-grid health-header">
+        <div class="grid primary-armor-grid health-armor-header armor-header">
             <label>&nbsp</label>
-            <label>Total</label>
+            <label class="total-label">Total</label>
             <label>&nbsp</label>
             <label>Armor<br>Bonus</label>
             <label>Shield<br>Bonus</label>
@@ -51,5 +51,13 @@ export default {
 
 .base-armor-label {
   font-weight: bold;
+}
+
+.armor-header {
+  align-items: start;
+}
+
+.damage-reduction-input {
+    text-align: center;
 }
 </style>

@@ -86,11 +86,13 @@ export default {
 }
 
 .black-box {
+  display: grid;
   text-align: center;
   background-color: black;
   color: white;
-  height: 96%;
+  height: 100%;
   width: 100%;
+  border-bottom: 1px solid white;
 }
 
 .black-box label {

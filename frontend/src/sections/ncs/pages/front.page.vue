@@ -68,7 +68,6 @@ export default {
 
 .initiative-area {
   grid-area: initiative-area;
-  background-color: chocolate;
 }
 
 .items-area {
