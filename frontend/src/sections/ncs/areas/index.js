@@ -3,7 +3,7 @@ export { default as DescriptionArea } from './description.area.vue';
 export { default as AbilityArea } from './ability.area';
 export { default as ArmorArea } from './armor.area';
 export { default as InitiativeArea } from './initiative.area';
-export { default as ItemsArea } from './items.area';
+export { default as WeaponsArea } from './weapons.area';
 export { default as SkillsArea } from './skills.area';
 
 /** Second Page */

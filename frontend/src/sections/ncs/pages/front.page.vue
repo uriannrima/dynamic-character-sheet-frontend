@@ -5,7 +5,7 @@
     <armor-area class="armor-area" />
     <initiative-area class="initiative-area" />
     <skills-area class="skills-area" />
-    <items-area class="items-area" />
+    <weapons-area class="weapons-area" />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
     "description-area description-area description-area" 
     "ability-area armor-area armor-area"
     "ability-area initiative-area skills-area" 
-    "items-area items-area skills-area";
+    "weapons-area weapons-area skills-area";
 }
 
 @media screen and (max-width: 1023px) {
@@ -39,7 +39,7 @@ export default {
       "description-area description-area" 
       "ability-area initiative-area"
       "armor-area armor-area" 
-      "items-area skills-area";
+      "weapons-area skills-area";
   }
 }
 
@@ -54,7 +54,7 @@ export default {
       "initiative-area"
       "armor-area"
       "skills-area"
-      "items-area";
+      "weapons-area";
   }
 }
 
@@ -70,9 +70,8 @@ export default {
   grid-area: initiative-area;
 }
 
-.items-area {
-  grid-area: items-area;
-  background-color: greenyellow;
+.weapons-area {
+  grid-area: weapons-area;
 }
 
 .skills-area {
