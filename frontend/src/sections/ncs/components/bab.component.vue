@@ -22,7 +22,6 @@ export default {
 }
 
 .bab-box {
-  height: 70% !important;
   align-items: center;
 }
 </style>

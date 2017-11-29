@@ -115,6 +115,16 @@ export default {
   background-color: lightgray;
 }
 
+.only-bottom {
+  border-width: 0 0 1px 0;
+  border-bottom: solid 1px black;
+}
+
+.descriptor {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /** Core CSS */
 html,
 button,

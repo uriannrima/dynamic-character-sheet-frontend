@@ -38,7 +38,8 @@ export default {
 <style>
 .weapons-grid {
   display: grid;
-  grid-template-rows: 17% 8% 8% auto;
+  grid-template-rows: 17% 5% 5% auto;
+  grid-row-gap: 5px;
 }
 
 .saving-conditional-grid {
