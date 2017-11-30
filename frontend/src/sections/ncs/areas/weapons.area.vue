@@ -38,7 +38,7 @@ export default {
 <style>
 .weapons-grid {
   display: grid;
-  grid-template-rows: 17% 5% 5% auto;
+  grid-template-rows: 17% 5% 5% 71%;
   grid-row-gap: 5px;
 }
 
