@@ -1,66 +1,15 @@
 <template>
   <div class="weapons-component">
-    <div v-for="n in 5" :key="n" class="weapon-component">
-      <div class="weapon-wrapper">
-        <div class="weapon-name weapon-header weapon-name-header">
-          <span style="font-size: 16px;">Weapon</span>
-        </div>
-        <div class="weapon-header">
-          <span>Attack Bonus</span>
-        </div>
-        <div class="weapon-header">
-          <span>Damage</span>
-        </div>
-        <div class="weapon-header">
-          <span>Critical</span>
-        </div>
-        <div class="weapon-name">
-          <input type="text">
-        </div>
-        <div>
-          <input type="text">
-        </div>
-        <div>
-          <input type="text">
-        </div>
-        <div>
-          <input type="text">
-        </div>
-        <div class="weapon-header">
-          <span>Range</span>
-        </div>
-        <div class="weapon-header">
-          <span>Type</span>
-        </div>
-        <div class="weapon-notes weapon-header">
-          <span>Notes</span>
-        </div>
-        <div>
-          <input type="text">
-        </div>
-        <div>
-          <input type="text">
-        </div>
-        <div class="weapon-notes">
-          <input type="text">
-        </div>
-      </div>
-      <div class="ammunition-wrapper">
-        <div class="ammunition-header">
-          <span>Ammunition</span>
-        </div>
-        <div><input type="text" class="only-bottom"></div>
-      </div>
-    </div>
+    <weapon-component v-for="n in 5" :key="n" />
   </div>
 </template>
 
 <script>
-// import WeaponComponent from './weapon.component';
+import WeaponComponent from './weapon.component';
 
 export default {
   components: {
-    // WeaponComponent
+    WeaponComponent
   }
 }
 </script>
@@ -83,55 +32,5 @@ export default {
 .weapons-component input {
   width: 100%;
   height: 100%;
-}
-
-.weapon-component {
-  display: grid;
-  grid-template-rows: 1fr 15%;
-}
-
-.weapon-wrapper,
-.ammunition-wrapper {
-  align-self: stretch;
-}
-
-.weapon-wrapper {
-  display: grid;
-  grid-template-columns: 15% 15% 10% 25% 1fr 1fr;
-  grid-template-rows: 29% 29% 12% 29%;
-}
-
-.ammunition-wrapper {
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  grid-template-rows: 100%;
-}
-
-.weapon-header {
-  align-self: end;
-  background-color: black;
-  color: white;
-  text-align: center;
-  border-right: solid 1px white;
-}
-
-.ammunition-header {
-  text-align: center;
-}
-
-.weapon-name-header {
-  height: 100%;
-  align-self: center;
-  border-radius: 5px 5px 0px 0px;
-  display: grid;
-  align-items: center;
-}
-
-.weapon-name {
-  grid-column-end: span 3;
-}
-
-.weapon-notes {
-  grid-column-end: span 4;
 }
 </style>

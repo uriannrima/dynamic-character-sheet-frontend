@@ -1,40 +1,54 @@
 <template>
   <div class="weapon-component">
-    <div class="main-weapon-container">
-      <div class="weapon-header">
-        <label>Attack</label>
+    <div class="weapon-wrapper">
+      <div class="weapon-name weapon-header weapon-name-header">
+        <span style="font-size: 16px;">Weapon</span>
       </div>
       <div class="weapon-header">
-        <label>Attack Bonus</label>
+        <span>Attack Bonus</span>
       </div>
       <div class="weapon-header">
-        <label>Damage</label>
+        <span>Damage</span>
       </div>
       <div class="weapon-header">
-        <label>Critical</label>
+        <span>Critical</span>
       </div>
-      <input type="text" class="common-input">
-      <input type="text" class="common-input">
-      <input type="text" class="common-input">
-      <input type="text" class="common-input">
+      <div class="weapon-name">
+        <input type="text">
+      </div>
+      <div>
+        <input type="text">
+      </div>
+      <div>
+        <input type="text">
+      </div>
+      <div>
+        <input type="text">
+      </div>
+      <div class="weapon-header">
+        <span>Range</span>
+      </div>
+      <div class="weapon-header">
+        <span>Type</span>
+      </div>
+      <div class="weapon-notes weapon-header">
+        <span>Notes</span>
+      </div>
+      <div>
+        <input type="text">
+      </div>
+      <div>
+        <input type="text">
+      </div>
+      <div class="weapon-notes">
+        <input type="text">
+      </div>
     </div>
-    <div class="secondary-weapon-container">
-      <div class="weapon-header">
-        <label>Range</label>
+    <div class="ammunition-wrapper">
+      <div class="ammunition-header">
+        <span>Ammunition</span>
       </div>
-      <div class="weapon-header">
-        <label>Type</label>
-      </div>
-      <div class="weapon-header">
-        <label>Notes</label>
-      </div>
-      <input type="text" class="common-input">
-      <input type="text" class="common-input">
-      <input type="text" class="common-input">
-    </div>
-    <div class="ammunition-container">
-      <label>Ammunition</label>
-      <input type="text" class="common-input">
+      <div><input type="text" class="only-bottom"></div>
     </div>
   </div>
 </template>
@@ -48,48 +62,51 @@ export default {
 <style>
 .weapon-component {
   display: grid;
-  grid-template-rows: 40% 35% 1fr;
-  padding-right: 5px;
+  grid-template-rows: 1fr 15%;
 }
 
-.main-weapon-container {
+.weapon-wrapper,
+.ammunition-wrapper {
+  align-self: stretch;
+}
+
+.weapon-wrapper {
   display: grid;
-  grid-template-columns: 40% 30% 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
+  grid-template-columns: 15% 15% 10% 25% 1fr 1fr;
+  grid-template-rows: 29% 29% 12% 29%;
 }
 
-.secondary-weapon-container {
+.ammunition-wrapper {
   display: grid;
-  grid-template-columns: 15% 20% 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
-}
-
-.ammunition-container {
-  display: grid;
-  grid-template-columns: 20% 1fr;
-  justify-items: center;
-}
-
-.weapon-component input {
-  width: 100%;
-}
-
-.ammunition-container input {
-  border-width: 0 0 1px 0;
-  border-bottom: solid 1px black;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: 100%;
 }
 
 .weapon-header {
+  align-self: end;
   background-color: black;
   color: white;
-  width: 100%;
+  text-align: center;
+  border-right: solid 1px white;
+}
+
+.ammunition-header {
   text-align: center;
 }
 
-.weapon-header label {
-  text-transform: uppercase;
-  font-weight: bold;
+.weapon-name-header {
+  height: 100%;
+  align-self: center;
+  border-radius: 5px 5px 0px 0px;
+  display: grid;
+  align-items: center;
+}
+
+.weapon-name {
+  grid-column-end: span 3;
+}
+
+.weapon-notes {
+  grid-column-end: span 4;
 }
 </style>
