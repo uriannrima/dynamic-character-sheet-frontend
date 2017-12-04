@@ -2,18 +2,36 @@
   <div class="skills-component">
     <div class="skills-header">
       <div class="class-skill-wrapper">
-        <span class="descriptor">Class Skill?</span>
+        <span>Class Skill?</span>
       </div>
       <div class="skills-header-wrapper">
         <span class="descriptor skills-span">Skills</span>
       </div>
       <div class="max-ranks-wrapper">
-        <div style="display: inline-block;">
+        <div>
           <span>Max Ranks</span>
           <span>(Class/Cross Class)</span>
         </div>
         <input type="text">
         <input type="text">
+      </div>
+      <div class="skill-name-header">
+        <span>Skill Name</span>
+      </div>
+      <div class="skill-descriptor-header">
+        <span>Key<br>Ability</span>
+      </div>
+      <div class="skill-descriptor-header">
+        <span>Skill<br>Modifier</span>
+      </div>
+      <div class="skill-descriptor-header">
+        <span>Ability<br>Modifier</span>
+      </div>
+      <div class="skill-descriptor-header">
+        <span>Ranks</span>
+      </div>
+      <div class="skill-descriptor-header">
+        <span>Misc<br>Modifier</span>
       </div>
     </div>
     <div>
@@ -36,7 +54,7 @@ export default {
 
 .skills-header {
   display: grid;
-  grid-template-rows: 45% 55%;
+  grid-template-rows: 65% 35%;
   grid-template-columns: 5% 40% repeat(5, 1fr);
 }
 
@@ -75,7 +93,11 @@ export default {
   grid-column: 4 / span 4;
   color: white;
   text-align: end;
-  padding: 5px 3px 0 0;
+  margin: auto auto;
+}
+
+.max-ranks-wrapper div:nth-child(1) {
+  display: inline-block;
 }
 
 .max-ranks-wrapper span {
@@ -85,5 +107,28 @@ export default {
 
 .max-ranks-wrapper input {
   width: 20%;
+}
+
+.skill-name-header {
+  display: grid;
+  align-items: center;
+  border: solid 1px black;
+}
+
+.skill-descriptor-header {
+  text-align: center;
+  line-height: 7px;
+  display: grid;
+  align-items: center;
+  border: solid 1px black;
+}
+
+.skill-name-header span,
+.skill-descriptor-header span {
+  text-transform: uppercase;
+}
+
+.skill-descriptor-header span {
+  font-size: 40%;
 }
 </style>
