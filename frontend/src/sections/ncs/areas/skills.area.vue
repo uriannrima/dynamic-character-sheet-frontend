@@ -34,8 +34,30 @@
         <span>Misc<br>Modifier</span>
       </div>
     </div>
-    <div>
-      <span>Body</span>
+    <div class="skills-body">
+      <div v-for="n in 44" :key="n" class="skill-wrapper">
+        <div class="cross-class">
+          <input type="checkbox">
+        </div>
+        <div class="skill-name">
+          <span>#{{n}}</span>
+        </div>
+        <div class="skill-key-ability">
+          <span>INT</span>
+        </div>
+        <div class="skill-modifier">
+          <input type="number" value="0" class="common-input">
+        </div>
+        <div class="skill-ability-modifier">
+          <input type="number" value="0" class="only-bottom">
+        </div>
+        <div class="skill-ranks">
+          <input type="number" value="0" class="only-bottom">
+        </div>
+        <div class="skill-misc-modifier">
+          <input type="number" value="0" class="only-bottom">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +71,7 @@ export default {
 <style>
 .skills-component {
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 6% 94%;
 }
 
 .skills-header {
@@ -69,7 +91,7 @@ export default {
 .class-skill-wrapper span {
   transform: rotate(90deg);
   display: block;
-  font-size: 12px;
+  font-size: 9px;
   padding-left: 5px;
   white-space: nowrap;
 }
@@ -130,5 +152,66 @@ export default {
 
 .skill-descriptor-header span {
   font-size: 40%;
+}
+
+.skills-body {
+  display: grid;
+}
+
+.skills-body div {
+  font-size: 85%;
+}
+
+.skills-body input {
+  width: 90%;
+  height: 100%;
+  text-align: center;
+}
+
+.skill-wrapper {
+  display: grid;
+  grid-template-columns: 5% 40% repeat(5, 1fr);
+}
+
+.skill-name {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: grid;
+  align-items: center;
+}
+
+.skill-key-ability {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  text-align: center;
+}
+
+.skill-modifier {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+  text-align: center;
+}
+
+.skill-ability-modifier {
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
+  text-align: center;
+}
+
+.skill-ranks {
+  grid-column: 6 / 7;
+  grid-row: 1 / 2;
+  text-align: center;
+}
+
+.skill-misc-modifier {
+  grid-column: 7 / 8;
+  grid-row: 1 / 2;
+  text-align: center;
+}
+
+.cross-class {
+  display: grid;
+  align-items: center;
 }
 </style>

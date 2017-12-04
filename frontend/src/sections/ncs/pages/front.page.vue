@@ -21,7 +21,7 @@ export default {
 .front {
   display: grid;
   grid-template-columns: 30% 30% auto;
-  grid-template-rows: 15% 10% 10% auto;
+  grid-template-rows: 15% 10% 6% auto;
   /* prettier-ignore */
   grid-template-areas: 
     "description-area description-area description-area" 
@@ -76,6 +76,5 @@ export default {
 
 .skills-area {
   grid-area: skills-area;
-  background-color: orchid;
 }
 </style>
