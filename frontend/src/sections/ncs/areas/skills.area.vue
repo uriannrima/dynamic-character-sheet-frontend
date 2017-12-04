@@ -40,7 +40,7 @@
           <input type="checkbox">
         </div>
         <div class="skill-name">
-          <span>#{{n}}</span>
+          <span>{{n}} Gather Information</span>
         </div>
         <div class="skill-key-ability">
           <span>INT</span>
@@ -156,10 +156,11 @@ export default {
 
 .skills-body {
   display: grid;
+  grid-row-gap: 2px;
 }
 
 .skills-body div {
-  font-size: 85%;
+  font-size: 78%;
 }
 
 .skills-body input {
