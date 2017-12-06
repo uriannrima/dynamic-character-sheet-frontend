@@ -58,7 +58,7 @@ export default {
 
 .ability-score-header > label {
   font-size: 50%;
-  line-height: 11px;
+  line-height: 9px;
   text-transform: uppercase;
   text-align: center;
 }

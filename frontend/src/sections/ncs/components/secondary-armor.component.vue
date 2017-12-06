@@ -1,14 +1,14 @@
 <template>
     <div class="secondary-armor-component">
         <div class="touch-armor-class">
-            <div class="black-box secondary-armor-box">
+            <div class="black-box">
                 <label>Touch</label>
                 <label>Armor Class</label>
             </div>
             <input type="number" class="common-input">
         </div>
         <div class="flat-armor-class">
-            <div class="black-box secondary-armor-box">
+            <div class="black-box">
                 <label>Flat-Footed</label>
                 <label>Armor Class</label>
             </div>
@@ -41,9 +41,5 @@ export default {
   grid-template-columns: 67% 1fr;
   align-items: center;
   justify-items: center;
-}
-
-.secondary-armor-box {
-  height: 60%;
 }
 </style>

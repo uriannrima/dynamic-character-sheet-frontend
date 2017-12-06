@@ -157,6 +157,7 @@ export default {
 .skills-body {
   display: grid;
   grid-row-gap: 2px;
+  grid-auto-rows: 1em;
 }
 
 .skills-body div {

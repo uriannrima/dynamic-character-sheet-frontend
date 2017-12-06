@@ -1,6 +1,6 @@
 <template>
     <div class="initiative-component">
-        <div class="black-box initiative-box">
+        <div class="black-box">
             <label>Initiative</label>
             <label>Modifier</label>
         </div>
@@ -19,10 +19,6 @@ export default {
 </script>
 
 <style>
-.initiative-box {
-  height: 60%;
-}
-
 .initiative-component {
   display: grid;
   grid-template-columns: 1fr 1fr;
