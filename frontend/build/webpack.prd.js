@@ -20,7 +20,7 @@ var webpackConfig = merge(common, {
         filename: 'js/[name].[chunkhash].js',
         chunkFilename: 'js/[id].[chunkhash].js',
         path: path.resolve(__dirname, publicPath),
-        publicPath: '/',
+        publicPath: './',
         devtoolModuleFilenameTemplate: info => {
             if (info.resource.match(/\.vue$/)) {
                 $filename = info.allLoaders.match(/type=script/)
