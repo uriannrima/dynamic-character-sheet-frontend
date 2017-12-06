@@ -12,7 +12,7 @@ import router from './router';
 import { store } from 'Store';
 import Layout from './shared/sections/layout.section';
 import vSelect from 'vue-select';
-import './Shared/directives/store-sync.directive';
+import './shared/directives/store-sync.directive';
 
 Es6Promise.polyfill();
 

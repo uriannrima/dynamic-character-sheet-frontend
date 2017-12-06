@@ -13,11 +13,13 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+var publicPath = '../../server/public';
+
 var webpackConfig = merge(common, {
     output: {
         filename: 'js/[name].[chunkhash].js',
         chunkFilename: 'js/[id].[chunkhash].js',
-        path: path.resolve(__dirname, '../../public'),
+        path: path.resolve(__dirname, publicPath),
         publicPath: '/',
         devtoolModuleFilenameTemplate: info => {
             if (info.resource.match(/\.vue$/)) {
@@ -36,7 +38,7 @@ var webpackConfig = merge(common, {
         }
     },
     plugins: [
-        new CleanWebpackPlugin('../../public', {
+        new CleanWebpackPlugin(publicPath, {
             allowExternal: true
         }),
         new webpack.optimize.UglifyJsPlugin({
@@ -66,6 +68,7 @@ var webpackConfig = merge(common, {
         new HtmlWebpackPlugin({
             title: "Web Dynamic Charactersheet - Production",
             template: "index.html",
+            favicon: "favicon.ico",
             inject: true,
             minify: {
                 removeComments: true,

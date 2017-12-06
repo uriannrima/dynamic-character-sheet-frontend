@@ -34,6 +34,10 @@ const routes = [
         component: Ncs
     },
     {
+        path: '/ncs',
+        component: Ncs
+    },
+    {
         path: '*',
         redirect: '/login'
     }
