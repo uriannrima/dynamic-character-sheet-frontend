@@ -17,3 +17,5 @@ export { default as BaseAttackBonusComponent } from './bab.component';
 export { default as SpellResistanceComponent } from './spell-resistance.component';
 export { default as GrappleComponent } from './grapple.component';
 export { default as WeaponsComponent } from './weapons.component';
+
+export { default as SkillsComponent } from './skills.component';

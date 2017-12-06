@@ -34,8 +34,8 @@ export const ProtectiveItem = function ({ name, acBonus, weight, specialProperti
 
 export const Gear = function () {
     return {
-        armor: new Armor(),
-        shield: new Shield(),
-        protectiveItems: [new ProtectiveItem(), new ProtectiveItem()]
+        armor: new Armor({}),
+        shield: new Shield({}),
+        protectiveItems: [new ProtectiveItem({}), new ProtectiveItem({})]
     }
 }

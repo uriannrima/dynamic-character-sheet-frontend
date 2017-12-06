@@ -1,11 +1,11 @@
 <template>
   <div class="description-component">
     <div class="horizontal-container">
-      <input type="text" class="full-width-input">
+      <input type="text" class="full-width-input" v-model="character.name">
       <label>Character Name</label>
     </div>
     <div class="horizontal-container">
-      <input type="text" class="full-width-input">
+      <input type="text" class="full-width-input" v-model="character.playerName">
       <label>Player Name</label>
     </div>
     <div class="horizontal-container">
@@ -14,51 +14,51 @@
     </div>
     <div class="three-part-area">
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.race">
         <label>Race</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.alignment">
         <label>Alignment</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.deity">
         <label>Deity</label>
       </div>
     </div>
     <div class="four-part-area">
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.size.name">
         <label>Size</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.age">
         <label>Age</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.gender">
         <label>Gender</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.height">
         <label>Height</label>
       </div>
     </div>
     <div class="four-part-area">
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.weight">
         <label>Weight</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.eyes">
         <label>Eyes</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.hair">
         <label>Hair</label>
       </div>
       <div class="horizontal-container">
-        <input type="text" class="full-width-input">
+        <input type="text" class="full-width-input" v-model="character.skin">
         <label>Skin</label>
       </div>
     </div>
@@ -66,7 +66,16 @@
 </template>
 
 <script>
+import CharacterStore from 'Store/character.store';
+
 export default {
+  computed: {
+    character: {
+      get() {
+        return CharacterStore.Instance.character;
+      }
+    }
+  }
 }
 </script>
 
