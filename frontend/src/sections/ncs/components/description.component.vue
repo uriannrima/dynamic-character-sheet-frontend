@@ -9,7 +9,7 @@
       <label>Player Name</label>
     </div>
     <div class="horizontal-container">
-      <input type="text" class="full-width-input">
+      <input type="text" class="full-width-input" v-model.lazy="computedClass">
       <label>Class and Level</label>
     </div>
     <div class="three-part-area">
@@ -73,6 +73,40 @@ export default {
     character: {
       get() {
         return CharacterStore.Instance.character;
+      }
+    },
+    computedClass: {
+      get: function () {
+        return this.character.classes.map(classe => {
+          if (!classe.name || !classe.level) return "";
+          return classe.name + " (" + classe.level + ")";
+        });
+      },
+      set: function (newValue) {
+        this.character.classes = [];
+        const fieldValues = newValue.split(",");
+        fieldValues.forEach(fieldValue => {
+          // If empty character
+          if (fieldValue.trim() === "") return;
+
+          // Clear whitespaces
+          var classLevel = fieldValue.replace(/ /g, "");
+
+          // Regex to get level
+          var levelRegex = /\(([^)]+)\)/;
+
+          // Get level data,
+          var levelData = levelRegex.exec(classLevel);
+          // Extract level from data
+          var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+
+          // Remove level from field.
+          var classOnly = classLevel.replace(levelRegex, "");
+          this.character.classes.push({
+            name: classOnly.trim(),
+            level: level
+          });
+        });
       }
     }
   }
