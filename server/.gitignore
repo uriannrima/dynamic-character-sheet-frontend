@@ -26,6 +26,7 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+.env
 
 # IDEs and editors (shamelessly copied from @angular/cli's .gitignore)
 /.idea
