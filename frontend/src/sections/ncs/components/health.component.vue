@@ -12,17 +12,23 @@
                 <label>HP</label>
                 <label>Health Points</label>
             </div>
-            <input type="number">
-            <input type="number">
-            <input type="number">
-            <input type="text" class="last-input speed-input">
+            <input type="number" v-model.number="character.status.healthPoints">
+            <input type="text" v-model="character.status.wounds">
+            <input type="number" v-model.number="character.status.nonLethalDamage">
+            <input type="text" class="last-input speed-input" v-model="character.speed">
         </div>
     </div>
 </template>
 
 <script>
-export default {
+import CharacterStore from 'Store/character.store';
 
+export default {
+    data() {
+        return {
+            character: CharacterStore.Instance.character
+        }
+    }
 }
 </script>
 
@@ -43,7 +49,7 @@ export default {
 }
 
 .speed-input {
-    text-align: center;
+  text-align: center;
 }
 
 .health-header {

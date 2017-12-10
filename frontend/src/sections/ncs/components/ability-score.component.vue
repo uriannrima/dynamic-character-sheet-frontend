@@ -1,35 +1,46 @@
 <template>
-    <div class="ability-score-component">
-        <div class="black-box">
-            <label>{{abilityScore.name.substring(0,3)}}</label>
-            <label>{{abilityScore.name}}</label>
-        </div>
-        <input type="number" value="10" class="ability-score-input" v-model.number="abilityScore.value" @change="updateTemporaryScore()">
-        <input type="number" value="10" class="ability-score-input" readonly :value="modifier">
-        <div class="temporary-box">
-            <input type="number" value="10" class="ability-score-temp-input" v-model.number="abilityScore.tempValue">
-        </div>
-        <div class="temporary-box">
-            <input type="number" value="10" class="ability-score-temp-input" readonly :value="abilityScore.getTempModifier()">
+    <div>
+        <div class="ability-score-component">
+            <div class="black-box">
+                <label>{{name.substring(0,3)}}</label>
+                <label>{{name}}</label>
+            </div>
+            <input type="number" value="10" class="ability-score-input" :value="value" @change="updateTemporaryScore($event, 'value')">
+            <input type="number" value="10" class="ability-score-input" readonly :value="getModifier">
+            <div class="temporary-box">
+                <input type="number" value="10" class="ability-score-temp-input" :value="tempValue" @change="updateScore($event, 'tempValue')">
+            </div>
+            <div class="temporary-box">
+                <input type="number" value="10" class="ability-score-temp-input" readonly :value="getTempModifier">
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
 export default {
-    props: ['abilityScore'],
+    props: ['index', 'name', 'value', 'tempValue'],
     methods: {
-        updateTemporaryScore: function () {
-            this.abilityScore.tempValue = this.abilityScore.value;
+        updateTemporaryScore($event, field) {
+            this.updateScore($event, 'tempValue');
+            this.updateScore($event, field);
+        },
+        updateScore($event, field) {
+            this.$emit('onUpdateScore', {
+                index: this.index,
+                field,
+                value: $event.target.value * 1
+            });
         }
     },
     computed: {
-        modifier() {
-            return (this.abilityScore.value - 10) / 2;
+        getModifier() {
+            return Math.floor((this.value - 10) / 2);
+        },
+        getTempModifier() {
+            return Math.floor((this.tempValue - 10) / 2);
         }
-    },
-    mounted() {
-        console.log(this.abilityScore);
     }
 }
 </script>

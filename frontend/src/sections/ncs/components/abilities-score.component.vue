@@ -7,7 +7,7 @@
       <label>Temporary<br>Score</label>
       <label>Temporary<br>Modifier</label>
     </div>
-    <ability-score v-for="(abilityScore, index) in character.abilityScores" :key="index" :abilityScore="abilityScore" />
+    <ability-score v-for="(abilityScore, index) in character.abilityScores" :key="index" :index="index" :name="abilityScore.name" :value="abilityScore.value" :tempValue="abilityScore.tempValue" @onUpdateScore="updateScore($event)" />
   </div>
 </template>
 
@@ -18,6 +18,12 @@ import CharacterStore from 'Store/character.store';
 export default {
   components: {
     AbilityScore
+  },
+  methods: {
+    updateScore: function ({ index, field, value }) {
+      var abilityScore = this.character.abilityScores[index];
+      abilityScore[field] = value;
+    }
   },
   computed: {
     character: {

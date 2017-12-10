@@ -9,24 +9,23 @@ export const ArmorClass = function ({ base, armorBonus, shieldBonus, dexModifier
         deflectionModifier,
         miscModifier,
         getTotalArmor: function () {
-            var result = 0;
-            for (var key in this) {
-                if (typeof this[key] !== "number") continue;
-                result += this[key];
-            }
-            return result;
+            return Object.keys(this).reduce((accumulator, key) => {
+                if (typeof this[key] === 'number') {
+                    accumulator += this[key];
+                }
+                return accumulator;
+            }, 0);
         },
         getTouchArmor: function () {
             return this.base + this.dexModifier + this.sizeModifier + this.miscModifier;
         },
         getFlatFooted: function () {
-            var result = 0;
-            for (var key in this) {
-                if (typeof this[key] !== "number") continue;
-                if (key === "dexModifier") continue;
-                result += this[key];
-            }
-            return result;
+            return Object.keys(this).reduce((accumulator, key) => {
+                if (typeof this[key] === "number" && key !== "dexModifier") {
+                    accumulator += this[key];
+                }
+                return accumulator;
+            }, 0);
         }
     }
 }

@@ -11,6 +11,11 @@ import CharacterStore from 'Store/character.store';
 
 export default {
   components: Pages,
+  data() {
+    return {
+      character: CharacterStore.Instance.character
+    }
+  },
   beforeRouteEnter: async function (to, from, next) {
     if (to.params.id) {
       await CharacterStore.loadCharacter(to.params.id);

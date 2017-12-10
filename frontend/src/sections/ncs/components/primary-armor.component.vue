@@ -5,16 +5,16 @@
                 <label>AC</label>
                 <label>Armor Class</label>
             </div>
-            <input type="number">
+            <input type="number" readonly :value="getTotalArmor">
             <span class="base-armor-label">= 10 +</span>
-            <input type="number">
-            <input type="number">
-            <input type="number">
-            <input type="number">
-            <input type="number">
-            <input type="number">
-            <input type="number">
-            <input type="text" class="last-input damage-reduction-input">
+            <input type="number" v-model.number="armorClass.armorBonus">
+            <input type="number" v-model.number="armorClass.shieldBonus">
+            <input type="number" readonly :value="getAbility.getTempModifier()">
+            <input type="number" v-model.number="armorClass.sizeModifier">
+            <input type="number" v-model.number="armorClass.naturalArmor">
+            <input type="number" v-model.number="armorClass.deflectionModifier">
+            <input type="number" v-model.number="armorClass.miscModifier">
+            <input type="text" class="last-input damage-reduction-input" v-model="damageReduction">
         </div>
         <div class="grid primary-armor-grid health-armor-header armor-header">
             <label>&nbsp</label>
@@ -33,8 +33,32 @@
 </template>
 
 <script>
-export default {
+import CharacterStore from 'Store/character.store';
 
+export default {
+    data() {
+        return {
+            armorClass: CharacterStore.Instance.character.armorClass,
+            damageReduction: CharacterStore.Instance.character.damageReduction
+        }
+    },
+    computed: {
+        getTotalArmor() {
+            return this.armorClass.base +
+                this.armorClass.armorBonus +
+                this.armorClass.shieldBonus +
+                this.getAbility.getTempModifier() +
+                this.armorClass.sizeModifier +
+                this.armorClass.naturalArmor +
+                this.armorClass.deflectionModifier +
+                this.armorClass.miscModifier;
+        },
+        getAbility() {
+            return CharacterStore.Instance.character.abilityScores.find(abilityScore => {
+                return abilityScore.name === 'dexterity';
+            });
+        }
+    }
 }
 </script>
 
@@ -58,6 +82,6 @@ export default {
 }
 
 .damage-reduction-input {
-    text-align: center;
+  text-align: center;
 }
 </style>
