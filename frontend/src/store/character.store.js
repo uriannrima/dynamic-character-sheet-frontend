@@ -13,6 +13,14 @@ const CharacterStore = {
       console.log(error);
     }
     return this.Instance.character == null;
+  },
+  async saveCharacter(character) {
+    try {
+      this.Instance.character = await CharacterService.saveOrUpdate(character || this.Instance.character);
+      return true;
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

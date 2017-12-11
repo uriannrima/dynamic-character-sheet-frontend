@@ -1,6 +1,6 @@
 var ammunitionModule = require('./ammunition.module');
 
-export const Attack = function ({ name, attackBonus, damage, critical, range, type, notes, keyAbility, hasAmmunition }) {
+export const Weapon = function ({ name, attackBonus, damage, critical, range, type, notes, keyAbility, hasAmmunition }) {
     return {
         name,
         attackBonus,

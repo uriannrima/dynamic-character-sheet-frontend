@@ -14,16 +14,16 @@
         <span>Critical</span>
       </div>
       <div class="weapon-name">
-        <input type="text">
+        <input type="text" v-model="weapon.name">
       </div>
       <div>
-        <input type="text">
+        <input type="text" v-model.number="weapon.attackBonus">
       </div>
       <div>
-        <input type="text">
+        <input type="text" v-model="weapon.damage">
       </div>
       <div>
-        <input type="text">
+        <input type="text" v-model="weapon.critical">
       </div>
       <div class="weapon-header">
         <span>Range</span>
@@ -35,13 +35,13 @@
         <span>Notes</span>
       </div>
       <div>
-        <input type="text">
+        <input type="text" v-model="weapon.range">
       </div>
       <div>
-        <input type="text">
+        <input type="text" v-model="weapon.type">
       </div>
       <div class="weapon-notes">
-        <input type="text">
+        <input type="text" v-model="weapon.notes">
       </div>
     </div>
     <div class="ammunition-wrapper">
@@ -55,7 +55,7 @@
 
 <script>
 export default {
-
+  props: ['weapon']
 }
 </script>
 

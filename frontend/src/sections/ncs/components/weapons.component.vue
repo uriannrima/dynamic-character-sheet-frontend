@@ -1,15 +1,21 @@
 <template>
   <div class="weapons-component">
-    <weapon-component v-for="n in 5" :key="n" />
+    <weapon-component v-for="(weapon, index) in character.weapons" :key="index" :weapon="weapon" />
   </div>
 </template>
 
 <script>
 import WeaponComponent from './weapon.component';
+import CharacterStore from 'Store/character.store';
 
 export default {
   components: {
     WeaponComponent
+  },
+  data() {
+    return {
+      character: CharacterStore.Instance.character
+    }
   }
 }
 </script>

@@ -3,6 +3,7 @@
     <div class="horizontal-container">
       <input type="text" class="full-width-input" v-model="character.name">
       <label>Character Name</label>
+      <button @click="saveCharacter()">Save</button>
     </div>
     <div class="horizontal-container">
       <input type="text" class="full-width-input" v-model="character.playerName">
@@ -69,12 +70,19 @@
 import CharacterStore from 'Store/character.store';
 
 export default {
-  computed: {
-    character: {
-      get() {
-        return CharacterStore.Instance.character;
+  data() {
+    return {
+      character: CharacterStore.Instance.character
+    }
+  },
+  methods: {
+    saveCharacter: async function () {
+      if (await CharacterStore.saveCharacter()) {
+        window.history.pushState("", "", "/#/ncs/" + this.character._id);
       }
-    },
+    }
+  },
+  computed: {
     computedClass: {
       get: function () {
         return this.character.classes.map(classe => {

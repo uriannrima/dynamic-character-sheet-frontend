@@ -10,7 +10,7 @@ export const Character = function ({
     status, armorClass, initiative, conditionModifier,
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
-    attacks, gear, items, carryCapacity,
+    weapons, gear, items, carryCapacity,
     campaign, experience, money, feats, languages,
     specialAbilities, domainSchool, spellSave,
     arcaneSpellFailure, spellConditionModifier,
@@ -84,12 +84,12 @@ export const Character = function ({
         }),
         skillPoints: 0,
         skills: skills ? skills.map(s => new Modules.SkillsModule.Skill(s)) : Modules.SkillsModule.DEFAULT_SKILLS,
-        attacks: attacks || [
-            new Modules.AttackModule.Attack({}),
-            new Modules.AttackModule.Attack({}),
-            new Modules.AttackModule.Attack({}),
-            new Modules.AttackModule.Attack({}),
-            new Modules.AttackModule.Attack({})
+        weapons: weapons || [
+            new Modules.WeaponModule.Weapon({}),
+            new Modules.WeaponModule.Weapon({}),
+            new Modules.WeaponModule.Weapon({}),
+            new Modules.WeaponModule.Weapon({}),
+            new Modules.WeaponModule.Weapon({})
         ],
         gear: gear || new Modules.GearModule.Gear({}),
         items: items || Modules.ItemModule.Factory(33),
