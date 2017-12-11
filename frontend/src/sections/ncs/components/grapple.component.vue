@@ -4,13 +4,13 @@
       <label>Grapple</label>
       <label>Modifier</label>
     </div>
-    <input type="text" class="common-input">
-    <input type="text" class="common-input">
-    <input type="text" class="common-input">
-    <input type="text" class="common-input">
-    <input type="text" class="common-input">
+    <input type="text" class="common-input" readonly>
+    <input type="text" class="common-input" readonly>
+    <input type="number" class="common-input" readonly>
+    <input type="number" class="common-input" readonly>
+    <input type="number" class="common-input">
     <span>&nbsp</span>
-    <span>Total</span>
+    <span class="total-label">Total</span>
     <span>Base Attack<br>Bonus</span>
     <span>Strength<br>Modifier</span>
     <span>Size<br>Modifier</span>

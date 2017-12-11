@@ -8,6 +8,9 @@
             <input type="number" class="common-input" readonly :value="getTotal">
             <input type="number" class="common-input" readonly :value="getAbility.getTempModifier()">
             <input type="number" class="common-input" v-model.number="initiative.miscModifier">
+            <span class="total-label">Total</span>
+            <span>Dex<br>Modifier</span>
+            <span>Misc<br>Modifier</span>
         </div>
     </div>
 </template>
@@ -47,5 +50,14 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
+  grid-template-rows: auto 25%;
+  height: 100%;
+}
+
+.initiative-grid span {
+  font-size: 50%;
+  line-height: 8px;
+  text-transform: uppercase;
+  text-align: center;
 }
 </style>
