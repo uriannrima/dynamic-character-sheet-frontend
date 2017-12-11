@@ -40,9 +40,11 @@ export default class AbstractService extends HttpService {
 
     async saveOrUpdate(model) {
         try {
+            var { _id } = model;
             var headers = await this.getHeaders();
-            var serverCall = model._id ? this.service.patch : this.service.post;
-            var response = await serverCall(this.url, model, { headers });
+            var serverCall = _id ? this.service.put : this.service.post;
+            var url = this.url + (_id ? `/${_id}` : '');
+            var response = await serverCall(url, model, { headers });
             return this.model(response.data);
         } catch (error) {
             throw error;
