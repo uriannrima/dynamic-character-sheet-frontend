@@ -65,6 +65,10 @@ export default {
   grid-template-rows: 1fr 15%;
 }
 
+.weapon-component input {
+  font-size: 12px;
+}
+
 .weapon-wrapper,
 .ammunition-wrapper {
   align-self: stretch;

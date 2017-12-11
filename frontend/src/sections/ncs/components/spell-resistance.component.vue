@@ -3,13 +3,15 @@
     <div class="black-box bab-box">
       <label>Spell<br>Resistance</label>
     </div>
-    <input class="common-input">
+    <input type="number" class="common-input" v-model.number="character.spellResistance">
   </div>
 </template>
 
 <script>
-export default {
+import CharacterMixin from 'Store/character.mixin';
 
+export default {
+  mixins: [CharacterMixin]
 }
 </script>
 

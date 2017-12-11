@@ -3,13 +3,15 @@
     <div class="black-box bab-box">
       <label>Base Attack Bonus</label>
     </div>
-    <input class="common-input">
+    <input type="number" class="common-input" v-model.number="character.baseAttackBonus">
   </div>
 </template>
 
 <script>
-export default {
+import CharacterMixin from 'Store/character.mixin';
 
+export default {
+  mixins: [CharacterMixin]
 }
 </script>
 
