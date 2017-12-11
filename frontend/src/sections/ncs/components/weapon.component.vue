@@ -67,6 +67,7 @@ export default {
 
 .weapon-component input {
   font-size: 12px;
+  text-align: center;
 }
 
 .weapon-wrapper,
