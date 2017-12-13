@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="skills-body">
-      <skill-component v-for="(skill, index) in orderedSkills" :key="index" :skill="skill" :keyAbility="character.abilityScores.find(ability => ability.name === skill.keyAbility)"/>
+      <skill-component v-for="(skill, index) in orderedSkills" :key="index" :skill="skill" :keyAbility="getKeyAbility(skill.keyAbility)"/>
     </div>
     <div class="skills-instructions">
       <span>Double click on skill name to edit or see description.</span>
@@ -56,9 +56,17 @@ export default {
   components: {
     SkillComponent
   },
+  methods: {
+    getKeyAbility(abilityName) {
+      return this.character.abilityScores.find(ability => ability.name === abilityName);
+    }
+  },
   computed: {
     orderedSkills() {
-      return this.character.skills.orderBy(s => s.name);
+      return this.character.skills.orderByDesc(skill => {
+        var keyAbility = this.getKeyAbility(skill.keyAbility);
+        return skill.rank + skill.miscModifier + keyAbility.getTempModifier();
+      });
     }
   }
 }

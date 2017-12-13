@@ -29,7 +29,7 @@ export default {
   props: ['skill', 'keyAbility'],
   computed: {
     getTotal() {
-      return 0;
+      return this.skill.rank + this.skill.miscModifier + this.keyAbility.getTempModifier();
     }
   }
 }
