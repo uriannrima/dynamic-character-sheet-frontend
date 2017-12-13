@@ -63,10 +63,12 @@ export default {
   },
   computed: {
     orderedSkills() {
-      return this.character.skills.orderByDesc(skill => {
-        var keyAbility = this.getKeyAbility(skill.keyAbility);
-        return skill.rank + skill.miscModifier + keyAbility.getTempModifier();
-      });
+      return _.sortBy(this.character.skills, [
+        skill => {
+          var keyAbility = this.getKeyAbility(skill.keyAbility);
+          return skill.rank + skill.miscModifier + keyAbility.getTempModifier();
+        }
+      ]);
     }
   }
 }
