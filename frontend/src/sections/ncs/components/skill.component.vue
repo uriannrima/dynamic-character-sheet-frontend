@@ -1,32 +1,37 @@
 <template>
   <div class="skill-component">
     <div class="class-skill">
-      <input type="checkbox" class="class-skill-input">
+      <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
     </div>
     <div class="skill-name">
-      <span>{{n}} Gather Information</span>
+      <span>{{skill.name}} {{skill.subValue}}</span>
     </div>
     <div class="skill-key-ability">
-      <span>INT</span>
+      <span>{{keyAbility.name.substring(0,3)}}</span>
     </div>
     <div class="skill-modifier">
-      <input type="number" value="0" class="common-input" readonly>
+      <input type="number" value="0" class="common-input" readonly :value="getTotal">
     </div>
     <div class="skill-ability-modifier">
-      <input type="number" value="0" class="only-bottom" readonly>
+      <input type="number" value="0" class="only-bottom" readonly :value="keyAbility.getTempModifier()">
     </div>
     <div class="skill-ranks">
-      <input type="number" value="0" class="only-bottom">
+      <input type="number" value="0" class="only-bottom" v-model.number="skill.rank">
     </div>
     <div class="skill-misc-modifier">
-      <input type="number" value="0" class="only-bottom">
+      <input type="number" value="0" class="only-bottom" v-model.number="skill.miscModifier">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['n']
+  props: ['skill', 'keyAbility'],
+  computed: {
+    getTotal() {
+      return 0;
+    }
+  }
 }
 </script>
 
@@ -47,6 +52,7 @@ export default {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .skill-modifier {

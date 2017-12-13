@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="skills-body">
-      <skill-component v-for="(n,index) in 42" :key="n" :n="index" />
+      <skill-component v-for="(skill, index) in orderedSkills" :key="index" :skill="skill" :keyAbility="character.abilityScores.find(ability => ability.name === skill.keyAbility)"/>
     </div>
     <div class="skills-instructions">
       <span>Double click on skill name to edit or see description.</span>
@@ -49,10 +49,17 @@
 
 <script>
 import SkillComponent from './skill.component';
+import CharacterMixin from 'Store/character.mixin';
 
 export default {
+  mixins: [CharacterMixin],
   components: {
     SkillComponent
+  },
+  computed: {
+    orderedSkills() {
+      return this.character.skills.orderBy(s => s.name);
+    }
   }
 }
 </script>
@@ -60,7 +67,7 @@ export default {
 <style>
 .skills-component {
   display: grid;
-  grid-template-rows: 6% 90% 4%;
+  grid-template-rows: 6% 89% 5%;
 }
 
 .skills-header {
