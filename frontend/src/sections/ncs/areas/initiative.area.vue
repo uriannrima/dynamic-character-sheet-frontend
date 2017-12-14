@@ -15,6 +15,7 @@ export default {
 <style>
 .armor-initiative-grid {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-row-gap: 2px;
 }
 </style>

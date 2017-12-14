@@ -1,19 +1,15 @@
 <template>
     <div class="secondary-armor-component">
-        <div class="touch-armor-class">
-            <div class="black-box">
-                <label>Touch</label>
-                <label>Armor Class</label>
-            </div>
-            <input type="number" class="common-input" readonly :value="getTouchArmor">
+        <div class="black-box">
+            <label>Touch</label>
+            <label>Armor Class</label>
         </div>
-        <div class="flat-armor-class">
-            <div class="black-box">
-                <label>Flat-Footed</label>
-                <label>Armor Class</label>
-            </div>
-            <input type="number" class="common-input" readonly :value="getFlatFooted">
+        <div class="black-box">
+            <label>Flat-Footed</label>
+            <label>Armor Class</label>
         </div>
+        <input type="number" class="common-input" readonly :value="getTouchArmor">
+        <input type="number" class="common-input" readonly :value="getFlatFooted">
     </div>
 </template>
 
@@ -54,20 +50,8 @@ export default {
 <style>
 .secondary-armor-component {
   display: grid;
-  grid-template-columns: 40% 1fr;
-}
-
-.touch-armor-class {
-  display: grid;
-  grid-template-columns: 62% 1fr;
-  align-items: center;
-  justify-items: center;
-}
-
-.flat-armor-class {
-  display: grid;
-  grid-template-columns: 67% 1fr;
-  align-items: center;
-  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
 }
 </style>

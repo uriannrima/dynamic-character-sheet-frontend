@@ -33,12 +33,12 @@ export default {
       "skills-area";
 }
 
+/**
 @media screen and (min-width: 1023px) {
   .front {
     grid-template-columns: 30% 30% auto;
     grid-template-rows: 15% 10% 7% auto;
     grid-row-gap: unset;
-    /* prettier-ignore */
     grid-template-areas: 
     "description-area description-area description-area" 
     "ability-area armor-area armor-area"
@@ -46,6 +46,7 @@ export default {
     "weapons-area weapons-area skills-area";
   }
 }
+**/
 
 .ability-area {
   grid-area: ability-area;

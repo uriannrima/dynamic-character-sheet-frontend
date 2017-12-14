@@ -1,17 +1,15 @@
 <template>
     <div class="initiative-component">
-        <div class="black-box">
+        <div class="black-box initiative-bb">
             <label>Initiative</label>
             <label>Modifier</label>
         </div>
-        <div class="initiative-grid">
-            <input type="number" class="common-input" readonly :value="getTotal">
-            <input type="number" class="common-input" readonly :value="getAbility.getTempModifier()">
-            <input type="number" class="common-input" v-model.number="initiative.miscModifier">
-            <span class="total-label">Total</span>
-            <span>Dex<br>Modifier</span>
-            <span>Misc<br>Modifier</span>
-        </div>
+        <input type="number" class="common-input" readonly :value="getTotal">
+        <input type="number" class="common-input" readonly :value="getAbility.getTempModifier()">
+        <input type="number" class="common-input" v-model.number="initiative.miscModifier">
+        <label class="total-label">Total</label>
+        <label>Dex<br>Modifier</label>
+        <label>Misc<br>Modifier</label>
     </div>
 </template>
 
@@ -40,23 +38,19 @@ export default {
 <style>
 .initiative-component {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
   align-items: center;
   justify-items: center;
 }
 
-.initiative-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-  grid-template-rows: auto 25%;
-  height: 100%;
+.initiative-bb {
+  grid-column-end: 3 span;
 }
 
-.initiative-grid span {
+.initiative-component label {
   font-size: 50%;
-  line-height: 8px;
   text-transform: uppercase;
   text-align: center;
 }
