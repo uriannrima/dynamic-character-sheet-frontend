@@ -42,7 +42,6 @@ export default {
 
 .page {
   transition: all 5s;
-  height: 297mm;
 }
 
 /** HD Resolution */
@@ -62,6 +61,7 @@ export default {
 @media screen and (min-width: 794px) and (max-width: 1439px) {
   .main-container {
     width: 210mm;
+    height: 297mm;
   }
 }
 
@@ -101,6 +101,7 @@ export default {
 .black-box {
   display: grid;
   text-align: center;
+  align-items: center;
   background-color: black;
   color: white;
   height: 100%;
@@ -119,8 +120,7 @@ export default {
 }
 
 .black-box label:nth-child(2) {
-  font-size: 46%;
-  margin-top: -3px;
+  font-size: 50%;
 }
 
 .temporary-box {

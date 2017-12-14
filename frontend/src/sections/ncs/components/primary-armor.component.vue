@@ -1,34 +1,22 @@
 <template>
     <div class="primary-armor-component">
-        <div class="grid primary-armor-grid">
-            <div class="black-box">
-                <label>AC</label>
-                <label>Armor Class</label>
-            </div>
-            <input type="number" readonly :value="getTotalArmor">
-            <span class="base-armor-label">= 10 +</span>
-            <input type="number" v-model.number="armorClass.armorBonus">
-            <input type="number" v-model.number="armorClass.shieldBonus">
-            <input type="number" readonly :value="getAbility.getTempModifier()">
-            <input type="number" v-model.number="armorClass.sizeModifier">
-            <input type="number" v-model.number="armorClass.naturalArmor">
-            <input type="number" v-model.number="armorClass.deflectionModifier">
-            <input type="number" v-model.number="armorClass.miscModifier">
-            <input type="text" class="last-input damage-reduction-input" v-model="damageReduction">
+        <div class="black-box ac-bb">
+            <label>AC</label>
+            <label>Armor Class</label>
         </div>
-        <div class="grid primary-armor-grid health-armor-header armor-header">
-            <label>&nbsp</label>
-            <label class="total-label">Total</label>
-            <label>&nbsp</label>
-            <label>Armor<br>Bonus</label>
-            <label>Shield<br>Bonus</label>
-            <label>Dex<br>Modifier</label>
-            <label>Size<br>Modifier</label>
-            <label>Natural<br>Armor</label>
-            <label>Deflection<br>Modifier</label>
-            <label>Misc<br>Modifier</label>
-            <label>Damage<br>Reduction</label>
+        <input type="number" class="common-input ac-bb" readonly :value="getTotalArmor">
+        <span class="base-armor-label">= 10 +</span>
+        <input type="number" class="common-input" v-model.number="armorClass.armorBonus">
+        <input type="number" class="common-input" v-model.number="armorClass.shieldBonus">
+        <input type="number" class="common-input" readonly :value="getAbility.getTempModifier()">
+        <input type="number" class="common-input" v-model.number="armorClass.sizeModifier">
+        <input type="number" class="common-input" v-model.number="armorClass.naturalArmor">
+        <input type="number" class="common-input" v-model.number="armorClass.deflectionModifier">
+        <input type="number" class="common-input" v-model.number="armorClass.miscModifier">
+        <div class="black-box damage-reduction-bb">
+            <label>Damage Reduction</label>
         </div>
+        <input type="text" class="damage-reduction-bb common-input speed-input" v-model="damageReduction">
     </div>
 </template>
 
@@ -65,23 +53,18 @@ export default {
 <style>
 .primary-armor-component {
   display: grid;
-  grid-template-rows: 1fr 36%;
+  grid-template-columns: repeat(8, 1fr);
+  justify-items: center;
   align-items: center;
+  grid-row-gap: 2px;
+  grid-column-gap: 2px;
 }
 
-.primary-armor-grid {
-  grid-template-columns: 10.5% 7% repeat(8, 1fr) 15%;
+.ac-bb {
+  grid-column-end: 8 span;
 }
 
-.base-armor-label {
-  font-weight: bold;
-}
-
-.armor-header {
-  align-items: start;
-}
-
-.damage-reduction-input {
-  text-align: center;
+.damage-reduction-bb {
+  grid-column-end: 4 span;
 }
 </style>

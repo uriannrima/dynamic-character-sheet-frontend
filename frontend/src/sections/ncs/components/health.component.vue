@@ -1,22 +1,20 @@
 <template>
     <div class="health-component">
-        <div class="grid health-grid health-armor-header health-header">
-            <label>&nbsp</label>
-            <label class="total-label">Total</label>
-            <label>Wounds/Current HP</label>
-            <label>Nonlethal<br>Damage</label>
-            <label class="speed-label">Speed</label>
+        <div class="black-box health-bb">
+            <label>HP</label>
+            <label>Health Points</label>
         </div>
-        <div class="grid health-grid health-body">
-            <div class="black-box">
-                <label>HP</label>
-                <label>Health Points</label>
-            </div>
-            <input type="number" v-model.number="character.status.healthPoints">
-            <input type="text" v-model="character.status.wounds">
-            <input type="number" v-model.number="character.status.nonLethalDamage">
-            <input type="text" class="last-input speed-input" v-model="character.speed">
+        <div class="black-box">
+            <label>Speed</label>
         </div>
+        <input type="number" class="common-input" v-model.number="character.status.healthPoints">
+        <input type="text" class="common-input" v-model="character.status.wounds">
+        <input type="number" class="common-input" v-model.number="character.status.nonLethalDamage">
+        <input type="text" class="speed-input common-input" v-model="character.speed">
+        <label class="total-label">Total</label>
+        <label>Wounds/Current HP</label>
+        <label>Nonlethal<br>Damage</label>
+        <label>&nbsp</label>
     </div>
 </template>
 
@@ -35,24 +33,24 @@ export default {
 <style>
 .health-component {
   display: grid;
-  grid-template-rows: 40% 1fr;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
+  justify-items: center;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
 }
 
-.health-grid {
-  grid-template-columns: 10.5% 7% 42% 12% auto;
+.health-bb {
+  grid-column-end: 3 span;
 }
 
-.speed-label {
-  font-size: 85% !important;
-  font-weight: bold;
+.health-component label {
+  font-size: 50%;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .speed-input {
   text-align: center;
-}
-
-.health-header {
-  align-items: end;
 }
 </style>

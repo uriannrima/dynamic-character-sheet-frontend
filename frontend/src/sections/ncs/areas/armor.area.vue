@@ -1,5 +1,5 @@
 <template>
-  <div class="health-armor-grid">
+  <div>
     <health-component/>
     <primary-armor-component/>
   </div>
@@ -14,10 +14,6 @@ export default {
 </script>
 
 <style>
-.health-armor-grid {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-}
 
 .grid {
   height: 100%;
@@ -26,9 +22,8 @@ export default {
   justify-items: center;
 }
 
-.health-armor-grid input,
 .common-input {
-  width: 90%;
+  width: 100%;
   border: solid 1px black;
 }
 
