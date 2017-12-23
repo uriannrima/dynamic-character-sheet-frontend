@@ -1,9 +1,9 @@
 <template>
   <div class="bab-component">
-    <div class="black-box bab-box">
+    <div class="black-box">
       <label>Base Attack Bonus</label>
     </div>
-    <input type="number" class="common-input" v-model.number="character.baseAttackBonus">
+    <input type="text" class="common-input bab-input">
   </div>
 </template>
 
@@ -18,6 +18,16 @@ export default {
 <style>
 .bab-component {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(30px, auto);
+}
+
+.bab-input {
+  text-align: center;
+}
+/*
+.bab-component {
+  display: grid;
   grid-template-columns: 70% 1fr;
   align-items: center;
   justify-items: center;
@@ -26,4 +36,5 @@ export default {
 .bab-box {
   align-items: center;
 }
+*/
 </style>

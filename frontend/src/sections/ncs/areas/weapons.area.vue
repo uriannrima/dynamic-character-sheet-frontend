@@ -44,13 +44,13 @@ export default {
 
 .saving-conditional-grid {
   display: grid;
-  grid-template-columns: auto 25%;
-  justify-items: stretch;
+  grid-template-columns: 1fr;
+  grid-row-gap: 5px;
 }
 
 .base-attack-resistance-grid {
   display: grid;
-  grid-template-columns: 60% 1fr;
-  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-row-gap: 2px;
 }
 </style>
