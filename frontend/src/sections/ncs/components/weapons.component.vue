@@ -33,6 +33,8 @@ export default {
   font-size: 9px;
   text-transform: uppercase;
   font-weight: bold;
+  display: grid;
+  align-items: center;
 }
 
 .weapons-component input {

@@ -74,7 +74,7 @@ export const Character = function ({
             new Modules.SavingThrowsModule.Factory.Create({ name: 'reflex' }),
             new Modules.SavingThrowsModule.Factory.Create({ name: 'will' })
         ],
-        baseAttackBonus: baseAttackBonus || 0,
+        baseAttackBonus: baseAttackBonus || [0],
         spellResistance: spellResistance || 0,
         grapple: grapple ? new Modules.GrappleModule.Grapple(grapple) : new Modules.GrappleModule.Grapple({
             baseAttackBonus: 0,

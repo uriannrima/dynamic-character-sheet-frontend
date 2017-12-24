@@ -3,7 +3,7 @@
     <div class="black-box">
       <label>Base Attack Bonus</label>
     </div>
-    <input type="text" class="common-input bab-input">
+    <input type="text" class="common-input bab-input" v-model="baseAttackBonus">
   </div>
 </template>
 
@@ -11,7 +11,17 @@
 import CharacterMixin from 'Store/character.mixin';
 
 export default {
-  mixins: [CharacterMixin]
+  mixins: [CharacterMixin],
+  computed: {
+    baseAttackBonus: {
+      set(value) {
+        this.character.baseAttackBonus = value.split('/').map(v => Number(v));
+      },
+      get() {
+        return this.character.baseAttackBonus.join('/');
+      }
+    }
+  }
 }
 </script>
 
