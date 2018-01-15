@@ -79,11 +79,12 @@ export default {
   display: grid;
   grid-template-columns: 15% 15% 10% 25% 1fr 1fr;
   grid-template-rows: 29% 29% 12% 29%;
+  grid-column-gap: 1px;
 }
 
 .ammunition-wrapper {
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 15% 1fr;
   grid-template-rows: 100%;
 }
 
@@ -92,7 +93,6 @@ export default {
   background-color: black;
   color: white;
   text-align: center;
-  border-right: solid 1px white;
 }
 
 .ammunition-header {

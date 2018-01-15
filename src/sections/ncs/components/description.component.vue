@@ -29,7 +29,10 @@
     </div>
     <div class="four-part-area">
       <div class="horizontal-container">
-        <input type="text" class="full-width-input" v-model="character.size.name">
+        <!-- input type="text" class="full-width-input" v-model="character.size" -->
+        <select v-model="character.size" class="full-width-input">
+          <option v-for="(size, index) in allSizes" :key="index" :value="size">{{size.name}}</option>
+        </select>
         <label>Size</label>
       </div>
       <div class="horizontal-container">
@@ -67,100 +70,106 @@
 </template>
 
 <script>
-import CharacterStore from 'Store/character.store';
+  import CharacterStore from 'Store/character.store';
+  import SizeService from 'Services/size.service';
 
-export default {
-  data() {
-    return {
-      character: CharacterStore.Instance.character
-    }
-  },
-  methods: {
-    saveCharacter: async function () {
-      if (await CharacterStore.saveCharacter()) {
-        window.history.pushState("", "", "/#/ncs/" + this.character._id);
+  export default {
+    data() {
+      return {
+        character: CharacterStore.Instance.character,
+        allSizes: []
       }
-    }
-  },
-  computed: {
-    computedClass: {
-      get: function () {
-        return this.character.classes.map(classe => {
-          if (!classe.name || !classe.level) return "";
-          return classe.name + " (" + classe.level + ")";
-        });
-      },
-      set: function (newValue) {
-        this.character.classes = [];
-        const fieldValues = newValue.split(",");
-        fieldValues.forEach(fieldValue => {
-          // If empty character
-          if (fieldValue.trim() === "") return;
-
-          // Clear whitespaces
-          var classLevel = fieldValue.replace(/ /g, "");
-
-          // Regex to get level
-          var levelRegex = /\(([^)]+)\)/;
-
-          // Get level data,
-          var levelData = levelRegex.exec(classLevel);
-          // Extract level from data
-          var level = levelData && levelData.length > 1 ? levelData[1] : 1;
-
-          // Remove level from field.
-          var classOnly = classLevel.replace(levelRegex, "");
-          this.character.classes.push({
-            name: classOnly.trim(),
-            level: level
+    },
+    created: async function () {
+      this.allSizes = await SizeService.getAll();
+    },
+    methods: {
+      saveCharacter: async function() {
+        if (await CharacterStore.saveCharacter()) {
+          window.history.pushState("", "", "/#/ncs/" + this.character._id);
+        }
+      }
+    },
+    computed: {
+      computedClass: {
+        get: function() {
+          return this.character.classes.map(classe => {
+            if (!classe.name || !classe.level) return "";
+            return classe.name + " (" + classe.level + ")";
           });
-        });
+        },
+        set: function(newValue) {
+          this.character.classes = [];
+          const fieldValues = newValue.split(",");
+          fieldValues.forEach(fieldValue => {
+            // If empty character
+            if (fieldValue.trim() === "") return;
+
+            // Clear whitespaces
+            var classLevel = fieldValue.replace(/ /g, "");
+
+            // Regex to get level
+            var levelRegex = /\(([^)]+)\)/;
+
+            // Get level data,
+            var levelData = levelRegex.exec(classLevel);
+            // Extract level from data
+            var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+
+            // Remove level from field.
+            var classOnly = classLevel.replace(levelRegex, "");
+            this.character.classes.push({
+              name: classOnly.trim(),
+              level: level
+            });
+          });
+        }
       }
     }
   }
-}
 </script>
 
 <style>
-.horizontal-container {
-  padding: 0 5px;
-}
-
-.description-component {
-  grid-area: description-component;
-  display: grid;
-  grid-template-rows: repeat(3, 33%);
-  grid-template-columns: 50% auto;
-}
-
-.description-component label {
-  font-size: 75%;
-  text-transform: uppercase;
-}
-
-.description-component input {
-  border-width: 0 0 1px 0;
-  border-bottom: solid 1px black;
-}
-
-.three-part-area {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.four-part-area {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.full-width-input {
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  .description-component {
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(6, 1fr);
+  .horizontal-container {
+    padding: 0 5px;
   }
-}
+
+  .description-component {
+    grid-area: description-component;
+    display: grid;
+    grid-template-rows: repeat(3, 33%);
+    grid-template-columns: 50% auto;
+  }
+
+  .description-component label {
+    font-size: 75%;
+    text-transform: uppercase;
+  }
+
+  .description-component input,
+  .description-component select {
+    border-width: 0 0 1px 0;
+    border-bottom: solid 1px black;
+  }
+
+  .three-part-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .four-part-area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .full-width-input {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .description-component {
+      grid-template-columns: 100%;
+      grid-template-rows: repeat(6, 1fr);
+    }
+  }
 </style>

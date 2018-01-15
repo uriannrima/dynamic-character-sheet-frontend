@@ -34,10 +34,10 @@ export const Character = function ({
         conditionModifier,
         size: size || new Modules.SizeModule.Size({
             name: "Medium",
-            attackDCBonus: "0",
-            grappleBonus: "0",
-            hideBonus: "0",
-            carryBonus: "1"
+            modifier: 1,
+            grappleBonus: 0,
+            hideBonus: 0,
+            carryBonus: 1
         }),
         classes: classes || [
             new Modules.ClasseModule.Classe({})
@@ -74,7 +74,7 @@ export const Character = function ({
             new Modules.SavingThrowsModule.Factory.Create({ name: 'reflex' }),
             new Modules.SavingThrowsModule.Factory.Create({ name: 'will' })
         ],
-        baseAttackBonus: baseAttackBonus || 0,
+        baseAttackBonus: baseAttackBonus || [0],
         spellResistance: spellResistance || 0,
         grapple: grapple ? new Modules.GrappleModule.Grapple(grapple) : new Modules.GrappleModule.Grapple({
             baseAttackBonus: 0,

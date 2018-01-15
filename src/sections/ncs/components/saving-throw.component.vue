@@ -34,6 +34,7 @@ export default {
   grid-template-columns: 30% repeat(6, 1fr);
   justify-items: center;
   align-items: center;
+  grid-column-gap: 2px;
 }
 
 .saving-throw-header label {
@@ -41,9 +42,5 @@ export default {
   line-height: 8px;
   text-transform: uppercase;
   text-align: center;
-}
-
-.saving-throw-box {
-  height: 120%;
 }
 </style>

@@ -3,7 +3,7 @@ export default {
     props: ['armorClass', 'abilityScoreModifier', 'armorItem', 'shieldItem', 'size', 'damageReduction'],
     computed: {
         getTotalArmor: function() {
-            return 10 + this.armorItem.acBonus + this.shieldItem.acBonus + this.abilityScoreModifier.getTempModifier() + this.size.attackDCBonus + this.armorClass.naturalArmor + this.armorClass.deflectionModifier + this.armorClass.miscModifier;
+            return 10 + this.armorItem.acBonus + this.shieldItem.acBonus + this.abilityScoreModifier.getTempModifier() + this.size.modifier + this.armorClass.naturalArmor + this.armorClass.deflectionModifier + this.armorClass.miscModifier;
         }
     }
 }
@@ -46,7 +46,7 @@ export default {
                         <input type="number" value="0" class="health-points-field" readonly :value="abilityScoreModifier.getTempModifier()">
                     </td>
                     <td>
-                        <input type="number" value="0" class="health-points-field" readonly :value="size.attackDCBonus">
+                        <input type="number" value="0" class="health-points-field" readonly :value="size.modifier">
                     </td>
                     <td>
                         <input type="number" value="0" class="health-points-field" v-model.number="armorClass.naturalArmor">

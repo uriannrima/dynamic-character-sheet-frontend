@@ -1,7 +1,7 @@
 <template>
   <div class="spell-resistance-component">
-    <div class="black-box bab-box">
-      <label>Spell<br>Resistance</label>
+    <div class="black-box">
+      <label>Spell Resistance</label>
     </div>
     <input type="number" class="common-input" v-model.number="character.spellResistance">
   </div>
@@ -18,8 +18,7 @@ export default {
 <style>
 .spell-resistance-component {
   display: grid;
-  grid-template-columns: 50% 1fr;
-  align-items: center;
-  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(30px, auto);
 }
 </style>

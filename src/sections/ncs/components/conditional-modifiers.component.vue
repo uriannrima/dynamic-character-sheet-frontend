@@ -17,7 +17,6 @@ export default {
 .conditional-modifiers-component {
   display: grid;
   grid-template-rows: 1fr;
-  padding: 4px 5px;
   text-align: center;
 }
 
@@ -30,6 +29,6 @@ export default {
   position: absolute;
   font-size: 50%;
   text-transform: uppercase;
-  margin-left: 10px;
+  margin-left: 2px;
 }
 </style>
