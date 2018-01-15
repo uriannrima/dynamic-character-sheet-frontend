@@ -1,8 +1,12 @@
 const { authenticate } = require('feathers-authentication').hooks;
 
+var debugHook = function(hook){
+  console.log('test');
+}
+
 module.exports = {
   before: {
-    all: [authenticate('jwt')],
+    all: [],
     find: [],
     get: [],
     create: [],
@@ -22,7 +26,7 @@ module.exports = {
   },
 
   error: {
-    all: [],
+    all: [debugHook],
     find: [],
     get: [],
     create: [],

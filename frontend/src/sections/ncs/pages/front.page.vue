@@ -4,8 +4,8 @@
     <ability-area class="ability-area" />
     <armor-area class="armor-area" />
     <initiative-area class="initiative-area" />
-    <skills-area class="skills-area" />
     <weapons-area class="weapons-area" />
+    <skills-area class="skills-area" />
   </div>
 </template>
 

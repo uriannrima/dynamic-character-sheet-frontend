@@ -1,3 +1,3 @@
 export default {
-    API_URL: 'http://dynamic-character-sheet-uriannrima.c9users.io/api'
+    API_URL: 'https://web-dcs-uriannrima.c9users.io/api'
 }

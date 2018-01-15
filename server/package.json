@@ -53,6 +53,7 @@
     "helmet": "^3.9.0",
     "mongodb": "^2.2.33",
     "nodemon": "^1.12.1",
+    "pm2": "^2.9.1",
     "serve-favicon": "^2.4.5",
     "winston": "^2.4.0"
   },

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <description-component/>
     <logo-component class="xl-h-up" />
+    <description-component/>
   </div>
 </template>
 

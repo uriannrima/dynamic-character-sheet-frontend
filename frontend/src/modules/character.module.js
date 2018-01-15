@@ -34,10 +34,10 @@ export const Character = function ({
         conditionModifier,
         size: size || new Modules.SizeModule.Size({
             name: "Medium",
-            attackDCBonus: "0",
-            grappleBonus: "0",
-            hideBonus: "0",
-            carryBonus: "1"
+            modifier: 1,
+            grappleBonus: 0,
+            hideBonus: 0,
+            carryBonus: 1
         }),
         classes: classes || [
             new Modules.ClasseModule.Classe({})
