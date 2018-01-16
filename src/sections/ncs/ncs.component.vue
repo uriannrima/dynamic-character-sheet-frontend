@@ -51,17 +51,10 @@ export default {
   }
 }
 
+/** Print Resolution */
 @media screen and (max-width: 1439px) {
   .main-container {
-    grid-template-columns: 100%;
-  }
-}
-
-/** Print Resolution */
-@media screen and (min-width: 794px) and (max-width: 1439px) {
-  .main-container {
     width: 210mm;
-    height: 297mm;
   }
 }
 
@@ -83,13 +76,6 @@ export default {
 @media screen and (max-width: 567px) {
   .main-container {
     width: 360px;
-  }
-}
-
-@media print {
-  .main-container {
-    width: 210mm;
-    grid-template-columns: 100%;
   }
 }
 
