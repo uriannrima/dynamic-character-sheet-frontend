@@ -33,7 +33,6 @@ export default {
       "skills-area";
 }
 
-/**
 @media screen and (min-width: 1023px) {
   .front {
     grid-template-columns: 30% 30% auto;
@@ -46,7 +45,6 @@ export default {
     "weapons-area weapons-area skills-area";
   }
 }
-**/
 
 .ability-area {
   grid-area: ability-area;
