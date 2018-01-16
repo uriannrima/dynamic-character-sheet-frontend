@@ -1,0 +1,44 @@
+<template>
+  <div class="weapons-component">
+    <weapon-component v-for="(weapon, index) in character.weapons" :key="index" :weapon="weapon" />
+  </div>
+</template>
+
+<script>
+import WeaponComponent from './weapon.component';
+import CharacterStore from 'Store/character.store';
+
+export default {
+  components: {
+    WeaponComponent
+  },
+  data() {
+    return {
+      character: CharacterStore.Instance.character
+    }
+  }
+}
+</script>
+
+<style>
+.weapons-component {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  grid-row-gap: 5px;
+}
+
+.weapons-component span,
+.weapons-component div {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: grid;
+  align-items: center;
+}
+
+.weapons-component input {
+  width: 100%;
+  height: 100%;
+}
+</style>
