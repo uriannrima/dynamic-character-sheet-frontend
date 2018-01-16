@@ -5,9 +5,11 @@ module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: './src/main.js',
     devtool: "#cheap-module-source-map",
+    devServer: {
+        disableHostCheck: true
+    },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',
                 enforce: 'pre',
@@ -85,11 +87,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             _: 'lodash'
         }),
-        new CopyWebpackPlugin([
-            {
-                from: './assets',
-                to: 'assets'
-            }
-        ])
+        new CopyWebpackPlugin([{
+            from: './assets',
+            to: 'assets'
+        }])
     ]
 }

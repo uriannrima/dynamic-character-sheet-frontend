@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "yarn install && webpack-dev-server --open --config build/webpack.dev.js --content-base src/ --port 4000 --hot",
+    "dev": "yarn install && webpack-dev-server --open --config build/webpack.dev.js --content-base src/ --public --host $IP --port $PORT --hot",
     "build": "webpack --config build/webpack.prd.js",
     "host": "yarn install && webpack -w --config build/webpack.prd.js"
   },
