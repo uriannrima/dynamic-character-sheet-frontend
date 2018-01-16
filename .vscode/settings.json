@@ -4,5 +4,6 @@
         "Services": "${workspaceRoot}/frontend/src/services",
         "@": "${workspaceRoot}/frontend/src",
         "Assets": "${workspaceRoot}/frontend/assets"
-    }
+    },
+    "git.ignoreLimitWarning": true
 }
