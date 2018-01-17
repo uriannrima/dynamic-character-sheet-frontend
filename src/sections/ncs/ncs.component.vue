@@ -35,7 +35,7 @@ export default {
 .main-container {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 50% auto;
+  grid-template-columns: 100%;
   transition: all 1s;
   padding: 0 15px;
 }
@@ -48,25 +48,26 @@ export default {
 @media screen and (min-width: 1440px) {
   .main-container {
     width: 420mm;
+    grid-template-columns: 50% auto;
   }
 }
 
-/** Print Resolution */
-@media screen and (max-width: 1439px) {
+/** Common Desktop Resolution */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
   .main-container {
     width: 210mm;
   }
 }
 
 /** Tablet Resolution */
-@media screen and (max-width: 793px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .main-container {
     width: 768px;
   }
 }
 
 /** Mobile Resolution */
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 568px) and (max-width: 767px) {
   .main-container {
     width: 568px;
   }
