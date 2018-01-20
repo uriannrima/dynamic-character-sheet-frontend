@@ -15,7 +15,7 @@
         <label class="wounds-label">Wounds/Current HP</label>
         <label class="nonlethal-label">Nonlethal<br>Damage</label>
         <label class="speed-label lg-h-down">Speed</label>
-        <label class="lg-h-up">&nbsp</label>
+        <label class="lg-h-up">&nbsp;</label>
     </div>
 </template>
 
