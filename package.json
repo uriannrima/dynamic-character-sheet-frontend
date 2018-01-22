@@ -23,6 +23,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "dexie": "^2.0.1",
     "es6-promise": "^4.1.1",
+    "launch-editor-middleware": "^2.2.0",
     "localforage": "^1.5.3",
     "lodash": "^4.17.4",
     "postcss-loader": "^2.0.8",

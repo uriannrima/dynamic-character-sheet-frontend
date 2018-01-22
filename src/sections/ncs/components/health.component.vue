@@ -4,7 +4,7 @@
             <label>HP</label>
             <label>Health Points</label>
         </div>
-        <div class="lg-h-up black-box">
+        <div class="h-lg-up black-box">
             <label>Speed</label>
         </div>
         <input type="number" class="health-input common-input" v-model.number="character.status.healthPoints">
@@ -14,8 +14,7 @@
         <label class="health-label total-label">Total</label>
         <label class="wounds-label">Wounds/Current HP</label>
         <label class="nonlethal-label">Nonlethal<br>Damage</label>
-        <label class="speed-label lg-h-down">Speed</label>
-        <label class="lg-h-up">&nbsp</label>
+        <label class="speed-label h-md-only">Speed</label>
     </div>
 </template>
 
@@ -55,7 +54,7 @@
         text-align: center;
     }
 
-    @media screen and (min-width: 1023px) {
+    @media screen and (min-width: 1024px) {
         .health-component {
             grid-template-columns: repeat(5, 1fr);
             grid-template-areas: ". health-label wounds-label nonlethal-label speed-label";

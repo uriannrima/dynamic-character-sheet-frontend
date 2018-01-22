@@ -38,7 +38,12 @@
         <input type="text" v-model="weapon.range">
       </div>
       <div>
-        <input type="text" v-model="weapon.type">
+        <select v-model="weapon.type">
+          <option value="">None</option>
+          <option value="Bludgeoning">Bludgeoning</option>
+          <option value="Piercing">Piercing</option>
+          <option value="Slashing">Slashing</option>
+        </select>
       </div>
       <div class="weapon-notes">
         <input type="text" v-model="weapon.notes">
@@ -54,64 +59,64 @@
 </template>
 
 <script>
-export default {
-  props: ['weapon']
-}
+  export default {
+    props: ['weapon']
+  }
 </script>
 
 <style>
-.weapon-component {
-  display: grid;
-  grid-template-rows: 1fr 15%;
-}
+  .weapon-component {
+    display: grid;
+    grid-template-rows: 1fr 15%;
+  }
 
-.weapon-component input {
-  font-size: 12px;
-  text-align: center;
-}
+  .weapon-component input {
+    font-size: 12px;
+    text-align: center;
+  }
 
-.weapon-wrapper,
-.ammunition-wrapper {
-  align-self: stretch;
-}
+  .weapon-wrapper,
+  .ammunition-wrapper {
+    align-self: stretch;
+  }
 
-.weapon-wrapper {
-  display: grid;
-  grid-template-columns: 15% 15% 10% 25% 1fr 1fr;
-  grid-template-rows: 29% 29% 12% 29%;
-  grid-column-gap: 1px;
-}
+  .weapon-wrapper {
+    display: grid;
+    grid-template-columns: 15% 15% 10% 25% 1fr 1fr;
+    grid-template-rows: 29% 29% 12% 29%;
+    grid-column-gap: 1px;
+  }
 
-.ammunition-wrapper {
-  display: grid;
-  grid-template-columns: 15% 1fr;
-  grid-template-rows: 100%;
-}
+  .ammunition-wrapper {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 100%;
+  }
 
-.weapon-header {
-  align-self: end;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
+  .weapon-header {
+    align-self: end;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
 
-.ammunition-header {
-  text-align: center;
-}
+  .ammunition-header {
+    text-align: center;
+  }
 
-.weapon-name-header {
-  height: 100%;
-  align-self: center;
-  border-radius: 5px 5px 0px 0px;
-  display: grid;
-  align-items: center;
-}
+  .weapon-name-header {
+    height: 100%;
+    align-self: center;
+    border-radius: 5px 5px 0px 0px;
+    display: grid;
+    align-items: center;
+  }
 
-.weapon-name {
-  grid-column-end: span 3;
-}
+  .weapon-name {
+    grid-column-end: span 3;
+  }
 
-.weapon-notes {
-  grid-column-end: span 4;
-}
+  .weapon-notes {
+    grid-column-end: span 4;
+  }
 </style>

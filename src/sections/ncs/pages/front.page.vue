@@ -33,7 +33,7 @@ export default {
       "skills-area";
 }
 
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 1024px) {
   .front {
     grid-template-columns: 30% 30% auto;
     grid-template-rows: 168px 112px 78px 763px;

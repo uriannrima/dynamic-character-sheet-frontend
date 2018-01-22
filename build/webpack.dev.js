@@ -15,9 +15,10 @@ module.exports = merge(common, {
         publicPath: '/',
         devtoolModuleFilenameTemplate: info => {
             if (info.resource.match(/\.vue$/)) {
-                $filename = info.allLoaders.match(/type=script/)
-                    ? info.resourcePath : 'generated';
-            } else {
+                $filename = info.allLoaders.match(/type=script/) ?
+                    info.resourcePath : 'generated';
+            }
+            else {
                 $filename = info.resourcePath;
             }
             return $filename;

@@ -84,6 +84,5 @@
 
     .base-armor-label {
         font-weight: bold;
-        font-size: 19px;
     }
 </style>
