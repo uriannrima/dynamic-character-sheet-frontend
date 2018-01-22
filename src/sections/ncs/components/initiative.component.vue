@@ -54,4 +54,14 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
+
+@media screen and (min-width: 1024px) {
+  .initiative-component {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .initiative-bb {
+    grid-column-end: 2 span;
+  }
+}
 </style>
