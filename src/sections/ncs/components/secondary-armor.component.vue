@@ -4,11 +4,11 @@
             <label>Touch</label>
             <label>Armor Class</label>
         </div>
-        <div class="black-box">
+        <div class="black-box ff-bb">
             <label>Flat-Footed</label>
             <label>Armor Class</label>
         </div>
-        <input type="number" class="common-input" readonly :value="getTouchArmor">
+        <input type="number" class="common-input touch-armor-input" readonly :value="getTouchArmor">
         <input type="number" class="common-input" readonly :value="getFlatFooted">
     </div>
 </template>
@@ -50,8 +50,24 @@ export default {
 <style>
 .secondary-armor-component {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2px;
   grid-row-gap: 2px;
+}
+
+@media screen and (min-width: 1024px) {
+  .secondary-armor-component {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .ff-bb {
+    grid-row-start: 1;
+    grid-column-start: 3;
+  }
+
+  .touch-armor-input {
+    grid-row-start: 1;
+    grid-column-start: 2;
+  }
 }
 </style>
