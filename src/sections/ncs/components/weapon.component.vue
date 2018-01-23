@@ -16,13 +16,13 @@
       <div class="weapon-name">
         <input type="text" v-model="weapon.name">
       </div>
-      <div>
+      <div class="weapon-attack-bonus">
         <input type="text" v-model.number="weapon.attackBonus">
       </div>
-      <div>
+      <div class="weapon-damage">
         <input type="text" v-model="weapon.damage">
       </div>
-      <div>
+      <div class="weapon-critical">
         <input type="text" v-model="weapon.critical">
       </div>
       <div class="weapon-header">
@@ -34,10 +34,10 @@
       <div class="weapon-notes weapon-header">
         <span>Notes</span>
       </div>
-      <div>
+      <div class="weapon-range">
         <input type="text" v-model="weapon.range">
       </div>
-      <div>
+      <div class="weapon-type">
         <input type="text" v-model="weapon.type">
       </div>
       <div class="weapon-notes">
@@ -113,5 +113,15 @@
 
   .weapon-notes {
     grid-column-end: span 4;
+  }
+
+  .weapon-name,
+  .weapon-attack-bonus,
+  .weapon-damage,
+  .weapon-critical,
+  .weapon-range,
+  .weapon-type,
+  .weapon-notes {
+    height: 98%;
   }
 </style>
