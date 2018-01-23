@@ -8,17 +8,23 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/character.mixin';
+  import CharacterMixin from 'Store/character.mixin';
 
-export default {
-  mixins: [CharacterMixin]
-}
+  export default {
+    mixins: [CharacterMixin]
+  }
 </script>
 
 <style>
-.spell-resistance-component {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: minmax(30px, auto);
-}
+  .spell-resistance-component {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(30px, auto);
+  }
+
+  @media screen and (min-width: 1024px) {
+    .spell-resistance-component {
+      grid-template-columns: 60% auto;
+    }
+  }
 </style>

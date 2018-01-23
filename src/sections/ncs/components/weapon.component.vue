@@ -38,12 +38,7 @@
         <input type="text" v-model="weapon.range">
       </div>
       <div>
-        <select v-model="weapon.type">
-          <option value="">None</option>
-          <option value="Bludgeoning">Bludgeoning</option>
-          <option value="Piercing">Piercing</option>
-          <option value="Slashing">Slashing</option>
-        </select>
+        <input type="text" v-model="weapon.type">
       </div>
       <div class="weapon-notes">
         <input type="text" v-model="weapon.notes">
