@@ -22,16 +22,19 @@ export default {
 <style>
 .cover {
   display: grid;
-  grid-template-columns: 50% 20% auto;
-  grid-template-rows: 15% 18% 10% 20% 20% auto;
+  grid-template-columns: 100%;
+  grid-auto-rows: auto;
+  grid-row-gap: 5px;
   /* prettier-ignore */
-  grid-template-areas: 
-    "campaign-area feats-area spells-area"
-    "gear-area feats-area spells-area"
-    "gear-area special-area spells-area"
-    "possessions-area special-area spells-area"
-    "possessions-area special-area dc-area"
-    "possessions-area languages-area dc-area";
+  grid-template-areas:
+    "campaign-area"
+    "gear-area"
+    "possesions-area"
+    "feats-area"
+    "special-area"
+    "languages-area"
+    "spells-area"
+    "dc-area";
 }
 
 .campaign-area {

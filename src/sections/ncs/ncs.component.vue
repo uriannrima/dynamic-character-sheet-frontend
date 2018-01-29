@@ -122,7 +122,7 @@
   }
 
   .only-bottom {
-    border-width: 0 0 1px 0;
+    border-width: 0 0 1px 0 !important;
     border-bottom: solid 1px black;
   }
 
