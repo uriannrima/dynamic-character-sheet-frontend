@@ -39,7 +39,6 @@ export default {
 
 .campaign-area {
   grid-area: campaign-area;
-  background-color: rgb(47, 91, 145);
 }
 
 .dc-area {
