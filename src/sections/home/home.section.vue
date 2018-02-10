@@ -49,7 +49,7 @@ export default {
         <h1>{{title}}</h1>
          <ul>
             <li v-for="character in characters" :key="character.id">
-                <a :href="'#/character/' + character._id">{{character.name}}</a>
+                <a :href="'#/ncs/' + character._id">{{character.name}}</a>
             </li>
           </ul>
     </div>

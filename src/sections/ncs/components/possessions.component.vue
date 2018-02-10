@@ -20,6 +20,30 @@
         <div class="carry-capacities-container">
             <carry-capacities-component :carryCapacities="carryCapacities"></carry-capacities-component>
         </div>
+        <div class="money-component">
+            <div class="black-box">
+                <label>Money</label>
+            </div>
+            <div class="money-container">
+                <div class="gold-component">
+                    <div>
+                        <label>CP — </label> <input type="text">
+                    </div>
+                    <div>
+                        <label>SP — </label> <input type="text">
+                    </div>
+                    <div>
+                        <label>GP — </label> <input type="text">
+                    </div>
+                    <div>
+                        <label>PP — </label> <input type="text">
+                    </div>
+                </div>
+                <div class="treasure-component">
+                    <textarea></textarea>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -88,6 +112,34 @@ export default {
   border: solid 1px black;
   text-align: center;
   text-transform: uppercase;
+}
+
+.money-container {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: solid 1px black;
+}
+
+.gold-component {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.gold-component div {
+  display: grid;
+  grid-template-columns: 15% auto;
+  text-align: center;
+}
+
+.treasure-component {
+  padding: 5px;
+}
+
+.treasure-component textarea {
+  border: solid 1px black;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 768px) {
