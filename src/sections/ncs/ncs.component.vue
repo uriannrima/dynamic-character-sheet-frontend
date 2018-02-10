@@ -116,6 +116,10 @@
     font-size: 50%;
   }
 
+  .rounded {
+    border-radius: 5px 5px 0px 0px;
+  }
+
   .temporary-box {
     text-align: center;
     background-color: lightgray;

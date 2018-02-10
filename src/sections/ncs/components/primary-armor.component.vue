@@ -27,7 +27,7 @@
             <label>Damage Reduction</label>
         </div>
         <input type="text" class="damage-reduction-bb common-input speed-input" v-model="character.damageReduction">
-        <label>Damage<br>Reduction</label>
+        <label class="h-md-down">Damage<br>Reduction</label>
     </div>
 </template>
 

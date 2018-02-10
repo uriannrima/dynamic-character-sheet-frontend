@@ -53,7 +53,6 @@ export default {
 
 .gear-area {
   grid-area: gear-area;
-  background-color: rgb(220, 190, 152);
 }
 
 .languages-area {

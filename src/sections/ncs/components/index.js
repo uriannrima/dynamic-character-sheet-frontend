@@ -1,4 +1,4 @@
-export { default as DescriptionComponent } from './description.component.vue';
+export { default as DescriptionComponent } from './description.component';
 export { default as LogoComponent } from './logo.component';
 
 export { default as AbilityScoreComponent } from './ability-score.component';
@@ -19,3 +19,7 @@ export { default as GrappleComponent } from './grapple.component';
 export { default as WeaponsComponent } from './weapons.component';
 
 export { default as SkillsComponent } from './skills.component';
+
+export { default as ArmorItemComponent } from './armor-item.component';
+export { default as ShieldItemComponent } from './shield-item.component';
+export { default as ProtectiveItemComponent } from './protective-item.component.vue';
