@@ -77,19 +77,16 @@ export default {
 .armor-item-component {
   display: grid;
   grid-template-rows: repeat(5, 1fr);
-  grid-row-gap: 2px;
 }
 
 .armor-item-component > div:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 2px;
 }
 
 .armor-item-component > div:nth-child(3),
 .armor-item-component > div:nth-child(4) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 2px;
 }
 </style>

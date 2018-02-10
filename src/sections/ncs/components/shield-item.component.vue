@@ -53,5 +53,14 @@ export default {
 </script>
 
 <style>
+.shield-item-component {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
 
+.shield-item-component > div:nth-child(2),
+.shield-item-component > div:nth-child(3) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 </style>

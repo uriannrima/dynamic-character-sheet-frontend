@@ -23,3 +23,5 @@ export { default as SkillsComponent } from './skills.component';
 export { default as ArmorItemComponent } from './armor-item.component';
 export { default as ShieldItemComponent } from './shield-item.component';
 export { default as ProtectiveItemComponent } from './protective-item.component.vue';
+
+export { default as PossessionsComponent } from './possessions.component.vue';

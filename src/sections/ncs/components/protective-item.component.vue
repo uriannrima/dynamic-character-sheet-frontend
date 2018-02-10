@@ -36,5 +36,18 @@ export default {
 </script>
 
 <style>
+.protective-item-component {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
 
+.protective-item-component {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.protective-item-component > div:nth-child(2) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 </style>

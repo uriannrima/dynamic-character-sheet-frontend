@@ -99,7 +99,6 @@
     color: white;
     height: 100%;
     width: 100%;
-    border-bottom: 1px solid white;
   }
 
   .black-box label {
@@ -114,6 +113,10 @@
 
   .black-box label:nth-child(2) {
     font-size: 50%;
+  }
+
+  .lower-border {
+    border-bottom: 1px solid white;
   }
 
   .rounded {
