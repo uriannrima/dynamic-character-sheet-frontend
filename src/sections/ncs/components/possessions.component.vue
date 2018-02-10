@@ -17,17 +17,22 @@
                 <input type="number" class="common-input" readonly :value="totalWeight">
             </div>
         </div>
+        <div class="carry-capacities-container">
+            <carry-capacities-component :carryCapacities="carryCapacities"></carry-capacities-component>
+        </div>
     </div>
 </template>
 
 <script>
-import { default as PossessionComponent } from "./possession.component";
-import { default as ResizeMixin } from 'Shared/mixins/resize.handler.mixin';
+import CharacterMixin from 'Store/character.mixin';
+import PossessionComponent from "./possession.component";
+import CarryCapacitiesComponent from './carry-capacities.component';
+import ResizeMixin from 'Shared/mixins/resize.handler.mixin';
 
 export default {
-    mixins: [ResizeMixin],
-    components: { PossessionComponent },
-    props: ["possessions"],
+    mixins: [CharacterMixin, ResizeMixin],
+    components: { PossessionComponent, CarryCapacitiesComponent },
+    props: ["possessions", "carryCapacities"],
     data() {
         var minimumWidth = 768;
         return {
@@ -37,7 +42,15 @@ export default {
     },
     computed: {
         totalWeight() {
-            return this.possessions.reduce((acc, possession) => acc + possession.weight, 0).toPrecision(3)
+            // const totalWeight = this.possessions.reduce((acc, possession) => acc + possession.weight, 0).toPrecision(3);
+            // for (const carryCapacityName in this.character.carryCapacities) {
+            //     const carryCapacity = this.character.carryCapacities[carryCapacityName];
+            //     if (totalWeight <= carryCapacity.value) {
+            //         console.log(carryCapacity);
+            //         break;
+            //     }
+            // }
+            return this.possessions.reduce((acc, possession) => acc + possession.weight, 0).toPrecision(3);
         }
     },
     methods: {

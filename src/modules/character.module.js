@@ -10,7 +10,7 @@ export const Character = function ({
     status, armorClass, initiative, conditionModifier,
     savingThrows, baseAttackBonus,
     spellResistance, grapple, skills,
-    weapons, gear, items, carryCapacity,
+    weapons, gear, items, carryCapacities,
     campaign, experience, money, feats, languages,
     specialAbilities, domainSchool, spellSave,
     arcaneSpellFailure, spellConditionModifier,
@@ -93,14 +93,35 @@ export const Character = function ({
         ],
         gear: gear || new Modules.GearModule.Gear({}),
         items: items || Modules.ItemModule.Factory(33),
-        carryCapacity: carryCapacity || new Modules.CarryCapacityModule.CarryCapacity({
-            lightLoad: 0,
-            mediumLoad: 0,
-            heavyLoad: 0,
-            liftOverHead: 0,
-            liftOffGround: 0,
-            pushOrDrag: 0
-        }),
+        carryCapacities: carryCapacities || {
+            lightLoad: {
+                label: "Light<br>Load",
+                value: 0
+            },
+            mediumLoad: {
+                label: "Medium<br>Load",
+                value: 0
+            },
+            heavyLoad: {
+                label: "Heavy<br>Load",
+                value: 0
+            },
+            liftOverHead: {
+                label: "Lift Over<br>Head",
+                small: "Equals Max Load",
+                value: 0
+            },
+            liftOffGround: {
+                label: "Lift Off<br>Ground",
+                small: "2x Max Load",
+                value: 0
+            },
+            pushOrDrag: {
+                label: "Push Or<br>Drag",
+                small: "5x Max Load",
+                value: 0
+            }
+        },
         campaign: campaign || "",
         experience: experience || 0,
         money: money || new Modules.MoneyModule.Money({
