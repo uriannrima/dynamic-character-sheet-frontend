@@ -10,7 +10,7 @@
                     <label>Page</label>
                     <label>Weight</label>
                 </div>
-                <possession-component v-for="(r,row) in 17" :key="row" :possession="possessions[(column * row) + row]"></possession-component>
+                <possession-component v-for="(r,row) in 17" :key="row" :possession="possessions[(column * 17) + row]"></possession-component>
             </div>
             <div class="total-possesion">
                 <label>Total Weight Carried</label>

@@ -17,7 +17,7 @@
         <input type="text" v-model="weapon.name">
       </div>
       <div class="weapon-attack-bonus">
-        <input type="text" v-model.number="weapon.attackBonus">
+        <input type="text" v-model="weapon.attackBonus">
       </div>
       <div class="weapon-damage">
         <input type="text" v-model="weapon.damage">

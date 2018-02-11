@@ -92,7 +92,6 @@ export default {
 
 .base-armor-label {
   font-weight: bold;
-  font-size: 18px;
 }
 
 @media screen and (min-width: 1023px) {

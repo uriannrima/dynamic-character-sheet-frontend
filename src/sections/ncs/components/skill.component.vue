@@ -4,16 +4,16 @@
       <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
     </div>
     <div class="skill-name">
-      <span>{{skill.name}} {{skill.subValue}}</span>
+      <span>{{skill.name}}</span>
     </div>
     <div class="skill-key-ability">
       <span>{{keyAbility.name.substring(0,3)}}</span>
     </div>
     <div class="skill-modifier">
-      <input type="number" value="0" class="common-input" readonly :value="getTotal">
+      <input type="number" class="common-input" readonly :value="skillModifier">
     </div>
     <div class="skill-ability-modifier">
-      <input type="number" value="0" class="only-bottom" readonly :value="keyAbility.getTempModifier()">
+      <input type="number" class="only-bottom" readonly :value="keyAbility.getTempModifier()">
     </div>
     <div class="skill-ranks">
       <input type="number" value="0" class="only-bottom" v-model.number="skill.rank">
@@ -25,11 +25,29 @@
 </template>
 
 <script>
+import CharacterMixin from 'Store/character.mixin';
+
 export default {
+  mixins: [CharacterMixin],
   props: ['skill', 'keyAbility'],
   computed: {
-    getTotal() {
-      return this.skill.rank + this.skill.miscModifier + this.keyAbility.getTempModifier();
+    skillModifier() {
+      var penalty = this.checkPenalty;
+      if (this.skill.name === "Swim") penalty += penalty;
+      var rankModifier = this.skill.rank;
+      if (!this.skill.classSkill) rankModifier = Math.floor(rankModifier / 2);
+      return rankModifier + this.skill.miscModifier + this.keyAbility.getTempModifier() + penalty;
+    },
+    checkPenalty() {
+      var penalty = 0;
+
+      if (this.skill.armorCheckPenalty) {
+        var { armor, shield } = this.character.gear;
+        if (armor) penalty += armor.checkPenalty;
+        if (shield) penalty += shield.checkPenalty;
+      }
+
+      return penalty;
     }
   }
 }
@@ -88,5 +106,9 @@ export default {
 .class-skill-input {
   width: 75%;
   height: 75%;
+}
+
+.skill-subvalue-input {
+  width: 10%;
 }
 </style>

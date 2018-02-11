@@ -9,7 +9,7 @@ export const Character = function ({
     damageReduction = "", classes, abilityScores,
     status, armorClass, initiative, conditionModifier = "",
     savingThrows, baseAttackBonus = [0],
-    spellResistance = 0, grapple, skills = [],
+    spellResistance = 0, grapple, skills = Modules.SkillsModule.DEFAULT_SKILLS,
     weapons, gear, items, carryCapacities,
     campaign = "", experience = 0, money, feats = [], languages = [],
     specialAbilities = [], domainSchool = "", spellSave = 0,
@@ -83,7 +83,7 @@ export const Character = function ({
             miscModifier: 0
         }),
         skillPoints: 0,
-        skills: skills ? skills.map(s => new Modules.SkillsModule.Skill(s)) : Modules.SkillsModule.DEFAULT_SKILLS,
+        skills: skills.map(s => new Modules.SkillsModule.Skill(s)),
         weapons: weapons || [
             new Modules.WeaponModule.Weapon({}),
             new Modules.WeaponModule.Weapon({}),
@@ -92,7 +92,7 @@ export const Character = function ({
             new Modules.WeaponModule.Weapon({})
         ],
         gear: gear || new Modules.GearModule.Gear({}),
-        items: items || Modules.ItemModule.Factory(33),
+        items: items || Modules.ItemModule.Factory(34),
         carryCapacities: carryCapacities || {
             lightLoad: {
                 label: "Light<br>Load",
