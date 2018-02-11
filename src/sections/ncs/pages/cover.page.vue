@@ -2,7 +2,6 @@
   <div>
     <campaign-area class="campaign-area" />
     <gear-area class="gear-area" />
-    <possessions-area class="possessions-area" />
     <feats-area class="feats-area" />
     <special-area class="special-area" />
     <languages-area class="languages-area" />
