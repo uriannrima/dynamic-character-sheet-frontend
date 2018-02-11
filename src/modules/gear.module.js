@@ -4,10 +4,10 @@ export const Armor = function ({ name, type, acBonus, maxDex, checkPenalty, spel
         type: type || "",
         acBonus: acBonus || 0,
         maxDex: maxDex || 0,
-        checkPenalty: checkPenalty || "",
-        spellFailure: spellFailure || "",
-        speed: speed || "",
-        weight: weight || "",
+        checkPenalty: checkPenalty || 0,
+        spellFailure: spellFailure || 0,
+        speed: speed || 0,
+        weight: weight || 0,
         specialProperties: specialProperties || ""
     };
 };
@@ -16,9 +16,9 @@ export const Shield = function ({ name, acBonus, checkPenalty, spellFailure, wei
     return {
         name: name || "",
         acBonus: acBonus || 0,
-        checkPenalty: checkPenalty || "",
-        spellFailure: spellFailure || "",
-        weight: weight || "",
+        checkPenalty: checkPenalty || 0,
+        spellFailure: spellFailure || 0,
+        weight: weight || 0,
         specialProperties: specialProperties || ""
     };
 }
@@ -27,7 +27,7 @@ export const ProtectiveItem = function ({ name, acBonus, weight, specialProperti
     return {
         name: name || "",
         acBonus: acBonus || 0,
-        weight: weight || "",
+        weight: weight || 0,
         specialProperties: specialProperties || ""
     };
 }

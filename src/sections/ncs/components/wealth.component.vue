@@ -7,24 +7,24 @@
       <div class="money-container">
         <div class="money-component">
           <label for="" title="Cooper Pieces">CP —</label>
-          <input type="text">
+          <input type="number" v-model.number="wealth.cooper">
         </div>
         <div class="money-component">
           <label for="" title="Silver Pieces">SP —</label>
-          <input type="text">
+          <input type="number" v-model.number="wealth.silver">
         </div>
         <div class="money-component">
           <label for="" title="Gold Pieces">GP —</label>
-          <input type="text">
+          <input type="number" v-model.number="wealth.gold">
         </div>
         <div class="money-component">
           <label for="" title="Platinum Pieces">PP —</label>
-          <input type="text">
+          <input type="number" v-model.number="wealth.platinum">
         </div>
       </div>
       <div class="treasure-container">
         <label class="conditional-modifiers-label">Treasures</label>
-        <textarea class="common-textarea"></textarea>
+        <textarea class="common-textarea" v-model="wealth.treasure"></textarea>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
 
 <script>
 export default {
-
+  props: ["wealth"]
 }
 </script>
 

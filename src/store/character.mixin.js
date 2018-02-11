@@ -5,5 +5,10 @@ export default {
         return {
             character: CharacterStore.Instance.character
         };
+    },
+    watch: {
+        character: function () {
+            console.log('Updated');
+        }
     }
 }

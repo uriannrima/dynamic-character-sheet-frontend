@@ -1,20 +1,21 @@
 <template>
   <div class="campaign-grid">
     <div class="campaign-component">
-      <input class="common-input only-bottom">
+      <input type="text" class="common-input only-bottom" v-model="character.campaign">
       <label>Campaign</label>
     </div>
     <div class="experience-component">
-      <input class="common-input ">
+      <input type="number" class="common-input" v-model.number="character.experience">
       <label>Experience Points</label>
     </div>
   </div>
 </template>
 
 <script>
+import CharacterMixin from 'Store/character.mixin';
 
 export default {
-
+  mixins: [CharacterMixin]
 }
 </script>
 

@@ -20,7 +20,7 @@
         <div class="carry-capacities-container">
             <carry-capacities-component :carryCapacities="carryCapacities"></carry-capacities-component>
         </div>
-        <wealth-component></wealth-component>
+        <wealth-component :wealth="wealth"></wealth-component>
     </div>
 </template>
 
@@ -34,7 +34,7 @@ import ResizeMixin from 'Shared/mixins/resize.handler.mixin';
 export default {
     mixins: [CharacterMixin, ResizeMixin],
     components: { PossessionComponent, CarryCapacitiesComponent, WealthComponent },
-    props: ["possessions", "carryCapacities"],
+    props: ["possessions", "carryCapacities", "wealth"],
     data() {
         var minimumWidth = 768;
         return {
@@ -44,15 +44,12 @@ export default {
     },
     computed: {
         totalWeight() {
-            // const totalWeight = this.possessions.reduce((acc, possession) => acc + possession.weight, 0).toPrecision(3);
-            // for (const carryCapacityName in this.character.carryCapacities) {
-            //     const carryCapacity = this.character.carryCapacities[carryCapacityName];
-            //     if (totalWeight <= carryCapacity.value) {
-            //         console.log(carryCapacity);
-            //         break;
-            //     }
-            // }
-            return this.possessions.reduce((acc, possession) => acc + possession.weight, 0).toPrecision(3);
+            var gearWeight = 0;
+            var { armor, shield, protectiveItems } = this.character.gear;
+            if (armor) gearWeight += armor.weight;
+            if (shield) gearWeight += shield.weight;
+            if (protectiveItems) gearWeight = protectiveItems.reduce((acc, item) => acc + item.weight, gearWeight);
+            return this.possessions.reduce((acc, possession) => acc + possession.weight, gearWeight).toPrecision(3);
         }
     },
     methods: {

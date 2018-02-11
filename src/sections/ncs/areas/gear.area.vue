@@ -6,7 +6,7 @@
     <armor-item-component :armor="character.gear.armor"></armor-item-component>
     <shield-item-component :shield="character.gear.shield"></shield-item-component>
     <protective-item-component v-for="(protectiveItem, index) in character.gear.protectiveItems" :key="index" :protectiveItem="protectiveItem"></protective-item-component>
-    <possessions-component :possessions="character.items" :carryCapacities="character.carryCapacities"></possessions-component>
+    <possessions-component :possessions="character.items" :carryCapacities="character.carryCapacities" :wealth="character.money"></possessions-component>
   </div>
   
 </template>

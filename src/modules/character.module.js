@@ -2,19 +2,19 @@ var Modules = require('./');
 _ = require('lodash');
 
 export const Character = function ({
-    _id, name, playerName,
-    race, alignment, deity,
-    size, age, gender, height,
-    weight, eyes, hair, skin, speed,
-    damageReduction, classes, abilityScores,
-    status, armorClass, initiative, conditionModifier,
-    savingThrows, baseAttackBonus,
-    spellResistance, grapple, skills,
+    _id, name = "", playerName = "",
+    race = "", alignment = "", deity = "",
+    size, age = "", gender = "", height = "",
+    weight = "", eyes = "", hair = "", skin = "", speed = "",
+    damageReduction = "", classes, abilityScores,
+    status, armorClass, initiative, conditionModifier = "",
+    savingThrows, baseAttackBonus = [0],
+    spellResistance = 0, grapple, skills = [],
     weapons, gear, items, carryCapacities,
-    campaign, experience, money, feats, languages,
-    specialAbilities, domainSchool, spellSave,
-    arcaneSpellFailure, spellConditionModifier,
-    spells = [], spellPerDayList }) {
+    campaign = "", experience = 0, money, feats = [], languages = [],
+    specialAbilities = [], domainSchool = "", spellSave = 0,
+    arcaneSpellFailure = 0, spellConditionModifier = "",
+    spells = [], spellPerDayList = []}) {
     return {
         _id,
         name,
@@ -74,8 +74,8 @@ export const Character = function ({
             new Modules.SavingThrowsModule.Factory.Create({ name: 'reflex' }),
             new Modules.SavingThrowsModule.Factory.Create({ name: 'will' })
         ],
-        baseAttackBonus: baseAttackBonus || [0],
-        spellResistance: spellResistance || 0,
+        baseAttackBonus,
+        spellResistance,
         grapple: grapple ? new Modules.GrappleModule.Grapple(grapple) : new Modules.GrappleModule.Grapple({
             baseAttackBonus: 0,
             strengthModifier: 0,
@@ -122,8 +122,8 @@ export const Character = function ({
                 value: 0
             }
         },
-        campaign: campaign || "",
-        experience: experience || 0,
+        campaign,
+        experience,
         money: money || new Modules.MoneyModule.Money({
             copper: 0,
             silver: 0,
@@ -131,13 +131,13 @@ export const Character = function ({
             platinum: 0,
             treasure: ""
         }),
-        feats: feats ? feats.map(f => new Modules.FeatModule.Feat(f)) : [],
-        languages: languages || [],
-        specialAbilities: specialAbilities || [],
-        domainSchool: domainSchool || "",
-        spellSave: spellSave || 0,
-        arcaneSpellFailure: arcaneSpellFailure || 0,
-        spellConditionModifier: spellConditionModifier || "",
+        feats: feats.map(f => new Modules.FeatModule.Feat(f)),
+        languages,
+        specialAbilities,
+        domainSchool,
+        spellSave,
+        arcaneSpellFailure,
+        spellConditionModifier,
         spells,
         spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.SpellsPerDayModule.SpellsPerDay({
             spellLevel: i

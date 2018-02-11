@@ -51,7 +51,7 @@
         <div class="black-box">
           <label>Weight</label>
         </div>
-        <input type="text" class="common-input" v-model="armor.weight">
+        <input type="number" class="common-input" v-model.number="armor.weight">
       </div>
     </div>
     <div>
