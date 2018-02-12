@@ -1,26 +1,15 @@
 <template>
   <div class="skill-component">
-    <div class="class-skill">
-      <input type="checkbox" class="class-skill-input" v-model="skill.classSkill">
+    <input type="checkbox" class="class-skill-checkbox" v-model="skill.classSkill">
+    <div class="skill-name-container">
+      <label class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</label>
+      <small class="skill-sub-value" v-if="skill.subValue">({{skill.subValue}})</small>
     </div>
-    <div class="skill-name">
-      <span>{{skill.name}}</span>
-    </div>
-    <div class="skill-key-ability">
-      <span>{{keyAbility.name.substring(0,3)}}</span>
-    </div>
-    <div class="skill-modifier">
-      <input type="number" class="common-input" readonly :value="skillModifier">
-    </div>
-    <div class="skill-ability-modifier">
-      <input type="number" class="only-bottom" readonly :value="keyAbility.getTempModifier()">
-    </div>
-    <div class="skill-ranks">
-      <input type="number" value="0" class="only-bottom" v-model.number="skill.rank">
-    </div>
-    <div class="skill-misc-modifier">
-      <input type="number" value="0" class="only-bottom" v-model.number="skill.miscModifier">
-    </div>
+    <label class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3)}}</label>
+    <input type="number" class="common-input" readonly :value="skillModifier">
+    <input type="number" class="only-bottom" readonly :value="keyAbility.getTempModifier()">
+    <input type="number" class="only-bottom" v-model.number="skill.rank">
+    <input type="number" class="only-bottom" v-model.number="skill.miscModifier">
   </div>
 </template>
 
@@ -56,59 +45,50 @@ export default {
 <style>
 .skill-component {
   display: grid;
-  grid-template-columns: 5% 40% repeat(5, 1fr);
+  grid-template-columns: 3% 37% repeat(5, 11%);
+  grid-column-gap: 3px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.class-skill-checkbox {
+  margin-top: 1px;
+  width: 100%;
+  height: 100%;
 }
 
 .skill-name {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  display: grid;
-  align-items: center;
+  padding-left: 2px;
+  text-transform: uppercase;
+  margin: auto 0;
+  font-size: 65%;
+  font-weight: bolder;
+}
+
+.skill-sub-value {
+  font-size: 50%;
 }
 
 .skill-key-ability {
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-  text-align: center;
   text-transform: uppercase;
-}
-
-.skill-modifier {
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
   text-align: center;
+  margin: auto 0;
+  font-size: 75%;
+  font-weight: bolder;
 }
 
-.skill-ability-modifier {
-  grid-column: 5 / 6;
-  grid-row: 1 / 2;
-  text-align: center;
+.untrained-skill::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    background-color: black;
+    vertical-align: middle;
 }
 
-.skill-ranks {
-  grid-column: 6 / 7;
-  grid-row: 1 / 2;
-  text-align: center;
-}
-
-.skill-misc-modifier {
-  grid-column: 7 / 8;
-  grid-row: 1 / 2;
-  text-align: center;
-}
-
-.class-skill {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
-
-.class-skill-input {
-  width: 75%;
-  height: 75%;
-}
-
-.skill-subvalue-input {
-  width: 10%;
+.armor-check-penalty::after {
+    content: '*';
 }
 </style>
