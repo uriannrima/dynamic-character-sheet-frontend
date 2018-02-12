@@ -6,9 +6,9 @@ export default {
             character: CharacterStore.Instance.character
         };
     },
-    watch: {
-        character: function () {
-            console.log('Updated');
-        }
+    beforeCreate: function () {
+        CharacterStore.onReferenceUpdate((character) => {
+            this.character = character;
+        });
     }
 }

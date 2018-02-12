@@ -22,6 +22,13 @@ export default {
     }
 
     next();
+  },
+  beforeRouteUpdate: async function (to, from, next) {
+    if (to.params.id) {
+      await CharacterStore.loadCharacter(to.params.id);
+    }
+
+    next();
   }
 }
 </script>
