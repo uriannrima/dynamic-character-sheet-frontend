@@ -9,22 +9,18 @@
       <label>Misc<br>Modifier</label>
       <label>Temporary<br>Modifier</label>
     </div>
-    <saving-throw-component v-for="(savingThrow, index) in character.savingThrows" :key="index" :savingThrow="savingThrow" :keyAbility="character.abilityScores.find(a => a.name === savingThrow.keyAbility)"/>
+    <saving-throw-component v-for="(savingThrow, index) in character.savingThrows" :key="index" :savingThrow="savingThrow" :keyAbility="character.abilityScores.find(a => a.name === savingThrow.keyAbility)" />
   </div>
 </template>
 
 <script>
 import SavingThrowComponent from './saving-throw.component';
-import CharacterStore from 'Store/character.store';
+import CharacterMixin from 'Store/character.mixin';
 
 export default {
+  mixins: [CharacterMixin],
   components: {
     SavingThrowComponent
-  },
-  data() {
-    return {
-      character: CharacterStore.Instance.character
-    }
   }
 }
 </script>

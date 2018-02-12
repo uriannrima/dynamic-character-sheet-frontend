@@ -8,14 +8,11 @@
 <script>
 import * as Pages from './pages';
 import CharacterStore from 'Store/character.store';
+import CharacterMixin from 'Store/character.mixin';
 
 export default {
+  mixins: [CharacterMixin],
   components: Pages,
-  data() {
-    return {
-      character: CharacterStore.Instance.character
-    }
-  },
   beforeRouteEnter: async function (to, from, next) {
     if (to.params.id) {
       await CharacterStore.loadCharacter(to.params.id);

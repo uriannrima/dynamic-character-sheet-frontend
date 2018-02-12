@@ -19,70 +19,66 @@
 </template>
 
 <script>
-    import CharacterStore from 'Store/character.store';
+import CharacterMixin from 'Store/character.mixin';
 
-    export default {
-        data() {
-            return {
-                character: CharacterStore.Instance.character
-            }
-        }
-    }
+export default {
+    mixins: [CharacterMixin]
+}
 </script>
 
 <style>
-    .health-component {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        align-items: center;
-        justify-items: center;
-        grid-column-gap: 2px;
-        grid-row-gap: 2px;
-    }
+.health-component {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+}
 
-    .health-bb {
-        grid-column-end: 3 span;
-    }
+.health-bb {
+  grid-column-end: 3 span;
+}
 
-    .health-component label {
-        font-size: 50%;
-        text-transform: uppercase;
-        text-align: center;
-    }
+.health-component label {
+  font-size: 50%;
+  text-transform: uppercase;
+  text-align: center;
+}
 
-    .speed-input {
-        text-align: center;
-    }
+.speed-input {
+  text-align: center;
+}
 
-    @media screen and (min-width: 1024px) {
-        .health-component {
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-areas: ". health-label wounds-label nonlethal-label speed-label";
-        }
-        
-        .health-component input {
-            grid-row-start: 2;
-        }
+@media screen and (min-width: 1024px) {
+  .health-component {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: ". health-label wounds-label nonlethal-label speed-label";
+  }
 
-        .health-bb {
-            grid-column-end: 1 span;
-            grid-row-start: 2;
-        }
+  .health-component input {
+    grid-row-start: 2;
+  }
 
-        .health-label {
-            grid-area: health-label;
-        }
+  .health-bb {
+    grid-column-end: 1 span;
+    grid-row-start: 2;
+  }
 
-        .wounds-label {
-            grid-area: wounds-label;
-        }
+  .health-label {
+    grid-area: health-label;
+  }
 
-        .nonlethal-label {
-            grid-area: nonlethal-label;
-        }
+  .wounds-label {
+    grid-area: wounds-label;
+  }
 
-        .speed-label {
-            grid-area: speed-label;
-        }
-    }
+  .nonlethal-label {
+    grid-area: nonlethal-label;
+  }
+
+  .speed-label {
+    grid-area: speed-label;
+  }
+}
 </style>

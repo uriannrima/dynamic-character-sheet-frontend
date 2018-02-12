@@ -14,60 +14,58 @@
 </template>
 
 <script>
-    import CharacterStore from 'Store/character.store';
+import CharacterMixin from 'Store/character.mixin';
 
-    export default {
-        data() {
-            return {
-                armorClass: CharacterStore.Instance.character.armorClass
-            }
+export default {
+    mixins: [CharacterMixin],
+    computed: {
+        getAbility() {
+            return this.character.abilityScores.find(abilityScore => {
+                return abilityScore.name === 'dexterity';
+            });
         },
-        computed: {
-            getAbility() {
-                return CharacterStore.Instance.character.abilityScores.find(abilityScore => {
-                    return abilityScore.name === 'dexterity';
-                });
-            },
-            getTouchArmor() {
-                return this.armorClass.base +
-                    this.getAbility.getTempModifier() +
-                    this.armorClass.sizeModifier +
-                    this.armorClass.miscModifier;
-            },
-            getFlatFooted() {
-                return this.armorClass.base +
-                    this.armorClass.armorBonus +
-                    this.armorClass.shieldBonus +
-                    this.armorClass.sizeModifier +
-                    this.armorClass.naturalArmor +
-                    this.armorClass.deflectionModifier +
-                    this.armorClass.miscModifier;
-            }
+        getTouchArmor() {
+            var { armorClass } = this.character;
+            return armorClass.base +
+                this.getAbility.getTempModifier() +
+                armorClass.sizeModifier +
+                armorClass.miscModifier;
+        },
+        getFlatFooted() {
+            var { armorClass } = this.character;
+            return armorClass.base +
+                armorClass.armorBonus +
+                armorClass.shieldBonus +
+                armorClass.sizeModifier +
+                armorClass.naturalArmor +
+                armorClass.deflectionModifier +
+                armorClass.miscModifier;
         }
     }
+}
 </script>
 
 <style>
-    .secondary-armor-component {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 2px;
-        grid-row-gap: 2px;
-    }
+.secondary-armor-component {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+}
 
-    @media screen and (min-width: 1024px) {
-        .secondary-armor-component {
-            grid-template-columns: 25% auto 45% auto;
-        }
+@media screen and (min-width: 1024px) {
+  .secondary-armor-component {
+    grid-template-columns: 25% auto 45% auto;
+  }
 
-        .ff-bb {
-            grid-row-start: 1;
-            grid-column-start: 3;
-        }
+  .ff-bb {
+    grid-row-start: 1;
+    grid-column-start: 3;
+  }
 
-        .touch-armor-input {
-            grid-row-start: 1;
-            grid-column-start: 2;
-        }
-    }
+  .touch-armor-input {
+    grid-row-start: 1;
+    grid-column-start: 2;
+  }
+}
 </style>

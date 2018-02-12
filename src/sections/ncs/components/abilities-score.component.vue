@@ -13,9 +13,10 @@
 
 <script>
 import AbilityScore from './ability-score.component';
-import CharacterStore from 'Store/character.store';
+import CharacterMixin from 'Store/character.mixin';
 
 export default {
+  mixins: [CharacterMixin],
   components: {
     AbilityScore
   },
@@ -23,13 +24,6 @@ export default {
     updateScore: function ({ index, field, value }) {
       var abilityScore = this.character.abilityScores[index];
       abilityScore[field] = value;
-    }
-  },
-  computed: {
-    character: {
-      get() {
-        return CharacterStore.Instance.character;
-      }
     }
   }
 }

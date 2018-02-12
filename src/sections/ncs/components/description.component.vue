@@ -72,12 +72,13 @@
 
 <script>
 import CharacterStore from 'Store/character.store';
+import CharacterMixin from 'Store/character.mixin';
 import SizeService from 'Services/size.service';
 
 export default {
+  mixins: [CharacterMixin],
   data() {
     return {
-      character: CharacterStore.Instance.character,
       allSizes: []
     }
   },
