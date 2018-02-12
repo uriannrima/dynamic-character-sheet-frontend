@@ -71,7 +71,6 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/character.mixin';
 import CharacterStore from 'Store/character.store';
 import SizeService from 'Services/size.service';
 
