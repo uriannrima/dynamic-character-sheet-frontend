@@ -2,10 +2,10 @@
 export default {
     props: ['feat'],
     computed: {
-        featType: function() {
+        featType: function () {
             return 'feat-' + this.feat.type.toLowerCase().replace(' ', '-');
         },
-        getFeatTooltip: function() {
+        getFeatTooltip: function () {
             var tooltip = '';
             tooltip += this.feat.title + ' [' + this.feat.type + ']';
 
@@ -22,7 +22,7 @@ export default {
 }
 </script>
 <template>
-    <span class="feat" :class="featType" :title="getFeatTooltip" @click="$emit('onFeatSelected', feat)">
+    <span class="feat" :class="featType" :title="getFeatTooltip" @click="$emit('onFeatSelected', { model : feat })">
         {{feat.title}}
         <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
     </span>

@@ -1,6 +1,6 @@
 <script>
 import SkillService from 'Services/skill.service';
-import { SkillForm } from 'Shared/forms/';
+import { SkillForm } from 'Shared/form/';
 import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {

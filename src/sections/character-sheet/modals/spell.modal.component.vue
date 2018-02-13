@@ -1,6 +1,6 @@
 <script>
 import SpellService from 'Services/spell.service';
-import { SpellForm } from 'Shared/forms/';
+import { SpellForm } from 'Shared/form/';
 import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {

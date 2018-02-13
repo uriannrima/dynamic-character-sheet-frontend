@@ -14,7 +14,7 @@
           </option>
         </select>
       </div>
-      <special-ability-form :specialAbility="model" :describeSpecialAbility="selected || describe"></special-ability-form>
+      <special-ability-form :model="model" :describe="selected || describe"></special-ability-form>
       <div v-show="errors.any()">
         <ul>
           <li v-for="(error,index) in errors.all()" :key="index">{{error}}</li>
@@ -36,7 +36,7 @@
 
 <script>
 import SpecialAbilityService from 'Services/special-ability.service';
-import { SpecialAbilityForm } from 'Shared/forms/';
+import SpecialAbilityForm from './special-ability.form';
 import { ModalMixin } from 'Shared/modal';
 
 export default {

@@ -1,32 +1,13 @@
-import axios from 'axios';
 import * as SpecialAbilityModule from 'Modules/special-ability.module';
-import Constants from 'Constants';
+import AbstractService from './abstract.service';
 
-export default {
-    specialAbilitiesOffline: {
-
-    },
-    new: function () {
-        return new SpecialAbilityModule.SpecialAbility({});
-    },
-    toCharacterSpecialAbility: function(specialAbility) {
-        // Change it to become a character special ability.
-        return new SpecialAbilityModule.SpecialAbility(specialAbility);
-    },
-    getAll: function () {
-        return axios.get(Constants.API_URL + '/specialAbilities').then(response => {
-            return response.data;
+class SpecialAbilityService extends AbstractService {
+    constructor() {
+        super({
+            model: SpecialAbilityModule.SpecialAbility,
+            url: '/special-abilities'
         });
-    },
-    saveOrUpdate: function (specialAbility) {
-        if (specialAbility._id) {
-            return axios.put(Constants.API_URL + '/specialAbilities', { specialAbility }).then(response => {
-                return response.data;
-            });
-        } else {
-            return axios.post(Constants.API_URL + '/specialAbilities', { specialAbility }).then(response => {
-                return response.data;
-            });
-        }
     }
 }
+
+export default new SpecialAbilityService();

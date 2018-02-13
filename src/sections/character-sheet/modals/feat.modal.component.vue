@@ -1,6 +1,6 @@
 <script>
 import FeatService from 'Services/feat.service';
-import { FeatForm } from 'Shared/forms/';
+import { FeatForm } from 'Shared/form/';
 import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {

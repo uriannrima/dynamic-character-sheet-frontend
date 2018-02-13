@@ -65,7 +65,6 @@ export default {
 
 .special-area {
   grid-area: special-area;
-  background-color: rgb(30, 147, 136);
 }
 
 .spells-area {

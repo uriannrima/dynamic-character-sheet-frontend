@@ -1,67 +1,67 @@
 
 <template>
   <div class="feat-form-component">
-    <div v-if="describeFeat">
+    <div v-if="describe">
       <div class="feat-form-component-name-container">
         <span>
           <strong>Title:</strong>
         </span>
-        <span>{{describeFeat.title}}
-          <small>[{{describeFeat.type}}]</small>
+        <span>{{describe.title}}
+          <small>[{{describe.type}}]</small>
         </span>
       </div>
       <div class="feat-form-component-benefit-container">
         <span>
           <strong>Benefit:</strong>
         </span>
-        <span>{{describeFeat.benefit}}</span>
+        <span>{{describe.benefit}}</span>
       </div>
-      <div class="feat-form-component-prerequisite-container" v-if="describeFeat.prerequisite">
+      <div class="feat-form-component-prerequisite-container" v-if="describe.prerequisite">
         <span>
           <strong>Prerequisite:</strong>
         </span>
-        <span>{{describeFeat.prerequisite}}</span>
+        <span>{{describe.prerequisite}}</span>
       </div>
-      <div class="feat-form-component-normal-container" v-if="describeFeat.normal">
+      <div class="feat-form-component-normal-container" v-if="describe.normal">
         <span>
           <strong>Normal:</strong>
         </span>
-        <span>{{describeFeat.normal}}</span>
+        <span>{{describe.normal}}</span>
       </div>
-      <div class="feat-form-component-special-container" v-if="describeFeat.special">
+      <div class="feat-form-component-special-container" v-if="describe.special">
         <span>
           <strong>Special:</strong>
         </span>
-        <span>{{describeFeat.special}}</span>
+        <span>{{describe.special}}</span>
       </div>
-      <div v-if="describeFeat.subValue && describeFeat.subValue.title && describeFeat.subValue.value" class="feat-form-component-sub-value-container">
+      <div v-if="describe.subValue && describe.subValue.title && describe.subValue.value" class="feat-form-component-sub-value-container">
         <span>
-          <strong>{{describeFeat.subValue.title}}</strong>
+          <strong>{{describe.subValue.title}}</strong>
         </span>
-        <span>{{describeFeat.subValue.value}}</span>
+        <span>{{describe.subValue.value}}</span>
       </div>
-      <div class="feat-form-component-miscellaneous-container" v-if="describeFeat.miscellaneous">
+      <div class="feat-form-component-miscellaneous-container" v-if="describe.miscellaneous">
         <span>
           <strong>Miscellaneous:</strong>
         </span>
-        <span>{{describeFeat.miscellaneous}}</span>
+        <span>{{describe.miscellaneous}}</span>
       </div>
-      <div class="feat-form-component-html-container" v-if="describeFeat.aditionalInformation">
+      <div class="feat-form-component-html-container" v-if="describe.aditionalInformation">
         <span>
           <strong>Aditional Information:</strong>
         </span>
-        <div v-html="describeFeat.aditionalInformation"></div>
+        <div v-html="describe.aditionalInformation"></div>
       </div>
     </div>
     <div v-else>
       <div class="feat-form-component-title-container">
         <span>Title:</span>
-        <input type="text" v-validate="'required'" v-model.trim="feat.title" name="title">
+        <input type="text" v-validate="'required'" v-model.trim="model.title" name="title">
         <span v-show="errors.has('title')">{{ errors.first('title') }}</span>
       </div>
       <div class="feat-form-component-type-container">
         <span>Type:</span>
-        <select v-model="feat.type" v-validate="'required'" name="type">
+        <select v-model="model.type" v-validate="'required'" name="type">
           <option value="General">General</option>
           <option value="Item Creation">Item Creation</option>
           <option value="Metamagic">Metamagic</option>
@@ -71,51 +71,51 @@
       </div>
       <div class="feat-form-component-benefit-container">
         <span>Benefit:</span>
-        <textarea type="text" v-model.trim="feat.benefit" v-validate="'required'" name="benefit"></textarea>
+        <textarea type="text" v-model.trim="model.benefit" v-validate="'required'" name="benefit"></textarea>
         <span v-show="errors.has('benefit')">{{ errors.first('benefit') }}</span>
       </div>
       <div class="feat-form-component-prerequisite-container">
         <label><input type="checkbox" v-model="has.prerequisite">Prerequisite:</label>
-        <textarea v-if="has.prerequisite || feat.prerequisite" type="text" v-model.trim="feat.prerequisite"></textarea>
+        <textarea v-if="has.prerequisite || model.prerequisite" type="text" v-model.trim="model.prerequisite"></textarea>
       </div>
       <div class="feat-form-component-normal-container">
         <label><input type="checkbox" v-model="has.normal">Normal:</label>
-        <textarea v-if="has.normal || feat.normal" type="text" v-model.trim="feat.normal"></textarea>
+        <textarea v-if="has.normal || model.normal" type="text" v-model.trim="model.normal"></textarea>
       </div>
       <div class="feat-form-component-special-container">
         <label><input type="checkbox" v-model="has.special">Special:</label>
-        <textarea v-if="has.special || feat.special" type="text" v-model.trim="feat.special"></textarea>
+        <textarea v-if="has.special || model.special" type="text" v-model.trim="model.special"></textarea>
       </div>
       <div class="feat-form-component-has-sub-value-container">
-        <label><input type="checkbox" v-model.trim="feat.hasSubValue">Sub Value:</label>
+        <label><input type="checkbox" v-model.trim="model.hasSubValue">Sub Value:</label>
       </div>
-      <div class="feat-form-component-sub-value-container" v-if="feat.hasSubValue || feat.subValue && feat.subValue.title">
+      <div class="feat-form-component-sub-value-container" v-if="model.hasSubValue || model.subValue && model.subValue.title">
         <span>Title:</span>
-        <input type="text" v-model="feat.subValue.title">
+        <input type="text" v-model="model.subValue.title">
         <span>Value:</span>
-        <input type="text" v-model="feat.subValue.value">
+        <input type="text" v-model="model.subValue.value">
       </div>
       <div class="feat-form-component-miscellaneous-container">
         <label><input type="checkbox" v-model="has.miscellaneous">Miscellaneous:</label>
-        <textarea v-if="has.miscellaneous || feat.miscellaneous" type="text" v-model.trim="feat.miscellaneous"></textarea>
+        <textarea v-if="has.miscellaneous || model.miscellaneous" type="text" v-model.trim="model.miscellaneous"></textarea>
       </div>
       <div class="feat-form-component-html-container">
         <label><input type="checkbox" v-model="has.aditionalInformation">Aditional Information (as HTML):</label>
-        <textarea class="feat-aditional-information-text-area" v-if="has.aditionalInformation || feat.aditionalInformation" type="text" v-model.trim="feat.aditionalInformation"></textarea>
+        <textarea class="feat-aditional-information-text-area" v-if="has.aditionalInformation || model.aditionalInformation" type="text" v-model.trim="model.aditionalInformation"></textarea>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { FormBus } from 'Shared/forms';
+import { FormBus, FormMixin } from 'Shared/form';
 
 export default {
-  props: ['feat', 'describeFeat'],
-  inject: {
-    $validator: '$validator'
+  mixins: [FormMixin],
+  created() {
+    this.modelName = 'feat';
   },
-  data: function () {
+  data() {
     return {
       has: {
         prerequisite: false,
@@ -124,26 +124,18 @@ export default {
         miscellaneous: false,
         aditionalInformation: false
       }
-    };
+    }
   },
   methods: {
-    clear: function () {
+    clear() {
       this.has = {
         prerequisite: false,
         special: false,
         normal: false,
         miscellaneous: false,
         aditionalInformation: false
-      };
+      }
     }
-  },
-  created: function () {
-    FormBus.$on('feat:clear', () => {
-      this.clear();
-    });
-  },
-  destroyed: function () {
-    FormBus.$off('feat:clear');
   }
 }
 </script>

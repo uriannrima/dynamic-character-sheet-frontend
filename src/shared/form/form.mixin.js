@@ -1,5 +1,11 @@
-import { FormBus } from 'Shared/forms/';
+import { FormBus } from 'Shared/form/';
 
+/**
+ *
+ * Mixin to avoid duplicate form code.
+ * It creates an data, clear method, created and destroyed methods.
+ *
+ */
 export default {
   props: ['model', 'describe'],
   inject: {

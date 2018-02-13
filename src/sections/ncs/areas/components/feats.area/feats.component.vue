@@ -3,11 +3,11 @@
     <div class="black-box">
       <div>
         <label>Feats</label>
-        <span class="add-icon glyphicon glyphicon-plus" @click="showModal = !showModal"></span>
+        <span class="add-icon glyphicon glyphicon-plus" @click="toggleModal"></span>
       </div>
     </div>
     <div class="feats-container">
-      <feat-component v-for="(feat, index) in character.feats" :key="index" :feat="feat" @onSelected="onFeatSelected"></feat-component>
+      <feat-component v-for="(feat, index) in character.feats" :key="index" :feat="feat" @onSelected="onSelected"></feat-component>
       <div class="no-content-container" v-if="character.feats.length == 0">
         <label>No feats</label>
       </div>
@@ -18,12 +18,12 @@
 
 <script>
 import CharacterMixin from 'Store/character.mixin';
-import CharacterUpdateMixin from 'Shared/modal/character.update.mixin';
+import { CharacterUpdateMixin, ModalContainerMixin } from 'Shared/modal';
 import FeatComponent from './feat.component';
 import FeatModal from './feat.modal';
 
 export default {
-  mixins: [CharacterMixin, CharacterUpdateMixin],
+  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin],
   components: { FeatComponent, FeatModal },
   created() {
     // character.update.mixin requirement.
@@ -33,13 +33,6 @@ export default {
     return {
       showModal: false,
       selected: null
-    }
-  },
-  methods: {
-    onFeatSelected: function (event) {
-      var { feat } = event;
-      this.selected = feat;
-      this.showModal = true;
     }
   }
 }

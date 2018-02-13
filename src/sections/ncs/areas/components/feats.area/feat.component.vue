@@ -27,7 +27,7 @@ export default {
   methods: {
     selectFeat: function () {
       var { feat } = this;
-      this.$emit('onSelected', { feat });
+      this.$emit('onSelected', { model: feat });
     }
   }
 }

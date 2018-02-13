@@ -1,5 +1,5 @@
 import DcsModal from 'Shared/modal/modal.component';
-import { FormBus } from 'Shared/forms/';
+import { FormBus } from 'Shared/form/';
 
 export default {
     components: { DcsModal },
