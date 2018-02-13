@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { SkillsComponent } from '../components';
+import { SkillsComponent } from './components';
 
 export default {
   components: {

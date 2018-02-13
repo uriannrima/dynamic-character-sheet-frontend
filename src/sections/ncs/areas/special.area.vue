@@ -1,12 +1,14 @@
 <template>
   <div>
-    Special Area
+    <special-abilities-component></special-abilities-component>
   </div>
 </template>
 
 <script>
-export default {
+import { SpecialAbilitiesComponent } from './components';
 
+export default {
+  components: { SpecialAbilitiesComponent }
 }
 </script>
 

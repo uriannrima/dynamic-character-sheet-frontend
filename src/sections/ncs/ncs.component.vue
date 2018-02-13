@@ -108,7 +108,13 @@ export default {
 .black-box label {
   text-transform: uppercase;
   font-weight: bolder;
-  display: block;
+  display: inline-block;
+}
+
+.black-box .add-icon {
+  float: right;
+  margin-right: 5px;
+  margin-top: 2px;
 }
 
 .black-box label:nth-child(1) {

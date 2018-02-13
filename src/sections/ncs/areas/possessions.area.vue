@@ -1,14 +1,19 @@
 <template>
   <div>
-    Possessions Area
+    <possessions-component :possessions="character.items" :carryCapacities="character.carryCapacities" :wealth="character.money"></possessions-component>
   </div>
 </template>
 
 <script>
-export default {
+import CharacterMixin from 'Store/character.mixin';
+import { PossessionsComponent } from "./components";
 
+export default {
+  mixins: [CharacterMixin],
+  components: { PossessionsComponent }
 }
 </script>
 
 <style>
+
 </style>

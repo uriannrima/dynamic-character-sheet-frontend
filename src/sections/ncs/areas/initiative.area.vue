@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import { SecondaryArmorComponent, InitiativeComponent } from '../components'
+  import { SecondaryArmorComponent, InitiativeComponent } from './components'
   export default {
     components: { SecondaryArmorComponent, InitiativeComponent }
   }

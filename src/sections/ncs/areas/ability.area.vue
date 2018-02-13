@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { AbilitiesScoreComponent } from '../components';
+import { AbilitiesScoreComponent } from './components';
 
 export default {
   components: { AbilitiesScoreComponent }

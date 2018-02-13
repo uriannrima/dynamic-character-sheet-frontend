@@ -2,6 +2,7 @@
   <div>
     <campaign-area class="campaign-area" />
     <gear-area class="gear-area" />
+    <possessions-area class="possessions-area"></possessions-area>
     <feats-area class="feats-area" />
     <special-area class="special-area" />
     <languages-area class="languages-area" />
@@ -28,7 +29,7 @@ export default {
   grid-template-areas:
     "campaign-area"
     "gear-area"
-    "possesions-area"
+    "possessions-area"
     "feats-area"
     "special-area"
     "languages-area"
@@ -47,7 +48,6 @@ export default {
 
 .feats-area {
   grid-area: feats-area;
-  background-color: rgb(177, 64, 138);
 }
 
 .gear-area {
@@ -61,7 +61,6 @@ export default {
 
 .possessions-area {
   grid-area: possessions-area;
-  background-color: rgb(224, 163, 31);
 }
 
 .special-area {

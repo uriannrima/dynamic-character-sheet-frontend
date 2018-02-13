@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { DescriptionComponent, LogoComponent } from '../components';
+import { DescriptionComponent, LogoComponent } from './components';
 export default {
   components: { DescriptionComponent, LogoComponent }
 }
