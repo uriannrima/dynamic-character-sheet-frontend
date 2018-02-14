@@ -6,7 +6,7 @@
       </div>
     </div>
     <div slot="body">
-      <div class="select-special-ability-container" v-if="!describe">
+      <div class="select-special-ability-container" v-if="!editing && !describe">
         <span>Select special ability:</span>
         <select v-model="selected">
           <option value="">New special ability</option>

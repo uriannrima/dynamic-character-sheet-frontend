@@ -6,7 +6,7 @@
       </div>
     </div>
     <div slot="body">
-      <div class="select-feat-container" v-if="!describe">
+      <div class="select-feat-container" v-if="!editing && !describe">
         <span>Select feat:</span>
         <select v-model="selected">
           <option value="">New feat</option>

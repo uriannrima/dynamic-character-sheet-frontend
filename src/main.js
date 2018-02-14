@@ -80,7 +80,7 @@ Vue.component('v-select', vSelect);
 Vue.use(VeeValidate, veeConfig);
 // Vue.use(VTooltip);
 
-VueTouch.registerCustomEvent('doubletap', {
+VueTouch.registerCustomEvent('tap', {
     type: 'tap',
     taps: 2
 });

@@ -6,7 +6,7 @@
       </div>
     </div>
     <div slot="body">
-      <div class="select-language-container" v-if="!describe">
+      <div class="select-language-container" v-if="!editing && !describe">
         <span>Select language:</span>
         <select v-model="selected">
           <option value="">New language</option>

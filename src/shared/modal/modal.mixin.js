@@ -25,7 +25,7 @@ export default {
     },
     watch: {
         show: function (val) {
-            if (val) {
+            if (val && !this.describe) {
                 this.updateAll();
             }
         },

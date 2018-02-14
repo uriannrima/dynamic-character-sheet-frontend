@@ -1,5 +1,5 @@
 <template>
-  <v-touch tag="span" class="language" @dblclick="onSelect(language)" v-on:doubletap="onSelect(language)">
+  <v-touch tag="span" class="language" @click="onSelect(language)" v-on:tap="onSelect(language)">
     {{language.name}}
   </v-touch>
 </template>

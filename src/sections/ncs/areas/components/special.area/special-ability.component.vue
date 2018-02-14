@@ -1,5 +1,5 @@
 <template>
-  <v-touch tag="span" class="special-ability" @dblclick="onSelect(specialAbility)" v-on:doubletap="onSelect(specialAbility)">
+  <v-touch tag="span" class="special-ability" @click="onSelect(specialAbility)" v-on:tap="onSelect(specialAbility)">
     {{specialAbility.name}}
     <small v-if="specialAbility.subValues[0]">({{specialAbility.subValues[0].value}})</small>
   </v-touch>
