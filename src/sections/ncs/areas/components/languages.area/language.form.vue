@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import { LanguageModule } from 'Modules';
 import { FormMixin } from 'Shared/form';
 
 export default {
