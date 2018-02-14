@@ -1,7 +1,7 @@
 <template>
   <v-touch tag="span" class="feat" :class="featType" @dblclick="onSelect(feat)" v-on:doubletap="onSelect(feat)">
     {{feat.title}}
-    <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
+    <small v-if="feat.subValues[0]">({{feat.subValues[0].value}})</small>
   </v-touch>
 </template>
 

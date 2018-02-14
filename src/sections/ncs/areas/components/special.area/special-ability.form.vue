@@ -12,15 +12,10 @@
       <div class="special-ability-form-component-description-container">
         <span>
           <strong>Description:</strong>
-      </span>
-        <span>{{describe.description}}</span>
-      </div>
-      <div v-if="describe.subValue && describe.subValue.name && describe.subValue.value" class="special-ability-form-component-sub-value-container">
-        <span>
-          <strong>{{describe.subValue.name}}</strong>
         </span>
-        <span>{{describe.subValue.value}}</span>
-      </div>
+        <span>{{describe.description}}</span>
+      </div>      
+      <sub-values-list :model="describe"></sub-values-list>
       <div class="special-ability-form-component-html-container" v-if="describe.aditionalInformation">
         <span>
           <strong>Aditional Information:</strong>
@@ -49,14 +44,9 @@
         <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
       </div>
       <div class="special-ability-form-component-has-sub-value-container">
-        <label><input type="checkbox" v-model.trim="model.hasSubValue">Sub Value:</label>
+        <label><input type="checkbox" v-model.trim="has.subValue">Sub Value:</label>
       </div>
-      <div class="special-ability-form-component-sub-value-container" v-if="model.hasSubValue || model.subValue && model.subValue.title">
-        <span>Title:</span>
-        <input type="text" v-model="model.subValue.title">
-        <span>Value:</span>
-        <input type="text" v-model="model.subValue.value">
-      </div>
+      <sub-values-component v-if="has.subValue" :model="model"></sub-values-component>
       <div class="special-ability-form-component-html-container">
         <label><input type="checkbox" v-model="has.aditionalInformation">Aditional Information (as HTML):</label>
         <textarea class="special-ability-aditional-information-text-area" v-if="has.aditionalInformation || model.aditionalInformation" type="text" v-model.trim="model.aditionalInformation"></textarea>
@@ -66,22 +56,27 @@
 </template>
 
 <script>
-import { FormMixin } from 'Shared/form'
+import { FormMixin } from 'Shared/form';
+import { SubValuesComponent, SubValuesList } from 'Shared/form/components';
+
 export default {
   mixins: [FormMixin],
+  components: { SubValuesComponent, SubValuesList },
   created() {
     this.modelName = 'specialAbility';
   },
   data() {
     return {
       has: {
-        aditionalInformation: false
+        aditionalInformation: false,
+        subValue: false
       }
     }
   },
   clear() {
     this.has = {
-      aditionalInformation: false
+      aditionalInformation: false,
+      subValue: false
     }
   }
 }

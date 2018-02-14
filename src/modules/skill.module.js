@@ -1,4 +1,4 @@
-export const Skill = function ({ _id, name, keyAbility, untrained = true, armorCheckPenalty, classSkill, check, action, tryAgain, special, synergy, untrainedDescription, restriction, miscellaneous, aditionalInformation, hasSubValue, subValue, rank, abilityModifier, miscModifier, hiddenModifier }) {
+export const Skill = function ({ _id, name, keyAbility, untrained = true, armorCheckPenalty, classSkill, check, action, tryAgain, special, synergy, untrainedDescription, restriction, miscellaneous, aditionalInformation, subValues = [], rank, abilityModifier, miscModifier, hiddenModifier }) {
     return {
         _id,
         name,
@@ -15,8 +15,7 @@ export const Skill = function ({ _id, name, keyAbility, untrained = true, armorC
         restriction,
         miscellaneous,
         aditionalInformation,
-        hasSubValue,
-        subValue: subValue || "",
+        subValues,
         rank: rank || 0,
         abilityModifier: abilityModifier || 0,
         miscModifier: miscModifier || 0,

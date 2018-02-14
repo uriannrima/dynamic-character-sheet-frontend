@@ -24,6 +24,7 @@ export default {
 <template>
     <span class="feat" :class="featType" :title="getFeatTooltip" @click="$emit('onFeatSelected', { model : feat })">
         {{feat.title}}
-        <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
+        <small v-if="feat.subValue()">({{feat.subValue().value}})</small>
+        {{feat}}
     </span>
 </template>

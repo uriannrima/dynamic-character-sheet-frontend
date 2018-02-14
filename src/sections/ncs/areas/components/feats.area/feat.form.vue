@@ -34,12 +34,7 @@
         </span>
         <span>{{describe.special}}</span>
       </div>
-      <div v-if="describe.subValue && describe.subValue.title && describe.subValue.value" class="feat-form-component-sub-value-container">
-        <span>
-          <strong>{{describe.subValue.title}}</strong>
-        </span>
-        <span>{{describe.subValue.value}}</span>
-      </div>
+      <sub-values-list :model="describe"></sub-values-list>
       <div class="feat-form-component-miscellaneous-container" v-if="describe.miscellaneous">
         <span>
           <strong>Miscellaneous:</strong>
@@ -87,14 +82,9 @@
         <textarea v-if="has.special || model.special" type="text" v-model.trim="model.special"></textarea>
       </div>
       <div class="feat-form-component-has-sub-value-container">
-        <label><input type="checkbox" v-model.trim="model.hasSubValue">Sub Value:</label>
+        <label><input type="checkbox" v-model.trim="has.subValue">Sub Value:</label>
       </div>
-      <div class="feat-form-component-sub-value-container" v-if="model.hasSubValue || model.subValue && model.subValue.title">
-        <span>Title:</span>
-        <input type="text" v-model="model.subValue.title">
-        <span>Value:</span>
-        <input type="text" v-model="model.subValue.value">
-      </div>
+      <sub-values-component v-if="has.subValue" :model="model"></sub-values-component>
       <div class="feat-form-component-miscellaneous-container">
         <label><input type="checkbox" v-model="has.miscellaneous">Miscellaneous:</label>
         <textarea v-if="has.miscellaneous || model.miscellaneous" type="text" v-model.trim="model.miscellaneous"></textarea>
@@ -108,10 +98,12 @@
 </template>
 
 <script>
-import { FormBus, FormMixin } from 'Shared/form';
+import { FormMixin } from 'Shared/form';
+import { SubValuesComponent, SubValuesList } from 'Shared/form/components';
 
 export default {
   mixins: [FormMixin],
+  components: { SubValuesComponent, SubValuesList },
   created() {
     this.modelName = 'feat';
   },
@@ -122,7 +114,8 @@ export default {
         special: false,
         normal: false,
         miscellaneous: false,
-        aditionalInformation: false
+        aditionalInformation: false,
+        subValue: false
       }
     }
   },
@@ -133,7 +126,8 @@ export default {
         special: false,
         normal: false,
         miscellaneous: false,
-        aditionalInformation: false
+        aditionalInformation: false,
+        subValue: false
       }
     }
   }
