@@ -1,14 +1,17 @@
 <template>
   <div>
-    Languages Area
+    <languages-component></languages-component>
   </div>
 </template>
 
 <script>
-export default {
+import { LanguagesComponent } from './components';
 
+export default {
+  components: { LanguagesComponent }
 }
 </script>
 
 <style>
+
 </style>

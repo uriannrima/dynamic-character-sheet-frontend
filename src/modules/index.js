@@ -20,6 +20,7 @@ const SpellsPerDayModule = require('./spells-per-day.module');
 const SpellModule = require('./spell.module');
 const SizeModule = require('./size.module');
 const SpellSchoolModule = require('./spell-school.module');
+const LanguageModule = require('./language.module');
 
 module.exports = {
     CharacterModule,
@@ -43,5 +44,6 @@ module.exports = {
     SpellModule,
     SpecialAbilityModule,
     SizeModule,
-    SpellSchoolModule
+    SpellSchoolModule,
+    LanguageModule
 }

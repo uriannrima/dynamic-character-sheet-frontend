@@ -28,3 +28,5 @@ export { default as PossessionsComponent } from './possessions.area/possessions.
 export { default as FeatsComponent } from './feats.area/feats.component.vue';
 
 export { default as SpecialAbilitiesComponent } from './special.area/special-abilities.component.vue';
+
+export { default as LanguagesComponent } from './languages.area/languages.component.vue';
