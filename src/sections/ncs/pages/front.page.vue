@@ -2,9 +2,15 @@
   <div>
     <description-area class="description-area" />
     <ability-area class="ability-area" />
-    <armor-area class="armor-area" />
-    <initiative-area class="initiative-area" />
-    <weapons-area class="weapons-area" />
+    <div style="grid-template-area: combat-area" class="black-box rounded h-md-up">
+      <div>
+        <label>Combat</label>
+        <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+      </div>
+    </div>
+    <armor-area v-show="!minimize" class="armor-area" />
+    <initiative-area v-show="!minimize" class="initiative-area" />
+    <weapons-area v-show="!minimize" class="weapons-area" />
     <skills-area class="skills-area" />
   </div>
 </template>
@@ -13,7 +19,12 @@
 import * as Areas from '../areas';
 
 export default {
-  components: Areas
+  components: Areas,
+  data() {
+    return {
+      minimize: false
+    }
+  }
 }
 </script>
 
@@ -27,6 +38,7 @@ export default {
   grid-template-areas: 
       "description-area" 
       "ability-area"
+      "combat-area"
       "armor-area" 
       "initiative-area"
       "weapons-area"
@@ -38,11 +50,11 @@ export default {
     grid-template-columns: 30% 30% auto;
     grid-template-rows: 168px 112px 90px 763px;
     grid-row-gap: unset;
-    grid-template-areas: 
-    "description-area description-area description-area" 
-    "ability-area armor-area armor-area"
-    "ability-area initiative-area skills-area" 
-    "weapons-area weapons-area skills-area";
+    grid-template-areas:
+      "description-area description-area description-area"
+      "ability-area armor-area armor-area"
+      "ability-area initiative-area skills-area"
+      "weapons-area weapons-area skills-area";
   }
 }
 
