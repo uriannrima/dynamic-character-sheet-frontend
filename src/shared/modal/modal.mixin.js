@@ -76,7 +76,7 @@ export default {
             } else {
                 if (await this.$validator.validateAll()) {
                     var created = await this.service.saveOrUpdate(this.model);
-                    this.addToCharacter(Object.assign(created, this.model));
+                    this.addToCharacter(Object.assign({}, this.model, created));
                 }
             }
         },

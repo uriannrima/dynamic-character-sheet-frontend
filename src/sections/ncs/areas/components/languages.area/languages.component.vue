@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style>
-.languagess-container {
+.languages-container {
   border: solid 1px black;
 }
 </style>

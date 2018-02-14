@@ -56,7 +56,6 @@ export default {
 
 .languages-area {
   grid-area: languages-area;
-  background-color: rgb(119, 252, 173);
 }
 
 .possessions-area {

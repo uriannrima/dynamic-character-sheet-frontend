@@ -6,8 +6,8 @@
     <div class="wealth-component">
       <div class="money-container">
         <div class="money-component">
-          <label for="" title="Cooper Pieces">CP —</label>
-          <input type="number" v-model.number="wealth.cooper">
+          <label for="" title="Copper Pieces">CP —</label>
+          <input type="number" v-model.number="wealth.copper">
         </div>
         <div class="money-component">
           <label for="" title="Silver Pieces">SP —</label>
