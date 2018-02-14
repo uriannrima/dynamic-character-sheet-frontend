@@ -5,7 +5,10 @@
         <label class="class-skill-label">Class Skill?</label>
       </div>
       <div class="black-box">
-        <label>Skills</label>
+        <div>
+          <label>Skills</label>
+          <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+        </div>
       </div>
       <div class="headers-container">
         <label class="skill-name-header">Skill Name</label>
@@ -16,8 +19,8 @@
         <label class="skill-value-header">Misc<br>Modifier</label>
       </div>
     </div>
-    <div class="skills-body">
-      <skill-component v-for="(skill, index) in character.skills" :key="index" :skill="skill" :keyAbility="getKeyAbility(skill.keyAbility)"></skill-component>      
+    <div class="skills-body" v-show="!minimize">
+      <skill-component v-for="(skill, index) in character.skills" :key="index" :skill="skill" :keyAbility="getKeyAbility(skill.keyAbility)"></skill-component>
     </div>
   </div>
 </template>
@@ -30,6 +33,11 @@ export default {
   mixins: [CharacterMixin],
   components: {
     SkillComponent
+  },
+  data() {
+    return {
+      minimize: false
+    };
   },
   methods: {
     getKeyAbility(abilityName) {

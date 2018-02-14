@@ -1,9 +1,12 @@
 <template>
     <div>
         <div class="black-box">
-            <label>Other Possessions</label>
+            <div>
+                <label>Other Possessions</label>
+                <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+            </div>
         </div>
-        <div class="possessions-component">
+        <div class="possessions-component" v-show="!minimize">
             <div class="possession-column" v-for="(c, column) in 2" :key="column">
                 <div class="possesion-component possessions-header" v-show="column == 0 || showSecondHeader">
                     <label>Item</label>
@@ -17,10 +20,10 @@
                 <input type="number" class="common-input" readonly :value="totalWeight">
             </div>
         </div>
-        <div class="carry-capacities-container">
+        <div class="carry-capacities-container" v-show="!minimize">
             <carry-capacities-component :carryCapacities="carryCapacities"></carry-capacities-component>
         </div>
-        <wealth-component :wealth="wealth"></wealth-component>
+        <wealth-component v-show="!minimize" :wealth="wealth"></wealth-component>
     </div>
 </template>
 
@@ -39,7 +42,8 @@ export default {
         var minimumWidth = 768;
         return {
             minimumWidth,
-            showSecondHeader: window.innerWidth >= minimumWidth
+            showSecondHeader: window.innerWidth >= minimumWidth,
+            minimize: false
         };
     },
     computed: {

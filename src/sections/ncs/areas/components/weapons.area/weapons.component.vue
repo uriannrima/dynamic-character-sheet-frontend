@@ -1,6 +1,12 @@
 <template>
   <div class="weapons-component">
-    <weapon-component v-for="(weapon, index) in character.weapons" :key="index" :weapon="weapon" />
+    <div class="black-box rounded">
+      <div>
+        <label>Weapons</label>
+        <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+      </div>
+    </div>
+    <weapon-component v-show="!minimize" v-for="(weapon, index) in character.weapons" :key="index" :weapon="weapon" />
   </div>
 </template>
 
@@ -12,6 +18,11 @@ export default {
   mixins: [CharacterMixin],
   components: {
     WeaponComponent
+  },
+  data() {
+    return {
+      minimize: false
+    }
   }
 }
 </script>
@@ -19,13 +30,13 @@ export default {
 <style>
 .weapons-component {
   display: grid;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(5, auto);
   grid-template-columns: 1fr;
   grid-row-gap: 5px;
 }
 
-.weapons-component span,
-.weapons-component div {
+.weapon-component span,
+.weapon-component div {
   font-size: 9px;
   text-transform: uppercase;
   font-weight: bold;
@@ -33,12 +44,12 @@ export default {
   align-items: center;
 }
 
-.weapons-component input {
+.weapon-component input {
   width: 100%;
   height: 100%;
 }
 
-.weapons-component select {
+.weapon-component select {
   font-size: 13px;
 }
 </style>
