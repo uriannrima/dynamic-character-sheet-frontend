@@ -154,6 +154,16 @@ export default {
   padding-top: 5px;
 }
 
+/** VTooltip */
+.tooltip .tooltip-inner {
+  background: black;
+  color: white;
+  border-radius: 16px;
+  padding: 5px 10px 4px;
+  font-size: 75%;
+  font-weight: bolder;
+}
+
 /** Core CSS */
 
 html,

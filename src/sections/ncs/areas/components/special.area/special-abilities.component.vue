@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="special-abilities-container">
-      <special-ability-component v-for="(specialAbility, index) in character.specialAbilities" :key="index" :specialAbility="specialAbility"></special-ability-component>
+    <special-ability-component v-for="(specialAbility, index) in character.specialAbilities" :key="index" :specialAbility="specialAbility" @onSelected="onSelected"></special-ability-component>
       <div class="no-content-container" v-if="character.specialAbilities.length == 0">
         <label>No special abilities</label>
       </div>
@@ -39,5 +39,7 @@ export default {
 </script>
 
 <style>
-
+.special-abilities-container {
+  border: solid 1px black;
+}
 </style>

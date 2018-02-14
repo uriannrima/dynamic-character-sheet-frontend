@@ -12,7 +12,7 @@
       <div class="special-ability-form-component-description-container">
         <span>
           <strong>Description:</strong>
-        </span>
+      </span>
         <span>{{describe.description}}</span>
       </div>
       <div v-if="describe.subValue && describe.subValue.name && describe.subValue.value" class="special-ability-form-component-sub-value-container">

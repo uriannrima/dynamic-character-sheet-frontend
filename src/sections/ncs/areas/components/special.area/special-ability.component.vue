@@ -1,11 +1,14 @@
 <template>
-  <span class="special-ability" :title="specialAbility.description">
+  <v-touch tag="span" class="special-ability" @dblclick="onSelect(specialAbility)" v-on:doubletap="onSelect(specialAbility)">
     {{specialAbility.name}}
-  </span>
+  </v-touch>
 </template>
 
 <script>
+import OnSelectedMixin from 'Shared/mixins/on.selected.mixin';
+
 export default {
+  mixins: [OnSelectedMixin],
   props: ['specialAbility']
 }
 </script>

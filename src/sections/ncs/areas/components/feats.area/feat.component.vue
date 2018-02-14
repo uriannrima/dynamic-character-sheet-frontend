@@ -1,12 +1,15 @@
 <template>
-  <span class="feat" :class="featType" :title="featTooltip" @dblclick="selectFeat">
+  <v-touch tag="span" class="feat" :class="featType" @dblclick="onSelect(feat)" v-on:doubletap="onSelect(feat)">
     {{feat.title}}
     <small v-if="feat.hasSubValue">({{feat.subValue.value}})</small>
-  </span>
+  </v-touch>
 </template>
 
 <script>
+import OnSelectedMixin from 'Shared/mixins/on.selected.mixin';
+
 export default {
+  mixins: [OnSelectedMixin],
   props: ['feat'],
   computed: {
     featType: function () {
@@ -22,12 +25,6 @@ export default {
       if (this.feat.special) tooltip += '\n\nSpecial: ' + this.feat.special;
 
       return tooltip;
-    }
-  },
-  methods: {
-    selectFeat: function () {
-      var { feat } = this;
-      this.$emit('onSelected', { model: feat });
     }
   }
 }

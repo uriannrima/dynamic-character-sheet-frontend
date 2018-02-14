@@ -1,3 +1,4 @@
+
 // CSS Imports.
 import 'Assets/styles/utils.css';
 // import 'Assets/styles/styles.css';
@@ -8,11 +9,14 @@ import 'Assets/styles/utils.css';
 import Es6Promise from 'es6-promise';
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
+// import VTooltip from 'v-tooltip';
 import router from './router';
 import { store } from 'Store';
 import Layout from './shared/sections/layout.section';
 import vSelect from 'vue-select';
 import './shared/directives/store-sync.directive';
+
+var VueTouch = require('vue-touch');
 
 Es6Promise.polyfill();
 
@@ -69,6 +73,16 @@ const veeConfig = {
 
 Vue.component('v-select', vSelect);
 Vue.use(VeeValidate, veeConfig);
+// Vue.use(VTooltip);
+
+VueTouch.registerCustomEvent('doubletap', {
+    type: 'tap',
+    taps: 2
+});
+
+Vue.use(VueTouch, {
+    name: 'v-touch'
+});
 
 new Vue({
     store,

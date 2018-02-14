@@ -6,11 +6,11 @@
       </div>
     </div>
     <div slot="body">
-      <div class="select-specialAbility-container" v-if="!describe">
+      <div class="select-special-ability-container" v-if="!describe">
         <span>Select special ability:</span>
         <select v-model="selected">
           <option value="">New special ability</option>
-          <option v-for="(specialAbility, index) in all" :value="specialAbility" :key="index">{{specialAbility.title}}
+          <option v-for="(specialAbility, index) in all" :value="specialAbility" :key="index">{{specialAbility.name}}
           </option>
         </select>
       </div>
