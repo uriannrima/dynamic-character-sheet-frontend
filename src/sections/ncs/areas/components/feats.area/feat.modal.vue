@@ -14,10 +14,6 @@
           </option>
         </select>
       </div>
-      <div class="sub-value-container" v-if="selected.subValue && selected.subValue.title">
-        <span>{{selected.subValue.title}}</span>
-        <input type="text" v-model.trim="selected.subValue.value">
-      </div>
       <feat-form :model="model" :describe="selected || describe"></feat-form>
       <div v-show="errors.any()">
         <ul>
