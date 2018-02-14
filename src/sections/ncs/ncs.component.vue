@@ -102,6 +102,7 @@ export default {
   background-color: black;
   color: white;
   width: 100%;
+  height: 100%;
 }
 
 .black-box label {

@@ -1,6 +1,6 @@
 <template>
   <div class="gear-area">
-    <div class="black-box">
+    <div class="black-box rounded">
       <div>
         <label>Gear</label>
         <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>        
