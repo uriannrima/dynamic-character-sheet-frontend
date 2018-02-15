@@ -53,7 +53,10 @@ export default {
             if (armor) gearWeight += armor.weight;
             if (shield) gearWeight += shield.weight;
             if (protectiveItems) gearWeight = protectiveItems.reduce((acc, item) => acc + item.weight, gearWeight);
-            return this.possessions.reduce((acc, possession) => acc + possession.weight, gearWeight).toPrecision(3);
+            return this.possessions.reduce((acc, possession) => {
+                if (typeof possession.weight !== 'number') return acc;
+                return acc + possession.weight;
+            }, gearWeight).toPrecision(3);
         }
     },
     methods: {

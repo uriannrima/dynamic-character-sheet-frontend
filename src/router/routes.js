@@ -7,23 +7,19 @@ import Login from '@/sections/login/login.section';
 const routes = [
     {
         path: '/character/:id',
-        component: Character,
-        meta: { requiresAuth: true }
+        component: Character
     },
     {
         path: '/character',
-        component: Character,
-        meta: { requiresAuth: true }
+        component: Character
     },
     {
         path: '/home',
-        component: Home,
-        meta: { requiresAuth: true }
+        component: Home
     },
     {
         path: '/print/:id',
-        component: Print,
-        meta: { requiresAuth: true }
+        component: Print
     },
     {
         path: '/login',

@@ -92,7 +92,7 @@ export const Character = function ({
             new Modules.WeaponModule.Weapon({})
         ],
         gear: gear || new Modules.GearModule.Gear({}),
-        items: items || Modules.ItemModule.Factory(34),
+        items: items,
         carryCapacities: carryCapacities || {
             lightLoad: {
                 label: "Light<br>Load",

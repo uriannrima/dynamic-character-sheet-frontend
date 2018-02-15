@@ -1,15 +1,7 @@
-export const Item = function ({ name, page, weight }) {
+export const Item = function ({ name = "", page = "", weight = 0 }) {
     return {
-        name: name || "",
-        page: page || 0,
-        weight: weight || 0
+        name,
+        page,
+        weight
     }
-}
-
-export const Factory = function (length) {
-    var items = [];
-    for (var index = 0; index < length; index++) {
-        items.push(new Item({}));
-    }
-    return items;
 }
