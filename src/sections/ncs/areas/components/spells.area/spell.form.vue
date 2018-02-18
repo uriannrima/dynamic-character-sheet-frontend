@@ -257,7 +257,7 @@
 <script>
 import SpellService from 'Services/spell.service';
 import SpellSchoolService from 'Services/spell-school.service';
-import { default as FormMixin } from './form.mixin';
+import { default as FormMixin } from 'Shared/form/form.mixin';
 export default {
   mixins: [FormMixin],
   data: function () {

@@ -48,7 +48,7 @@ export default {
 @media screen and (min-width: 1024px) {
   .front {
     grid-template-columns: 30% 30% auto;
-    grid-template-rows: 168px 112px 90px 763px;
+    grid-template-rows: 168px 112px 90px 918px;
     grid-row-gap: unset;
     grid-template-areas:
       "description-area description-area description-area"

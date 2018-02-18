@@ -68,6 +68,5 @@ export default {
 
 .spells-area {
   grid-area: spells-area;
-  background-color: rgb(53, 24, 106);
 }
 </style>

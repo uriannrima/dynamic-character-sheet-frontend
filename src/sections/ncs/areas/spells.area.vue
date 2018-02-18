@@ -1,12 +1,14 @@
 <template>
   <div>
-    Spells Area
+    <spells-component></spells-component>
   </div>
 </template>
 
 <script>
-export default {
+import { SpellsComponent } from './components';
 
+export default {
+  components: { SpellsComponent }
 }
 </script>
 

@@ -28,12 +28,6 @@ export default {
   created() {
     // character.update.mixin requirement.
     this.arrayName = 'specialAbilities';
-  },
-  data() {
-    return {
-      showModal: false,
-      selected: null
-    }
   }
 }
 </script>

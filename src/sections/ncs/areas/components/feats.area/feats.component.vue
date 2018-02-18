@@ -28,12 +28,6 @@ export default {
   created() {
     // character.update.mixin requirement.
     this.arrayName = 'feats';
-  },
-  data() {
-    return {
-      showModal: false,
-      selected: null
-    }
   }
 }
 </script>

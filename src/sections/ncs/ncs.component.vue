@@ -38,14 +38,7 @@ export default {
 
 .main-container {
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 100%;
-  transition: all 1s;
   padding: 0 15px;
-}
-
-.page {
-  transition: all 5s;
 }
 
 /** HD Resolution */
@@ -53,7 +46,12 @@ export default {
 @media screen and (min-width: 1440px) {
   .main-container {
     width: 420mm;
-    grid-template-columns: 50% auto;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .main-container > div {
+    width: 50%;
   }
 }
 
