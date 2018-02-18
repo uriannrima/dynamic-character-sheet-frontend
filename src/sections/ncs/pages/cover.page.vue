@@ -8,6 +8,7 @@
     <languages-area class="languages-area" />
     <spells-area class="spells-area" />
     <dc-area class="dc-area" />
+    <spells-per-day-area class="spells-per-day-area"></spells-per-day-area>
   </div>
 </template>
 
@@ -34,7 +35,8 @@ export default {
     "special-area"
     "languages-area"
     "spells-area"
-    "dc-area";
+    "dc-area"
+    "spells-per-day-area";
 }
 
 .campaign-area {
@@ -43,7 +45,6 @@ export default {
 
 .dc-area {
   grid-area: dc-area;
-  background-color: rgb(104, 81, 131);
 }
 
 .feats-area {
@@ -68,5 +69,9 @@ export default {
 
 .spells-area {
   grid-area: spells-area;
+}
+
+.spells-per-day-area {
+  grid-area: spells-per-day-area;
 }
 </style>

@@ -1,5 +1,5 @@
 /** First Page */
-export { default as DescriptionArea } from './description.area.vue';
+export { default as DescriptionArea } from './description.area';
 export { default as AbilityArea } from './ability.area';
 export { default as ArmorArea } from './armor.area';
 export { default as InitiativeArea } from './initiative.area';
@@ -15,3 +15,4 @@ export { default as SpecialArea } from './special.area';
 export { default as LanguagesArea } from './languages.area';
 export { default as SpellsArea } from './spells.area';
 export { default as DcArea } from './dc.area';
+export { default as SpellsPerDayArea } from './spells-per-day.area';
