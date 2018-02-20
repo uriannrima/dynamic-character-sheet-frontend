@@ -1,6 +1,6 @@
 <script>
 export default {
-    props: ['item']
+  props: ['item']
 }
 </script>
 <template>

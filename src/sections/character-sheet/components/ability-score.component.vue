@@ -2,13 +2,13 @@
 import { Actions } from 'Store';
 
 export default {
-    props: ['abilityScore'],
-    methods: {
-        updateTemporaryScore: function (abilityScore) {
-            abilityScore.tempValue = abilityScore.value;
-            this.$store.dispatch(Actions.Character.Update.AbilityScore, { updated: this.abilityScore });
-        }
+  props: ['abilityScore'],
+  methods: {
+    updateTemporaryScore: function (abilityScore) {
+      abilityScore.tempValue = abilityScore.value;
+      this.$store.dispatch(Actions.Character.Update.AbilityScore, { updated: this.abilityScore });
     }
+  }
 }
 </script>
 

@@ -20,28 +20,28 @@
 
 <script>
 export default {
-    props: ['index', 'name', 'value', 'tempValue'],
-    methods: {
-        updateTemporaryScore($event, field) {
-            this.updateScore($event, 'tempValue');
-            this.updateScore($event, field);
-        },
-        updateScore($event, field) {
-            this.$emit('onUpdateScore', {
-                index: this.index,
-                field,
-                value: $event.target.value * 1
-            });
-        }
+  props: ['index', 'name', 'value', 'tempValue'],
+  methods: {
+    updateTemporaryScore($event, field) {
+      this.updateScore($event, 'tempValue');
+      this.updateScore($event, field);
     },
-    computed: {
-        getModifier() {
-            return Math.floor((this.value - 10) / 2);
-        },
-        getTempModifier() {
-            return Math.floor((this.tempValue - 10) / 2);
-        }
+    updateScore($event, field) {
+      this.$emit('onUpdateScore', {
+        index: this.index,
+        field,
+        value: $event.target.value * 1
+      });
     }
+  },
+  computed: {
+    getModifier() {
+      return Math.floor((this.value - 10) / 2);
+    },
+    getTempModifier() {
+      return Math.floor((this.tempValue - 10) / 2);
+    }
+  }
 }
 </script>
 

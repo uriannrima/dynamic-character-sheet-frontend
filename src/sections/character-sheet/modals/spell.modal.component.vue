@@ -4,12 +4,12 @@ import { SpellForm } from 'Shared/form/';
 import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {
-    components: { SpellForm },
-    mixins: [ModalModelMixin],
-    created: function () {
-        this.service = SpellService;
-        this.modelName = 'spell';
-    }
+  components: { SpellForm },
+  mixins: [ModalModelMixin],
+  created: function () {
+    this.service = SpellService;
+    this.modelName = 'spell';
+  }
 }
 </script>
 

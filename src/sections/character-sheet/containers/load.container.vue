@@ -1,6 +1,6 @@
 <script>
 export default {
-    props: ['carryCapacity']
+  props: ['carryCapacity']
 }
 </script>
 <template>

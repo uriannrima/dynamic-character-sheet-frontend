@@ -5,7 +5,7 @@ import SheetModule from './sheet.module';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    modules: {
-        sheet: SheetModule
-    }
+  modules: {
+    sheet: SheetModule
+  }
 });

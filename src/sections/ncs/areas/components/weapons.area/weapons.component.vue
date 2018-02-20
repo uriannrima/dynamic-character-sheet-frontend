@@ -1,6 +1,6 @@
 <template>
   <div class="weapons-component">
-    <div class="black-box rounded">
+    <div class="black-box rounded h-md-up">
       <div>
         <label>Weapons</label>
         <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>

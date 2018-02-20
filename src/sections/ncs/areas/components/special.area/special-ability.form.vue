@@ -60,25 +60,25 @@ import { FormMixin } from 'Shared/form';
 import { SubValuesComponent, SubValuesList } from 'Shared/form/components';
 
 export default {
-mixins: [FormMixin],
-components: { SubValuesComponent, SubValuesList },
-created() {
-  this.modelName = 'specialAbility';
-},
-data() {
-  return {
-    has: {
+  mixins: [FormMixin],
+  components: { SubValuesComponent, SubValuesList },
+  created() {
+    this.modelName = 'specialAbility';
+  },
+  data() {
+    return {
+      has: {
+        aditionalInformation: false,
+        subValue: false
+      }
+    }
+  },
+  clear() {
+    this.has = {
       aditionalInformation: false,
       subValue: false
     }
   }
-},
-clear() {
-  this.has = {
-    aditionalInformation: false,
-    subValue: false
-  }
-}
 }
 </script>
 

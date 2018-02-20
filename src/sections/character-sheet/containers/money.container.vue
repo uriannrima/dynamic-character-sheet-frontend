@@ -1,6 +1,6 @@
 <script>
 export default {
-    props: ['money']
+  props: ['money']
 }
 </script>
 <template>

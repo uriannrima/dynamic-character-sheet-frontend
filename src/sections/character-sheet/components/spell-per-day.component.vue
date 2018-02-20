@@ -1,18 +1,18 @@
 <script>
 export default {
-    props: ['knownSpells', 'spellLevel', 'spellsPerDay', 'bonusSpells', 'casterAbility'],
-    data: function() {
-        return {
+  props: ['knownSpells', 'spellLevel', 'spellsPerDay', 'bonusSpells', 'casterAbility'],
+  data: function() {
+    return {
 
-        };
-    },
-    computed: {
-        getSpellSaveDC: function() {
-            return 10 + this.spellLevel + this.casterAbility.getTempModifier();
-        }
-    },
-    methods: {
+    };
+  },
+  computed: {
+    getSpellSaveDC: function() {
+      return 10 + this.spellLevel + this.casterAbility.getTempModifier();
     }
+  },
+  methods: {
+  }
 };
 </script>
 <template>

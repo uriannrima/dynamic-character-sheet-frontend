@@ -3,25 +3,25 @@ import SpellListComponent from '../components/spell-list.component';
 import SpellModal from '../modals/spell.modal.component';
 
 export default {
-    props: ['character', 'addEnabled'],
-    components: { SpellModal, SpellListComponent },
-    data: function() {
-        return {
-            showModal: false,
-            selected: null
-        }
-    },
-    methods: {
-        openSpellDescription: function(spell) {
-            this.selected = spell;
-            this.showModal = true;
-        }
-    },
-    computed: {
-        spellsPerLevel: function() {
-            return this.character.spells.groupBy(s => s.level);
-        }
+  props: ['character', 'addEnabled'],
+  components: { SpellModal, SpellListComponent },
+  data: function() {
+    return {
+      showModal: false,
+      selected: null
     }
+  },
+  methods: {
+    openSpellDescription: function(spell) {
+      this.selected = spell;
+      this.showModal = true;
+    }
+  },
+  computed: {
+    spellsPerLevel: function() {
+      return this.character.spells.groupBy(s => s.level);
+    }
+  }
 }
 </script>
 <template>

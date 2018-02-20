@@ -2,15 +2,15 @@
 import ItemComponent from '../components/item.component';
 
 export default {
-    props: ['items'],
-    components: { ItemComponent },
-    computed: {
-        /** Calculated value of total weight carried by the character. */
-        totalWeightCarried: function() {
-            var value = this.items.map(i => i.weight).reduce((prev, next) => prev + next)
-            return value.toPrecision(3);
-        }
+  props: ['items'],
+  components: { ItemComponent },
+  computed: {
+    /** Calculated value of total weight carried by the character. */
+    totalWeightCarried: function() {
+      var value = this.items.map(i => i.weight).reduce((prev, next) => prev + next)
+      return value.toPrecision(3);
     }
+  }
 }
 </script>
 <template>

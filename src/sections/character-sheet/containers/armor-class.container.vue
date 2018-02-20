@@ -1,11 +1,11 @@
 <script>
 export default {
-    props: ['armorClass', 'abilityScoreModifier', 'armorItem', 'shieldItem', 'size', 'damageReduction'],
-    computed: {
-        getTotalArmor: function() {
-            return 10 + this.armorItem.acBonus + this.shieldItem.acBonus + this.abilityScoreModifier.getTempModifier() + this.size.modifier + this.armorClass.naturalArmor + this.armorClass.deflectionModifier + this.armorClass.miscModifier;
-        }
+  props: ['armorClass', 'abilityScoreModifier', 'armorItem', 'shieldItem', 'size', 'damageReduction'],
+  computed: {
+    getTotalArmor: function() {
+      return 10 + this.armorItem.acBonus + this.shieldItem.acBonus + this.abilityScoreModifier.getTempModifier() + this.size.modifier + this.armorClass.naturalArmor + this.armorClass.deflectionModifier + this.armorClass.miscModifier;
     }
+  }
 }
 </script>
 <template>

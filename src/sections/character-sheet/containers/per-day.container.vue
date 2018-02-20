@@ -1,13 +1,13 @@
 <script>
 import SpellPerDayComponent from '../components/spell-per-day.component';
 export default {
-    props: ['character'],
-    components: { SpellPerDayComponent },
-    computed: {
-        spellsPerLevel: function() {
-            return this.character.spells.groupBy(s => s.level);
-        }
+  props: ['character'],
+  components: { SpellPerDayComponent },
+  computed: {
+    spellsPerLevel: function() {
+      return this.character.spells.groupBy(s => s.level);
     }
+  }
 }
 </script>
 <template>

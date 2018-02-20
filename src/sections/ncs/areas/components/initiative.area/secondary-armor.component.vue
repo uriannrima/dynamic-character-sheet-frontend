@@ -17,31 +17,31 @@
 import CharacterMixin from 'Store/character.mixin';
 
 export default {
-    mixins: [CharacterMixin],
-    computed: {
-        getAbility() {
-            return this.character.abilityScores.find(abilityScore => {
-                return abilityScore.name === 'dexterity';
-            });
-        },
-        getTouchArmor() {
-            var { armorClass } = this.character;
-            return armorClass.base +
+  mixins: [CharacterMixin],
+  computed: {
+    getAbility() {
+      return this.character.abilityScores.find(abilityScore => {
+        return abilityScore.name === 'dexterity';
+      });
+    },
+    getTouchArmor() {
+      var { armorClass } = this.character;
+      return armorClass.base +
                 this.getAbility.getTempModifier() +
                 armorClass.sizeModifier +
                 armorClass.miscModifier;
-        },
-        getFlatFooted() {
-            var { armorClass } = this.character;
-            return armorClass.base +
+    },
+    getFlatFooted() {
+      var { armorClass } = this.character;
+      return armorClass.base +
                 armorClass.armorBonus +
                 armorClass.shieldBonus +
                 armorClass.sizeModifier +
                 armorClass.naturalArmor +
                 armorClass.deflectionModifier +
                 armorClass.miscModifier;
-        }
     }
+  }
 }
 </script>
 

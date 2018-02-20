@@ -2,13 +2,13 @@
 import SpellComponent from '../components/spell.component';
 
 export default {
-    props: ['level', 'spells'],
-    components: { SpellComponent },
-    data: function() {
-        return {
-            collapsed: false
-        };
-    }
+  props: ['level', 'spells'],
+  components: { SpellComponent },
+  data: function() {
+    return {
+      collapsed: false
+    };
+  }
 }
 </script>
 <template>

@@ -21,8 +21,7 @@
     SpellResistanceComponent,
     GrappleComponent,
     WeaponsComponent
-  }
-  from './components';
+  } from './components';
 
   export default {
     components: {

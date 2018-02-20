@@ -1,8 +1,8 @@
 <script>
 import AbilityScoreComponent from '../components/ability-score.component';
 export default {
-    props: ['abilityScores'],
-    components: { AbilityScoreComponent }
+  props: ['abilityScores'],
+  components: { AbilityScoreComponent }
 }
 </script>
 <template>

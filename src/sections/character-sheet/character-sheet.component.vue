@@ -19,151 +19,151 @@ import SkillsContainer from "./containers/skills.container";
 import SpellsContainer from "./containers/spells.container";
 
 export default {
-    components: {
-        DcsFeatModal,
-        DcsSpellModal,
-        DcsSpecialAbilityModal,
-        AbilityScoresContainer,
-        ArmorClassContainer,
-        FeatsContainer,
-        PerDayContainer,
-        PossessionsContainer,
-        SavingThrowsContainer,
-        SkillsContainer,
-        SpellsContainer
-    },
-    data: function () {
-        return {
-            sheetPage: -1,
-            allSizes: [],
-            allRaces: RaceService.getAll(),
-            allAlignments: AlignmentService.getAll()
-        };
-    },
-    watch: {
-        // Maybe find out a better way, but so far, it's what we've got.
-        "character.abilityScores": {
-            deep: true,
-            handler: function (oldV, newV) {
-                this.character.updateAbilityScore();
-            }
-        }
-    },
-    computed: {
-        character: function () {
-            return this.$store.getters.character;
-        },
-        /** A combination of character classes. */
-        classesCombined: {
-            get: function () {
-                return this.character.classes.map(classe => {
-                    if (!classe.name || !classe.level) return "";
-                    return classe.name + " (" + classe.level + ")";
-                });
-            },
-            set: function (newValue) {
-                this.character.classes = [];
-                const fieldValues = newValue.split(",");
-                fieldValues.forEach(fieldValue => {
-                    // If empty character
-                    if (fieldValue.trim() === "") return;
-
-                    // Clear whitespaces
-                    var classLevel = fieldValue.replace(/ /g, "");
-
-                    // Regex to get level
-                    var levelRegex = /\(([^)]+)\)/;
-
-                    // Get level data,
-                    var levelData = levelRegex.exec(classLevel);
-                    // Extract level from data
-                    var level = levelData && levelData.length > 1 ? levelData[1] : 1;
-
-                    // Remove level from field.
-                    var classOnly = classLevel.replace(levelRegex, "");
-                    this.character.classes.push({
-                        name: classOnly.trim(),
-                        level: level
-                    });
-                });
-            }
-        },
-        /** A combination of the character languages. */
-        languagesCombined: {
-            get: function () {
-                return this.character.languages.map((language, index) => {
-                    if (!language) return "";
-                    return index > 0 ? " " + language : language;
-                });
-            },
-            set: function (newValue) {
-                this.character.languages = [];
-                const newLanguages = newValue.split(",");
-                newLanguages.forEach(newLanguage => {
-                    this.character.languages.push(newLanguage.trim());
-                });
-            }
-        }
-    },
-    methods: {
-        addToCharacter: async function (arrayName, model) {
-            this.$store.dispatch(Actions.Character.Add.Generic, { arrayName, model });
-        },
-        updateOnCharacter: function (arrayName, model) {
-            this.$store.dispatch(Actions.Character.Update.Generic, { arrayName, model });
-        },
-        removeFromCharacter: function (arrayName, model) {
-            this.$store.dispatch(Actions.Character.Remove.Generic, { arrayName, model });
-        },
-        resetSkills: async function () {
-            var data = await CharacterService.resetSkills(this.character);
-            console.log(data);
-        },
-        loadCharacter: function (character) {
-            this.$store.commit(Actions.Character.Replace, { character });
-        },
-        saveOrUpdate: async function () {
-            var data = await CharacterService.saveOrUpdate(this.character);
-            this.character._id = data._id;
-            window.history.pushState("", "", "/#/character/" + this.character._id);
-        },
-        exportCharacter: function () {
-            this.saveOrUpdate();
-            var fileName = this.character.name || this.character._id;
-            fileName += ".json";
-            ExporterService.exportText(this.character, fileName);
-        },
-        importCharacter: function () {
-            var element = document.getElementById("importField");
-            if (element.files.length > 0) {
-                ExporterService.importFile(element.files[0]).then(characterData => {
-                    element.value = "";
-                    this.character = CharacterService.load(characterData);
-                    window.history.pushState(
-                        "",
-                        "",
-                        "/#/character/" + this.character._id
-                    );
-                    this.saveOrUpdate();
-                });
-            }
-        }
-    },
-    beforeRouteEnter: async function (to, from, next) {
-        var sizes = await SizeService.getAll();
-        if (to.params.id) {
-            var character = await CharacterService.get(to.params.id);
-            next(vm => {
-                vm.allSizes = sizes;
-                vm.loadCharacter(character);
-            });
-        } else {
-            next(vm => {
-                vm.allSizes = sizes;
-                vm.loadCharacter({});
-            });
-        }
+  components: {
+    DcsFeatModal,
+    DcsSpellModal,
+    DcsSpecialAbilityModal,
+    AbilityScoresContainer,
+    ArmorClassContainer,
+    FeatsContainer,
+    PerDayContainer,
+    PossessionsContainer,
+    SavingThrowsContainer,
+    SkillsContainer,
+    SpellsContainer
+  },
+  data: function () {
+    return {
+      sheetPage: -1,
+      allSizes: [],
+      allRaces: RaceService.getAll(),
+      allAlignments: AlignmentService.getAll()
+    };
+  },
+  watch: {
+    // Maybe find out a better way, but so far, it's what we've got.
+    "character.abilityScores": {
+      deep: true,
+      handler: function (oldV, newV) {
+        this.character.updateAbilityScore();
+      }
     }
+  },
+  computed: {
+    character: function () {
+      return this.$store.getters.character;
+    },
+    /** A combination of character classes. */
+    classesCombined: {
+      get: function () {
+        return this.character.classes.map(classe => {
+          if (!classe.name || !classe.level) return "";
+          return classe.name + " (" + classe.level + ")";
+        });
+      },
+      set: function (newValue) {
+        this.character.classes = [];
+        const fieldValues = newValue.split(",");
+        fieldValues.forEach(fieldValue => {
+          // If empty character
+          if (fieldValue.trim() === "") return;
+
+          // Clear whitespaces
+          var classLevel = fieldValue.replace(/ /g, "");
+
+          // Regex to get level
+          var levelRegex = /\(([^)]+)\)/;
+
+          // Get level data,
+          var levelData = levelRegex.exec(classLevel);
+          // Extract level from data
+          var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+
+          // Remove level from field.
+          var classOnly = classLevel.replace(levelRegex, "");
+          this.character.classes.push({
+            name: classOnly.trim(),
+            level: level
+          });
+        });
+      }
+    },
+    /** A combination of the character languages. */
+    languagesCombined: {
+      get: function () {
+        return this.character.languages.map((language, index) => {
+          if (!language) return "";
+          return index > 0 ? " " + language : language;
+        });
+      },
+      set: function (newValue) {
+        this.character.languages = [];
+        const newLanguages = newValue.split(",");
+        newLanguages.forEach(newLanguage => {
+          this.character.languages.push(newLanguage.trim());
+        });
+      }
+    }
+  },
+  methods: {
+    addToCharacter: async function (arrayName, model) {
+      this.$store.dispatch(Actions.Character.Add.Generic, { arrayName, model });
+    },
+    updateOnCharacter: function (arrayName, model) {
+      this.$store.dispatch(Actions.Character.Update.Generic, { arrayName, model });
+    },
+    removeFromCharacter: function (arrayName, model) {
+      this.$store.dispatch(Actions.Character.Remove.Generic, { arrayName, model });
+    },
+    resetSkills: async function () {
+      var data = await CharacterService.resetSkills(this.character);
+      console.log(data);
+    },
+    loadCharacter: function (character) {
+      this.$store.commit(Actions.Character.Replace, { character });
+    },
+    saveOrUpdate: async function () {
+      var data = await CharacterService.saveOrUpdate(this.character);
+      this.character._id = data._id;
+      window.history.pushState("", "", "/#/character/" + this.character._id);
+    },
+    exportCharacter: function () {
+      this.saveOrUpdate();
+      var fileName = this.character.name || this.character._id;
+      fileName += ".json";
+      ExporterService.exportText(this.character, fileName);
+    },
+    importCharacter: function () {
+      var element = document.getElementById("importField");
+      if (element.files.length > 0) {
+        ExporterService.importFile(element.files[0]).then(characterData => {
+          element.value = "";
+          this.character = CharacterService.load(characterData);
+          window.history.pushState(
+            "",
+            "",
+            "/#/character/" + this.character._id
+          );
+          this.saveOrUpdate();
+        });
+      }
+    }
+  },
+  beforeRouteEnter: async function (to, from, next) {
+    var sizes = await SizeService.getAll();
+    if (to.params.id) {
+      var character = await CharacterService.get(to.params.id);
+      next(vm => {
+        vm.allSizes = sizes;
+        vm.loadCharacter(character);
+      });
+    } else {
+      next(vm => {
+        vm.allSizes = sizes;
+        vm.loadCharacter({});
+      });
+    }
+  }
 };
 </script>
 <template>

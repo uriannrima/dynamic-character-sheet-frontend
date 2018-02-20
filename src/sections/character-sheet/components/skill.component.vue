@@ -1,19 +1,19 @@
 <script>
 export default {
-    props: ['classSkill', 'untrained', 'name', 'hasSubValue',
-        'subValue', 'armorCheckPenalty', 'keyAbility',
-        'rank', 'miscModifier'],
-    data: function() {
-        return {
+  props: ['classSkill', 'untrained', 'name', 'hasSubValue',
+    'subValue', 'armorCheckPenalty', 'keyAbility',
+    'rank', 'miscModifier'],
+  data: function() {
+    return {
 
-        };
-    },
-    computed: {
-        getTotal: function() {
-            var rankValue = this.classSkill ? this.rank : Math.floor(this.rank / 2);
-            return this.keyAbility.getTempModifier() + rankValue + this.miscModifier;
-        }
+    };
+  },
+  computed: {
+    getTotal: function() {
+      var rankValue = this.classSkill ? this.rank : Math.floor(this.rank / 2);
+      return this.keyAbility.getTempModifier() + rankValue + this.miscModifier;
     }
+  }
 };
 </script>
 <template>

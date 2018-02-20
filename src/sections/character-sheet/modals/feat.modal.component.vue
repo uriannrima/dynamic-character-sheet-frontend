@@ -4,12 +4,12 @@ import { FeatForm } from 'Shared/form/';
 import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {
-    components: { FeatForm },
-    mixins: [ModalModelMixin],
-    created: function () {
-        this.service = FeatService;
-        this.modelName = 'feat';
-    }
+  components: { FeatForm },
+  mixins: [ModalModelMixin],
+  created: function () {
+    this.service = FeatService;
+    this.modelName = 'feat';
+  }
 }
 </script>
 

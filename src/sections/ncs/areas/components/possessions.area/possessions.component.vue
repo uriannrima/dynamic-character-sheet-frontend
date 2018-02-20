@@ -3,7 +3,7 @@
         <div class="black-box rounded">
             <div>
                 <label>Other Possessions</label>
-                <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+                <span class="add-icon glyphicon h-md-up" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
             </div>
         </div>
         <div class="possessions-component" v-show="!minimize">
@@ -35,35 +35,35 @@ import WealthComponent from './wealth.component';
 import ResizeMixin from 'Shared/mixins/resize.handler.mixin';
 
 export default {
-    mixins: [CharacterMixin, ResizeMixin],
-    components: { PossessionComponent, CarryCapacitiesComponent, WealthComponent },
-    props: ["possessions", "carryCapacities", "wealth"],
-    data() {
-        var minimumWidth = 768;
-        return {
-            minimumWidth,
-            showSecondHeader: window.innerWidth >= minimumWidth,
-            minimize: false
-        };
-    },
-    computed: {
-        totalWeight() {
-            var gearWeight = 0;
-            var { armor, shield, protectiveItems } = this.character.gear;
-            if (armor) gearWeight += armor.weight;
-            if (shield) gearWeight += shield.weight;
-            if (protectiveItems) gearWeight = protectiveItems.reduce((acc, item) => acc + item.weight, gearWeight);
-            return this.possessions.reduce((acc, possession) => {
-                if (typeof possession.weight !== 'number') return acc;
-                return acc + possession.weight;
-            }, gearWeight).toPrecision(3);
-        }
-    },
-    methods: {
-        handleResize: function (event) {
-            this.showSecondHeader = window.innerWidth >= this.minimumWidth;
-        }
+  mixins: [CharacterMixin, ResizeMixin],
+  components: { PossessionComponent, CarryCapacitiesComponent, WealthComponent },
+  props: ["possessions", "carryCapacities", "wealth"],
+  data() {
+    var minimumWidth = 768;
+    return {
+      minimumWidth,
+      showSecondHeader: window.innerWidth >= minimumWidth,
+      minimize: false
+    };
+  },
+  computed: {
+    totalWeight() {
+      var gearWeight = 0;
+      var { armor, shield, protectiveItems } = this.character.gear;
+      if (armor) gearWeight += armor.weight;
+      if (shield) gearWeight += shield.weight;
+      if (protectiveItems) gearWeight = protectiveItems.reduce((acc, item) => acc + item.weight, gearWeight);
+      return this.possessions.reduce((acc, possession) => {
+        if (typeof possession.weight !== 'number') return acc;
+        return acc + possession.weight;
+      }, gearWeight).toPrecision(3);
     }
+  },
+  methods: {
+    handleResize: function (event) {
+      this.showSecondHeader = window.innerWidth >= this.minimumWidth;
+    }
+  }
 }
 </script>
 

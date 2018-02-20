@@ -2,8 +2,8 @@
 import SavingThrowComponent from '../components/saving-throw.component';
 
 export default {
-    props: ['character'],
-    components: { SavingThrowComponent }
+  props: ['character'],
+  components: { SavingThrowComponent }
 }
 </script>
 <template>

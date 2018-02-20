@@ -3,25 +3,25 @@ import SkillComponent from '../components/skill.component';
 import DcsSkillModal from '../modals/skill.modal.component';
 
 export default {
-    props: ['character', 'addEnabled'],
-    components: { SkillComponent, DcsSkillModal },
-    data: function() {
-        return {
-            showModal: false,
-            selected: null
-        };
-    },
-    computed: {
-        characterSkills: function() {
-            return _.sortBy(this.character.skills, skill => skill.name);
-        }
-    },
-    methods: {
-        openSkillDescription: function(skill) {
-            this.selected = skill;
-            this.showModal = true;
-        }
+  props: ['character', 'addEnabled'],
+  components: { SkillComponent, DcsSkillModal },
+  data: function() {
+    return {
+      showModal: false,
+      selected: null
+    };
+  },
+  computed: {
+    characterSkills: function() {
+      return _.sortBy(this.character.skills, skill => skill.name);
     }
+  },
+  methods: {
+    openSkillDescription: function(skill) {
+      this.selected = skill;
+      this.showModal = true;
+    }
+  }
 }
 </script>
 <template>

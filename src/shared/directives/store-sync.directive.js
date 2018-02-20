@@ -6,13 +6,13 @@ import { Actions } from "Store";
  * It's not perfect, but useful atm.
  */
 Vue.directive('store-sync', {
-    bind(el, binding, vnode, oldNode) {
-        var { $store } = vnode.context;
-        var { expression } = binding;
-        el.addEventListener('change', function (event) {
-            var value = event.target.value;
-            if (event.target._vOptions) value = event.target._vOptions[event.target.selectedIndex];
-            $store.commit(Actions.Simple, { expression, value });
-        });
-    }
+  bind(el, binding, vnode, oldNode) {
+    var { $store } = vnode.context;
+    var { expression } = binding;
+    el.addEventListener('change', function (event) {
+      var value = event.target.value;
+      if (event.target._vOptions) value = event.target._vOptions[event.target.selectedIndex];
+      $store.commit(Actions.Simple, { expression, value });
+    });
+  }
 });

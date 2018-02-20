@@ -3,63 +3,63 @@ import DcsModal from 'Shared/modal/modal.component';
 import SpecialAbilityService from 'Services/special-ability.service';
 
 export default {
-    props: ['show', 'describeSpecialAbility', 'characterSpecialAbilities'],
-    components: { DcsModal },
-    data: function() {
-        return {
-            selectedSpecialAbility: '',
-            newSpecialAbility: SpecialAbilityService.create(),
-            allSpecialAbilities: [],
-            has: {
-                prerequisite: false,
-                special: false,
-                normal: false
-            }
-        }
-    },
-    methods: {
-        clear: function() {
-            this.selectedSpecialAbility = '';
-            this.newSpecialAbility = SpecialAbilityService.create();
-            this.has = {
-                prerequisite: false,
-                special: false,
-                normal: false
-            }
-        },
-        cancel: function() {
-            this.close();
-        },
-        close: function() {
-            this.clear();
-            this.$emit('update:describeSpecialAbility', null);
-            this.$emit('update:show', false);
-        },
-        addNewSpecialAbility: async function() {
-            // New special ability being created.
-            if (!this.selectedSpecialAbility) {
-                var specialAbilityCreated = await SpecialAbilityService.saveOrUpdate(this.newSpecialAbility)
-                this.$emit('onSpecialAbilityAdded', specialAbilityCreated);
-                this.clear();
-                this.close();
-            } else {
-                this.$emit('onSpecialAbilityAdded', this.selectedSpecialAbility);
-                this.clear();
-                this.close();
-            }
-        },
-        removeSpecialAbility: function() {
-            this.$emit('onSpecialAbilityRemoved', this.describeSpecialAbility);
-            this.clear();
-            this.close();
-        }
-    },
-    beforeUpdate: async function() {
-        if (this.show) {
-            var specialAbilities = await SpecialAbilityService.getAll();
-            this.allSpecialAbilities = specialAbilities;
-        }
+  props: ['show', 'describeSpecialAbility', 'characterSpecialAbilities'],
+  components: { DcsModal },
+  data: function() {
+    return {
+      selectedSpecialAbility: '',
+      newSpecialAbility: SpecialAbilityService.create(),
+      allSpecialAbilities: [],
+      has: {
+        prerequisite: false,
+        special: false,
+        normal: false
+      }
     }
+  },
+  methods: {
+    clear: function() {
+      this.selectedSpecialAbility = '';
+      this.newSpecialAbility = SpecialAbilityService.create();
+      this.has = {
+        prerequisite: false,
+        special: false,
+        normal: false
+      }
+    },
+    cancel: function() {
+      this.close();
+    },
+    close: function() {
+      this.clear();
+      this.$emit('update:describeSpecialAbility', null);
+      this.$emit('update:show', false);
+    },
+    addNewSpecialAbility: async function() {
+      // New special ability being created.
+      if (!this.selectedSpecialAbility) {
+        var specialAbilityCreated = await SpecialAbilityService.saveOrUpdate(this.newSpecialAbility)
+        this.$emit('onSpecialAbilityAdded', specialAbilityCreated);
+        this.clear();
+        this.close();
+      } else {
+        this.$emit('onSpecialAbilityAdded', this.selectedSpecialAbility);
+        this.clear();
+        this.close();
+      }
+    },
+    removeSpecialAbility: function() {
+      this.$emit('onSpecialAbilityRemoved', this.describeSpecialAbility);
+      this.clear();
+      this.close();
+    }
+  },
+  beforeUpdate: async function() {
+    if (this.show) {
+      var specialAbilities = await SpecialAbilityService.getAll();
+      this.allSpecialAbilities = specialAbilities;
+    }
+  }
 }
 </script>
 

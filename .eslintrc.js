@@ -23,7 +23,7 @@ module.exports = {
     // Warning when not using "" on string.
     "quotes": 0,
     // allow custom indent.
-    "indent": 0,
+    "indent": [1, 2],
     // ignore extra semi collon.
     "semi": 0,
     // allow function without space before parenthesis

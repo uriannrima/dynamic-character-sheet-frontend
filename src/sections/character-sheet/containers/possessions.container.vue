@@ -4,11 +4,11 @@ import LoadContainer from './load.container';
 import MoneyContainer from './money.container';
 
 export default {
-    props: [
-        'possessions',
-        'carryCapacity',
-        'money'],
-    components: { ItemGridContainer, LoadContainer, MoneyContainer }
+  props: [
+    'possessions',
+    'carryCapacity',
+    'money'],
+  components: { ItemGridContainer, LoadContainer, MoneyContainer }
 }
 </script>
 <template>

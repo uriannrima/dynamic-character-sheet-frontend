@@ -4,7 +4,7 @@
       <div>
         <label>Spells</label>
         <span class="add-icon glyphicon glyphicon-plus" @click="toggleModal"></span>
-        <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+        <span class="add-icon glyphicon h-md-up" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
       </div>
     </div>
     <div class="spells-component" v-show="!minimize">

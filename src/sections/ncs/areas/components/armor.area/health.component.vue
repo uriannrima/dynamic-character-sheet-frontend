@@ -22,7 +22,7 @@
 import CharacterMixin from 'Store/character.mixin';
 
 export default {
-    mixins: [CharacterMixin]
+  mixins: [CharacterMixin]
 }
 </script>
 

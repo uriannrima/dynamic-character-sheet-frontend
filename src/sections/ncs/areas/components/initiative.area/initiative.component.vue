@@ -19,17 +19,17 @@
 import CharacterMixin from 'Store/character.mixin';
 
 export default {
-    mixins: [CharacterMixin],
-    computed: {
-        getTotal() {
-            return this.getAbility.getTempModifier() + this.character.initiative.miscModifier;
-        },
-        getAbility() {
-            return this.character.abilityScores.find(abilityScore => {
-                return abilityScore.name === 'dexterity';
-            });
-        }
+  mixins: [CharacterMixin],
+  computed: {
+    getTotal() {
+      return this.getAbility.getTempModifier() + this.character.initiative.miscModifier;
+    },
+    getAbility() {
+      return this.character.abilityScores.find(abilityScore => {
+        return abilityScore.name === 'dexterity';
+      });
     }
+  }
 }
 </script>
 

@@ -3,22 +3,22 @@ import FeatComponent from '../components/feat.component';
 import DcsFeatModal from '../modals/feat.modal.component';
 
 export default {
-    props: ['character', 'addEnabled'],
-    components: {
-        FeatComponent, DcsFeatModal
-    },
-    data: function() {
-        return {
-            showModal: false,
-            selected: null
-        }
-    },
-    methods: {
-        openFeatDescription: function(feat) {
-            this.selected = feat;
-            this.showModal = true;
-        }
+  props: ['character', 'addEnabled'],
+  components: {
+    FeatComponent, DcsFeatModal
+  },
+  data: function() {
+    return {
+      showModal: false,
+      selected: null
     }
+  },
+  methods: {
+    openFeatDescription: function(feat) {
+      this.selected = feat;
+      this.showModal = true;
+    }
+  }
 }
 </script>
 <template>

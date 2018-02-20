@@ -5,38 +5,38 @@ import Home from '@/sections/home/home.section';
 import Login from '@/sections/login/login.section';
 
 const routes = [
-    {
-        path: '/character/:id',
-        component: Character
-    },
-    {
-        path: '/character',
-        component: Character
-    },
-    {
-        path: '/home',
-        component: Home
-    },
-    {
-        path: '/print/:id',
-        component: Print
-    },
-    {
-        path: '/login',
-        component: Login
-    },
-    {
-        path: '/ncs/:id',
-        component: Ncs
-    },
-    {
-        path: '/ncs',
-        component: Ncs
-    },
-    {
-        path: '*',
-        redirect: '/login'
-    }
+  {
+    path: '/character/:id',
+    component: Character
+  },
+  {
+    path: '/character',
+    component: Character
+  },
+  {
+    path: '/home',
+    component: Home
+  },
+  {
+    path: '/print/:id',
+    component: Print
+  },
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '/ncs/:id',
+    component: Ncs
+  },
+  {
+    path: '/ncs',
+    component: Ncs
+  },
+  {
+    path: '*',
+    redirect: '/login'
+  }
 ];
 
 export default routes;

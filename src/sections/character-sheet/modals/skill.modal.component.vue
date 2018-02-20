@@ -4,12 +4,12 @@ import { SkillForm } from 'Shared/form/';
 import { default as ModalModelMixin } from './modal-model.mixin';
 
 export default {
-    components: { SkillForm },
-    mixins: [ModalModelMixin],
-    created: function () {
-        this.service = SkillService;
-        this.modelName = 'skill';
-    }
+  components: { SkillForm },
+  mixins: [ModalModelMixin],
+  created: function () {
+    this.service = SkillService;
+    this.modelName = 'skill';
+  }
 }
 </script>
 
