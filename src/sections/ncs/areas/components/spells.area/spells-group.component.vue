@@ -2,7 +2,7 @@
   <div>
     <div v-if="spells.length > 0" class="spells-group-container">
       <span>{{group}}: </span>
-      <spell-component v-for="(spell, index) in spells" :key="index" :spell="spell"  @onSelected="onSelect($event.model)"></spell-component>
+      <spell-component v-for="(spell, index) in spells" :key="index" :spell="spell" @onSelected="onSelect($event.model)"></spell-component>
     </div>
   </div>
 </template>
@@ -19,10 +19,11 @@ export default {
 
 <style>
 .spells-group-container {
-    overflow: hidden;
-    background-color: rgba(211, 211, 211, 0.4);
-    border: solid 1px black;
-    padding: 2px;
-    border-radius: 0.5em;
+  overflow: hidden;
+  background-color: rgba(211, 211, 211, 0.4);
+  border: solid 1px black;
+  padding: 2px;
+  border-radius: 0.5em;
+  margin-top: 5px;
 }
 </style>

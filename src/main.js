@@ -21,7 +21,7 @@ var VueTouch = require('vue-touch');
 Es6Promise.polyfill();
 
 /** Extension method to remove element at index. */
-Array.prototype.removeAt = function(index) {
+Array.prototype.removeAt = function (index) {
   this.splice(index, 1);
 };
 
