@@ -32,7 +32,7 @@ import CharacterMixin from 'Store/character.mixin';
 import PossessionComponent from "./possession.component";
 import CarryCapacitiesComponent from './carry-capacities.component';
 import WealthComponent from './wealth.component';
-import ResizeMixin from 'Shared/mixins/resize.handler.mixin';
+import ResizeMixin from 'Shared/mixins/events/resize.handler.mixin';
 
 export default {
   mixins: [CharacterMixin, ResizeMixin],

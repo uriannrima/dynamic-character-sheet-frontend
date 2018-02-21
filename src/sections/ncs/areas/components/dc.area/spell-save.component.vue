@@ -14,10 +14,8 @@ import CharacterMixin from 'Store/character.mixin';
 
 export default {
   mixins: [CharacterMixin],
+  props: ['keyAbility'],
   computed: {
-    keyAbility() {
-      return this.character.abilityScores.find(ability => ability.name === 'intelligence');
-    },
     dcMod() {
       return 10 + this.keyAbility.getTempModifier();
     }

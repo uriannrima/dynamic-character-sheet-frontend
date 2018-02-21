@@ -6,7 +6,7 @@
     </div>
     <input type="text" class="common-input bab-input" readonly :value="getGrappleTotal">
     <input type="text" class="common-input bab-input" readonly :value="getBaseAttackBonus">
-    <input type="number" class="common-input" readonly :value="getKeyAbility.getTempModifier()">
+    <input type="number" class="common-input" readonly :value="keyAbility.getTempModifier()">
     <input type="number" class="common-input" readonly :value="character.size.grappleBonus">
     <input type="number" class="common-input" v-model.number="character.grapple.miscModifier">
     <span class="h-md-down">&nbsp;</span>
@@ -22,17 +22,15 @@
   import CharacterMixin from 'Store/character.mixin';
 
   export default {
+    props: ['keyAbility'],
     mixins: [CharacterMixin],
     computed: {
-      getKeyAbility() {
-        return this.character.abilityScores.find(ability => ability.name === 'strength');
-      },
       getBaseAttackBonus() {
         return this.character.baseAttackBonus.join('/');
       },
       getGrappleTotal() {
         return this.character.baseAttackBonus.map(bab => {
-          return bab + this.getKeyAbility.getTempModifier() + this.character.size.grappleBonus + this.character.grapple.miscModifier;
+          return bab + this.keyAbility.getTempModifier() + this.character.size.grappleBonus + this.character.grapple.miscModifier;
         }).join('/');
       }
     }

@@ -8,62 +8,65 @@
       <base-attack-bonus-component/>
       <spell-resistance-component/>
     </div>
-    <grapple-component/>
+    <grapple-component :keyAbility="getKeyAbility('strength')" />
     <weapons-component/>
   </div>
 </template>
 
 <script>
-  import {
+import {
+  SavingThrowsComponent,
+  ConditionalModifiersComponent,
+  BaseAttackBonusComponent,
+  SpellResistanceComponent,
+  GrappleComponent,
+  WeaponsComponent
+} from './components';
+
+import KeyAbilityMixin from 'Shared/mixins/methods/key.ability.mixin';
+
+export default {
+  mixins: [KeyAbilityMixin],
+  components: {
     SavingThrowsComponent,
     ConditionalModifiersComponent,
     BaseAttackBonusComponent,
     SpellResistanceComponent,
     GrappleComponent,
     WeaponsComponent
-  } from './components';
-
-  export default {
-    components: {
-      SavingThrowsComponent,
-      ConditionalModifiersComponent,
-      BaseAttackBonusComponent,
-      SpellResistanceComponent,
-      GrappleComponent,
-      WeaponsComponent
-    }
   }
+}
 </script>
 
 <style>
-  .weapons-grid {
-    display: grid;
-    grid-template-rows: 17% 5% 5% 71%;
-    grid-row-gap: 5px;
-  }
+.weapons-grid {
+  display: grid;
+  grid-template-rows: 17% 5% 5% 71%;
+  grid-row-gap: 5px;
+}
 
+.saving-conditional-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 5px;
+}
+
+.base-attack-resistance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 2px;
+}
+
+@media screen and (min-width: 1024px) {
   .saving-conditional-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 5px;
+    grid-template-columns: 75% auto;
+    grid-column-gap: 2px;
+    grid-template-rows: 1fr;
   }
 
   .base-attack-resistance-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 2px;
+    grid-template-columns: 65% auto;
   }
-
-  @media screen and (min-width: 1024px) {
-    .saving-conditional-grid {
-      grid-template-columns: 75% auto;
-      grid-column-gap: 2px;
-      grid-template-rows: 1fr;
-    }
-
-    .base-attack-resistance-grid {
-      grid-template-columns: 65% auto;
-    }
-  }
+}
 </style>

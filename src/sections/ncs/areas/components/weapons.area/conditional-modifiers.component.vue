@@ -2,14 +2,14 @@
   <div class="conditional-modifiers-component">
     <div>
       <label class="conditional-modifiers-label">Conditional Modifiers</label>
-      <textarea class="common-textarea"></textarea>
+      <textarea class="common-textarea" v-model.trim="conditionalModifier"></textarea>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: ['conditionalModifier']
 }
 </script>
 

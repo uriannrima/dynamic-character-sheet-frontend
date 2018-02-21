@@ -27,10 +27,10 @@
 
 <script>
 import SkillComponent from './skill.component';
-import CharacterMixin from 'Store/character.mixin';
+import KeyAbilityMixin from 'Shared/mixins/methods/key.ability.mixin';
 
 export default {
-  mixins: [CharacterMixin],
+  mixins: [KeyAbilityMixin],
   components: {
     SkillComponent
   },
@@ -38,11 +38,6 @@ export default {
     return {
       minimize: false
     };
-  },
-  methods: {
-    getKeyAbility(abilityName) {
-      return this.character.abilityScores.find(ability => ability.name === abilityName);
-    }
   },
   computed: {
     orderedSkills() {
