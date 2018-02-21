@@ -1,27 +1,13 @@
-<template>
+<template functional>
   <div class="spell-save-component">
     <div class="black-box">
       <label>Spell Save</label>
     </div>
-    <input type="number" class="common-input" readonly :value="dcMod">
+    <input type="number" class="common-input" readonly :value="props.keyAbility.getTempModifier()">
     <label>&nbsp;</label>
     <label class="spell-save-dc-mod">DC Mod</label>
   </div>
 </template>
-
-<script>
-import CharacterMixin from 'Store/character.mixin';
-
-export default {
-  mixins: [CharacterMixin],
-  props: ['keyAbility'],
-  computed: {
-    dcMod() {
-      return 10 + this.keyAbility.getTempModifier();
-    }
-  }
-}
-</script>
 
 <style>
 .spell-save-component {

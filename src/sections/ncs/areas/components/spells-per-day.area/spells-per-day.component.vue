@@ -1,0 +1,37 @@
+<template>
+  <div class="spells-per-day-component">
+    <div class="spells-per-day-header">
+      <label>Spells<br>Known</label>
+      <label>Spell<br>Save DC</label>
+      <label>Level</label>
+      <label>Spells<br>Per Day</label>
+      <label>Bonus<br>Spells</label>
+    </div>
+    <single-spell-per-day-component v-for="(spells, spellLevel, index) in character.spells.groupBy(spell => spell.level)" :key="index" :spellPerDay="character.spellPerDayList[index]" :spellLevel="spellLevel" :keyAbility="getKeyAbility('intelligence')" :spellsPerLevel="spells.length"></single-spell-per-day-component>
+  </div>
+</template>
+
+<script>
+import KeyAbilityMixin from 'Shared/mixins/methods/key.ability.mixin';
+import SingleSpellPerDayComponent from './single-spd.component.vue';
+
+export default {
+  mixins: [KeyAbilityMixin],
+  components: { SingleSpellPerDayComponent }
+}
+</script>
+
+<style>
+.spells-per-day-component > div {
+  margin-top: 2px;
+}
+
+.spells-per-day-header > label {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 75%;
+  align-self: center;
+  text-align: center;
+}
+</style>
