@@ -1,14 +1,20 @@
 <template>
   <div>
-    <campaign-area class="campaign-area" />
-    <gear-area class="gear-area" />
-    <possessions-area class="possessions-area"></possessions-area>
-    <feats-area class="feats-area" />
-    <special-abilities-area class="special-area" />
-    <languages-area class="languages-area" />
-    <spells-area class="spells-area" />
-    <spell-save-area class="dc-area" />
-    <spells-per-day-area class="spells-per-day-area"></spells-per-day-area>
+    <div>
+      <campaign-area class="campaign-area" />
+      <gear-area class="gear-area" />
+      <possessions-area class="possessions-area"></possessions-area>
+    </div>
+    <div>
+      <feats-area class="feats-area" />
+      <special-abilities-area class="special-area" />
+      <languages-area class="languages-area" />
+    </div>
+    <div>
+      <spells-area class="spells-area" />
+      <spell-save-area class="dc-area" />
+      <spells-per-day-area class="spells-per-day-area"></spells-per-day-area>
+    </div>
   </div>
 </template>
 
@@ -31,22 +37,27 @@ export default {
 </script>
 
 <style>
-.cover {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-auto-rows: auto;
-  grid-row-gap: 5px;
-  /* prettier-ignore */
-  grid-template-areas:
-    "campaign-area"
-    "gear-area"
-    "possessions-area"
-    "feats-area"
-    "special-area"
-    "languages-area"
-    "spells-area"
-    "dc-area"
-    "spells-per-day-area";
+.cover > div > div {
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 1024px) {
+  .front > div {
+    margin-top: unset;
+  }
+
+  .cover {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cover > div:nth-child(1) {
+    width: 60%;
+  }
+
+  .cover > div:not(:nth-child(1)) {
+    width: 20%;
+  }
 }
 
 .campaign-area {
