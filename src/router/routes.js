@@ -1,6 +1,4 @@
-import Ncs from '@/sections/ncs/ncs.component';
-import Home from '@/sections/home/home.section';
-import Login from '@/sections/login/login.section';
+import { CharacterSheet, Home, Login } from '../sections';
 
 const routes = [
   {
@@ -12,12 +10,12 @@ const routes = [
     component: Login
   },
   {
-    path: '/ncs/:id',
-    component: Ncs
+    path: '/character/:id',
+    component: CharacterSheet
   },
   {
-    path: '/ncs',
-    component: Ncs
+    path: '/character',
+    component: CharacterSheet
   },
   {
     path: '*',

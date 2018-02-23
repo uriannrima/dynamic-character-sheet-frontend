@@ -12,7 +12,7 @@ import VeeValidate from 'vee-validate';
 // import VTooltip from 'v-tooltip';
 import router from './router';
 import { store } from 'Store';
-import Layout from './shared/sections/layout.section';
+import Layout from './shared/sections/Layout';
 import vSelect from 'vue-select';
 import './shared/directives/store-sync.directive';
 
@@ -95,7 +95,5 @@ new Vue({
   router,
   data: {
   },
-  components: {
-    'dcs-layout': Layout
-  }
+  components: { Layout }
 });
