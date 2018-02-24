@@ -2,7 +2,7 @@
   <div class="weapon-component">
     <div class="weapon-wrapper">
       <div class="weapon-name weapon-header weapon-name-header">
-        <span style="font-size: 16px;">Weapon</span>
+        <span style="font-size: 16px;">Attack</span>
       </div>
       <div class="weapon-header">
         <span>Attack Bonus</span>
