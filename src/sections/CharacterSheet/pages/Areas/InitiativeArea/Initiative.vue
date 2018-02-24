@@ -1,18 +1,26 @@
 <template>
-    <div class="initiative-component">
-        <div class="black-box initiative-bb">
-            <label>Initiative</label>
-            <label>Modifier</label>
-        </div>
-        <input type="number" class="common-input" readonly :value="getTotal">
-        <input type="number" class="common-input" readonly :value="getAbility.getTempModifier()">
-        <input type="number" class="common-input" v-model.number="character.initiative.miscModifier">
-        <label class="h-md-down">&nbsp;</label>
-        <label class="h-md-down">&nbsp;</label>
-        <label class="total-label">Total</label>
-        <label>Dex<br>Modifier</label>
-        <label>Misc<br>Modifier</label>
+  <div class="initiative-component">
+    <div class="black-box initiative-bb">
+      <label>Initiative</label>
+      <label>Modifier</label>
     </div>
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="getTotal">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="getAbility.getTempModifier()">
+    <input type="number"
+           class="common-input"
+           v-model.number="character.initiative.miscModifier">
+    <label class="h-md-down">&nbsp;</label>
+    <label class="h-md-down">&nbsp;</label>
+    <label class="total-label">Total</label>
+    <label>Dex<br>Modifier</label>
+    <label>Misc<br>Modifier</label>
+  </div>
 </template>
 
 <script>

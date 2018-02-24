@@ -3,33 +3,33 @@
 import CharacterService from 'Services/character.service';
 
 export default {
-  data: function() {
+  data: function () {
     return {
       title: 'Home',
       characters: []
     };
   },
-  beforeRouteEnter: async function(to, from, next) {
+  beforeRouteEnter: async function (to, from, next) {
     var characters = await CharacterService.getAll();
     next(vm => {
       vm.characters = characters;
     });
   }
   /*
-    computed: {
-        ...mapGetters([
-            'items',
-            'saleProducts'
-        ])
-    },
-    methods: {
-         You can also use ...mapMuttations(['methodName'])
-         But let's stick to what is considered best practice.
-        ...mapActions([
-            'reducePrice'
-        ])
-    }
-    */
+      computed: {
+          ...mapGetters([
+              'items',
+              'saleProducts'
+          ])
+      },
+      methods: {
+           You can also use ...mapMuttations(['methodName'])
+           But let's stick to what is considered best practice.
+          ...mapActions([
+              'reducePrice'
+          ])
+      }
+      */
 };
 </script>
 <template>
@@ -47,10 +47,11 @@ export default {
     </div -->
     <div>
         <h1>{{title}}</h1>
-         <ul>
-            <li v-for="character in characters" :key="character.id">
+        <ul>
+            <li v-for="character in characters"
+                :key="character.id">
                 <a :href="'#/character/' + character._id">{{character.name}}</a>
             </li>
-          </ul>
+        </ul>
     </div>
 </template>

@@ -6,8 +6,10 @@
           <strong>School</strong>
         </span>
         <span :title="describe.school.description">{{describe.school.name}}</span>
-        <span v-if="describe.school.subSchool" :title="describe.school.subSchool.description"> ({{describe.school.subSchool.name}})</span>
-        <span v-if="describe.descriptors.length > 0" v-text="'[' + describeDescriptors + ']'"></span>
+        <span v-if="describe.school.subSchool"
+              :title="describe.school.subSchool.description"> ({{describe.school.subSchool.name}})</span>
+        <span v-if="describe.descriptors.length > 0"
+              v-text="'[' + describeDescriptors + ']'"></span>
         <span>
           <strong>Level:</strong>
         </span>
@@ -23,7 +25,9 @@
         <span>
           <strong>Components:</strong>
         </span>
-        <span v-for="(component, index) of describe.components" :key="index" :title="component.description">{{component.name}}
+        <span v-for="(component, index) of describe.components"
+              :key="index"
+              :title="component.description">{{component.name}}
           <span v-if="component.materials">({{component.materials}}) </span>
         </span>
       </div>
@@ -55,7 +59,8 @@
           </div>
         </div>
       </div>
-      <div class="spell-form-component-targets-container" v-if="describe.targets">
+      <div class="spell-form-component-targets-container"
+           v-if="describe.targets">
         <span>
           <strong>Target or Area:</strong>
         </span>
@@ -65,7 +70,10 @@
         <span>
           <strong>Duration:</strong>
         </span>
-        <span v-for="(duration, index) in describe.durations" :key="index" :title="duration.description" v-text="duration.duration || duration.name"></span>
+        <span v-for="(duration, index) in describe.durations"
+              :key="index"
+              :title="duration.description"
+              v-text="duration.duration || duration.name"></span>
       </div>
       <div class="spell-form-component-saving-throw-container">
         <span>
@@ -90,7 +98,8 @@
         </span>
         <span>{{describe.description}}</span>
       </div>
-      <div class="spell-form-component-html-container" v-if="describe.additionalInformation">
+      <div class="spell-form-component-html-container"
+           v-if="describe.additionalInformation">
         <label>
           <strong>
             Aditional Information (as HTML):</strong>
@@ -101,19 +110,32 @@
     <div v-else>
       <div class="spell-form-component-name-container">
         <span>Name:</span>
-        <input type="text" v-validate="'required'" v-model.trim="model.name" name="name">
+        <input type="text"
+               v-validate="'required'"
+               v-model.trim="model.name"
+               name="name">
         <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
       </div>
       <div class="spell-form-component-level-container">
         <span>Level:</span>
-        <input type="number" v-validate="'required'" v-model.number="model.level" name="level" min="0" max="9">
+        <input type="number"
+               v-validate="'required'"
+               v-model.number="model.level"
+               name="level"
+               min="0"
+               max="9">
         <span v-show="errors.has('level')">{{ errors.first('level') }}</span>
       </div>
       <div class="feat-form-component-spell-school-container">
         <span>School:</span>
-        <select v-model="school" v-validate="'required'" name="spell school">
-          <option value="" selected>None</option>
-          <option v-for="(spellSchool, index) in allSchools" :value="spellSchool" :key="index">{{spellSchool.name}}
+        <select v-model="school"
+                v-validate="'required'"
+                name="spell school">
+          <option value=""
+                  selected>None</option>
+          <option v-for="(spellSchool, index) in allSchools"
+                  :value="spellSchool"
+                  :key="index">{{spellSchool.name}}
           </option>
         </select>
         <span v-if="school.description">
@@ -122,11 +144,15 @@
         <span>{{school.description}} </span>
         <span v-show="errors.has('spell school')">{{ errors.first('spell school') }}</span>
       </div>
-      <div class="feat-form-component-sub-school-container" v-if="selectedSchool.subSchools">
+      <div class="feat-form-component-sub-school-container"
+           v-if="selectedSchool.subSchools">
         <span>Sub School:</span>
         <select v-model="model.school.subSchool">
-          <option value="" selected>None</option>
-          <option v-for="(subSchool, index) in selectedSchool.subSchools" :value="subSchool" :key="index">{{subSchool.name}}
+          <option value=""
+                  selected>None</option>
+          <option v-for="(subSchool, index) in selectedSchool.subSchools"
+                  :value="subSchool"
+                  :key="index">{{subSchool.name}}
           </option>
         </select>
         <div v-if="model.school.subSchool && model.school.subSchool.description">
@@ -139,26 +165,45 @@
       <div class="spell-form-component-descriptors-container">
         <span>Descriptors:</span>
         <div>
-          <v-select multiple v-model="model.descriptors" :options="allDescriptors" label="name"></v-select>
+          <v-select multiple
+                    v-model="model.descriptors"
+                    :options="allDescriptors"
+                    label="name"></v-select>
         </div>
       </div>
       <div class="spell-form-component-components-container">
         <span>Components:</span>
         <div>
-          <v-select multiple v-model="model.components" :options="allComponents" label="name"></v-select>
+          <v-select multiple
+                    v-model="model.components"
+                    :options="allComponents"
+                    label="name"></v-select>
         </div>
       </div>
-      <div class="spell-form-component-materials-container" v-if="model.components && model.components.find(c => c.name === 'Material')">
+      <div class="spell-form-component-materials-container"
+           v-if="model.components && model.components.find(c => c.name === 'Material')">
         <span>Material(s):</span>
-        <input type="text" v-validate="'required'" v-model.trim="model.components[model.components.findIndex(c =>c.name === 'Material')].materials" name="materials"> {{model.components[model.components.findIndex(c =>c.name=='Material')].materials}}
+        <input type="text"
+               v-validate="'required'"
+               v-model.trim="model.components[model.components.findIndex(c =>c.name === 'Material')].materials"
+               name="materials"> {{model.components[model.components.findIndex(c =>c.name=='Material')].materials}}
         <span v-show="errors.has('materials')">{{ errors.first('materials') }}</span>
       </div>
       <div class="spell-form-component-casting-time-container">
         <span>Casting Time:</span>
         <div style="display: flex">
-          <input type="number" style="width: 50%" v-validate="'required'" v-model.number="model.castingTimeAmount" name="casting time amount">
-          <select v-model="model.castingTime" style="width: 50%" v-validate="'required'" name="casting time">
-            <option v-for="(castingTime, index) in allCastingTimes" :value="castingTime" :key="index">{{castingTime}}
+          <input type="number"
+                 style="width: 50%"
+                 v-validate="'required'"
+                 v-model.number="model.castingTimeAmount"
+                 name="casting time amount">
+          <select v-model="model.castingTime"
+                  style="width: 50%"
+                  v-validate="'required'"
+                  name="casting time">
+            <option v-for="(castingTime, index) in allCastingTimes"
+                    :value="castingTime"
+                    :key="index">{{castingTime}}
             </option>
           </select>
         </div>
@@ -168,43 +213,55 @@
       <div class="spell-form-component-range-container">
         <span>Range:</span>
         <select v-model="range">
-          <option v-for="(range, index) in allRanges" :value="range" :key="index">{{range.name}}
+          <option v-for="(range, index) in allRanges"
+                  :value="range"
+                  :key="index">{{range.name}}
           </option>
         </select>
         <div v-if="range.name === 'Miscellaneous'">
           <span>Distance:</span>
-          <input type="number" v-model.number="model.range.distance">
+          <input type="number"
+                 v-model.number="model.range.distance">
         </div>
       </div>
       <div class="spell-form-component-targets-container">
-        <label><input type="checkbox" v-model="has.targets">Non Standard Target or Area:</label>
+        <label><input type="checkbox"
+                 v-model="has.targets">Non Standard Target or Area:</label>
         <div v-if="has.targets">
-          <input type="text" v-model.trim="model.targets">
+          <input type="text"
+                 v-model.trim="model.targets">
         </div>
       </div>
       <div class="spell-form-component-effect-container">
         <span>Effect:</span>
         <select v-model="effect">
           <option value="">None</option>
-          <option v-for="(effect, index) in allEffects" :value="effect" :key="index">{{effect.name}}
+          <option v-for="(effect, index) in allEffects"
+                  :value="effect"
+                  :key="index">{{effect.name}}
           </option>
           <option :value="{ name: 'Miscellaneous'}">Miscellaneous</option>
         </select>
         <div v-if="effect.name === 'Miscellaneous'">
           <span>Description:</span>
-          <input type="text" v-model.trim="model.effect.description">
+          <input type="text"
+                 v-model.trim="model.effect.description">
         </div>
         <div v-if="effect.types">
           <span>Types:</span>
           <select v-model="model.effect.type">
-            <option v-for="(type, index) in effect.types" :value="type" :key="index">{{type.name}}
+            <option v-for="(type, index) in effect.types"
+                    :value="type"
+                    :key="index">{{type.name}}
             </option>
           </select>
         </div>
         <div v-if="effect.formats">
           <span>Format:</span>
           <select v-model="model.effect.format">
-            <option v-for="(format, index) in effect.formats" :value="format" :key="index">{{format.name}}
+            <option v-for="(format, index) in effect.formats"
+                    :value="format"
+                    :key="index">{{format.name}}
             </option>
           </select>
         </div>
@@ -212,43 +269,65 @@
       <div class="spell-form-component-duration-container">
         <span>Durations:</span>
         <div>
-          <v-select multiple v-model="model.durations" :options="allDurations" label="name"></v-select>
+          <v-select multiple
+                    v-model="model.durations"
+                    :options="allDurations"
+                    label="name"></v-select>
         </div>
       </div>
-      <div class="spell-form-component-timed-container" v-if="model.durations && model.durations.find(c => c.name === 'Timed')">
+      <div class="spell-form-component-timed-container"
+           v-if="model.durations && model.durations.find(c => c.name === 'Timed')">
         <span>Timed Duration:</span>
-        <input type="text" v-validate="'required'" name="timed duration" v-model.trim="model.durations[model.durations.findIndex(d => d.name === 'Timed')].duration">
+        <input type="text"
+               v-validate="'required'"
+               name="timed duration"
+               v-model.trim="model.durations[model.durations.findIndex(d => d.name === 'Timed')].duration">
         <span v-show="errors.has('timed duration')">{{ errors.first('timed duration') }}</span>
       </div>
-      <div class="spell-form-component-saving-throw-container" v-if="model.savingThrow">
+      <div class="spell-form-component-saving-throw-container"
+           v-if="model.savingThrow">
         <span>Saving Throw:</span>
         <div style="display: flex">
-          <select style="width: 50%" v-model="model.savingThrow.check">
+          <select style="width: 50%"
+                  v-model="model.savingThrow.check">
             <option value="">None</option>
-            <option v-for="(savingThrow, index) in savingThrows" :value="savingThrow" :key="index">{{savingThrow}}
+            <option v-for="(savingThrow, index) in savingThrows"
+                    :value="savingThrow"
+                    :key="index">{{savingThrow}}
             </option>
           </select>
-          <select style="width: 50%" v-model="model.savingThrow.resolve">
+          <select style="width: 50%"
+                  v-model="model.savingThrow.resolve">
             <option value="">None</option>
-            <option v-for="(resolve, index) in allSavingThrowResolve" :value="resolve.name" :key="index">{{resolve.name}}
+            <option v-for="(resolve, index) in allSavingThrowResolve"
+                    :value="resolve.name"
+                    :key="index">{{resolve.name}}
             </option>
           </select>
         </div>
       </div>
       <div class="spell-form-component-spell-resistance-container">
         <label>
-          <input type="checkbox" v-model="model.spellResistance">Spell Resistance
+          <input type="checkbox"
+                 v-model="model.spellResistance">Spell Resistance
         </label>
       </div>
       <div class="spell-form-component-description-container">
         <span>Description:</span>
-        <textarea type="text" v-model.trim="model.description" v-validate="'required'" name="description"></textarea>
+        <textarea type="text"
+                  v-model.trim="model.description"
+                  v-validate="'required'"
+                  name="description"></textarea>
         <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
       </div>
       <div class="spell-form-component-html-container">
         <label>
-          <input type="checkbox" v-model="has.additionalInformation">Aditional Information (as HTML):</label>
-        <textarea v-if="has.additionalInformation" class="spell-aditional-information-text-area" type="text" v-model.trim="model.additionalInformation"></textarea>
+          <input type="checkbox"
+                 v-model="has.additionalInformation">Aditional Information (as HTML):</label>
+        <textarea v-if="has.additionalInformation"
+                  class="spell-aditional-information-text-area"
+                  type="text"
+                  v-model.trim="model.additionalInformation"></textarea>
       </div>
     </div>
   </div>

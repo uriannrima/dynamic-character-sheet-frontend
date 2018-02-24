@@ -1,16 +1,31 @@
 <template>
   <div class="skill-component">
-    <input type="checkbox" class="class-skill-checkbox" v-model="skill.classSkill">
+    <input type="checkbox"
+           class="class-skill-checkbox"
+           v-model="skill.classSkill">
     <div class="skill-wrapper">
       <div class="skill-name-container">
-        <label class="skill-name" :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</label>
-        <small class="skill-sub-value" v-if="skill.subValue">({{skill.subValue}})</small>
+        <label class="skill-name"
+               :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</label>
+        <small class="skill-sub-value"
+               v-if="skill.subValue">({{skill.subValue}})</small>
       </div>
-      <label class="skill-key-ability" :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3)}}</label>
-      <input type="number" class="common-input" readonly :value="skillModifier">
-      <input type="number" class="only-bottom" readonly :value="keyAbility.getTempModifier()">
-      <input type="number" class="only-bottom" v-model.number="skill.rank">
-      <input type="number" class="only-bottom" v-model.number="skill.miscModifier">
+      <label class="skill-key-ability"
+             :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3)}}</label>
+      <input type="number"
+             class="common-input"
+             readonly
+             :value="skillModifier">
+      <input type="number"
+             class="only-bottom"
+             readonly
+             :value="keyAbility.getTempModifier()">
+      <input type="number"
+             class="only-bottom"
+             v-model.number="skill.rank">
+      <input type="number"
+             class="only-bottom"
+             v-model.number="skill.miscModifier">
     </div>
   </div>
 </template>

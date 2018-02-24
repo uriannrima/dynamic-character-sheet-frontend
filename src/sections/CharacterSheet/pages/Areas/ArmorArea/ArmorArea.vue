@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {Health, PrimaryArmor} from './';
+import { Health, PrimaryArmor } from './';
 
 export default {
   components: { Health, PrimaryArmor }

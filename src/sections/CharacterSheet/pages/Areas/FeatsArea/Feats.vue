@@ -1,28 +1,39 @@
 <template>
   <div class="featt">
-    <div class="black-box">
+    <div class="black-box rounded">
       <div>
         <label>Feats</label>
-        <span class="add-icon glyphicon glyphicon-plus" @click="toggleModal"></span>
+        <minimize-button :minimize.sync="minimize"></minimize-button>
+        <open-modal-button :showModal.sync="showModal"></open-modal-button>
       </div>
     </div>
-    <div class="feats-container">
-      <feat v-for="(feat, index) in character.feats" :key="index" :feat="feat" @onSelected="onSelected"></feat>
-      <div class="no-content-container" v-if="character.feats.length == 0">
+    <div class="feats-container" v-show="!minimize">
+      <feat v-for="(feat, index) in character.feats"
+            :key="index"
+            :feat="feat"
+            @onSelected="onSelected"></feat>
+      <div class="no-content-container"
+           v-if="character.feats.length == 0">
         <label>No feats</label>
       </div>
     </div>
-    <feat-modal :show.sync="showModal" :referenceList="character.feats" :describe.sync="selected" @onAdded="addToCharacter($event.model)" @onRemoved="removeFromCharacter($event.model)" @onUpdated="updateOnCharacter($event.model)"></feat-modal>
+    <feat-modal :show.sync="showModal"
+                :referenceList="character.feats"
+                :describe.sync="selected"
+                @onAdded="addToCharacter($event.model)"
+                @onRemoved="removeFromCharacter($event.model)"
+                @onUpdated="updateOnCharacter($event.model)"></feat-modal>
   </div>
 </template>
 
 <script>
 import CharacterMixin from 'Store/character.mixin';
 import { CharacterUpdateMixin, ModalContainerMixin } from 'Shared/modal';
+import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 import { Feat, FeatModal } from './';
 
 export default {
-  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin],
+  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   components: { Feat, FeatModal },
   created() {
     // character.update.mixin requirement.

@@ -1,6 +1,8 @@
 <template>
   <div class="carry-capacity-component">
-    <input type="number" class="common-input" v-model.number="carryCapacity.value">
+    <input type="number"
+           class="common-input"
+           v-model.number="carryCapacity.value">
     <label v-html="carryCapacity.label"></label>
     <small v-if="carryCapacity.small">{{carryCapacity.small}}</small>
   </div>

@@ -52,11 +52,11 @@ export default {
   }
 
   .cover > div:nth-child(1) {
-    width: 60%;
+    width: 50%;
   }
 
   .cover > div:not(:nth-child(1)) {
-    width: 20%;
+    width: 25%;
   }
 }
 

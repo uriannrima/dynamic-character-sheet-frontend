@@ -3,42 +3,44 @@
     <div class="black-box">
       <label>Base Attack Bonus</label>
     </div>
-    <input type="text" class="common-input bab-input" v-model="baseAttackBonus">
+    <input type="text"
+           class="common-input bab-input"
+           v-model="baseAttackBonus">
   </div>
 </template>
 
 <script>
-  import CharacterMixin from 'Store/character.mixin';
+import CharacterMixin from 'Store/character.mixin';
 
-  export default {
-    mixins: [CharacterMixin],
-    computed: {
-      baseAttackBonus: {
-        set(value) {
-          this.character.baseAttackBonus = value.split('/').map(v => Number(v));
-        },
-        get() {
-          return this.character.baseAttackBonus.join('/');
-        }
+export default {
+  mixins: [CharacterMixin],
+  computed: {
+    baseAttackBonus: {
+      set(value) {
+        this.character.baseAttackBonus = value.split('/').map(v => Number(v));
+      },
+      get() {
+        return this.character.baseAttackBonus.join('/');
       }
     }
   }
+}
 </script>
 
 <style>
+.bab-component {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(30px, auto);
+}
+
+.bab-input {
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
   .bab-component {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(30px, auto);
+    grid-template-columns: 70% auto;
   }
-
-  .bab-input {
-    text-align: center;
-  }
-
-  @media screen and (min-width: 1024px) {
-    .bab-component {
-      grid-template-columns: 70% auto;
-    }
-  }
+}
 </style>

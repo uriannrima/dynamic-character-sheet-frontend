@@ -1,5 +1,8 @@
 <template>
-  <span class="spell" :class="spellSchool" @click="onSelect(spell)" v-on:tap="onSelect(spell)">
+  <span class="spell"
+        :class="spellSchool"
+        @click="onSelect(spell)"
+        v-on:tap="onSelect(spell)">
     {{spell.name}}</span>
 </template>
 

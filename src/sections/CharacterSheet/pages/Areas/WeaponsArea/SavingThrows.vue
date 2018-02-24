@@ -9,7 +9,10 @@
       <label>Misc<br>Modifier</label>
       <label>Temporary<br>Modifier</label>
     </div>
-    <saving-throw v-for="(savingThrow, index) in character.savingThrows" :key="index" :savingThrow="savingThrow" :keyAbility="character.abilityScores.find(a => a.name === savingThrow.keyAbility)" />
+    <saving-throw v-for="(savingThrow, index) in character.savingThrows"
+                  :key="index"
+                  :savingThrow="savingThrow"
+                  :keyAbility="character.abilityScores.find(a => a.name === savingThrow.keyAbility)" />
   </div>
 </template>
 

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <possessions :possessions="character.items" :carryCapacities="character.carryCapacities" :wealth="character.money"></possessions>
+    <possessions :possessions="character.items"
+                 :carryCapacities="character.carryCapacities"
+                 :wealth="character.money"></possessions>
   </div>
 </template>
 

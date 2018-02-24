@@ -3,10 +3,11 @@
     <div class="black-box rounded h-md-up">
       <div>
         <label>Abilities Score</label>
-        <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+        <minimize-button :minimize.sync="minimize"></minimize-button>
       </div>
     </div>
-    <div class="abilities-scores-container" v-show="!minimize">
+    <div class="abilities-scores-container"
+         v-show="!minimize">
       <div class="ability-score-component ability-score-header">
         <label>Ability<br>Name</label>
         <label>Ability<br>Score</label>
@@ -14,7 +15,13 @@
         <label>Temporary<br>Score</label>
         <label>Temporary<br>Modifier</label>
       </div>
-      <ability-score v-for="(abilityScore, index) in character.abilityScores" :key="index" :index="index" :name="abilityScore.name" :value="abilityScore.value" :tempValue="abilityScore.tempValue" @onUpdateScore="updateScore($event)" />
+      <ability-score v-for="(abilityScore, index) in character.abilityScores"
+                     :key="index"
+                     :index="index"
+                     :name="abilityScore.name"
+                     :value="abilityScore.value"
+                     :tempValue="abilityScore.tempValue"
+                     @onUpdateScore="updateScore($event)" />
     </div>
   </div>
 
@@ -23,15 +30,11 @@
 <script>
 import { AbilityScore } from './';
 import CharacterMixin from 'Store/character.mixin';
+import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [CharacterMixin],
+  mixins: [CharacterMixin, MinimizableMixin],
   components: { AbilityScore },
-  data() {
-    return {
-      minimize: false
-    }
-  },
   methods: {
     updateScore: function ({ index, field, value }) {
       var abilityScore = this.character.abilityScores[index];

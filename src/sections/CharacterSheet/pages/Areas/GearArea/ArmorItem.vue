@@ -4,26 +4,34 @@
       <div class="black-box rounded">
         <label>Armor/Protecetive Item</label>
       </div>
-      <input type="text" class="common-input" v-model="armor.name">
+      <input type="text"
+             class="common-input"
+             v-model="armor.name">
     </div>
     <div>
       <div>
         <div class="black-box">
           <label>Type</label>
         </div>
-        <input type="text" class="common-input" v-model="armor.type">
+        <input type="text"
+               class="common-input"
+               v-model="armor.type">
       </div>
       <div>
         <div class="black-box">
           <label>AC Bonus</label>
         </div>
-        <input type="number" class="common-input" v-model.number="armor.acBonus">
+        <input type="number"
+               class="common-input"
+               v-model.number="armor.acBonus">
       </div>
       <div>
         <div class="black-box">
           <label>Max Dex</label>
         </div>
-        <input type="number" class="common-input" v-model.number="armor.maxDex">
+        <input type="number"
+               class="common-input"
+               v-model.number="armor.maxDex">
       </div>
     </div>
     <div>
@@ -31,13 +39,17 @@
         <div class="black-box">
           <label>Check Penalty</label>
         </div>
-        <input type="number" class="common-input" v-model.number="armor.checkPenalty">
+        <input type="number"
+               class="common-input"
+               v-model.number="armor.checkPenalty">
       </div>
       <div>
         <div class="black-box">
           <label>Spell Failure</label>
         </div>
-        <input type="number" class="common-input" v-model.number="armor.spellFailure">
+        <input type="number"
+               class="common-input"
+               v-model.number="armor.spellFailure">
       </div>
     </div>
     <div>
@@ -45,20 +57,26 @@
         <div class="black-box">
           <label>Speed</label>
         </div>
-        <input type="text" class="common-input" v-model="armor.speed">
+        <input type="text"
+               class="common-input"
+               v-model="armor.speed">
       </div>
       <div>
         <div class="black-box">
           <label>Weight</label>
         </div>
-        <input type="number" class="common-input" v-model.number="armor.weight">
+        <input type="number"
+               class="common-input"
+               v-model.number="armor.weight">
       </div>
     </div>
     <div>
       <div class="black-box">
         <label>Special Properties</label>
       </div>
-      <input type="text" class="common-input" v-model="armor.specialProperties">
+      <input type="text"
+             class="common-input"
+             v-model="armor.specialProperties">
     </div>
   </div>
 </template>

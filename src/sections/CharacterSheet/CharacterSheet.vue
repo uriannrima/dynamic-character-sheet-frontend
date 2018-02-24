@@ -49,7 +49,7 @@ export default {
     display: flex;
     flex-direction: row;
   }
-  
+
   .main-container > div {
     width: 50%;
   }
@@ -59,7 +59,7 @@ export default {
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
   .main-container {
-    width: 210mm;
+    width: 1280px;
   }
 }
 

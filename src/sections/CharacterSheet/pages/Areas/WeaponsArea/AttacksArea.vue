@@ -1,5 +1,5 @@
 <template>
-  <div class="weapons-grid">
+  <div class="attack-grid">
     <div class="saving-conditional-grid">
       <saving-throws></saving-throws>
       <conditional-modifiers></conditional-modifiers>
@@ -9,23 +9,23 @@
       <spell-resistance></spell-resistance>
     </div>
     <grapple :keyAbility="getKeyAbility('strength')"></grapple>
-    <weapons></weapons>
+    <attacks></attacks>
   </div>
 </template>
 
 <script>
-import { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Weapons } from './';
+import { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from './';
 
 import KeyAbilityMixin from 'Shared/mixins/methods/key.ability.mixin';
 
 export default {
   mixins: [KeyAbilityMixin],
-  components: { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Weapons }
+  components: { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks }
 }
 </script>
 
 <style>
-.weapons-grid {
+.attack-grid {
   display: grid;
   grid-template-rows: 17% 5% 5% 71%;
   grid-row-gap: 5px;

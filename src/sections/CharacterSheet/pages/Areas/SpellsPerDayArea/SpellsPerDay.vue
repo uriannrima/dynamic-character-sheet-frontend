@@ -7,7 +7,12 @@
       <label>Spells<br>Per Day</label>
       <label>Bonus<br>Spells</label>
     </div>
-    <single-spell-per-day v-for="(spells, spellLevel, index) in character.spells.groupBy(spell => spell.level)" :key="index" :spellPerDay="character.spellPerDayList[index]" :spellLevel="spellLevel" :keyAbility="getKeyAbility('intelligence')" :spellsPerLevel="spells.length"></single-spell-per-day>
+    <single-spell-per-day v-for="(spells, spellLevel, index) in character.spells.groupBy(spell => spell.level)"
+                          :key="index"
+                          :spellPerDay="character.spellPerDayList[index]"
+                          :spellLevel="spellLevel"
+                          :keyAbility="getKeyAbility('intelligence')"
+                          :spellsPerLevel="spells.length"></single-spell-per-day>
   </div>
 </template>
 

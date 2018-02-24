@@ -2,15 +2,17 @@
   <div class="skills-component">
     <div class="skills-header">
       <div class="class-skill-container">
-        <label class="class-skill-label">Class Skill?</label>
+        <label class="class-skill-label"
+               v-show="!minimize">Class Skill?</label>
       </div>
-      <div class="black-box">
+      <div class="black-box rounded">
         <div>
           <label>Skills</label>
-          <span class="add-icon glyphicon h-md-up" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+          <minimize-button :minimize.sync="minimize"></minimize-button>
         </div>
       </div>
-      <div class="headers-container">
+      <div class="headers-container"
+           v-show="!minimize">
         <label class="skill-name-header">Skill Name</label>
         <label class="skill-value-header">Key<br>Ability</label>
         <label class="skill-value-header">Skill<br>Modifier</label>
@@ -19,8 +21,12 @@
         <label class="skill-value-header">Misc<br>Modifier</label>
       </div>
     </div>
-    <div class="skills-body" v-show="!minimize">
-      <skill v-for="(skill, index) in character.skills" :key="index" :skill="skill" :keyAbility="getKeyAbility(skill.keyAbility)"></skill>
+    <div class="skills-body"
+         v-show="!minimize">
+      <skill v-for="(skill, index) in character.skills"
+             :key="index"
+             :skill="skill"
+             :keyAbility="getKeyAbility(skill.keyAbility)"></skill>
     </div>
   </div>
 </template>
@@ -28,15 +34,11 @@
 <script>
 import { Skill } from './';
 import KeyAbilityMixin from 'Shared/mixins/methods/key.ability.mixin';
+import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [KeyAbilityMixin],
+  mixins: [KeyAbilityMixin, MinimizableMixin],
   components: { Skill },
-  data() {
-    return {
-      minimize: false
-    };
-  },
   computed: {
     orderedSkills() {
       return this.character.skills.orderBy(s => s.name);

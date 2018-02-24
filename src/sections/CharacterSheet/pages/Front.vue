@@ -5,26 +5,26 @@
     <div class="black-box rounded h-md-up">
       <div>
         <label>Combat</label>
-        <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+        <minimize-button :minimize.sync="minimize"></minimize-button>
       </div>
     </div>
-    <armor-area v-show="!minimize" class="armor-area" />
-    <initiative-area v-show="!minimize" class="initiative-area" />
-    <weapons-area v-show="!minimize" class="weapons-area" />
+    <armor-area v-show="!minimize"
+                class="armor-area" />
+    <initiative-area v-show="!minimize"
+                     class="initiative-area" />
+    <attacks-area v-show="!minimize"
+                  class="attacks-area" />
     <skills-area class="skills-area" />
   </div>
 </template>
 
 <script>
-import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, WeaponsArea, SkillsArea } from './Areas';
+import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from './Areas';
+import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 
 export default {
-  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, WeaponsArea, SkillsArea },
-  data() {
-    return {
-      minimize: false
-    }
-  }
+  mixins: [MinimizableMixin],
+  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea }
 }
 </script>
 
@@ -47,7 +47,7 @@ export default {
       "description-area description-area description-area"
       "ability-area armor-area armor-area"
       "ability-area initiative-area skills-area"
-      "weapons-area weapons-area skills-area";
+      "attacks-area attacks-area skills-area";
   }
 }
 
@@ -63,8 +63,8 @@ export default {
   grid-area: initiative-area;
 }
 
-.weapons-area {
-  grid-area: weapons-area;
+.attacks-area {
+  grid-area: attacks-area;
 }
 
 .skills-area {

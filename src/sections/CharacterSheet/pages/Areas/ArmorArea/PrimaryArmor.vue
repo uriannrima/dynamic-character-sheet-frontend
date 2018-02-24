@@ -4,15 +4,37 @@
       <label>AC</label>
       <label>Armor Class</label>
     </div>
-    <input type="number" class="common-input ac-bb" readonly :value="totalArmor">
+    <input type="number"
+           class="common-input ac-bb"
+           readonly
+           :value="totalArmor">
     <span class="base-armor-label">= 10 +</span>
-    <input type="number" class="common-input" readonly :value="armorBonus">
-    <input type="number" class="common-input" readonly :value="shieldBonus">
-    <input type="number" class="common-input" readonly :value="keyAbility.getTempModifier()">
-    <input type="number" class="common-input" readonly :value="character.size.modifier">
-    <input type="number" class="common-input" v-model.number="character.armorClass.naturalArmor">
-    <input type="number" class="common-input" readonly :value="deflectionBonus" >
-    <input type="number" class="common-input" v-model.number="character.armorClass.miscModifier">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="armorBonus">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="shieldBonus">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="keyAbility.getTempModifier()">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="character.size.modifier">
+    <input type="number"
+           class="common-input"
+           v-model.number="character.armorClass.naturalArmor">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="deflectionBonus">
+    <input type="number"
+           class="common-input"
+           v-model.number="character.armorClass.miscModifier">
     <label>&nbsp;</label>
     <label class="h-md-down total-label">Total</label>
     <label class="h-md-down">&nbsp;</label>
@@ -26,7 +48,9 @@
     <div class="h-lg-up black-box damage-reduction-bb">
       <label>Damage Reduction</label>
     </div>
-    <input type="text" class="damage-reduction-bb common-input speed-input" v-model="character.damageReduction">
+    <input type="text"
+           class="damage-reduction-bb common-input speed-input"
+           v-model="character.damageReduction">
     <label class="h-md-down">Damage<br>Reduction</label>
   </div>
 </template>

@@ -3,7 +3,10 @@
     <div class="black-box">
       <label>Spell Save</label>
     </div>
-    <input type="number" class="common-input" readonly :value="props.keyAbility.getTempModifier()">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="props.keyAbility.getTempModifier()">
     <label>&nbsp;</label>
     <label class="spell-save-dc-mod">DC Mod</label>
   </div>

@@ -16,32 +16,37 @@
         </span>
         <span>{{describe.benefit}}</span>
       </div>
-      <div class="feat-form-component-prerequisite-container" v-if="describe.prerequisite">
+      <div class="feat-form-component-prerequisite-container"
+           v-if="describe.prerequisite">
         <span>
           <strong>Prerequisite:</strong>
         </span>
         <span>{{describe.prerequisite}}</span>
       </div>
-      <div class="feat-form-component-normal-container" v-if="describe.normal">
+      <div class="feat-form-component-normal-container"
+           v-if="describe.normal">
         <span>
           <strong>Normal:</strong>
         </span>
         <span>{{describe.normal}}</span>
       </div>
-      <div class="feat-form-component-special-container" v-if="describe.special">
+      <div class="feat-form-component-special-container"
+           v-if="describe.special">
         <span>
           <strong>Special:</strong>
         </span>
         <span>{{describe.special}}</span>
       </div>
       <sub-values-list :model="describe"></sub-values-list>
-      <div class="feat-form-component-miscellaneous-container" v-if="describe.miscellaneous">
+      <div class="feat-form-component-miscellaneous-container"
+           v-if="describe.miscellaneous">
         <span>
           <strong>Miscellaneous:</strong>
         </span>
         <span>{{describe.miscellaneous}}</span>
       </div>
-      <div class="feat-form-component-html-container" v-if="describe.aditionalInformation">
+      <div class="feat-form-component-html-container"
+           v-if="describe.aditionalInformation">
         <span>
           <strong>Aditional Information:</strong>
         </span>
@@ -51,12 +56,17 @@
     <div v-else>
       <div class="feat-form-component-title-container">
         <span>Title:</span>
-        <input type="text" v-validate="'required'" v-model.trim="model.title" name="title">
+        <input type="text"
+               v-validate="'required'"
+               v-model.trim="model.title"
+               name="title">
         <span v-show="errors.has('title')">{{ errors.first('title') }}</span>
       </div>
       <div class="feat-form-component-type-container">
         <span>Type:</span>
-        <select v-model="model.type" v-validate="'required'" name="type">
+        <select v-model="model.type"
+                v-validate="'required'"
+                name="type">
           <option value="General">General</option>
           <option value="Item Creation">Item Creation</option>
           <option value="Metamagic">Metamagic</option>
@@ -66,32 +76,53 @@
       </div>
       <div class="feat-form-component-benefit-container">
         <span>Benefit:</span>
-        <textarea type="text" v-model.trim="model.benefit" v-validate="'required'" name="benefit"></textarea>
+        <textarea type="text"
+                  v-model.trim="model.benefit"
+                  v-validate="'required'"
+                  name="benefit"></textarea>
         <span v-show="errors.has('benefit')">{{ errors.first('benefit') }}</span>
       </div>
       <div class="feat-form-component-prerequisite-container">
-        <label><input type="checkbox" v-model="has.prerequisite">Prerequisite:</label>
-        <textarea v-if="has.prerequisite || model.prerequisite" type="text" v-model.trim="model.prerequisite"></textarea>
+        <label><input type="checkbox"
+                 v-model="has.prerequisite">Prerequisite:</label>
+        <textarea v-if="has.prerequisite || model.prerequisite"
+                  type="text"
+                  v-model.trim="model.prerequisite"></textarea>
       </div>
       <div class="feat-form-component-normal-container">
-        <label><input type="checkbox" v-model="has.normal">Normal:</label>
-        <textarea v-if="has.normal || model.normal" type="text" v-model.trim="model.normal"></textarea>
+        <label><input type="checkbox"
+                 v-model="has.normal">Normal:</label>
+        <textarea v-if="has.normal || model.normal"
+                  type="text"
+                  v-model.trim="model.normal"></textarea>
       </div>
       <div class="feat-form-component-special-container">
-        <label><input type="checkbox" v-model="has.special">Special:</label>
-        <textarea v-if="has.special || model.special" type="text" v-model.trim="model.special"></textarea>
+        <label><input type="checkbox"
+                 v-model="has.special">Special:</label>
+        <textarea v-if="has.special || model.special"
+                  type="text"
+                  v-model.trim="model.special"></textarea>
       </div>
       <div class="feat-form-component-has-sub-value-container">
-        <label><input type="checkbox" v-model.trim="has.subValue">Sub Value:</label>
+        <label><input type="checkbox"
+                 v-model.trim="has.subValue">Sub Value:</label>
       </div>
-      <sub-values-component v-if="has.subValue" :model="model"></sub-values-component>
+      <sub-values-component v-if="has.subValue"
+                            :model="model"></sub-values-component>
       <div class="feat-form-component-miscellaneous-container">
-        <label><input type="checkbox" v-model="has.miscellaneous">Miscellaneous:</label>
-        <textarea v-if="has.miscellaneous || model.miscellaneous" type="text" v-model.trim="model.miscellaneous"></textarea>
+        <label><input type="checkbox"
+                 v-model="has.miscellaneous">Miscellaneous:</label>
+        <textarea v-if="has.miscellaneous || model.miscellaneous"
+                  type="text"
+                  v-model.trim="model.miscellaneous"></textarea>
       </div>
       <div class="feat-form-component-html-container">
-        <label><input type="checkbox" v-model="has.aditionalInformation">Aditional Information (as HTML):</label>
-        <textarea class="feat-aditional-information-text-area" v-if="has.aditionalInformation || model.aditionalInformation" type="text" v-model.trim="model.aditionalInformation"></textarea>
+        <label><input type="checkbox"
+                 v-model="has.aditionalInformation">Aditional Information (as HTML):</label>
+        <textarea class="feat-aditional-information-text-area"
+                  v-if="has.aditionalInformation || model.aditionalInformation"
+                  type="text"
+                  v-model.trim="model.aditionalInformation"></textarea>
       </div>
     </div>
   </div>

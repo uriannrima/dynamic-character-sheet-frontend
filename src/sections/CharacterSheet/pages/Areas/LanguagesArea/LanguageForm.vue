@@ -29,21 +29,32 @@
     <div v-else>
       <div class="language-form-component-name-container">
         <span>Name:</span>
-        <input type="text" v-validate="'required'" v-model.trim="model.name" name="name">
+        <input type="text"
+               v-validate="'required'"
+               v-model.trim="model.name"
+               name="name">
         <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
       </div>
       <div class="language-form-component-description-container">
         <span>Description:</span>
-        <textarea type="text" v-model.trim="model.description" name="description"></textarea>
+        <textarea type="text"
+                  v-model.trim="model.description"
+                  name="description"></textarea>
       </div>
       <div class="language-form-component-alphabet-container">
         <span>Alphabet:</span>
-        <input type="text" v-validate="'required'" v-model.trim="model.alphabet" name="alphabet">
+        <input type="text"
+               v-validate="'required'"
+               v-model.trim="model.alphabet"
+               name="alphabet">
         <span v-show="errors.has('alphabet')">{{ errors.first('alphabet') }}</span>
       </div>
       <div class="language-form-component-speakers-container">
         <span>Speakers:</span>
-        <input type="text" v-validate="'required'" v-model.trim="model.speakers" name="speakers">
+        <input type="text"
+               v-validate="'required'"
+               v-model.trim="model.speakers"
+               name="speakers">
         <span v-show="errors.has('speakers')">{{ errors.first('speakers') }}</span>
       </div>
     </div>

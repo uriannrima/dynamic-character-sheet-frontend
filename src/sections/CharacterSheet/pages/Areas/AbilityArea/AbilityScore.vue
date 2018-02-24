@@ -1,20 +1,32 @@
 <template>
-    <div>
-        <div class="ability-score-component">
-            <div class="black-box">
-                <label>{{name.substring(0,3)}}</label>
-                <label>{{name}}</label>
-            </div>
-            <input type="number" class="ability-score-input" :value="value" @change="updateTemporaryScore($event, 'value')">
-            <input type="number" class="ability-score-input" readonly :value="modifier">
-            <div class="temporary-box">
-                <input type="number" class="ability-score-temp-input" :value="tempValue" @change="updateScore($event, 'tempValue')">
-            </div>
-            <div class="temporary-box">
-                <input type="number" class="ability-score-temp-input" readonly :value="tempModifier">
-            </div>
-        </div>
+  <div>
+    <div class="ability-score-component">
+      <div class="black-box">
+        <label>{{name.substring(0,3)}}</label>
+        <label>{{name}}</label>
+      </div>
+      <input type="number"
+             class="ability-score-input"
+             :value="value"
+             @change="updateTemporaryScore($event, 'value')">
+      <input type="number"
+             class="ability-score-input"
+             readonly
+             :value="modifier">
+      <div class="temporary-box">
+        <input type="number"
+               class="ability-score-temp-input"
+               :value="tempValue"
+               @change="updateScore($event, 'tempValue')">
+      </div>
+      <div class="temporary-box">
+        <input type="number"
+               class="ability-score-temp-input"
+               readonly
+               :value="tempModifier">
+      </div>
     </div>
+  </div>
 
 </template>
 

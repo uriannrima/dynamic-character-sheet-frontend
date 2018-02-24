@@ -1,21 +1,29 @@
 <template>
-    <div class="health-component">
-        <div class="black-box health-bb">
-            <label>HP</label>
-            <label>Health Points</label>
-        </div>
-        <div class="h-lg-up black-box">
-            <label>Speed</label>
-        </div>
-        <input type="number" class="health-input common-input" v-model.number="character.status.healthPoints">
-        <input type="text" class="wounds-input common-input" v-model="character.status.wounds">
-        <input type="number" class="nonlethal-input common-input" v-model.number="character.status.nonLethalDamage">
-        <input type="text" class="speed-input common-input" v-model="character.speed">
-        <label class="health-label total-label">Total</label>
-        <label class="wounds-label">Wounds/Current HP</label>
-        <label class="nonlethal-label">Nonlethal<br>Damage</label>
-        <label class="speed-label h-md-only">Speed</label>
+  <div class="health-component">
+    <div class="black-box health-bb">
+      <label>HP</label>
+      <label>Health Points</label>
     </div>
+    <div class="h-lg-up black-box">
+      <label>Speed</label>
+    </div>
+    <input type="number"
+           class="health-input common-input"
+           v-model.number="character.status.healthPoints">
+    <input type="text"
+           class="wounds-input common-input"
+           v-model="character.status.wounds">
+    <input type="number"
+           class="nonlethal-input common-input"
+           v-model.number="character.status.nonLethalDamage">
+    <input type="text"
+           class="speed-input common-input"
+           v-model="character.speed">
+    <label class="health-label total-label">Total</label>
+    <label class="wounds-label">Wounds/Current HP</label>
+    <label class="nonlethal-label">Nonlethal<br>Damage</label>
+    <label class="speed-label h-md-only">Speed</label>
+  </div>
 </template>
 
 <script>

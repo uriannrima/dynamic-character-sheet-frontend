@@ -1,16 +1,18 @@
 <template>
-    <div>
-        <label>
-            Email:
-            <input type="text" v-model="login.email">
-        </label>
-        <label>
-            Password:
-            <input type="password" v-model="login.password">
-        </label>
-        <button @click="doLogin()">Login</button>
-        <button @click="doRegistration()">Register</button>
-    </div>
+  <div>
+    <label>
+      Email:
+      <input type="text"
+             v-model="login.email">
+    </label>
+    <label>
+      Password:
+      <input type="password"
+             v-model="login.password">
+    </label>
+    <button @click="doLogin()">Login</button>
+    <button @click="doRegistration()">Register</button>
+  </div>
 </template>
 
 <script>

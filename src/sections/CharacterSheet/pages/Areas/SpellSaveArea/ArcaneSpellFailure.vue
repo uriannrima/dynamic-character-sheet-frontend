@@ -3,7 +3,10 @@
     <div class="black-box">
       <label>Arcane Spell Failure</label>
     </div>
-    <input type="text" class="common-input" readonly :value="spellFailure | percentage">
+    <input type="text"
+           class="common-input"
+           readonly
+           :value="spellFailure | percentage">
   </div>
 </template>
 

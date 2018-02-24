@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div v-if="spells.length > 0" class="spells-group-container">
+    <div v-if="spells.length > 0"
+         class="spells-group-container">
       <span>{{group}}: </span>
-      <spell v-for="(spell, index) in spells" :key="index" :spell="spell" @onSelected="onSelect($event.model)"></spell>
+      <spell v-for="(spell, index) in spells"
+             :key="index"
+             :spell="spell"
+             @onSelected="onSelect($event.model)"></spell>
     </div>
   </div>
 </template>

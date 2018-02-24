@@ -7,7 +7,7 @@ const InitiativeModule = require('./initiative.module');
 const SavingThrowsModule = require('./saving-throw.module');
 const GrappleModule = require('./grapple.module');
 const SkillsModule = require('./skill.module');
-const WeaponModule = require('./weapon.module');
+const AttackModule = require('./attack.module');
 const AmmunitionModule = require('./ammunition.module');
 const GearModule = require('./gear.module');
 const ItemModule = require('./item.module');
@@ -32,7 +32,7 @@ module.exports = {
   SavingThrowsModule,
   GrappleModule,
   SkillsModule,
-  WeaponModule,
+  AttackModule,
   AmmunitionModule,
   GearModule,
   ItemModule,

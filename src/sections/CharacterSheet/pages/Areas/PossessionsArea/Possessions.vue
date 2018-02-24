@@ -3,27 +3,38 @@
     <div class="black-box rounded">
       <div>
         <label>Other Possessions</label>
-        <span class="add-icon glyphicon h-md-up" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+        <minimize-button :minimize.sync="minimize"></minimize-button>
       </div>
     </div>
-    <div class="possessions-component" v-show="!minimize">
-      <div class="possession-column" v-for="(c, column) in 2" :key="column">
-        <div class="possesion-component possessions-header" v-show="column == 0 || showSecondHeader">
+    <div class="possessions-component"
+         v-show="!minimize">
+      <div class="possession-column"
+           v-for="(c, column) in 2"
+           :key="column">
+        <div class="possesion-component possessions-header"
+             v-show="column == 0 || showSecondHeader">
           <label>Item</label>
           <label>Page</label>
           <label>Weight</label>
         </div>
-        <possession v-for="(r,row) in 17" :key="row" :possession="possessions[(column * 17) + row]"></possession>
+        <possession v-for="(r,row) in 17"
+                    :key="row"
+                    :possession="possessions[(column * 17) + row]"></possession>
       </div>
       <div class="total-possesion">
         <label>Total Weight Carried</label>
-        <input type="number" class="common-input" readonly :value="totalWeight">
+        <input type="number"
+               class="common-input"
+               readonly
+               :value="totalWeight">
       </div>
     </div>
-    <div class="carry-capacities-container" v-show="!minimize">
+    <div class="carry-capacities-container"
+         v-show="!minimize">
       <carry-capacities :carryCapacities="carryCapacities"></carry-capacities>
     </div>
-    <wealth v-show="!minimize" :wealth="wealth"></wealth>
+    <wealth v-show="!minimize"
+            :wealth="wealth"></wealth>
   </div>
 </template>
 
@@ -31,17 +42,17 @@
 import CharacterMixin from 'Store/character.mixin';
 import { Possession, CarryCapacities, Wealth } from "./";
 import ResizeMixin from 'Shared/mixins/events/resize.handler.mixin';
+import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [CharacterMixin, ResizeMixin],
+  mixins: [CharacterMixin, ResizeMixin, MinimizableMixin],
   components: { Possession, CarryCapacities, Wealth },
   props: ["possessions", "carryCapacities", "wealth"],
   data() {
     var minimumWidth = 768;
     return {
       minimumWidth,
-      showSecondHeader: window.innerWidth >= minimumWidth,
-      minimize: false
+      showSecondHeader: window.innerWidth >= minimumWidth
     };
   },
   computed: {

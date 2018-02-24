@@ -4,12 +4,26 @@
       <label>{{savingThrow.name}}</label>
       <label>({{savingThrow.keyAbility}})</label>
     </div>
-    <input type="number" class="common-input" readonly :value="getTotal">
-    <input type="number" class="common-input" v-model.number="savingThrow.base">
-    <input type="number" class="common-input" readonly :value="keyAbility.getTempModifier()">
-    <input type="number" class="common-input" v-model.number="savingThrow.magicModifier">
-    <input type="number" class="common-input" v-model.number="savingThrow.miscModifier">
-    <input type="number" class="common-input" v-model.number="savingThrow.tempModifier">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="getTotal">
+    <input type="number"
+           class="common-input"
+           v-model.number="savingThrow.base">
+    <input type="number"
+           class="common-input"
+           readonly
+           :value="keyAbility.getTempModifier()">
+    <input type="number"
+           class="common-input"
+           v-model.number="savingThrow.magicModifier">
+    <input type="number"
+           class="common-input"
+           v-model.number="savingThrow.miscModifier">
+    <input type="number"
+           class="common-input"
+           v-model.number="savingThrow.tempModifier">
   </div>
 </template>
 
