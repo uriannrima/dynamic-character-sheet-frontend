@@ -1,14 +1,23 @@
 <template>
-  <div class="abilities-scores-container">
-    <div class="ability-score-component ability-score-header">
-      <label>Ability<br>Name</label>
-      <label>Ability<br>Score</label>
-      <label>Ability<br>Modifier</label>
-      <label>Temporary<br>Score</label>
-      <label>Temporary<br>Modifier</label>
+  <div>
+    <div class="black-box rounded h-md-up">
+      <div>
+        <label>Abilities Score</label>
+        <span class="add-icon glyphicon" :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" @click="minimize = !minimize"></span>
+      </div>
     </div>
-    <ability-score v-for="(abilityScore, index) in character.abilityScores" :key="index" :index="index" :name="abilityScore.name" :value="abilityScore.value" :tempValue="abilityScore.tempValue" @onUpdateScore="updateScore($event)" />
+    <div class="abilities-scores-container" v-show="!minimize">
+      <div class="ability-score-component ability-score-header">
+        <label>Ability<br>Name</label>
+        <label>Ability<br>Score</label>
+        <label>Ability<br>Modifier</label>
+        <label>Temporary<br>Score</label>
+        <label>Temporary<br>Modifier</label>
+      </div>
+      <ability-score v-for="(abilityScore, index) in character.abilityScores" :key="index" :index="index" :name="abilityScore.name" :value="abilityScore.value" :tempValue="abilityScore.tempValue" @onUpdateScore="updateScore($event)" />
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -18,6 +27,11 @@ import CharacterMixin from 'Store/character.mixin';
 export default {
   mixins: [CharacterMixin],
   components: { AbilityScore },
+  data() {
+    return {
+      minimize: false
+    }
+  },
   methods: {
     updateScore: function ({ index, field, value }) {
       var abilityScore = this.character.abilityScores[index];

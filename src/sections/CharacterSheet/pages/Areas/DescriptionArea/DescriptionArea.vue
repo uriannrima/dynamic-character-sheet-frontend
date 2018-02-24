@@ -1,6 +1,6 @@
 <template>
   <div>
-    <logo class="xl-h-up"></logo>
+    <logo class="h-xl-up h-md-down"></logo>
     <description></description>
   </div>
 </template>

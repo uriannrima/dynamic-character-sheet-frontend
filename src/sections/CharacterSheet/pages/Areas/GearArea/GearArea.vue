@@ -30,16 +30,10 @@ export default {
 
 <style>
 .gear-area > div {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .gear-area input[type="text"] {
   text-align: center;
-}
-
-@media screen and (min-width: 1024px) {
-  .gear-area > div {
-    margin-top: 5px;
-  }
 }
 </style>
