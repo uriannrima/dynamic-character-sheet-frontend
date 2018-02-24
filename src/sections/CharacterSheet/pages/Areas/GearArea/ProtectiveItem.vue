@@ -4,7 +4,7 @@
       <div class="black-box rounded">
         <label>Protective Item</label>
       </div>
-      <input type="text" class="common-input" v-model="protectiveItem.name"> 
+      <input type="text" class="common-input" v-model="protectiveItem.name">
     </div>
     <div>
       <div>
@@ -36,18 +36,23 @@ export default {
 </script>
 
 <style>
-.protective-item-component {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.protective-item-component {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-}
-
 .protective-item-component > div:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 1024px) {
+  .rounded {
+    border-radius: unset;
+  }
+
+  .protective-item-component label {
+    font-size: 9px !important;
+  }
+
+  .protective-item-component {
+    display: grid;
+    grid-template-columns: 34% 33% 33%;
+  }
 }
 </style>

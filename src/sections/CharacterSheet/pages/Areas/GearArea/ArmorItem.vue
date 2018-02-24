@@ -72,13 +72,7 @@ export default {
 }
 </script>
 
-<style>
-
-.armor-item-component {
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-}
-
+<style scoped>
 .armor-item-component > div:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -88,5 +82,29 @@ export default {
 .armor-item-component > div:nth-child(4) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 1024px) {
+  .rounded {
+    border-radius: unset;
+  }
+
+  .armor-item-component label {
+    font-size: 9px !important;
+  }
+
+  .armor-item-component {
+    display: grid;
+    grid-template-columns: 34% 33% 33%;
+  }
+
+  .armor-item-component > div:nth-child(2) {
+    grid-column-end: 2 span;
+  }
+
+  .armor-item-component > div:last-child > input {
+    font-size: 75%;
+    height: 24px;
+  }
 }
 </style>

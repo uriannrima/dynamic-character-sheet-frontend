@@ -29,13 +29,17 @@ export default {
 </script>
 
 <style>
-.gear-area {
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  grid-row-gap: 15px;
+.gear-area > div {
+  margin-top: 15px;
 }
 
 .gear-area input[type="text"] {
   text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .gear-area > div {
+    margin-top: 5px;
+  }
 }
 </style>
