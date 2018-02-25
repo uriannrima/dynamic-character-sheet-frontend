@@ -57,4 +57,15 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
+
+@media screen and (min-width: 1024px) {
+  .saving-throw-grid {
+    grid-column-gap: 5px;
+    height: 100%;
+  }
+
+  .saving-throw-grid > input {
+    height: 100%;
+  }
+}
 </style>

@@ -80,7 +80,8 @@ export default {
   }
 
   .grapple-component {
-    grid-template-columns: 30% repeat(5, 13.5%);
+    grid-column-gap: 10px;
+    grid-template-columns: 30% repeat(5, 1fr);
   }
 }
 </style>

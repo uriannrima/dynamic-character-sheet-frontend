@@ -37,4 +37,10 @@ export default {
   font-size: 80% !important;
   font-weight: bold;
 }
+
+@media screen and (min-width: 1024px) {
+  .saving-throws-component {
+    grid-row-gap: 2px;
+  }
+}
 </style>

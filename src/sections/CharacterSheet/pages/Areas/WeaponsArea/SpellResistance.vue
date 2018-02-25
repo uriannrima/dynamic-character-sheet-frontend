@@ -27,6 +27,7 @@ export default {
 @media screen and (min-width: 1024px) {
   .spell-resistance-component {
     grid-template-columns: 60% auto;
+    grid-column-gap: 10px;
   }
 }
 </style>

@@ -118,11 +118,15 @@ export default {
   font-weight: bold;
 }
 
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 1024px) {
   .primary-armor-component {
-    grid-template-columns: repeat(11, 1fr);
+    grid-template-columns: 10.6% 4.8% repeat(9, 1fr);
     grid-row-gap: initial;
-    grid-column-gap: initial;
+    grid-column-gap: 9px;
+  }
+
+  .base-armor-label {
+    font-size: 140%;
   }
 
   .ac-bb {

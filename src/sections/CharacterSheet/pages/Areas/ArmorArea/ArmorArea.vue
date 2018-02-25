@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="armor-area">
     <health></health>
     <primary-armor></primary-armor>
   </div>
@@ -14,6 +14,14 @@ export default {
 </script>
 
 <style>
+.armor-area {
+  grid-area: armor-area;
+}
+
+.armor-area > div:nth-child(2) {
+  margin-top: 1px;
+}
+
 .grid {
   height: 100%;
   display: grid;
@@ -41,5 +49,11 @@ export default {
 .last-input {
   justify-self: end;
   width: 95% !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .armor-area {
+    padding: 0 5px;
+  }
 }
 </style>

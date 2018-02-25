@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="abilities-score-wrapper">
     <div class="black-box rounded h-md-up">
       <div>
         <label>Abilities Score</label>
@@ -24,7 +24,6 @@
                      @onUpdateScore="updateScore($event)" />
     </div>
   </div>
-
 </template>
 
 <script>
@@ -45,6 +44,10 @@ export default {
 </script>
 
 <style>
+.abilities-score-wrapper {
+  height: 100%;
+}
+
 .abilities-scores-container {
   height: 100%;
   display: grid;

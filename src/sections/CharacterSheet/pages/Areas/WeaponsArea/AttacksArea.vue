@@ -27,7 +27,7 @@ export default {
 <style>
 .attack-grid {
   display: grid;
-  grid-template-rows: 17% 5% 5% 71%;
+  grid-template-rows: 12% 3% 5% auto;
   grid-row-gap: 5px;
 }
 
@@ -47,12 +47,12 @@ export default {
 @media screen and (min-width: 1024px) {
   .saving-conditional-grid {
     grid-template-columns: 75% auto;
-    grid-column-gap: 2px;
-    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
   }
 
   .base-attack-resistance-grid {
     grid-template-columns: 65% auto;
+    grid-column-gap: 10px;
   }
 }
 </style>

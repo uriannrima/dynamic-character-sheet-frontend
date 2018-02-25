@@ -64,6 +64,8 @@ export default {
 @media screen and (min-width: 1024px) {
   .initiative-component {
     grid-template-columns: repeat(5, 1fr);
+    padding: 0 5px;
+    grid-column-gap: 2%;
   }
 
   .initiative-bb {

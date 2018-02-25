@@ -8,8 +8,7 @@
         <minimize-button :minimize.sync="minimize"></minimize-button>
       </div>
     </div>
-    <armor-area v-show="!minimize"
-                class="armor-area" />
+    <armor-area v-show="!minimize" />
     <initiative-area v-show="!minimize"
                      class="initiative-area" />
     <attacks-area v-show="!minimize"
@@ -53,10 +52,6 @@ export default {
 
 .ability-area {
   grid-area: ability-area;
-}
-
-.armor-area {
-  grid-area: armor-area;
 }
 
 .initiative-area {

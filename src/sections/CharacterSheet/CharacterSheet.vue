@@ -41,6 +41,10 @@ export default {
   padding: 0 15px;
 }
 
+.page {
+  margin-bottom: 15px;
+}
+
 /** HD Resolution */
 
 @media screen and (min-width: 1440px) {

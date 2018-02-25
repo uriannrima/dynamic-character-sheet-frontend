@@ -41,7 +41,6 @@ export default {
   align-items: center;
   justify-items: center;
   grid-column-gap: 2px;
-  grid-row-gap: 2px;
 }
 
 .health-bb {
@@ -60,7 +59,8 @@ export default {
 
 @media screen and (min-width: 1024px) {
   .health-component {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 10.6% 4.8% 54.6% repeat(2, 1fr);
+    grid-column-gap: 9px;
     grid-template-areas: ". health-label wounds-label nonlethal-label speed-label";
   }
 

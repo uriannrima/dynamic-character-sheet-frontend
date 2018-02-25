@@ -41,6 +41,7 @@ export default {
 @media screen and (min-width: 1024px) {
   .bab-component {
     grid-template-columns: 70% auto;
+    grid-column-gap: 10px;
   }
 }
 </style>
