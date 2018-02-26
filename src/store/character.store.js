@@ -13,6 +13,9 @@ const CharacterStore = {
       callback(reference);
     }
   },
+  async toModel(character) {
+    return await CharacterService.create(character);
+  },
   async loadCharacter(id) {
     try {
       var character = await CharacterService.get(id);

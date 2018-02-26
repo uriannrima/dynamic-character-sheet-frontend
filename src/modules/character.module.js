@@ -10,7 +10,7 @@ export const Character = function ({
   status, armorClass, initiative, conditionModifier = "",
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = Modules.SkillsModule.DEFAULT_SKILLS,
-  attacks, gear, items, carryCapacities,
+  attacks, gear, items = [], carryCapacities,
   campaign = "", experience = 0, money, feats = [], languages = [],
   specialAbilities = [], domainSchool = "", spellSave = 0,
   arcaneSpellFailure = 0, spellConditionModifier = "",

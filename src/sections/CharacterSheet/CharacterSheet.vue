@@ -26,6 +26,15 @@ export default {
     }
 
     next();
+  },
+  feathers: {
+    characters: {
+      async updated(updatedCharacter) {
+        if (this.character._id === updatedCharacter._id) {
+          this.character = await CharacterStore.toModel(updatedCharacter);
+        }
+      }
+    }
   }
 }
 </script>

@@ -1,70 +1,28 @@
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
+import vSelect from 'vue-select';
+import VueTouch from 'vue-touch';
+import VueFeathers from 'vue-feathers';
 
 // CSS Imports.
 import 'Assets/styles/utils.css';
-// import 'Assets/styles/styles.css';
-// import 'Assets/styles/tabs.css';
-// import 'Assets/styles/form-validation.css';
+
+import './utils/array.extensions.js';
 
 // Promise polyfill for IE11.
 import Es6Promise from 'es6-promise';
-import Vue from 'vue';
-import VeeValidate from 'vee-validate';
-// import VTooltip from 'v-tooltip';
-import router from './router';
-import { store } from 'Store';
-import Layout from './shared/sections/Layout';
-import vSelect from 'vue-select';
-import './shared/directives/store-sync.directive';
 
-var VueTouch = require('vue-touch');
+import router from './router';
+import store from './store';
+import feathers from './feathers';
+
+import Layout from './shared/sections/Layout';
 
 Es6Promise.polyfill();
 
-/** Extension method to remove element at index. */
-Array.prototype.removeAt = function (index) {
-  this.splice(index, 1);
-};
+Vue.use(VueFeathers, feathers);
 
-// Extend Array with Group By.
-Array.prototype.groupBy = function (funcProp) {
-  return this.reduce(function (accumulator, value) {
-    (accumulator[funcProp(value)] = accumulator[funcProp(value)] || []).push(value);
-    return accumulator;
-  }, {});
-};
-
-// Extend array with Order By.
-Array.prototype.orderBy = function (funcProp, desc = false) {
-  return this.sort((a, b) => {
-    var aValue = funcProp(a);
-    var bValue = funcProp(b);
-    var type = typeof aValue;
-    var result = 0;
-
-    if (type === 'string') {
-      aValue = aValue.toUpperCase();
-      bValue = bValue.toUpperCase();
-      if (aValue < bValue) {
-        result = -1;
-      } else if (aValue > bValue) {
-        result = 1;
-      }
-    } else if (type === 'number') {
-      result = aValue - bValue;
-    }
-
-    return desc ? result * -1 : result;
-  });
-};
-
-Array.prototype.orderByDesc = function (funcProp) {
-  return this.orderBy(funcProp, true);
-}
-
-// CSS Grid Polyfill
-// import './utils/css-grid-polyfill';
-
-const veeConfig = {
+Vue.use(VeeValidate, {
   classes: true,
   classNames: {
     touched: 'touched', // the control has been blurred
@@ -74,11 +32,9 @@ const veeConfig = {
     pristine: 'pristine', // control has not been interacted with
     dirty: 'dirty' // control has been interacted with
   }
-}
+});
 
 Vue.component('v-select', vSelect);
-Vue.use(VeeValidate, veeConfig);
-// Vue.use(VTooltip);
 
 VueTouch.registerCustomEvent('tap', {
   type: 'tap',

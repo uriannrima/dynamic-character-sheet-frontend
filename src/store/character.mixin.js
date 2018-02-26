@@ -7,8 +7,13 @@ export default {
     };
   },
   computed: {
-    character() {
-      return this.CharacterStore.character;
+    character: {
+      get() {
+        return this.CharacterStore.character;
+      },
+      set(newValue) {
+        this.CharacterStore.character = newValue;
+      }
     }
   }
 }

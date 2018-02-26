@@ -14,6 +14,13 @@ export default {
     next(vm => {
       vm.characters = characters;
     });
+  },
+  feathers: {
+    characters: {
+      created(newCharacter) {
+        this.characters.push(newCharacter);
+      }
+    }
   }
   /*
       computed: {
@@ -33,7 +40,7 @@ export default {
 };
 </script>
 <template>
-    <!-- div>
+  <!-- div>
         <h1> {{title}}</h1>
         <ul>
             <li v-for="(item, index) in items" :key="index">
@@ -45,13 +52,13 @@ export default {
         </ul>
         <button @click="reducePrice({amount: 4})">Reduce</button>
     </div -->
-    <div>
-        <h1>{{title}}</h1>
-        <ul>
-            <li v-for="character in characters"
-                :key="character.id">
-                <a :href="'#/character/' + character._id">{{character.name}}</a>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <h1>{{title}}</h1>
+    <ul>
+      <li v-for="character in characters"
+          :key="character.id">
+        <a :href="'#/character/' + character._id">{{character.name}}</a>
+      </li>
+    </ul>
+  </div>
 </template>

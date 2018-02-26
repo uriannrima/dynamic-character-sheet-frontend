@@ -19,7 +19,7 @@
         </div>
         <possession v-for="(r,row) in 17"
                     :key="row"
-                    :possession="possessions[(column * 17) + row]"></possession>
+                    :possession="possessions[(column * 17) + row] || {}"></possession>
       </div>
       <div class="total-possesion">
         <label>Total Weight Carried</label>
