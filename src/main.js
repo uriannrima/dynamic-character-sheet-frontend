@@ -5,7 +5,6 @@ import VueTouch from 'vue-touch';
 import VueFeathers from 'vue-feathers';
 
 // CSS Imports.
-import 'Assets/styles/utils.css';
 
 import './utils/array.extensions.js';
 

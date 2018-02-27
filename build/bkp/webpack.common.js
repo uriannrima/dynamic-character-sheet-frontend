@@ -70,7 +70,7 @@ module.exports = {
         extensions: ['*', '.js', '.html', '.css', '.vue', '.json'],
         alias: {
             '@': path.resolve(__dirname, '../src/'),
-            'Assets': path.resolve(__dirname, '../assets/'),
+            'Static': path.resolve(__dirname, '../static/'),
             'Services': path.resolve(__dirname, '../src/services/'),
             'Modules': path.resolve(__dirname, '../src/modules/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),
@@ -88,8 +88,8 @@ module.exports = {
             _: 'lodash'
         }),
         new CopyWebpackPlugin([{
-            from: './assets',
-            to: 'assets'
+            from: './static',
+            to: 'static'
         }])
     ]
 }
