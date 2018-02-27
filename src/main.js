@@ -17,6 +17,9 @@ import feathers from './feathers';
 
 import Layout from './shared/sections/Layout';
 
+import NotificationService from './services/NotificationService';
+NotificationService.notify({ type: "success", "message": "Application loaded." });
+
 Es6Promise.polyfill();
 
 Vue.use(VueFeathers, feathers);

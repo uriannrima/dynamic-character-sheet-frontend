@@ -19,6 +19,7 @@
     "es6-promise": "^4.2.4",
     "localforage": "^1.5.7",
     "lodash": "^4.17.5",
+    "mini-toastr": "^0.7.2",
     "socket.io-client": "^2.0.4",
     "vee-validate": "^2.0.4",
     "vue": "^2.5.2",
