@@ -33,8 +33,9 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
+    devtool: 'inline-source-map',
     // devtool: 'source-map', // VSCode
-    devtool: 'eval-source-map', // Development working
+    // devtool: 'eval-source-map', // Development working
     // devtool: 'cheap-module-eval-source-map',
 
     // If you have problems debugging vue-files in devtools,
@@ -42,7 +43,7 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    cssSourceMap: false
   },
 
   build: {

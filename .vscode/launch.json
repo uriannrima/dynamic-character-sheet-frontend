@@ -1,20 +1,21 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "chrome",
             "request": "launch",
             "name": "Vue.js:Chrome",
             "url": "http://localhost:4000",
-            "webRoot": "${workspaceFolder}/src",
+            "webRoot": "${workspaceFolder}",
             "breakOnLoad": true,
+            "sourceMaps": true,
             "sourceMapPathOverrides": {
                 "webpack:///*": "*",
                 "webpack:///./*": "${webRoot}/*",
-                "webpack:///src/*": "${webRoot}/*",
+                "webpack:///src/*": "${webRoot}/src/*",
                 "webpack:///./~/*": "${webRoot}/node_modules/*",
-            },
-            "sourceMaps": true
+            }
         }
     ],
     "compounds": []

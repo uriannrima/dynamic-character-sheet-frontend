@@ -12,18 +12,40 @@ const portfinder = require('portfinder');
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
-console.log(config.dev.devtool);
+
 const devWebpackConfig = merge(baseWebpackConfig, {
+  output: {
+    devtoolModuleFilenameTemplate: info => {
+      // Ignore source map for anything
+      if (!info.resource.match(/\.vue$/)) return info.resourcePath;
+
+      if (info.allLoaders !== '') return 'generated';
+
+      switch (config.dev.devtool) {
+        case 'source-map':
+        case 'inline-source-map':
+          return `webpack:///${info.resourcePath}`;
+          break;
+        case 'eval':
+          return `webpack:///${info.resourcePath}?${info.allLoaders}`;
+        case 'eval-source-map':
+          return `webpack:///${info.resourcePath}?${info.hash}`;
+        default:
+          return undefined;
+          break;
+      }
+    }
+  },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
-  // cheap-module-eval-source-map is faster for development
+
   devtool: config.dev.devtool,
-  
+
   resolve: {
-      alias: {
-          'Constants$': path.resolve(__dirname, '../src/constants.dev.js'),
-      }
+    alias: {
+      'Constants$': path.resolve(__dirname, '../src/constants.dev.js'),
+    }
   },
 
   // these devServer options should be customized in /config/index.js

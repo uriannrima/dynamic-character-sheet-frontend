@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "api":"cd.. && cd dynamic-character-sheet-api && npm run dev",
     "dev": "yarn install && webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "dev:c9": "yarn install && webpack-dev-server --config build/webpack.c9.js --content-base src/ --public 'web-dcs-uriannrima.c9users.io/sockjs-node/' --host $IP --port $PORT --hot --inline",
     "build": "webpack --config build/webpack.prd.js",

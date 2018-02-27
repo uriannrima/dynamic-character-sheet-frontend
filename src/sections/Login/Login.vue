@@ -21,7 +21,6 @@ import UserService from 'Services/UserService';
 
 export default {
   data() {
-    debugger;
     return {
       login: {
         email: "",
