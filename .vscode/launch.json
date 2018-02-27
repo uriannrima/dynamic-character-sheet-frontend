@@ -4,16 +4,17 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome",
+            "name": "Vue.js:Chrome",
             "url": "http://localhost:4000",
-            "webRoot": "${workspaceRoot}",
-            "smartStep": true
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Process",
-            "port": 5858
+            "webRoot": "${workspaceFolder}/src",
+            "breakOnLoad": true,
+            "sourceMapPathOverrides": {
+                "webpack:///*": "*",
+                "webpack:///./*": "${webRoot}/*",
+                "webpack:///src/*": "${webRoot}/*",
+                "webpack:///./~/*": "${webRoot}/node_modules/*",
+            },
+            "sourceMaps": true
         }
     ],
     "compounds": []
