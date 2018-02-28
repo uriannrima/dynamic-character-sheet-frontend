@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .protective-item-component > div:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

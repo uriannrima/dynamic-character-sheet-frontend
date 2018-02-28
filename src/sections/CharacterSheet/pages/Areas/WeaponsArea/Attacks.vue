@@ -25,28 +25,7 @@ export default {
 </script>
 
 <style>
-.attacks-component {
-  display: grid;
-  grid-template-rows: repeat(5, auto);
-  grid-template-columns: 1fr;
-  grid-row-gap: 5px;
-}
-
-.attack-component span,
-.attack-component div {
-  font-size: 9px;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: grid;
-  align-items: center;
-}
-
-.attack-component input {
-  width: 100%;
-  height: 100%;
-}
-
-.attack-component select {
-  font-size: 13px;
+.attacks-component > div {
+  margin-bottom: 15px;
 }
 </style>

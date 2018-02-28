@@ -1,62 +1,70 @@
 <template>
   <div class="attack-component">
-    <div class="attack-wrapper">
-      <div class="attack-name attack-header attack-name-header">
-        <span style="font-size: 16px;">Attack</span>
+    <div>
+      <div class="new-black-box rounded double-height">
+        <label>Attack</label>
       </div>
-      <div class="attack-header">
-        <span>Attack Bonus</span>
-      </div>
-      <div class="attack-header">
-        <span>Damage</span>
-      </div>
-      <div class="attack-header">
-        <span>Critical</span>
-      </div>
-      <div class="attack-name">
+      <input type="text"
+             class="common-input"
+             v-model="attack.name">
+    </div>
+    <div>
+      <div>
+        <div class="new-black-box">
+          <label>Attack Bonus</label>
+        </div>
         <input type="text"
-               v-model="attack.name">
-      </div>
-      <div class="attack-attack-bonus">
-        <input type="text"
+               class="common-input"
                v-model="attack.attackBonus">
       </div>
-      <div class="attack-damage">
+      <div>
+        <div class="new-black-box">
+          <label>Damage</label>
+        </div>
         <input type="text"
+               class="common-input"
                v-model="attack.damage">
       </div>
-      <div class="attack-critical">
+      <div>
+        <div class="new-black-box">
+          <label>Critical</label>
+        </div>
         <input type="text"
+               class="common-input"
                v-model="attack.critical">
       </div>
-      <div class="attack-header">
-        <span>Range</span>
-      </div>
-      <div class="attack-header">
-        <span>Type</span>
-      </div>
-      <div class="attack-notes attack-header">
-        <span>Notes</span>
-      </div>
-      <div class="attack-range">
+    </div>
+    <div>
+      <div>
+        <div class="new-black-box">
+          <label>Range</label>
+        </div>
         <input type="text"
+               class="common-input"
                v-model="attack.range">
       </div>
-      <div class="attack-type">
+      <div>
+        <div class="new-black-box">
+          <label>Type</label>
+        </div>
         <input type="text"
+               class="common-input"
                v-model="attack.type">
       </div>
-      <div class="attack-notes">
-        <input type="text"
-               v-model="attack.notes">
-      </div>
     </div>
-    <div class="ammunition-wrapper">
-      <div class="ammunition-header">
-        <span>Ammunition</span>
+    <div>
+      <div class="new-black-box">
+        <label>Notes</label>
       </div>
-      <div><input type="text"
-               class="only-bottom"></div>
+      <input type="text"
+             class="common-input"
+             v-model="attack.notes">
+    </div>
+    <div v-if="attack.ammunition">
+      <label>Ammunition</label>
+      <input type="text"
+             class="only-bottom"
+             v-model="attack.ammunition.name">
     </div>
   </div>
 </template>
@@ -67,69 +75,69 @@ export default {
 }
 </script>
 
-<style>
-.attack-component {
-  display: grid;
-  grid-template-rows: 1fr 15%;
+<style scoped>
+.new-black-box {
+  color: white;
+  background-color: black;
+}
+
+.new-black-box > label {
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bolder;
 }
 
 .attack-component input {
-  font-size: 12px;
   text-align: center;
 }
 
-.attack-wrapper,
-.ammunition-wrapper {
-  align-self: stretch;
-}
-
-.attack-wrapper {
+.attack-component > div:nth-child(2) {
   display: grid;
-  grid-template-columns: 15% 15% 10% 25% 1fr 1fr;
-  grid-template-rows: 29% 29% 12% 29%;
-  grid-column-gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.ammunition-wrapper {
+.attack-component > div:nth-child(3) {
   display: grid;
-  grid-template-columns: 15% 1fr;
-  grid-template-rows: 100%;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.attack-header {
-  align-self: end;
-  background-color: black;
-  color: white;
+.attack-component > div:nth-child(5) > label {
+  font-size: 90%;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bolder;
   text-align: center;
+  align-self: flex-end;
 }
 
-.ammunition-header {
-  text-align: center;
+.attack-component > div:nth-child(5) > input {
+  width: 100%;
 }
 
-.attack-name-header {
-  height: 100%;
-  align-self: center;
-  border-radius: 5px 5px 0px 0px;
-  display: grid;
-  align-items: center;
-}
+@media screen and (min-width: 1024px) {
+  .new-black-box > label {
+    font-size: 95%;
+  }
 
-.attack-name {
-  grid-column-end: span 3;
-}
+  .double-height {
+    height: 30px;
+  }
 
-.attack-notes {
-  grid-column-end: span 4;
-}
+  .attack-component {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
 
-.attack-name,
-.attack-attack-bonus,
-.attack-damage,
-.attack-critical,
-.attack-range,
-.attack-type,
-.attack-notes {
-  height: 98%;
+  .attack-component > div:nth-child(2) {
+    align-items: flex-end;
+  }
+
+  .attack-component > div:nth-child(5) {
+    padding: 0 5px;
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 15% 1fr;
+  }
 }
 </style>

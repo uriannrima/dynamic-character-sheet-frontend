@@ -56,9 +56,9 @@ export default {
 
 /** HD Resolution */
 
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
   .main-container {
-    width: 420mm;
+    width: 100%;
     display: flex;
     flex-direction: row;
   }
@@ -66,11 +66,11 @@ export default {
   .main-container > div {
     width: 50%;
   }
-}
+} */
 
 /** Common Desktop Resolution */
 
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
+@media screen and (min-width: 1024px) {
   .main-container {
     width: 1280px;
   }
