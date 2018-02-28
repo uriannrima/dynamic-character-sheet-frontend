@@ -9,6 +9,7 @@
 import * as Pages from './pages';
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
+import NotificationService from '../../services/NotificationService';
 
 export default {
   mixins: [CharacterMixin],
@@ -32,6 +33,10 @@ export default {
       async updated(updatedCharacter) {
         if (this.character._id === updatedCharacter._id) {
           this.character = await CharacterStore.toModel(updatedCharacter);
+          NotificationService.notify({
+            type: "success",
+            message: "Your character has been updated."
+          });
         }
       }
     }
