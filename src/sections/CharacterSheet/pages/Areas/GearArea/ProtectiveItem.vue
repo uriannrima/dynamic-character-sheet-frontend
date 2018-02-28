@@ -1,7 +1,7 @@
 <template>
   <div class="protective-item-component">
     <div>
-      <div class="black-box rounded">
+      <div class="new-black-box rounded">
         <label>Protective Item</label>
       </div>
       <input type="text"
@@ -10,7 +10,7 @@
     </div>
     <div>
       <div>
-        <div class="black-box">
+        <div class="new-black-box">
           <label>AC Bonus</label>
         </div>
         <input type="number"
@@ -18,7 +18,7 @@
                v-model.number="protectiveItem.acBonus">
       </div>
       <div>
-        <div class="black-box">
+        <div class="new-black-box">
           <label>Weight</label>
         </div>
         <input type="number"
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div>
-      <div class="black-box">
+      <div class="new-black-box">
         <label>Special Properties</label>
       </div>
       <input type="text"

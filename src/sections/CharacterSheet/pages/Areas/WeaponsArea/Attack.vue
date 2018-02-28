@@ -4,34 +4,26 @@
       <div class="new-black-box rounded double-height">
         <label>Attack</label>
       </div>
-      <input type="text"
-             class="common-input"
-             v-model="attack.name">
+      <input type="text" class="common-input" v-model="attack.name">
     </div>
     <div>
       <div>
         <div class="new-black-box">
           <label>Attack Bonus</label>
         </div>
-        <input type="text"
-               class="common-input"
-               v-model="attack.attackBonus">
+        <input type="text" class="common-input" v-model="attack.attackBonus">
       </div>
       <div>
         <div class="new-black-box">
           <label>Damage</label>
         </div>
-        <input type="text"
-               class="common-input"
-               v-model="attack.damage">
+        <input type="text" class="common-input" v-model="attack.damage">
       </div>
       <div>
         <div class="new-black-box">
           <label>Critical</label>
         </div>
-        <input type="text"
-               class="common-input"
-               v-model="attack.critical">
+        <input type="text" class="common-input" v-model="attack.critical">
       </div>
     </div>
     <div>
@@ -39,32 +31,24 @@
         <div class="new-black-box">
           <label>Range</label>
         </div>
-        <input type="text"
-               class="common-input"
-               v-model="attack.range">
+        <input type="text" class="common-input" v-model="attack.range">
       </div>
       <div>
         <div class="new-black-box">
           <label>Type</label>
         </div>
-        <input type="text"
-               class="common-input"
-               v-model="attack.type">
+        <input type="text" class="common-input" v-model="attack.type">
       </div>
     </div>
     <div>
       <div class="new-black-box">
         <label>Notes</label>
       </div>
-      <input type="text"
-             class="common-input"
-             v-model="attack.notes">
+      <input type="text" class="common-input" v-model="attack.notes">
     </div>
     <div v-if="attack.ammunition">
       <label>Ammunition</label>
-      <input type="text"
-             class="only-bottom"
-             v-model="attack.ammunition.name">
+      <input type="text" class="only-bottom" v-model="attack.ammunition.name">
     </div>
   </div>
 </template>
@@ -76,18 +60,6 @@ export default {
 </script>
 
 <style scoped>
-.new-black-box {
-  color: white;
-  background-color: black;
-}
-
-.new-black-box > label {
-  display: block;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: bolder;
-}
-
 .attack-component input {
   text-align: center;
 }

@@ -141,6 +141,18 @@ export default {
   font-size: 50%;
 }
 
+.new-black-box {
+  color: white;
+  background-color: black;
+}
+
+.new-black-box > label {
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bolder;
+}
+
 .lower-border {
   border-bottom: 1px solid white;
 }

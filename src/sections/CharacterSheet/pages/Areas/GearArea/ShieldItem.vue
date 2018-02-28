@@ -1,7 +1,7 @@
 <template>
   <div class="shield-item-component">
     <div>
-      <div class="black-box rounded">
+      <div class="new-black-box rounded">
         <label>Shield/Protecetive Item</label>
       </div>
       <input type="text"
@@ -10,7 +10,7 @@
     </div>
     <div>
       <div>
-        <div class="black-box">
+        <div class="new-black-box">
           <label>AC Bonus</label>
         </div>
         <input type="number"
@@ -18,7 +18,7 @@
                v-model.number="shield.acBonus">
       </div>
       <div>
-        <div class="black-box">
+        <div class="new-black-box">
           <label>Weight</label>
         </div>
         <input type="number"
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div>
-      <div class="black-box">
+      <div class="new-black-box">
         <label>Check Penalty</label>
       </div>
       <input type="number"
@@ -35,7 +35,7 @@
              v-model.number="shield.checkPenalty">
     </div>
     <div>
-      <div class="black-box">
+      <div class="new-black-box">
         <label>Spell Failure</label>
       </div>
       <input type="number"
@@ -43,7 +43,7 @@
              v-model.number="shield.spellFailure">
     </div>
     <div>
-      <div class="black-box">
+      <div class="new-black-box">
         <label>Special Properties</label>
       </div>
       <input type="text"

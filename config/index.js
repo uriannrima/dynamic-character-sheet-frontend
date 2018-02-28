@@ -33,7 +33,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     // devtool: 'source-map', // VSCode
     // devtool: 'eval-source-map', // Development working
     // devtool: 'cheap-module-eval-source-map',
