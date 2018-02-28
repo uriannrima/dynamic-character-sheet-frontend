@@ -6,101 +6,71 @@
         <minimize-button :minimize.sync="minimize"></minimize-button>
       </div>
     </div>
-    <div class="description-component"
-         v-show="!minimize">
+    <div class="description-component" v-show="!minimize">
       <div class="horizontal-container">
-        <input type="text"
-               class="full-width-input"
-               v-model="character.name">
+        <input type="text" class="full-width-input" v-model="character.name">
         <label>Character Name</label>
         <button @click="saveCharacter()">Save</button>
         <button @click="newCharacter()">New</button>
       </div>
       <div class="horizontal-container">
-        <input type="text"
-               class="full-width-input"
-               v-model="character.playerName">
+        <input type="text" class="full-width-input" v-model="character.playerName">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
-        <input type="text"
-               class="full-width-input"
-               v-model.lazy="computedClass">
+        <input type="text" class="full-width-input" :value="classes">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.race">
+          <input type="text" class="full-width-input" v-model="character.race">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.alignment">
+          <input type="text" class="full-width-input" v-model="character.alignment">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.deity">
+          <input type="text" class="full-width-input" v-model="character.deity">
           <label>Deity</label>
         </div>
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
           <!-- input type="text" class="full-width-input" v-model="character.size" -->
-          <select v-model="character.size"
-                  class="full-width-input">
-            <option v-for="(size, index) in allSizes"
-                    :key="index"
-                    :value="size">{{size.name}}</option>
+          <select v-model="character.size" class="full-width-input">
+            <option v-for="(size, index) in allSizes" :key="index" :value="size">{{size.name}}</option>
           </select>
           <label>Size</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.age">
+          <input type="text" class="full-width-input" v-model="character.age">
           <label>Age</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.gender">
+          <input type="text" class="full-width-input" v-model="character.gender">
           <label>Gender</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.height">
+          <input type="text" class="full-width-input" v-model="character.height">
           <label>Height</label>
         </div>
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.weight">
+          <input type="text" class="full-width-input" v-model="character.weight">
           <label>Weight</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.eyes">
+          <input type="text" class="full-width-input" v-model="character.eyes">
           <label>Eyes</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.hair">
+          <input type="text" class="full-width-input" v-model="character.hair">
           <label>Hair</label>
         </div>
         <div class="horizontal-container">
-          <input type="text"
-                 class="full-width-input"
-                 v-model="character.skin">
+          <input type="text" class="full-width-input" v-model="character.skin">
           <label>Skin</label>
         </div>
       </div>
@@ -111,11 +81,58 @@
 <script>
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
+import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
 import SizeService from 'Services/size.service';
 import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 
+var descriptionStore = {
+  state: {
+    name: "",
+    playerName: "",
+    classes: [
+      {
+        name: "Wizard",
+        level: 1
+      }
+    ],
+    race: "",
+    alignment: "",
+    deity: "",
+    size: "",
+    age: "",
+    gender: "",
+    height: "",
+    weight: "",
+    eyes: "",
+    hair: "",
+    skin: ""
+  },
+  getters: {
+    classes: (state, getters) => {
+      return state.classes.map(classe => {
+        if (!classe.name || !classe.level) return "";
+        return classe.name + " (" + classe.level + ")";
+      });
+    }
+  },
+  mutations: {
+    updateClasses: (state, payload) => {
+      state.classes = payload.classes;
+    }
+  }
+};
+
 export default {
-  mixins: [CharacterMixin, MinimizableMixin],
+  mixins: [
+    CharacterMixin,
+    MinimizableMixin,
+    StoredComponentMixinFactory({
+      moduleConfiguration: ['Character', 'Description'],
+      store: descriptionStore,
+      gettersMapping: ['classes'],
+      mutationsMapping: ["updateClasses"]
+    })
+  ],
   data() {
     return {
       allSizes: []
@@ -133,42 +150,6 @@ export default {
     newCharacter: async function () {
       await CharacterStore.createCharacter();
       console.log(CharacterStore.Instance.character, this.character);
-    }
-  },
-  computed: {
-    computedClass: {
-      get: function () {
-        return this.character.classes.map(classe => {
-          if (!classe.name || !classe.level) return "";
-          return classe.name + " (" + classe.level + ")";
-        });
-      },
-      set: function (newValue) {
-        this.character.classes = [];
-        const fieldValues = newValue.split(",");
-        fieldValues.forEach(fieldValue => {
-          // If empty character
-          if (fieldValue.trim() === "") return;
-
-          // Clear whitespaces
-          var classLevel = fieldValue.replace(/ /g, "");
-
-          // Regex to get level
-          var levelRegex = /\(([^)]+)\)/;
-
-          // Get level data,
-          var levelData = levelRegex.exec(classLevel);
-          // Extract level from data
-          var level = levelData && levelData.length > 1 ? levelData[1] : 1;
-
-          // Remove level from field.
-          var classOnly = classLevel.replace(levelRegex, "");
-          this.character.classes.push({
-            name: classOnly.trim(),
-            level: level
-          });
-        });
-      }
     }
   }
 }
