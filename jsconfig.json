@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "paths": {
+      "Services": [
+        "./src/services"
+      ],
+      "Static": [
+        "./static'"
+      ],
+      "Modules": [
+        "./src/src/modules'"
+      ],
+      "Shared": [
+        "./src/src/shared'"
+      ],
+      "Store": [
+        "./src/src/store'"
+      ],
+      "Utils": [
+        "./src/src/utils'"
+      ],
+    }
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

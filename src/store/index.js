@@ -1,29 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import CharacterService from '../services/character.service';
+import Character from './Character';
+import CharacterService from 'Services/character.service';
 
 Vue.use(Vuex);
 
 const Store = new Vuex.Store({
-  mutations: {
-    ModuleRegistered(state, { moduleConfiguration }) {
-      console.debug('Module Registered:', moduleConfiguration);
-    }
-  },
+  modules: { Character },
   actions: {
     async loadCharacter(state, id) {
-      console.log('Load:', id);
-    }
-  },
-  modules: {
-    Character: {
-      namespaced: true,
-      state: {},
-      getters: {
-        abilityScore: state => (abilityScoreName) => {
-          console.log(state, abilityScoreName);
-        }
-      }
+      var characterData = await CharacterService.getData(id);
+      state.dispatch('Character/loadState', characterData);
     }
   }
 });

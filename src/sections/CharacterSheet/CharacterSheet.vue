@@ -10,20 +10,24 @@ import * as Pages from './pages';
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
 import NotificationService from '../../services/NotificationService';
-import CharacterService from 'Services/character.service';
+import Store from '../../store';
 
 export default {
   mixins: [CharacterMixin],
   components: Pages,
   beforeRouteEnter: async function (to, from, next) {
-    next(async (vm) => {
-      await vm.$store.dispatch(to.params.id);
-    });
+    if (to.params.id) {
+      await Store.dispatch('loadCharacter', to.params.id);
+      await CharacterStore.loadCharacter(to.params.id);
+    }
+    next();
   },
   beforeRouteUpdate: async function (to, from, next) {
-    next(async (vm) => {
-      await vm.$store.dispatch(to.params.id);
-    });
+    if (to.params.id) {
+      await Store.dispatch('loadCharacter', to.params.id);
+      await CharacterStore.loadCharacter(to.params.id);
+    }
+    next();
   },
   feathers: {
     characters: {

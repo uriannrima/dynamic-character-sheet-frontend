@@ -18,6 +18,16 @@ export default class AbstractService extends HttpService {
     };
   }
 
+  async getData(id) {
+    try {
+      var headers = await this.getHeaders();
+      var response = await this.service.get(this.url + `/${id}`, { headers });
+      return response.data
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async get(id) {
     try {
       var headers = await this.getHeaders();

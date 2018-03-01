@@ -110,78 +110,21 @@
 </template>
 
 <script>
+import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
+import SizeService from 'Services/size.service';
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
-import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
-import SizeService from 'Services/size.service';
-import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
-
-/** Move it to it's own file. */
-var descriptionStore = {
-  namespaced: true,
-  state: {
-    name: "Teste",
-    playerName: "",
-    classes: [
-      {
-        name: "Wizard",
-        level: 1
-      }
-    ],
-    race: "",
-    alignment: "",
-    deity: "",
-    size: "",
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    eyes: "",
-    hair: "",
-    skin: ""
-  },
-  getters: {
-    classes: (state, getters) => {
-      return state.classes.map(classe => {
-        if (!classe.name || !classe.level) return "";
-        return classe.name + " (" + classe.level + ")";
-      });
-    }
-  },
-  mutations: {
-    updateClasses: (state, { classes }) => {
-      state.classes = [];
-      const classesValues = classes.split(",");
-      classesValues.forEach(classesValue => {
-        // If empty character
-        if (classesValue.trim() === "") return;
-        // Clear whitespaces
-        var classLevel = classesValue.replace(/ /g, "");
-        // Regex to get level
-        var levelRegex = /\(([^)]+)\)/;
-        // Get level data,
-        var levelData = levelRegex.exec(classLevel);
-        // Extract level from data
-        var level = levelData && levelData.length > 1 ? levelData[1] : 1;
-        // Remove level from classes.
-        var classOnly = classLevel.replace(levelRegex, "");
-        state.classes.push({
-          name: classOnly.trim(),
-          level: level
-        });
-      });
-    }
-  }
-};
+import StoreMappingMixinFactory from 'Store/store.mapping.mixin.factory';
+import DescriptionStore from 'Store/Character/Description';
 
 export default {
   mixins: [
     CharacterMixin,
     MinimizableMixin,
-    StoredComponentMixinFactory({
+    StoreMappingMixinFactory({
       namespaced: true,
       moduleConfiguration: ['Character', 'Description'],
-      store: descriptionStore,
+      store: DescriptionStore,
       stateMapping: true,
       gettersMapping: true,
       mutationsMapping: true
