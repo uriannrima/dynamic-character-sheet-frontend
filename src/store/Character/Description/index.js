@@ -1,3 +1,5 @@
+import CharacterService from 'Services/character.service';
+
 export default {
   namespaced: true,
   state: {
@@ -7,7 +9,7 @@ export default {
     race: "",
     alignment: "",
     deity: "",
-    size: "",
+    size: {},
     age: "",
     gender: "",
     height: "",
@@ -25,13 +27,26 @@ export default {
     }
   },
   actions: {
-    loadState({ commit }, payload) {
+    async loadStateAsync({ commit }, payload) {
       commit('loadState', payload);
+    },
+    async saveStateAsync({ commit, state }, payload) {
+      console.log('Start fake sync...', state);
+      setTimeout(() => {
+        console.log('Synced.', payload);
+        const { description } = payload;
+        commit('loadState', { characterData: description });
+      }, 2000);
     }
   },
   mutations: {
     loadState(state, { characterData }) {
-      Object.keys(state).forEach(prop => { state[prop] = characterData[prop] });
+      Object.keys(state).forEach(prop => {
+        if (characterData.hasOwnProperty(prop)) {
+          console.log(state[prop], characterData[prop]);
+          state[prop] = characterData[prop]
+        }
+      });
     },
     updateClasses: (state, { classes }) => {
       state.classes = [];

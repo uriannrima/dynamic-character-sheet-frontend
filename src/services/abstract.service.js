@@ -60,4 +60,14 @@ export default class AbstractService extends HttpService {
       throw error;
     }
   }
+
+  async patch(_id, model) {
+    try {
+      var headers = await this.getHeaders();
+      var response = await this.service.patch(this.url + `/${_id}`, model, { headers });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

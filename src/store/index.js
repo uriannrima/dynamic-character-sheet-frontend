@@ -5,12 +5,15 @@ import CharacterService from 'Services/character.service';
 
 Vue.use(Vuex);
 
+const modules = { Character };
 const Store = new Vuex.Store({
-  modules: { Character },
+  modules,
   actions: {
-    async loadCharacter(state, id) {
+    async loadCharacter({ dispatch, state }, id) {
       var characterData = await CharacterService.getData(id);
-      state.dispatch('Character/loadState', characterData);
+      Object.keys(modules).forEach(subModule => {
+        dispatch(`${subModule}/loadStateAsync`, { characterData });
+      });
     }
   }
 });

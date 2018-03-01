@@ -11,7 +11,8 @@
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="name">
+               :value="name"
+               @change="update({ name: $event.target.value})">
         <label>Character Name</label>
         <button @click="saveCharacter()">Save</button>
         <button @click="newCharacter()">New</button>
@@ -19,7 +20,8 @@
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="playerName">
+               :value="playerName"
+               @change="update({ playerName: $event.target.value})">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
@@ -33,30 +35,33 @@
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="race">
+                 :value="race"
+                 @change="update({ race: $event.target.value})">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="alignment">
+                 :value="alignment"
+                 @change="update({ alignment: $event.target.value})">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="deity">
+                 :value="deity"
+                 @change="update({ deity: $event.target.value})">
           <label>Deity</label>
         </div>
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
-          <!-- input type="text" class="full-width-input" :value="size" -->
-          <select :value="size"
-                  class="full-width-input">
+          <select :value="size.name"
+                  class="full-width-input"
+                  @change="update({ size: allSizes.find(size => size.name === $event.target.value) })">
             <option v-for="(size, index) in allSizes"
                     :key="index"
-                    :value="size">{{size.name}}</option>
+                    :value="size.name">{{size.name}}</option>
           </select>
           <label>Size</label>
         </div>
@@ -127,7 +132,8 @@ export default {
       store: DescriptionStore,
       stateMapping: true,
       gettersMapping: true,
-      mutationsMapping: true
+      mutationsMapping: true,
+      actionsMapping: true
     })
   ],
   data() {
@@ -147,6 +153,10 @@ export default {
     newCharacter: async function () {
       await CharacterStore.createCharacter();
       console.log(CharacterStore.Instance.character, this.character);
+    },
+    update: async function (payload) {
+      const description = { ...payload };
+      this.saveStateAsync({ description });
     }
   }
 }

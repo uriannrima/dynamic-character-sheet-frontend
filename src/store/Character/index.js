@@ -1,15 +1,25 @@
 import Description from './Description'
 
+const modules = { Description };
+const state = {
+  characterId: ""
+};
+
 export default {
   namespaced: true,
-  modules: {
-    Description
-  },
+  state,
+  modules,
   actions: {
-    loadState({ dispatch, state }, characterData) {
-      Object.keys(state).forEach(subModule => {
-        dispatch(`${subModule}/loadState`, { characterData });
+    loadStateAsync({ commit, dispatch, state }, payload) {
+      commit('loadState', payload);
+      Object.keys(modules).forEach(subModule => {
+        dispatch(`${subModule}/loadStateAsync`, payload);
       });
+    }
+  },
+  mutations: {
+    loadState(state, { characterData }) {
+      state.characterId = characterData._id;
     }
   },
   getters: {
