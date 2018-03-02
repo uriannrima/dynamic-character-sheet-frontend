@@ -27,12 +27,12 @@ export default {
   beforeRouteEnter: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
     next(vm => {
-      vm.loadCharacter(to.params.id);
+      vm.loadCharacterAsync(to.params.id);
     });
   },
   beforeRouteUpdate: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
-    await this.loadCharacter(to.params.id);
+    await this.loadCharacterAsync(to.params.id);
     next();
   },
   feathers: {

@@ -15,12 +15,14 @@
         <label>Temporary<br>Score</label>
         <label>Temporary<br>Modifier</label>
       </div>
-      <ability-score v-for="(abilityScore, index) in character.abilityScores"
+      <ability-score v-for="(abilityScore, index) in abilitiesScore"
                      :key="index"
                      :index="index"
                      :name="abilityScore.name"
                      :value="abilityScore.value"
                      :tempValue="abilityScore.tempValue"
+                     :modifier="getModifier(abilityScore)"
+                     :tempModifier="getTempModifier(abilityScore)"
                      @onUpdateScore="updateScore($event)" />
     </div>
   </div>
@@ -30,14 +32,25 @@
 import { AbilityScore } from './';
 import CharacterMixin from 'Store/character.mixin';
 import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
+import AbilitiesScoreStore from './AbilitiesScoreStore';
+import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
 
 export default {
-  mixins: [CharacterMixin, MinimizableMixin],
+  mixins: [
+    CharacterMixin,
+    MinimizableMixin,
+    StoredComponentMixinFactory({
+      module: AbilitiesScoreStore,
+      moduleNamespace: ['Character', 'AbilitiesScore'],
+      stateMapping: true,
+      gettersMapping: true,
+      mutationsMapping: true,
+      actionsMapping: true
+    })],
   components: { AbilityScore },
   methods: {
-    updateScore: function ({ index, field, value }) {
-      var abilityScore = this.character.abilityScores[index];
-      abilityScore[field] = value;
+    updateScore: function ($event) {
+      this.updateAbilityScore($event);
     }
   }
 }

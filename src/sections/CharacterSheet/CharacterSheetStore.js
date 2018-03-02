@@ -12,7 +12,7 @@ export default {
     }
   },
   actions: {
-    async loadCharacter(context, characterId) {
+    async loadCharacterAsync(context, characterId) {
       const { commit, dispatch, state } = context;
       try {
         const character = await CharacterService.getData(characterId);

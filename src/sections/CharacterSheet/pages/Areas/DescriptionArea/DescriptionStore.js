@@ -1,4 +1,4 @@
-import ObjectUtils from 'Utils/object.utils.js'
+import ObjectUtils from 'Utils/object.utils.js';
 
 export default {
   namespaced: true,
