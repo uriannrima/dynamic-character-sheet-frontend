@@ -57,6 +57,8 @@
 
 <script>
 import CharacterMixin from 'Store/character.mixin';
+import CharacterSource from '@/data';
+import PrimaryArmorSource from '@/data/PrimaryArmorSource';
 
 export default {
   mixins: [CharacterMixin],
