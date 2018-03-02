@@ -1,6 +1,6 @@
 <template>
   <div class="main-container"
-       v-show="character">
+       v-show="id">
     <front class="page front" />
     <cover class="page cover" />
   </div>
@@ -10,7 +10,6 @@
 import * as Pages from './pages';
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
-import NotificationService from '../../services/NotificationService';
 import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
 import CharacterSheetStore from './CharacterSheetStore';
 
@@ -34,19 +33,6 @@ export default {
     await CharacterStore.loadCharacter(to.params.id);
     await this.loadCharacterAsync(to.params.id);
     next();
-  },
-  feathers: {
-    characters: {
-      async updated(updatedCharacter) {
-        if (this.character._id === updatedCharacter._id) {
-          this.character = await CharacterStore.toModel(updatedCharacter);
-          NotificationService.notify({
-            type: "success",
-            message: "Your character has been updated."
-          });
-        }
-      }
-    }
   }
 }
 </script>

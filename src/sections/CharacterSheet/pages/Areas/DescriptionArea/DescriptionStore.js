@@ -1,4 +1,5 @@
 import ObjectUtils from 'Utils/object.utils.js';
+import CharacterService from '../../../../../services/character.service';
 
 export default {
   namespaced: true,
@@ -27,6 +28,11 @@ export default {
     }
   },
   actions: {
+    async saveState(context, payload) {
+      CharacterService.patch(context.rootState.Character.id, payload).then(() => {
+        context.commit('loadState', payload);
+      });
+    },
     async loadStateAsync({ commit, state }, payload) {
       commit('loadState', payload);
     }

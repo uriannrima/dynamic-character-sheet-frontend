@@ -68,19 +68,22 @@
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="age">
+                 :value="age"
+                 @change="updateDescription({ age: $event.target.value})">
           <label>Age</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="gender">
+                 :value="gender"
+                 @change="updateDescription({ gender: $event.target.value})">
           <label>Gender</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="height">
+                 :value="height"
+                 @change="updateDescription({ height: $event.target.value})">
           <label>Height</label>
         </div>
       </div>
@@ -88,25 +91,29 @@
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="weight">
+                 :value="weight"
+                 @change="updateDescription({ weight: $event.target.value})">
           <label>Weight</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="eyes">
+                 :value="eyes"
+                 @change="updateDescription({ eyes: $event.target.value})">
           <label>Eyes</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="hair">
+                 :value="hair"
+                 @change="updateDescription({ hair: $event.target.value})">
           <label>Hair</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="skin">
+                 :value="skin"
+                 @change="updateDescription({ skin: $event.target.value})">
           <label>Skin</label>
         </div>
       </div>
@@ -121,6 +128,7 @@ import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
 import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
 import DescriptionStore from './DescriptionStore';
+import NotificationService from 'Services/NotificationService';
 
 export default {
   mixins: [
@@ -154,7 +162,19 @@ export default {
       console.log(CharacterStore.Instance.character, this.character);
     },
     updateDescription: async function (payload) {
-      this.loadState(payload);
+      this.saveState(payload);
+    }
+  },
+  feathers: {
+    characters: {
+      async patched(updatedCharacter) {
+        if (this.character._id === updatedCharacter._id) {
+          NotificationService.notify({
+            type: "success",
+            message: "Your character has been updated."
+          });
+        }
+      }
     }
   }
 }

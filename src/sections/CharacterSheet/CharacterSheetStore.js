@@ -3,12 +3,12 @@ import CharacterService from "../../services/character.service";
 export default {
   namespaced: true,
   state: {
-    character: null
+    id: null
   },
   getters: {},
   mutations: {
-    loadCharacter(state, character, rootState) {
-      state.character = character;
+    saveCharacterId(state, characterId) {
+      state.id = characterId;
     }
   },
   actions: {
@@ -17,7 +17,7 @@ export default {
       try {
         const character = await CharacterService.getData(characterId);
         // Debug purpose.
-        commit('loadCharacter', character);
+        commit('saveCharacterId', characterId);
         Object.keys(state).forEach(prop => {
           if (state[prop]._module) dispatch(`${prop}/loadStateAsync`, character);
         });
