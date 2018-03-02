@@ -1,28 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "baseUrl": ".",
     "paths": {
-      "Services": [
-        "./src/services"
-      ],
       "Static": [
-        "./static'"
+        "static'"
+      ],
+      "Services": [
+        "src/services"
       ],
       "Modules": [
-        "./src/src/modules'"
+        "src/src/modules'"
       ],
       "Shared": [
-        "./src/src/shared'"
+        "src/src/shared'"
       ],
       "Store": [
-        "./src/src/store'"
+        "src/src/store'"
       ],
       "Utils": [
-        "./src/src/utils'"
-      ],
+        "src/src/utils'"
+      ]
     }
-  },
-  "include": [
-    "./src/**/*"
-  ]
+  }
 }

@@ -9,7 +9,8 @@
     </div>
     <input type="number"
            class="health-input common-input"
-           v-model.number="character.status.healthPoints">
+           :value="status.healthPoints"
+           @change="changeStatus({healthPoints: $event.target.value * 1})">
     <input type="text"
            class="wounds-input common-input"
            v-model="character.status.wounds">
@@ -28,9 +29,70 @@
 
 <script>
 import CharacterMixin from 'Store/character.mixin';
+import ObjectUtils from 'Utils/object.utils.js';
+
+const BaseDataSource = {
+  listeners: {},
+  addChangeListener(listener) {
+    this.listeners[listener] = listener;
+  },
+  removeChangeListener(listener) {
+    delete this.listeners[listener];
+  },
+  emmitChange() {
+    Object.keys(this.listeners).forEach(key => this.listeners[key]());
+  },
+  setState(cb) {
+    cb(this.state);
+    this.emmitChange();
+  }
+};
+
+const DataSource = Object.assign(BaseDataSource, {
+  state: {
+    status: {
+      healthPoints: 0,
+      wounds: 0,
+      nonLethalDamage: 0,
+      speed: 0
+    }
+  },
+  getStatus() {
+    return this.state.status;
+  },
+  setStatus(status) {
+    this.setState(state => {
+      ObjectUtils.extractTo(status, state.status);
+    });
+  }
+});
 
 export default {
-  mixins: [CharacterMixin]
+  mixins: [CharacterMixin],
+  data() {
+    return {
+      status: {
+        healthPoints: 0,
+        wounds: 0,
+        nonLethalDamage: 0,
+        speed: 0
+      }
+    };
+  },
+  mounted() {
+    DataSource.addChangeListener(this.handleChange);
+  },
+  beforeDestroy() {
+    DataSource.removeChangeListener(this.handleChange);
+  },
+  methods: {
+    handleChange() {
+      console.log(DataSource.getStatus());
+    },
+    changeStatus(status) {
+      DataSource.setStatus(status);
+    }
+  }
 }
 </script>
 
