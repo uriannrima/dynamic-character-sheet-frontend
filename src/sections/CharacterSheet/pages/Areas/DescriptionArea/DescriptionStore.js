@@ -39,7 +39,7 @@ export default {
   },
   mutations: {
     loadState(state, payload) {
-      ObjectUtils.extractTo(payload, state, Object.keys(state));
+      ObjectUtils.extractTo(payload, state);
     },
     updateClasses: (state, { classes }) => {
       state.classes = [];

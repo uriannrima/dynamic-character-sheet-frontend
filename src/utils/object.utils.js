@@ -13,5 +13,5 @@ export default {
       if (!from.hasOwnProperty(prop)) return;
       to[prop] = from[prop];
     });
-  },
+  }
 };

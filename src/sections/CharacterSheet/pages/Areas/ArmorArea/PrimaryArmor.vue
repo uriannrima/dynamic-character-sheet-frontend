@@ -27,14 +27,14 @@
            :value="character.size.modifier">
     <input type="number"
            class="common-input"
-           v-model.number="character.armorClass.naturalArmor">
+           v-model.number="armorClass.naturalArmor">
     <input type="number"
            class="common-input"
            readonly
            :value="deflectionBonus">
     <input type="number"
            class="common-input"
-           v-model.number="character.armorClass.miscModifier">
+           v-model.number="armorClass.miscModifier">
     <label>&nbsp;</label>
     <label class="h-md-down total-label">Total</label>
     <label class="h-md-down">&nbsp;</label>
@@ -57,13 +57,21 @@
 
 <script>
 import CharacterMixin from 'Store/character.mixin';
-import CharacterSource from '@/data';
-import PrimaryArmorSource from '@/data/PrimaryArmorSource';
+import ArmorClassStore from './ArmorClassStore';
+import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
 
 export default {
-  mixins: [CharacterMixin],
+  mixins: [
+    CharacterMixin,
+    StoredComponentMixinFactory({
+      module: ArmorClassStore,
+      moduleNamespace: ['Character', 'ArmorClass'],
+      stateMapping: true,
+      gettersMapping: true
+    })
+  ],
   computed: {
-    totalArmor() {
+    localTotalArmor() {
       var { armorClass, size } = this.character;
       return armorClass.base +
         this.armorBonus +

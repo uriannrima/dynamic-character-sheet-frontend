@@ -6,10 +6,18 @@ export default {
     abilitiesScore: []
   },
   getters: {
+    getAbilityScore: state => (abilityScoreName) => {
+      return state.abilitiesScore.find(ab => ab.name === abilityScoreName);
+    },
+    getAbilityScoreTempModifier: (state, getters) => (abilityScoreName) => {
+      return getters.getModifier(state.abilitiesScore.find(ab => ab.name === abilityScoreName));
+    },
     getModifier: state => (abilityScore) => {
+      if (!abilityScore) return;
       return Math.floor((abilityScore.value - 10) / 2);
     },
     getTempModifier: state => (abilityScore) => {
+      if (!abilityScore) return;
       return Math.floor((abilityScore.tempValue - 10) / 2);
     }
   },
