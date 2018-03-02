@@ -28,7 +28,7 @@
         <input type="text"
                class="full-width-input"
                :value="classes"
-               @change="updateDescriptionClasses({ classes: $event.target.value })">
+               @change="updateClasses({ classes: $event.target.value })">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
@@ -169,6 +169,7 @@ export default {
     characters: {
       async patched(updatedCharacter) {
         if (this.character._id === updatedCharacter._id) {
+          this.loadState(updatedCharacter);
           NotificationService.notify({
             type: "success",
             message: "Your character has been updated."
