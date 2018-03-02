@@ -12,7 +12,7 @@
         <input type="text"
                class="full-width-input"
                :value="name"
-               @change="update({ name: $event.target.value})">
+               @change="updateDescription({ name: $event.target.value})">
         <label>Character Name</label>
         <button @click="saveCharacter()">Save</button>
         <button @click="newCharacter()">New</button>
@@ -21,14 +21,14 @@
         <input type="text"
                class="full-width-input"
                :value="playerName"
-               @change="update({ playerName: $event.target.value})">
+               @change="updateDescription({ playerName: $event.target.value})">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
                :value="classes"
-               @change="updateClasses({ classes: $event.target.value })">
+               @change="updateDescriptionClasses({ classes: $event.target.value })">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
@@ -36,21 +36,21 @@
           <input type="text"
                  class="full-width-input"
                  :value="race"
-                 @change="update({ race: $event.target.value})">
+                 @change="updateDescription({ race: $event.target.value})">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="alignment"
-                 @change="update({ alignment: $event.target.value})">
+                 @change="updateDescription({ alignment: $event.target.value})">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="deity"
-                 @change="update({ deity: $event.target.value})">
+                 @change="updateDescription({ deity: $event.target.value})">
           <label>Deity</label>
         </div>
       </div>
@@ -58,7 +58,7 @@
         <div class="horizontal-container">
           <select :value="size.name"
                   class="full-width-input"
-                  @change="update({ size: allSizes.find(size => size.name === $event.target.value) })">
+                  @change="updateDescription({ size: allSizes.find(size => size.name === $event.target.value) })">
             <option v-for="(size, index) in allSizes"
                     :key="index"
                     :value="size.name">{{size.name}}</option>
@@ -153,9 +153,8 @@ export default {
       await CharacterStore.createCharacter();
       console.log(CharacterStore.Instance.character, this.character);
     },
-    update: async function (payload) {
-      // const description = { ...payload };
-      // this.saveStateAsync({ description });
+    updateDescription: async function (payload) {
+      this.loadState(payload);
     }
   }
 }
