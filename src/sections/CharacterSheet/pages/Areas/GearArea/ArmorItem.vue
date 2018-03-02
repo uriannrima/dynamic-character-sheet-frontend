@@ -108,7 +108,7 @@ export default {
   }
 
   .armor-item-component label {
-    font-size: 9px !important;
+    font-size: 14px !important;
   }
 
   .armor-item-component {

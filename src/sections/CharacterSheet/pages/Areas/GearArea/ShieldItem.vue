@@ -80,7 +80,7 @@ export default {
   }
 
   .shield-item-component label {
-    font-size: 9px !important;
+    font-size: 14px !important;
   }
 
   .shield-item-component {

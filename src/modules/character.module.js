@@ -7,7 +7,7 @@ export const Character = function ({
   size, age = "", gender = "", height = "",
   weight = "", eyes = "", hair = "", skin = "", speed = "",
   damageReduction = "", classes, abilityScores,
-  status, armorClass, initiative, conditionModifier = "",
+  status = {}, armorClass, initiative, conditionModifier = "",
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = Modules.SkillsModule.DEFAULT_SKILLS,
   attacks, gear, items = [], carryCapacities,

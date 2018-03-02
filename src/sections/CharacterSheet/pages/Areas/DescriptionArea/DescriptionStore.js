@@ -1,4 +1,4 @@
-import CharacterService from 'Services/character.service';
+import ObjectUtils from 'Utils/object.utils.js'
 
 export default {
   namespaced: true,
@@ -27,26 +27,13 @@ export default {
     }
   },
   actions: {
-    async loadStateAsync({ commit }, payload) {
+    async loadStateAsync({ commit, state }, payload) {
       commit('loadState', payload);
-    },
-    async saveStateAsync({ commit, state }, payload) {
-      console.log('Start fake sync...', state);
-      setTimeout(() => {
-        console.log('Synced.', payload);
-        const { description } = payload;
-        commit('loadState', { characterData: description });
-      }, 2000);
     }
   },
   mutations: {
-    loadState(state, { characterData }) {
-      Object.keys(state).forEach(prop => {
-        if (characterData.hasOwnProperty(prop)) {
-          console.log(state[prop], characterData[prop]);
-          state[prop] = characterData[prop]
-        }
-      });
+    loadState(state, payload) {
+      ObjectUtils.extractTo(payload, state, Object.keys(state));
     },
     updateClasses: (state, { classes }) => {
       state.classes = [];

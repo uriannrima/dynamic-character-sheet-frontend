@@ -27,11 +27,4 @@ export default {
     grid-template-areas: "logo-component" "description-component";
   }
 }
-
-@media screen and (min-width: 1440px) {
-  .description-area {
-    grid-template-columns: 100%;
-    grid-template-areas: "description-component";
-  }
-}
 </style>

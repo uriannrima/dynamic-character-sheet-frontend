@@ -1,51 +1,58 @@
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 
 /**
  * An mixin factory to configure a component with it's own vuex store module.
- * @param {string[]} moduleConfiguration - Array containing the "path" to the component.
- * @param {Object} store - Component store object.
- * @param {boolean} namespaced - Boolean informing if the store is namedspaced. If it is, it must be namespaced from all modules bottom-up.
+ * @param {string[]} moduleNamespace - Array containing the "path" to the component.
+ * @param {Object} module - Component module object.
  * @param {string[]|boolean} stateMapping - Array of state properties that you want to mix from the store to the component computed properties. True if you want all state's properties.
  * @param {string[]|boolean} gettersMapping - Array of getters methods that you want to mix from the store to the component computed properties. True if you want all methods.
  * @param {string[]|boolean} mutationsMapping - Array of mutations methods that you want to mix from the store to the component methods. True if you want all methods.
  * @param {string[]|boolean} actionsMapping - Array of actions methods that you want to mix from the store to the component methods. True if you want all methods.
+ * @param {string|boolean} commitRegistration - Commit name to be executed to inform Vuex that a module has been registered. Helps to make Vue DevTools to know that a new module exists. String containing the commit name, or a boolean to use default 'ModuleRegistered'.
  */
-export default function ({ moduleConfiguration, store, namespaced, stateMapping, gettersMapping, mutationsMapping, actionsMapping } = {}) {
+export default function ({ moduleNamespace, module, stateMapping, gettersMapping, mutationsMapping, actionsMapping, commitRegistration } = {}) {
   const mixin = {
     computed: {},
     methods: {},
     created() {
-      // Causes error when used with hot-reload.
-      // It doesn't break the app, but causes error on console.
-      // Need to find a way to unregister on hot-reload.
-      // Just beforeDestroy or destroyed didn't worked.
-      this.$store.registerModule(moduleConfiguration, store);
+      // Avoid register module more than once.
+      // Caveat: If using hot-reload, if you make changes on  the script that contains the store
+      // Or if you create the store in the same script that you define the component, everytime you change it
+      // The component will register again the store, and it will have it's alreadyRegistered cleared out.
+      if (module.alreadyRegistered) return;
+      this.$store.registerModule(moduleNamespace, module);
+      module.alreadyRegistered = true;
 
-      // Since the Vuex Store won't update on Vue DevTools until there is a commit
-      // After the module has been registered we do a commit
-      // (could be a empty commit, but let's be a bit informative)
-      // After this Time Travel works.
-      // Again, it's a mess with hot-reload, keeps adding commits.
-      this.$store.commit('ModuleRegistered', { moduleConfiguration });
+      // A bit of a hack to allow me to call submodules dispatchs in a better manner.
+      module.state._module = true;
+
+      // Since the Vuex Store won't update on Vue DevTools Store Modules until there is a commit...
+      // After the module has been registered we do a commit (could be a empty commit, but let's be a bit informative)
+      // After this, Time Travel works.
+      // Caveat: Again, if you use hot-reload, and the store loses it's information, it will register again and do a new commit.
+      if (commitRegistration) this.$store.commit((typeof commitRegistration === 'string') ? commitRegistration : 'ModuleRegistered', { moduleNamespace, module, stateMapping, gettersMapping, mutationsMapping, actionsMapping });
     }
   };
 
-  const namespace = namespaced ? moduleConfiguration.join('/') : "";
+  const namespace = (typeof moduleNamespace === 'object') ? moduleNamespace.join('/') : moduleNamespace;
 
-  function checkAndMerge(mappingOptions, mappingFunction, fromStore, toComponent, namespace) {
+  function checkAndMerge(mappingOptions, mappingFunction, fromStore, toComponent) {
+    if (!fromStore || !toComponent) return;
     if (mappingOptions) {
       if (typeof mappingOptions === 'boolean') {
-        toComponent = Object.assign(toComponent, { ...mappingFunction(namespace, Object.keys(fromStore)) });
+        toComponent = Object.assign(toComponent, { ...mappingFunction(Object.keys(fromStore)) });
       } else {
-        toComponent = Object.assign(toComponent, { ...mappingFunction(namespace, mappingOptions) });
+        toComponent = Object.assign(toComponent, { ...mappingFunction(mappingOptions) });
       }
     }
   };
 
-  checkAndMerge(stateMapping, mapState, store.state, mixin.computed, namespace);
-  checkAndMerge(gettersMapping, mapGetters, store.getters, mixin.computed, namespace);
-  checkAndMerge(mutationsMapping, mapMutations, store.mutations, mixin.methods, namespace);
-  checkAndMerge(actionsMapping, mapActions, store.actions, mixin.methods, namespace);
+  const { mapState, mapGetters, mapMutations, mapActions } = createNamespacedHelpers(namespace);
+
+  checkAndMerge(stateMapping, mapState, module.state, mixin.computed);
+  checkAndMerge(gettersMapping, mapGetters, module.getters, mixin.computed);
+  checkAndMerge(mutationsMapping, mapMutations, module.mutations, mixin.methods);
+  checkAndMerge(actionsMapping, mapActions, module.actions, mixin.methods);
 
   return mixin;
 };

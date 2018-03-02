@@ -1,5 +1,6 @@
 <template>
-  <div class="main-container">
+  <div class="main-container"
+       v-show="character">
     <front class="page front" />
     <cover class="page cover" />
   </div>
@@ -10,23 +11,28 @@ import * as Pages from './pages';
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
 import NotificationService from '../../services/NotificationService';
-import Store from '../../store';
+import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
+import CharacterSheetStore from './CharacterSheetStore';
 
 export default {
-  mixins: [CharacterMixin],
+  mixins: [CharacterMixin, StoredComponentMixinFactory({
+    module: CharacterSheetStore,
+    moduleNamespace: 'Character',
+    stateMapping: true,
+    gettersMapping: true,
+    mutationsMapping: true,
+    actionsMapping: true
+  })],
   components: Pages,
   beforeRouteEnter: async function (to, from, next) {
-    if (to.params.id) {
-      await Store.dispatch('loadCharacter', to.params.id);
-      await CharacterStore.loadCharacter(to.params.id);
-    }
-    next();
+    await CharacterStore.loadCharacter(to.params.id);
+    next(vm => {
+      vm.loadCharacter(to.params.id);
+    });
   },
   beforeRouteUpdate: async function (to, from, next) {
-    if (to.params.id) {
-      await Store.dispatch('loadCharacter', to.params.id);
-      await CharacterStore.loadCharacter(to.params.id);
-    }
+    await CharacterStore.loadCharacter(to.params.id);
+    await this.loadCharacter(to.params.id);
     next();
   },
   feathers: {

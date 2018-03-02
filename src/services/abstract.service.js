@@ -7,7 +7,7 @@ export default class AbstractService extends HttpService {
     Object.assign(this, { model });
   }
 
-  async create(data = {}) {
+  create(data = {}) {
     return this.model(data);
   }
 

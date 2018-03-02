@@ -119,17 +119,16 @@ import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
 import SizeService from 'Services/size.service';
 import CharacterStore from 'Store/character.store';
 import CharacterMixin from 'Store/character.mixin';
-import StoreMappingMixinFactory from 'Store/store.mapping.mixin.factory';
-import DescriptionStore from 'Store/Character/Description';
+import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
+import DescriptionStore from './DescriptionStore';
 
 export default {
   mixins: [
     CharacterMixin,
     MinimizableMixin,
-    StoreMappingMixinFactory({
-      namespaced: true,
-      moduleConfiguration: ['Character', 'Description'],
-      store: DescriptionStore,
+    StoredComponentMixinFactory({
+      module: DescriptionStore,
+      moduleNamespace: ['Character', 'Description'],
       stateMapping: true,
       gettersMapping: true,
       mutationsMapping: true,
@@ -155,8 +154,8 @@ export default {
       console.log(CharacterStore.Instance.character, this.character);
     },
     update: async function (payload) {
-      const description = { ...payload };
-      this.saveStateAsync({ description });
+      // const description = { ...payload };
+      // this.saveStateAsync({ description });
     }
   }
 }
