@@ -1,6 +1,5 @@
 <template>
   <div class="main-container">
-    {{_id}}
     <front class="page front" />
     <cover class="page cover" />
   </div>

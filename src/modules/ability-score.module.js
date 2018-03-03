@@ -1,111 +1,46 @@
-export const AbilityScore = function ({ name, value, tempValue, updateFn }) {
-  return {
-    name,
-    value: value || 10,
-    tempValue: tempValue || value || 10,
-    getModifier: function () {
+export class AbilityScore {
+  constructor({ name, value = 10, tempValue = 10 } = {}) {
+    this.name = name;
+    this.value = value;
+    this.tempValue = tempValue;
+    this.modifier = 0;
+    this.tempModifier = 0;
+    // TODO: Remove these methods later.
+    this.getModifier = () => {
       return Math.floor((this.value - 10) / 2);
-    },
-    getTempModifier: function () {
-      return Math.floor((this.tempValue - 10) / 2);
-    },
-    updateCharacter: updateFn || function (character) {
-
-    },
-    updateSavingThrows: function (character) {
-      const modifier = this.getModifier() !== this.getTempModifier() ? this.getTempModifier() : this.getModifier();
-
-      // Update saving throws.
-      var savingThrowsToUpdate = character.savingThrows.filter(savingThrow => savingThrow.keyAbility === this.name);
-      savingThrowsToUpdate.forEach(savingThrow => {
-        savingThrow.abilityModifier = modifier;
-      });
-    },
-    updateSkills: function (character) {
-      character.skills.forEach(skill => {
-        if (skill.keyAbility === this.name) {
-          if (this.getModifier() !== this.getTempModifier()) {
-            skill.abilityModifier = this.getTempModifier();
-          } else {
-            skill.abilityModifier = this.getModifier();
-          }
-        }
-      });
     }
-  };
+    this.getTempModifier = () => {
+      return Math.floor((this.tempValue - 10) / 2);
+    }
+  }
 };
 
-export const Factory = {
-  Create: function ({ name, value, tempValue }) {
-    const template = Factory.templates.filter(t => t.name === name)[0];
-    return new AbilityScore({
-      name: template.name,
-      value,
-      tempValue,
-      updateFn: template.updateFn
-    });
-  },
-  templates: [],
-  add: function (template) {
-    Factory.templates.push(template);
-  },
-  clear: function () {
-    Factory.template = [];
-  }
-}
+export default AbilityScore;
 
-Factory.add({
-  name: "strength",
-  updateFn: function (character) {
-    this.updateSkills(character);
-
-    // Update grapple.
-    character.grapple.strengthModifier = this.getModifier();
-  }
+export const Strength = new AbilityScore({
+  name: "Strength"
 });
 
-Factory.add({
-  name: "dexterity",
-  updateFn: function (character) {
-    this.updateSkills(character);
-    this.updateSavingThrows(character);
-
-    const modifier = this.getModifier();
-
-    // Update armor class.
-    character.armorClass.dexModifier = modifier;
-
-    // Update initiative.
-    character.initiative.dexModifier = modifier;
-  }
+export const Dexterity = new AbilityScore({
+  name: "Dexterity"
 });
 
-Factory.add({
-  name: "constitution",
-  updateFn: function (character) {
-    this.updateSkills(character);
-    this.updateSavingThrows(character);
-  }
+export const Constitution = new AbilityScore({
+  name: "Constitution"
 });
 
-Factory.add({
-  name: "intelligence",
-  updateFn: function (character) {
-    this.updateSkills(character);
-  }
+export const Intelligence = new AbilityScore({
+  name: "Intelligence"
 });
 
-Factory.add({
-  name: "wisdom",
-  updateFn: function (character) {
-    this.updateSkills(character);
-    this.updateSavingThrows(character);
-  }
+export const Wisdom = new AbilityScore({
+  name: "Wisdom"
 });
 
-Factory.add({
-  name: "charisma",
-  updateFn: function (character) {
-    this.updateSkills(character);
-  }
+export const Charisma = new AbilityScore({
+  name: "Charisma"
 });
+
+export const All = {
+  Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+};

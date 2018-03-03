@@ -1,14 +1,14 @@
 <template>
   <div>
-    <abilities-score></abilities-score>
+    <ability-scores></ability-scores>
   </div>
 </template>
 
 <script>
-import { AbilitiesScore } from "./";
+import { abilityScores } from "./";
 
 export default {
-  components: { AbilitiesScore }
+  components: { abilityScores }
 }
 </script>
 

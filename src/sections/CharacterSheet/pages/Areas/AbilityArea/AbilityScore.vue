@@ -17,7 +17,7 @@
         <input type="number"
                class="ability-score-temp-input"
                :value="tempValue"
-               @change="updateTempScore($event, 'tempValue')">
+               @change="updateScore($event, true)">
       </div>
       <div class="temporary-box">
         <input type="number"
@@ -34,15 +34,14 @@
 export default {
   props: ['index', 'name', 'value', 'tempValue', 'modifier', 'tempModifier'],
   methods: {
-    updateScore($event, field) {
+    updateScore($event, tempOnly) {
       var abilityScore = { name: this.name };
-      abilityScore['value'] = $event.target.value * 1;
-      abilityScore['tempValue'] = $event.target.value * 1;
-      this.$emit('onUpdateScore', { abilityScore });
-    },
-    updateTempScore($event, field) {
-      var abilityScore = { name: this.name };
-      abilityScore['tempValue'] = $event.target.value * 1;
+      if (!tempOnly) {
+        abilityScore.value = $event.target.value * 1;
+        abilityScore.modifier = Math.floor((abilityScore.value - 10) / 2);
+      }
+      abilityScore.tempValue = $event.target.value * 1;
+      abilityScore.tempModifer = Math.floor((abilityScore.tempValue - 10) / 2);
       this.$emit('onUpdateScore', { abilityScore });
     }
   }

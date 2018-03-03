@@ -15,14 +15,12 @@
         <label>Temporary<br>Score</label>
         <label>Temporary<br>Modifier</label>
       </div>
-      <ability-score v-for="(abilityScore, index) in abilitiesScore"
+      <ability-score v-for="(abilityScore, index) in abilityScores"
                      :key="index"
                      :index="index"
                      :name="abilityScore.name"
                      :value="abilityScore.value"
                      :tempValue="abilityScore.tempValue"
-                     :modifier="getModifier(abilityScore)"
-                     :tempModifier="getTempModifier(abilityScore)"
                      @onUpdateScore="updateScore($event)" />
     </div>
   </div>
@@ -32,7 +30,7 @@
 import { AbilityScore } from './';
 import CharacterMixin from 'Store/mixins/character.mixin';
 import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
-import { mapState, mapGetters } from 'Store/CharacterModule';
+import { mapState, mapGetters, mapActions } from 'Store/CharacterModule';
 
 export default {
   mixins: [
@@ -40,12 +38,13 @@ export default {
     MinimizableMixin],
   components: { AbilityScore },
   computed: {
-    ...mapState(['abilitiesScore'])
+    ...mapState(['abilityScores']),
+    ...mapGetters(['getModifier', 'getTempModifier'])
   },
   methods: {
-    ...mapGetters(['getModifier', 'getTempModifier']),
-    updateScore: function ($event) {
-      this.updateAbilityScore($event);
+    ...mapActions(['updateAbilityScore']),
+    updateScore: function ({ abilityScore }) {
+      this.updateAbilityScore(abilityScore);
     }
   }
 }

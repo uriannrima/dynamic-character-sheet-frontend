@@ -9,7 +9,7 @@ class SizeService extends AbstractService {
     });
   }
   async getAll() {
-    return SizeModule.Sizes;
+    return SizeModule.All;
   }
 }
 

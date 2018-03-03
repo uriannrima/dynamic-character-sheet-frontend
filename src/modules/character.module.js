@@ -14,7 +14,7 @@ export const Character = function ({
   campaign = "", experience = 0, money, feats = [], languages = [],
   specialAbilities = [], domainSchool = "", spellSave = 0,
   arcaneSpellFailure = 0, spellConditionModifier = "",
-  spells = [], spellPerDayList = []}) {
+  spells = [], spellPerDayList = [] }) {
   return {
     _id,
     name,
@@ -42,14 +42,8 @@ export const Character = function ({
     classes: classes || [
       new Modules.ClasseModule.Classe({})
     ],
-    abilityScores: abilityScores ? abilityScores.map(abilityScore => Modules.AbilityScoreModule.Factory.Create(abilityScore)) : [
-      new Modules.AbilityScoreModule.Factory.Create({ name: 'strength' }),
-      new Modules.AbilityScoreModule.Factory.Create({ name: 'dexterity' }),
-      new Modules.AbilityScoreModule.Factory.Create({ name: 'constitution' }),
-      new Modules.AbilityScoreModule.Factory.Create({ name: 'intelligence' }),
-      new Modules.AbilityScoreModule.Factory.Create({ name: 'wisdom' }),
-      new Modules.AbilityScoreModule.Factory.Create({ name: 'charisma' })
-    ],
+    // TODO: Remove "factory" pattern later.
+    abilityScores: abilityScores ? abilityScores.map(aScore => new Modules.AbilityScoreModule.AbilityScore(aScore)) : Modules.AbilityScoreModule.All,
     status: status || new Modules.StatusModule.Status({
       healthPoints: 1,
       wounds: "",
