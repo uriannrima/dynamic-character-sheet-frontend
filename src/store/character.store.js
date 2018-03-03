@@ -1,7 +1,6 @@
 import CharacterService from '../services/character.service';
 
 const CharacterStore = {
-  registered: [],
   Instance: {
     character: CharacterService.create()
   },

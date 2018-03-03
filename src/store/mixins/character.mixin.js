@@ -1,4 +1,4 @@
-import CharacterStore from './character.store';
+import CharacterStore from '../character.store';
 
 export default {
   data() {

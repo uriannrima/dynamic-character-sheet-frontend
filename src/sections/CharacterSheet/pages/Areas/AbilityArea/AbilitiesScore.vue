@@ -30,25 +30,20 @@
 
 <script>
 import { AbilityScore } from './';
-import CharacterMixin from 'Store/character.mixin';
+import CharacterMixin from 'Store/mixins/character.mixin';
 import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
-import AbilitiesScoreStore from './AbilitiesScoreStore';
-import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
+import { mapState, mapGetters } from 'Store/CharacterModule';
 
 export default {
   mixins: [
     CharacterMixin,
-    MinimizableMixin,
-    StoredComponentMixinFactory({
-      module: AbilitiesScoreStore,
-      moduleNamespace: ['Character', 'AbilitiesScore'],
-      stateMapping: true,
-      gettersMapping: true,
-      mutationsMapping: true,
-      actionsMapping: true
-    })],
+    MinimizableMixin],
   components: { AbilityScore },
+  computed: {
+    ...mapState(['abilitiesScore'])
+  },
   methods: {
+    ...mapGetters(['getModifier', 'getTempModifier']),
     updateScore: function ($event) {
       this.updateAbilityScore($event);
     }

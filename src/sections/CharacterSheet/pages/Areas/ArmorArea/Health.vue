@@ -9,8 +9,7 @@
     </div>
     <input type="number"
            class="health-input common-input"
-           :value="status.healthPoints"
-           @change="changeStatus({healthPoints: $event.target.value * 1})">
+           :value="character.status.healthPoints">
     <input type="text"
            class="wounds-input common-input"
            v-model="character.status.wounds">
@@ -28,26 +27,10 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/character.mixin';
-import StatusSource from '@/data/StatusSource';
+import CharacterMixin from 'Store/mixins/character.mixin';
 
 export default {
-  mixins: [CharacterMixin],
-  data() {
-    return {
-      status: {
-        healthPoints: 0,
-        wounds: 0,
-        nonLethalDamage: 0,
-        speed: 0
-      }
-    };
-  },
-  methods: {
-    changeStatus(status) {
-      StatusSource.setStatus(status);
-    }
-  }
+  mixins: [CharacterMixin]
 }
 </script>
 

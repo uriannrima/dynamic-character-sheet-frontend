@@ -1,6 +1,6 @@
 <template>
-  <div class="main-container"
-       v-show="id">
+  <div class="main-container">
+    {{_id}}
     <front class="page front" />
     <cover class="page cover" />
   </div>
@@ -9,19 +9,11 @@
 <script>
 import * as Pages from './pages';
 import CharacterStore from 'Store/character.store';
-import CharacterMixin from 'Store/character.mixin';
-import StoredComponentMixinFactory from 'Store/stored.component.mixin.factory';
-import CharacterSheetStore from './CharacterSheetStore';
+import CharacterMixin from 'Store/mixins/character.mixin';
+import { mapState, mapActions, Mappings } from '../../store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin, StoredComponentMixinFactory({
-    module: CharacterSheetStore,
-    moduleNamespace: 'Character',
-    stateMapping: true,
-    gettersMapping: true,
-    mutationsMapping: true,
-    actionsMapping: true
-  })],
+  mixins: [CharacterMixin],
   components: Pages,
   beforeRouteEnter: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
@@ -33,6 +25,12 @@ export default {
     await CharacterStore.loadCharacter(to.params.id);
     await this.loadCharacterAsync(to.params.id);
     next();
+  },
+  computed: {
+    ...mapState(['_id'])
+  },
+  methods: {
+    ...mapActions([Mappings.Actions.loadCharacterAsync])
   }
 }
 </script>
