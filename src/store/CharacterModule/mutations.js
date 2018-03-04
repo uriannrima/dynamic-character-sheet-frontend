@@ -1,5 +1,4 @@
 import Mappings from './mappings';
-import Vue from 'vue';
 import ObjectUtils from 'Utils/object.utils.js';
 
 export default {

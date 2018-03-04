@@ -32,17 +32,25 @@
 
 <script>
 export default {
-  props: ['index', 'name', 'value', 'tempValue', 'modifier', 'tempModifier'],
+  props: ['index', 'name', 'value', 'tempValue'],
   methods: {
     updateScore($event, tempOnly) {
       var abilityScore = { name: this.name };
       if (!tempOnly) {
         abilityScore.value = $event.target.value * 1;
-        abilityScore.modifier = Math.floor((abilityScore.value - 10) / 2);
+        abilityScore.modifier = this.modifier;
       }
       abilityScore.tempValue = $event.target.value * 1;
-      abilityScore.tempModifer = Math.floor((abilityScore.tempValue - 10) / 2);
+      abilityScore.tempModifer = this.tempModifier;
       this.$emit('onUpdateScore', { abilityScore });
+    }
+  },
+  computed: {
+    modifier() {
+      return Math.floor((this.value - 10) / 2);
+    },
+    tempModifier() {
+      return Math.floor((this.tempValue - 10) / 2);
     }
   }
 }
