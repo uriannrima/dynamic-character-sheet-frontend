@@ -1,5 +1,5 @@
 import Mappings from './mappings';
-import CharacterService from 'Services/character.service'
+import CharacterService from '@Services/character.service'
 
 export default {
   async [Mappings.Actions.loadCharacterAsync]({ commit }, characterId) {

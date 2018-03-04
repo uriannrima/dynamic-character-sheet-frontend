@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import LanguageService from 'Services/language.service';
+import LanguageService from '@Services/language.service';
 import { LanguageForm } from './';
-import { ModalMixin } from 'Shared/modal';
+import { ModalMixin } from '@Shared/modal';
 
 export default {
   components: { LanguageForm },

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import OnSelectedMixin from 'Shared/mixins/methods/on.selected.mixin';
+import OnSelectedMixin from '@Shared/mixins/methods/on.selected.mixin';
 import { Spell } from './';
 export default {
   mixins: [OnSelectedMixin],

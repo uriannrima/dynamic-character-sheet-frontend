@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/mixins/character.mixin';
+import CharacterMixin from '@Store/mixins/character.mixin';
 import { Possessions } from "./";
 
 export default {

@@ -7,10 +7,9 @@ export default {
   },
   extractTo(from, to, properties) {
     if (!properties) {
-      properties = Object.keys(to);
+      properties = Object.keys(from);
     }
     properties.forEach(prop => {
-      if (!from.hasOwnProperty(prop)) return;
       to[prop] = from[prop];
     });
   }

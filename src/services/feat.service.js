@@ -1,4 +1,4 @@
-import * as FeatModule from 'Modules/feat.module';
+import * as FeatModule from '@Modules/feat.module';
 import AbstractService from './abstract.service';
 
 class FeatService extends AbstractService {

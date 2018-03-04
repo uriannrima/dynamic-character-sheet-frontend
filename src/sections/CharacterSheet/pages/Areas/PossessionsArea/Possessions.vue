@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/mixins/character.mixin';
+import CharacterMixin from '@Store/mixins/character.mixin';
 import { Possession, CarryCapacities, Wealth } from "./";
-import ResizeMixin from 'Shared/mixins/events/resize.handler.mixin';
-import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
+import ResizeMixin from '@Shared/mixins/events/resize.handler.mixin';
+import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
   mixins: [CharacterMixin, ResizeMixin, MinimizableMixin],

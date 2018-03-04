@@ -9,16 +9,16 @@
     </div>
     <input type="number"
            class="health-input common-input"
-           :value="character.status.healthPoints">
+           :value="status.healthPoints">
     <input type="text"
            class="wounds-input common-input"
-           v-model="character.status.wounds">
+           v-model="status.wounds">
     <input type="number"
            class="nonlethal-input common-input"
-           v-model.number="character.status.nonLethalDamage">
+           v-model.number="status.nonLethalDamage">
     <input type="text"
            class="speed-input common-input"
-           v-model="character.speed">
+           v-model="speed">
     <label class="health-label total-label">Total</label>
     <label class="wounds-label">Wounds/Current HP</label>
     <label class="nonlethal-label">Nonlethal<br>Damage</label>
@@ -27,10 +27,12 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/mixins/character.mixin';
+import { mapState } from '@Store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin]
+  computed: {
+    ...mapState(['status', 'speed'])
+  }
 }
 </script>
 

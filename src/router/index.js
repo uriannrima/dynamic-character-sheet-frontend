@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
-import AuthService from 'Shared/services/AuthService';
+import AuthService from '@Shared/services/AuthService';
 
 Vue.use(VueRouter);
 

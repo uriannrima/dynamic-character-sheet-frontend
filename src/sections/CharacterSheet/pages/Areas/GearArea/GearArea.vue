@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/mixins/character.mixin';
+import CharacterMixin from '@Store/mixins/character.mixin';
 import { ArmorItem, ShieldItem, ProtectiveItem } from './';
-import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
+import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
   mixins: [CharacterMixin, MinimizableMixin],

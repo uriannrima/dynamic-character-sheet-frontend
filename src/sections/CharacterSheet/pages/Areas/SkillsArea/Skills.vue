@@ -33,8 +33,8 @@
 
 <script>
 import { Skill } from './';
-import KeyAbilityMixin from 'Shared/mixins/methods/key.ability.mixin';
-import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
+import KeyAbilityMixin from '@Shared/mixins/methods/key.ability.mixin';
+import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
   mixins: [KeyAbilityMixin, MinimizableMixin],

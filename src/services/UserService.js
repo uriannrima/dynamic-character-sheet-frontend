@@ -1,4 +1,4 @@
-import HttpService from 'Shared/services/HttpService';
+import HttpService from '@Shared/services/HttpService';
 
 class UserService extends HttpService {
   constructor() {

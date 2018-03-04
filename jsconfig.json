@@ -1,25 +1,24 @@
 {
   "compilerOptions": {
+    // This must be specified if "paths" is set
     "baseUrl": ".",
+    // Relative to "baseUrl"
     "paths": {
-      "Static": [
-        "static'"
+      "*": [
+        "*",
+        "src/*",
+        "static/*",
+        "src/services/*",
+        "src/modules/*",
+        "src/shared/*",
+        "src/utilss/*"
       ],
-      "Services": [
-        "src/services"
-      ],
-      "Modules": [
-        "src/src/modules'"
-      ],
-      "Shared": [
-        "src/src/shared'"
-      ],
-      "Store": [
-        "src/src/store'"
-      ],
-      "Utils": [
-        "src/src/utils'"
+      "Store/*":[
+        "./src/store/*"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

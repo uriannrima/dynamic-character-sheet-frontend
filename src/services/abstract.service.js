@@ -1,5 +1,5 @@
-import HttpService from 'Shared/services/HttpService';
-import AuthService from 'Shared/services/AuthService';
+import HttpService from '@Shared/services/HttpService';
+import AuthService from '@Shared/services/AuthService';
 
 export default class AbstractService extends HttpService {
   constructor({ model, url }) {

@@ -11,8 +11,8 @@
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="character.name"
-               @change="updateDescription({ name: $event.target.value})">
+               :value="name"
+               @change="updateDescription({ name: $event.target.value })">
         <label>Character Name</label>
         <button @click="saveCharacter()">Save</button>
         <button @click="newCharacter()">New</button>
@@ -20,70 +20,70 @@
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="character.playerName"
-               @change="updateDescription({ playerName: $event.target.value})">
+               :value="playerName"
+               @change="updateDescription({ playerName: $event.target.value })">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="character.classes"
-               @change="updateClasses({ classes: $event.target.value })">
+               :value="getClasses"
+               @change="updateClasses($event.target.value)">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.race"
-                 @change="updateDescription({ race: $event.target.value})">
+                 :value="race"
+                 @change="updateDescription({ race: $event.target.value })">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.alignment"
-                 @change="updateDescription({ alignment: $event.target.value})">
+                 :value="alignment"
+                 @change="updateDescription({ alignment: $event.target.value })">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.deity"
-                 @change="updateDescription({ deity: $event.target.value})">
+                 :value="deity"
+                 @change="updateDescription({ deity: $event.target.value })">
           <label>Deity</label>
         </div>
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
-          <select :value="character.size.name"
+          <select :value="size.name"
                   class="full-width-input"
                   @change="updateDescription({ size: allSizes.find(size => size.name === $event.target.value) })">
             <option v-for="(size, index) in allSizes"
                     :key="index"
-                    :value="character.size.name">{{size.name}}</option>
+                    :value="size.name">{{size.name}}</option>
           </select>
           <label>Size</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.age"
-                 @change="updateDescription({ age: $event.target.value})">
+                 :value="age"
+                 @change="updateDescription({ age: $event.target.value })">
           <label>Age</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.gender"
-                 @change="updateDescription({ gender: $event.target.value})">
+                 :value="gender"
+                 @change="updateDescription({ gender: $event.target.value })">
           <label>Gender</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.height"
-                 @change="updateDescription({ height: $event.target.value})">
+                 :value="height"
+                 @change="updateDescription({ height: $event.target.value })">
           <label>Height</label>
         </div>
       </div>
@@ -91,29 +91,29 @@
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.weight"
-                 @change="updateDescription({ weight: $event.target.value})">
+                 :value="weight"
+                 @change="updateDescription({ weight: $event.target.value })">
           <label>Weight</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.eyes"
-                 @change="updateDescription({ eyes: $event.target.value})">
+                 :value="eyes"
+                 @change="updateDescription({ eyes: $event.target.value })">
           <label>Eyes</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.hair"
-                 @change="updateDescription({ hair: $event.target.value})">
+                 :value="hair"
+                 @change="updateDescription({ hair: $event.target.value })">
           <label>Hair</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
-                 :value="character.skin"
-                 @change="updateDescription({ skin: $event.target.value})">
+                 :value="skin"
+                 @change="updateDescription({ skin: $event.target.value })">
           <label>Skin</label>
         </div>
       </div>
@@ -122,23 +122,34 @@
 </template>
 
 <script>
-import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
-import SizeService from 'Services/size.service';
-import CharacterStore from 'Store/character.store';
-import CharacterMixin from 'Store/mixins/character.mixin';
-import NotificationService from 'Services/NotificationService';
+import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
+import SizeService from '@Services/size.service';
+import CharacterStore from '@Store/character.store';
+import NotificationService from '@Services/NotificationService';
+import { mapState, mapGetters, mapMutations } from '@Store/CharacterModule'
 
 export default {
-  mixins: [CharacterMixin, MinimizableMixin],
+  mixins: [MinimizableMixin],
   data() {
     return {
       allSizes: []
     }
   },
+  computed: {
+    ...mapState([
+      'name', 'playerName', 'classes',
+      'race', 'alignment', 'deity',
+      'size', 'age', 'gender',
+      'height', 'weight', 'eyes',
+      'hair', 'skin'
+    ]),
+    ...mapGetters(['getClasses'])
+  },
   created: async function () {
     this.allSizes = await SizeService.getAll();
   },
   methods: {
+    ...mapMutations(['updateDescription', 'updateClasses']),
     saveCharacter: async function () {
       if (await CharacterStore.saveCharacter()) {
         window.history.pushState("", "", "/#/ncs/" + this.character._id);
@@ -147,9 +158,6 @@ export default {
     newCharacter: async function () {
       await CharacterStore.createCharacter();
       console.log(CharacterStore.Instance.character, this.character);
-    },
-    updateDescription: async function (payload) {
-
     }
   },
   feathers: {

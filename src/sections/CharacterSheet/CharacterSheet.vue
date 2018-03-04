@@ -7,8 +7,8 @@
 
 <script>
 import * as Pages from './pages';
-import CharacterStore from 'Store/character.store';
-import CharacterMixin from 'Store/mixins/character.mixin';
+import CharacterStore from '@Store/character.store';
+import CharacterMixin from '@Store/mixins/character.mixin';
 import { mapState, mapActions, Mappings } from '../../store/CharacterModule';
 
 export default {

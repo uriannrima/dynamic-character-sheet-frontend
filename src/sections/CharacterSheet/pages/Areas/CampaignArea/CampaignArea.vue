@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/mixins/character.mixin';
-import MinimizableMixin from 'Shared/mixins/states/minimizable.mixin';
+import CharacterMixin from '@Store/mixins/character.mixin';
+import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
   mixins: [CharacterMixin, MinimizableMixin]

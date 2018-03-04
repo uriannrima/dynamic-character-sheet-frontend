@@ -129,8 +129,8 @@
 </template>
 
 <script>
-import { FormMixin } from 'Shared/form';
-import { SubValuesComponent, SubValuesList } from 'Shared/form/components';
+import { FormMixin } from '@Shared/form';
+import { SubValuesComponent, SubValuesList } from '@Shared/form/components';
 
 export default {
   mixins: [FormMixin],

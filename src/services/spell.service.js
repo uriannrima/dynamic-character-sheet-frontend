@@ -1,4 +1,4 @@
-import * as SpellModule from 'Modules/spell.module';
+import * as SpellModule from '@Modules/spell.module';
 import AbstractService from './abstract.service'
 
 class SpellService extends AbstractService {

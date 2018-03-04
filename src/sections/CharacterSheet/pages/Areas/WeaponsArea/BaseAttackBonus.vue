@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CharacterMixin from 'Store/mixins/character.mixin';
+import CharacterMixin from '@Store/mixins/character.mixin';
 
 export default {
   mixins: [CharacterMixin],

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { SubValueModule } from 'Modules';
+import { SubValueModule } from '@Modules';
 
 export default {
   props: ['model'],

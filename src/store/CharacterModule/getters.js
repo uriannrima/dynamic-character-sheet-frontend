@@ -4,5 +4,11 @@ export default {
   },
   getTempModifier: state => (abilityScore) => {
     return Math.floor((abilityScore.tempValue - 10) / 2);
+  },
+  getClasses: state => {
+    return state.classes.map(classe => {
+      if (!classe.name || !classe.level) return "";
+      return classe.name + " (" + classe.level + ")";
+    });
   }
 }

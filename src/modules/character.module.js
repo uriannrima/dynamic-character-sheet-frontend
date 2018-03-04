@@ -44,11 +44,7 @@ export const Character = function ({
     ],
     // TODO: Remove "factory" pattern later.
     abilityScores: abilityScores ? abilityScores.map(aScore => new Modules.AbilityScoreModule.AbilityScore(aScore)) : Modules.AbilityScoreModule.All,
-    status: status || new Modules.StatusModule.Status({
-      healthPoints: 1,
-      wounds: "",
-      nonLethalDamage: 0
-    }),
+    status: new Modules.StatusModule.Status(status),
     armorClass: armorClass ? new Modules.ArmorClassModule.ArmorClass(armorClass) : new Modules.ArmorClassModule.ArmorClass({
       base: 10,
       armorBonus: 0,

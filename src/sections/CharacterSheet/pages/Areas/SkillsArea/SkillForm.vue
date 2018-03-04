@@ -164,11 +164,11 @@
         <label><input type="checkbox"
                  v-model.trim="skill.hasSubValue">Sub Value:</label>
       </div>
-      <div class="skill-form-component-sub-value-container">
+      <div class="skill-form-component-sub-value-container"
            v-if="skill.hasSubValue || skill.subValue">
         <span>Value:</span>
         <input type="text"
-               v-model.trim="skill.subValue"></input>
+               v-model.trim="skill.subValue">
       </div>
       <div class="skill-form-component-miscellaneous-container">
         <label><input type="checkbox"
@@ -190,7 +190,7 @@
 </template>
 
 <script>
-import { FormBus } from 'Shared/form';
+import { FormBus } from '@Shared/form';
 
 export default {
   props: ['skill', 'describeSkill'],

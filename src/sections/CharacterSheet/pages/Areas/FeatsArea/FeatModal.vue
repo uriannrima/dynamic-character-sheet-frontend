@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import FeatService from 'Services/feat.service';
+import FeatService from '@Services/feat.service';
 import { FeatForm } from './';
-import { ModalMixin } from 'Shared/modal';
+import { ModalMixin } from '@Shared/modal';
 
 export default {
   components: { FeatForm },

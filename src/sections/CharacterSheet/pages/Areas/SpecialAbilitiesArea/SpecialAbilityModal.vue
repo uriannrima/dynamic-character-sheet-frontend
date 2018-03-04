@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import SpecialAbilityService from 'Services/special-ability.service';
+import SpecialAbilityService from '@Services/special-ability.service';
 import { SpecialAbilityForm } from './';
-import { ModalMixin } from 'Shared/modal';
+import { ModalMixin } from '@Shared/modal';
 
 export default {
   components: { SpecialAbilityForm },
