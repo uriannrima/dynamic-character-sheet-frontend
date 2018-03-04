@@ -28,5 +28,8 @@ export default {
   },
   updateStatus(state, status) {
     ObjectUtils.extractTo(status, state.status);
+  },
+  updateSpeed(state, speed) {
+    state.speed = speed;
   }
 }

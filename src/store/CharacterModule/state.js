@@ -1,5 +1,6 @@
 import * as Size from '@Modules/size.module';
 import { Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma } from '@Modules/ability-score.module';
+import Status from '@Modules/status.module';
 
 export default {
   _id: null,
@@ -30,10 +31,6 @@ export default {
     naturalArmor: 0,
     miscModifier: 0
   },
-  status: {
-    healthPoints: 1,
-    wounds: "",
-    nonLethalDamage: 0
-  },
+  status: new Status(),
   speed: ""
 }

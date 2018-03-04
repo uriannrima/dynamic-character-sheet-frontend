@@ -9,16 +9,20 @@
     </div>
     <input type="number"
            class="health-input common-input"
-           :value="status.healthPoints">
+           :value="status.healthPoints"
+           @change="updateStatus({ healthPoints : $event.target.value * 1 })">
     <input type="text"
            class="wounds-input common-input"
-           v-model="status.wounds">
+           :value="status.wounds"
+           @change="updateStatus({ wounds : $event.target.value })">
     <input type="number"
            class="nonlethal-input common-input"
-           v-model.number="status.nonLethalDamage">
+           :value="status.nonLethalDamage"
+           @change="updateStatus({ nonLethalDamage : $event.target.value * 1 })">
     <input type="text"
            class="speed-input common-input"
-           v-model="speed">
+           :value="speed"
+           @change="updateSpeed($event.target.value)">
     <label class="health-label total-label">Total</label>
     <label class="wounds-label">Wounds/Current HP</label>
     <label class="nonlethal-label">Nonlethal<br>Damage</label>
@@ -27,11 +31,14 @@
 </template>
 
 <script>
-import { mapState } from '@Store/CharacterModule';
+import { mapState, mapMutations } from '@Store/CharacterModule';
 
 export default {
   computed: {
     ...mapState(['status', 'speed'])
+  },
+  methods: {
+    ...mapMutations(['updateStatus', 'updateSpeed'])
   }
 }
 </script>

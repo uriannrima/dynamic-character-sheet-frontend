@@ -9,6 +9,7 @@ export default {
     updateSize: 'updateSize',
     updateAbilityScores: 'updateAbilityScores',
     updateAbilityScore: 'updateAbilityScore',
-    updateStatus: 'updateStatus'
+    updateStatus: 'updateStatus',
+    updateSpeed: 'updateSpeed'
   }
 }
