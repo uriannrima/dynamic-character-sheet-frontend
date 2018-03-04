@@ -10,5 +10,8 @@ export default {
       if (!classe.name || !classe.level) return "";
       return classe.name + " (" + classe.level + ")";
     });
+  },
+  getSize: state => {
+    return state.size.name;
   }
 }

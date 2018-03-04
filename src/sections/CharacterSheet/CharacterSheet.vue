@@ -17,7 +17,7 @@ export default {
   beforeRouteEnter: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
     next(vm => {
-      vm.loadCharacterAsync(to.params.id);
+      // vm.loadCharacterAsync(to.params.id);
     });
   },
   beforeRouteUpdate: async function (to, from, next) {

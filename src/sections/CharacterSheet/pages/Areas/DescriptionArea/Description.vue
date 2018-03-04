@@ -28,7 +28,7 @@
         <input type="text"
                class="full-width-input"
                :value="getClasses"
-               @change="updateClasses($event.target.value)">
+               @change="updateClasses(parseStringToClasses($event.target.value))">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
@@ -56,12 +56,12 @@
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
-          <select :value="size.name"
-                  class="full-width-input"
-                  @change="updateDescription({ size: allSizes.find(size => size.name === $event.target.value) })">
+          <select class="full-width-input"
+                  @change="updateSize(allSizes.find(size => size.name === $event.target.value))">
             <option v-for="(size, index) in allSizes"
                     :key="index"
-                    :value="size.name">{{size.name}}</option>
+                    :value="size.name"
+                    :selected="size.name === getSize">{{size.name}}</option>
           </select>
           <label>Size</label>
         </div>
@@ -138,18 +138,40 @@ export default {
   computed: {
     ...mapState([
       'name', 'playerName', 'classes',
-      'race', 'alignment', 'deity',
-      'size', 'age', 'gender',
+      'race', 'alignment', 'deity', 'age', 'gender',
       'height', 'weight', 'eyes',
-      'hair', 'skin'
+      'hair', 'skin', 'size'
     ]),
-    ...mapGetters(['getClasses'])
+    ...mapGetters(['getClasses', 'getSize'])
   },
   created: async function () {
     this.allSizes = await SizeService.getAll();
   },
   methods: {
-    ...mapMutations(['updateDescription', 'updateClasses']),
+    ...mapMutations(['updateDescription', 'updateClasses', 'updateSize']),
+    parseStringToClasses(classesAsString) {
+      const classes = [];
+      const eachClass = classesAsString.split(",");
+      eachClass.forEach(classe => {
+        // If empty character
+        if (classe.trim() === "") return;
+        // Clear whitespaces
+        var classLevel = classe.replace(/ /g, "");
+        // Regex to get level
+        var levelRegex = /\(([^)]+)\)/;
+        // Get level data,
+        var levelData = levelRegex.exec(classLevel);
+        // Extract level from data
+        var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+        // Remove level from field.
+        var classOnly = classLevel.replace(levelRegex, "");
+        classes.push({
+          name: classOnly.trim(),
+          level: level
+        });
+      });
+      return classes;
+    },
     saveCharacter: async function () {
       if (await CharacterStore.saveCharacter()) {
         window.history.pushState("", "", "/#/ncs/" + this.character._id);

@@ -3,6 +3,12 @@ export default {
     loadCharacterAsync: 'loadCharacterAsync'
   },
   Mutations: {
-    loadCharacter: 'loadCharacter'
+    updateId: 'updateId',
+    updateDescription: 'updateDescription',
+    updateClasses: 'updateClasses',
+    updateSize: 'updateSize',
+    updateAbilityScores: 'updateAbilityScores',
+    updateAbilityScore: 'updateAbilityScore',
+    updateStatus: 'updateStatus'
   }
 }
