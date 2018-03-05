@@ -33,8 +33,8 @@ import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import { SpecialAbility, SpecialAbilityModal } from './';
 
 export default {
-  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   components: { SpecialAbility, SpecialAbilityModal },
+  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   created() {
     // character.update.mixin requirement.
     this.arrayName = 'specialAbilities';

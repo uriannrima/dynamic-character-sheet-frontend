@@ -15,8 +15,8 @@
 import OnSelectedMixin from '@Shared/mixins/methods/on.selected.mixin';
 import { Spell } from './';
 export default {
-  mixins: [OnSelectedMixin],
   components: { Spell },
+  mixins: [OnSelectedMixin],
   props: ['group', 'spells']
 }
 </script>

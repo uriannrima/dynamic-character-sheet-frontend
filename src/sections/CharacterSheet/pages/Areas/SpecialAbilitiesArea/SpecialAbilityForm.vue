@@ -75,11 +75,8 @@ import { FormMixin } from '@Shared/form';
 import { SubValuesComponent, SubValuesList } from '@Shared/form/components';
 
 export default {
+  components: { SubValuesComponent, SubValuesList },  
   mixins: [FormMixin],
-  components: { SubValuesComponent, SubValuesList },
-  created() {
-    this.modelName = 'specialAbility';
-  },
   data() {
     return {
       has: {
@@ -87,6 +84,9 @@ export default {
         subValue: false
       }
     }
+  },
+  created() {
+    this.modelName = 'specialAbility';
   },
   clear() {
     this.has = {

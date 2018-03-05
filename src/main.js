@@ -48,7 +48,7 @@ new Vue({
   store,
   el: '#dcs-app',
   router,
+  components: { Layout },
   data: {
-  },
-  components: { Layout }
+  }
 });

@@ -9,6 +9,14 @@ export default {
       document.body.style = value ? 'overflow-y:hidden;' : '';
     }
   },
+  mounted: function () {
+    // Add listener to the ESC button.
+    document.addEventListener('keydown', (e) => {
+      if (this.show && e.keyCode === 27) {
+        if (this.onClose) this.onClose();
+      }
+    });
+  },
   methods: {
     resetScroll: function () {
       this.$el.querySelector('.v-modal-container').scrollTop = 0;
@@ -17,14 +25,6 @@ export default {
       this.resetScroll();
       if (this.onClose) this.onClose();
     }
-  },
-  mounted: function () {
-    // Add listener to the ESC button.
-    document.addEventListener('keydown', (e) => {
-      if (this.show && e.keyCode === 27) {
-        if (this.onClose) this.onClose();
-      }
-    });
   }
 }
 </script>

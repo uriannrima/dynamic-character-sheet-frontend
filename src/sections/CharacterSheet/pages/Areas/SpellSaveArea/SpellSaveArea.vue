@@ -14,8 +14,8 @@ import { SpellSave, ArcaneSpellFailure } from './';
 import { ConditionalModifiers } from '../WeaponsArea';
 
 export default {
-  mixins: [KeyAbilityMixin],
-  components: { SpellSave, ArcaneSpellFailure, ConditionalModifiers }
+  components: { SpellSave, ArcaneSpellFailure, ConditionalModifiers },
+  mixins: [KeyAbilityMixin]
 }
 </script>
 

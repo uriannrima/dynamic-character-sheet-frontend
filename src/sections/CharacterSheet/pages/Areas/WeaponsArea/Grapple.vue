@@ -37,8 +37,8 @@
 import CharacterMixin from '@Store/mixins/character.mixin';
 
 export default {
-  props: ['keyAbility'],
   mixins: [CharacterMixin],
+  props: ['keyAbility'],
   computed: {
     getBaseAttackBonus() {
       return this.character.baseAttackBonus.join('/');

@@ -32,8 +32,8 @@ import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import { mapState, mapGetters, mapActions } from '@Store/CharacterModule';
 
 export default {
-  mixins: [MinimizableMixin],
   components: { AbilityScore },
+  mixins: [MinimizableMixin],
   computed: {
     ...mapState(['abilityScores']),
     ...mapGetters(['getModifier', 'getTempModifier'])

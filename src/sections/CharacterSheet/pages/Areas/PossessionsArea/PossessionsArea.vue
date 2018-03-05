@@ -11,8 +11,8 @@ import CharacterMixin from '@Store/mixins/character.mixin';
 import { Possessions } from "./";
 
 export default {
-  mixins: [CharacterMixin],
-  components: { Possessions }
+  components: { Possessions },
+  mixins: [CharacterMixin]
 }
 </script>
 

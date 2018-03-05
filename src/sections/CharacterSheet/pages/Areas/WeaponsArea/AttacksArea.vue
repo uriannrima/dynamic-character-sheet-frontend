@@ -19,8 +19,8 @@ import { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, G
 import KeyAbilityMixin from '@Shared/mixins/methods/key.ability.mixin';
 
 export default {
-  mixins: [KeyAbilityMixin],
-  components: { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks }
+  components: { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
+  mixins: [KeyAbilityMixin]
 }
 </script>
 

@@ -33,8 +33,8 @@ import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import { Language, LanguageModal } from './';
 
 export default {
-  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   components: { Language, LanguageModal },
+  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   created() {
     // character.update.mixin requirement.
     this.arrayName = 'languages';

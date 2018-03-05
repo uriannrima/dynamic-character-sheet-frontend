@@ -39,16 +39,16 @@ import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import { SpellsGroup, SpellModal } from './';
 
 export default {
-  mixins: [CharacterUpdateMixin, ModalContainerMixin, CharacterMixin, MinimizableMixin],
   components: { SpellsGroup, SpellModal },
-  created() {
-    this.arrayName = 'spells';
-  },
+  mixins: [CharacterUpdateMixin, ModalContainerMixin, CharacterMixin, MinimizableMixin],
   computed: {
     spellsPerGroup: function () {
       return this.character.spells.groupBy(s => s.level);
     }
-  }
+  },
+  created() {
+    this.arrayName = 'spells';
+  },
 }
 </script>
 

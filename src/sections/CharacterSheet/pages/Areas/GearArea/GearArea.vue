@@ -24,8 +24,8 @@ import { ArmorItem, ShieldItem, ProtectiveItem } from './';
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [CharacterMixin, MinimizableMixin],
-  components: { ArmorItem, ShieldItem, ProtectiveItem }
+  components: { ArmorItem, ShieldItem, ProtectiveItem },
+  mixins: [CharacterMixin, MinimizableMixin]
 }
 </script>
 

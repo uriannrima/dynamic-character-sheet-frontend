@@ -133,11 +133,8 @@ import { FormMixin } from '@Shared/form';
 import { SubValuesComponent, SubValuesList } from '@Shared/form/components';
 
 export default {
-  mixins: [FormMixin],
   components: { SubValuesComponent, SubValuesList },
-  created() {
-    this.modelName = 'feat';
-  },
+  mixins: [FormMixin],
   data() {
     return {
       has: {
@@ -149,6 +146,9 @@ export default {
         subValue: false
       }
     }
+  },
+  created() {
+    this.modelName = 'feat';
   },
   methods: {
     clear() {

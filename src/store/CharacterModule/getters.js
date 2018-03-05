@@ -1,8 +1,8 @@
 export default {
-  getModifier: state => (abilityScore) => {
+  getModifier: () => (abilityScore) => {
     return Math.floor((abilityScore.value - 10) / 2);
   },
-  getTempModifier: state => (abilityScore) => {
+  getTempModifier: () => (abilityScore) => {
     return Math.floor((abilityScore.tempValue - 10) / 2);
   },
   getClasses: state => {

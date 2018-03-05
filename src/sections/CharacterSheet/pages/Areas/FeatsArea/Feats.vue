@@ -33,8 +33,8 @@ import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import { Feat, FeatModal } from './';
 
 export default {
-  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   components: { Feat, FeatModal },
+  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
   created() {
     // character.update.mixin requirement.
     this.arrayName = 'feats';

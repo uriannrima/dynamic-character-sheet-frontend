@@ -19,8 +19,8 @@ import CharacterMixin from '@Store/mixins/character.mixin';
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [CharacterMixin, MinimizableMixin],
-  components: { Attack }
+  components: { Attack },
+  mixins: [CharacterMixin, MinimizableMixin]
 }
 </script>
 

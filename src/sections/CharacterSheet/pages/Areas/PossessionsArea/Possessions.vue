@@ -45,8 +45,8 @@ import ResizeMixin from '@Shared/mixins/events/resize.handler.mixin';
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [CharacterMixin, ResizeMixin, MinimizableMixin],
   components: { Possession, CarryCapacities, Wealth },
+  mixins: [CharacterMixin, ResizeMixin, MinimizableMixin],
   props: ["possessions", "carryCapacities", "wealth"],
   data() {
     var minimumWidth = 768;
@@ -69,7 +69,7 @@ export default {
     }
   },
   methods: {
-    handleResize: function (event) {
+    handleResize: function () {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }
   }

@@ -1,31 +1,19 @@
-export const ArmorClass = function ({ base, armorBonus, shieldBonus, dexModifier, sizeModifier, naturalArmor, deflectionModifier, miscModifier }) {
-  return {
-    base,
-    armorBonus,
-    shieldBonus,
-    dexModifier,
-    sizeModifier,
-    naturalArmor,
-    deflectionModifier,
-    miscModifier,
-    getTotalArmor: function () {
-      return Object.keys(this).reduce((accumulator, key) => {
-        if (typeof this[key] === 'number') {
-          accumulator += this[key];
-        }
-        return accumulator;
-      }, 0);
-    },
-    getTouchArmor: function () {
-      return this.base + this.dexModifier + this.sizeModifier + this.miscModifier;
-    },
-    getFlatFooted: function () {
-      return Object.keys(this).reduce((accumulator, key) => {
-        if (typeof this[key] === "number" && key !== "dexModifier") {
-          accumulator += this[key];
-        }
-        return accumulator;
-      }, 0);
-    }
+export class ArmorClass {
+  constructor({
+    base = 10, armorBonus = 0, shieldBonus = 0,
+    dexModifier = 0, sizeModifier = 0, naturalArmor = 0,
+    deflectionModifier = 0, miscModifier = 0 } = {}) {
+    Object.assign(this, {
+      base,
+      armorBonus,
+      shieldBonus,
+      dexModifier,
+      sizeModifier,
+      naturalArmor,
+      deflectionModifier,
+      miscModifier
+    });
   }
 }
+
+export default ArmorClass;

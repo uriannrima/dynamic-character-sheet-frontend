@@ -14,6 +14,12 @@
 import CharacterMixin from '@Store/mixins/character.mixin';
 
 export default {
+  filters: {
+    percentage: function (value) {
+      if (value === '') return;
+      return value.toString() + "%";
+    }
+  },
   mixins: [CharacterMixin],
   computed: {
     spellFailure() {
@@ -25,12 +31,6 @@ export default {
       if (shield) spellFailure += shield.spellFailure;
 
       return spellFailure;
-    }
-  },
-  filters: {
-    percentage: function (value) {
-      if (value === '') return;
-      return value.toString() + "%";
     }
   }
 }

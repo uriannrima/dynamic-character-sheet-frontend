@@ -12,8 +12,8 @@ import CharacterMixin from '@Store/mixins/character.mixin';
 import { mapState, mapActions, Mappings } from '../../store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin],
   components: Pages,
+  mixins: [CharacterMixin],
   beforeRouteEnter: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
     next(vm => {

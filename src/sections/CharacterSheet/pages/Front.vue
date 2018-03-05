@@ -22,8 +22,8 @@ import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, S
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [MinimizableMixin],
-  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea }
+  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea },
+  mixins: [MinimizableMixin]
 }
 </script>
 

@@ -210,6 +210,14 @@ export default {
       }
     };
   },
+  created: function () {
+    FormBus.$on('skill:clear', () => {
+      this.clear();
+    });
+  },
+  destroyed: function () {
+    FormBus.$off('skill:clear');
+  },
   methods: {
     clear: function () {
       this.has = {
@@ -222,14 +230,6 @@ export default {
         aditionalInformation: false
       };
     }
-  },
-  created: function () {
-    FormBus.$on('skill:clear', () => {
-      this.clear();
-    });
-  },
-  destroyed: function () {
-    FormBus.$off('skill:clear');
   }
 }
 </script>

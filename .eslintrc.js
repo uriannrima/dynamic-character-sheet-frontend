@@ -1,17 +1,17 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
+    parser: "babel-eslint",
     sourceType: 'module'
   },
   env: {
     browser: true,
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
+  "extends": ["plugin:vue/essential"],
   // required to lint *.vue files
   plugins: [
-    'html'
+    'vue'
   ],
   // 0 => Off, 1 => Warning, 2 => Error.
   // add your custom rules here
@@ -39,7 +39,29 @@ module.exports = {
     // Allow extension functions to native objects.
     'no-extend-native': 0,
     // Constructor should not start with lowercase.
-    'new-cap': 1
+    'new-cap': 1,
+    "vue/order-in-components": ["error", {
+      "order": [
+        "el",
+        "name",
+        "parent",
+        "functional",
+        ["delimiters", "comments"],
+        ["components", "directives", "filters"],
+        "extends",
+        "mixins",
+        "inheritAttrs",
+        "model",
+        ["props", "propsData"],
+        "data",
+        "computed",
+        "watch",
+        "LIFECYCLE_HOOKS",
+        "methods",
+        ["template", "render"],
+        "renderError"
+      ]
+    }]
   },
   "globals": {
     "_": true

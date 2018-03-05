@@ -21,8 +21,8 @@ import KeyAbilityMixin from '@Shared/mixins/methods/key.ability.mixin';
 import { SingleSpellPerDay } from './';
 
 export default {
-  mixins: [KeyAbilityMixin],
-  components: { SingleSpellPerDay }
+  components: { SingleSpellPerDay },
+  mixins: [KeyAbilityMixin]
 }
 </script>
 

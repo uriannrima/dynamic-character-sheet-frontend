@@ -21,8 +21,8 @@ import { SavingThrow } from './';
 import CharacterMixin from '@Store/mixins/character.mixin';
 
 export default {
-  mixins: [CharacterMixin],
-  components: { SavingThrow }
+  components: { SavingThrow },
+  mixins: [CharacterMixin]
 }
 </script>
 

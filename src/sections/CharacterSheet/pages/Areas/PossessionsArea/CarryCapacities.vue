@@ -10,8 +10,8 @@
 import { CarryCapacity } from './';
 
 export default {
-  props: ["carryCapacities"],
-  components: { CarryCapacity }
+  components: { CarryCapacity },
+  props: ["carryCapacities"]
 }
 </script>
 

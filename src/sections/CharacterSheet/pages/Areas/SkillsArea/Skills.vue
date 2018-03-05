@@ -37,8 +37,8 @@ import KeyAbilityMixin from '@Shared/mixins/methods/key.ability.mixin';
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 
 export default {
-  mixins: [KeyAbilityMixin, MinimizableMixin],
   components: { Skill },
+  mixins: [KeyAbilityMixin, MinimizableMixin],
   computed: {
     orderedSkills() {
       return this.character.skills.orderBy(s => s.name);
