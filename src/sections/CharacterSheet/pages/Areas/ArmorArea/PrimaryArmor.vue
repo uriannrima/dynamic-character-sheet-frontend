@@ -27,14 +27,16 @@
            :value="size.modifier">
     <input type="number"
            class="common-input"
-           v-model.number="armorClass.naturalArmor">
+           :value="armorClass.naturalArmor"
+           @change="updateArmorClass({ naturalArmor: $event.target.value * 1 })">
     <input type="number"
            class="common-input"
            readonly
            :value="getDeflectionBonus">
     <input type="number"
            class="common-input"
-           v-model.number="armorClass.miscModifier">
+           :value="armorClass.miscModifier"
+           @change="updateArmorClass({ miscModifier: $event.target.value * 1 })">
     <label>&nbsp;</label>
     <label class="h-md-down total-label">Total</label>
     <label class="h-md-down">&nbsp;</label>
@@ -56,13 +58,16 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from '@Store/CharacterModule';
+import { mapState, mapGetters, mapMutations } from '@Store/CharacterModule';
 
 export default {
   props: ['keyScoreName', 'keyScoreModifier'],
   computed: {
     ...mapState(['armorClass', 'size', 'damageReduction', 'gear']),
     ...mapGetters(['getTotalArmor', 'getDeflectionBonus'])
+  },
+  methods: {
+    ...mapMutations(['updateArmorClass'])
   }
 }
 </script>
@@ -97,7 +102,7 @@ export default {
 
 @media screen and (min-width: 1024px) {
   .primary-armor-component {
-    grid-template-columns: 10.6% 4.8% repeat(9, 1fr);
+    grid-template-columns: 10.6% 4.8% repeat(8, 1fr) 13%;
     grid-row-gap: initial;
     grid-column-gap: 9px;
   }

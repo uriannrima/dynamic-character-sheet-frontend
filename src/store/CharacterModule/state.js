@@ -32,6 +32,6 @@ export default {
   armorClass: new ArmorClass(),
   status: new Status(),
   speed: "",
-  damageReduction: 0,
+  damageReduction: "",
   gear: new Gear()
 }

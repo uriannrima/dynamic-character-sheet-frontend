@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+npm-debug.log
 
 # Runtime data
 pids
@@ -27,6 +28,7 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 .env
+package-lock.json
 
 # IDEs and editors (shamelessly copied from @angular/cli's .gitignore)
 /.idea

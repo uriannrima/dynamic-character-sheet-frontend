@@ -45,7 +45,13 @@ export default {
       ObjectUtils.extractTo(protectiveItem, state.gear.protectiveItems[index]);
     });
   },
-  updateArmorKeyScoreModifier(state, armorKeyScore) {
+  updateArmorKeyScore(state, armorKeyScore) {
     state.armorKeyAbilityScore = armorKeyScore;
+  },
+  updateArmorClass(state, armorClass) {
+    ObjectUtils.extractTo(armorClass, state.armorClass);
+  },
+  updateDamageReduction(state, damageReduction) {
+    state.damageReduction = damageReduction;
   }
 }

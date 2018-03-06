@@ -11,6 +11,8 @@ export default {
     updateAbilityScore: 'updateAbilityScore',
     updateStatus: 'updateStatus',
     updateSpeed: 'updateSpeed',
-    updateGear: 'updateGear'
+    updateGear: 'updateGear',
+    updateArmorClass: 'updateArmorClass',
+    updateDamageReduction: 'updateDamageReduction'
   }
 }
