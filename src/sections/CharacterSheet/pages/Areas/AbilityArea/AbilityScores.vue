@@ -29,14 +29,13 @@
 <script>
 import { AbilityScore } from './';
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
-import { mapState, mapGetters, mapActions } from '@Store/CharacterModule';
+import { mapState, mapActions } from '@Store/CharacterModule';
 
 export default {
   components: { AbilityScore },
   mixins: [MinimizableMixin],
   computed: {
-    ...mapState(['abilityScores']),
-    ...mapGetters(['getModifier', 'getTempModifier'])
+    ...mapState(['abilityScores'])
   },
   methods: {
     ...mapActions(['updateAbilityScore']),

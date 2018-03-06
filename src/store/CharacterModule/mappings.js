@@ -10,6 +10,7 @@ export default {
     updateAbilityScores: 'updateAbilityScores',
     updateAbilityScore: 'updateAbilityScore',
     updateStatus: 'updateStatus',
-    updateSpeed: 'updateSpeed'
+    updateSpeed: 'updateSpeed',
+    updateGear: 'updateGear'
   }
 }

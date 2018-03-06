@@ -1,41 +1,29 @@
-export const Armor = function ({ name, type, acBonus, maxDex, checkPenalty, spellFailure, speed, weight, specialProperties }) {
-  return {
-    name: name || "",
-    type: type || "",
-    acBonus: acBonus || 0,
-    maxDex: maxDex || 0,
-    checkPenalty: checkPenalty || 0,
-    spellFailure: spellFailure || 0,
-    speed: speed || 0,
-    weight: weight || 0,
-    specialProperties: specialProperties || ""
-  };
+export class Armor {
+  constructor({ name = "", type = "", acBonus = 0, maxDex = 0, checkPenalty = 0, spellFailure = 0, speed = 0, weight = 0, specialProperties = "" } = {}) {
+    Object.assign(this, { name, type, acBonus, maxDex, checkPenalty, spellFailure, speed, weight, specialProperties });
+  }
 };
 
-export const Shield = function ({ name, acBonus, checkPenalty, spellFailure, weight, specialProperties }) {
-  return {
-    name: name || "",
-    acBonus: acBonus || 0,
-    checkPenalty: checkPenalty || 0,
-    spellFailure: spellFailure || 0,
-    weight: weight || 0,
-    specialProperties: specialProperties || ""
-  };
-}
-
-export const ProtectiveItem = function ({ name, acBonus, weight, specialProperties }) {
-  return {
-    name: name || "",
-    acBonus: acBonus || 0,
-    weight: weight || 0,
-    specialProperties: specialProperties || ""
-  };
-}
-
-export const Gear = function () {
-  return {
-    armor: new Armor({}),
-    shield: new Shield({}),
-    protectiveItems: [new ProtectiveItem({}), new ProtectiveItem({})]
+export class Shield {
+  constructor({ name = "", acBonus = 0, checkPenalty = 0, spellFailure = 0, weight = 0, specialProperties = "" } = {}) {
+    Object.assign(this, { name, acBonus, checkPenalty, spellFailure, weight, specialProperties });
   }
 }
+
+export class ProtectiveItem {
+  constructor({ name = "", acBonus = 0, weight = 0, specialProperties = "" } = {}) {
+    Object.assign(this, { name, acBonus, weight, specialProperties });
+  }
+}
+
+export class Gear {
+  constructor() {
+    Object.assign(this, {
+      armor: new Armor(),
+      shield: new Shield(),
+      protectiveItems: [new ProtectiveItem(), new ProtectiveItem()]
+    });
+  }
+}
+
+export default Gear;

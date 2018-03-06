@@ -19,6 +19,12 @@ export default {
   updateAbilityScores(state, abilityScores) {
     abilityScores.map(abilityScore => {
       var stateAbilityScore = state.abilityScores[abilityScore.name];
+      /**
+       * Since the backend still doesn't have modifier and tempModifier
+       * We have to calculate it before updating the state on first load.
+       */
+      abilityScore.modifier = Math.floor((abilityScore.value - 10) / 2);
+      abilityScore.tempModifier = Math.floor((abilityScore.tempValue - 10) / 2);
       ObjectUtils.extractTo(abilityScore, stateAbilityScore);
     });
   },
@@ -31,5 +37,15 @@ export default {
   },
   updateSpeed(state, speed) {
     state.speed = speed;
+  },
+  updateGear(state, gear) {
+    ObjectUtils.extractTo(gear.armor, state.gear.armor);
+    ObjectUtils.extractTo(gear.shield, state.gear.shield);
+    gear.protectiveItems.forEach((protectiveItem, index) => {
+      ObjectUtils.extractTo(protectiveItem, state.gear.protectiveItems[index]);
+    });
+  },
+  updateArmorKeyScoreModifier(state, armorKeyScore) {
+    state.armorKeyAbilityScore = armorKeyScore;
   }
 }

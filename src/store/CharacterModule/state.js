@@ -1,6 +1,8 @@
 import * as Size from '@Modules/size.module';
 import { Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma } from '@Modules/ability-score.module';
 import Status from '@Modules/status.module';
+import ArmorClass from '@Modules/armor-class.module';
+import Gear from '@Modules/gear.module';
 
 export default {
   _id: null,
@@ -26,11 +28,10 @@ export default {
     wisdom: Wisdom,
     charisma: Charisma
   },
-  armorClass: {
-    base: 10,
-    naturalArmor: 0,
-    miscModifier: 0
-  },
+  armorKeyAbilityScore: 'dexterity',
+  armorClass: new ArmorClass(),
   status: new Status(),
-  speed: ""
+  speed: "",
+  damageReduction: 0,
+  gear: new Gear()
 }

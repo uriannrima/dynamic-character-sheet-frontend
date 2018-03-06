@@ -31,8 +31,10 @@
 </template>
 
 <script>
+import AbilityScore from '@Modules/ability-score.module';
+
 export default {
-  props: ['index', 'name', 'value', 'tempValue'],  
+  props: ['index', 'name', 'value', 'tempValue'],
   computed: {
     modifier() {
       return Math.floor((this.value - 10) / 2);
@@ -43,13 +45,12 @@ export default {
   },
   methods: {
     updateScore($event, tempOnly) {
-      var abilityScore = { name: this.name };
-      if (!tempOnly) {
-        abilityScore.value = $event.target.value * 1;
-        abilityScore.modifier = this.modifier;
-      }
-      abilityScore.tempValue = $event.target.value * 1;
-      abilityScore.tempModifer = this.tempModifier;
+      const abilityScore = new AbilityScore({
+        name: this.name.toLowerCase(),
+        tempValue: $event.target.value * 1,
+        value: $event.target.value * 1
+      });
+      if (tempOnly) delete abilityScore.value;
       this.$emit('onUpdateScore', { abilityScore });
     }
   }

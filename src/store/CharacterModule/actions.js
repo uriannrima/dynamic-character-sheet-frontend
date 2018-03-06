@@ -18,6 +18,8 @@ export default {
       commit(Mappings.Mutations.updateSize, character.size);
       commit(Mappings.Mutations.updateAbilityScores, character.abilityScores);
       commit(Mappings.Mutations.updateStatus, character.status);
+      commit(Mappings.Mutations.updateSpeed, character.speed);
+      commit(Mappings.Mutations.updateGear, character.gear);
     } catch (error) {
       console.log(error);
     }

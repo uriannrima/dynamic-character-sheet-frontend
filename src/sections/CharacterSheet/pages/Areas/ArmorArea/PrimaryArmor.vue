@@ -7,40 +7,40 @@
     <input type="number"
            class="common-input ac-bb"
            readonly
-           :value="totalArmor">
+           :value="getTotalArmor">
     <span class="base-armor-label">= 10 +</span>
     <input type="number"
            class="common-input"
            readonly
-           :value="armorBonus">
+           :value="gear.armor.acBonus">
     <input type="number"
            class="common-input"
            readonly
-           :value="shieldBonus">
+           :value="gear.shield.acBonus">
     <input type="number"
            class="common-input"
            readonly
-           :value="keyAbility.getTempModifier()">
+           :value="keyScoreModifier">
     <input type="number"
            class="common-input"
            readonly
-           :value="character.size.modifier">
+           :value="size.modifier">
     <input type="number"
            class="common-input"
-           v-model.number="character.armorClass.naturalArmor">
+           v-model.number="armorClass.naturalArmor">
     <input type="number"
            class="common-input"
            readonly
-           :value="deflectionBonus">
+           :value="getDeflectionBonus">
     <input type="number"
            class="common-input"
-           v-model.number="character.armorClass.miscModifier">
+           v-model.number="armorClass.miscModifier">
     <label>&nbsp;</label>
     <label class="h-md-down total-label">Total</label>
     <label class="h-md-down">&nbsp;</label>
     <label>Armor<br>Bonus</label>
     <label>Shield<br>Bonus</label>
-    <label>Dex<br>Modifier</label>
+    <label>{{ keyScoreName.substring(0, 3) }}<br>Modifier</label>
     <label>Size<br>Modifier</label>
     <label>Natural<br>Armor</label>
     <label>Deflection<br>Modifier</label>
@@ -50,42 +50,19 @@
     </div>
     <input type="text"
            class="damage-reduction-bb common-input speed-input"
-           v-model="character.damageReduction">
+           v-model="damageReduction">
     <label class="h-md-down">Damage<br>Reduction</label>
   </div>
 </template>
 
 <script>
-import CharacterMixin from '@Store/mixins/character.mixin';
+import { mapState, mapGetters } from '@Store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin],
+  props: ['keyScoreName', 'keyScoreModifier'],
   computed: {
-    totalArmor() {
-      var { armorClass, size } = this.character;
-      return armorClass.base +
-        this.armorBonus +
-        this.shieldBonus +
-        this.keyAbility.getTempModifier() +
-        size.modifier +
-        armorClass.naturalArmor +
-        this.deflectionBonus +
-        armorClass.miscModifier;
-    },
-    keyAbility() {
-      return this.character.abilityScores.find(abilityScore => {
-        return abilityScore.name === 'dexterity';
-      });
-    },
-    armorBonus() {
-      return this.character.gear.armor.acBonus;
-    },
-    shieldBonus() {
-      return this.character.gear.shield.acBonus;
-    },
-    deflectionBonus() {
-      return this.character.gear.protectiveItems.reduce((acc, item) => acc + item.acBonus, 0)
-    }
+    ...mapState(['armorClass', 'size', 'damageReduction', 'gear']),
+    ...mapGetters(['getTotalArmor', 'getDeflectionBonus'])
   }
 }
 </script>

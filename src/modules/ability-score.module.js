@@ -3,8 +3,6 @@ export class AbilityScore {
     this.name = name;
     this.value = value;
     this.tempValue = tempValue;
-    this.modifier = 0;
-    this.tempModifier = 0;
     // TODO: Remove these methods later.
     this.getModifier = () => {
       return Math.floor((this.value - 10) / 2);
@@ -12,6 +10,8 @@ export class AbilityScore {
     this.getTempModifier = () => {
       return Math.floor((this.tempValue - 10) / 2);
     }
+    this.modifier = this.getModifier();
+    this.tempModifier = this.getTempModifier();
   }
 };
 
