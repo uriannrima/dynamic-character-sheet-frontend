@@ -26,7 +26,8 @@ export default {
       console.log(error);
     }
   },
-  async updateAbilityScore({ commit }, abilityScore) {
-    commit('updateAbilityScore', abilityScore);
+  async [Mappings.Actions.updateDescriptionAsync]({ commit, state }, description) {
+    await CharacterService.patch(state._id, description);
+    commit(Mappings.Mutations.updateDescription, description);
   }
 }

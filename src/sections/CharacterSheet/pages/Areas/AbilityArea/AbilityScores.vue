@@ -29,7 +29,7 @@
 <script>
 import { AbilityScore } from './';
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
-import { mapState, mapActions } from '@Store/CharacterModule';
+import { mapState, mapMutations } from '@Store/CharacterModule';
 
 export default {
   components: { AbilityScore },
@@ -38,7 +38,7 @@ export default {
     ...mapState(['abilityScores'])
   },
   methods: {
-    ...mapActions(['updateAbilityScore']),
+    ...mapMutations(['updateAbilityScore']),
     updateScore: function ({ abilityScore }) {
       this.updateAbilityScore(abilityScore);
     }

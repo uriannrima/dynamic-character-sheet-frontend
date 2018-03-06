@@ -1,6 +1,7 @@
 export default {
   Actions: {
-    loadCharacterAsync: 'loadCharacterAsync'
+    loadCharacterAsync: 'loadCharacterAsync',
+    updateDescriptionAsync: 'updateDescriptionAsync'
   },
   Mutations: {
     updateId: 'updateId',

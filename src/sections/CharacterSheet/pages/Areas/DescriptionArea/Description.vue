@@ -12,7 +12,7 @@
         <input type="text"
                class="full-width-input"
                :value="name"
-               @change="updateDescription({ name: $event.target.value })">
+               @change="updateDescriptionAsync({ name: $event.target.value })">
         <label>Character Name</label>
         <button @click="saveCharacter()">Save</button>
         <button @click="newCharacter()">New</button>
@@ -21,7 +21,7 @@
         <input type="text"
                class="full-width-input"
                :value="playerName"
-               @change="updateDescription({ playerName: $event.target.value })">
+               @change="updateDescriptionAsync({ playerName: $event.target.value })">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
@@ -36,21 +36,21 @@
           <input type="text"
                  class="full-width-input"
                  :value="race"
-                 @change="updateDescription({ race: $event.target.value })">
+                 @change="updateDescriptionAsync({ race: $event.target.value })">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="alignment"
-                 @change="updateDescription({ alignment: $event.target.value })">
+                 @change="updateDescriptionAsync({ alignment: $event.target.value })">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="deity"
-                 @change="updateDescription({ deity: $event.target.value })">
+                 @change="updateDescriptionAsync({ deity: $event.target.value })">
           <label>Deity</label>
         </div>
       </div>
@@ -69,21 +69,21 @@
           <input type="text"
                  class="full-width-input"
                  :value="age"
-                 @change="updateDescription({ age: $event.target.value })">
+                 @change="updateDescriptionAsync({ age: $event.target.value })">
           <label>Age</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="gender"
-                 @change="updateDescription({ gender: $event.target.value })">
+                 @change="updateDescriptionAsync({ gender: $event.target.value })">
           <label>Gender</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="height"
-                 @change="updateDescription({ height: $event.target.value })">
+                 @change="updateDescriptionAsync({ height: $event.target.value })">
           <label>Height</label>
         </div>
       </div>
@@ -92,28 +92,28 @@
           <input type="text"
                  class="full-width-input"
                  :value="weight"
-                 @change="updateDescription({ weight: $event.target.value })">
+                 @change="updateDescriptionAsync({ weight: $event.target.value })">
           <label>Weight</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="eyes"
-                 @change="updateDescription({ eyes: $event.target.value })">
+                 @change="updateDescriptionAsync({ eyes: $event.target.value })">
           <label>Eyes</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="hair"
-                 @change="updateDescription({ hair: $event.target.value })">
+                 @change="updateDescriptionAsync({ hair: $event.target.value })">
           <label>Hair</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="skin"
-                 @change="updateDescription({ skin: $event.target.value })">
+                 @change="updateDescriptionAsync({ skin: $event.target.value })">
           <label>Skin</label>
         </div>
       </div>
@@ -126,7 +126,7 @@ import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import SizeService from '@Services/size.service';
 import CharacterStore from '@Store/character.store';
 import NotificationService from '@Services/NotificationService';
-import { mapState, mapGetters, mapMutations } from '@Store/CharacterModule'
+import { mapState, mapGetters, mapMutations, mapActions } from '@Store/CharacterModule'
 
 export default {
   mixins: [MinimizableMixin],
@@ -137,7 +137,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'name', 'playerName', 'classes',
+      '_id', 'name', 'playerName', 'classes',
       'race', 'alignment', 'deity', 'age', 'gender',
       'height', 'weight', 'eyes',
       'hair', 'skin', 'size'
@@ -149,6 +149,7 @@ export default {
   },
   methods: {
     ...mapMutations(['updateDescription', 'updateClasses', 'updateSize']),
+    ...mapActions(['updateDescriptionAsync']),
     parseStringToClasses(classesAsString) {
       const classes = [];
       const eachClass = classesAsString.split(",");
@@ -184,12 +185,12 @@ export default {
   },
   feathers: {
     characters: {
-      async patched(updatedCharacter) {
-        if (this.character._id === updatedCharacter._id) {
-          this.loadState(updatedCharacter);
+      async patched({ model, delta }) {
+        if (this._id === model._id) {
+          // this.loadState(updatedCharacter);
           NotificationService.notify({
             type: "success",
-            message: "Your character has been updated."
+            message: `Your character has been updated. Delta: ${JSON.stringify(delta)}`
           });
         }
       }
