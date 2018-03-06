@@ -125,7 +125,6 @@
 import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
 import SizeService from '@Services/size.service';
 import CharacterStore from '@Store/character.store';
-import NotificationService from '@Services/NotificationService';
 import { mapState, mapGetters, mapMutations, mapActions } from '@Store/CharacterModule'
 
 export default {
@@ -181,19 +180,6 @@ export default {
     newCharacter: async function () {
       await CharacterStore.createCharacter();
       console.log(CharacterStore.Instance.character, this.character);
-    }
-  },
-  feathers: {
-    characters: {
-      async patched({ model, delta }) {
-        if (this._id === model._id) {
-          // this.loadState(updatedCharacter);
-          NotificationService.notify({
-            type: "success",
-            message: `Your character has been updated. Delta: ${JSON.stringify(delta)}`
-          });
-        }
-      }
     }
   }
 }

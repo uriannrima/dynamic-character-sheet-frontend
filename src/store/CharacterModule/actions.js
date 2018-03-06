@@ -1,6 +1,7 @@
 import Mappings from './mappings';
 import CharacterService from '@Services/character.service'
 import ObjectUtils from '@Utils/object.utils.js';
+import feathers from '@Feathers';
 
 export default {
   async [Mappings.Actions.loadCharacterAsync]({ commit }, characterId) {
@@ -27,7 +28,17 @@ export default {
     }
   },
   async [Mappings.Actions.updateDescriptionAsync]({ commit, state }, description) {
-    await CharacterService.patch(state._id, description);
+
+    // CharacterService.patch(state._id, {
+    //   mutation: ['CharacterModule', Mappings.Mutations.updateDescription],
+    //   payload: description
+    // });
+
+    feathers.service('characters').patch(state._id, {
+      mutation: ['CharacterModule', Mappings.Mutations.updateDescription],
+      payload: description
+    }, {});
+
     commit(Mappings.Mutations.updateDescription, description);
   }
 }

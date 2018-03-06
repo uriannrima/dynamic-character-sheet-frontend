@@ -4,7 +4,7 @@ import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
 export { default as Mappings } from './mappings';
-export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers('CharacterModule'); ;
+export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers('CharacterModule');
 
 export default {
   namespaced: true,
