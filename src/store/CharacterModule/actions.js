@@ -1,7 +1,28 @@
 import Mappings from './mappings';
 import CharacterService from '@Services/character.service'
 import ObjectUtils from '@Utils/object.utils.js';
-import feathers from '@Feathers';
+import NotificationService from '@Services/NotificationService';
+
+const toRegularForm = function (unregularString) {
+  return unregularString
+    // insert a space before all caps
+    .replace(/([A-Z])/g, ' $1')
+    // uppercase the first character
+    .replace(/^./, function (str) {
+      return str.toUpperCase();
+    })
+};
+
+CharacterService.register('patched', ({ mutation, delta }) => {
+  const firstKey = Object.keys(delta)[0];
+  const regular = toRegularForm(firstKey);
+  NotificationService.notify({
+    type: 'success',
+    message: `Your sheet has been patched. => ${regular}: ${delta[firstKey]}.`
+  })
+  Store.commit(mutation.join('/'), delta);
+});
+
 
 export default {
   async [Mappings.Actions.loadCharacterAsync]({ commit }, characterId) {
@@ -29,15 +50,10 @@ export default {
   },
   async [Mappings.Actions.updateDescriptionAsync]({ commit, state }, description) {
 
-    // CharacterService.patch(state._id, {
-    //   mutation: ['CharacterModule', Mappings.Mutations.updateDescription],
-    //   payload: description
-    // });
-
-    feathers.service('characters').patch(state._id, {
+    CharacterService.patch(state._id, {
       mutation: ['CharacterModule', Mappings.Mutations.updateDescription],
       payload: description
-    }, {});
+    });
 
     commit(Mappings.Mutations.updateDescription, description);
   }

@@ -1,7 +1,7 @@
-import HttpService from '@Shared/services/HttpService';
-import AuthService from '@Shared/services/AuthService';
+/*eslint no-unused-vars: [0]*/
+import { HttpLayer, SocketLayer } from '@Shared/services/ServiceLayer';
 
-export default class AbstractService extends HttpService {
+export default class AbstractService extends SocketLayer {
   constructor({ model, url }) {
     super({ url });
     Object.assign(this, { model });
@@ -11,63 +11,27 @@ export default class AbstractService extends HttpService {
     return this.model(data);
   }
 
-  async getHeaders() {
-    var accessToken = await AuthService.getAuthentication();
-    return {
-      Authorization: accessToken
-    };
-  }
-
   async getData(id) {
-    try {
-      var headers = await this.getHeaders();
-      var response = await this.service.get(this.url + `/${id}`, { headers });
-      return response.data
-    } catch (error) {
-      throw error;
-    }
+    const response = await super.get(id);
+    return response.data;
   }
 
   async get(id) {
-    try {
-      var headers = await this.getHeaders();
-      var response = await this.service.get(this.url + `/${id}`, { headers });
-      return this.model(response.data);
-    } catch (error) {
-      throw error;
-    }
+    const data = await this.getData(id);
+    return this.model(data);
   }
 
   async getAll() {
-    try {
-      var headers = await this.getHeaders();
-      var response = await this.service.get(this.url, { headers });
-      return response.data.map(data => this.model(data));
-    } catch (error) {
-      throw error;
-    }
+    const response = await super.getAll();
+    return response.data.map(data => this.model(data));
   }
 
   async saveOrUpdate(model) {
-    try {
-      var { _id } = model;
-      var headers = await this.getHeaders();
-      var serverCall = _id ? this.service.put : this.service.post;
-      var url = this.url + (_id ? `/${_id}` : '');
-      var response = await serverCall(url, model, { headers });
-      return this.model(response.data);
-    } catch (error) {
-      throw error;
-    }
+    const response = await super.saveOrUpdate(model);
+    return this.model(response.data);
   }
 
-  async patch(_id, model) {
-    try {
-      var headers = await this.getHeaders();
-      var response = await this.service.patch(this.url + `/${_id}`, model, { headers });
-      return response;
-    } catch (error) {
-      throw error;
-    }
+  async patch(id, model) {
+    return await super.patch(id, model);
   }
 }
