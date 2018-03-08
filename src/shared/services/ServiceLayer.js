@@ -28,6 +28,10 @@ export class SocketLayer extends SocketService {
   register(methodName, callback) {
     this.service.on(methodName, callback);
   }
+
+  emit(methodName, payload) {
+    this.feathers.io.emit(methodName, payload);
+  }
 }
 
 export class HttpLayer extends HttpService {
@@ -83,5 +87,9 @@ export class HttpLayer extends HttpService {
 
   register() {
     console.log("HttpLayer doesn't support registration.");
+  }
+
+  emit(methodName, payload) {
+    console.log("HttpLayer doesn't support emit.");
   }
 }

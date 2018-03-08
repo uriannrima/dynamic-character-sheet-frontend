@@ -1,7 +1,7 @@
 import feathers from '@feathersjs/feathers'
-import auth from '@feathersjs/authentication-client';
 import socketio from '@feathersjs/socketio-client';
 import io from 'socket.io-client';
+import auth from '@feathersjs/authentication-client';
 import Constants from 'Constants';
 import Options from './options';
 

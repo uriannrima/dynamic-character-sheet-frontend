@@ -17,6 +17,7 @@ export default {
   beforeRouteEnter: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
     next(vm => {
+      vm.connect(to.params.id);
       vm.loadCharacterAsync(to.params.id);
     });
   },
@@ -29,7 +30,7 @@ export default {
     ...mapState(['_id'])
   },
   methods: {
-    ...mapActions([Mappings.Actions.loadCharacterAsync])
+    ...mapActions([Mappings.Actions.loadCharacterAsync, 'connect'])
   }
 }
 </script>

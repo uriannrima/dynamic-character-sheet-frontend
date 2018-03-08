@@ -23,8 +23,10 @@ CharacterService.register('patched', ({ mutation, delta }) => {
   Store.commit(mutation.join('/'), delta);
 });
 
-
 export default {
+  async connect({ commit }, characterId) {
+    CharacterService.emit('character/connect', { characterId });
+  },
   async [Mappings.Actions.loadCharacterAsync]({ commit }, characterId) {
     try {
       const character = await CharacterService.getData(characterId);
