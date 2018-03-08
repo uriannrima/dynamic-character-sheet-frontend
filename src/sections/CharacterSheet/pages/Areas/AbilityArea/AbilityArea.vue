@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { abilityScores } from "./";
+import { AbilityScores } from "./";
 
 export default {
-  components: { abilityScores }
+  components: { AbilityScores }
 }
 </script>
 

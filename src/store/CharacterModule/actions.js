@@ -24,7 +24,7 @@ CharacterService.register('patched', ({ mutation, delta }) => {
 });
 
 export default {
-  async connect({ commit }, characterId) {
+  async connect(context, characterId) {
     CharacterService.emit('character/connect', { characterId });
   },
   async [Mappings.Actions.loadCharacterAsync]({ commit }, characterId) {

@@ -3,6 +3,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseWebpackConfigPromise = require('./webpack.dev.conf');
 
+const PUBLIC = process.env.C9_HOSTNAME || "web-dcs-uriannrima.c9users.io/sockjs-node/";
+
 module.exports = new Promise((resolve, reject) => {
   baseWebpackConfigPromise.then(baseWebpackConfig => {
 
@@ -13,7 +15,7 @@ module.exports = new Promise((resolve, reject) => {
         }
       },
       devServer: {
-        public: "web-dcs-uriannrima.c9users.io/sockjs-node/"
+        public: PUBLIC
       }
     });
 

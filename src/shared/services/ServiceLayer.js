@@ -89,7 +89,7 @@ export class HttpLayer extends HttpService {
     console.log("HttpLayer doesn't support registration.");
   }
 
-  emit(methodName, payload) {
+  emit() {
     console.log("HttpLayer doesn't support emit.");
   }
 }
