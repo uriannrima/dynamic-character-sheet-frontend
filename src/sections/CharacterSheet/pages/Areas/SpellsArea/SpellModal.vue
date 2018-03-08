@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import SpellService from '@Services/spell.service';
+import SpellService from 'services/spell.service';
 import { SpellForm } from './';
-import { ModalMixin } from '@Shared/modal';
+import { ModalMixin } from 'shared/modal';
 
 export default {
   components: { SpellForm },

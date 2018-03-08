@@ -1,4 +1,4 @@
-import * as SpecialAbilityModule from '@Modules/special-ability.module';
+import * as SpecialAbilityModule from 'modules/special-ability.module';
 import AbstractService from './abstract.service';
 
 class SpecialAbilityService extends AbstractService {

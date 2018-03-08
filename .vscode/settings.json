@@ -1,4 +1,6 @@
 {
-    "vetur.format.defaultFormatter.js": "vscode-typescript",
-    "git.ignoreLimitWarning": true
+  "path-intellisense.mappings": {
+    "@Source": "${workspaceRoot}/src",
+    "@Services": "${workspaceRoot}/src/services"
+  },
 }

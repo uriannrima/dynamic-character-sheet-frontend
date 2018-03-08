@@ -19,7 +19,7 @@
 
 <script>
 import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from './Areas';
-import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 
 export default {
   components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea },

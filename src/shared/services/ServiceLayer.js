@@ -1,6 +1,6 @@
-import HttpService from '@Shared/services/HttpService';
-import SocketService from '@Shared/services/SocketService';
-import AuthService from '@Shared/services/AuthService';
+import HttpService from 'shared/services/HttpService';
+import SocketService from 'shared/services/SocketService';
+import AuthService from 'shared/services/AuthService';
 
 export class SocketLayer extends SocketService {
   constructor({ url }) {

@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import { CharacterUpdateMixin, ModalContainerMixin } from '@Shared/modal';
-import CharacterMixin from '@Store/mixins/character.mixin';
-import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
+import { CharacterUpdateMixin, ModalContainerMixin } from 'shared/modal';
+import CharacterMixin from 'store/mixins/character.mixin';
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { SpellsGroup, SpellModal } from './';
 
 export default {

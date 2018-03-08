@@ -1,4 +1,4 @@
-import feathers from '@Feathers';
+import feathers from 'feathers';
 
 export default class SocketService {
   constructor({ serviceName }) {

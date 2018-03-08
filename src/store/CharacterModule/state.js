@@ -1,8 +1,8 @@
-import * as Size from '@Modules/size.module';
-import { AbilityScore, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma } from '@Modules/ability-score.module';
-import Status from '@Modules/status.module';
-import ArmorClass from '@Modules/armor-class.module';
-import Gear from '@Modules/gear.module';
+import * as Size from 'modules/size.module';
+import { AbilityScore, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma } from 'modules/ability-score.module';
+import Status from 'modules/status.module';
+import ArmorClass from 'modules/armor-class.module';
+import Gear from 'modules/gear.module';
 
 export default {
   _id: null,

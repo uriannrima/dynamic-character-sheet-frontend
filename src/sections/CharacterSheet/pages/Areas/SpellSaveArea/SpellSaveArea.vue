@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import KeyAbilityMixin from '@Shared/mixins/methods/key.ability.mixin';
+import KeyAbilityMixin from 'shared/mixins/methods/key.ability.mixin';
 import { SpellSave, ArcaneSpellFailure } from './';
 import { ConditionalModifiers } from '../WeaponsArea';
 

@@ -1,7 +1,7 @@
 import Mappings from './mappings';
-import CharacterService from '@Services/character.service'
-import ObjectUtils from '@Utils/object.utils.js';
-import NotificationService from '@Services/NotificationService';
+import CharacterService from 'services/character.service'
+import ObjectUtils from 'utils/object.utils.js';
+import NotificationService from 'services/NotificationService';
 
 const toRegularForm = function (unregularString) {
   return unregularString
@@ -13,19 +13,21 @@ const toRegularForm = function (unregularString) {
     })
 };
 
-CharacterService.register('patched', ({ mutation, delta }) => {
-  const firstKey = Object.keys(delta)[0];
-  const regular = toRegularForm(firstKey);
-  NotificationService.notify({
-    type: 'success',
-    message: `Your sheet has been patched. => ${regular}: ${delta[firstKey]}.`
-  })
-  Store.commit(mutation.join('/'), delta);
-});
-
 export default {
   async connect(context, characterId) {
+    // Ask for the server to connect to character channel.
     CharacterService.emit('character/connect', { characterId });
+
+    // If the server send a patched, we update ourself
+    CharacterService.register('patched', ({ mutation, delta }) => {
+      const firstKey = Object.keys(delta)[0];
+      const regular = toRegularForm(firstKey);
+      NotificationService.notify({
+        type: 'success',
+        message: `Your sheet has been patched. => ${regular}: ${delta[firstKey]}.`
+      })
+      Store.commit(mutation.join('/'), delta);
+    });
   },
   async [Mappings.Actions.loadCharacterAsync]({ commit }, characterId) {
     try {

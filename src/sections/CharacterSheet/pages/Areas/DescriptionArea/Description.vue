@@ -122,10 +122,10 @@
 </template>
 
 <script>
-import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
-import SizeService from '@Services/size.service';
-import CharacterStore from '@Store/character.store';
-import { mapState, mapGetters, mapMutations, mapActions } from '@Store/CharacterModule'
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import SizeService from 'services/size.service';
+import CharacterStore from 'store/character.store';
+import { mapState, mapGetters, mapMutations, mapActions } from 'store/CharacterModule'
 
 export default {
   mixins: [MinimizableMixin],

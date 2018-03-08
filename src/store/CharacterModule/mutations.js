@@ -1,5 +1,5 @@
 import Mappings from './mappings';
-import ObjectUtils from '@Utils/object.utils.js';
+import ObjectUtils from 'utils/object.utils.js';
 
 export default {
   [Mappings.Mutations.updateId](state, _id) {

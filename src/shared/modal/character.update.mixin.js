@@ -1,4 +1,4 @@
-import ModelUtils from '@Utils/model.utils';
+import ModelUtils from 'utils/model.utils';
 
 /**
  *

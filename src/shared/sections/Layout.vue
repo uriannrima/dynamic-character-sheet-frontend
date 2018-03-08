@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { Home, CharacterSheet } from '@/sections';
-import AuthService from '@Shared/services/AuthService';
+import { Home, CharacterSheet } from 'sections';
+import AuthService from 'shared/services/AuthService';
 
 export default {
   components: { Home, CharacterSheet },

@@ -1,5 +1,5 @@
-import HttpService from '@Shared/services/HttpService';
-import ApplicationDatabase from '@Shared/databases/ApplicationDatabase';
+import HttpService from 'shared/services/HttpService';
+import ApplicationDatabase from 'shared/databases/ApplicationDatabase';
 
 class AuthService extends HttpService {
   constructor() {

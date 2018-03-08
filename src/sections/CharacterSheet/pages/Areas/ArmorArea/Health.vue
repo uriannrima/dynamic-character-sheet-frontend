@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from '@Store/CharacterModule';
+import { mapState, mapMutations } from 'store/CharacterModule';
 
 export default {
   computed: {

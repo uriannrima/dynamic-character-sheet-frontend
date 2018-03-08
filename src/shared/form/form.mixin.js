@@ -1,4 +1,4 @@
-import { FormBus } from '@Shared/form/';
+import { FormBus } from 'shared/form/';
 
 /**
  *

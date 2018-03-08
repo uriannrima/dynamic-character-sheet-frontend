@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from '@Store/CharacterModule';
+import { mapGetters } from 'store/CharacterModule';
 
 export default {
   computed: {

@@ -1,4 +1,4 @@
-import * as LanguageModule from '@Modules/language.module';
+import * as LanguageModule from 'modules/language.module';
 import AbstractService from './abstract.service';
 
 class LanguageService extends AbstractService {

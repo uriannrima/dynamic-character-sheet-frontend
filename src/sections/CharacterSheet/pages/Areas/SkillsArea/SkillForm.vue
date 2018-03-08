@@ -190,7 +190,7 @@
 </template>
 
 <script>
-import { FormBus } from '@Shared/form';
+import { FormBus } from 'shared/form';
 
 export default {
   props: ['skill', 'describeSkill'],

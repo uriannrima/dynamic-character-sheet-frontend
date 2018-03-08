@@ -1,5 +1,5 @@
 /*eslint no-unused-vars: [0]*/
-import { HttpLayer, SocketLayer } from '@Shared/services/ServiceLayer';
+import { HttpLayer, SocketLayer } from 'shared/services/ServiceLayer';
 
 export default class AbstractService extends SocketLayer {
   constructor({ model, url }) {

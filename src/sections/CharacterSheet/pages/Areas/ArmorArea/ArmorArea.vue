@@ -7,7 +7,7 @@
 
 <script>
 import { Health, PrimaryArmor } from './';
-import { mapState, mapGetters } from '@Store/CharacterModule';
+import { mapState, mapGetters } from 'store/CharacterModule';
 
 export default {
   components: { Health, PrimaryArmor },

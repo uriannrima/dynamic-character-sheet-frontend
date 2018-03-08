@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from '@Store/CharacterModule';
+import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
 
 export default {
   props: ['keyScoreName', 'keyScoreModifier'],

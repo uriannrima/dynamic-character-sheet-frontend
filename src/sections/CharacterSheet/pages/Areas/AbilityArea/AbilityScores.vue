@@ -28,8 +28,8 @@
 
 <script>
 import { AbilityScore } from './';
-import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
-import { mapState, mapMutations } from '@Store/CharacterModule';
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapMutations } from 'store/CharacterModule';
 
 export default {
   components: { AbilityScore },

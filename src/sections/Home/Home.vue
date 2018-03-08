@@ -1,6 +1,6 @@
 <script>
 /* import { mapActions, mapGetters, mapMutations  } from 'vuex'; */
-import CharacterService from '@Services/character.service';
+import CharacterService from 'services/character.service';
 
 export default {
   data: function () {

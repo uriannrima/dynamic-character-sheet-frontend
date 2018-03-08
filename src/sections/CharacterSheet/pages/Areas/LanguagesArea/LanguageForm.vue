@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { FormMixin } from '@Shared/form';
+import { FormMixin } from 'shared/form';
 
 export default {
   mixins: [FormMixin],

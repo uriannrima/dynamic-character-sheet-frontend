@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import AuthService from '@Shared/services/AuthService';
-import UserService from '@Services/UserService';
+import AuthService from 'shared/services/AuthService';
+import UserService from 'services/UserService';
 
 export default {
   data() {

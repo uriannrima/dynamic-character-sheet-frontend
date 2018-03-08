@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import CharacterMixin from '@Store/mixins/character.mixin';
-import { CharacterUpdateMixin, ModalContainerMixin } from '@Shared/modal';
-import MinimizableMixin from '@Shared/mixins/states/minimizable.mixin';
+import CharacterMixin from 'store/mixins/character.mixin';
+import { CharacterUpdateMixin, ModalContainerMixin } from 'shared/modal';
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { SpecialAbility, SpecialAbilityModal } from './';
 
 export default {
