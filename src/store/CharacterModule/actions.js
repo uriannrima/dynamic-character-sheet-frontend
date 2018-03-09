@@ -3,29 +3,30 @@ import CharacterService from 'services/character.service'
 import ObjectUtils from 'utils/object.utils.js';
 import NotificationService from 'services/NotificationService';
 
-const toRegularForm = function (unregularString) {
-  return unregularString
-    // insert a space before all caps
-    .replace(/([A-Z])/g, ' $1')
-    // uppercase the first character
-    .replace(/^./, function (str) {
-      return str.toUpperCase();
-    })
-};
-
 export default {
   async connect(context, characterId) {
     // Ask for the server to connect to character channel.
-    CharacterService.emit('connect', characterId);
+    CharacterService.connect(characterId);
 
     // If the server send a patched, we update ourself
     CharacterService.register('patched', ({ mutation, delta }) => {
       const firstKey = Object.keys(delta)[0];
+
+      const toRegularForm = function (unregularString) {
+        return unregularString
+          // insert a space before all caps
+          .replace(/([A-Z])/g, ' $1')
+          // uppercase the first character
+          .replace(/^./, function (str) {
+            return str.toUpperCase();
+          })
+      };
+
       const regular = toRegularForm(firstKey);
       NotificationService.notify({
         type: 'success',
-        message: `Your sheet has been patched. => ${regular}: ${delta[firstKey]}.`
-      })
+        message: `Your sheet has been updated.\n${regular}: ${delta[firstKey]}.`
+      });
       Store.commit(mutation.join('/'), delta);
     });
   },

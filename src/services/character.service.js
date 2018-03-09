@@ -8,6 +8,14 @@ class CharacterService extends AbstractService {
       url: '/characters'
     });
   }
+
+  async connect(characterId) {
+    this.emit('connect', characterId);
+  }
+
+  async disconnect() {
+    this.emit('disconnect');
+  }
 }
 
 export default new CharacterService();
