@@ -38,7 +38,7 @@ module.exports = {
       'static': resolve('static'),
       'feathers': resolve('src/feathers'),
       'modules': resolve('src/modules'),
-      'sections': resolve('src/Sections'),
+      'sections': resolve('src/sections'),
       'services': resolve('src/services'),
       'shared': resolve('src/shared'),
       'store': resolve('src/store'),

@@ -16,7 +16,7 @@ const toRegularForm = function (unregularString) {
 export default {
   async connect(context, characterId) {
     // Ask for the server to connect to character channel.
-    CharacterService.emit('character/connect', { characterId });
+    CharacterService.emit('connect', characterId);
 
     // If the server send a patched, we update ourself
     CharacterService.register('patched', ({ mutation, delta }) => {

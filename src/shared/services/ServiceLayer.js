@@ -30,7 +30,7 @@ export class SocketLayer extends SocketService {
   }
 
   emit(methodName, payload) {
-    this.feathers.io.emit(methodName, payload);
+    this.feathers.io.emit('custom', methodName, this.serviceName, payload);
   }
 }
 
