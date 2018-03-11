@@ -15,11 +15,11 @@ import AuthService from "shared/services/AuthService";
 export default {
   components: { Home, CharacterSheet },
   methods: {
-    doLogout: async function() {
+    doLogout: async function () {
       var loggedOut = await AuthService.logout();
       if (loggedOut) this.$router.push("/");
     },
-    isAuthenticated: function() {
+    isAuthenticated: function () {
       return AuthService.isAuthenticated();
     }
   }
@@ -38,5 +38,17 @@ html {
   display: initial;
   width: initial;
   padding: initial;
+}
+
+button:disabled,
+button [disabled] {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed !important;
+}
+
+.invalid {
+  border-left: 3px solid !important;
+  border-left-color: salmon !important;
 }
 </style>

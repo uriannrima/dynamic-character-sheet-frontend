@@ -2,42 +2,11 @@
   <div class="background-container">
     <div class="login-component">
       <div class="form-container">
-        <form class="register-form"
-              v-if="form === 'registration'">
-          <input type="text"
-                 name="name"
-                 placeholder="Account Name"
-                 v-model="login.name">
-          <input type="text"
-                 name="email"
-                 placeholder="E-mail"
-                 v-model="login.email">
-          <input type="password"
-                 name="password"
-                 placeholder="Password"
-                 v-model="login.password">
-          <button @click.prevent="doRegistration()">Register</button>
-          <p class="message">Already registered?
-            <a href
-               @click.prevent="toggleForm('login')">Sign In</a>
-          </p>
-        </form>
-        <form class="login-form"
-              v-if="form === 'login'">
-          <input type="text"
-                 name="email"
-                 placeholder="E-mail"
-                 v-model="login.email">
-          <input type="password"
-                 name="password"
-                 placeholder="Password"
-                 v-model="login.password">
-          <button @click.prevent="doLogin()">Login</button>
-          <p class="message">Not registered?
-            <a href
-               @click.prevent="toggleForm('registration')">Create an account</a>
-          </p>
-        </form>
+        <component :is="formName"
+                   :disabled="disableButton"
+                   @toggleForm="toggleForm($event)"
+                   @onLogin="doLogin($event)"
+                   @onRegister="doRegistration($event)"></component>
       </div>
     </div>
   </div>
@@ -47,43 +16,51 @@
 <script>
 import AuthService from 'shared/services/AuthService';
 import UserService from 'services/UserService';
+import LoginForm from './LoginForm';
+import RegistrationForm from './RegistrationForm';
 
 export default {
+  components: { LoginForm, RegistrationForm },
   data() {
     return {
-      form: 'login',
-      login: {
-        name: "",
-        email: "",
-        password: ""
-      }
+      formName: 'login-form',
+      disableButton: false
     };
   },
   methods: {
     toggleForm: function (formName) {
-      this.form = formName;
+      this.formName = formName;
     },
-    doLogin: async function () {
-      var loggedIn = await AuthService.login(this.login);
-      if (loggedIn) {
-        if (this.$route.query.redirect) {
-          this.$router.push(this.$route.query.redirect);
-        } else {
-          this.$router.push('home');
+    doLogin: async function (login) {
+      try {
+        this.disableButton = true;
+        var loggedIn = await AuthService.login(login);
+        if (loggedIn) {
+          if (this.$route.query.redirect) {
+            this.$router.push(this.$route.query.redirect);
+          } else {
+            this.$router.push('home');
+          }
         }
+      } catch (error) {
+        this.disableButton = false;
       }
     },
-    doRegistration: async function () {
-      var user = await UserService.register(this.login);
-      const { email } = user;
-      this.login.email = email;
-      this.toggleForm('login');
+    doRegistration: async function (login) {
+      try {
+        this.disableButton = true;
+        await UserService.register(login);
+        this.toggleForm('login-form');
+        this.disableButton = false;
+      } catch (error) {
+        this.disableButton = false;
+      }
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 .login-component {
   width: 360px;
   padding: 8% 0 0;

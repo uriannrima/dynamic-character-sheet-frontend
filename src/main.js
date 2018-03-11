@@ -44,6 +44,11 @@ Vue.use(VueTouch, {
   name: 'v-touch'
 });
 
+
+Vue.prototype.$setDisable = function ($event, value =  true) {
+  $event.target.disabled = value;
+}
+
 new Vue({
   store,
   el: '#dcs-app',

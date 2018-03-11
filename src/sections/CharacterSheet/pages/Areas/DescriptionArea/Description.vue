@@ -174,7 +174,7 @@ export default {
     },
     saveCharacter: async function () {
       if (await CharacterStore.saveCharacter()) {
-        window.history.pushState("", "", "/#/ncs/" + this.character._id);
+        window.history.pushState("", "", "/#/character/" + this.character._id);
       }
     },
     newCharacter: async function () {

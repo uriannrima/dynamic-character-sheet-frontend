@@ -21,6 +21,15 @@ export class SocketLayer extends SocketService {
     };
   }
 
+  async saveOrUpdate(model) {
+    const { _id } = model;
+    if (_id) {
+      return await this.service.update(_id, model);
+    } else {
+      return await this.service.create(model);
+    }
+  }
+
   async patch(_id, patch) {
     return await this.service.patch(_id, patch, {});
   }
