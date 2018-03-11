@@ -13,10 +13,10 @@ export default {
     return Math.floor((abilityScore.tempValue - 10) / 2);
   },
   getClasses: state => {
-    return state.classes.map(classe => {
-      if (!classe.name || !classe.level) return "";
-      return classe.name + " (" + classe.level + ")";
-    });
+    return state.classes
+      .filter(classe => classe.name)
+      .map(classe => `${classe.name} (${classe.level})`)
+      .reduce((reducer, classe) => reducer === '' ? classe : reducer + ', ' + classe, '');
   },
   getSize: state => {
     return state.size.name;

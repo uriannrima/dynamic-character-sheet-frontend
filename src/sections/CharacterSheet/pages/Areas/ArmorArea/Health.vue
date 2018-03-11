@@ -50,6 +50,7 @@ export default {
   align-items: center;
   justify-items: center;
   grid-column-gap: 2px;
+  grid-row-gap: 2px;
 }
 
 .health-bb {

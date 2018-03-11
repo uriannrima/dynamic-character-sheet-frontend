@@ -44,10 +44,7 @@ export default {
 .main-container {
   margin: 0 auto;
   padding: 0 15px;
-}
-
-.page {
-  margin-bottom: 15px;
+  background: white;
 }
 
 /** HD Resolution */
@@ -69,6 +66,10 @@ export default {
 @media screen and (min-width: 1024px) {
   .main-container {
     width: 1280px;
+  }
+
+  .page {
+    margin-bottom: 15px;
   }
 }
 

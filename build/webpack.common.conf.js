@@ -35,6 +35,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      'root': resolve('./'),
       'static': resolve('static'),
       'feathers': resolve('src/feathers'),
       'modules': resolve('src/modules'),

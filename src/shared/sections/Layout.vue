@@ -27,6 +27,12 @@ export default {
 </script>
 
 <style>
+html {
+  background: url("../../../static/images/background.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
+}
+
 .mini-toastr-notification__message {
   white-space: pre-line;
   display: initial;
