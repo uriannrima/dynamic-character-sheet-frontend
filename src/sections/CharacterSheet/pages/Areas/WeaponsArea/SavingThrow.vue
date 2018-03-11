@@ -1,8 +1,8 @@
 <template>
   <div class="saving-throw-grid">
     <div class="black-box saving-throw-box">
-      <label>{{savingThrow.name}}</label>
-      <label>({{savingThrow.keyAbility}})</label>
+      <label>{{name}}</label>
+      <label>({{keyScoreName}})</label>
     </div>
     <input type="number"
            class="common-input"
@@ -10,33 +10,53 @@
            :value="getTotal">
     <input type="number"
            class="common-input"
-           v-model.number="savingThrow.base">
+           :value="base"
+           @change="updateSavingThrow({ base : $event.target.value * 1 })">
     <input type="number"
            class="common-input"
            readonly
-           :value="keyAbility.getTempModifier()">
+           :value="keyScoreModifier">
     <input type="number"
            class="common-input"
-           v-model.number="savingThrow.magicModifier">
+           :value="magicModifier"
+           @change="updateSavingThrow({ magicModifier : $event.target.value * 1 })">
     <input type="number"
            class="common-input"
-           v-model.number="savingThrow.miscModifier">
+           :value="miscModifier"
+           @change="updateSavingThrow({ miscModifier : $event.target.value * 1 })">
     <input type="number"
            class="common-input"
-           v-model.number="savingThrow.tempModifier">
+           :value="tempModifier"
+           @change="updateSavingThrow({ tempModifier : $event.target.value * 1 })">
   </div>
 </template>
 
 <script>
+import { mapActions } from 'store/CharacterModule';
+
 export default {
-  props: ['savingThrow', 'keyAbility'],
+  props: [
+    'name',
+    'keyScoreName',
+    'base',
+    'keyScoreModifier',
+    'magicModifier',
+    'miscModifier',
+    'tempModifier'
+  ],
   computed: {
     getTotal() {
-      return this.savingThrow.base +
-        this.keyAbility.getTempModifier() +
-        this.savingThrow.magicModifier +
-        this.savingThrow.miscModifier +
-        this.savingThrow.tempModifier;
+      return this.base +
+        this.keyScoreModifier +
+        this.magicModifier +
+        this.miscModifier +
+        this.tempModifier;
+    }
+  },
+  methods: {
+    updateSavingThrow(savingThrow) {
+      savingThrow.name = this.name;
+      this.$emit('onUpdateSavingThrow', savingThrow);
     }
   }
 }

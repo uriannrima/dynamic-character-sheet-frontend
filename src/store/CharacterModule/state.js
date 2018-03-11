@@ -3,6 +3,9 @@ import { AbilityScore, Strength, Dexterity, Constitution, Intelligence, Wisdom, 
 import Status from 'modules/status.module';
 import ArmorClass from 'modules/armor-class.module';
 import Gear from 'modules/gear.module';
+import Initiative from 'modules/initiative.module';
+import Grapple from 'modules/grapple.module';
+import { SavingThrow, Will, Reflex, Fortitude } from 'modules/saving-throw.module';
 
 export default {
   _id: null,
@@ -28,10 +31,22 @@ export default {
     wisdom: new AbilityScore(Wisdom),
     charisma: new AbilityScore(Charisma)
   },
-  armorKeyAbilityScore: 'dexterity',
+  keyAbilityScores: {
+    armor: 'dexterity',
+    initiative: 'dexterity',
+    grapple: 'strength'
+  },
   armorClass: new ArmorClass(),
   status: new Status(),
   speed: "",
   damageReduction: "",
-  gear: new Gear()
+  gear: new Gear(),
+  initiative: new Initiative(),
+  baseAttackBonus: [0],
+  grapple: new Grapple(),
+  savingThrows: {
+    fortitude: new SavingThrow(Fortitude),
+    reflex: new SavingThrow(Reflex),
+    will: new SavingThrow(Will)
+  }
 }

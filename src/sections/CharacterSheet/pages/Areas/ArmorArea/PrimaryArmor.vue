@@ -52,13 +52,14 @@
     </div>
     <input type="text"
            class="damage-reduction-bb common-input speed-input"
-           v-model="damageReduction">
+           :value="damageReduction"
+           @change="updateDamageReduction({ damageReduction: $event.target.value })">
     <label class="h-md-down">Damage<br>Reduction</label>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 export default {
   props: ['keyScoreName', 'keyScoreModifier'],
@@ -67,7 +68,7 @@ export default {
     ...mapGetters(['getTotalArmor', 'getDeflectionBonus'])
   },
   methods: {
-    ...mapMutations(['updateArmorClass'])
+    ...mapActions(['updateArmorClass', 'updateDamageReduction'])
   }
 }
 </script>

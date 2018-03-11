@@ -51,7 +51,7 @@ export default {
         value: $event.target.value * 1
       });
       if (tempOnly) delete abilityScore.value;
-      this.$emit('onUpdateScore', { abilityScore });
+      this.$emit('onUpdateScore', abilityScore);
     }
   }
 }

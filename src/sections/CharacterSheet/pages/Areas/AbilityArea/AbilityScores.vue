@@ -18,10 +18,8 @@
       <ability-score v-for="(abilityScore, index) in abilityScores"
                      :key="index"
                      :index="index"
-                     :name="abilityScore.name"
-                     :value="abilityScore.value"
-                     :tempValue="abilityScore.tempValue"
-                     @onUpdateScore="updateScore($event)" />
+                     v-bind='$extract(abilityScore)'
+                     @onUpdateScore="updateAbilityScore($event)" />
     </div>
   </div>
 </template>
@@ -29,7 +27,7 @@
 <script>
 import { AbilityScore } from './';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { mapState, mapMutations } from 'store/CharacterModule';
+import { mapState, mapActions } from 'store/CharacterModule';
 
 export default {
   components: { AbilityScore },
@@ -38,10 +36,7 @@ export default {
     ...mapState(['abilityScores'])
   },
   methods: {
-    ...mapMutations(['updateAbilityScore']),
-    updateScore: function ({ abilityScore }) {
-      this.updateAbilityScore(abilityScore);
-    }
+    ...mapActions(['updateAbilityScore'])
   }
 }
 </script>

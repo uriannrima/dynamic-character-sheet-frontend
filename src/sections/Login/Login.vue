@@ -43,8 +43,9 @@ export default {
           }
         }
       } catch (error) {
-        this.disableButton = false;
+        console.log(error);
       }
+      this.disableButton = false;
     },
     doRegistration: async function (login) {
       try {

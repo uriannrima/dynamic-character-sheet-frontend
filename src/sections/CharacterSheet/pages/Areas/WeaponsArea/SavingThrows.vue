@@ -9,20 +9,28 @@
       <label>Misc<br>Modifier</label>
       <label>Temporary<br>Modifier</label>
     </div>
-    <saving-throw v-for="(savingThrow, index) in character.savingThrows"
-                  :key="index"
-                  :savingThrow="savingThrow"
-                  :keyAbility="character.abilityScores.find(a => a.name === savingThrow.keyAbility)" />
+    <saving-throw v-for="(savingThrow, index) in savingThrows"
+                  :key="index"                  
+                  v-bind='$extract(savingThrow)'
+                  :keyScoreName="savingThrow.keyAbility"
+                  :keyScoreModifier="getTempModifier(getAbilityScore(savingThrow.keyAbility))" 
+                  @onUpdateSavingThrow="updateSavingThrow($event)"/>
   </div>
 </template>
 
 <script>
 import { SavingThrow } from './';
-import CharacterMixin from 'store/mixins/character.mixin';
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 export default {
   components: { SavingThrow },
-  mixins: [CharacterMixin]
+  computed: {
+    ...mapState(['savingThrows']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier'])
+  },
+  methods: {
+    ...mapActions(['updateSavingThrow'])
+  }
 }
 </script>
 

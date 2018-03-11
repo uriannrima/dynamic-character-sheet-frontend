@@ -22,7 +22,7 @@
     <input type="text"
            class="speed-input common-input"
            :value="speed"
-           @change="updateSpeed($event.target.value)">
+           @change="updateSpeed({ speed : $event.target.value })">
     <label class="health-label total-label">Total</label>
     <label class="wounds-label">Wounds/Current HP</label>
     <label class="nonlethal-label">Nonlethal<br>Damage</label>
@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'store/CharacterModule';
+import { mapState, mapActions } from 'store/CharacterModule';
 
 export default {
   computed: {
     ...mapState(['status', 'speed'])
   },
   methods: {
-    ...mapMutations(['updateStatus', 'updateSpeed'])
+    ...mapActions(['updateStatus', 'updateSpeed'])
   }
 }
 </script>

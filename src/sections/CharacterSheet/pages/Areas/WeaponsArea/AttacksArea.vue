@@ -8,19 +8,26 @@
       <base-attack-bonus></base-attack-bonus>
       <spell-resistance></spell-resistance>
     </div>
-    <grapple :keyAbility="getKeyAbility('strength')"></grapple>
+    <grapple :keyScoreName="keyScore.name"
+             :keyScoreModifier="getTempModifier(keyScore)"></grapple>
     <attacks></attacks>
   </div>
 </template>
 
 <script>
 import { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from './';
+import { mapState, mapGetters } from 'store/CharacterModule';
 
-import KeyAbilityMixin from 'shared/mixins/methods/key.ability.mixin';
 
 export default {
   components: { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
-  mixins: [KeyAbilityMixin]
+  computed: {
+    ...mapState(['keyAbilityScores']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier']),
+    keyScore() {
+      return this.getAbilityScore(this.keyAbilityScores.grapple);
+    }
+  }
 }
 </script>
 

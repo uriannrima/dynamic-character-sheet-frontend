@@ -7,36 +7,34 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="getTotal">
+           :value="getTotalInitiative">
     <input type="number"
            class="common-input"
            readonly
-           :value="getAbility.getTempModifier()">
+           :value="keyScoreModifier">
     <input type="number"
            class="common-input"
-           v-model.number="character.initiative.miscModifier">
+           v-model.number="initiative.miscModifier"
+           @change="updateInitiative({ miscModifier: $event.target.value * 1 })">
     <label class="h-md-down">&nbsp;</label>
     <label class="h-md-down">&nbsp;</label>
     <label class="total-label">Total</label>
-    <label>Dex<br>Modifier</label>
+    <label>{{ keyScoreName.substring(0,3) }}<br>Modifier</label>
     <label>Misc<br>Modifier</label>
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin],
+  props: ['keyScoreName', 'keyScoreModifier'],
   computed: {
-    getTotal() {
-      return this.getAbility.getTempModifier() + this.character.initiative.miscModifier;
-    },
-    getAbility() {
-      return this.character.abilityScores.find(abilityScore => {
-        return abilityScore.name === 'dexterity';
-      });
-    }
+    ...mapState(['initiative']),
+    ...mapGetters(['getTotalInitiative'])
+  },
+  methods: {
+    ...mapActions(['updateInitiative'])
   }
 }
 </script>

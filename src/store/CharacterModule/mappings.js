@@ -1,7 +1,19 @@
 export default {
   Actions: {
-    loadCharacterAsync: 'loadCharacterAsync',
-    updateDescriptionAsync: 'updateDescriptionAsync'
+    connect: 'connect',
+    saveCharacter: 'saveCharacter',
+    loadCharacter: 'loadCharacter',
+    updateDescription: 'updateDescription',
+    updateClasses: 'updateClasses',
+    updateSize: 'updateSize',
+    updateAbilityScore: 'updateAbilityScore',
+    updateStatus: 'updateStatus',
+    updateSpeed: 'updateSpeed',
+    updateGear: 'updateGear',
+    updateArmorClass: 'updateArmorClass',
+    updateDamageReduction: 'updateDamageReduction',
+    updateInitiative: 'updateInitiative',
+    updateSavingThrow: 'updateSavingThrow'
   },
   Mutations: {
     updateId: 'updateId',
@@ -14,6 +26,8 @@ export default {
     updateSpeed: 'updateSpeed',
     updateGear: 'updateGear',
     updateArmorClass: 'updateArmorClass',
-    updateDamageReduction: 'updateDamageReduction'
+    updateDamageReduction: 'updateDamageReduction',
+    updateInitiative: 'updateInitiative',
+    updateSavingThrow: 'updateSavingThrow'
   }
 }

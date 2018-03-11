@@ -12,7 +12,7 @@
         <input type="text"
                class="full-width-input"
                :value="name"
-               @change="updateDescriptionAsync({ name: $event.target.value })">
+               @change="updateDescription({ name: $event.target.value })">
         <label>Character Name</label>
         <button @click="saveCharacter()">Save</button>
         <button @click="newCharacter()">New</button>
@@ -21,14 +21,14 @@
         <input type="text"
                class="full-width-input"
                :value="playerName"
-               @change="updateDescriptionAsync({ playerName: $event.target.value })">
+               @change="updateDescription({ playerName: $event.target.value })">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
                :value="getClasses"
-               @change="updateClasses(parseStringToClasses($event.target.value))">
+               @change="updateClasses({classes : parseStringToClasses($event.target.value)})">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
@@ -36,28 +36,28 @@
           <input type="text"
                  class="full-width-input"
                  :value="race"
-                 @change="updateDescriptionAsync({ race: $event.target.value })">
+                 @change="updateDescription({ race: $event.target.value })">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="alignment"
-                 @change="updateDescriptionAsync({ alignment: $event.target.value })">
+                 @change="updateDescription({ alignment: $event.target.value })">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="deity"
-                 @change="updateDescriptionAsync({ deity: $event.target.value })">
+                 @change="updateDescription({ deity: $event.target.value })">
           <label>Deity</label>
         </div>
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
           <select class="full-width-input"
-                  @change="updateSize(allSizes.find(size => size.name === $event.target.value))">
+                  @change="updateSize({ size : allSizes.find(size => size.name === $event.target.value) })">
             <option v-for="(size, index) in allSizes"
                     :key="index"
                     :value="size.name"
@@ -69,21 +69,21 @@
           <input type="text"
                  class="full-width-input"
                  :value="age"
-                 @change="updateDescriptionAsync({ age: $event.target.value })">
+                 @change="updateDescription({ age: $event.target.value })">
           <label>Age</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="gender"
-                 @change="updateDescriptionAsync({ gender: $event.target.value })">
+                 @change="updateDescription({ gender: $event.target.value })">
           <label>Gender</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="height"
-                 @change="updateDescriptionAsync({ height: $event.target.value })">
+                 @change="updateDescription({ height: $event.target.value })">
           <label>Height</label>
         </div>
       </div>
@@ -92,28 +92,28 @@
           <input type="text"
                  class="full-width-input"
                  :value="weight"
-                 @change="updateDescriptionAsync({ weight: $event.target.value })">
+                 @change="updateDescription({ weight: $event.target.value })">
           <label>Weight</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="eyes"
-                 @change="updateDescriptionAsync({ eyes: $event.target.value })">
+                 @change="updateDescription({ eyes: $event.target.value })">
           <label>Eyes</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="hair"
-                 @change="updateDescriptionAsync({ hair: $event.target.value })">
+                 @change="updateDescription({ hair: $event.target.value })">
           <label>Hair</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="skin"
-                 @change="updateDescriptionAsync({ skin: $event.target.value })">
+                 @change="updateDescription({ skin: $event.target.value })">
           <label>Skin</label>
         </div>
       </div>
@@ -125,7 +125,7 @@
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import SizeService from 'services/size.service';
 import CharacterStore from 'store/character.store';
-import { mapState, mapGetters, mapMutations, mapActions } from 'store/CharacterModule'
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule'
 
 export default {
   mixins: [MinimizableMixin],
@@ -147,8 +147,7 @@ export default {
     this.allSizes = await SizeService.getAll();
   },
   methods: {
-    ...mapMutations(['updateDescription', 'updateClasses', 'updateSize']),
-    ...mapActions(['updateDescriptionAsync']),
+    ...mapActions(['saveCharacter','updateDescription', 'updateClasses', 'updateSize']),
     parseStringToClasses(classesAsString) {
       const classes = [];
       const eachClass = classesAsString.split(",");
@@ -171,11 +170,6 @@ export default {
         });
       });
       return classes;
-    },
-    saveCharacter: async function () {
-      if (await CharacterStore.saveCharacter()) {
-        window.history.pushState("", "", "/#/character/" + this.character._id);
-      }
     },
     newCharacter: async function () {
       await CharacterStore.createCharacter();

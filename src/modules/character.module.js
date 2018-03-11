@@ -15,6 +15,20 @@ export const Character = function ({
   specialAbilities = [], domainSchool = "", spellSave = 0,
   arcaneSpellFailure = 0, spellConditionModifier = "",
   spells = [], spellPerDayList = [] }) {
+
+  //Parse to ability score object.
+  for (var abilityScoreName in abilityScores) {
+    var abilityScore = abilityScores[abilityScoreName];
+    abilityScores[abilityScoreName] = new Modules.AbilityScoreModule.AbilityScore(abilityScore);
+  }
+  if (!abilityScores) abilityScores = Modules.AbilityScoreModule.All;
+  
+  for (var savingThrowName in savingThrows) {
+    var savingThrow = savingThrows[savingThrowName];
+    savingThrows[savingThrowName] = new Modules.SavingThrowsModule.SavingThrow(savingThrow);
+  }
+  if (!savingThrows) savingThrows = Modules.SavingThrowsModule.All;
+
   return {
     _id,
     name,
@@ -43,7 +57,7 @@ export const Character = function ({
       new Modules.ClasseModule.Classe({})
     ],
     // TODO: Remove "factory" pattern later.
-    abilityScores: abilityScores ? abilityScores.map(aScore => new Modules.AbilityScoreModule.AbilityScore(aScore)) : Modules.AbilityScoreModule.All,
+    abilityScores,
     status: new Modules.StatusModule.Status(status),
     armorClass: armorClass ? new Modules.ArmorClassModule.ArmorClass(armorClass) : new Modules.ArmorClassModule.ArmorClass({
       base: 10,
@@ -59,11 +73,7 @@ export const Character = function ({
       dexModifier: 0,
       miscModifier: 0
     }),
-    savingThrows: savingThrows ? savingThrows.map(savingThrow => new Modules.SavingThrowsModule.SavingThrow(savingThrow)) : [
-      new Modules.SavingThrowsModule.Factory.Create({ name: 'fortitude' }),
-      new Modules.SavingThrowsModule.Factory.Create({ name: 'reflex' }),
-      new Modules.SavingThrowsModule.Factory.Create({ name: 'will' })
-    ],
+    savingThrows,
     baseAttackBonus,
     spellResistance,
     grapple: grapple ? new Modules.GrappleModule.Grapple(grapple) : new Modules.GrappleModule.Grapple({

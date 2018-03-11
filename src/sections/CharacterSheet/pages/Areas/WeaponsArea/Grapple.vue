@@ -15,39 +15,32 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="keyAbility.getTempModifier()">
+           :value="keyScoreModifier">
     <input type="number"
            class="common-input"
            readonly
-           :value="character.size.grappleBonus">
+           :value="size.grappleBonus">
     <input type="number"
            class="common-input"
-           v-model.number="character.grapple.miscModifier">
+           v-model.number="grapple.miscModifier">
     <span class="h-md-down">&nbsp;</span>
     <span class="total-label"
           :value="getGrappleTotal">Total</span>
     <span>Base Attack<br>Bonus</span>
-    <span>Strength<br>Modifier</span>
+    <span>{{keyScoreName}}<br>Modifier</span>
     <span>Size<br>Modifier</span>
     <span>Misc<br>Modifier</span>
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
+import { mapState, mapGetters } from 'store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin],
-  props: ['keyAbility'],
+  props: ['keyScoreName', 'keyScoreModifier'],
   computed: {
-    getBaseAttackBonus() {
-      return this.character.baseAttackBonus.join('/');
-    },
-    getGrappleTotal() {
-      return this.character.baseAttackBonus.map(bab => {
-        return bab + this.keyAbility.getTempModifier() + this.character.size.grappleBonus + this.character.grapple.miscModifier;
-      }).join('/');
-    }
+    ...mapState(['grapple', 'size']),
+    ...mapGetters(['getBaseAttackBonus', 'getGrappleTotal'])
   }
 }
 </script>

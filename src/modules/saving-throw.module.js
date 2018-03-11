@@ -1,48 +1,34 @@
-export const SavingThrow = function ({ name, keyAbility, base, abilityModifier, magicModifier, miscModifier, tempModifier }) {
-  return {
-    name,
-    keyAbility,
-    base: base || 0,
-    abilityModifier: abilityModifier || 0,
-    magicModifier: magicModifier || 0,
-    miscModifier: miscModifier || 0,
-    tempModifier: tempModifier || 0,
-    getTotal: function () {
-      var result = 0;
-      for (var key in this) {
-        if (typeof this[key] !== "number") continue;
-        result += this[key];
-      }
-      return result;
-    }
+export class SavingThrow {
+  constructor({ name = '', keyAbility = '', base = 0, abilityModifier = 0, magicModifier = 0, miscModifier = 0, tempModifier = 0 } = {}) {
+    Object.assign(this, {
+      name,
+      keyAbility,
+      base,
+      abilityModifier,
+      magicModifier,
+      miscModifier,
+      tempModifier
+    });
   }
 }
 
-export const Factory = {
-  Create: function ({ name }) {
-    const template = Factory.templates.filter(t => t.name === name)[0];
-    return new SavingThrow(template);
-  },
-  templates: [],
-  add: function (template) {
-    Factory.templates.push(template);
-  },
-  clear: function () {
-    Factory.template = [];
-  }
-}
+export default SavingThrow;
 
-Factory.add({
-  name: "fortitude",
-  keyAbility: "constitution"
+export const Will = new SavingThrow({
+  name: "will",
+  keyAbility: "wisdom"
 });
 
-Factory.add({
+export const Reflex = new SavingThrow({
   name: "reflex",
   keyAbility: "dexterity"
 });
 
-Factory.add({
-  name: "will",
-  keyAbility: "wisdom"
+export const Fortitude = new SavingThrow({
+  name: "fortitude",
+  keyAbility: "constitution"
 });
+
+export const All = {
+  Will, Reflex, Fortitude
+};

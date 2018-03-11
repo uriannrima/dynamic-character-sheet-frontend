@@ -72,7 +72,7 @@ module.exports = {
             '@': path.resolve(__dirname, '../src/'),
             'Static': path.resolve(__dirname, '../static/'),
             'Services': path.resolve(__dirname, '../src/services/'),
-            'Modules': path.resolve(__dirname, '../src/modules/'),
+            'modules': path.resolve(__dirname, '../src/modules/'),
             'Shared': path.resolve(__dirname, '../src/shared/'),
             'Store': path.resolve(__dirname, '../src/store/'),
             'Constants$': path.resolve(__dirname, '../src/constants.js'),

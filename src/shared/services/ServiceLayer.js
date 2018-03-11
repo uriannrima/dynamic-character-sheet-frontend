@@ -23,11 +23,16 @@ export class SocketLayer extends SocketService {
 
   async saveOrUpdate(model) {
     const { _id } = model;
+    var data = null
     if (_id) {
-      return await this.service.update(_id, model);
+      data = await this.service.update(_id, model);
     } else {
-      return await this.service.create(model);
+      data = await this.service.create(model);
     }
+
+    return {
+      data
+    };
   }
 
   async patch(_id, patch) {

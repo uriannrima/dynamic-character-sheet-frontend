@@ -1,7 +1,8 @@
 <template>
   <div class="armor-area">
     <health></health>
-    <primary-armor :keyScoreName="keyScore.name" :keyScoreModifier="getTempModifier(keyScore)"></primary-armor>
+    <primary-armor :keyScoreName="keyScore.name"
+                   :keyScoreModifier="getTempModifier(keyScore)"></primary-armor>
   </div>
 </template>
 
@@ -12,10 +13,10 @@ import { mapState, mapGetters } from 'store/CharacterModule';
 export default {
   components: { Health, PrimaryArmor },
   computed: {
-    ...mapState(['armorKeyAbilityScore']),
+    ...mapState(['keyAbilityScores']),
     ...mapGetters(['getAbilityScore', 'getTempModifier']),
-    keyScore(){
-      return this.getAbilityScore(this.armorKeyAbilityScore);
+    keyScore() {
+      return this.getAbilityScore(this.keyAbilityScores.armor);
     }
   }
 }

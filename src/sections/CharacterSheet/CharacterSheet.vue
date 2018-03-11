@@ -18,19 +18,19 @@ export default {
     await CharacterStore.loadCharacter(to.params.id);
     next(vm => {
       vm.connect(to.params.id);
-      vm.loadCharacterAsync(to.params.id);
+      vm.loadCharacter(to.params.id);
     });
   },
   beforeRouteUpdate: async function (to, from, next) {
     await CharacterStore.loadCharacter(to.params.id);
-    await this.loadCharacterAsync(to.params.id);
+    await this.loadCharacter(to.params.id);
     next();
   },
   computed: {
     ...mapState(['_id'])
   },
   methods: {
-    ...mapActions([Mappings.Actions.loadCharacterAsync, 'connect'])
+    ...mapActions([Mappings.Actions.loadCharacter, 'connect'])
   }
 }
 </script>

@@ -28,7 +28,13 @@ export default {
     return state.gear.shield.acBonus;
   },
   getArmorKeyScore: state => {
-    return state.abilityScores[state.armorKeyAbilityScore];
+    return state.abilityScores[state.keyAbilityScores.armor];
+  },
+  getInitiativeKeyScore: state => {
+    return state.abilityScores[state.keyAbilityScores.initiative];
+  },
+  getGrappleKeyScore: state => {
+    return state.abilityScores[state.keyAbilityScores.grapple];
   },
   getTotalArmor: (state, getters) => {
     return 10 +
@@ -58,5 +64,16 @@ export default {
   },
   getDeflectionBonus: state => {
     return state.gear.protectiveItems.reduce((acc, item) => acc + item.acBonus, 0);
+  },
+  getTotalInitiative: function (state, getters) {
+    return getters.getInitiativeKeyScore.tempModifier + state.initiative.miscModifier;
+  },
+  getBaseAttackBonus(state) {
+    return state.baseAttackBonus.join('/');
+  },
+  getGrappleTotal(state, getters) {
+    return state.baseAttackBonus.map(bab => {
+      return bab + getters.getGrappleKeyScore.tempModifier + state.size.grappleBonus + state.grapple.miscModifier;
+    }).join('/');
   }
 }

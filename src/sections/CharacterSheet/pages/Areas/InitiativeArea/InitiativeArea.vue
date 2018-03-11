@@ -1,14 +1,24 @@
 <template>
   <div class="armor-initiative-grid">
     <secondary-armor></secondary-armor>
-    <initiative></initiative>
+    <initiative :keyScoreName="keyScore.name"
+                :keyScoreModifier="getTempModifier(keyScore)"></initiative>
   </div>
 </template>
 
 <script>
 import { SecondaryArmor, Initiative } from './'
+import { mapState, mapGetters } from 'store/CharacterModule';
+
 export default {
-  components: { SecondaryArmor, Initiative }
+  components: { SecondaryArmor, Initiative },
+  computed: {
+    ...mapState(['keyAbilityScores']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier']),
+    keyScore() {
+      return this.getAbilityScore(this.keyAbilityScores.initiative);
+    }
+  }
 }
 </script>
 

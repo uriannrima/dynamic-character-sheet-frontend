@@ -1,16 +1,12 @@
-export const Grapple = function ({ baseAttackBonus, strengthModifier, sizeModifier, miscModifier }) {
-  return {
-    baseAttackBonus,
-    strengthModifier,
-    sizeModifier,
-    miscModifier,
-    getTotal: function () {
-      var result = 0;
-      for (var key in this) {
-        if (typeof this[key] !== "number") continue;
-        result += this[key];
-      }
-      return result;
-    }
+export class Grapple {
+  constructor({ baseAttackBonus = 0, strengthModifier = 0, sizeModifier = 0, miscModifier = 0 } = {}) {
+    Object.assign(this, {
+      baseAttackBonus,
+      strengthModifier,
+      sizeModifier,
+      miscModifier
+    });
   }
 }
+
+export default Grapple;

@@ -18,27 +18,27 @@ export class AbilityScore {
 export default AbilityScore;
 
 export const Strength = new AbilityScore({
-  name: "Strength"
+  name: "strength"
 });
 
 export const Dexterity = new AbilityScore({
-  name: "Dexterity"
+  name: "dexterity"
 });
 
 export const Constitution = new AbilityScore({
-  name: "Constitution"
+  name: "constitution"
 });
 
 export const Intelligence = new AbilityScore({
-  name: "Intelligence"
+  name: "intelligence"
 });
 
 export const Wisdom = new AbilityScore({
-  name: "Wisdom"
+  name: "wisdom"
 });
 
 export const Charisma = new AbilityScore({
-  name: "Charisma"
+  name: "charisma"
 });
 
 export const All = {
