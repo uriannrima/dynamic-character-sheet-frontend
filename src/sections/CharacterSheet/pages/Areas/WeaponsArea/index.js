@@ -1,7 +1,7 @@
 // @create-index
 
 export { default as BaseAttackBonus } from './BaseAttackBonus.vue';
-export { default as ConditionalModifiers } from './ConditionalModifiers.vue';
+export { default as ConditionModifiers } from './ConditionModifiers.vue';
 export { default as Grapple } from './Grapple.vue';
 export { default as SavingThrow } from './SavingThrow.vue';
 export { default as SavingThrows } from './SavingThrows.vue';

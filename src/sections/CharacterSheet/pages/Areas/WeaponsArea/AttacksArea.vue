@@ -1,11 +1,13 @@
 <template>
   <div class="attack-grid">
-    <div class="saving-conditional-grid">
+    <div class="saving-condition-grid">
       <saving-throws></saving-throws>
-      <conditional-modifiers></conditional-modifiers>
+      <condition-modifiers :conditionModifiers="conditionModifiers"
+                           @onUpdateConditionModifiers="updateConditionModifiers"></condition-modifiers>
     </div>
     <div class="base-attack-resistance-grid">
-      <base-attack-bonus></base-attack-bonus>
+      <base-attack-bonus :baseAttackBonus="getBaseAttackBonus"
+                         @onUpdateBaseAttackBonus="updateBaseAttackBonus"></base-attack-bonus>
       <spell-resistance></spell-resistance>
     </div>
     <grapple :keyScoreName="keyScore.name"
@@ -15,18 +17,21 @@
 </template>
 
 <script>
-import { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from './';
-import { mapState, mapGetters } from 'store/CharacterModule';
+import { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from './';
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 
 export default {
-  components: { SavingThrows, ConditionalModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
+  components: { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
   computed: {
-    ...mapState(['keyAbilityScores']),
-    ...mapGetters(['getAbilityScore', 'getTempModifier']),
+    ...mapState(['keyAbilityScores', 'conditionModifiers']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getBaseAttackBonus']),
     keyScore() {
       return this.getAbilityScore(this.keyAbilityScores.grapple);
     }
+  },
+  methods: {
+    ...mapActions(['updateConditionModifiers', 'updateBaseAttackBonus'])
   }
 }
 </script>
@@ -38,7 +43,7 @@ export default {
   grid-row-gap: 5px;
 }
 
-.saving-conditional-grid {
+.saving-condition-grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -52,7 +57,7 @@ export default {
 }
 
 @media screen and (min-width: 1024px) {
-  .saving-conditional-grid {
+  .saving-condition-grid {
     grid-template-columns: 75% auto;
     grid-column-gap: 5px;
   }

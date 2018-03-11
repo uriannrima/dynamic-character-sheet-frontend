@@ -53,6 +53,7 @@ export default {
       commit(Mappings.Mutations.updateGear, character.gear);
       commit(Mappings.Mutations.updateArmorClass, character.armorClass);
       commit(Mappings.Mutations.updateDamageReduction, character);
+      commit(Mappings.Mutations.updateBaseAttackBonus, character);
     } catch (error) {
       console.log(error);
     }
@@ -164,6 +165,26 @@ export default {
       mutation: ['CharacterModule', Mappings.Mutations.updateSavingThrow],
       payload: {
         savingThrows: state.savingThrows
+      }
+    });
+
+  },
+  async [Mappings.Actions.updateConditionModifiers]({ commit, state }, conditionModifiers) {
+
+    commit(Mappings.Mutations.updateConditionModifiers, conditionModifiers);
+    CharacterService.patch(state._id, {
+      mutation: ['CharacterModule', Mappings.Mutations.updateConditionModifiers],
+      payload: conditionModifiers
+    });
+
+  },
+  async [Mappings.Actions.updateBaseAttackBonus]({ commit, state }, baseAttackBonus) {
+
+    commit(Mappings.Mutations.updateBaseAttackBonus, baseAttackBonus);
+    CharacterService.patch(state._id, {
+      mutation: ['CharacterModule', Mappings.Mutations.updateBaseAttackBonus],
+      payload: {
+        baseAttackBonus: state.baseAttackBonus
       }
     });
 

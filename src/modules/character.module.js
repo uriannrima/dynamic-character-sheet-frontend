@@ -7,7 +7,7 @@ export const Character = function ({
   size, age = "", gender = "", height = "",
   weight = "", eyes = "", hair = "", skin = "", speed = "",
   damageReduction = "", classes, abilityScores,
-  status = {}, armorClass, initiative, conditionModifier = "",
+  status = {}, armorClass, initiative, conditionModifiers = "",
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = Modules.SkillsModule.DEFAULT_SKILLS,
   attacks, gear, items = [], carryCapacities,
@@ -45,7 +45,7 @@ export const Character = function ({
     skin,
     speed,
     damageReduction,
-    conditionModifier,
+    conditionModifiers,
     size: size || new Modules.SizeModule.Size({
       name: "Medium",
       modifier: 1,

@@ -48,5 +48,6 @@ export default {
     fortitude: new SavingThrow(Fortitude),
     reflex: new SavingThrow(Reflex),
     will: new SavingThrow(Will)
-  }
+  },
+  conditionModifiers: ""
 }

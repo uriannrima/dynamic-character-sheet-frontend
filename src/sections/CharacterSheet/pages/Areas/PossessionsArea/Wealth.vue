@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="treasure-container">
-        <label class="conditional-modifiers-label">Treasures</label>
+        <label class="condition-modifiers-label">Treasures</label>
         <textarea class="common-textarea" v-model="wealth.treasure"></textarea>
       </div>
     </div>

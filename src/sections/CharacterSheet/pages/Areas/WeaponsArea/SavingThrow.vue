@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import { mapActions } from 'store/CharacterModule';
-
 export default {
   props: [
     'name',

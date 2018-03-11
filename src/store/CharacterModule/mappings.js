@@ -13,7 +13,9 @@ export default {
     updateArmorClass: 'updateArmorClass',
     updateDamageReduction: 'updateDamageReduction',
     updateInitiative: 'updateInitiative',
-    updateSavingThrow: 'updateSavingThrow'
+    updateSavingThrow: 'updateSavingThrow',
+    updateConditionModifiers: 'updateConditionModifiers',
+    updateBaseAttackBonus: 'updateBaseAttackBonus'
   },
   Mutations: {
     updateId: 'updateId',
@@ -28,6 +30,8 @@ export default {
     updateArmorClass: 'updateArmorClass',
     updateDamageReduction: 'updateDamageReduction',
     updateInitiative: 'updateInitiative',
-    updateSavingThrow: 'updateSavingThrow'
+    updateSavingThrow: 'updateSavingThrow',
+    updateConditionModifiers: 'updateConditionModifiers',
+    updateBaseAttackBonus: 'updateBaseAttackBonus'
   }
 }

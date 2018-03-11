@@ -68,7 +68,7 @@ export default {
   getTotalInitiative: function (state, getters) {
     return getters.getInitiativeKeyScore.tempModifier + state.initiative.miscModifier;
   },
-  getBaseAttackBonus(state) {
+  getBaseAttackBonus: state => {
     return state.baseAttackBonus.join('/');
   },
   getGrappleTotal(state, getters) {

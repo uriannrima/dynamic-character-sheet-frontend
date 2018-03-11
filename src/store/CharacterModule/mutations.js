@@ -66,5 +66,11 @@ export default {
   [Mappings.Mutations.updateSavingThrow](state, savingThrow) {
     var stateSavingThrow = state.savingThrows[savingThrow.name];
     ObjectUtils.extractTo(savingThrow, stateSavingThrow);
+  },
+  [Mappings.Mutations.updateConditionModifiers](state, { conditionModifiers }) {
+    state.conditionModifiers = conditionModifiers;
+  },
+  [Mappings.Mutations.updateBaseAttackBonus](state, { baseAttackBonus }) {
+    state.baseAttackBonus = baseAttackBonus;
   }
 }

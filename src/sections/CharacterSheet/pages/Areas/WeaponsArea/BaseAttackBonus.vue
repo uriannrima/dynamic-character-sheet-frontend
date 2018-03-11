@@ -5,23 +5,18 @@
     </div>
     <input type="text"
            class="common-input bab-input"
-           v-model="baseAttackBonus">
+           :value="baseAttackBonus"
+           @change="updateBaseAttackBonsu($event)">
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
-
 export default {
-  mixins: [CharacterMixin],
-  computed: {
-    baseAttackBonus: {
-      set(value) {
-        this.character.baseAttackBonus = value.split('/').map(v => Number(v));
-      },
-      get() {
-        return this.character.baseAttackBonus.join('/');
-      }
+  props: ['baseAttackBonus'],
+  methods: {
+    updateBaseAttackBonsu($event) {
+      const baseAttackBonus = $event.target.value.split('/').map(v => Number(v));
+      this.$emit('onUpdateBaseAttackBonus', { baseAttackBonus })
     }
   }
 }
