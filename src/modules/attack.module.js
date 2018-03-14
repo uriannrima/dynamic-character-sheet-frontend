@@ -1,18 +1,19 @@
-var ammunitionModule = require('./ammunition.module');
+// var ammunitionModule = require('./ammunition.module');
 
-export const Attack = function ({ name, attackBonus, damage, critical, range, type, notes, keyAbility, hasAmmunition }) {
-  return {
-    name,
-    attackBonus,
-    damage,
-    critical,
-    range,
-    type,
-    notes,
-    hasAmmunition,
-    keyAbility: keyAbility || "",
-    ammunition: new ammunitionModule.Ammunition({
-
-    })
+export class Attack {
+  constructor({ name = "", attackBonus = "", damage = "", critical = "", range = "", type = "", notes = "", keyAbility = "", hasAmmunition = false } = {}) {
+    Object.assign(this,
+      {
+        name,
+        attackBonus,
+        damage, critical,
+        range,
+        type,
+        notes,
+        keyAbility,
+        hasAmmunition
+      });
   }
 }
+
+export default Attack;

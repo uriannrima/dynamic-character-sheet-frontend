@@ -6,6 +6,7 @@ import Gear from 'modules/gear.module';
 import Initiative from 'modules/initiative.module';
 import Grapple from 'modules/grapple.module';
 import { SavingThrow, Will, Reflex, Fortitude } from 'modules/saving-throw.module';
+import Attack from 'modules/attack.module';
 
 export default {
   _id: null,
@@ -49,5 +50,7 @@ export default {
     reflex: new SavingThrow(Reflex),
     will: new SavingThrow(Will)
   },
-  conditionModifiers: ""
+  conditionModifiers: "",
+  spellResistance: 0,
+  attacks: [new Attack(), new Attack(), new Attack(), new Attack()]
 }

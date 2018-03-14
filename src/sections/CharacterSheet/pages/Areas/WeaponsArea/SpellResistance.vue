@@ -5,15 +5,15 @@
     </div>
     <input type="number"
            class="common-input"
-           v-model.number="character.spellResistance">
+           :value="spellResistance"
+           @change="$emit('onUpdateSpellResistance', { spellResistance: $event.target.value * 1})">
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
 
 export default {
-  mixins: [CharacterMixin]
+  props: ['spellResistance']
 }
 </script>
 

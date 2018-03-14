@@ -17,7 +17,7 @@ export default {
   [Mappings.Mutations.updateSize](state, { size }) {
     ObjectUtils.extractTo(size, state.size);
   },
-  [Mappings.Mutations.updateAbilityScores](state, abilityScores) {
+  [Mappings.Mutations.updateAbilityScores](state, { abilityScores }) {
     // Get abilityScores name
     Object.keys(abilityScores)
       // Map it to abilityScore
@@ -72,5 +72,18 @@ export default {
   },
   [Mappings.Mutations.updateBaseAttackBonus](state, { baseAttackBonus }) {
     state.baseAttackBonus = baseAttackBonus;
+  },
+  [Mappings.Mutations.updateSpellResistance](state, { spellResistance }) {
+    state.spellResistance = spellResistance;
+  },
+  [Mappings.Mutations.updateAttacks](state, { attacks = [] }) {
+    attacks.map((attack, index) => {
+      var stateAttack = state.attacks[index];
+      ObjectUtils.extractTo(attack, stateAttack);
+    });
+  },
+  [Mappings.Mutations.updateAttack](state, { index, attack }) {
+    var stateAttack = state.attacks[index];
+    ObjectUtils.extractTo(attack, stateAttack);
   }
 }

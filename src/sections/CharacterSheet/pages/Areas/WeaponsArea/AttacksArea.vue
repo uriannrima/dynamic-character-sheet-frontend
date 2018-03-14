@@ -8,7 +8,8 @@
     <div class="base-attack-resistance-grid">
       <base-attack-bonus :baseAttackBonus="getBaseAttackBonus"
                          @onUpdateBaseAttackBonus="updateBaseAttackBonus"></base-attack-bonus>
-      <spell-resistance></spell-resistance>
+      <spell-resistance :spellResistance="spellResistance"
+                        @onUpdateSpellResistance="updateSpellResistance"></spell-resistance>
     </div>
     <grapple :keyScoreName="keyScore.name"
              :keyScoreModifier="getTempModifier(keyScore)"></grapple>
@@ -20,18 +21,17 @@
 import { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from './';
 import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
-
 export default {
   components: { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
   computed: {
-    ...mapState(['keyAbilityScores', 'conditionModifiers']),
+    ...mapState(['keyAbilityScores', 'conditionModifiers', 'spellResistance']),
     ...mapGetters(['getAbilityScore', 'getTempModifier', 'getBaseAttackBonus']),
     keyScore() {
       return this.getAbilityScore(this.keyAbilityScores.grapple);
     }
   },
   methods: {
-    ...mapActions(['updateConditionModifiers', 'updateBaseAttackBonus'])
+    ...mapActions(['updateConditionModifiers', 'updateBaseAttackBonus', 'updateSpellResistance'])
   }
 }
 </script>

@@ -7,20 +7,33 @@
       </div>
     </div>
     <attack v-show="!minimize"
-            v-for="(attack, index) in character.attacks"
+            v-for="(attack, index) in attacks"
             :key="index"
-            :attack="attack" />
+            v-bind="$extract(attack)"
+            @onAttackUpdate="onUpdateAttack(index, $event)" />
   </div>
 </template>
 
 <script>
 import { Attack } from './';
-import CharacterMixin from 'store/mixins/character.mixin';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapActions } from 'store/CharacterModule';
 
 export default {
   components: { Attack },
-  mixins: [CharacterMixin, MinimizableMixin]
+  mixins: [MinimizableMixin],
+  computed: {
+    ...mapState(['attacks'])
+  },
+  methods: {
+    ...mapActions(['updateAttack']),
+    onUpdateAttack(index, attack) {
+      this.updateAttack({
+        index,
+        attack
+      });
+    }
+  }
 }
 </script>
 

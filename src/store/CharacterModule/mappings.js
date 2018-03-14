@@ -15,7 +15,10 @@ export default {
     updateInitiative: 'updateInitiative',
     updateSavingThrow: 'updateSavingThrow',
     updateConditionModifiers: 'updateConditionModifiers',
-    updateBaseAttackBonus: 'updateBaseAttackBonus'
+    updateBaseAttackBonus: 'updateBaseAttackBonus',
+    updateSpellResistance: 'updateSpellResistance',
+    updateAttacks: 'updateAttacks',
+    updateAttack: 'updateAttack'
   },
   Mutations: {
     updateId: 'updateId',
@@ -32,6 +35,9 @@ export default {
     updateInitiative: 'updateInitiative',
     updateSavingThrow: 'updateSavingThrow',
     updateConditionModifiers: 'updateConditionModifiers',
-    updateBaseAttackBonus: 'updateBaseAttackBonus'
+    updateBaseAttackBonus: 'updateBaseAttackBonus',
+    updateSpellResistance: 'updateSpellResistance',
+    updateAttacks: 'updateAttacks',
+    updateAttack: 'updateAttack'
   }
 }

@@ -4,26 +4,38 @@
       <div class="new-black-box rounded double-height">
         <label>Attack</label>
       </div>
-      <input type="text" class="common-input" v-model="attack.name">
+      <input type="text"
+             class="common-input"
+             :value="name"
+             @change="$emit('onAttackUpdate', { name : $event.target.value })">
     </div>
     <div>
       <div>
         <div class="new-black-box">
           <label>Attack Bonus</label>
         </div>
-        <input type="text" class="common-input" v-model="attack.attackBonus">
+        <input type="text"
+               class="common-input"
+               :value="attackBonus"
+             @change="$emit('onAttackUpdate', { attackBonus : $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
           <label>Damage</label>
         </div>
-        <input type="text" class="common-input" v-model="attack.damage">
+        <input type="text"
+               class="common-input"
+               :value="damage"
+             @change="$emit('onAttackUpdate', { damage : $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
           <label>Critical</label>
         </div>
-        <input type="text" class="common-input" v-model="attack.critical">
+        <input type="text"
+               class="common-input"
+               :value="critical"
+             @change="$emit('onAttackUpdate', { critical : $event.target.value })">
       </div>
     </div>
     <div>
@@ -31,31 +43,51 @@
         <div class="new-black-box">
           <label>Range</label>
         </div>
-        <input type="text" class="common-input" v-model="attack.range">
+        <input type="text"
+               class="common-input"
+               :value="range"
+             @change="$emit('onAttackUpdate', { range : $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
           <label>Type</label>
         </div>
-        <input type="text" class="common-input" v-model="attack.type">
+        <input type="text"
+               class="common-input"
+               :value="type"
+             @change="$emit('onAttackUpdate', { type : $event.target.value })">
       </div>
     </div>
     <div>
       <div class="new-black-box">
         <label>Notes</label>
       </div>
-      <input type="text" class="common-input" v-model="attack.notes">
+      <input type="text"
+             class="common-input"
+             :value="notes"
+             @change="$emit('onAttackUpdate', { notes : $event.target.value })">
     </div>
-    <div v-if="attack.ammunition">
+    <div v-if="ammunition">
       <label>Ammunition</label>
-      <input type="text" class="only-bottom" v-model="attack.ammunition.name">
+      <input type="text"
+             class="only-bottom"
+             :value="ammunition.name">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['attack']
+  props: [
+    'name',
+    'attackBonus',
+    'damage',
+    'critical',
+    'range',
+    'type',
+    'notes',
+    'ammunition'
+  ]
 }
 </script>
 
