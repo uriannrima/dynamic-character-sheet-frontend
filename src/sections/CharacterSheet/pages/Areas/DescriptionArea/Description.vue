@@ -12,16 +12,20 @@
         <input type="text"
                class="full-width-input"
                :value="name"
-               @change="updateDescription({ name: $event.target.value })">
+               @change="updateDescription({ name: $event.target.value })"
+               name="Character Name"
+               v-validate:name.initial="'required'">
         <label>Character Name</label>
-        <button @click="saveCharacter()">Save</button>
-        <button @click="newCharacter()">New</button>
+        <button @click="saveCharacter()"
+                :disabled="hasErrors">Save</button>
       </div>
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
                :value="playerName"
-               @change="updateDescription({ playerName: $event.target.value })">
+               @change="updateDescription({ playerName: $event.target.value })"
+               name="Player Name"
+               v-validate:playerName.initial="'required'">
         <label>Player Name</label>
       </div>
       <div class="horizontal-container">
@@ -124,8 +128,7 @@
 <script>
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import SizeService from 'services/size.service';
-import CharacterStore from 'store/character.store';
-import { mapState, mapGetters, mapActions } from 'store/CharacterModule'
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 export default {
   mixins: [MinimizableMixin],
@@ -141,13 +144,16 @@ export default {
       'height', 'weight', 'eyes',
       'hair', 'skin', 'size'
     ]),
-    ...mapGetters(['getClasses', 'getSize'])
+    ...mapGetters(['getClasses', 'getSize']),
+    hasErrors() {
+      return this.errors.any();
+    }
   },
   created: async function () {
     this.allSizes = await SizeService.getAll();
   },
   methods: {
-    ...mapActions(['saveCharacter','updateDescription', 'updateClasses', 'updateSize']),
+    ...mapActions(['saveCharacter', 'updateDescription', 'updateClasses', 'updateSize']),
     parseStringToClasses(classesAsString) {
       const classes = [];
       const eachClass = classesAsString.split(",");
@@ -170,10 +176,6 @@ export default {
         });
       });
       return classes;
-    },
-    newCharacter: async function () {
-      await CharacterStore.createCharacter();
-      console.log(CharacterStore.Instance.character, this.character);
     }
   }
 }

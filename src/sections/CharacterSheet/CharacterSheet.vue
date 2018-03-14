@@ -7,24 +7,28 @@
 
 <script>
 import * as Pages from './pages';
-import CharacterStore from 'store/character.store';
-import CharacterMixin from 'store/mixins/character.mixin';
 import { mapState, mapActions, Mappings } from '../../store/CharacterModule';
 
 export default {
   components: Pages,
-  mixins: [CharacterMixin],
   beforeRouteEnter: async function (to, from, next) {
-    await CharacterStore.loadCharacter(to.params.id);
-    next(vm => {
-      vm.connect(to.params.id);
-      vm.loadCharacter(to.params.id);
-    });
+    if (!to.params.id) {
+      next();
+    } else {
+      next(vm => {
+        vm.connect(to.params.id);
+        vm.loadCharacter(to.params.id);
+      });
+    }
   },
   beforeRouteUpdate: async function (to, from, next) {
-    await CharacterStore.loadCharacter(to.params.id);
-    await this.loadCharacter(to.params.id);
-    next();
+    if (!to.params.id) {
+      next();
+    } else {
+      vm.connect(to.params.id);
+      this.loadCharacter(to.params.id);
+      next();
+    }
   },
   computed: {
     ...mapState(['_id'])
