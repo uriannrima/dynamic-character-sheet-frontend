@@ -40,6 +40,11 @@ html {
   padding: initial;
 }
 
+input:focus {
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+}
+
 button:disabled,
 button [disabled] {
   background-color: #cccccc !important;
@@ -48,7 +53,7 @@ button [disabled] {
 }
 
 .invalid {
-  border-left: 3px solid !important;
-  border-left-color: salmon !important;
+  border: solid 1px #d00 !important;
+  box-shadow: 0 0 0 3px rgba(221, 0, 0, 0.1) inset !important;
 }
 </style>

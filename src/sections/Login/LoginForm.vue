@@ -1,15 +1,16 @@
 <template>
   <form class="login-form">
+    <label>E-mail</label>
     <input type="text"
            name="email"
-           placeholder="E-mail"
            v-model="email"
            v-validate="'required|email'">
+    <label>Password</label>
     <input type="password"
            name="password"
-           placeholder="Password"
+           placeholder="At least 4 characters."
            v-model="password"
-           v-validate="'required'">
+           v-validate="{ required: true, min: 4 }">
     <button @click.prevent="$emit('onLogin', { email, password })"
             :disabled="errors.any() || disabled">Login</button>
     <p class="message">Not registered?

@@ -1,21 +1,37 @@
 <template>
   <form class="register-form">
-    <input type="text"
-           name="name"
-           placeholder="Account Name"
-           v-model="name"
-           v-validate="'required'">
-    <input type="text"
-           name="email"
-           placeholder="E-mail"
-           v-model="email"
-           v-validate="'required|email'">
-    <input type="password"
-           name="password"
-           placeholder="Password"
-           v-model="password"
-           v-validate="'required'">
-    <button @click.prevent="$emit('onRegister', { name, email, password })"
+    <label>Account Name</label>
+    <div>
+      <input type="text"
+             name="name"
+             v-model="name"
+             v-validate="'required'">
+      <span class="registration-error-icon glyphicon glyphicon-exclamation-sign"
+            v-show="errors.has('name')"
+            :title="errors.first('name')"></span>
+    </div>
+    <label>E-mail</label>
+    <div>
+      <input type="text"
+             name="email"
+             v-model="email"
+             v-validate="'required|email'">
+      <span class="registration-error-icon glyphicon glyphicon-exclamation-sign"
+            v-show="errors.has('email')"
+            :title="errors.first('email')"></span>
+    </div>
+    <label>Password</label>
+    <div>
+      <input type="password"
+             name="password"
+             placeholder="At least 4 characters."
+             v-model="password"
+             v-validate="{ required: true, min: 4}">
+      <span class="registration-error-icon glyphicon glyphicon-exclamation-sign"
+            v-show="errors.has('password')"
+            :title="errors.first('password')"></span>
+    </div>
+    <button @click.prevent="register()"
             :disabled="errors.any() || disabled">Register</button>
     <p class="message">Already registered?
       <a href
@@ -33,10 +49,29 @@ export default {
       email: '',
       password: ''
     }
+  },
+  methods: {
+    register() {
+      this.$validator.validateAll().then(result => {
+        if (result) {
+          const { name, email, password } = this;
+          this.emit('onLogin', { name, email, password });
+        }
+      })
+    }
   }
 }
 </script>
 
 <style>
+.register-form > div {
+  position: relative;
+}
 
+.registration-error-icon {
+  position: absolute;
+  right: 5px;
+  top: 17px;
+  color: red;
+}
 </style>
