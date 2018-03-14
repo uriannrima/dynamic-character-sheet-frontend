@@ -1,6 +1,6 @@
-import HttpService from 'shared/services/HttpService';
+import HttpLayer from 'shared/services/HttpLayer';
 
-class UserService extends HttpService {
+class UserService extends HttpLayer {
   constructor() {
     super({
       url: '/users'

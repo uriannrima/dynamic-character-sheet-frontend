@@ -1,8 +1,8 @@
-import HttpService from 'shared/services/HttpService';
-import SocketService from 'shared/services/SocketService';
+import HttpLayer from 'shared/services/HttpLayer';
+import SocketLayer from 'shared/services/SocketLayer';
 import AuthService from 'shared/services/AuthService';
 
-export class SocketLayer extends SocketService {
+export class SocketService extends SocketLayer {
   constructor({ url }) {
     super({ serviceName: url.replace('/', '') });
   }
@@ -48,9 +48,12 @@ export class SocketLayer extends SocketService {
   }
 }
 
-export class HttpLayer extends HttpService {
+export class HttpService extends HttpLayer {
   constructor({ url }) {
     super({ url });
+    Object.assign(this, {
+      socket: new SocketLayer(url)
+    });
   }
 
   async getHeaders() {
@@ -99,11 +102,13 @@ export class HttpLayer extends HttpService {
     }
   }
 
-  register() {
-    console.log("HttpLayer doesn't support registration.");
+  register(methodName, callback) {
+    console.log("HttpLayer doesn't support registration. Using nested socket layer.");
+    this.socket.on(methodName, callback);
   }
 
-  emit() {
-    console.log("HttpLayer doesn't support emit.");
+  emit(methodName, payload) {
+    console.log("HttpLayer doesn't support emit. Using nested socket layer.");
+    this.socket.feathers.io.emit('custom', methodName, this.socket.serviceName, payload);
   }
 }

@@ -5,7 +5,7 @@ var service = axios.create({
   baseURL: Constants.API_URL + '/'
 });
 
-export default class HttpService {
+export default class HttpLayer {
   constructor({ url }) {
     Object.assign(this, { url }, {
       service
