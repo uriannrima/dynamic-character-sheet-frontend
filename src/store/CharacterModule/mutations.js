@@ -85,5 +85,15 @@ export default {
   [Mappings.Mutations.updateAttack](state, { index, attack }) {
     var stateAttack = state.attacks[index];
     ObjectUtils.extractTo(attack, stateAttack);
+  },
+  [Mappings.Mutations.updateSkills](state, { skills = [] }) {
+    skills.map(skill => {
+      var stateSkill = state.skills.find(sSkill => sSkill.name === skill.name);
+      ObjectUtils.extractTo(skill, stateSkill);
+    });
+  },
+  [Mappings.Mutations.updateSkill](state, { index, skill }) {
+    var stateSkill = state.skills[index];
+    ObjectUtils.extractTo(skill, stateSkill);
   }
 }

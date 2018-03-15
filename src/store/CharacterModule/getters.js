@@ -75,5 +75,9 @@ export default {
     return state.baseAttackBonus.map(bab => {
       return bab + getters.getGrappleKeyScore.tempModifier + state.size.grappleBonus + state.grapple.miscModifier;
     }).join('/');
+  },
+  getGearPenalty(state) {
+    const { armor, shield } = state.gear;
+    return armor.checkPenalty + shield.checkPenalty;
   }
 }

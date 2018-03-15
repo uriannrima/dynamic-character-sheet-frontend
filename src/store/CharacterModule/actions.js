@@ -63,6 +63,7 @@ export default {
       commit(Mappings.Mutations.updateBaseAttackBonus, character);
       commit(Mappings.Mutations.updateSpellResistance, character);
       commit(Mappings.Mutations.updateAttacks, character);
+      commit(Mappings.Mutations.updateSkills, character);
     } catch (error) {
       console.log(error);
     }

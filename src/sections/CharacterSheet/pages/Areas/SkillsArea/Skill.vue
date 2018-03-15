@@ -2,16 +2,17 @@
   <div class="skill-component">
     <input type="checkbox"
            class="class-skill-checkbox"
-           v-model="skill.classSkill">
+           :checked="classSkill"
+           @change="$emit('onSkillUpdate', { classSkill: $event.target.checked })">
     <div class="skill-wrapper">
       <div class="skill-name-container">
         <label class="skill-name"
-               :class="{ 'untrained-skill': skill.untrained }">{{skill.name}}</label>
+               :class="{ 'untrained-skill': untrained }">{{name}}</label>
         <small class="skill-sub-value"
-               v-if="skill.subValue">({{skill.subValue}})</small>
+               v-if="subValues">({{subValues[0]}})</small>
       </div>
       <label class="skill-key-ability"
-             :class="{ 'armor-check-penalty': skill.armorCheckPenalty }">{{skill.keyAbility.substring(0,3)}}</label>
+             :class="{ 'armor-check-penalty': armorCheckPenalty }">{{keyScoreName.substring(0,3)}}</label>
       <input type="number"
              class="common-input"
              readonly
@@ -19,38 +20,46 @@
       <input type="number"
              class="only-bottom"
              readonly
-             :value="keyAbility.getTempModifier()">
+             :value="keyScoreModifier">
       <input type="number"
              class="only-bottom"
-             v-model.number="skill.rank">
+             :value="rank"
+             @change="$emit('onSkillUpdate', { rank: $event.target.value * 1 })">
       <input type="number"
              class="only-bottom"
-             v-model.number="skill.miscModifier">
+             :value="miscModifier"
+             @change="$emit('onSkillUpdate', { miscModifier: $event.target.value * 1 })">
     </div>
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
-
 export default {
-  mixins: [CharacterMixin],
-  props: ['skill', 'keyAbility'],
+  props: [
+    'name',
+    'classSkill',
+    'untrained',
+    'armorCheckPenalty',
+    'subValues',
+    'keyScoreName',
+    'keyScoreModifier',
+    'rank',
+    'miscModifier',
+    'gearPenalty'
+  ],
   computed: {
     skillModifier() {
       var penalty = this.checkPenalty;
-      if (this.skill.name === "Swim") penalty += penalty;
-      var rankModifier = this.skill.rank;
-      if (!this.skill.classSkill) rankModifier = Math.floor(rankModifier / 2);
-      return rankModifier + this.skill.miscModifier + this.keyAbility.getTempModifier() + penalty;
+      if (this.name === "Swim") penalty += penalty;
+      var rankModifier = this.rank;
+      if (!this.classSkill) rankModifier = Math.floor(rankModifier / 2);
+      return rankModifier + this.miscModifier + this.keyScoreModifier + penalty;
     },
     checkPenalty() {
       var penalty = 0;
 
-      if (this.skill.armorCheckPenalty) {
-        var { armor, shield } = this.character.gear;
-        if (armor) penalty += armor.checkPenalty;
-        if (shield) penalty += shield.checkPenalty;
+      if (this.armorCheckPenalty) {
+        penalty += this.gearPenalty;
       }
 
       return penalty;

@@ -18,7 +18,9 @@ export default {
     updateBaseAttackBonus: 'updateBaseAttackBonus',
     updateSpellResistance: 'updateSpellResistance',
     updateAttacks: 'updateAttacks',
-    updateAttack: 'updateAttack'
+    updateAttack: 'updateAttack',
+    updateSkills: 'updateSkills',
+    updateSkill: 'updateSkill'
   },
   Mutations: {
     updateId: 'updateId',
@@ -38,6 +40,8 @@ export default {
     updateBaseAttackBonus: 'updateBaseAttackBonus',
     updateSpellResistance: 'updateSpellResistance',
     updateAttacks: 'updateAttacks',
-    updateAttack: 'updateAttack'
+    updateAttack: 'updateAttack',
+    updateSkills: 'updateSkills',
+    updateSkill: 'updateSkill'
   }
 }
