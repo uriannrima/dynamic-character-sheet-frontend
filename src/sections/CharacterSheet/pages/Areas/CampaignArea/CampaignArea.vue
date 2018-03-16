@@ -11,13 +11,15 @@
       <div class="campaign-component">
         <input type="text"
                class="common-input only-bottom"
-               v-model="character.campaign">
+               :value="campaign"
+               @change="updateCampaign({ campaign: $event.target.value })">
         <label>Campaign</label>
       </div>
       <div class="experience-component">
         <input type="number"
                class="common-input"
-               v-model.number="character.experience">
+               :value="experience"
+               @change="updateExperience({ experience: $event.target.value * 1 })">
         <label>Experience Points</label>
       </div>
     </div>
@@ -25,11 +27,17 @@
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapActions } from 'store/CharacterModule';
 
 export default {
-  mixins: [CharacterMixin, MinimizableMixin]
+  mixins: [MinimizableMixin],
+  computed: {
+    ...mapState(['campaign', 'experience'])
+  },
+  methods: {
+    ...mapActions(['updateCampaign', 'updateExperience'])
+  }
 }
 </script>
 

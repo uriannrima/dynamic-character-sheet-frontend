@@ -23,25 +23,38 @@
     </div>
     <div class="skills-body"
          v-show="!minimize">
-      <skill v-for="(skill, index) in character.skills"
+      <skill v-for="(skill, index) in skills"
              :key="index"
-             :skill="skill"
-             :keyAbility="getKeyAbility(skill.keyAbility)"></skill>
+             v-bind="$extract(skill)"
+             :keyScoreModifier="getTempModifier(getAbilityScore(skill.keyScoreName))"
+             :gearPenalty="getGearPenalty"
+             @onSkillUpdate="onUpdateSkill(index, $event)"></skill>
     </div>
   </div>
 </template>
 
 <script>
 import { Skill } from './';
-import KeyAbilityMixin from 'shared/mixins/methods/key.ability.mixin';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
 
 export default {
   components: { Skill },
-  mixins: [KeyAbilityMixin, MinimizableMixin],
+  mixins: [MinimizableMixin],
   computed: {
+    ...mapState(['skills']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty']),
     orderedSkills() {
       return this.character.skills.orderBy(s => s.name);
+    }
+  },
+  methods: {
+    ...mapMutations(['updateSkill']),
+    onUpdateSkill(index, skill) {
+      this.updateSkill({
+        index,
+        skill
+      });
     }
   }
 }

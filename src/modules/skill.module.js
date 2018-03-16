@@ -1,74 +1,87 @@
-export const Skill = function ({ _id, name, keyAbility, untrained = true, armorCheckPenalty, classSkill, check, action, tryAgain, special, synergy, untrainedDescription, restriction, miscellaneous, aditionalInformation, subValues = [], rank, abilityModifier, miscModifier, hiddenModifier }) {
-  return {
+export class Skill {
+  constructor({
     _id,
-    name,
-    keyAbility,
-    untrained,
-    armorCheckPenalty,
-    classSkill,
-    check,
-    action,
-    tryAgain,
-    special,
-    synergy,
-    untrainedDescription,
-    restriction,
-    miscellaneous,
-    aditionalInformation,
-    subValues,
-    rank: rank || 0,
-    abilityModifier: abilityModifier || 0,
-    miscModifier: miscModifier || 0,
-    hiddenModifier: hiddenModifier || 0,
-    getTotal: function () {
-      var result = 0;
-      for (var key in this) {
-        if (typeof this[key] !== "number") continue;
-        if (key !== "rank" || this.classSkill) {
-          result += this[key];
-        } else {
-          result += Math.floor(this[key] / 2);
-        }
-      }
-      return result;
-    }
+    name = "",
+    keyScoreName = "",
+    untrained = true,
+    armorCheckPenalty = false,
+    classSkill = false,
+    check = "",
+    action = "",
+    tryAgain = "",
+    special = "",
+    synergy = "",
+    untrainedDescription = "",
+    restriction = "",
+    miscellaneous = "",
+    aditionalInformation = "",
+    subValues = [],
+    rank = 0,
+    abilityModifier = 0,
+    miscModifier = 0,
+    hiddenModifier = 0 }) {
+
+    Object.assign(this, {
+      _id,
+      name,
+      keyScoreName,
+      untrained,
+      armorCheckPenalty,
+      classSkill,
+      check,
+      action,
+      tryAgain,
+      special,
+      synergy,
+      untrainedDescription,
+      restriction,
+      miscellaneous,
+      aditionalInformation,
+      subValues,
+      rank,
+      abilityModifier,
+      miscModifier,
+      hiddenModifier
+    });
   }
 };
 
-export const DEFAULT_SKILLS = [
-  new Skill({ name: 'Appraise', keyAbility: 'intelligence', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Balance', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Bluff', keyAbility: 'charisma', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Climb', keyAbility: 'strength', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Concentration', keyAbility: 'constitution', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Craft', keyAbility: 'intelligence', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Decipher Script', keyAbility: 'intelligence', untrained: false, armorCheckPenalty: false }),
-  new Skill({ name: 'Diplomacy', keyAbility: 'charisma', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Disable Device', keyAbility: 'intelligence', untrained: false, armorCheckPenalty: false }),
-  new Skill({ name: 'Disguise', keyAbility: 'charisma', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Escape Artist', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Forgery', keyAbility: 'intelligence', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Gather Information', keyAbility: 'charisma', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Handle Animal', keyAbility: 'charisma', untrained: false, armorCheckPenalty: false }),
-  new Skill({ name: 'Heal', keyAbility: 'wisdom', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Hide', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Intimidate', keyAbility: 'charisma', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Jump', keyAbility: 'strength', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Knowledge', keyAbility: 'intelligence', untrained: false, armorCheckPenalty: false, hasSubValue: true }),
-  new Skill({ name: 'Listen', keyAbility: 'wisdom', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Move Silently', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Open Lock', keyAbility: 'dexterity', untrained: false, armorCheckPenalty: false }),
-  new Skill({ name: 'Perform', keyAbility: 'charisma', untrained: false, armorCheckPenalty: false, hasSubValue: true }),
-  new Skill({ name: 'Profession', keyAbility: 'wisdom', untrained: false, armorCheckPenalty: false, hasSubValue: true }),
-  new Skill({ name: 'Ride', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Search', keyAbility: 'intelligence', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Sense Motive', keyAbility: 'wisdom', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Sleight of Hands', keyAbility: 'dexterity', untrained: false, armorCheckPenalty: true }),
-  new Skill({ name: 'Spellcraft', keyAbility: 'intelligence', untrained: false, armorCheckPenalty: false }),
-  new Skill({ name: 'Spot', keyAbility: 'wisdom', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Survival', keyAbility: 'wisdom', untrained: true, armorCheckPenalty: false }),
-  new Skill({ name: 'Swim', keyAbility: 'strength', untrained: true, armorCheckPenalty: true }),
-  new Skill({ name: 'Tumble', keyAbility: 'dexterity', untrained: false, armorCheckPenalty: true }),
-  new Skill({ name: 'Use Magic Device', keyAbility: 'charisma', untrained: false, armorCheckPenalty: false }),
-  new Skill({ name: 'Use Rope', keyAbility: 'dexterity', untrained: true, armorCheckPenalty: false })
+export const All = [
+  new Skill({ name: 'Appraise', keyScoreName: 'intelligence', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Balance', keyScoreName: 'dexterity', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Bluff', keyScoreName: 'charisma', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Climb', keyScoreName: 'strength', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Concentration', keyScoreName: 'constitution', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Craft', keyScoreName: 'intelligence', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Decipher Script', keyScoreName: 'intelligence', untrained: false, armorCheckPenalty: false }),
+  new Skill({ name: 'Diplomacy', keyScoreName: 'charisma', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Disable Device', keyScoreName: 'intelligence', untrained: false, armorCheckPenalty: false }),
+  new Skill({ name: 'Disguise', keyScoreName: 'charisma', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Escape Artist', keyScoreName: 'dexterity', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Forgery', keyScoreName: 'intelligence', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Gather Information', keyScoreName: 'charisma', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Handle Animal', keyScoreName: 'charisma', untrained: false, armorCheckPenalty: false }),
+  new Skill({ name: 'Heal', keyScoreName: 'wisdom', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Hide', keyScoreName: 'dexterity', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Intimidate', keyScoreName: 'charisma', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Jump', keyScoreName: 'strength', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Knowledge', keyScoreName: 'intelligence', untrained: false, armorCheckPenalty: false, hasSubValue: true }),
+  new Skill({ name: 'Listen', keyScoreName: 'wisdom', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Move Silently', keyScoreName: 'dexterity', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Open Lock', keyScoreName: 'dexterity', untrained: false, armorCheckPenalty: false }),
+  new Skill({ name: 'Perform', keyScoreName: 'charisma', untrained: false, armorCheckPenalty: false, hasSubValue: true }),
+  new Skill({ name: 'Profession', keyScoreName: 'wisdom', untrained: false, armorCheckPenalty: false, hasSubValue: true }),
+  new Skill({ name: 'Ride', keyScoreName: 'dexterity', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Search', keyScoreName: 'intelligence', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Sense Motive', keyScoreName: 'wisdom', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Sleight of Hands', keyScoreName: 'dexterity', untrained: false, armorCheckPenalty: true }),
+  new Skill({ name: 'Spellcraft', keyScoreName: 'intelligence', untrained: false, armorCheckPenalty: false }),
+  new Skill({ name: 'Spot', keyScoreName: 'wisdom', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Survival', keyScoreName: 'wisdom', untrained: true, armorCheckPenalty: false }),
+  new Skill({ name: 'Swim', keyScoreName: 'strength', untrained: true, armorCheckPenalty: true }),
+  new Skill({ name: 'Tumble', keyScoreName: 'dexterity', untrained: false, armorCheckPenalty: true }),
+  new Skill({ name: 'Use Magic Device', keyScoreName: 'charisma', untrained: false, armorCheckPenalty: false }),
+  new Skill({ name: 'Use Rope', keyScoreName: 'dexterity', untrained: true, armorCheckPenalty: false })
 ];
+
+export default Skill;

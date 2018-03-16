@@ -32,6 +32,7 @@
         <input type="text"
                class="full-width-input"
                :value="getClasses"
+               v-validate:getClasses.initial="'required'"
                @change="updateClasses({classes : parseStringToClasses($event.target.value)})">
         <label>Class and Level</label>
       </div>

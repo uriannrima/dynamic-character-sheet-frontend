@@ -2,7 +2,7 @@ import Mappings from './mappings';
 import ObjectUtils from 'utils/object.utils.js';
 
 export default {
-  [Mappings.Mutations.updateId](state, _id) {
+  [Mappings.Mutations.updateId](state, { _id }) {
     state._id = _id;
     window.history.pushState("", "", `/#/character/${_id}`);
   },
@@ -38,13 +38,13 @@ export default {
     var stateAbilityScore = state.abilityScores[abilityScore.name];
     ObjectUtils.extractTo(abilityScore, stateAbilityScore);
   },
-  [Mappings.Mutations.updateStatus](state, status) {
+  [Mappings.Mutations.updateStatus](state, { status }) {
     ObjectUtils.extractTo(status, state.status);
   },
   [Mappings.Mutations.updateSpeed](state, { speed }) {
     state.speed = speed;
   },
-  [Mappings.Mutations.updateGear](state, gear) {
+  [Mappings.Mutations.updateGear](state, { gear }) {
     ObjectUtils.extractTo(gear.armor, state.gear.armor);
     ObjectUtils.extractTo(gear.shield, state.gear.shield);
     gear.protectiveItems.forEach((protectiveItem, index) => {
@@ -54,14 +54,22 @@ export default {
   [Mappings.Mutations.updateKeyScore](state, { name = '', keyScoreName = '' }) {
     state.keyAbilityScores[name] = keyScoreName;
   },
-  [Mappings.Mutations.updateArmorClass](state, armorClass) {
+  [Mappings.Mutations.updateArmorClass](state, { armorClass }) {
     ObjectUtils.extractTo(armorClass, state.armorClass);
   },
   [Mappings.Mutations.updateDamageReduction](state, { damageReduction }) {
     state.damageReduction = damageReduction;
   },
-  [Mappings.Mutations.updateInitiative](state, initiative) {
+  [Mappings.Mutations.updateInitiative](state, { initiative }) {
     ObjectUtils.extractTo(initiative, state.initiative);
+  },
+  [Mappings.Mutations.updateSavingThrows](state, { savingThrows }) {
+    Object.keys(savingThrows)
+      .map(savingThrowName => savingThrows[savingThrowName])
+      .map(savingThrow => {
+        var stateSavingThrow = state.savingThrows[savingThrow.name];
+        ObjectUtils.extractTo(savingThrow, stateSavingThrow);
+      });
   },
   [Mappings.Mutations.updateSavingThrow](state, savingThrow) {
     var stateSavingThrow = state.savingThrows[savingThrow.name];
@@ -85,5 +93,21 @@ export default {
   [Mappings.Mutations.updateAttack](state, { index, attack }) {
     var stateAttack = state.attacks[index];
     ObjectUtils.extractTo(attack, stateAttack);
+  },
+  [Mappings.Mutations.updateSkills](state, { skills = [] }) {
+    skills.map(skill => {
+      var stateSkill = state.skills.find(sSkill => sSkill.name === skill.name);
+      ObjectUtils.extractTo(skill, stateSkill);
+    });
+  },
+  [Mappings.Mutations.updateSkill](state, { index, skill }) {
+    var stateSkill = state.skills[index];
+    ObjectUtils.extractTo(skill, stateSkill);
+  },
+  [Mappings.Mutations.updateCampaign](state, { campaign }) {
+    state.campaign = campaign;
+  },
+  [Mappings.Mutations.updateExperience](state, { experience }) {
+    state.experience = experience;
   }
 }

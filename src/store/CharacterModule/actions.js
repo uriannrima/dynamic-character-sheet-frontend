@@ -1,7 +1,22 @@
 import Mappings from './mappings';
 import CharacterService from 'services/character.service'
-import ObjectUtils from 'utils/object.utils.js';
 import NotificationService from 'services/NotificationService';
+
+const commitAndSyncWithServer = function ({ commit, state }, mutation, payload, fromState) {
+  var syncMutation = mutation;
+  if (typeof mutation === 'object') {
+    syncMutation = mutation.syncMutation;
+    mutation = mutation.mutation;
+  }
+  commit(mutation, payload);
+  if (typeof fromState === 'boolean' && fromState) {
+    const propertyName = Object.keys(payload)[0];
+    payload = { [propertyName]: state[propertyName] };
+  } else if (typeof fromState === 'string') {
+    payload = { [fromState]: state[fromState] };
+  }
+  syncWithServer(state, syncMutation, payload);
+};
 
 const syncWithServer = function (state, mutation, payload) {
   CharacterService.patch(state._id, {
@@ -39,30 +54,35 @@ export default {
   },
   async [Mappings.Actions.saveCharacter]({ commit, state }) {
     const character = await CharacterService.saveOrUpdate(state);
-    commit(Mappings.Mutations.updateId, character._id);
+    commit(Mappings.Mutations.updateId, character);
   },
   async [Mappings.Actions.loadCharacter]({ commit }, characterId) {
     try {
       const character = await CharacterService.getData(characterId);
 
-      commit(Mappings.Mutations.updateId, character._id);
-      commit(Mappings.Mutations.updateDescription, ObjectUtils.extractFrom(character, [
-        'name', 'playerName', 'race',
-        'alignment', 'deity', 'age',
-        'gender', 'height', 'weight',
-        'eyes', 'hair', 'skin'
-      ]));
-      commit(Mappings.Mutations.updateClasses, character);
-      commit(Mappings.Mutations.updateSize, character);
-      commit(Mappings.Mutations.updateAbilityScores, character);
-      commit(Mappings.Mutations.updateStatus, character.status);
-      commit(Mappings.Mutations.updateSpeed, character);
-      commit(Mappings.Mutations.updateGear, character.gear);
-      commit(Mappings.Mutations.updateArmorClass, character.armorClass);
-      commit(Mappings.Mutations.updateDamageReduction, character);
-      commit(Mappings.Mutations.updateBaseAttackBonus, character);
-      commit(Mappings.Mutations.updateSpellResistance, character);
-      commit(Mappings.Mutations.updateAttacks, character);
+      // Load character mutations
+      [
+        Mappings.Mutations.updateId,
+        Mappings.Mutations.updateDescription,
+        Mappings.Mutations.updateClasses,
+        Mappings.Mutations.updateSize,
+        Mappings.Mutations.updateAbilityScores,
+        Mappings.Mutations.updateStatus,
+        Mappings.Mutations.updateSpeed,
+        Mappings.Mutations.updateGear,
+        Mappings.Mutations.updateArmorClass,
+        Mappings.Mutations.updateInitiative,
+        Mappings.Mutations.updateSavingThrows,
+        Mappings.Mutations.updateDamageReduction,
+        Mappings.Mutations.updateBaseAttackBonus,
+        Mappings.Mutations.updateSpellResistance,
+        Mappings.Mutations.updateAttacks,
+        Mappings.Mutations.updateSkills,
+        Mappings.Mutations.updateCampaign,
+        Mappings.Mutations.updateExperience
+      ].forEach(mutation => {
+        commit(mutation, character);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -74,117 +94,61 @@ export default {
       payload: description
     });
   },
-  async [Mappings.Actions.updateClasses]({ commit, state }, classes) {
-    commit(Mappings.Mutations.updateClasses, classes);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateClasses],
-      payload: classes
-    });
+  async [Mappings.Actions.updateClasses](context, classes) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateClasses, classes);
   },
-  async [Mappings.Actions.updateSize]({ commit, state }, size) {
-    commit(Mappings.Mutations.updateSize, size);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateSize],
-      payload: size
-    });
+  async [Mappings.Actions.updateSize](context, { size }) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateSize, { size }, true);
   },
-  async [Mappings.Actions.updateAbilityScore]({ commit, state }, abilityScore) {
-    commit(Mappings.Mutations.updateAbilityScore, abilityScore);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateAbilityScores],
-      payload: {
-        abilityScores: state.abilityScores
-      }
-    });
+  async [Mappings.Actions.updateAbilityScore](context, abilityScore) {
+    commitAndSyncWithServer(context, {
+      mutation: Mappings.Mutations.updateAbilityScore,
+      syncMutation: Mappings.Mutations.updateAbilityScores
+    }, abilityScore, 'abilityScores');
   },
-  async [Mappings.Actions.updateStatus]({ commit, state }, status) {
-    commit(Mappings.Mutations.updateStatus, status);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateStatus],
-      payload: {
-        status: state.status
-      }
-    });
+  async [Mappings.Actions.updateStatus](context, status) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateStatus, { status }, true);
   },
-  async [Mappings.Actions.updateSpeed]({ commit, state }, speed) {
-    commit(Mappings.Mutations.updateSpeed, speed);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateSpeed],
-      payload: speed
-    });
+  async [Mappings.Actions.updateSpeed](context, speed) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateSpeed, speed);
   },
-  async [Mappings.Actions.updateGear]({ commit, state }, gear) {
-    commit(Mappings.Mutations.updateGear, gear);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateGear],
-      payload: {
-        gear: state.gear
-      }
-    });
+  async [Mappings.Actions.updateGear](context, gear) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateGear, { gear }, true);
   },
-  async [Mappings.Actions.updateArmorClass]({ commit, state }, armorClass) {
-    commit(Mappings.Mutations.updateArmorClass, armorClass);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateArmorClass],
-      payload: {
-        armorClass: state.armorClass
-      }
-    });
+  async [Mappings.Actions.updateArmorClass](context, armorClass) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateArmorClass, { armorClass }, true);
   },
-  async [Mappings.Actions.updateDamageReduction]({ commit, state }, damageReduction) {
-    commit(Mappings.Mutations.updateDamageReduction, damageReduction);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateDamageReduction],
-      payload: damageReduction
-    });
+  async [Mappings.Actions.updateDamageReduction](context, damageReduction) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateDamageReduction, damageReduction);
   },
-  async [Mappings.Actions.updateInitiative]({ commit, state }, initiative) {
-    commit(Mappings.Mutations.updateInitiative, initiative);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateInitiative],
-      payload: {
-        initiative: state.initiative
-      }
-    });
+  async [Mappings.Actions.updateInitiative](context, initiative) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateInitiative, { initiative });
   },
-  async [Mappings.Actions.updateSavingThrow]({ commit, state }, savingThrow) {
-    commit(Mappings.Mutations.updateSavingThrow, savingThrow);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateSavingThrow],
-      payload: {
-        savingThrows: state.savingThrows
-      }
-    });
+  async [Mappings.Actions.updateSavingThrow](context, savingThrow) {
+    commitAndSyncWithServer(context, {
+      mutation: Mappings.Mutations.updateSavingThrow,
+      syncMutation: Mappings.Mutations.updateSavingThrows
+    }, savingThrow, 'savingThrows');
   },
-  async [Mappings.Actions.updateConditionModifiers]({ commit, state }, conditionModifiers) {
-    commit(Mappings.Mutations.updateConditionModifiers, conditionModifiers);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateConditionModifiers],
-      payload: conditionModifiers
-    });
+  async [Mappings.Actions.updateConditionModifiers](context, conditionModifiers) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateConditionModifiers, conditionModifiers);
   },
-  async [Mappings.Actions.updateBaseAttackBonus]({ commit, state }, baseAttackBonus) {
-    commit(Mappings.Mutations.updateBaseAttackBonus, baseAttackBonus);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateBaseAttackBonus],
-      payload: {
-        baseAttackBonus: state.baseAttackBonus
-      }
-    });
+  async [Mappings.Actions.updateBaseAttackBonus](context, baseAttackBonus) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateBaseAttackBonus, baseAttackBonus);
   },
-  async [Mappings.Actions.updateSpellResistance]({ commit, state }, spellResistance) {
-    commit(Mappings.Mutations.updateSpellResistance, spellResistance);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateSpellResistance],
-      payload: {
-        spellResistance: state.spellResistance
-      }
-    });
+  async [Mappings.Actions.updateSpellResistance](context, spellResistance) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateSpellResistance, spellResistance);
   },
   async [Mappings.Actions.updateAttack]({ commit, state }, attack) {
     commit(Mappings.Mutations.updateAttack, attack);
     syncWithServer(state, Mappings.Mutations.updateAttacks, {
       attacks: state.attacks
     });
+  },
+  async [Mappings.Actions.updateCampaign](context, campaign) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateCampaign, campaign);
+  },
+  async [Mappings.Actions.updateExperience](context, experience) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateExperience, experience);
   }
 }

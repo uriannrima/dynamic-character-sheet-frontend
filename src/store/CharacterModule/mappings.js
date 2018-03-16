@@ -18,7 +18,11 @@ export default {
     updateBaseAttackBonus: 'updateBaseAttackBonus',
     updateSpellResistance: 'updateSpellResistance',
     updateAttacks: 'updateAttacks',
-    updateAttack: 'updateAttack'
+    updateAttack: 'updateAttack',
+    updateSkills: 'updateSkills',
+    updateSkill: 'updateSkill',
+    updateCampaign: 'updateCampaign',
+    updateExperience: 'updateExperience'
   },
   Mutations: {
     updateId: 'updateId',
@@ -34,10 +38,15 @@ export default {
     updateDamageReduction: 'updateDamageReduction',
     updateInitiative: 'updateInitiative',
     updateSavingThrow: 'updateSavingThrow',
+    updateSavingThrows: 'updateSavingThrows',
     updateConditionModifiers: 'updateConditionModifiers',
     updateBaseAttackBonus: 'updateBaseAttackBonus',
     updateSpellResistance: 'updateSpellResistance',
     updateAttacks: 'updateAttacks',
-    updateAttack: 'updateAttack'
+    updateAttack: 'updateAttack',
+    updateSkills: 'updateSkills',
+    updateSkill: 'updateSkill',
+    updateCampaign: 'updateCampaign',
+    updateExperience: 'updateExperience'
   }
 }

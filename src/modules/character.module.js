@@ -9,7 +9,7 @@ export const Character = function ({
   damageReduction = "", classes, abilityScores,
   status = {}, armorClass, initiative, conditionModifiers = "",
   savingThrows, baseAttackBonus = [0],
-  spellResistance = 0, grapple, skills = Modules.SkillsModule.DEFAULT_SKILLS,
+  spellResistance = 0, grapple, skills = Modules.SkillsModule.All.map(skill => new Modules.SkillsModule.Skill(skill)),
   attacks, gear, items = [], carryCapacities,
   campaign = "", experience = 0, money, feats = [], languages = [],
   specialAbilities = [], domainSchool = "", spellSave = 0,
@@ -22,7 +22,7 @@ export const Character = function ({
     abilityScores[abilityScoreName] = new Modules.AbilityScoreModule.AbilityScore(abilityScore);
   }
   if (!abilityScores) abilityScores = Modules.AbilityScoreModule.All;
-  
+
   for (var savingThrowName in savingThrows) {
     var savingThrow = savingThrows[savingThrowName];
     savingThrows[savingThrowName] = new Modules.SavingThrowsModule.SavingThrow(savingThrow);

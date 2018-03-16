@@ -10,11 +10,11 @@
       <label>Temporary<br>Modifier</label>
     </div>
     <saving-throw v-for="(savingThrow, index) in savingThrows"
-                  :key="index"                  
+                  :key="index"
                   v-bind='$extract(savingThrow)'
                   :keyScoreName="savingThrow.keyAbility"
-                  :keyScoreModifier="getTempModifier(getAbilityScore(savingThrow.keyAbility))" 
-                  @onUpdateSavingThrow="updateSavingThrow($event)"/>
+                  :keyScoreModifier="getTempModifier(getAbilityScore(savingThrow.keyAbility))"
+                  @onUpdateSavingThrow="updateSavingThrow($event)" />
   </div>
 </template>
 
