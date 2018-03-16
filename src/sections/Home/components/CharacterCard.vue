@@ -12,6 +12,9 @@
       </label>
     </div>
     <div class="character-card-body">
+      <div class="a-divider">
+        <span>Ability Scores</span>
+      </div>
       <div class="ability-scores-container">
         <div class="ability-score-container"
              v-for="abilityScore in character.abilityScores"
@@ -24,28 +27,72 @@
           </small>
         </div>
       </div>
+      <div class="a-divider">
+        <span>Passive Skills</span>
+      </div>
+      <div class="skills-container">
+        <span>{{getPassiveSkills.map(skill => skill.name).reduce((reducer, skill) => reducer + ', ' + skill)}}</span>
+      </div>
     </div>
     <div class="character-card-footer">
+      <div class="a-divider">
+        <span>Skills</span>
+      </div>
+      <div class="skills-container">
+        <span>{{character.skills.map(skill => skill.name).reduce((reducer, skill) => reducer + ', ' + skill)}}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['character'],
+  props: ["character"],
   computed: {
     getCharacterClasses() {
-      return this.character
-        .classes
+      return this.character.classes
         .filter(classe => classe.name)
         .map(classe => `${classe.name} (${classe.level})`)
-        .reduce((reducer, classe) => reducer === '' ? classe : reducer + ', ' + classe, '');
+        .reduce(
+          (reducer, classe) =>
+            reducer === "" ? classe : reducer + ", " + classe,
+          ""
+        );
+    },
+    getPassiveSkills() {
+      return this.character.skills.filter(
+        ({ name }) => ["Perception", "Listen", "Spot"].indexOf(name) !== -1
+      );
     }
   }
-}
+};
 </script>
 
 <style scoped>
+.a-divider {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.a-divider span {
+  display: inline-block;
+  background-color: white;
+  padding: 0 5px;
+}
+
+.a-divider:before {
+  content: "";
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-top: 1px solid #9a2b20;
+  z-index: -1;
+}
+
 .edit-icon {
   position: absolute;
   right: 0;
@@ -94,5 +141,9 @@ export default {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.skills-container {
+  text-align: center;
 }
 </style>
