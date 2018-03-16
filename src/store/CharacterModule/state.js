@@ -54,5 +54,7 @@ export default {
   conditionModifiers: "",
   spellResistance: 0,
   attacks: [new Attack(), new Attack(), new Attack(), new Attack()],
-  skills: All.map(skill => new Skill(skill))
+  skills: All.map(skill => new Skill(skill)),
+  campaign: "",
+  experience: ""
 }

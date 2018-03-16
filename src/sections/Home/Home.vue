@@ -26,6 +26,10 @@ export default {
     characters: {
       created(newCharacter) {
         this.characters.push(newCharacter);
+      },
+      updated(updatedCharacter) {
+        const index = this.characters.map(character => character._id).indexOf(updatedCharacter._id);
+        this.characters.splice(index, 1, updatedCharacter);
       }
     }
   }
