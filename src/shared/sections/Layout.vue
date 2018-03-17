@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <button v-if="isAuthenticated()"
-              @click="doLogout()">Logout</button>
+      <button v-if="isAuthenticated"
+              @click="doLogout">Logout</button>
     </div>
     <router-view></router-view>
   </div>
@@ -10,17 +10,18 @@
 
 <script>
 import { Home, CharacterSheet } from "sections";
-import AuthService from "shared/services/AuthService";
+import { mapGetters, mapActions } from 'store/AuthModule';
 
 export default {
   components: { Home, CharacterSheet },
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
   methods: {
+    ...mapActions(['logout']),
     doLogout: async function () {
-      var loggedOut = await AuthService.logout();
+      var loggedOut = await this.logout();
       if (loggedOut) this.$router.push("/");
-    },
-    isAuthenticated: function () {
-      return AuthService.isAuthenticated();
     }
   }
 };

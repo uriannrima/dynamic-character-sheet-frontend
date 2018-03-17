@@ -1,5 +1,6 @@
 import CharacterModule from './CharacterModule';
+import AuthModule from './AuthModule';
 
 export default {
-  modules: { CharacterModule }
+  modules: { CharacterModule, AuthModule }
 }

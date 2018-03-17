@@ -2,20 +2,29 @@ import { CharacterSheet, Home, Login } from '../sections';
 
 const routes = [
   {
-    path: '/home',
-    component: Home
-  },
-  {
     path: '/login',
     component: Login
   },
   {
+    path: '/home',
+    component: Home,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/character/:id',
-    component: CharacterSheet
+    component: CharacterSheet,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/character',
-    component: CharacterSheet
+    component: CharacterSheet,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '*',

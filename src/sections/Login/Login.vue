@@ -3,7 +3,7 @@
     <div class="login-component">
       <div class="form-container">
         <component :is="formName"
-                   :disabled="disableButton"
+                   :disabled="processing"
                    @toggleForm="toggleForm($event)"
                    @onLogin="doLogin($event)"
                    @onRegister="doRegistration($event)"></component>
@@ -14,10 +14,9 @@
 </template>
 
 <script>
-import AuthService from 'shared/services/AuthService';
-import UserService from 'services/UserService';
 import LoginForm from './LoginForm';
 import RegistrationForm from './RegistrationForm';
+import { mapState, mapActions } from 'store/AuthModule';
 
 export default {
   components: { LoginForm, RegistrationForm },
@@ -27,38 +26,58 @@ export default {
       disableButton: false
     };
   },
+  computed: {
+    ...mapState(['processing'])
+  },
   methods: {
+    ...mapActions(['login', 'register']),
+    doLogin: async function (payload) {
+      var loggedIn = await this.login(payload);
+      if (loggedIn) {
+        if (this.$route.query.redirect) {
+          this.$router.push(this.$route.query.redirect);
+        } else {
+          this.$router.push('home');
+        }
+      }
+    },
+    doRegistration: async function (payload) {
+      await this.register(payload);
+      this.toggleForm('login-form');
+    },
     toggleForm: function (formName) {
       this.formName = formName;
-    },
-    doLogin: async function (login) {
-      try {
-        this.disableButton = true;
-        var loggedIn = await AuthService.login(login);
-        if (loggedIn) {
-          if (this.$route.query.redirect) {
-            this.$router.push(this.$route.query.redirect);
-          } else {
-            this.$router.push('home');
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      this.disableButton = false;
-    },
-    doRegistration: async function (login) {
-      try {
-        this.disableButton = true;
-        await UserService.register(login);
-        this.toggleForm('login-form');
-        this.disableButton = false;
-      } catch (error) {
-        this.disableButton = false;
-      }
     }
   }
 }
+
+/* 
+doLogin: async function (login) {
+  try {
+    this.disableButton = true;
+    var loggedIn = await AuthService.login(login);
+    if (loggedIn) {
+      if (this.$route.query.redirect) {
+        this.$router.push(this.$route.query.redirect);
+      } else {
+        this.$router.push('home');
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  this.disableButton = false;
+},
+doRegistration: async function (login) {
+  try {
+    this.disableButton = true;
+    await UserService.register(login);
+    this.toggleForm('login-form');
+    this.disableButton = false;
+  } catch (error) {
+    this.disableButton = false;
+  }
+} */
 </script>
 
 <style>

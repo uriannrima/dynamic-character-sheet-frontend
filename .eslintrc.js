@@ -40,6 +40,7 @@ module.exports = {
     'no-extend-native': 0,
     // Constructor should not start with lowercase.
     'new-cap': 1,
+    // Normalize properties of components.
     "vue/order-in-components": ["error", {
       "order": [
         "el",
