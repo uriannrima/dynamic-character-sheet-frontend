@@ -3,6 +3,7 @@ export default {
     connect: 'connect',
     saveCharacter: 'saveCharacter',
     loadCharacter: 'loadCharacter',
+    newCharacter: 'newCharacter',
     updateDescription: 'updateDescription',
     updateClasses: 'updateClasses',
     updateSize: 'updateSize',
@@ -22,9 +23,13 @@ export default {
     updateSkills: 'updateSkills',
     updateSkill: 'updateSkill',
     updateCampaign: 'updateCampaign',
-    updateExperience: 'updateExperience'
+    updateExperience: 'updateExperience',
+    updateArmor: 'updateArmor',
+    updateShield: 'updateShield',
+    updateProtectiveItem: 'updateProtectiveItem'
   },
   Mutations: {
+    newCharacter: 'newCharacter',
     updateId: 'updateId',
     updateDescription: 'updateDescription',
     updateClasses: 'updateClasses',
@@ -47,6 +52,9 @@ export default {
     updateSkills: 'updateSkills',
     updateSkill: 'updateSkill',
     updateCampaign: 'updateCampaign',
-    updateExperience: 'updateExperience'
+    updateExperience: 'updateExperience',
+    updateArmor: 'updateArmor',
+    updateShield: 'updateShield',
+    updateProtectiveItem: 'updateProtectiveItem'
   }
 }

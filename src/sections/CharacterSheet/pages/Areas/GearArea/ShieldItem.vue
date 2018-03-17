@@ -6,7 +6,8 @@
       </div>
       <input type="text"
              class="common-input"
-             v-model="shield.name">
+             :value="name"
+             @change="$emit('onShieldUpdate', { name: $event.target.value })">
     </div>
     <div>
       <div>
@@ -15,7 +16,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="shield.acBonus">
+               :value="acBonus"
+               @change="$emit('onShieldUpdate', { acBonus: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -23,7 +25,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="shield.weight">
+               :value="weight"
+               @change="$emit('onShieldUpdate', { weight: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -32,7 +35,8 @@
       </div>
       <input type="number"
              class="common-input"
-             v-model.number="shield.checkPenalty">
+             :value="checkPenalty"
+             @change="$emit('onShieldUpdate', { checkPenalty: $event.target.value * 1 })">
     </div>
     <div>
       <div class="new-black-box">
@@ -40,7 +44,8 @@
       </div>
       <input type="number"
              class="common-input"
-             v-model.number="shield.spellFailure">
+             :value="spellFailure"
+             @change="$emit('onShieldUpdate', { spellFailure: $event.target.value * 1 })">
     </div>
     <div>
       <div class="new-black-box">
@@ -48,17 +53,22 @@
       </div>
       <input type="text"
              class="common-input"
-             v-model="shield.specialProperties">
+             :value="specialProperties"
+             @change="$emit('onShieldUpdate', { specialProperties: $event.target.value })">
     </div>
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
-
 export default {
-  mixins: [CharacterMixin],
-  props: ["shield"]
+  props: [
+    "name",
+    "acBonus",
+    "weight",
+    "checkPenalty",
+    "spellFailure",
+    "specialProperties"
+  ]
 }
 </script>
 

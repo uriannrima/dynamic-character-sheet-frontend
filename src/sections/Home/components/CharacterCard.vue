@@ -1,8 +1,14 @@
 <template>
   <div class="character-card-component">
     <div class="character-card-header">
+      <a href
+         @click.prevent="confirmDelete()">
+        <span class="edit-icon glyphicon glyphicon-trash"
+              title="Delete character"></span>
+      </a>
       <a :href="'#/character/' + character._id">
-        <span class="edit-icon glyphicon glyphicon-edit"></span>
+        <span class="edit-icon glyphicon glyphicon-edit"
+              title="Edit character"></span>
       </a>
       <label>
         {{character.name}}
@@ -53,16 +59,19 @@ export default {
       return this.character.classes
         .filter(classe => classe.name)
         .map(classe => `${classe.name} (${classe.level})`)
-        .reduce(
-          (reducer, classe) =>
-            reducer === "" ? classe : reducer + ", " + classe,
-          ""
-        );
+        .reduce((reducer, classe) => reducer === "" ? classe : reducer + ", " + classe, "");
     },
     getPassiveSkills() {
       return this.character.skills.filter(
         ({ name }) => ["Perception", "Listen", "Spot"].indexOf(name) !== -1
       );
+    }
+  },
+  methods: {
+    confirmDelete() {
+      this.$dialog.confirm(`Do you really want to delete ${this.character.name}?`).then(() => {
+        this.$emit('onDelete', { character: this.character });
+      });
     }
   }
 };
@@ -94,8 +103,7 @@ export default {
 }
 
 .edit-icon {
-  position: absolute;
-  right: 0;
+  float: right;
 }
 
 .character-card-component {

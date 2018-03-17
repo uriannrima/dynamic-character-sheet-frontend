@@ -1,5 +1,5 @@
 import { createNamespacedHelpers } from 'vuex';
-import state from './state';
+import { CharacterState } from './state';
 import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
@@ -8,7 +8,7 @@ export const { mapState, mapGetters, mapActions, mapMutations } = createNamespac
 
 export default {
   namespaced: true,
-  state,
+  state: new CharacterState(),
   getters,
   actions,
   mutations

@@ -6,7 +6,8 @@
       </div>
       <input type="text"
              class="common-input"
-             v-model="armor.name">
+             :value="name"
+             @change="$emit('onArmorUpdate', { name: $event.target.value })">
     </div>
     <div>
       <div>
@@ -15,7 +16,8 @@
         </div>
         <input type="text"
                class="common-input"
-               v-model="armor.type">
+               :value="type"
+               @change="$emit('onArmorUpdate', { type: $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -23,7 +25,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="armor.acBonus">
+               :value="acBonus"
+               @change="$emit('onArmorUpdate', { acBonus: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -31,7 +34,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="armor.maxDex">
+               :value="maxDex"
+               @change="$emit('onArmorUpdate', { maxDex: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -41,7 +45,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="armor.checkPenalty">
+               :value="checkPenalty"
+               @change="$emit('onArmorUpdate', { checkPenalty: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -49,7 +54,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="armor.spellFailure">
+               :value="spellFailure"
+               @change="$emit('onArmorUpdate', { spellFailure: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -59,7 +65,8 @@
         </div>
         <input type="text"
                class="common-input"
-               v-model="armor.speed">
+               :value="speed"
+               @change="$emit('onArmorUpdate', { speed: $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -67,7 +74,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="armor.weight">
+               :value="weight"
+               @change="$emit('onArmorUpdate', { weight: $event.target.value * 1})">
       </div>
     </div>
     <div>
@@ -76,7 +84,8 @@
       </div>
       <input type="text"
              class="common-input"
-             v-model="armor.specialProperties">
+             :value="specialProperties"
+             @change="$emit('onArmorUpdate', { specialProperties: $event.target.value })">
     </div>
   </div>
 </template>
@@ -86,7 +95,17 @@ import CharacterMixin from 'store/mixins/character.mixin';
 
 export default {
   mixins: [CharacterMixin],
-  props: ["armor"]
+  props: [
+    "name",
+    "type",
+    "acBonus",
+    "maxDex",
+    "checkPenalty",
+    "spellFailure",
+    "speed",
+    "weight",
+    "specialProperties"
+  ]
 }
 </script>
 

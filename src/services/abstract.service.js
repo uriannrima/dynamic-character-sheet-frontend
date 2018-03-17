@@ -31,6 +31,10 @@ export default class AbstractService extends SocketService {
     return this.model(response.data);
   }
 
+  async remove(id) {
+    return await super.remove(id);
+  }
+
   async patch(id, model) {
     return await super.patch(id, model);
   }

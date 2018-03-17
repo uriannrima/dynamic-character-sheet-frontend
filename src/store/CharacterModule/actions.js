@@ -56,6 +56,9 @@ export default {
     const character = await CharacterService.saveOrUpdate(state);
     commit(Mappings.Mutations.updateId, character);
   },
+  async [Mappings.Actions.newCharacter]({ commit }) {
+    commit(Mappings.Mutations.newCharacter);
+  },
   async [Mappings.Actions.loadCharacter]({ commit }, characterId) {
     try {
       const character = await CharacterService.getData(characterId);

@@ -1,7 +1,11 @@
 import Mappings from './mappings';
 import ObjectUtils from 'utils/object.utils.js';
+import { CharacterState } from './state';
 
 export default {
+  [Mappings.Mutations.newCharacter](state) {
+    ObjectUtils.extractTo(new CharacterState, state);
+  },
   [Mappings.Mutations.updateId](state, { _id }) {
     state._id = _id;
     window.history.pushState("", "", `/#/character/${_id}`);
@@ -109,5 +113,15 @@ export default {
   },
   [Mappings.Mutations.updateExperience](state, { experience }) {
     state.experience = experience;
+  },
+  [Mappings.Mutations.updateArmor](state, armor) {
+    ObjectUtils.extractTo(armor, state.gear.armor);
+  },
+  [Mappings.Mutations.updateShield](state, shield) {
+    ObjectUtils.extractTo(shield, state.gear.shield);
+  },
+  [Mappings.Mutations.updateProtectiveItem](state, { index, protectiveItem }) {
+    var stateProtectiveItem = state.gear.protectiveItems[index];
+    ObjectUtils.extractTo(protectiveItem, stateProtectiveItem);
   }
 }

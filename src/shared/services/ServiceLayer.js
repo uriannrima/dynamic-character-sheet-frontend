@@ -35,6 +35,13 @@ export class SocketService extends SocketLayer {
     };
   }
 
+  async remove(id) {
+    var data = await this.service.remove(id);
+    return {
+      data
+    }
+  }
+
   async patch(_id, patch) {
     return await this.service.patch(_id, patch, {});
   }
@@ -91,6 +98,11 @@ export class HttpService extends HttpLayer {
     } catch (error) {
       throw error;
     }
+  }
+
+  async remove(id) {
+    var headers = await this.getHeaders();
+    return await this.service.delete(this.url + `/${id}`, { headers });
   }
 
   async patch(_id, patch) {

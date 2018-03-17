@@ -6,7 +6,8 @@
       </div>
       <input type="text"
              class="common-input"
-             v-model="protectiveItem.name">
+             :value="name"
+             @change="$emit('onProtectiveItemUpdate', { name: $event.target.value })">
     </div>
     <div>
       <div>
@@ -15,7 +16,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="protectiveItem.acBonus">
+               :value="acBonus"
+               @change="$emit('onProtectiveItemUpdate', { acBonus: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -23,7 +25,8 @@
         </div>
         <input type="number"
                class="common-input"
-               v-model.number="protectiveItem.weight">
+               :value="weight"
+               @change="$emit('onProtectiveItemUpdate', { weight: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -32,14 +35,20 @@
       </div>
       <input type="text"
              class="common-input"
-             v-model="protectiveItem.specialProperties">
+             :value="specialProperties"
+             @change="$emit('onProtectiveItemUpdate', { specialProperties: $event.target.value })">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["protectiveItem"]
+  props: [
+    "name",
+    "acBonus",
+    "weight",
+    "specialProperties"
+  ]
 }
 </script>
 

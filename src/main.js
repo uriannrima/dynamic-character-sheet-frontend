@@ -3,6 +3,7 @@ import VeeValidate from 'vee-validate';
 import vSelect from 'vue-select';
 import VueTouch from 'vue-touch';
 import VueFeathers from 'vue-feathers';
+import VuejsDialog from "vuejs-dialog";
 
 // CSS Imports.
 
@@ -44,6 +45,7 @@ Vue.use(VueTouch, {
   name: 'v-touch'
 });
 
+Vue.use(VuejsDialog);
 
 Vue.prototype.$setDisable = function ($event, value = true) {
   $event.target.disabled = value;

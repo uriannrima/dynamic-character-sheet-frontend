@@ -8,7 +8,8 @@
     </div>
     <div class="description-component"
          v-show="!minimize">
-      <div class="horizontal-container">
+      <div class="horizontal-container"
+           style="position: relative;">
         <input type="text"
                class="full-width-input"
                :value="name"
@@ -16,8 +17,9 @@
                name="Character Name"
                v-validate:name.initial="'required'">
         <label>Character Name</label>
-        <button @click="saveCharacter()"
-                :disabled="hasErrors">Save</button>
+        <span class="save-button glyphicon glyphicon-floppy-save"
+              @click="saveCharacter()"
+              v-show="!hasErrors"></span>
       </div>
       <div class="horizontal-container">
         <input type="text"
@@ -217,6 +219,17 @@ export default {
 
 .full-width-input {
   width: 100%;
+}
+
+.save-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  color: gray;
 }
 
 @media screen and (max-width: 768px) {

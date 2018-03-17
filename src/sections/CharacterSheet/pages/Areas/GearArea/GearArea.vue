@@ -7,25 +7,35 @@
       </div>
     </div>
     <armor-item v-show="!minimize"
-                :armor="character.gear.armor"></armor-item>
+                v-bind="$extract(gear.armor)"
+                @onArmorUpdate="updateArmor($event)"></armor-item>
     <shield-item v-show="!minimize"
-                 :shield="character.gear.shield"></shield-item>
+                 :shield="gear.shield"
+                v-bind="$extract(gear.shield)"
+                @onShieldUpdate="updateShield($event)"></shield-item>
     <protective-item v-show="!minimize"
-                     v-for="(protectiveItem, index) in character.gear.protectiveItems"
+                     v-for="(protectiveItem, index) in gear.protectiveItems"
                      :key="index"
-                     :protectiveItem="protectiveItem"></protective-item>
+                     v-bind="$extract(gear.protectiveItem)"
+                     @onProtectiveItemUpdate="updateProtectiveItem({ index, protectiveItem: $event })"></protective-item>
   </div>
 
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
 import { ArmorItem, ShieldItem, ProtectiveItem } from './';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapMutations } from 'store/CharacterModule';
 
 export default {
   components: { ArmorItem, ShieldItem, ProtectiveItem },
-  mixins: [CharacterMixin, MinimizableMixin]
+  mixins: [MinimizableMixin],
+  computed: {
+    ...mapState(['gear'])
+  },
+  methods: {
+    ...mapMutations(['updateArmor', 'updateShield', 'updateProtectiveItem'])
+  }
 }
 </script>
 

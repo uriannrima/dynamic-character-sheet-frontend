@@ -13,7 +13,9 @@ export default {
   components: Pages,
   beforeRouteEnter: async function (to, from, next) {
     if (!to.params.id) {
-      next();
+      next(vm => {
+        vm.newCharacter();
+      });
     } else {
       next(vm => {
         vm.connect(to.params.id);
@@ -23,6 +25,7 @@ export default {
   },
   beforeRouteUpdate: async function (to, from, next) {
     if (!to.params.id) {
+      this.newCharacter();
       next();
     } else {
       vm.connect(to.params.id);
@@ -34,7 +37,7 @@ export default {
     ...mapState(['_id'])
   },
   methods: {
-    ...mapActions([Mappings.Actions.loadCharacter, 'connect'])
+    ...mapActions([Mappings.Actions.loadCharacter, Mappings.Actions.newCharacter, 'connect'])
   }
 }
 </script>
