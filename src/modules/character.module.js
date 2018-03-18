@@ -2,11 +2,7 @@ var Modules = require('./');
 _ = require('lodash');
 
 export const Character = function ({
-  _id, name = "", player = "",
-  race = "", alignment = "", deity = "",
-  size, age = "", gender = "", height = "",
-  weight = "", eyes = "", hair = "", skin = "", speed = "",
-  damageReduction = "", classes, abilityScores,
+  _id, description, speed, size, damageReduction = "", classes, abilityScores,
   status = {}, armorClass, initiative, conditionModifiers = "",
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = Modules.SkillsModule.All.map(skill => new Modules.SkillsModule.Skill(skill)),
@@ -31,18 +27,7 @@ export const Character = function ({
 
   return {
     _id,
-    name,
-    player,
-    race,
-    alignment,
-    deity,
-    age,
-    gender,
-    height,
-    weight,
-    eyes,
-    hair,
-    skin,
+    description, speed,
     speed,
     damageReduction,
     conditionModifiers,

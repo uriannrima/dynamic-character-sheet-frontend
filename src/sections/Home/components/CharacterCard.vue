@@ -11,7 +11,7 @@
               title="Edit character"></span>
       </a>
       <label>
-        {{character.name}}
+        {{character.description.name}}
       </label>
       <label>
         {{getCharacterClasses}}
