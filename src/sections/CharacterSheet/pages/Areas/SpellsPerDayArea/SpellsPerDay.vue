@@ -7,22 +7,28 @@
       <label>Spells<br>Per Day</label>
       <label>Bonus<br>Spells</label>
     </div>
-    <single-spell-per-day v-for="(spells, spellLevel, index) in character.spells.groupBy(spell => spell.level)"
+    <single-spell-per-day v-for="(spells, spellLevel, index) in spells.groupBy(spell => spell.level)"
                           :key="index"
-                          :spellPerDay="character.spellPerDayList[index]"
+                          :spellPerDay="spellPerDayList[index]"
                           :spellLevel="spellLevel"
-                          :keyAbility="getKeyAbility('intelligence')"
+                          :keyScoreModifier="getTempModifier(keyScore)"
                           :spellsPerLevel="spells.length"></single-spell-per-day>
   </div>
 </template>
 
 <script>
-import KeyAbilityMixin from 'shared/mixins/methods/key.ability.mixin';
 import { SingleSpellPerDay } from './';
+import { mapState, mapGetters } from 'store/CharacterModule';
 
 export default {
   components: { SingleSpellPerDay },
-  mixins: [KeyAbilityMixin]
+  computed: {
+    ...mapState(['spells', 'spellPerDayList', 'keyAbilityScores']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier']),
+    keyScore() {
+      return this.getAbilityScore(this.keyAbilityScores.spells);
+    }
+  }
 }
 </script>
 

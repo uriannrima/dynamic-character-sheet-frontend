@@ -86,7 +86,11 @@ export default {
         Mappings.Mutations.updateSkills,
         Mappings.Mutations.updateCampaign,
         Mappings.Mutations.updateExperience,
-        Mappings.Mutations.updateItems
+        Mappings.Mutations.updateItems,
+        Mappings.Mutations.updateFeats,
+        Mappings.Mutations.updateSpecialAbilities,
+        Mappings.Mutations.updateLanguages,
+        Mappings.Mutations.updateSpells,
       ].forEach(mutation => {
         commit(mutation, character);
       });

@@ -7,7 +7,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="10 + (spellLevel * 1) + keyAbility.getTempModifier()">
+           :value="10 + (spellLevel * 1) + keyScoreModifier">
     <label v-if="spellLevel == 0">0</label>
     <label v-if="spellLevel == 1">1st</label>
     <label v-if="spellLevel == 2">2nd</label>
@@ -26,7 +26,12 @@
 
 <script>
 export default {
-  props: ['spellsPerLevel', 'spellPerDay', 'spellLevel', 'keyAbility']
+  props: [
+    'spellsPerLevel',
+    'spellPerDay',
+    'spellLevel',
+    'keyScoreModifier'
+  ]
 }
 </script>
 

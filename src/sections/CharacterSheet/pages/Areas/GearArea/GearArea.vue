@@ -16,7 +16,7 @@
     <protective-item v-show="!minimize"
                      v-for="(protectiveItem, index) in gear.protectiveItems"
                      :key="index"
-                     v-bind="$extract(gear.protectiveItem)"
+                     v-bind="$extract(protectiveItem)"
                      @onProtectiveItemUpdate="updateProtectiveItem({ index, protectiveItem: $event })"></protective-item>
   </div>
 

@@ -28,7 +28,11 @@ export default {
     updateShield: 'updateShield',
     updateProtectiveItem: 'updateProtectiveItem',
     updateItems: 'updateItems',
-    updateItem: 'updateItem'
+    updateItem: 'updateItem',
+    updateFeats: 'updateFeats',
+    updateSpecialAbilities: 'updateSpecialAbilities',
+    updateLanguages: 'updateLanguages',
+    updateSpells: 'updateSpells'
   },
   Mutations: {
     newCharacter: 'newCharacter',
@@ -60,6 +64,11 @@ export default {
     updateProtectiveItem: 'updateProtectiveItem',
     updateItems: 'updateItems',
     updateItem: 'updateItem',
+
+    updateFeats: 'updateFeats',
+    updateSpecialAbilities: 'updateSpecialAbilities',
+    updateLanguages: 'updateLanguages',
+    updateSpells: 'updateSpells',
 
     addFeat: 'addFeat',
     removeFeat: 'removeFeat',

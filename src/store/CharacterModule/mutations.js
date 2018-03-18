@@ -137,6 +137,28 @@ export default {
     ObjectUtils.extractTo(item, stateItem);
   },
 
+
+  [Mappings.Mutations.updateFeats](state, { feats }) {
+    feats.forEach(feat => {
+      state.feats.push(feat);
+    });
+  },
+  [Mappings.Mutations.updateSpecialAbilities](state, { specialAbilities }) {
+    specialAbilities.forEach(specialAbility => {
+      state.specialAbilities.push(specialAbility);
+    });
+  },
+  [Mappings.Mutations.updateLanguages](state, { languages }) {
+    languages.forEach(language => {
+      state.languages.push(language);
+    });
+  },
+  [Mappings.Mutations.updateSpells](state, { spells }) {
+    spells.forEach(spell => {
+      state.spells.push(spell);
+    });
+  },
+
   [Mappings.Mutations.addFeat](state, feat) {
     state.feats.push(feat);
   },

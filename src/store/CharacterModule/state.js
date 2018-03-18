@@ -12,6 +12,7 @@ import { Skill, All } from 'modules/skill.module';
 import Item from 'modules/item.module';
 import CarryCapacities from 'modules/carry-capacities.module';
 import Wealth from 'modules/wealth.module';
+import SpellPerDay from 'modules/spells-per-day.module';
 
 export class CharacterState {
   constructor() {
@@ -31,7 +32,8 @@ export class CharacterState {
       keyAbilityScores: {
         armor: 'dexterity',
         initiative: 'dexterity',
-        grapple: 'strength'
+        grapple: 'strength',
+        spells: 'intelligence'
       },
       armorClass: new ArmorClass(),
       status: new Status(),
@@ -59,7 +61,8 @@ export class CharacterState {
       specialAbilities: [],
       languages: [],
       spells: [],
-      domainSchool: ""
+      domainSchool: "",
+      spellPerDayList: [...Array(10)].map(() => new SpellPerDay()),
     });
   }
 }
