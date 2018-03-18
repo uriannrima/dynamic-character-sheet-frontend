@@ -12,43 +12,47 @@
       <span class="spells-note">Domains/Specialty School</span>
       <input type="text"
              class="common-input only-bottom"
-             v-model="character.domainSchool">
+             :value="domainSchool"
+             @change="updateDomainSchool($event.target.value)">
       <spells-group v-for="(spells, spellsGroup, index) in spellsPerGroup"
                     :key="index"
                     :group="spellsGroup"
                     :spells="spells"
                     @onSelected="onSelected"></spells-group>
       <div class="no-content-container"
-           v-if="character.spells.length == 0">
+           v-if="spells.length == 0">
         <label>No spells</label>
       </div>
     </div>
     <spell-modal :show.sync="showModal"
-                 :referenceList="character.spells"
+                 :referenceList="spells"
                  :describe.sync="selected"
-                 @onAdded="addToCharacter($event.model)"
-                 @onRemoved="removeFromCharacter($event.model)"
-                 @onUpdated="updateOnCharacter($event.model)"></spell-modal>
+                 @onAdded="addSpell($event.model)"
+                 @onRemoved="removeSpell($event.model)"></spell-modal>
   </div>
 </template>
 
 <script>
-import { CharacterUpdateMixin, ModalContainerMixin } from 'shared/modal';
-import CharacterMixin from 'store/mixins/character.mixin';
+import { ModalContainerMixin } from 'shared/modal';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { SpellsGroup, SpellModal } from './';
+import { mapState, mapMutations } from 'store/CharacterModule';
 
 export default {
   components: { SpellsGroup, SpellModal },
-  mixins: [CharacterUpdateMixin, ModalContainerMixin, CharacterMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin, MinimizableMixin],
   computed: {
+    ...mapState(['spells', 'domainSchool']),
     spellsPerGroup: function () {
-      return this.character.spells.groupBy(s => s.level);
+      return this.spells.groupBy(s => s.level);
     }
   },
   created() {
     this.arrayName = 'spells';
   },
+  methods: {
+    ...mapMutations(['addSpell', 'removeSpell', 'updateDomainSchool'])
+  }
 }
 </script>
 

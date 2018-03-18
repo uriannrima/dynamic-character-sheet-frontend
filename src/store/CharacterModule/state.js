@@ -54,7 +54,12 @@ export class CharacterState {
       experience: "",
       items: [...Array(2 * 17)].map(() => new Item()),
       carryCapacities: new CarryCapacities(),
-      wealth: new Wealth()
+      wealth: new Wealth(),
+      feats: [],
+      specialAbilities: [],
+      languages: [],
+      spells: [],
+      domainSchool: ""
     });
   }
 }

@@ -2,6 +2,8 @@ import Mappings from './mappings';
 import ObjectUtils from 'utils/object.utils.js';
 import { CharacterState } from './state';
 
+
+
 export default {
   [Mappings.Mutations.newCharacter](state) {
     ObjectUtils.extractTo(new CharacterState, state);
@@ -133,5 +135,40 @@ export default {
   [Mappings.Mutations.updateItem](state, { index, item }) {
     const stateItem = state.items[index];
     ObjectUtils.extractTo(item, stateItem);
+  },
+
+  [Mappings.Mutations.addFeat](state, feat) {
+    state.feats.push(feat);
+  },
+  [Mappings.Mutations.removeFeat](state, feat) {
+    const index = state.feats.map(feat => feat._id).indexOf(feat._id);
+    state.feats.splice(index, 1);
+  },
+
+  [Mappings.Mutations.addSpecialAbility](state, specialAbility) {
+    state.specialAbilities.push(specialAbility);
+  },
+  [Mappings.Mutations.removeSpecialAbility](state, specialAbility) {
+    const index = state.specialAbilities.map(specialAbility => specialAbility._id).indexOf(specialAbility._id);
+    state.specialAbilities.splice(index, 1);
+  },
+
+  [Mappings.Mutations.addLanguage](state, language) {
+    state.languages.push(language);
+  },
+  [Mappings.Mutations.removeLanguage](state, language) {
+    const index = state.languages.map(language => language._id).indexOf(language._id);
+    state.languages.splice(index, 1);
+  },
+
+  [Mappings.Mutations.addSpell](state, spell) {
+    state.spells.push(spell);
+  },
+  [Mappings.Mutations.removeSpell](state, spell) {
+    const index = state.spells.map(spell => spell._id).indexOf(spell._id);
+    state.spells.splice(index, 1);
+  },
+  [Mappings.Mutations.updateDomainSchool](state, domainSchool) {
+    state.domainSchool = domainSchool;
   }
 }

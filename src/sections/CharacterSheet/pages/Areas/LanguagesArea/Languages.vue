@@ -7,37 +7,43 @@
         <open-modal-button :showModal.sync="showModal"></open-modal-button>
       </div>
     </div>
-    <div class="languages-container" v-show="!minimize">
-      <language v-for="(language, index) in character.languages"
+    <div class="languages-container"
+         v-show="!minimize">
+      <language v-for="(language, index) in languages"
                 :key="index"
                 :language="language"
                 @onSelected="onSelected"></language>
       <div class="no-content-container"
-           v-if="character.languages.length == 0">
+           v-if="languages.length == 0">
         <label>No languages</label>
       </div>
     </div>
     <language-modal :show.sync="showModal"
-                    :referenceList="character.languages"
+                    :referenceList="languages"
                     :describe.sync="selected"
-                    @onAdded="addToCharacter($event.model)"
-                    @onRemoved="removeFromCharacter($event.model)"
-                    @onUpdated="updateOnCharacter($event.model)"></language-modal>
+                    @onAdded="addLanguage($event.model)"
+                    @onRemoved="removeLanguage($event.model)"></language-modal>
   </div>
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
-import { CharacterUpdateMixin, ModalContainerMixin } from 'shared/modal';
+import { ModalContainerMixin } from 'shared/modal';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { Language, LanguageModal } from './';
+import { mapState, mapMutations } from 'store/CharacterModule';
 
 export default {
   components: { Language, LanguageModal },
-  mixins: [CharacterMixin, CharacterUpdateMixin, ModalContainerMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin, MinimizableMixin],
+  computed: {
+    ...mapState(['languages'])
+  },
   created() {
-    // character.update.mixin requirement.
+    // update.mixin requirement.
     this.arrayName = 'languages';
+  },
+  methods: {
+    ...mapMutations(['addLanguage', 'removeLanguage'])
   }
 }
 </script>

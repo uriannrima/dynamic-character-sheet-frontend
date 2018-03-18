@@ -59,6 +59,16 @@ export default {
     updateShield: 'updateShield',
     updateProtectiveItem: 'updateProtectiveItem',
     updateItems: 'updateItems',
-    updateItem: 'updateItem'
+    updateItem: 'updateItem',
+
+    addFeat: 'addFeat',
+    removeFeat: 'removeFeat',
+    addSpecialAbility: 'addSpecialAbility',
+    removeSpecialAbility: 'removeSpecialAbility',
+    addLanguage: 'addLanguage',
+    removeLanguage: 'removeLanguage',
+    addSpell: 'addSpell',
+    removeSpell: 'removeSpell',
+    updateDomainSchool: 'updateDomainSchool'
   }
 }
