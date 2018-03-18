@@ -2,7 +2,8 @@ export default {
   Actions: {
     login: "login",
     logout: "logout",
-    register: "register"
+    register: "register",
+    refresh: "refresh"
   },
   Mutations: {
     login: "login",

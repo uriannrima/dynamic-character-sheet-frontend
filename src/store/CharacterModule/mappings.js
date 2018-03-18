@@ -26,7 +26,9 @@ export default {
     updateExperience: 'updateExperience',
     updateArmor: 'updateArmor',
     updateShield: 'updateShield',
-    updateProtectiveItem: 'updateProtectiveItem'
+    updateProtectiveItem: 'updateProtectiveItem',
+    updateItems: 'updateItems',
+    updateItem: 'updateItem'
   },
   Mutations: {
     newCharacter: 'newCharacter',
@@ -55,6 +57,8 @@ export default {
     updateExperience: 'updateExperience',
     updateArmor: 'updateArmor',
     updateShield: 'updateShield',
-    updateProtectiveItem: 'updateProtectiveItem'
+    updateProtectiveItem: 'updateProtectiveItem',
+    updateItems: 'updateItems',
+    updateItem: 'updateItem'
   }
 }

@@ -2,15 +2,19 @@
   <div class="carry-capacity-component">
     <input type="number"
            class="common-input"
-           v-model.number="carryCapacity.value">
-    <label v-html="carryCapacity.label"></label>
-    <small v-if="carryCapacity.small">{{carryCapacity.small}}</small>
+           :value="value">
+    <label v-html="label"></label>
+    <small v-if="small">{{small}}</small>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['carryCapacity']
+  props: [
+    'value',
+    'label',
+    'small'
+  ]
 }
 </script>
 

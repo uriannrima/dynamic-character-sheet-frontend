@@ -71,13 +71,24 @@ export default {
   getBaseAttackBonus: state => {
     return state.baseAttackBonus.join('/');
   },
-  getGrappleTotal(state, getters) {
+  getGrappleTotal: (state, getters) => {
     return state.baseAttackBonus.map(bab => {
       return bab + getters.getGrappleKeyScore.tempModifier + state.size.grappleBonus + state.grapple.miscModifier;
     }).join('/');
   },
-  getGearPenalty(state) {
+  getGearPenalty: (state) => {
     const { armor, shield } = state.gear;
     return armor.checkPenalty + shield.checkPenalty;
+  },
+  getTotalWeight: (state) => {
+    var gearWeight = 0;
+    var { armor, shield, protectiveItems } = state.gear;
+    if (armor) gearWeight += armor.weight;
+    if (shield) gearWeight += shield.weight;
+    if (protectiveItems) gearWeight = protectiveItems.reduce((acc, item) => acc + item.weight, gearWeight);
+    return state.items.reduce((acc, item) => {
+      if (typeof item.weight !== 'number') return acc;
+      return acc + item.weight;
+    }, gearWeight).toPrecision(2);
   }
 }

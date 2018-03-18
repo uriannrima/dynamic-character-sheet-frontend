@@ -1,7 +1,7 @@
 import Mappings from './mappings';
 import AuthService from 'shared/services/auth/AuthService';
 import UserService from 'services/UserService';
-// import ApplicationDatabase from 'shared/databases/ApplicationDatabase';
+import ApplicationDatabase from 'shared/databases/ApplicationDatabase';
 
 export default {
   async [Mappings.Actions.login]({ commit }, payload) {
@@ -9,7 +9,7 @@ export default {
     var userSession = await AuthService.login(payload);
     commit(Mappings.Mutations.toggleProcessing, false);
     if (userSession && userSession.accessToken) {
-      // await ApplicationDatabase.Instance.setItem('userSession', userSession);
+      await ApplicationDatabase.Instance.setItem('userSession', userSession);
       commit(Mappings.Mutations.saveUserSession, userSession);
       return true;
     }
@@ -18,7 +18,7 @@ export default {
   async [Mappings.Actions.logout]({ commit }) {
     commit(Mappings.Mutations.toggleProcessing, true);
     await AuthService.logout();
-    // await ApplicationDatabase.Instance.removeItem('userSession');
+    await ApplicationDatabase.Instance.removeItem('userSession');
     commit(Mappings.Mutations.saveUserSession, null);
     commit(Mappings.Mutations.toggleProcessing, false);
     return true;
@@ -27,5 +27,14 @@ export default {
     commit(Mappings.Mutations.toggleProcessing, true);
     await UserService.register(payload);
     commit(Mappings.Mutations.toggleProcessing, false);
+  },
+  async [Mappings.Actions.refresh]({ commit, getters, rootGetters }) {
+    if (getters.isAuthenticated) {
+      return true;
+    } else {
+      const userSession = await ApplicationDatabase.Instance.getItem('userSession');
+      commit(Mappings.Mutations.saveUserSession, userSession);
+      return rootGetters['AuthModule/isAuthenticated'];
+    }
   }
 }

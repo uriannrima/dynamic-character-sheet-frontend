@@ -11,8 +11,8 @@ const AttackModule = require('./attack.module');
 const AmmunitionModule = require('./ammunition.module');
 const GearModule = require('./gear.module');
 const ItemModule = require('./item.module');
-const CarryCapacityModule = require('./carry-capacity.module');
-const MoneyModule = require('./money.module');
+const CarryCapacitiesModule = require('./carry-capacities.module');
+const WealthModule = require('./wealth.module');
 const FeatModule = require('./feat.module');
 const SpecialAbilityModule = require('./special-ability.module');
 const SubValueModule = require('./sub-value.module');
@@ -36,8 +36,8 @@ module.exports = {
   AmmunitionModule,
   GearModule,
   ItemModule,
-  CarryCapacityModule,
-  MoneyModule,
+  CarryCapacitiesModule,
+  WealthModule,
   FeatModule,
   SubValueModule,
   SpellsPerDayModule,

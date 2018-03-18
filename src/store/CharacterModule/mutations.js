@@ -10,8 +10,8 @@ export default {
     state._id = _id;
     window.history.pushState("", "", `/#/character/${_id}`);
   },
-  [Mappings.Mutations.updateDescription](state, description) {
-    ObjectUtils.extractTo(description, state);
+  [Mappings.Mutations.updateDescription](state, { description }) {
+    ObjectUtils.extractTo(description, state.description);
   },
   [Mappings.Mutations.updateClasses](state, { classes }) {
     // TODO: Remake it not to "rewrite" the array.
@@ -27,8 +27,8 @@ export default {
       // Map it to abilityScore
       .map(abilityScoreName => abilityScores[abilityScoreName])
       // Calculate modifiers.
-      .map(abilityScore => {
-        var stateAbilityScore = state.abilityScores[abilityScore.name];
+      .forEach(abilityScore => {
+        const stateAbilityScore = state.abilityScores[abilityScore.name];
         /**
          * Since the backend still doesn't have modifier and tempModifier
          * We have to calculate it before updating the state on first load.
@@ -39,7 +39,7 @@ export default {
       });
   },
   [Mappings.Mutations.updateAbilityScore](state, abilityScore) {
-    var stateAbilityScore = state.abilityScores[abilityScore.name];
+    const stateAbilityScore = state.abilityScores[abilityScore.name];
     ObjectUtils.extractTo(abilityScore, stateAbilityScore);
   },
   [Mappings.Mutations.updateStatus](state, { status }) {
@@ -70,13 +70,13 @@ export default {
   [Mappings.Mutations.updateSavingThrows](state, { savingThrows }) {
     Object.keys(savingThrows)
       .map(savingThrowName => savingThrows[savingThrowName])
-      .map(savingThrow => {
-        var stateSavingThrow = state.savingThrows[savingThrow.name];
+      .forEach(savingThrow => {
+        const stateSavingThrow = state.savingThrows[savingThrow.name];
         ObjectUtils.extractTo(savingThrow, stateSavingThrow);
       });
   },
   [Mappings.Mutations.updateSavingThrow](state, savingThrow) {
-    var stateSavingThrow = state.savingThrows[savingThrow.name];
+    const stateSavingThrow = state.savingThrows[savingThrow.name];
     ObjectUtils.extractTo(savingThrow, stateSavingThrow);
   },
   [Mappings.Mutations.updateConditionModifiers](state, { conditionModifiers }) {
@@ -89,23 +89,23 @@ export default {
     state.spellResistance = spellResistance;
   },
   [Mappings.Mutations.updateAttacks](state, { attacks = [] }) {
-    attacks.map((attack, index) => {
-      var stateAttack = state.attacks[index];
+    attacks.forEach((attack, index) => {
+      const stateAttack = state.attacks[index];
       ObjectUtils.extractTo(attack, stateAttack);
     });
   },
   [Mappings.Mutations.updateAttack](state, { index, attack }) {
-    var stateAttack = state.attacks[index];
+    const stateAttack = state.attacks[index];
     ObjectUtils.extractTo(attack, stateAttack);
   },
   [Mappings.Mutations.updateSkills](state, { skills = [] }) {
-    skills.map(skill => {
-      var stateSkill = state.skills.find(sSkill => sSkill.name === skill.name);
+    skills.forEach(skill => {
+      const stateSkill = state.skills.find(sSkill => sSkill.name === skill.name);
       ObjectUtils.extractTo(skill, stateSkill);
     });
   },
   [Mappings.Mutations.updateSkill](state, { index, skill }) {
-    var stateSkill = state.skills[index];
+    const stateSkill = state.skills[index];
     ObjectUtils.extractTo(skill, stateSkill);
   },
   [Mappings.Mutations.updateCampaign](state, { campaign }) {
@@ -121,7 +121,17 @@ export default {
     ObjectUtils.extractTo(shield, state.gear.shield);
   },
   [Mappings.Mutations.updateProtectiveItem](state, { index, protectiveItem }) {
-    var stateProtectiveItem = state.gear.protectiveItems[index];
+    const stateProtectiveItem = state.gear.protectiveItems[index];
     ObjectUtils.extractTo(protectiveItem, stateProtectiveItem);
+  },
+  [Mappings.Mutations.updateItems](state, { items }) {
+    items.forEach((item, index) => {
+      const stateItem = state.items[index];
+      ObjectUtils.extractTo(item, stateItem);
+    });
+  },
+  [Mappings.Mutations.updateItem](state, { index, item }) {
+    const stateItem = state.items[index];
+    ObjectUtils.extractTo(item, stateItem);
   }
 }

@@ -13,29 +13,29 @@
         <input type="text"
                class="full-width-input"
                :value="name"
-               @change="updateDescription({ name: $event.target.value })"
+               @change="$emit('onDescriptionUpdate', { name: $event.target.value })"
                name="Character Name"
                v-validate:name.initial="'required'">
         <label>Character Name</label>
         <span class="save-button glyphicon glyphicon-floppy-save"
-              @click="saveCharacter()"
-              v-show="!hasErrors"></span>
+              @click="$emit('onCharacterSave')"
+              v-show="!errors.any()"></span>
       </div>
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="playerName"
-               @change="updateDescription({ playerName: $event.target.value })"
+               :value="player"
+               @change="$emit('onDescriptionUpdate', { player: $event.target.value })"
                name="Player Name"
-               v-validate:playerName.initial="'required'">
-        <label>Player Name</label>
+               v-validate:player.initial="'required'">
+        <label>Player</label>
       </div>
       <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
-               :value="getClasses"
-               v-validate:getClasses.initial="'required'"
-               @change="updateClasses({classes : parseStringToClasses($event.target.value)})">
+               :value="classes"
+               v-validate:classes.initial="'required'"
+               @change="$emit('onClassesUpdate', { classes : parseStringToClasses($event.target.value) })">
         <label>Class and Level</label>
       </div>
       <div class="three-part-area">
@@ -43,32 +43,32 @@
           <input type="text"
                  class="full-width-input"
                  :value="race"
-                 @change="updateDescription({ race: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { race: $event.target.value })">
           <label>Race</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="alignment"
-                 @change="updateDescription({ alignment: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { alignment: $event.target.value })">
           <label>Alignment</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="deity"
-                 @change="updateDescription({ deity: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { deity: $event.target.value })">
           <label>Deity</label>
         </div>
       </div>
       <div class="four-part-area">
         <div class="horizontal-container">
           <select class="full-width-input"
-                  @change="updateSize({ size : allSizes.find(size => size.name === $event.target.value) })">
+                  @change="$emit('onSizeUpdate', { size : allSizes.find(size => size.name === $event.target.value) })">
             <option v-for="(size, index) in allSizes"
                     :key="index"
                     :value="size.name"
-                    :selected="size.name === getSize">{{size.name}}</option>
+                    :selected="size.name === sizeName">{{size.name}}</option>
           </select>
           <label>Size</label>
         </div>
@@ -76,21 +76,21 @@
           <input type="text"
                  class="full-width-input"
                  :value="age"
-                 @change="updateDescription({ age: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { age: $event.target.value })">
           <label>Age</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="gender"
-                 @change="updateDescription({ gender: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { gender: $event.target.value })">
           <label>Gender</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="height"
-                 @change="updateDescription({ height: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { height: $event.target.value })">
           <label>Height</label>
         </div>
       </div>
@@ -99,28 +99,28 @@
           <input type="text"
                  class="full-width-input"
                  :value="weight"
-                 @change="updateDescription({ weight: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { weight: $event.target.value })">
           <label>Weight</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="eyes"
-                 @change="updateDescription({ eyes: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { eyes: $event.target.value })">
           <label>Eyes</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="hair"
-                 @change="updateDescription({ hair: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { hair: $event.target.value })">
           <label>Hair</label>
         </div>
         <div class="horizontal-container">
           <input type="text"
                  class="full-width-input"
                  :value="skin"
-                 @change="updateDescription({ skin: $event.target.value })">
+                 @change="$emit('onDescriptionUpdate', { skin: $event.target.value })">
           <label>Skin</label>
         </div>
       </div>
@@ -131,32 +131,25 @@
 <script>
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import SizeService from 'services/size.service';
-import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 export default {
   mixins: [MinimizableMixin],
+  props: [
+    'name', 'player',
+    'classes', 'race', 'alignment',
+    'deity', 'age', 'gender',
+    'height', 'weight', 'eyes',
+    'hair', 'skin', 'sizeName'
+  ],
   data() {
     return {
       allSizes: []
-    }
-  },
-  computed: {
-    ...mapState([
-      '_id', 'name', 'playerName', 'classes',
-      'race', 'alignment', 'deity', 'age', 'gender',
-      'height', 'weight', 'eyes',
-      'hair', 'skin', 'size'
-    ]),
-    ...mapGetters(['getClasses', 'getSize']),
-    hasErrors() {
-      return this.errors.any();
     }
   },
   created: async function () {
     this.allSizes = await SizeService.getAll();
   },
   methods: {
-    ...mapActions(['saveCharacter', 'updateDescription', 'updateClasses', 'updateSize']),
     parseStringToClasses(classesAsString) {
       const classes = [];
       const eachClass = classesAsString.split(",");

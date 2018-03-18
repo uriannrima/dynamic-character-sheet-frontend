@@ -2,7 +2,7 @@
   <div class="carry-capacities-component">
     <carry-capacity v-for="(carryCapacity, index) in carryCapacities"
                     :key="index"
-                    :carryCapacity="carryCapacity"></carry-capacity>
+                    v-bind="$extract(carryCapacity)"></carry-capacity>
   </div>
 </template>
 

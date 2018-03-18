@@ -2,7 +2,7 @@ var Modules = require('./');
 _ = require('lodash');
 
 export const Character = function ({
-  _id, name = "", playerName = "",
+  _id, name = "", player = "",
   race = "", alignment = "", deity = "",
   size, age = "", gender = "", height = "",
   weight = "", eyes = "", hair = "", skin = "", speed = "",
@@ -11,7 +11,7 @@ export const Character = function ({
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = Modules.SkillsModule.All.map(skill => new Modules.SkillsModule.Skill(skill)),
   attacks, gear, items = [], carryCapacities,
-  campaign = "", experience = 0, money, feats = [], languages = [],
+  campaign = "", experience = 0, wealth, feats = [], languages = [],
   specialAbilities = [], domainSchool = "", spellSave = 0,
   arcaneSpellFailure = 0, spellConditionModifier = "",
   spells = [], spellPerDayList = [] }) {
@@ -32,7 +32,7 @@ export const Character = function ({
   return {
     _id,
     name,
-    playerName,
+    player,
     race,
     alignment,
     deity,
@@ -124,7 +124,7 @@ export const Character = function ({
     },
     campaign,
     experience,
-    money: money || new Modules.MoneyModule.Money({
+    wealth: wealth || new Modules.WealthModule.Wealth({
       copper: 0,
       silver: 0,
       gold: 0,

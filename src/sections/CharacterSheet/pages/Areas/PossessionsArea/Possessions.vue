@@ -2,31 +2,33 @@
   <div>
     <div class="black-box rounded">
       <div>
-        <label>Other Possessions</label>
+        <label>Other Items</label>
         <minimize-button :minimize.sync="minimize"></minimize-button>
       </div>
     </div>
-    <div class="possessions-component"
+    <div class="items-component"
          v-show="!minimize">
-      <div class="possession-column"
+      <div class="item-column"
            v-for="(c, column) in 2"
            :key="column">
-        <div class="possesion-component possessions-header"
+        <div class="item-component items-header"
              v-show="column == 0 || showSecondHeader">
           <label>Item</label>
           <label>Page</label>
           <label>Weight</label>
         </div>
-        <possession v-for="(r,row) in 17"
-                    :key="row"
-                    :possession="possessions[(column * 17) + row] || {}"></possession>
+        <item v-for="(r,row) in 17"
+              :key="row"
+              v-bind="$extract(items[(column * 17) + row])"
+              @onItemUpdate="updateItem({ index: ((column * 17) + row), item: $event })">
+        </item>
       </div>
-      <div class="total-possesion">
+      <div class="total-Item">
         <label>Total Weight Carried</label>
         <input type="number"
                class="common-input"
                readonly
-               :value="totalWeight">
+               :value="getTotalWeight">
       </div>
     </div>
     <div class="carry-capacities-container"
@@ -39,15 +41,14 @@
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
-import { Possession, CarryCapacities, Wealth } from "./";
+import { Item, CarryCapacities, Wealth } from "./";
 import ResizeMixin from 'shared/mixins/events/resize.handler.mixin';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
 
 export default {
-  components: { Possession, CarryCapacities, Wealth },
-  mixins: [CharacterMixin, ResizeMixin, MinimizableMixin],
-  props: ["possessions", "carryCapacities", "wealth"],
+  components: { Item, CarryCapacities, Wealth },
+  mixins: [ResizeMixin, MinimizableMixin],
   data() {
     var minimumWidth = 768;
     return {
@@ -56,19 +57,11 @@ export default {
     };
   },
   computed: {
-    totalWeight() {
-      var gearWeight = 0;
-      var { armor, shield, protectiveItems } = this.character.gear;
-      if (armor) gearWeight += armor.weight;
-      if (shield) gearWeight += shield.weight;
-      if (protectiveItems) gearWeight = protectiveItems.reduce((acc, item) => acc + item.weight, gearWeight);
-      return this.possessions.reduce((acc, possession) => {
-        if (typeof possession.weight !== 'number') return acc;
-        return acc + possession.weight;
-      }, gearWeight).toPrecision(3);
-    }
+    ...mapState(['items', 'carryCapacities', 'wealth']),
+    ...mapGetters(['getTotalWeight'])
   },
   methods: {
+    ...mapMutations(['updateItem']),
     handleResize: function () {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }
@@ -77,28 +70,28 @@ export default {
 </script>
 
 <style>
-.possessions-component {
+.items-component {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.possessions-header {
+.items-header {
   text-align: center;
   text-transform: uppercase;
   font-weight: bolder;
   font-size: 75%;
 }
-.possessions-header label {
+.items-header label {
   border: solid 1px black;
 }
 
-.total-possesion {
+.total-Item {
   display: grid;
   grid-template-columns: 70% 30%;
   grid-column-end: span 1;
 }
 
-.total-possesion label {
+.total-Item label {
   font-weight: bolder;
   border: solid 1px black;
   text-align: center;
@@ -106,11 +99,11 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
-  .possessions-component {
+  .items-component {
     grid-template-columns: 1fr 1fr;
   }
 
-  .total-possesion {
+  .total-Item {
     grid-column-end: span 2;
   }
 }

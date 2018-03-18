@@ -19,10 +19,13 @@ const commitAndSyncWithServer = function ({ commit, state }, mutation, payload, 
 };
 
 const syncWithServer = function (state, mutation, payload) {
-  CharacterService.patch(state._id, {
-    mutation: ['CharacterModule', mutation],
-    payload: payload
-  });
+  const { _id } = state;
+  if (_id) {
+    CharacterService.patch(_id, {
+      mutation: ['CharacterModule', mutation],
+      payload: payload
+    });
+  }
 }
 
 export default {
@@ -82,7 +85,8 @@ export default {
         Mappings.Mutations.updateAttacks,
         Mappings.Mutations.updateSkills,
         Mappings.Mutations.updateCampaign,
-        Mappings.Mutations.updateExperience
+        Mappings.Mutations.updateExperience,
+        Mappings.Mutations.updateItems
       ].forEach(mutation => {
         commit(mutation, character);
       });
@@ -90,12 +94,8 @@ export default {
       console.log(error);
     }
   },
-  async [Mappings.Actions.updateDescription]({ commit, state }, description) {
-    commit(Mappings.Mutations.updateDescription, description);
-    CharacterService.patch(state._id, {
-      mutation: ['CharacterModule', Mappings.Mutations.updateDescription],
-      payload: description
-    });
+  async [Mappings.Actions.updateDescription](context, description) {
+    commitAndSyncWithServer(context, Mappings.Mutations.updateDescription, { description }, true);
   },
   async [Mappings.Actions.updateClasses](context, classes) {
     commitAndSyncWithServer(context, Mappings.Mutations.updateClasses, classes);

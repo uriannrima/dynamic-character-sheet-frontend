@@ -1,15 +1,29 @@
 <template>
   <div>
     <logo class="h-xl-up h-md-down"></logo>
-    <description></description>
+    <description v-bind="$extract(description)"
+                 :classes="getClasses"
+                 :sizeName="getSize"
+                 @onCharacterSave="saveCharacter($event)"
+                 @onDescriptionUpdate="updateDescription($event)"
+                 @onClassesUpdate="updateClasses($event)"
+                 @onSizeUpdate="updateSize($event)"></description>
   </div>
 </template>
 
 <script>
 import { Logo, Description } from './';
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 
 export default {
-  components: { Logo, Description }
+  components: { Logo, Description },
+  computed: {
+    ...mapState(['_id', 'description']),
+    ...mapGetters(['getClasses', 'getSize']),
+  },
+  methods: {
+    ...mapActions(['saveCharacter', 'updateDescription', 'updateClasses', 'updateSize'])
+  }
 }
 </script>
 
