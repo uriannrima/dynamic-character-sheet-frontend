@@ -157,15 +157,15 @@ export default {
         // If empty character
         if (classe.trim() === "") return;
         // Clear whitespaces
-        var classLevel = classe.replace(/ /g, "");
+        // var classLevel = classe.replace(/ /g, "");
         // Regex to get level
         var levelRegex = /\(([^)]+)\)/;
         // Get level data,
-        var levelData = levelRegex.exec(classLevel);
+        var levelData = levelRegex.exec(classe);
         // Extract level from data
         var level = levelData && levelData.length > 1 ? levelData[1] : 1;
         // Remove level from field.
-        var classOnly = classLevel.replace(levelRegex, "");
+        var classOnly = classe.replace(levelRegex, "");
         classes.push({
           name: classOnly.trim(),
           level: level

@@ -3,7 +3,14 @@ _ = require('lodash');
 
 export const Character = function ({
   _id, description, speed, size, damageReduction = "", classes, abilityScores,
-  status = {}, armorClass, initiative, conditionModifiers = "",
+  keyAbilityScores = {
+    armor: 'dexterity',
+    initiative: 'dexterity',
+    grapple: 'strength',
+    spells: 'intelligence'
+  },
+  status = {}, armorClass,
+  initiative = new Modules.InitiativeModule.Initiative({}), conditionModifiers = "",
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = Modules.SkillsModule.All.map(skill => new Modules.SkillsModule.Skill(skill)),
   attacks, gear, items = [], carryCapacities,
@@ -43,6 +50,7 @@ export const Character = function ({
     ],
     // TODO: Remove "factory" pattern later.
     abilityScores,
+    keyAbilityScores,
     status: new Modules.StatusModule.Status(status),
     armorClass: armorClass ? new Modules.ArmorClassModule.ArmorClass(armorClass) : new Modules.ArmorClassModule.ArmorClass({
       base: 10,
@@ -127,27 +135,8 @@ export const Character = function ({
     spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.SpellsPerDayModule.SpellsPerDay({
       spellLevel: i
     })),
-    updateAbilityScore: function () {
-      _.forEach(this.abilityScores, abilityScore => {
-        abilityScore.updateCharacter(this);
-      });
-    },
-    getAbilityScore: function (abilityScoreName) {
-      return _.find(this.abilityScores, abilityScore => {
-        return abilityScore.name.toUpperCase() === abilityScoreName.toUpperCase();
-      });
-    },
-    getCasterAbility: function () {
-      var casterAbility;
-      casterAbility = this.getAbilityScore('intelligence');
-
-      _.forEach(this.classes, classe => {
-        if (classe.isCaster) {
-          casterAbility = this.getAbilityScore(classe.casterAbility);
-        }
-      });
-
-      return casterAbility;
+    getTotalInitiative() {
+      return this.abilityScores[this.keyAbilityScores.initiative].getTempModifier() + this.initiative.miscModifier;
     }
   }
 }

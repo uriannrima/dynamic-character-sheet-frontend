@@ -39,7 +39,7 @@ export default {
   computed: {
     filteredCharacters() {
       const { name } = this.search;
-      return name ? this.characters.filter(character => character.name.toUpperCase().indexOf(name.toUpperCase()) !== -1) : this.characters
+      return name ? this.characters.filter(character => character.name.toUpperCase().indexOf(name.toUpperCase()) !== -1) : this.characters;
     }
   },
   methods: {

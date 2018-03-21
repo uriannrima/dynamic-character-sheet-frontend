@@ -48,8 +48,7 @@ export default {
       };
 
       const regular = toRegularForm(firstKey);
-      NotificationService.notify({
-        type: 'success',
+      NotificationService.success({
         message: `Your sheet has been updated.\n${regular}: ${delta[firstKey]}.`
       });
       Store.commit(mutation.join('/'), delta);
@@ -94,8 +93,10 @@ export default {
       ].forEach(mutation => {
         commit(mutation, character);
       });
-    } catch (error) {
-      console.log(error);
+    } catch ({ message }) {
+      NotificationService.error({
+        message
+      });
     }
   },
   async [Mappings.Actions.updateDescription](context, description) {

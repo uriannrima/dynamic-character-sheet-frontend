@@ -1,7 +1,7 @@
 const MinimizeButton = {
   props: ['minimize'],
   template: `   
-    <span class="add-icon glyphicon" 
+    <span class="right-icon glyphicon" 
           :class="{'glyphicon-zoom-out' : !minimize, 'glyphicon-zoom-in' : minimize}" 
           @click="toggle">
     </span>

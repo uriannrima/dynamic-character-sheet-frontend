@@ -7,32 +7,24 @@
 
 <script>
 import * as Pages from './pages';
+import Store from 'store';
 import { mapState, mapActions, Mappings } from '../../store/CharacterModule';
+
+const loadCharacter = async function (to, from, next) {
+  const characterId = to.params.id;
+  if (!characterId) {
+    await Store.dispatch('CharacterModule/newCharacter');
+  } else {
+    await Store.dispatch('CharacterModule/loadCharacter', characterId);
+    await Store.dispatch('CharacterModule/connect', characterId);
+  }
+  next();
+};
 
 export default {
   components: Pages,
-  beforeRouteEnter: async function (to, from, next) {
-    if (!to.params.id) {
-      next(vm => {
-        vm.newCharacter();
-      });
-    } else {
-      next(vm => {
-        vm.connect(to.params.id);
-        vm.loadCharacter(to.params.id);
-      });
-    }
-  },
-  beforeRouteUpdate: async function (to, from, next) {
-    if (!to.params.id) {
-      this.newCharacter();
-      next();
-    } else {
-      vm.connect(to.params.id);
-      this.loadCharacter(to.params.id);
-      next();
-    }
-  },
+  beforeRouteEnter: loadCharacter,
+  beforeRouteUpdate: loadCharacter,
   computed: {
     ...mapState(['_id'])
   },
@@ -126,7 +118,13 @@ export default {
   display: inline-block;
 }
 
-.black-box .add-icon {
+.left-icon {
+  float: left;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.right-icon {
   float: right;
   margin-right: 5px;
   margin-top: 2px;

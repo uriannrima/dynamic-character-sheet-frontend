@@ -1,7 +1,7 @@
 const OpenModalButton = {
   props: ['showModal'],
   template: `   
-    <span class="add-icon glyphicon glyphicon-plus"
+    <span class="left-icon glyphicon glyphicon-plus"
           @click="toggle"></span>
     </span>
   `,

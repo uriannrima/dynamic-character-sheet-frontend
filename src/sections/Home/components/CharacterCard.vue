@@ -3,11 +3,11 @@
     <div class="character-card-header">
       <a href
          @click.prevent="confirmDelete()">
-        <span class="edit-icon glyphicon glyphicon-trash"
+        <span class="left-icon glyphicon glyphicon-trash"
               title="Delete character"></span>
       </a>
       <a :href="'#/character/' + character._id">
-        <span class="edit-icon glyphicon glyphicon-edit"
+        <span class="right-icon glyphicon glyphicon-edit"
               title="Edit character"></span>
       </a>
       <label>
@@ -46,6 +46,23 @@
       </div>
       <div class="skills-container">
         <span>{{character.skills.map(skill => skill.name).reduce((reducer, skill) => reducer + ', ' + skill)}}</span>
+      </div>
+      <div class="a-divider">
+        <span>Status</span>
+      </div>
+      <div>
+        <div class="circle medium red">
+          <input type="number"
+                 :value="33">
+        </div>
+        <div class="circle medium green">
+          <input type="number"
+                 :value="10">
+        </div>
+        <div class="circle medium blue">
+          <input type="number"
+                 :value="4">
+        </div>
       </div>
     </div>
   </div>
@@ -102,7 +119,11 @@ export default {
   z-index: -1;
 }
 
-.edit-icon {
+.left-icon {
+  float: left;
+}
+
+.right-icon {
   float: right;
 }
 
@@ -153,5 +174,67 @@ export default {
 
 .skills-container {
   text-align: center;
+}
+
+/** Circle logic. */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.circle {
+  display: inline-block;
+  border: solid 2px;
+}
+
+.circle.small {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+
+.circle.medium {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+}
+
+.circle.big {
+  width: 90px;
+  height: 90px;
+  border-radius: 55px;
+}
+
+.circle.medium > input {
+  font-size: 35px;
+}
+
+.circle.big > input {
+  font-size: 50px;
+}
+
+.circle > input {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: transparent;
+  font-weight: bolder;
+}
+
+.circle.red {
+  border-color: red;
+  background-color: #f98a8a;
+}
+
+.circle.blue {
+  border-color: blue;
+  background-color: #7373eb;
+}
+
+.circle.green {
+  border-color: green;
+  background-color: #a1ffa1;
 }
 </style>
