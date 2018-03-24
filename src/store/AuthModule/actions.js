@@ -1,40 +1,44 @@
-import Mappings from './mappings';
+import Cookies from 'js-cookie';
+import { Actions, Mutations } from './mappings';
 import AuthService from 'shared/services/auth/AuthService';
 import UserService from 'services/UserService';
-import ApplicationDatabase from 'shared/databases/ApplicationDatabase';
 
 export default {
-  async [Mappings.Actions.login]({ commit }, payload) {
-    commit(Mappings.Mutations.toggleProcessing, true);
+  async [Actions.login]({ commit }, payload) {
+    commit(Mutations.toggleProcessing, true);
     var userSession = await AuthService.login(payload);
-    commit(Mappings.Mutations.toggleProcessing, false);
+    commit(Mutations.toggleProcessing, false);
     if (userSession && userSession.accessToken) {
-      await ApplicationDatabase.Instance.setItem('userSession', userSession);
-      commit(Mappings.Mutations.saveUserSession, userSession);
+      Cookies.set('userSession', userSession);
+      commit(Mutations.saveUserSession, userSession);
       return true;
     }
     return false;
   },
-  async [Mappings.Actions.logout]({ commit }) {
-    commit(Mappings.Mutations.toggleProcessing, true);
+  async [Actions.logout]({ commit }) {
+    commit(Mutations.toggleProcessing, true);
     await AuthService.logout();
-    await ApplicationDatabase.Instance.removeItem('userSession');
-    commit(Mappings.Mutations.saveUserSession, null);
-    commit(Mappings.Mutations.toggleProcessing, false);
+    Cookies.remove('userSession');
+    commit(Mutations.saveUserSession, null);
+    commit(Mutations.toggleProcessing, false);
     return true;
   },
-  async [Mappings.Actions.register]({ commit }, payload) {
-    commit(Mappings.Mutations.toggleProcessing, true);
+  async [Actions.register]({ commit }, payload) {
+    commit(Mutations.toggleProcessing, true);
     await UserService.register(payload);
-    commit(Mappings.Mutations.toggleProcessing, false);
+    commit(Mutations.toggleProcessing, false);
   },
-  async [Mappings.Actions.refresh]({ commit, getters, rootGetters }) {
+  async [Actions.refresh]({ commit, getters }) {
     if (getters.isAuthenticated) {
       return true;
     } else {
-      const userSession = await ApplicationDatabase.Instance.getItem('userSession');
-      commit(Mappings.Mutations.saveUserSession, userSession);
-      return rootGetters['AuthModule/isAuthenticated'];
+      const userSession = Cookies.getJSON('userSession');
+      if (userSession) {
+        commit(Mutations.saveUserSession, userSession);
+        return getters.isAuthenticated;
+      }
     }
+
+    return false;
   }
 }

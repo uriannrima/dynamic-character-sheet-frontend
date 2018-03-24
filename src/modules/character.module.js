@@ -1,5 +1,4 @@
 var Modules = require('./');
-_ = require('lodash');
 
 export const Character = function ({
   _id, description, speed, size, damageReduction = "", classes, abilityScores,

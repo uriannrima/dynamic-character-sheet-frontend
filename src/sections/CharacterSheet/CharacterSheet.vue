@@ -8,7 +8,7 @@
 <script>
 import * as Pages from './pages';
 import Store from 'store';
-import { mapState, mapActions, Mappings } from '../../store/CharacterModule';
+import { mapState, mapActions, Actions } from '../../store/CharacterModule';
 
 const loadCharacter = async function (to, from, next) {
   const characterId = to.params.id;
@@ -29,7 +29,7 @@ export default {
     ...mapState(['_id'])
   },
   methods: {
-    ...mapActions([Mappings.Actions.loadCharacter, Mappings.Actions.newCharacter, 'connect'])
+    ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect'])
   }
 }
 </script>

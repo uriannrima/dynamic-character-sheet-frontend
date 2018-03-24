@@ -6,7 +6,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="props.keyAbility.getTempModifier()">
+           :value="10 + props.keyScoreModifier">
     <label>&nbsp;</label>
     <label class="spell-save-dc-mod">DC Mod</label>
   </div>

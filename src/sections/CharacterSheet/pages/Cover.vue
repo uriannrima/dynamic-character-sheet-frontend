@@ -41,25 +41,6 @@ export default {
   margin-top: 5px;
 }
 
-@media screen and (min-width: 1024px) {
-  .front > div {
-    margin-top: unset;
-  }
-
-  .cover {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .cover > div:nth-child(1) {
-    width: 50%;
-  }
-
-  .cover > div:not(:nth-child(1)) {
-    width: 25%;
-  }
-}
-
 .campaign-area {
   grid-area: campaign-area;
 }
@@ -94,5 +75,37 @@ export default {
 
 .spells-per-day-area {
   grid-area: spells-per-day-area;
+}
+
+@media screen and (min-width: 1024px) {
+  .front > div {
+    margin-top: unset;
+  }
+
+  .cover {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cover > div:nth-child(1) {
+    width: 50%;
+  }
+
+  .cover > div:not(:nth-child(1)) {
+    width: 25%;
+  }
+
+  .dc-area {
+    height: 12%;
+  }
+
+  .spells-area {
+    height: 60%;
+    border: solid 1px black;
+  }
+
+  .spells-per-day-area {
+    height: 28%;
+  }
 }
 </style>

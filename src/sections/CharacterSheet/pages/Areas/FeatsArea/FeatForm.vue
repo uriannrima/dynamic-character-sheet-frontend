@@ -14,7 +14,7 @@
         <span>
           <strong>Benefit:</strong>
         </span>
-        <span>{{describe.benefit}}</span>
+        <label>{{describe.benefit}}</label>
       </div>
       <div class="feat-form-component-prerequisite-container"
            v-if="describe.prerequisite">

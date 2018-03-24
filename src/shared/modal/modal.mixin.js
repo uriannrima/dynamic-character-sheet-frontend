@@ -43,7 +43,7 @@ export default {
     updateAll: async function () {
       if (this.service) {
         var models = await this.service.getAll();
-        this.all = _.sortBy(models, m => m.name);
+        this.all = models.orderBy(m => m.name);
       }
     },
     clear: function () {

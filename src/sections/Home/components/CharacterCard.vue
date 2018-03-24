@@ -47,23 +47,6 @@
       <div class="skills-container">
         <span>{{character.skills.map(skill => skill.name).reduce((reducer, skill) => reducer + ', ' + skill)}}</span>
       </div>
-      <div class="a-divider">
-        <span>Status</span>
-      </div>
-      <div>
-        <div class="circle medium red">
-          <input type="number"
-                 :value="33">
-        </div>
-        <div class="circle medium green">
-          <input type="number"
-                 :value="10">
-        </div>
-        <div class="circle medium blue">
-          <input type="number"
-                 :value="4">
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -86,7 +69,7 @@ export default {
   },
   methods: {
     confirmDelete() {
-      this.$dialog.confirm(`Do you really want to delete ${this.character.name}?`).then(() => {
+      this.$dialog.confirm(`Do you really want to delete ${this.character.description.name}?`).then(() => {
         this.$emit('onDelete', { character: this.character });
       });
     }

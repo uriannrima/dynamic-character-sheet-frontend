@@ -62,7 +62,7 @@ export class CharacterState {
       languages: [],
       spells: [],
       domainSchool: "",
-      spellPerDayList: [...Array(10)].map(() => new SpellPerDay()),
+      spellPerDayList: [...Array(10)].map(() => new SpellPerDay())
     });
   }
 }

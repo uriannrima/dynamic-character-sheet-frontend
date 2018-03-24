@@ -2,7 +2,6 @@
   <v-touch tag="span"
            class="feat"
            :class="featType"
-           @click="onSelect(feat)"
            v-on:tap="onSelect(feat)">
     {{feat.title}}
     <small v-if="feat.subValues[0]">({{feat.subValues[0].value}})</small>

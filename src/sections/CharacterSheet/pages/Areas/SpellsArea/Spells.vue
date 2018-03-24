@@ -57,6 +57,10 @@ export default {
 </script>
 
 <style>
+.spells-component {
+  padding: 0 2px;
+}
+
 .spells-component input {
   text-align: center;
 }

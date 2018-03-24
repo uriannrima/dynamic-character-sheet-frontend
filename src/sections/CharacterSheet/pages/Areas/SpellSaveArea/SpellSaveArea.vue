@@ -1,7 +1,7 @@
 <template>
   <div class="dc-area">
-    <spell-save :keyAbility="getKeyAbility('intelligence')"></spell-save>
-    <arcane-spell-failure></arcane-spell-failure>
+    <spell-save :keyScoreModifier="getTempModifier(keyScore)"></spell-save>
+    <arcane-spell-failure :spellFailure="getSpellFailure"></arcane-spell-failure>
     <div class="spell-condition-modifier-container">
       <condition-modifiers></condition-modifiers>
     </div>
@@ -9,13 +9,19 @@
 </template>
 
 <script>
-import KeyAbilityMixin from 'shared/mixins/methods/key.ability.mixin';
 import { SpellSave, ArcaneSpellFailure } from './';
 import { ConditionModifiers } from '../WeaponsArea';
+import { mapState, mapGetters } from 'store/CharacterModule';
 
 export default {
   components: { SpellSave, ArcaneSpellFailure, ConditionModifiers },
-  mixins: [KeyAbilityMixin]
+  computed: {
+    ...mapState(['keyAbilityScores']),
+    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getSpellFailure']),
+    keyScore() {
+      return this.getAbilityScore(this.keyAbilityScores.spells);
+    }
+  }
 }
 </script>
 

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 
-import './plugins-import';
-import './extensions-import';
-import './styles-import';
+import './plugins';
+import './extensions';
+import './styles';
 
 import router from './router';
 import store from './store';

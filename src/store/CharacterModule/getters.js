@@ -90,5 +90,12 @@ export default {
       if (typeof item.weight !== 'number') return acc;
       return acc + item.weight;
     }, gearWeight).toPrecision(2);
+  },
+  getSpellFailure: (state) => {
+    var spellFailure = 0;
+    var { armor, shield } = state.gear;
+    if (armor) spellFailure += armor.spellFailure;
+    if (shield) spellFailure += shield.spellFailure;
+    return spellFailure;
   }
 }

@@ -4,7 +4,7 @@
       <input type="text"
              class="search-character"
              placeholder="Search Character Name"
-             v-model="search.name">
+             v-model="searchName">
       <a href="#/character/">
         <span class="add-character-icon glyphicon glyphicon-plus"
               title="Create new character"></span>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce';
 import CharacterCard from './CharacterCard';
 import CharacterService from 'services/character.service';
 
@@ -37,9 +38,17 @@ export default {
     }
   },
   computed: {
+    searchName: {
+      set: debounce(function (val) {
+        this.search.name = val;
+      }, 500),
+      get() {
+        return this.search.name;
+      }
+    },
     filteredCharacters() {
       const { name } = this.search;
-      return name ? this.characters.filter(character => character.name.toUpperCase().indexOf(name.toUpperCase()) !== -1) : this.characters;
+      return name ? this.characters.filter(character => character.description.name.toUpperCase().indexOf(name.toUpperCase()) !== -1) : this.characters;
     }
   },
   methods: {

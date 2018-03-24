@@ -1,9 +1,8 @@
 <template>
-  <span class="spell"
-        :class="spellSchool"
-        @click="onSelect(spell)"
-        v-on:tap="onSelect(spell)">
-    {{spell.name}}</span>
+  <v-touch class="spell"
+           :class="spellSchool"
+           v-on:tap="onSelect(spell)">
+    {{spell.name}}</v-touch>
 </template>
 
 <script>

@@ -1,10 +1,10 @@
-import Mappings from './mappings';
+import { Mutations } from './mappings';
 
 export default {
-  [Mappings.Mutations.saveUserSession](state, userSession) {
+  [Mutations.saveUserSession](state, userSession) {
     state.userSession = userSession;
   },
-  [Mappings.Mutations.toggleProcessing](state, processing) {
+  [Mutations.toggleProcessing](state, processing) {
     state.processing = processing;
   }
 }
