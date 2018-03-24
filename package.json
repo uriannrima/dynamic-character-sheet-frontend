@@ -8,7 +8,8 @@
     "dev": "yarn install && webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "dev:c9": "yarn install && webpack-dev-server --inline --progress --config build/webpack.c9.conf.js",
     "dev:c9:old": "yarn install && webpack-dev-server --config build/webpack.c9.js --content-base src/ --public 'web-dcs-uriannrima.c9users.io/sockjs-node/' --host $IP --port $PORT --hot --inline",
-    "build": "webpack --config build/webpack.prd.js",
+    "build": "webpack --config build/webpack.prod.conf.js",
+    "deploy": "npm run build && firebase deploy",
     "host": "yarn install && webpack -w --config build/webpack.prd.js",
     "create:index": "create-index ./ --recursive --extensions vue"
   },
@@ -19,6 +20,7 @@
     "axios": "^0.18.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-es2016": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "es6-promise": "^4.2.4",
     "jquery": "^3.3.1",
     "localforage": "^1.5.7",

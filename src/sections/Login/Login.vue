@@ -138,11 +138,3 @@ doRegistration: async function (login) {
   text-decoration: none;
 }
 </style>
-
-<style>
-html {
-  background: url("../../../static/images/background.jpg") no-repeat center
-    center fixed;
-  background-size: cover;
-}
-</style>

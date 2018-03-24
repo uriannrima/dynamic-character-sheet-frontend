@@ -28,11 +28,11 @@ export default {
 </script>
 
 <style>
-html {
-  background: url("../../../static/images/background.jpg") no-repeat center
+/* html {
+  background: url("../../../static/img/background.jpg") no-repeat center
     center fixed;
   background-size: cover;
-}
+} */
 
 .mini-toastr-notification__message {
   white-space: pre-line;
