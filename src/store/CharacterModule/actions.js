@@ -32,27 +32,6 @@ export default {
   async [Actions.connect](context, characterId) {
     // Ask for the server to connect to character channel.
     CharacterService.connect(characterId);
-
-    // If the server send a patched, we update ourself
-    CharacterService.register('patched', ({ mutation, delta }) => {
-      const firstKey = Object.keys(delta)[0];
-
-      const toRegularForm = function (unregularString) {
-        return unregularString
-          // insert a space before all caps
-          .replace(/([A-Z])/g, ' $1')
-          // uppercase the first character
-          .replace(/^./, function (str) {
-            return str.toUpperCase();
-          })
-      };
-
-      const regular = toRegularForm(firstKey);
-      NotificationService.success({
-        message: `Your sheet has been updated.\n${regular}: ${delta[firstKey]}.`
-      });
-      Store.commit(mutation.join('/'), delta);
-    });
   },
   async [Actions.saveCharacter]({ commit, state }) {
     const character = await CharacterService.saveOrUpdate(state);
@@ -99,8 +78,10 @@ export default {
       });
     }
   },
-  async [Actions.updateDescription](context, description) {
-    commitAndSyncWithServer(context, Mutations.updateDescription, { description }, true);
+  async [Actions.updateDescription]({ commit }, description) {
+    commit(Mutations.updateDescription, { description }, {
+      meta: { sync: true }
+    });
   },
   async [Actions.updateClasses](context, classes) {
     commitAndSyncWithServer(context, Mutations.updateClasses, classes);

@@ -34,6 +34,10 @@ export default {
   background-size: cover;
 } */
 
+.html {
+  background-color: lightgray;
+}
+
 .mini-toastr-notification__message {
   white-space: pre-line;
   display: initial;
