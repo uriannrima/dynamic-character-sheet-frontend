@@ -11,12 +11,12 @@ export const { mapState, mapGetters, mapActions, mapMutations } = createNamespac
 
 export class CharacterSyncing {
   emit(mutation, state) {
-    CharacterService.emit('sync', state.CharacterModule._id);
+    CharacterService.sync(state.CharacterModule._id, mutation);
   }
 
   register(store) {
-    CharacterService.register('sync', (payload) => {
-      store.commit(type, payload);
+    CharacterService.onSync(({ payload: mutation }) => {
+      store.commit(mutation.type, mutation.payload);
     });
   }
 }

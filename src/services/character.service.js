@@ -16,6 +16,17 @@ class CharacterService extends AbstractService {
   async disconnect() {
     this.emit('disconnect');
   }
+
+  async sync(characterId, payload) {
+    this.emit('sync', {
+      characterId,
+      payload
+    });
+  }
+
+  async onSync(callback) {
+    this.register('sync', callback);
+  }
 }
 
 export default new CharacterService();

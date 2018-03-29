@@ -1,5 +1,5 @@
 import { Actions, Mutations } from './mappings';
-import CharacterService from 'services/character.service'
+import CharacterService from 'services/character.service';
 import NotificationService from 'services/NotificationService';
 
 const commitAndSyncWithServer = function ({ commit, state }, mutation, payload, fromState) {
