@@ -1,40 +1,14 @@
 import { Actions, Mutations } from './mappings';
-import CharacterService from 'services/character.service';
+import CharacterSyncingService from 'services/characters-syncing.service';
 import NotificationService from 'services/NotificationService';
-
-const commitAndSyncWithServer = function ({ commit, state }, mutation, payload, fromState) {
-  var syncMutation = mutation;
-  if (typeof mutation === 'object') {
-    syncMutation = mutation.syncMutation;
-    mutation = mutation.mutation;
-  }
-  commit(mutation, payload);
-  if (typeof fromState === 'boolean' && fromState) {
-    const propertyName = Object.keys(payload)[0];
-    payload = { [propertyName]: state[propertyName] };
-  } else if (typeof fromState === 'string') {
-    payload = { [fromState]: state[fromState] };
-  }
-  syncWithServer(state, syncMutation, payload);
-};
-
-const syncWithServer = function (state, mutation, payload) {
-  const { _id } = state;
-  if (_id) {
-    CharacterService.patch(_id, {
-      mutation: ['CharacterModule', mutation],
-      payload: payload
-    });
-  }
-}
 
 export default {
   async [Actions.connect](context, characterId) {
     // Ask for the server to connect to character channel.
-    CharacterService.connect(characterId);
+    CharacterSyncingService.connect(characterId);
   },
   async [Actions.saveCharacter]({ commit, state }) {
-    const character = await CharacterService.saveOrUpdate(state);
+    const character = await CharacterService.createOrUpdate(state);
     commit(Mutations.updateId, character);
   },
   async [Actions.newCharacter]({ commit }) {
@@ -79,65 +53,54 @@ export default {
     }
   },
   async [Actions.updateDescription]({ commit }, description) {
-    commit(Mutations.updateDescription, { description }, {
-      meta: { sync: true }
-    });
+    commit(Mutations.updateDescription, { description }, { meta: { sync: true } });
   },
-  async [Actions.updateClasses](context, classes) {
-    commitAndSyncWithServer(context, Mutations.updateClasses, classes);
+  async [Actions.updateClasses]({ commit }, classes) {
+    commit(Mutations.updateClasses, classes, { meta: { sync: true } });
   },
-  async [Actions.updateSize](context, { size }) {
-    commitAndSyncWithServer(context, Mutations.updateSize, { size }, true);
+  async [Actions.updateSize]({ commit }, { size }) {
+    commit(Mutations.updateSize, { size }, { meta: { sync: true } });
   },
-  async [Actions.updateAbilityScore](context, abilityScore) {
-    commitAndSyncWithServer(context, {
-      mutation: Mutations.updateAbilityScore,
-      syncMutation: Mutations.updateAbilityScores
-    }, abilityScore, 'abilityScores');
+  async [Actions.updateAbilityScore]({ commit }, abilityScore) {
+    commit(Mutations.updateAbilityScore, abilityScore, { meta: { sync: true } });
   },
-  async [Actions.updateStatus](context, status) {
-    commitAndSyncWithServer(context, Mutations.updateStatus, { status }, true);
+  async [Actions.updateStatus]({ commit }, status) {
+    commit(Mutations.updateStatus, { status }, { meta: { sync: true } });
   },
-  async [Actions.updateSpeed](context, speed) {
-    commitAndSyncWithServer(context, Mutations.updateSpeed, speed);
+  async [Actions.updateSpeed]({ commit }, speed) {
+    commit(Mutations.updateSpeed, speed, { meta: { sync: true } });
   },
-  async [Actions.updateGear](context, gear) {
-    commitAndSyncWithServer(context, Mutations.updateGear, { gear }, true);
+  async [Actions.updateGear]({ commit }, gear) {
+    commit(Mutations.updateGear, gear, { meta: { sync: true } });
   },
-  async [Actions.updateArmorClass](context, armorClass) {
-    commitAndSyncWithServer(context, Mutations.updateArmorClass, { armorClass }, true);
+  async [Actions.updateArmorClass]({ commit }, armorClass) {
+    commit(Mutations.updateArmorClass, { armorClass }, { meta: { sync: true } });
   },
-  async [Actions.updateDamageReduction](context, damageReduction) {
-    commitAndSyncWithServer(context, Mutations.updateDamageReduction, damageReduction);
+  async [Actions.updateDamageReduction]({ commit }, damageReduction) {
+    commit(Mutations.updateDamageReduction, { damageReduction }, { meta: { sync: true } });
   },
-  async [Actions.updateInitiative](context, initiative) {
-    commitAndSyncWithServer(context, Mutations.updateInitiative, { initiative });
+  async [Actions.updateInitiative]({ commit }, initiative) {
+    commit(Mutations.updateInitiative, initiative, { meta: { sync: true } });
   },
-  async [Actions.updateSavingThrow](context, savingThrow) {
-    commitAndSyncWithServer(context, {
-      mutation: Mutations.updateSavingThrow,
-      syncMutation: Mutations.updateSavingThrows
-    }, savingThrow, 'savingThrows');
+  async [Actions.updateSavingThrow]({ commit }, savingThrow) {
+    commit(Mutations.updateSavingThrow, savingThrow, { meta: { sync: true } });
   },
-  async [Actions.updateConditionModifiers](context, conditionModifiers) {
-    commitAndSyncWithServer(context, Mutations.updateConditionModifiers, conditionModifiers);
+  async [Actions.updateConditionModifiers]({ commit }, conditionModifiers) {
+    commit(Mutations.updateConditionModifiers, conditionModifiers, { meta: { sync: true } });
   },
-  async [Actions.updateBaseAttackBonus](context, baseAttackBonus) {
-    commitAndSyncWithServer(context, Mutations.updateBaseAttackBonus, baseAttackBonus);
+  async [Actions.updateBaseAttackBonus]({ commit }, baseAttackBonus) {
+    commit(Mutations.updateBaseAttackBonus, baseAttackBonus, { meta: { sync: true } });
   },
-  async [Actions.updateSpellResistance](context, spellResistance) {
-    commitAndSyncWithServer(context, Mutations.updateSpellResistance, spellResistance);
+  async [Actions.updateSpellResistance]({ commit }, spellResistance) {
+    commit(Mutations.updateSpellResistance, spellResistance, { meta: { sync: true } });
   },
-  async [Actions.updateAttack]({ commit, state }, attack) {
-    commit(Mutations.updateAttack, attack);
-    syncWithServer(state, Mutations.updateAttacks, {
-      attacks: state.attacks
-    });
+  async [Actions.updateAttack]({ commit }, attack) {
+    commit(Mutations.updateAttack, attack, { meta: { sync: true } });
   },
-  async [Actions.updateCampaign](context, campaign) {
-    commitAndSyncWithServer(context, Mutations.updateCampaign, campaign);
+  async [Actions.updateCampaign]({ commit }, campaign) {
+    commit(Mutations.updateCampaign, { campaign }, { meta: { sync: true } });
   },
-  async [Actions.updateExperience](context, experience) {
-    commitAndSyncWithServer(context, Mutations.updateExperience, experience);
+  async [Actions.updateExperience]({ commit }, experience) {
+    commit(Mutations.updateExperience, { experience }, { meta: { sync: true } });
   }
 }
