@@ -33,6 +33,12 @@ export default class BaseSocketService extends SocketLayer {
     };
   }
 
+  async create(model) {
+    return {
+      data: await this.service.create(model)
+    };
+  }
+
   async remove(id) {
     var data = await this.service.remove(id);
     return {

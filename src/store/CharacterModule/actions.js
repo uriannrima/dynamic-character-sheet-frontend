@@ -1,14 +1,18 @@
 import { Actions, Mutations } from './mappings';
-import CharacterSyncingService from 'services/characters-syncing.service';
+import CharacterService from 'services/character.service';
 import NotificationService from 'services/NotificationService';
+import ChannelService from 'services/channel.service';
 
 export default {
   async [Actions.connect](context, characterId) {
     // Ask for the server to connect to character channel.
-    CharacterSyncingService.connect(characterId);
+    ChannelService.create(['characters', characterId]);
+    setTimeout(() => {
+      ChannelService.remove(['characters', characterId]);
+    }, 30000);
   },
   async [Actions.saveCharacter]({ commit, state }) {
-    const character = await CharacterService.createOrUpdate(state);
+    const character = await CharacterService.saveOrUpdate(state);
     commit(Mutations.updateId, character);
   },
   async [Actions.newCharacter]({ commit }) {

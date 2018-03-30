@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import { Actions, Mutations } from './mappings';
 import AuthService from 'shared/services/auth/AuthService';
 import UserService from 'services/UserService';
+import Feathers from '../../feathers';
 
 export default {
   async [Actions.login]({ commit }, payload) {
@@ -34,6 +35,7 @@ export default {
     } else {
       const userSession = Cookies.getJSON('userSession');
       if (userSession) {
+        await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken });
         commit(Mutations.saveUserSession, userSession);
         return getters.isAuthenticated;
       }
