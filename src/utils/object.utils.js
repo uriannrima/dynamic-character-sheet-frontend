@@ -6,11 +6,15 @@ export default {
     return extracted;
   },
   extractTo(from, to, properties) {
-    if (!properties) {
-      properties = Object.keys(from);
+    try {
+      if (!properties) {
+        properties = Object.keys(from);
+      }
+      properties.forEach(prop => {
+        to[prop] = from[prop];
+      });
+    } catch (error) {
+      console.error(error);
     }
-    properties.forEach(prop => {
-      to[prop] = from[prop];
-    });
   }
 };

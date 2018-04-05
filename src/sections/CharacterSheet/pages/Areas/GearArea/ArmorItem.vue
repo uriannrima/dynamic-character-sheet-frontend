@@ -91,10 +91,7 @@
 </template>
 
 <script>
-import CharacterMixin from 'store/mixins/character.mixin';
-
 export default {
-  mixins: [CharacterMixin],
   props: [
     "name",
     "type",

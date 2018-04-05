@@ -2,14 +2,12 @@ import { Actions, Mutations } from './mappings';
 import CharacterService from 'services/character.service';
 import NotificationService from 'services/NotificationService';
 import ChannelService from 'services/channel.service';
+import SkillService from 'services/skill.service';
 
 export default {
   async [Actions.connect](context, characterId) {
     // Ask for the server to connect to character channel.
     ChannelService.create(['characters', characterId]);
-    setTimeout(() => {
-      ChannelService.remove(['characters', characterId]);
-    }, 30000);
   },
   async [Actions.saveCharacter]({ commit, state }) {
     const character = await CharacterService.saveOrUpdate(state);
@@ -21,6 +19,7 @@ export default {
   async [Actions.loadCharacter]({ commit }, characterId) {
     try {
       const character = await CharacterService.getData(characterId);
+      if (character.skills.length == 0) character.skills = await SkillService.getAll();
 
       // Load character mutations
       [
@@ -38,6 +37,7 @@ export default {
         Mutations.updateDamageReduction,
         Mutations.updateBaseAttackBonus,
         Mutations.updateSpellResistance,
+        Mutations.updateGrapple,
         Mutations.updateAttacks,
         Mutations.updateSkills,
         Mutations.updateCampaign,
@@ -50,10 +50,11 @@ export default {
       ].forEach(mutation => {
         commit(mutation, character);
       });
-    } catch ({ message }) {
+    } catch (error) {
       NotificationService.error({
-        message
+        message: error.message
       });
+      console.error(error);
     }
   },
   async [Actions.updateDescription]({ commit }, description) {
@@ -81,10 +82,10 @@ export default {
     commit(Mutations.updateArmorClass, { armorClass }, { meta: { sync: true } });
   },
   async [Actions.updateDamageReduction]({ commit }, damageReduction) {
-    commit(Mutations.updateDamageReduction, { damageReduction }, { meta: { sync: true } });
+    commit(Mutations.updateDamageReduction, damageReduction, { meta: { sync: true } });
   },
   async [Actions.updateInitiative]({ commit }, initiative) {
-    commit(Mutations.updateInitiative, initiative, { meta: { sync: true } });
+    commit(Mutations.updateInitiative, { initiative }, { meta: { sync: true } });
   },
   async [Actions.updateSavingThrow]({ commit }, savingThrow) {
     commit(Mutations.updateSavingThrow, savingThrow, { meta: { sync: true } });
@@ -98,8 +99,14 @@ export default {
   async [Actions.updateSpellResistance]({ commit }, spellResistance) {
     commit(Mutations.updateSpellResistance, spellResistance, { meta: { sync: true } });
   },
+  async [Actions.updateGrapple]({ commit }, grapple) {
+    commit(Mutations.updateGrapple, { grapple }, { meta: { sync: true } });
+  },
   async [Actions.updateAttack]({ commit }, attack) {
     commit(Mutations.updateAttack, attack, { meta: { sync: true } });
+  },
+  async [Actions.updateSkill]({ commit }, skill) {
+    commit(Mutations.updateSkill, skill, { meta: { sync: true } });
   },
   async [Actions.updateCampaign]({ commit }, campaign) {
     commit(Mutations.updateCampaign, { campaign }, { meta: { sync: true } });

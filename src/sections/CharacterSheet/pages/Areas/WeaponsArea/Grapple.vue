@@ -7,11 +7,11 @@
     <input type="text"
            class="common-input bab-input"
            readonly
-           :value="getGrappleTotal">
+           :value="grappleTotal">
     <input type="text"
            class="common-input bab-input"
            readonly
-           :value="getBaseAttackBonus">
+           :value="baseAttackBonus">
     <input type="number"
            class="common-input"
            readonly
@@ -19,13 +19,14 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="size.grappleBonus">
+           :value="sizeBonus">
     <input type="number"
            class="common-input"
-           v-model.number="grapple.miscModifier">
+           :value="miscModifier"
+           @change="$emit('onUpdateGrapple', { miscModifier: $event.target.value * 1 })">
     <span class="h-md-down">&nbsp;</span>
     <span class="total-label"
-          :value="getGrappleTotal">Total</span>
+          :value="grappleTotal">Total</span>
     <span>Base Attack<br>Bonus</span>
     <span>{{keyScoreName}}<br>Modifier</span>
     <span>Size<br>Modifier</span>
@@ -34,15 +35,34 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'store/CharacterModule';
-
 export default {
-  props: ['keyScoreName', 'keyScoreModifier'],
-  computed: {
-    ...mapState(['grapple', 'size']),
-    ...mapGetters(['getBaseAttackBonus', 'getGrappleTotal'])
+  props: {
+    keyScoreName: {
+      type: String,
+      default: "strength"
+    },
+    keyScoreModifier: {
+      type: Number,
+      default: 0
+    },
+    sizeBonus: {
+      type: Number,
+      default: 0
+    },
+    baseAttackBonus: {
+      type: String,
+      default: "0"
+    },
+    miscModifier: {
+      type: Number,
+      default: 0
+    },
+    grappleTotal: {
+      type: String,
+      default: "0"
+    }
   }
-}
+};
 </script>
 
 <style>

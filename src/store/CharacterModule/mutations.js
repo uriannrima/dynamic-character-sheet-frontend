@@ -2,8 +2,6 @@ import { Mutations } from './mappings';
 import ObjectUtils from 'utils/object.utils.js';
 import { CharacterState } from './state';
 
-
-
 export default {
   [Mutations.newCharacter](state) {
     ObjectUtils.extractTo(new CharacterState, state);
@@ -90,6 +88,9 @@ export default {
   [Mutations.updateSpellResistance](state, { spellResistance }) {
     state.spellResistance = spellResistance;
   },
+  [Mutations.updateGrapple](state, { grapple }) {
+    state.grapple = grapple;
+  },
   [Mutations.updateAttacks](state, { attacks = [] }) {
     attacks.forEach((attack, index) => {
       const stateAttack = state.attacks[index];
@@ -103,11 +104,15 @@ export default {
   [Mutations.updateSkills](state, { skills = [] }) {
     skills.forEach(skill => {
       const stateSkill = state.skills.find(sSkill => sSkill.name === skill.name);
-      ObjectUtils.extractTo(skill, stateSkill);
+      if (!stateSkill) {
+        state.skills.push(skill);
+      } else {
+        ObjectUtils.extractTo(skill, stateSkill);
+      }
     });
   },
-  [Mutations.updateSkill](state, { index, skill }) {
-    const stateSkill = state.skills[index];
+  [Mutations.updateSkill](state, skill) {
+    const stateSkill = state.skills.find(sSkill => sSkill._id === skill._id);
     ObjectUtils.extractTo(skill, stateSkill);
   },
   [Mutations.updateCampaign](state, { campaign }) {
