@@ -11,7 +11,7 @@ export const Character = function ({
   status = {}, armorClass,
   initiative = new Modules.InitiativeModule.Initiative({}), conditionModifiers = "",
   savingThrows, baseAttackBonus = [0],
-  spellResistance = 0, grapple, skills = Modules.SkillsModule.All.map(skill => new Modules.SkillsModule.Skill(skill)),
+  spellResistance = 0, grapple, skills = [],
   attacks, gear, items = [], carryCapacities,
   campaign = "", experience = 0, wealth, feats = [], languages = [],
   specialAbilities = [], domainSchool = "", spellSave = 0,

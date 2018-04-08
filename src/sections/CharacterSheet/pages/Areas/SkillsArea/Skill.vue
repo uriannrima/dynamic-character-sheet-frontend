@@ -9,7 +9,7 @@
         <label class="skill-name"
                :class="{ 'untrained-skill': untrained }">{{name}}</label>
         <small class="skill-sub-value"
-               v-if="subValues">({{subValues[0]}})</small>
+               v-if="hasSubValue">({{subValues[0].value}})</small>
       </div>
       <label class="skill-key-ability"
              :class="{ 'armor-check-penalty': armorCheckPenalty }">{{keyScoreName.substring(0,3)}}</label>
@@ -48,6 +48,10 @@ export default {
     'gearPenalty'
   ],
   computed: {
+    hasSubValue() {
+      var { subValues } = this;
+      return subValues && subValues.length >= 1 && subValues[0].value;
+    },
     skillModifier() {
       var penalty = this.checkPenalty;
       if (this.name === "Swim") penalty += penalty;

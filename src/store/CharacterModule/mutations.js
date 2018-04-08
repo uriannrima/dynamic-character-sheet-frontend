@@ -3,8 +3,8 @@ import ObjectUtils from 'utils/object.utils.js';
 import { CharacterState } from './state';
 
 export default {
-  [Mutations.newCharacter](state) {
-    ObjectUtils.extractTo(new CharacterState, state);
+  [Mutations.newCharacter](state, newState = new CharacterState()) {
+    ObjectUtils.extractTo(newState, state);
   },
   [Mutations.updateId](state, { _id }) {
     state._id = _id;

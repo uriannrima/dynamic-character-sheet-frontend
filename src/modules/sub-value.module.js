@@ -1,6 +1,10 @@
-export const SubValue = function ({ title = "", value = "" }) {
-  return {
-    title,
-    value
+export class SubValue {
+  constructor({ title = "", value = "" } = {}) {
+    Object.assign(this, {
+      title,
+      value
+    });
   }
 }
+
+export default SubValue;

@@ -5,15 +5,15 @@ export default class BaseSocketService extends SocketLayer {
     super({ serviceName: url.replace('/', '') });
   }
 
-  async get(id) {
-    const data = await this.service.get(id, {});
+  async get(id, query = {}) {
+    const data = await this.service.get(id, { query });
     return {
       data
     };
   }
 
-  async getAll() {
-    const data = await this.service.find({});
+  async getAll(query = {}) {
+    const data = await this.service.find({ query });
     return {
       data
     };

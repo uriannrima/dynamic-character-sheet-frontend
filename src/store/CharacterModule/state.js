@@ -8,7 +8,6 @@ import Initiative from 'modules/initiative.module';
 import Grapple from 'modules/grapple.module';
 import { SavingThrow, Will, Reflex, Fortitude } from 'modules/saving-throw.module';
 import Attack from 'modules/attack.module';
-import { Skill, All } from 'modules/skill.module';
 import Item from 'modules/item.module';
 import CarryCapacities from 'modules/carry-capacities.module';
 import Wealth from 'modules/wealth.module';
@@ -51,7 +50,7 @@ export class CharacterState {
       conditionModifiers: "",
       spellResistance: 0,
       attacks: [new Attack(), new Attack(), new Attack(), new Attack()],
-      skills: All.map(skill => new Skill(skill)),
+      skills: [],
       campaign: "",
       experience: "",
       items: [...Array(2 * 17)].map(() => new Item()),

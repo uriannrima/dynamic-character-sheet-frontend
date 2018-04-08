@@ -1,3 +1,27 @@
+import SubValue from './sub-value.module';
+
+export class CharacterSkill {
+  constructor({ _id, name = "", keyScoreName = "", untrained = true,
+    armorCheckPenalty = false, classSkill = false, hasSubValue = false,
+    subValues = [], rank = 0, abilityModifier = 0, miscModifier = 0, hiddenModifier = 0 }) {
+
+    Object.assign(this, {
+      _id, name, keyScoreName, untrained, armorCheckPenalty,
+      classSkill, hasSubValue, subValues, rank,
+      abilityModifier, miscModifier, hiddenModifier
+    });
+
+    if (hasSubValue || subValues.length >= 1) {
+      if (subValues.length >= 1) {
+        this.subValues = subValues;
+      } else {
+        this.subValues = [];
+        this.subValues.push(new SubValue());
+      }
+    }
+  }
+}
+
 export class Skill {
   constructor({
     _id,
@@ -15,6 +39,7 @@ export class Skill {
     restriction = "",
     miscellaneous = "",
     aditionalInformation = "",
+    hasSubValue = false,
     subValues = [],
     rank = 0,
     abilityModifier = 0,
@@ -37,12 +62,17 @@ export class Skill {
       restriction,
       miscellaneous,
       aditionalInformation,
+      hasSubValue,
       subValues,
       rank,
       abilityModifier,
       miscModifier,
       hiddenModifier
     });
+
+    this.toCharacterSkill = function () {
+      return new CharacterSkill(this);
+    };
   }
 };
 

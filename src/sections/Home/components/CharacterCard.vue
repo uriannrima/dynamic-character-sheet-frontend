@@ -33,20 +33,8 @@
           </small>
         </div>
       </div>
-      <div class="a-divider">
-        <span>Passive Skills</span>
-      </div>
-      <div class="skills-container">
-        <span>{{getPassiveSkills.map(skill => skill.name).reduce((reducer, skill) => reducer + ', ' + skill)}}</span>
-      </div>
     </div>
     <div class="character-card-footer">
-      <div class="a-divider">
-        <span>Skills</span>
-      </div>
-      <div class="skills-container">
-        <span>{{character.skills.map(skill => skill.name).reduce((reducer, skill) => reducer + ', ' + skill)}}</span>
-      </div>
     </div>
   </div>
 </template>

@@ -8,27 +8,27 @@ export default class AbstractService extends BaseSocketService {
   }
 
   create(data = {}) {
-    return this.model(data);
+    return new this.model(data);
   }
 
-  async getData(id) {
-    const response = await super.get(id);
+  async getData(id, query = {}) {
+    const response = await super.get(id, query);
     return response.data;
   }
 
-  async get(id) {
-    const data = await this.getData(id);
-    return this.model(data);
+  async get(id, query = {}) {
+    const data = await this.getData(id, query);
+    return new this.model(data);
   }
 
-  async getAll() {
-    const response = await super.getAll();
-    return response.data.map(data => this.model(data));
+  async getAll(query = {}) {
+    const response = await super.getAll(query);
+    return response.data.map(data => new this.model(data));
   }
 
   async saveOrUpdate(model) {
     const response = await super.saveOrUpdate(model);
-    return this.model(response.data);
+    return new this.model(response.data);
   }
 
   async remove(id) {

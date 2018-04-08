@@ -1,3 +1,4 @@
+import { CharacterState } from './state';
 import { Actions, Mutations } from './mappings';
 import CharacterService from 'services/character.service';
 import NotificationService from 'services/NotificationService';
@@ -14,12 +15,14 @@ export default {
     commit(Mutations.updateId, character);
   },
   async [Actions.newCharacter]({ commit }) {
-    commit(Mutations.newCharacter);
+    const newState = new CharacterState();
+    const skills = await SkillService.getDefaultSkills();
+    newState.skills = skills.map(skill => skill.toCharacterSkill());
+    commit(Mutations.newCharacter, newState);
   },
   async [Actions.loadCharacter]({ commit }, characterId) {
     try {
-      const character = await CharacterService.getData(characterId);
-      if (character.skills.length == 0) character.skills = await SkillService.getAll();
+      const character = await CharacterService.get(characterId);
 
       // Load character mutations
       [
