@@ -1,82 +1,76 @@
 
 <template>
   <div class="skill-form-component">
-    <div v-if="describeSkill">
+    <div v-if="describe">
       <div class="skill-form-component-name-container">
         <span>
           <strong>Name:</strong>
         </span>
-        <span>{{describeSkill.name}}
-          <small>[{{describeSkill.keyAbility}}]</small>
+        <span>{{describe.name}}
+          <small>[{{describe.keyScoreName}}]</small>
         </span>
       </div>
       <div class="skill-form-component-check-container">
         <span>
           <strong>Check:</strong>
         </span>
-        <span>{{describeSkill.check}}</span>
+        <span>{{describe.check}}</span>
       </div>
       <div class="skill-form-component-action-container">
         <span>
           <strong>Action:</strong>
         </span>
-        <span>{{describeSkill.action}}</span>
+        <span>{{describe.action}}</span>
       </div>
       <div class="skill-form-component-try-again-container"
-           v-if="describeSkill.tryAgain">
+           v-if="describe.tryAgain">
         <span>
           <strong>Try Again:</strong>
         </span>
-        <span>{{describeSkill.tryAgain}}</span>
+        <span>{{describe.tryAgain}}</span>
       </div>
       <div class="skill-form-component-special-container"
-           v-if="describeSkill.special">
+           v-if="describe.special">
         <span>
           <strong>Special:</strong>
         </span>
-        <span>{{describeSkill.special}}</span>
+        <span>{{describe.special}}</span>
       </div>
       <div class="skill-form-component-restriction-container"
-           v-if="describeSkill.restriction">
+           v-if="describe.restriction">
         <span>
           <strong>Restriction:</strong>
         </span>
-        <span>{{describeSkill.restriction}}</span>
+        <span>{{describe.restriction}}</span>
       </div>
       <div class="skill-form-component-synergy-container"
-           v-if="describeSkill.synergy">
+           v-if="describe.synergy">
         <span>
           <strong>Synergy:</strong>
         </span>
-        <span>{{describeSkill.synergy}}</span>
+        <span>{{describe.synergy}}</span>
       </div>
       <div class="skill-form-component-untrained-description-container"
-           v-if="describeSkill.untrainedDescription">
+           v-if="describe.untrainedDescription">
         <span>
           <strong>Untrained Description:</strong>
         </span>
-        <span>{{describeSkill.untrainedDescription}}</span>
+        <span>{{describe.untrainedDescription}}</span>
       </div>
-      <div class="skill-form-component-sub-value-container"
-           v-if="describeSkill.subValue">
-        <span>
-          <strong>Sub Value:</strong>
-        </span>
-        <span>{{describeSkill.subValue}}</span>
-      </div>
+      <sub-values-list :model="describe"></sub-values-list>
       <div class="skill-form-component-miscellaneous-container"
-           v-if="describeSkill.miscellaneous">
+           v-if="describe.miscellaneous">
         <span>
           <strong>Miscellaneous:</strong>
         </span>
-        <span>{{describeSkill.miscellaneous}}</span>
+        <span>{{describe.miscellaneous}}</span>
       </div>
       <div class="skill-form-component-html-container"
-           v-if="describeSkill.aditionalInformation">
+           v-if="describe.aditionalInformation">
         <span>
           <strong>Aditional Information:</strong>
         </span>
-        <div v-html="describeSkill.aditionalInformation"></div>
+        <div v-html="describe.aditionalInformation"></div>
       </div>
     </div>
     <div v-else>
@@ -84,13 +78,13 @@
         <span>Name:</span>
         <input type="text"
                v-validate="'required'"
-               v-model.trim="skill.name"
+               v-model.trim="model.name"
                name="name">
         <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
       </div>
       <div class="skill-form-component-key-ability-container">
         <span>Key Ability:</span>
-        <select v-model="skill.keyAbility"
+        <select v-model="model.keyAbility"
                 v-validate="'required'"
                 name="key ability">
           <option value="strength">Strength</option>
@@ -105,7 +99,7 @@
       <div class="skill-form-component-check-container">
         <span>Check:</span>
         <textarea type="text"
-                  v-model.trim="skill.check"
+                  v-model.trim="model.check"
                   v-validate="'required'"
                   name="check"></textarea>
         <span v-show="errors.has('check')">{{ errors.first('check') }}</span>
@@ -113,7 +107,7 @@
       <div class="skill-form-component-action-container">
         <span>Action:</span>
         <textarea type="text"
-                  v-model.trim="skill.action"
+                  v-model.trim="model.action"
                   v-validate="'required'"
                   name="action"></textarea>
         <span v-show="errors.has('action')">{{ errors.first('action') }}</span>
@@ -123,80 +117,79 @@
                  v-model="has.tryAgain">Try Again:</label>
         <textarea v-if="has.tryAgain"
                   type="text"
-                  v-model.trim="skill.tryAgain"></textarea>
+                  v-model.trim="model.tryAgain"></textarea>
       </div>
       <div class="skill-form-component-special-container">
         <label><input type="checkbox"
                  v-model="has.special">Special:</label>
-        <textarea v-if="has.special || skill.special"
+        <textarea v-if="has.special || model.special"
                   type="text"
-                  v-model.trim="skill.special"></textarea>
+                  v-model.trim="model.special"></textarea>
       </div>
       <div class="skill-form-component-restriction-container">
         <label><input type="checkbox"
                  v-model="has.restriction">Restriction:</label>
-        <textarea v-if="has.restriction || skill.restriction"
+        <textarea v-if="has.restriction || model.restriction"
                   type="text"
-                  v-model.trim="skill.restriction"></textarea>
+                  v-model.trim="model.restriction"></textarea>
       </div>
       <div class="skill-form-component-synergy-container">
         <label><input type="checkbox"
                  v-model="has.synergy">Synergy:</label>
-        <textarea v-if="has.synergy || skill.synergy"
+        <textarea v-if="has.synergy || model.synergy"
                   type="text"
-                  v-model.trim="skill.synergy"></textarea>
+                  v-model.trim="model.synergy"></textarea>
       </div>
       <div class="skill-form-component-untrained-container">
         <label><input type="checkbox"
-                 v-model.trim="skill.untrained">Untrained:</label>
+                 v-model.trim="model.untrained">Untrained:</label>
       </div>
       <div class="skill-form-component-untrained-description-container"
-           v-if="skill.untrained">
+           v-if="model.untrained">
         <span>Untrained Description:</span>
         <textarea type="text"
-                  v-model.trim="skill.untrainedDescription"></textarea>
+                  v-model.trim="model.untrainedDescription"></textarea>
       </div>
       <div class="skill-form-component-armor-check-penaly-container">
         <label><input type="checkbox"
-                 v-model.trim="skill.armorCheckPenalty">Armor Check Penalty:</label>
+                 v-model.trim="model.armorCheckPenalty">Armor Check Penalty:</label>
       </div>
       <div class="skill-form-component-has-sub-value-container">
         <label><input type="checkbox"
-                 v-model.trim="skill.hasSubValue">Sub Value:</label>
+                 v-model.trim="model.hasSubValue">Sub Value:</label>
       </div>
       <div class="skill-form-component-sub-value-container"
-           v-if="skill.hasSubValue || skill.subValue">
+           v-if="model.hasSubValue || model.subValue">
         <span>Value:</span>
         <input type="text"
-               v-model.trim="skill.subValue">
+               v-model.trim="model.subValue">
       </div>
       <div class="skill-form-component-miscellaneous-container">
         <label><input type="checkbox"
                  v-model="has.miscellaneous">Miscellaneous:</label>
-        <textarea v-if="has.miscellaneous || skill.miscellaneous"
+        <textarea v-if="has.miscellaneous || model.miscellaneous"
                   type="text"
-                  v-model.trim="skill.miscellaneous"></textarea>
+                  v-model.trim="model.miscellaneous"></textarea>
       </div>
       <div class="skill-form-component-html-container">
         <label><input type="checkbox"
                  v-model="has.aditionalInformation">Aditional Information (as HTML):</label>
         <textarea class="skill-aditional-information-text-area"
-                  v-if="has.aditionalInformation || skill.aditionalInformation"
+                  v-if="has.aditionalInformation || model.aditionalInformation"
                   type="text"
-                  v-model.trim="skill.aditionalInformation"></textarea>
+                  v-model.trim="model.aditionalInformation"></textarea>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { FormBus } from 'shared/form';
+import { default as FormMixin } from 'shared/form/form.mixin';
+import { SubValuesComponent, SubValuesList } from 'shared/form/components';
 
 export default {
-  props: ['skill', 'describeSkill'],
-  inject: {
-    $validator: '$validator'
-  },
+  components: { SubValuesComponent, SubValuesList },
+  mixins: [FormMixin],
   data: function () {
     return {
       has: {
@@ -209,27 +202,6 @@ export default {
         aditionalInformation: false
       }
     };
-  },
-  created: function () {
-    FormBus.$on('skill:clear', () => {
-      this.clear();
-    });
-  },
-  destroyed: function () {
-    FormBus.$off('skill:clear');
-  },
-  methods: {
-    clear: function () {
-      this.has = {
-        tryAgain: false,
-        special: false,
-        synergy: false,
-        untrained: false,
-        restriction: false,
-        miscellaneous: false,
-        aditionalInformation: false
-      };
-    }
   }
 }
 </script>

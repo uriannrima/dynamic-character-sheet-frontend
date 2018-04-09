@@ -1,5 +1,5 @@
 <template>
-  <div v-if="model.subValues.length > 0" class="sub-value-renderer-container">
+  <div v-if="model.subValues && model.subValues.length >= 1" class="sub-value-renderer-container">
     <div class="sub-value-rendered-component" v-for="(subValue, index) in model.subValues" :key="index">
       <span>
         <strong>{{subValue.title}}:</strong>

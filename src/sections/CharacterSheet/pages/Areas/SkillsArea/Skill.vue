@@ -6,8 +6,9 @@
            @change="$emit('onSkillUpdate', { classSkill: $event.target.checked })">
     <div class="skill-wrapper">
       <div class="skill-name-container">
-        <label class="skill-name"
-               :class="{ 'untrained-skill': untrained }">{{name}}</label>
+        <v-touch tag="label" class="skill-name"
+               :class="{ 'untrained-skill': untrained }"
+               v-on:tap="onSelect({ _id, subValues })">{{name}}</v-touch>
         <small class="skill-sub-value"
                v-if="hasSubValue">({{subValues[0].value}})</small>
       </div>
@@ -34,8 +35,13 @@
 </template>
 
 <script>
+import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin';
+
 export default {
+  mixins: [OnSelectedMixin],
   props: [
+    '_id',
+    'index',
     'name',
     'classSkill',
     'untrained',

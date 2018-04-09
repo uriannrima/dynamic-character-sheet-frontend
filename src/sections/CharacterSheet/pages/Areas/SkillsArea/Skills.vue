@@ -25,28 +25,34 @@
          v-show="!minimize">
       <skill v-for="(skill, index) in skills"
              :key="index"
+             :index="index"
              v-bind="$extract(skill)"
              :keyScoreModifier="getTempModifier(getAbilityScore(skill.keyScoreName))"
              :gearPenalty="getGearPenalty"
-             @onSkillUpdate="onUpdateSkill(index, $event)"></skill>
+             @onSkillUpdate="onUpdateSkill(index, $event)"
+             @onSelected="onSkillSelected"></skill>
     </div>
+    <skill-modal :show.sync="showModal"
+                 :referenceList="skills"
+                 :describe.sync="selected"
+                 @onAdded="addSkill($event.model)"
+                 @onRemoved="removeSkill($event.model)"></skill-modal>
   </div>
 </template>
 
 <script>
-import { Skill } from './';
+import { ModalContainerMixin } from 'shared/modal';
+import { Skill, SkillModal } from './';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
+import SkillService from 'services/skill.service';
 
 export default {
-  components: { Skill },
-  mixins: [MinimizableMixin],
+  components: { Skill, SkillModal },
+  mixins: [ModalContainerMixin, MinimizableMixin],
   computed: {
     ...mapState(['skills']),
-    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty']),
-    orderedSkills() {
-      return this.character.skills.orderBy(s => s.name);
-    }
+    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty'])
   },
   methods: {
     ...mapMutations(['updateSkill']),
@@ -55,6 +61,11 @@ export default {
         index,
         skill
       });
+    },
+    onSkillSelected: async function ({ model }) {
+      const skill = await SkillService.get(model._id);
+      model = Object.assign({}, skill, model);
+      this.onSelected({ model });
     }
   }
 }

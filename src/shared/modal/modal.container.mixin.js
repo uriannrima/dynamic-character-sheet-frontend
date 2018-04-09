@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    onSelected: function ({ model }) {
+    onSelected: async function ({ model }) {
       this.selected = model;
       this.showModal = true;
     }
