@@ -9,6 +9,8 @@ cache:
     - node_modules
 
 script:
+  - echo "Installing packages."
+  - yarn install
   - echo "Starting Webpack Build."
   - npm run build
   - echo "Firebase Deploy."
