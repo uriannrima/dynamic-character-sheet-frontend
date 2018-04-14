@@ -10,7 +10,7 @@ cache:
 
 script:
   - echo "Starting Webpack Build."
-  - webpack --config build/webpack.prod.conf.js
+  - npm run build
   - echo "Firebase Deploy."
   - firebase deploy
 
