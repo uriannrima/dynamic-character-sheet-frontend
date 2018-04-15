@@ -103,7 +103,12 @@ export default {
   },
   [Mutations.updateSkills](state, { skills = [] }) {
     skills.forEach(skill => {
-      const stateSkill = state.skills.find(sSkill => sSkill.name === skill.name);
+      const equalSkill = function (a, b) {
+        let same = a._id === b._id;
+        if (same && (a.subValues && b.subValues)) same = JSON.stringify(a.subValues) === JSON.stringify(b.subValues);
+        return same;
+      }
+      const stateSkill = state.skills.find(sSkill => equalSkill(sSkill, skill));
       if (!stateSkill) {
         state.skills.push(skill);
       } else {
@@ -112,7 +117,12 @@ export default {
     });
   },
   [Mutations.updateSkill](state, skill) {
-    const stateSkill = state.skills.find(sSkill => sSkill._id === skill._id);
+    const equalSkill = function (a, b) {
+      let same = a._id === b._id;
+      if (same && (a.subValues && b.subValues)) same = JSON.stringify(a.subValues) === JSON.stringify(b.subValues);
+      return same;
+    }
+    const stateSkill = state.skills.find(sSkill => equalSkill(sSkill, skill));
     ObjectUtils.extractTo(skill, stateSkill);
   },
   [Mutations.updateCampaign](state, { campaign }) {
@@ -162,6 +172,11 @@ export default {
     spells.forEach(spell => {
       state.spells.push(spell);
     });
+  },
+
+  [Mutations.addSkill](state, skill) {
+    skill = skill.toCharacterSkill ? skill.toCharacterSkill() : skill;
+    state.skills.push(skill);
   },
 
   [Mutations.addFeat](state, feat) {

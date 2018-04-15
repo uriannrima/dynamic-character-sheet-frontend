@@ -61,4 +61,21 @@ button [disabled] {
   border: solid 1px #d00 !important;
   box-shadow: 0 0 0 3px rgba(221, 0, 0, 0.1) inset !important;
 }
+
+/* Modal Form */
+.form-component.editing span,
+.form-component.editing label {
+  display: block;
+}
+
+.form-component.editing input[type="text"],
+.form-component.editing select,
+.form-component.editing textarea {
+  width: 100%;
+}
+
+.form-component.editing textarea {
+  font-size: 12px;
+  height: 100px;
+}
 </style>

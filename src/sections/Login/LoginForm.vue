@@ -12,7 +12,7 @@
            v-model="password"
            v-validate="{ required: true, min: 4 }">
     <button @click.prevent="$emit('onLogin', { email: email.toLowerCase(), password })"
-            :disabled="errors.any() || disabled">Login</button>
+            :disabled="vErrors.any() || disabled">Login</button>
     <p class="message">Not registered?
       <a href
          @click.prevent="$emit('toggleForm', 'registration-form')">Create an account</a>

@@ -11,6 +11,6 @@ Es6Promise.polyfill();
 Vue.component('v-select', vSelect);
 VueTouch.registerCustomEvent('doubletap', { type: 'tap', taps: 2 });
 Vue.use(VueFeathers, feathers);
-Vue.use(VeeValidate, { classes: true });
+Vue.use(VeeValidate, { classes: true, errorBagName: 'vErrors' });
 Vue.use(VueTouch, { name: 'v-touch' });
 Vue.use(VuejsDialog);

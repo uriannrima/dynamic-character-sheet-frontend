@@ -9,6 +9,7 @@
         <div>
           <label>Skills</label>
           <minimize-button :minimize.sync="minimize"></minimize-button>
+          <open-modal-button :showModal.sync="showModal"></open-modal-button>
         </div>
       </div>
       <div class="headers-container"
@@ -25,16 +26,16 @@
          v-show="!minimize">
       <skill v-for="(skill, index) in skills"
              :key="index"
-             :index="index"
              v-bind="$extract(skill)"
              :keyScoreModifier="getTempModifier(getAbilityScore(skill.keyScoreName))"
              :gearPenalty="getGearPenalty"
-             @onSkillUpdate="onUpdateSkill(index, $event)"
+             @onSkillUpdate="updateSkill"
              @onSelected="onSkillSelected"></skill>
     </div>
     <skill-modal :show.sync="showModal"
                  :referenceList="skills"
                  :describe.sync="selected"
+                 :canEdit="true"
                  @onAdded="addSkill($event.model)"
                  @onRemoved="removeSkill($event.model)"></skill-modal>
   </div>
@@ -44,7 +45,7 @@
 import { ModalContainerMixin } from 'shared/modal';
 import { Skill, SkillModal } from './';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
+import { mapState, mapGetters, mapActions } from 'store/CharacterModule';
 import SkillService from 'services/skill.service';
 
 export default {
@@ -55,13 +56,7 @@ export default {
     ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty'])
   },
   methods: {
-    ...mapMutations(['updateSkill']),
-    onUpdateSkill(index, skill) {
-      this.updateSkill({
-        index,
-        skill
-      });
-    },
+    ...mapActions(['updateSkill', 'addSkill']),
     onSkillSelected: async function ({ model }) {
       const skill = await SkillService.get(model._id);
       model = Object.assign({}, skill, model);
