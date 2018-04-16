@@ -2,7 +2,8 @@
   <div class="carry-capacity-component">
     <input type="number"
            class="common-input"
-           :value="value">
+           :value="value"
+           @change="$emit('onCarryCapacityUpdate' , { value: $event.target.value * 1 })">
     <label v-html="label"></label>
     <small v-if="small">{{small}}</small>
   </div>
@@ -10,12 +11,8 @@
 
 <script>
 export default {
-  props: [
-    'value',
-    'label',
-    'small'
-  ]
-}
+  props: ["value", "label", "small"]
+};
 </script>
 
 <style>

@@ -25,11 +25,13 @@ export const Actions = {
   updateSkill: 'updateSkill',
   updateCampaign: 'updateCampaign',
   updateExperience: 'updateExperience',
+  
   updateArmor: 'updateArmor',
   updateShield: 'updateShield',
   updateProtectiveItem: 'updateProtectiveItem',
   updateItems: 'updateItems',
   updateItem: 'updateItem',
+  
   updateFeats: 'updateFeats',
   updateSpecialAbilities: 'updateSpecialAbilities',
   updateLanguages: 'updateLanguages',
@@ -37,7 +39,9 @@ export const Actions = {
   updateSpellSave: 'updateSpellSave',
 
   addSkill: 'addSkill',
-  removeSkill: 'removeSkill'
+  removeSkill: 'removeSkill',
+
+  updateCarryCapacity: 'updateCarryCapacity'
 };
 
 export const Mutations = {
@@ -88,7 +92,9 @@ export const Mutations = {
   addSpell: 'addSpell',
   removeSpell: 'removeSpell',
   updateDomainSchool: 'updateDomainSchool',
-  updateSpellSave: 'updateSpellSave'
+  updateSpellSave: 'updateSpellSave',
+  
+  updateCarryCapacity: 'updateCarryCapacity'
 };
 
 export const Mappings = {

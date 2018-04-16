@@ -33,7 +33,8 @@
     </div>
     <div class="carry-capacities-container"
          v-show="!minimize">
-      <carry-capacities :carryCapacities="carryCapacities"></carry-capacities>
+      <carry-capacities :carryCapacities="carryCapacities"
+                        @onCarryCapacityUpdate="updateCarryCapacity"></carry-capacities>
     </div>
     <wealth v-show="!minimize"
             :wealth="wealth"></wealth>
@@ -42,9 +43,9 @@
 
 <script>
 import { Item, CarryCapacities, Wealth } from "./";
-import ResizeMixin from 'shared/mixins/events/resize.handler.mixin';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
+import ResizeMixin from "shared/mixins/events/resize.handler.mixin";
+import MinimizableMixin from "shared/mixins/states/minimizable.mixin";
+import { mapState, mapGetters, mapActions } from "store/CharacterModule";
 
 export default {
   components: { Item, CarryCapacities, Wealth },
@@ -57,16 +58,16 @@ export default {
     };
   },
   computed: {
-    ...mapState(['items', 'carryCapacities', 'wealth']),
-    ...mapGetters(['getTotalWeight'])
+    ...mapState(["items", "carryCapacities", "wealth"]),
+    ...mapGetters(["getTotalWeight"])
   },
   methods: {
-    ...mapMutations(['updateItem']),
-    handleResize: function () {
+    ...mapActions(["updateItem", "updateCarryCapacity"]),
+    handleResize: function() {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }
   }
-}
+};
 </script>
 
 <style>

@@ -25,7 +25,7 @@
 <script>
 import { ArmorItem, ShieldItem, ProtectiveItem } from './';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { mapState, mapMutations } from 'store/CharacterModule';
+import { mapState, mapActions } from 'store/CharacterModule';
 
 export default {
   components: { ArmorItem, ShieldItem, ProtectiveItem },
@@ -34,7 +34,7 @@ export default {
     ...mapState(['gear'])
   },
   methods: {
-    ...mapMutations(['updateArmor', 'updateShield', 'updateProtectiveItem'])
+    ...mapActions(['updateArmor', 'updateShield', 'updateProtectiveItem'])
   }
 }
 </script>

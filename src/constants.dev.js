@@ -1,4 +1,4 @@
 export default {
-  SOCKET_URL: 'http://192.168.0.10:5000/',
-  API_URL: 'http://192.168.0.10:5000/api'
+  SOCKET_URL: 'https://web-dcs-api-uriannrima.c9users.io/',
+  API_URL: 'https://web-dcs-api-uriannrima.c9users.io/api'
 };

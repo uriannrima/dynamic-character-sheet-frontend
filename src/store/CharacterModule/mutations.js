@@ -151,6 +151,11 @@ export default {
     const stateItem = state.items[index];
     ObjectUtils.extractTo(item, stateItem);
   },
+  [Mutations.updateCarryCapacity](state, { index, carryCapacity }) {
+    const stateCarryCapacity = state.carryCapacities[index];
+    ObjectUtils.extractTo(carryCapacity, stateCarryCapacity);
+  },
+
 
 
   [Mutations.updateFeats](state, { feats }) {

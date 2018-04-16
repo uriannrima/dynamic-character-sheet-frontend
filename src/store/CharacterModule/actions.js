@@ -115,9 +115,24 @@ export default {
     commit(Mutations.addSkill, skill, { meta: { sync: true } });
   },
   async [Actions.updateCampaign]({ commit }, campaign) {
-    commit(Mutations.updateCampaign, { campaign }, { meta: { sync: true } });
+    commit(Mutations.updateCampaign, campaign, { meta: { sync: true } });
   },
   async [Actions.updateExperience]({ commit }, experience) {
-    commit(Mutations.updateExperience, { experience }, { meta: { sync: true } });
+    commit(Mutations.updateExperience, experience, { meta: { sync: true } });
+  },
+  async [Actions.updateArmor]({ commit }, armor) {
+    commit(Mutations.updateArmor, armor, { meta: { sync: true } });
+  },
+  async [Actions.updateShield]({ commit }, shield) {
+    commit(Mutations.updateShield, shield, { meta: { sync: true } });
+  },
+  async [Actions.updateProtectiveItem]({ commit }, protectiveItem) {
+    commit(Mutations.updateProtectiveItem, protectiveItem, { meta: { sync: true } });
+  },
+  async [Actions.updateItem]({ commit }, item) {
+    commit(Mutations.updateItem, item, { meta: { sync: true } });
+  },
+  async [Actions.updateCarryCapacity]({ commit }, carryCapacity) {
+    commit(Mutations.updateCarryCapacity, carryCapacity, { meta: { sync: true } });
   }
 }
