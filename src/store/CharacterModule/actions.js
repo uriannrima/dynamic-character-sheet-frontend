@@ -109,7 +109,10 @@ export default {
     commit(Mutations.updateAttack, attack, { meta: { sync: true } });
   },
   async [Actions.updateSkill]({ commit }, skill) {
-    commit(Mutations.updateSkill, skill, { meta: { sync: true } });
+    commit(Mutations.updateSkill, { ...skill, sync: true }, { meta: { sync: true } });
+  },
+  async [Actions.addSkill]({ commit }, skill) {
+    commit(Mutations.addSkill, skill, { meta: { sync: true } });
   },
   async [Actions.updateCampaign]({ commit }, campaign) {
     commit(Mutations.updateCampaign, { campaign }, { meta: { sync: true } });

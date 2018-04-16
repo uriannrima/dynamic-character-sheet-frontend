@@ -9,20 +9,20 @@
     <div slot="body">
       <div class="select-skill-container"
            v-if="!editing && !describe">
-        <span>Select spell:</span>
+        <span>Select skill:</span>
         <select v-model="selected">
-          <option value="">New spell</option>
-          <option v-for="(spell, index) in all"
-                  :value="spell"
-                  :key="index">{{spell.name}}
+          <option value="">New skill</option>
+          <option v-for="(skill, index) in all"
+                  :value="skill"
+                  :key="index">{{skill.name}}
           </option>
         </select>
       </div>
       <skill-form :model="model"
                   :describe="selected || describe"></skill-form>
-      <div v-show="errors.any()">
+      <div v-show="vErrors.any()">
         <ul>
-          <li v-for="(error,index) in errors.all()"
+          <li v-for="(error,index) in vErrors.all()"
               :key="index">{{error}}</li>
         </ul>
       </div>

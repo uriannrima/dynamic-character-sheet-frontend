@@ -19,7 +19,7 @@
         <label>Character Name</label>
         <span class="save-button glyphicon glyphicon-floppy-save"
               @click="$emit('onCharacterSave')"
-              v-show="!errors.any()"></span>
+              v-show="!vErrors.any()"></span>
       </div>
       <div class="horizontal-container">
         <input type="text"

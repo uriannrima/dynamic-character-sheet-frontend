@@ -34,7 +34,10 @@ export const Actions = {
   updateSpecialAbilities: 'updateSpecialAbilities',
   updateLanguages: 'updateLanguages',
   updateSpells: 'updateSpells',
-  updateSpellSave: 'updateSpellSave'
+  updateSpellSave: 'updateSpellSave',
+
+  addSkill: 'addSkill',
+  removeSkill: 'removeSkill'
 };
 
 export const Mutations = {
@@ -74,6 +77,8 @@ export const Mutations = {
   updateLanguages: 'updateLanguages',
   updateSpells: 'updateSpells',
 
+  addSkill: 'addSkill',
+  removeSkill: 'removeSkill',
   addFeat: 'addFeat',
   removeFeat: 'removeFeat',
   addSpecialAbility: 'addSpecialAbility',

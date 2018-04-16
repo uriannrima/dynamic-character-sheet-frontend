@@ -34,7 +34,11 @@ export default {
     }
   },
   methods: {
-    fastComparison: function(a, b) {
+    checkDuplicate: function (model) {
+      var fromCharacter = this.referenceList.find(m => m._id === model._id);
+      return fromCharacter && this.fastComparison(model.subValues, fromCharacter.subValues);
+    },
+    fastComparison: function (a, b) {
       return JSON.stringify(a) === JSON.stringify(b);
     },
     resetScroll: function () {
@@ -81,8 +85,7 @@ export default {
       }
     },
     addToCharacter: function (model) {
-      var fromCharacter = this.referenceList.find(m => m._id === model._id);
-      if (fromCharacter && this.fastComparison(model.subValue, fromCharacter.subValue)) {
+      if (this.checkDuplicate(model)) {
         this.isDuplicated = true;
       } else {
         this.$emit('onAdded', { model });
@@ -104,8 +107,12 @@ export default {
           this.selected = saved;
         } else {
           let { model } = this;
-          this.$emit('onUpdated', { model });
-          this.close();
+          if (this.checkDuplicate(model)) {
+            this.isDuplicated = true;
+          } else {
+            this.$emit('onUpdated', { model });
+            this.close();
+          }
         }
       }
     },

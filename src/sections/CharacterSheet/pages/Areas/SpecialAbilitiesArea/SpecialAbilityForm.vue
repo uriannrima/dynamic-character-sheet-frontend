@@ -31,7 +31,7 @@
                v-validate="'required'"
                v-model.trim="model.name"
                name="name">
-        <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
+        <span v-show="vErrors.has('name')">{{ vErrors.first('name') }}</span>
       </div>
       <div class="special-ability-form-component-type-container">
         <span>Type:</span>
@@ -42,7 +42,7 @@
           <option value="Spell-Like Ability">Spell-Like Abilities (Sp)</option>
           <option value="Supernatural Ability">Supernatural Abilities (Su)</option>
         </select>
-        <span v-show="errors.has('type')">{{ errors.first('type') }}</span>
+        <span v-show="vErrors.has('type')">{{ vErrors.first('type') }}</span>
       </div>
       <div class="special-ability-form-component-description-container">
         <span>Description:</span>
@@ -50,7 +50,7 @@
                   v-model.trim="model.description"
                   v-validate="'required'"
                   name="description"></textarea>
-        <span v-show="errors.has('description')">{{ errors.first('description') }}</span>
+        <span v-show="vErrors.has('description')">{{ vErrors.first('description') }}</span>
       </div>
       <div class="special-ability-form-component-has-sub-value-container">
         <label><input type="checkbox"

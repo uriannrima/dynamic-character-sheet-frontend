@@ -20,9 +20,9 @@
       </div>
       <special-ability-form :model="model"
                             :describe="selected || describe"></special-ability-form>
-      <div v-show="errors.any()">
+      <div v-show="vErrors.any()">
         <ul>
-          <li v-for="(error,index) in errors.all()"
+          <li v-for="(error,index) in vErrors.all()"
               :key="index">{{error}}</li>
         </ul>
       </div>
