@@ -46,6 +46,9 @@ export default {
         Mutations.updateCampaign,
         Mutations.updateExperience,
         Mutations.updateItems,
+        Mutations.updateCarryCapacities,
+        Mutations.updateCoins,
+        Mutations.updateTreasure,
         Mutations.updateFeats,
         Mutations.updateSpecialAbilities,
         Mutations.updateLanguages,
@@ -134,5 +137,11 @@ export default {
   },
   async [Actions.updateCarryCapacity]({ commit }, carryCapacity) {
     commit(Mutations.updateCarryCapacity, carryCapacity, { meta: { sync: true } });
+  },
+  async [Actions.updateCoin]({ commit }, coin) {
+    commit(Mutations.updateCoin, coin, { meta: { sync: true } });
+  },
+  async [Actions.updateTreasure]({ commit }, treasure) {
+    commit(Mutations.updateTreasure, { wealth: { treasure } }, { meta: { sync: true } });
   }
 }

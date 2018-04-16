@@ -151,12 +151,33 @@ export default {
     const stateItem = state.items[index];
     ObjectUtils.extractTo(item, stateItem);
   },
+  [Mutations.updateCarryCapacities](state, { carryCapacities }) {
+    Object.keys(carryCapacities)
+      .forEach((carryCapacityName) => {
+        const carryCapacity = carryCapacities[carryCapacityName];
+        const stateCarryCapacity = state.carryCapacities[carryCapacityName];
+        ObjectUtils.extractTo(carryCapacity, stateCarryCapacity);
+      });
+  },
   [Mutations.updateCarryCapacity](state, { index, carryCapacity }) {
     const stateCarryCapacity = state.carryCapacities[index];
     ObjectUtils.extractTo(carryCapacity, stateCarryCapacity);
   },
-
-
+  [Mutations.updateCoin](state, { index, coin }) {
+    const stateCoin = state.wealth.coins[index];
+    ObjectUtils.extractTo(coin, stateCoin);
+  },
+  [Mutations.updateCoins](state, { wealth: { coins } }) {
+    Object.keys(coins)
+      .forEach((coinName) => {
+        const coin = coins[coinName];
+        const stateCoin = state.wealth.coins[coinName];
+        ObjectUtils.extractTo(coin, stateCoin);
+      });
+  },
+  async [Mutations.updateTreasure](state, { wealth: { treasure } }) {
+    state.wealth.treasure = treasure;
+  },
 
   [Mutations.updateFeats](state, { feats }) {
     feats.forEach(feat => {

@@ -37,7 +37,9 @@
                         @onCarryCapacityUpdate="updateCarryCapacity"></carry-capacities>
     </div>
     <wealth v-show="!minimize"
-            :wealth="wealth"></wealth>
+            :wealth="wealth"
+            @onCoinUpdate="updateCoin"
+            @onTreasureUpdate="updateTreasure"></wealth>
   </div>
 </template>
 
@@ -62,7 +64,7 @@ export default {
     ...mapGetters(["getTotalWeight"])
   },
   methods: {
-    ...mapActions(["updateItem", "updateCarryCapacity"]),
+    ...mapActions(["updateItem", "updateCarryCapacity", 'updateCoin', 'updateTreasure']),
     handleResize: function() {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }
