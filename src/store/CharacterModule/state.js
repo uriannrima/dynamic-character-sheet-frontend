@@ -1,17 +1,17 @@
-import Description from 'modules/description.module';
-import * as Size from 'modules/size.module';
-import { AbilityScore, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma } from 'modules/ability-score.module';
-import Status from 'modules/status.module';
-import ArmorClass from 'modules/armor-class.module';
-import Gear from 'modules/gear.module';
-import Initiative from 'modules/initiative.module';
-import Grapple from 'modules/grapple.module';
-import { SavingThrow, Will, Reflex, Fortitude } from 'modules/saving-throw.module';
-import Attack from 'modules/attack.module';
-import Item from 'modules/item.module';
-import CarryCapacities from 'modules/carry-capacities.module';
-import Wealth from 'modules/wealth.module';
-import SpellPerDay from 'modules/spells-per-day.module';
+import Description from 'domain/description.model';
+import * as Size from 'domain/size.model';
+import { AbilityScore, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma } from 'domain/ability-score.model';
+import Status from 'domain/status.model';
+import ArmorClass from 'domain/armor-class.model';
+import Gear from 'domain/gear.model';
+import Initiative from 'domain/initiative.model';
+import Grapple from 'domain/grapple.model';
+import { SavingThrow, Will, Reflex, Fortitude } from 'domain/saving-throw.model';
+import Attack from 'domain/attack.model';
+import Item from 'domain/item.model';
+import CarryCapacities from 'domain/carry-capacities.model';
+import Wealth from 'domain/wealth.model';
+import SpellPerDay from 'domain/spells-per-day.model';
 
 export class CharacterState {
   constructor() {

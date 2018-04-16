@@ -1,4 +1,4 @@
-import SubValue from './sub-value.module';
+import SubValue from './sub-value.model';
 
 export class CharacterSkill {
   constructor({ _id, name = "", keyScoreName = "", untrained = true,

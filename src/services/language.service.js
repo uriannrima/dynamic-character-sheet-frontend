@@ -1,4 +1,4 @@
-import * as LanguageModule from 'modules/language.module';
+import * as LanguageModule from 'domain/language.model';
 import AbstractService from './abstract.service';
 
 class LanguageService extends AbstractService {

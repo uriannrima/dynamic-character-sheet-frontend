@@ -1,4 +1,4 @@
-import * as SizeModule from 'modules/size.module';
+import * as SizeModule from 'domain/size.model';
 import AbstractService from './abstract.service';
 
 class SizeService extends AbstractService {

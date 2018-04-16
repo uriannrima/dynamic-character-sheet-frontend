@@ -1,4 +1,4 @@
-const SpellSchoolModule = require('./spell-school.module');
+const SpellSchoolModule = require('./spell-school.model');
 
 export const components = [{
   name: "Verbal",

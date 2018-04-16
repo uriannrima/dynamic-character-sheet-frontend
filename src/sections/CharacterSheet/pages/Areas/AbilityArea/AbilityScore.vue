@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import AbilityScore from 'modules/ability-score.module';
+import AbilityScore from 'domain/ability-score.model';
 
 export default {
   props: ['index', 'name', 'value', 'tempValue'],

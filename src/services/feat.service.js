@@ -1,4 +1,4 @@
-import * as FeatModule from 'modules/feat.module';
+import * as FeatModule from 'domain/feat.model';
 import AbstractService from './abstract.service';
 
 class FeatService extends AbstractService {

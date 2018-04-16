@@ -1,4 +1,4 @@
-var Modules = require('./');
+var Domain = require('./');
 
 export const Character = function ({
   _id, description, speed, size, damageReduction = "", classes, abilityScores,
@@ -9,7 +9,7 @@ export const Character = function ({
     spells: 'intelligence'
   },
   status = {}, armorClass,
-  initiative = new Modules.InitiativeModule.Initiative({}), conditionModifiers = "",
+  initiative = new Domain.InitiativeModel.Initiative({}), conditionModifiers = "",
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = [],
   attacks, gear, items = [], carryCapacities,
@@ -21,15 +21,15 @@ export const Character = function ({
   //Parse to ability score object.
   for (var abilityScoreName in abilityScores) {
     var abilityScore = abilityScores[abilityScoreName];
-    abilityScores[abilityScoreName] = new Modules.AbilityScoreModule.AbilityScore(abilityScore);
+    abilityScores[abilityScoreName] = new Domain.AbilityScoreModel.AbilityScore(abilityScore);
   }
-  if (!abilityScores) abilityScores = Modules.AbilityScoreModule.All;
+  if (!abilityScores) abilityScores = Domain.AbilityScoreModel.All;
 
   for (var savingThrowName in savingThrows) {
     var savingThrow = savingThrows[savingThrowName];
-    savingThrows[savingThrowName] = new Modules.SavingThrowsModule.SavingThrow(savingThrow);
+    savingThrows[savingThrowName] = new Domain.SavingThrowsModel.SavingThrow(savingThrow);
   }
-  if (!savingThrows) savingThrows = Modules.SavingThrowsModule.All;
+  if (!savingThrows) savingThrows = Domain.SavingThrowsModel.All;
 
   return {
     _id,
@@ -37,7 +37,7 @@ export const Character = function ({
     speed,
     damageReduction,
     conditionModifiers,
-    size: size || new Modules.SizeModule.Size({
+    size: size || new Domain.SizeModel.Size({
       name: "Medium",
       modifier: 1,
       grappleBonus: 0,
@@ -45,13 +45,13 @@ export const Character = function ({
       carryBonus: 1
     }),
     classes: classes || [
-      new Modules.ClasseModule.Classe({})
+      new Domain.ClasseModel.Classe({})
     ],
     // TODO: Remove "factory" pattern later.
     abilityScores,
     keyAbilityScores,
-    status: new Modules.StatusModule.Status(status),
-    armorClass: armorClass ? new Modules.ArmorClassModule.ArmorClass(armorClass) : new Modules.ArmorClassModule.ArmorClass({
+    status: new Domain.StatusModel.Status(status),
+    armorClass: armorClass ? new Domain.ArmorClassModel.ArmorClass(armorClass) : new Domain.ArmorClassModel.ArmorClass({
       base: 10,
       armorBonus: 0,
       shieldBonus: 0,
@@ -61,29 +61,29 @@ export const Character = function ({
       deflectionModifier: 0,
       miscModifier: 0
     }),
-    initiative: initiative ? new Modules.InitiativeModule.Initiative(initiative) : new Modules.InitiativeModule.Initiative({
+    initiative: initiative ? new Domain.InitiativeModel.Initiative(initiative) : new Domain.InitiativeModel.Initiative({
       dexModifier: 0,
       miscModifier: 0
     }),
     savingThrows,
     baseAttackBonus,
     spellResistance,
-    grapple: grapple ? new Modules.GrappleModule.Grapple(grapple) : new Modules.GrappleModule.Grapple({
+    grapple: grapple ? new Domain.GrappleModel.Grapple(grapple) : new Domain.GrappleModel.Grapple({
       baseAttackBonus: 0,
       strengthModifier: 0,
       sizeModifier: 0,
       miscModifier: 0
     }),
     skillPoints: 0,
-    skills: skills.map(s => new Modules.SkillsModule.Skill(s)),
+    skills: skills.map(s => new Domain.SkillsModel.Skill(s)),
     attacks: attacks || [
-      new Modules.AttackModule.Attack({}),
-      new Modules.AttackModule.Attack({}),
-      new Modules.AttackModule.Attack({}),
-      new Modules.AttackModule.Attack({}),
-      new Modules.AttackModule.Attack({})
+      new Domain.AttackModel.Attack({}),
+      new Domain.AttackModel.Attack({}),
+      new Domain.AttackModel.Attack({}),
+      new Domain.AttackModel.Attack({}),
+      new Domain.AttackModel.Attack({})
     ],
-    gear: gear || new Modules.GearModule.Gear({}),
+    gear: gear || new Domain.GearModel.Gear({}),
     items: items,
     carryCapacities: carryCapacities || {
       lightLoad: {
@@ -116,14 +116,14 @@ export const Character = function ({
     },
     campaign,
     experience,
-    wealth: wealth || new Modules.WealthModule.Wealth({
+    wealth: wealth || new Domain.WealthModel.Wealth({
       copper: 0,
       silver: 0,
       gold: 0,
       platinum: 0,
       treasure: ""
     }),
-    feats: feats.map(f => new Modules.FeatModule.Feat(f)),
+    feats: feats.map(f => new Domain.FeatModel.Feat(f)),
     languages,
     specialAbilities,
     domainSchool,
@@ -131,7 +131,7 @@ export const Character = function ({
     arcaneSpellFailure,
     spellConditionModifier,
     spells,
-    spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Modules.SpellsPerDayModule.SpellsPerDay({
+    spellPerDayList: spellPerDayList || [...Array(10).keys()].map(i => new Domain.SpellsPerDayModel.SpellsPerDay({
       spellLevel: i
     })),
     getTotalInitiative() {

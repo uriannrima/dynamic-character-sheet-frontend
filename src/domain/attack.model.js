@@ -1,4 +1,4 @@
-// var ammunitionModule = require('./ammunition.module');
+// var ammunitionModule = require('./ammunition.model');
 
 export class Attack {
   constructor({ name = "", attackBonus = "", damage = "", critical = "", range = "", type = "", notes = "", keyAbility = "", hasAmmunition = false } = {}) {

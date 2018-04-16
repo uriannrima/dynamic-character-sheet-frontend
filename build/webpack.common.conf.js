@@ -38,7 +38,7 @@ module.exports = {
       'root': resolve('./'),
       'static': resolve('static'),
       'feathers': resolve('src/feathers'),
-      'modules': resolve('src/modules'),
+      'domain': resolve('src/domain'),
       'sections': resolve('src/sections'),
       'services': resolve('src/services'),
       'shared': resolve('src/shared'),
