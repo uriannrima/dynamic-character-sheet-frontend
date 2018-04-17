@@ -34,7 +34,20 @@
 import AbilityScore from 'domain/ability-score.model';
 
 export default {
-  props: ['index', 'name', 'value', 'tempValue'],
+  props: {
+    name: {
+      type: String,
+      default: ""
+    },
+    value: {
+      type: Number,
+      default: 0
+    },
+    tempValue: {
+      type: Number,
+      default: 0
+    }
+  },
   computed: {
     modifier() {
       return Math.floor((this.value - 10) / 2);

@@ -19,7 +19,7 @@
                      :key="index"
                      :index="index"
                      v-bind='$extract(abilityScore)'
-                     @onUpdateScore="updateAbilityScore($event)" />
+                     @onUpdateScore="$emit('onUpdateScore', $event)" />
     </div>
   </div>
 </template>
@@ -27,16 +27,15 @@
 <script>
 import { AbilityScore } from './';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { mapState, mapActions } from 'store/CharacterModule';
 
 export default {
   components: { AbilityScore },
   mixins: [MinimizableMixin],
-  computed: {
-    ...mapState(['abilityScores'])
-  },
-  methods: {
-    ...mapActions(['updateAbilityScore'])
+  props: {
+    abilityScores: {
+      type: Object,
+      required: true
+    }
   }
 }
 </script>
