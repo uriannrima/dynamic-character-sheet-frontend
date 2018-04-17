@@ -62,6 +62,18 @@ button [disabled] {
   box-shadow: 0 0 0 3px rgba(221, 0, 0, 0.1) inset !important;
 }
 
+/* Common Classes */
+
+.common-input {
+  width: 100%;
+  border: solid 1px black;
+}
+
+.total-label {
+  font-weight: bolder;
+  font-size: 60% !important;
+}
+
 /* Modal Form */
 .form-component.editing span,
 .form-component.editing label {
