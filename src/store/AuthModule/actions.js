@@ -35,8 +35,15 @@ export default {
     } else {
       const userSession = Cookies.getJSON('userSession');
       if (userSession) {
-        await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken });
-        commit(Mutations.saveUserSession, userSession);
+        try {
+          await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken });
+          commit(Mutations.saveUserSession, userSession);
+        } catch ({ code }) {
+          if (code === 401) {
+            Cookies.remove('userSession');
+            commit(Mutations.saveUserSession, null);
+          }
+        }
         return getters.isAuthenticated;
       }
     }

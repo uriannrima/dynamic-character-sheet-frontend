@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: [0]*/
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
@@ -20,6 +21,11 @@ router.beforeEach((to, from, next) => {
           query: { redirect: to.fullPath }
         });
       }
+    }).catch(reason => {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      });
     });
   } else {
     next();
