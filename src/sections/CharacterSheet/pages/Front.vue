@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from './Areas';
+import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from '../Areas';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 
 export default {

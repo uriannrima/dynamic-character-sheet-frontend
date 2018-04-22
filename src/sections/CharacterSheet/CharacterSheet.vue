@@ -6,31 +6,37 @@
 </template>
 
 <script>
-import * as Pages from './pages';
+import * as Pages from './Pages';
 import Store from 'store';
-import { mapState, mapActions, Actions } from '../../store/CharacterModule';
+import CharacterModule, { mapState, mapActions, Actions } from './Store';
+import moduledComponentMixin from 'shared/mixins/moduled.component.mixin';
 
-const loadCharacter = async function (to, from, next) {
-  const characterId = to.params.id;
+/** Logic to load character into store. */
+const loadCharacter = async function (characterId = null) {
   if (!characterId) {
-    await Store.dispatch('CharacterModule/newCharacter');
+    await Store.dispatch('Character/newCharacter');
   } else {
-    await Store.dispatch('CharacterModule/loadCharacter', characterId);
-    await Store.dispatch('CharacterModule/connect', characterId);
+    await Store.dispatch('Character/loadCharacter', characterId);
+    await Store.dispatch('Character/connect', characterId);
   }
-  next();
 };
 
 export default {
   components: Pages,
-  beforeRouteEnter: loadCharacter,
-  beforeRouteUpdate: loadCharacter,
+  beforeRouteUpdate: async (to, from, next) => {
+    await loadCharacter(to.params.id)
+    next();
+  },
+  mixins: [moduledComponentMixin('Character', CharacterModule)],
   computed: {
     ...mapState(['_id'])
   },
+  async created() {
+    await loadCharacter(this.$route.params.id);
+  },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect'])
-  }
+  },
 }
 </script>
 
