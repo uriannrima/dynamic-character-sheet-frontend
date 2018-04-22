@@ -6,10 +6,10 @@
         <span class="left-icon glyphicon glyphicon-trash"
               title="Delete character"></span>
       </a>
-      <a :href="'#/character/' + character._id">
+      <router-link :to="{ name: 'character', params: { id : character._id } }">
         <span class="right-icon glyphicon glyphicon-edit"
               title="Edit character"></span>
-      </a>
+      </router-link>
       <label>
         {{character.description.name}}
       </label>

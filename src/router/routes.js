@@ -13,6 +13,7 @@ const routes = [
     }
   },
   {
+    name: "character",
     path: '/character/:id',
     component: CharacterSheet,
     meta: {
@@ -20,6 +21,7 @@ const routes = [
     }
   },
   {
+    name: "newCharacter",
     path: '/character',
     component: CharacterSheet,
     meta: {

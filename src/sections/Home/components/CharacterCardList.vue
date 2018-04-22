@@ -5,10 +5,10 @@
              class="search-character"
              placeholder="Search Character Name"
              v-model="searchName">
-      <a href="#/character/">
+      <router-link :to="{ name: 'newCharacter' }">
         <span class="add-character-icon glyphicon glyphicon-plus"
               title="Create new character"></span>
-      </a>
+      </router-link>
     </div>
     <transition-group name="character-card-list"
                       tag="div"
