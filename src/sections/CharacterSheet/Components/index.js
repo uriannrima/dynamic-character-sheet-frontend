@@ -18,6 +18,7 @@ export { default as Grapple } from './Grapple.vue';
 export { default as Health } from './Health.vue';
 export { default as Initiative } from './Initiative.vue';
 export { default as Item } from './Item.vue';
+export { default as Items } from './Items.vue';
 export { default as Language } from './Language.vue';
 export { default as LanguageForm } from './LanguageForm.vue';
 export { default as LanguageModal } from './LanguageModal.vue';

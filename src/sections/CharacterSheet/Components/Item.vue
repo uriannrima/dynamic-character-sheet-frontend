@@ -1,9 +1,15 @@
 <template>
   <div class="item-component">
-    <input type="text"
+    <input type="number"
            class="common-input"
-           :value="name"
-           @change="$emit('onItemUpdate', { name: $event.target.value })">
+           :value="1">
+    <div style="position: relative;">
+      <input type="text"
+             class="common-input"
+             :value="name"
+             @change="$emit('onItemUpdate', { name: $event.target.value })">
+      <span class="item-drag-handler glyphicon glyphicon-move"></span>
+    </div>
     <input type="text"
            class="common-input"
            :value="page"
@@ -29,6 +35,12 @@ export default {
 <style>
 .item-component {
   display: grid;
-  grid-template-columns: 70% 15% 15%;
+  grid-template-columns: 5% 65% 15% 15%;
+}
+
+.item-drag-handler {
+  position: absolute;
+  right: 5px;
+  top: 20%;
 }
 </style>
