@@ -1,19 +1,26 @@
 <template>
   <div>
     <h1>{{title}}</h1>
+    <modal :showModal.sync="showModal">
+      <div slot-scope="{ actions: { close } }">
+        <button @click="close">Close</button>
+      </div>
+    </modal>
     <character-card-list :characters="characters"></character-card-list>
   </div>
 </template>
 <script>
 import CharacterService from 'services/character.service';
-import CharacterCardList from './components/CharacterCardList'
+import CharacterCardList from './components/CharacterCardList';
+import Modal from 'shared/components/ModalComponent';
 
 export default {
-  components: { CharacterCardList },
+  components: { CharacterCardList, Modal },
   data: function () {
     return {
       title: 'Home',
-      characters: []
+      characters: [],
+      showModal: true
     };
   },
   beforeRouteEnter: async function (to, from, next) {
