@@ -1,5 +1,5 @@
 export class SubValue {
-  constructor({ title = "", value = "" } = {}) {
+  constructor({ title = '', value = '' } = {}) {
     Object.assign(this, {
       title,
       value

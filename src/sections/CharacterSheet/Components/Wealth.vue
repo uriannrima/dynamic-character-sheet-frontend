@@ -21,11 +21,16 @@
 </template>
 
 <script>
-import Coin from "./Coin";
+import Coin from './Coin';
 
 export default {
   components: { Coin },
-  props: ["wealth"]
+  props: {
+    wealth: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Spells } from "../Components";
+import { Spells } from '../Components';
 
 export default {
   components: { Spells }

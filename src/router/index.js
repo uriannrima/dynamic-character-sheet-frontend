@@ -1,4 +1,4 @@
-/*eslint no-unused-vars: [0]*/
+/* eslint no-unused-vars: [0] */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';

@@ -62,12 +62,12 @@
 <script>
 export default {
   props: [
-    "name",
-    "acBonus",
-    "weight",
-    "checkPenalty",
-    "spellFailure",
-    "specialProperties"
+    'name',
+    'acBonus',
+    'weight',
+    'checkPenalty',
+    'spellFailure',
+    'specialProperties'
   ]
 }
 </script>

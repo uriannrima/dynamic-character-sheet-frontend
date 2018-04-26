@@ -41,17 +41,22 @@
 
 <script>
 export default {
-  props: ["character"],
+  props: {
+    character: {
+      type: Object,
+      required: true
+    }
+  },
   computed: {
     getCharacterClasses() {
       return this.character.classes
         .filter(classe => classe.name)
         .map(classe => `${classe.name} (${classe.level})`)
-        .reduce((reducer, classe) => reducer === "" ? classe : reducer + ", " + classe, "");
+        .reduce((reducer, classe) => reducer === '' ? classe : reducer + ', ' + classe, '');
     },
     getPassiveSkills() {
       return this.character.skills.filter(
-        ({ name }) => ["Perception", "Listen", "Spot"].indexOf(name) !== -1
+        ({ name }) => ['Perception', 'Listen', 'Spot'].indexOf(name) !== -1
       );
     }
   },
@@ -62,7 +67,7 @@ export default {
       });
     }
   }
-};
+}
 </script>
 
 <style scoped>

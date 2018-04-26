@@ -15,4 +15,3 @@ export { default as SpecialAbilitiesArea } from './SpecialAbilitiesArea.vue';
 export { default as SpellSaveArea } from './SpellSaveArea.vue';
 export { default as SpellsArea } from './SpellsArea.vue';
 export { default as SpellsPerDayArea } from './SpellsPerDayArea.vue';
-

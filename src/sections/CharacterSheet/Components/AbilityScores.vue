@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { AbilityScore } from "../Components";
+import { AbilityScore } from '../Components';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 
 export default {

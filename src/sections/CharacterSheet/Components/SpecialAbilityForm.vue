@@ -75,7 +75,7 @@ import { FormMixin } from 'shared/form';
 import { SubValuesComponent, SubValuesList } from 'shared/form/components';
 
 export default {
-  components: { SubValuesComponent, SubValuesList },  
+  components: { SubValuesComponent, SubValuesList },
   mixins: [FormMixin],
   data() {
     return {

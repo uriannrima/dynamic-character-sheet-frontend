@@ -1,14 +1,22 @@
 import SubValue from './sub-value.model';
 
 export class CharacterSkill {
-  constructor({ _id, name = "", keyScoreName = "", untrained = true,
+  constructor({ _id, name = '', keyScoreName = '', untrained = true,
     armorCheckPenalty = false, classSkill = false, hasSubValue = false,
     subValues = [], rank = 0, abilityModifier = 0, miscModifier = 0, hiddenModifier = 0 }) {
-
     Object.assign(this, {
-      _id, name, keyScoreName, untrained, armorCheckPenalty,
-      classSkill, hasSubValue, subValues, rank,
-      abilityModifier, miscModifier, hiddenModifier
+      _id,
+      name,
+      keyScoreName,
+      untrained,
+      armorCheckPenalty,
+      classSkill,
+      hasSubValue,
+      subValues,
+      rank,
+      abilityModifier,
+      miscModifier,
+      hiddenModifier
     });
 
     if (hasSubValue || subValues.length >= 1) {
@@ -25,27 +33,26 @@ export class CharacterSkill {
 export class Skill {
   constructor({
     _id,
-    name = "",
-    keyScoreName = "",
+    name = '',
+    keyScoreName = '',
     untrained = true,
     armorCheckPenalty = false,
     classSkill = false,
-    check = "",
-    action = "",
-    tryAgain = "",
-    special = "",
-    synergy = "",
-    untrainedDescription = "",
-    restriction = "",
-    miscellaneous = "",
-    aditionalInformation = "",
+    check = '',
+    action = '',
+    tryAgain = '',
+    special = '',
+    synergy = '',
+    untrainedDescription = '',
+    restriction = '',
+    miscellaneous = '',
+    aditionalInformation = '',
     hasSubValue = false,
     subValues = [],
     rank = 0,
     abilityModifier = 0,
     miscModifier = 0,
     hiddenModifier = 0 }) {
-
     Object.assign(this, {
       _id,
       name,

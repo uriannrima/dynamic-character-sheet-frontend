@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Possessions } from "../Components";
+import { Possessions } from '../Components';
 
 export default {
   components: { Possessions }

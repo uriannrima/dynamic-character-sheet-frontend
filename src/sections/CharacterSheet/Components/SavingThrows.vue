@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { SavingThrow } from "../Components";
+import { SavingThrow } from '../Components';
 import { mapState, mapGetters, mapActions } from '../Store';
 
 export default {

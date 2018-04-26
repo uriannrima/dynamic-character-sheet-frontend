@@ -9,11 +9,9 @@
 </template>
 
 <script>
-import { Home, CharacterSheet } from "sections";
 import { mapGetters, mapActions } from 'store/AuthModule';
 
 export default {
-  components: { Home, CharacterSheet },
   computed: {
     ...mapGetters(['isAuthenticated'])
   },
@@ -21,7 +19,7 @@ export default {
     ...mapActions(['logout']),
     doLogout: async function () {
       var loggedOut = await this.logout();
-      if (loggedOut) this.$router.push("/");
+      if (loggedOut) this.$router.push('/');
     }
   }
 };

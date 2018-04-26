@@ -39,7 +39,7 @@ export default {
   props: {
     keyScoreName: {
       type: String,
-      default: "strength"
+      default: 'strength'
     },
     keyScoreModifier: {
       type: Number,
@@ -51,7 +51,7 @@ export default {
     },
     baseAttackBonus: {
       type: String,
-      default: "0"
+      default: '0'
     },
     miscModifier: {
       type: Number,
@@ -59,7 +59,7 @@ export default {
     },
     grappleTotal: {
       type: String,
-      default: "0"
+      default: '0'
     }
   }
 };

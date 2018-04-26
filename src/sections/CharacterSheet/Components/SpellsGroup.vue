@@ -13,7 +13,7 @@
 
 <script>
 import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin';
-import { Spell } from "../Components";
+import { Spell } from '../Components';
 export default {
   components: { Spell },
   mixins: [OnSelectedMixin],

@@ -50,8 +50,7 @@ export default {
     }
   }
 }
-
-/* 
+/*
 doLogin: async function (login) {
   try {
     this.disableButton = true;

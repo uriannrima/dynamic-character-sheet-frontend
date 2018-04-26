@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from "../Components";
+import { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from '../Components';
 import { mapState, mapGetters, mapActions } from '../Store';
 
 export default {

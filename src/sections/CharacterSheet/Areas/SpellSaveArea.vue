@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { SpellSave, ArcaneSpellFailure, ConditionModifiers } from "../Components";
+import { SpellSave, ArcaneSpellFailure, ConditionModifiers } from '../Components';
 import { mapState, mapGetters } from '../Store';
 
 export default {

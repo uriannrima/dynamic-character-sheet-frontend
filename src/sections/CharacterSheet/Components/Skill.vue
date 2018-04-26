@@ -60,7 +60,7 @@ export default {
     },
     skillModifier() {
       var penalty = this.checkPenalty;
-      if (this.name === "Swim") penalty += penalty;
+      if (this.name === 'Swim') penalty += penalty;
       var rankModifier = this.rank;
       if (!this.classSkill) rankModifier = Math.floor(rankModifier / 2);
       return rankModifier + this.miscModifier + this.keyScoreModifier + penalty;

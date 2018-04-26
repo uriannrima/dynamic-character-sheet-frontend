@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  props: ["value", "label", "small"]
+  props: ['value', 'label', 'small']
 };
 </script>
 

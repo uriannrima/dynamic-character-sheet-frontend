@@ -1,11 +1,11 @@
 export class Wealth {
-  constructor({ treasure = "" } = {}) {
+  constructor({ treasure = '' } = {}) {
     Object.assign(this, {
       coins: {
-        copper: new Coin({ title: "Cooper Coins", label: "CP" }),
-        silver: new Coin({ title: "Silver Coins", label: "SP" }),
-        gold: new Coin({ title: "Gold Coins", label: "GP" }),
-        platinum: new Coin({ title: "Platinum Coins", label: "PP" })
+        copper: new Coin({ title: 'Cooper Coins', label: 'CP' }),
+        silver: new Coin({ title: 'Silver Coins', label: 'SP' }),
+        gold: new Coin({ title: 'Gold Coins', label: 'GP' }),
+        platinum: new Coin({ title: 'Platinum Coins', label: 'PP' })
       },
       treasure
     });
@@ -13,7 +13,7 @@ export class Wealth {
 }
 
 export class Coin {
-  constructor({ title = "", label = "", value = 0 } = {}) {
+  constructor({ title = '', label = '', value = 0 } = {}) {
     Object.assign(this, {
       title,
       label,

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { Attack } from "../Components";
+import { Attack } from '../Components';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapActions } from '../Store';
 

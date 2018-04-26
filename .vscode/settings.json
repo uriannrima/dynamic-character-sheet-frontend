@@ -1,6 +1,0 @@
-{
-  "path-intellisense.mappings": {
-    "@Source": "${workspaceRoot}/src",
-    "@Services": "${workspaceRoot}/src/services"
-  },
-}

@@ -14,7 +14,7 @@
 export default {
   filters: {
     percentage: function (value) {
-      return value.toString() + "%";
+      return value.toString() + '%';
     }
   },
   props: {

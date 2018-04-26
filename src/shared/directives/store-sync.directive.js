@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Actions } from "Store";
+import { Actions } from 'Store';
 
 /**
  * Update simple values inside the store using onchange event.

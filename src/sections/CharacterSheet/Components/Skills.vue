@@ -43,7 +43,7 @@
 
 <script>
 import { ModalContainerMixin } from 'shared/modal';
-import { Skill, SkillModal } from "../Components";
+import { Skill, SkillModal } from '../Components';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapGetters, mapActions } from '../Store';
 import SkillService from 'services/skill.service';

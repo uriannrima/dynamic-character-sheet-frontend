@@ -47,7 +47,7 @@
 
 <script>
 import LanguageService from 'services/language.service';
-import { LanguageForm } from "../Components";
+import { LanguageForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {

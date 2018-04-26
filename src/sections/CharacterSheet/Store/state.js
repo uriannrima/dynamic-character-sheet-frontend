@@ -36,8 +36,8 @@ export class CharacterState {
       },
       armorClass: new ArmorClass(),
       status: new Status(),
-      speed: "",
-      damageReduction: "",
+      speed: '',
+      damageReduction: '',
       gear: new Gear(),
       initiative: new Initiative(),
       baseAttackBonus: [0],
@@ -47,12 +47,12 @@ export class CharacterState {
         reflex: new SavingThrow(Reflex),
         will: new SavingThrow(Will)
       },
-      conditionModifiers: "",
+      conditionModifiers: '',
       spellResistance: 0,
       attacks: [new Attack(), new Attack(), new Attack(), new Attack()],
       skills: [],
-      campaign: "",
-      experience: "",
+      campaign: '',
+      experience: '',
       items: [...Array(2 * 17)].map(() => new Item()),
       carryCapacities: new CarryCapacities(),
       wealth: new Wealth(),
@@ -60,7 +60,7 @@ export class CharacterState {
       specialAbilities: [],
       languages: [],
       spells: [],
-      domainSchool: "",
+      domainSchool: '',
       spellPerDayList: [...Array(10)].map(() => new SpellPerDay())
     });
   }

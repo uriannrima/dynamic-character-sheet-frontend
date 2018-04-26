@@ -1,7 +1,7 @@
 var Domain = require('./');
 
 export const Character = function ({
-  _id, description, speed, size, damageReduction = "", classes, abilityScores,
+  _id, description, speed, size, damageReduction = '', classes, abilityScores,
   keyAbilityScores = {
     armor: 'dexterity',
     initiative: 'dexterity',
@@ -9,16 +9,15 @@ export const Character = function ({
     spells: 'intelligence'
   },
   status = {}, armorClass,
-  initiative = new Domain.InitiativeModel.Initiative({}), conditionModifiers = "",
+  initiative = new Domain.InitiativeModel.Initiative({}), conditionModifiers = '',
   savingThrows, baseAttackBonus = [0],
   spellResistance = 0, grapple, skills = [],
   attacks, gear, items = [], carryCapacities,
-  campaign = "", experience = 0, wealth, feats = [], languages = [],
-  specialAbilities = [], domainSchool = "", spellSave = 0,
-  arcaneSpellFailure = 0, spellConditionModifier = "",
+  campaign = '', experience = 0, wealth, feats = [], languages = [],
+  specialAbilities = [], domainSchool = '', spellSave = 0,
+  arcaneSpellFailure = 0, spellConditionModifier = '',
   spells = [], spellPerDayList = [] }) {
-
-  //Parse to ability score object.
+  // Parse to ability score object.
   for (var abilityScoreName in abilityScores) {
     var abilityScore = abilityScores[abilityScoreName];
     abilityScores[abilityScoreName] = new Domain.AbilityScoreModel.AbilityScore(abilityScore);
@@ -33,12 +32,12 @@ export const Character = function ({
 
   return {
     _id,
-    description, speed,
+    description,
     speed,
     damageReduction,
     conditionModifiers,
     size: size || new Domain.SizeModel.Size({
-      name: "Medium",
+      name: 'Medium',
       modifier: 1,
       grappleBonus: 0,
       hideBonus: 0,
@@ -87,30 +86,30 @@ export const Character = function ({
     items: items,
     carryCapacities: carryCapacities || {
       lightLoad: {
-        label: "Light<br>Load",
+        label: 'Light<br>Load',
         value: 0
       },
       mediumLoad: {
-        label: "Medium<br>Load",
+        label: 'Medium<br>Load',
         value: 0
       },
       heavyLoad: {
-        label: "Heavy<br>Load",
+        label: 'Heavy<br>Load',
         value: 0
       },
       liftOverHead: {
-        label: "Lift Over<br>Head",
-        small: "Equals Max Load",
+        label: 'Lift Over<br>Head',
+        small: 'Equals Max Load',
         value: 0
       },
       liftOffGround: {
-        label: "Lift Off<br>Ground",
-        small: "2x Max Load",
+        label: 'Lift Off<br>Ground',
+        small: '2x Max Load',
         value: 0
       },
       pushOrDrag: {
-        label: "Push Or<br>Drag",
-        small: "5x Max Load",
+        label: 'Push Or<br>Drag',
+        small: '5x Max Load',
         value: 0
       }
     },
@@ -121,7 +120,7 @@ export const Character = function ({
       silver: 0,
       gold: 0,
       platinum: 0,
-      treasure: ""
+      treasure: ''
     }),
     feats: feats.map(f => new Domain.FeatModel.Feat(f)),
     languages,

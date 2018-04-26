@@ -49,7 +49,7 @@
 
 <script>
 import SkillService from 'services/skill.service';
-import { SkillForm } from "../Components";
+import { SkillForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {

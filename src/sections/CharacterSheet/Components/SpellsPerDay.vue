@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { SingleSpellPerDay } from "../Components";
+import { SingleSpellPerDay } from '../Components';
 import { mapState, mapGetters } from '../Store';
 
 export default {

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { Health, Speed, PrimaryArmor } from "../Components";
+import { Health, Speed, PrimaryArmor } from '../Components';
 import { mapState, mapGetters } from '../Store';
 
 export default {

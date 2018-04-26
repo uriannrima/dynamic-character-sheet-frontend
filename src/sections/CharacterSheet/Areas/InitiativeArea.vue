@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { SecondaryArmor, Initiative } from "../Components"
+import { SecondaryArmor, Initiative } from '../Components'
 import { mapState, mapGetters } from '../Store';
 
 export default {

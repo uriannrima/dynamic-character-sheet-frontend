@@ -93,15 +93,15 @@
 <script>
 export default {
   props: [
-    "name",
-    "type",
-    "acBonus",
-    "maxDex",
-    "checkPenalty",
-    "spellFailure",
-    "speed",
-    "weight",
-    "specialProperties"
+    'name',
+    'type',
+    'acBonus',
+    'maxDex',
+    'checkPenalty',
+    'spellFailure',
+    'speed',
+    'weight',
+    'specialProperties'
   ]
 }
 </script>

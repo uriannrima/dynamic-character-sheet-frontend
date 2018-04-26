@@ -29,7 +29,7 @@
 <script>
 import { ModalContainerMixin } from 'shared/modal';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { Language, LanguageModal } from "../Components";
+import { Language, LanguageModal } from '../Components';
 import { mapState, mapMutations } from '../Store';
 
 export default {

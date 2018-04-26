@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import { Logo, Description } from "../Components";
+import { Logo, Description } from '../Components';
 import { mapState, mapGetters, mapActions } from '../Store';
 
 export default {
   components: { Logo, Description },
   computed: {
     ...mapState(['_id', 'description']),
-    ...mapGetters(['getClasses', 'getSize']),
+    ...mapGetters(['getClasses', 'getSize'])
   },
   methods: {
     ...mapActions(['saveCharacter', 'updateDescription', 'updateClasses', 'updateSize'])

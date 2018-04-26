@@ -1,4 +1,4 @@
-/*eslint no-unused-vars: [0]*/
+/* eslint no-unused-vars: [0] */
 import BaseSocketService from 'shared/services/bases/BaseSocketService';
 
 export default class AbstractService extends BaseSocketService {

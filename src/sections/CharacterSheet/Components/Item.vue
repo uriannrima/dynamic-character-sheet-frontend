@@ -25,9 +25,9 @@
 <script>
 export default {
   props: [
-    "name",
-    "page",
-    "weight"
+    'name',
+    'page',
+    'weight'
   ]
 }
 </script>

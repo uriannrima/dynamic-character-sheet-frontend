@@ -1,4 +1,5 @@
 import HttpLayer from '../layers//HttpLayer';
+import SocketLayer from '../layers//SocketLayer';
 import AuthService from '../auth/AuthService';
 
 export class BaseHttpService extends HttpLayer {

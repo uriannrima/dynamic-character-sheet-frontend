@@ -35,7 +35,6 @@ export default {
 }
 </script>
 
-
 <style>
 .single-spd-component > label {
   display: block;

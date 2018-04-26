@@ -8,7 +8,7 @@ export default {
   },
   [Mutations.updateId](state, { _id }) {
     state._id = _id;
-    window.history.pushState("", "", `/#/character/${_id}`);
+    window.history.pushState('', '', `/#/character/${_id}`);
   },
   [Mutations.updateDescription](state, { description }) {
     ObjectUtils.extractTo(description, state.description);

@@ -13,7 +13,7 @@ class AuthService {
 
   async refresh() {
     try {
-      return await this.service.refresh(payload);
+      return await this.service.refresh();
     } catch (error) {
       console.log(error);
       return null;

@@ -47,7 +47,7 @@
 
 <script>
 import SpecialAbilityService from 'services/special-ability.service';
-import { SpecialAbilityForm } from "../Components";
+import { SpecialAbilityForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {

@@ -152,10 +152,10 @@ export default {
   methods: {
     parseStringToClasses(classesAsString) {
       const classes = [];
-      const eachClass = classesAsString.split(",");
+      const eachClass = classesAsString.split(',');
       eachClass.forEach(classe => {
         // If empty character
-        if (classe.trim() === "") return;
+        if (classe.trim() === '') return;
         // Clear whitespaces
         // var classLevel = classe.replace(/ /g, "");
         // Regex to get level
@@ -165,7 +165,7 @@ export default {
         // Extract level from data
         var level = levelData && levelData.length > 1 ? levelData[1] : 1;
         // Remove level from field.
-        var classOnly = classe.replace(levelRegex, "");
+        var classOnly = classe.replace(levelRegex, '');
         classes.push({
           name: classOnly.trim(),
           level: level

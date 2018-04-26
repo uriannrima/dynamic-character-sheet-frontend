@@ -3,7 +3,7 @@ import VeeValidate from 'vee-validate';
 import vSelect from 'vue-select';
 import VueTouch from 'vue-touch';
 import VueFeathers from 'vue-feathers';
-import VuejsDialog from "vuejs-dialog";
+import VuejsDialog from 'vuejs-dialog';
 import Es6Promise from 'es6-promise';
 import feathers from './feathers';
 

@@ -16,7 +16,7 @@ export default function ({ moduleConfiguration, store, namespaced, stateMapping,
     methods: {}
   };
 
-  const namespace = namespaced ? moduleConfiguration.join('/') : "";
+  const namespace = namespaced ? moduleConfiguration.join('/') : '';
 
   function checkAndMerge(mappingOptions, mappingFunction, fromStore, toComponent, namespace) {
     if (mappingOptions) {

@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { Items, CarryCapacities, Wealth } from "./index";
-import ResizeMixin from "shared/mixins/events/resize.handler.mixin";
-import MinimizableMixin from "shared/mixins/states/minimizable.mixin";
-import { mapState, mapGetters, mapActions } from "../Store";
+import { Items, CarryCapacities, Wealth } from './index';
+import ResizeMixin from 'shared/mixins/events/resize.handler.mixin';
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { mapState, mapGetters, mapActions } from '../Store';
 import { Sortable } from '@shopify/draggable';
 
 export default {
@@ -37,8 +37,8 @@ export default {
     };
   },
   computed: {
-    ...mapState(["items", "carryCapacities", "wealth"]),
-    ...mapGetters(["getTotalWeight"])
+    ...mapState(['items', 'carryCapacities', 'wealth']),
+    ...mapGetters(['getTotalWeight'])
   },
   mounted() {
     new Sortable(document.querySelectorAll('.items-component'), {
@@ -50,7 +50,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["updateItem", "updateCarryCapacity", 'updateCoin', 'updateTreasure']),
+    ...mapActions(['updateItem', 'updateCarryCapacity', 'updateCoin', 'updateTreasure']),
     handleResize: function () {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }

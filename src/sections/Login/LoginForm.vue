@@ -25,7 +25,7 @@ export default {
   props: ['disabled'],
   data() {
     return {
-      email: "",
+      email: '',
       password: ''
     }
   }

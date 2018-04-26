@@ -109,4 +109,3 @@ export const Mappings = {
 }
 
 export default Mappings;
-

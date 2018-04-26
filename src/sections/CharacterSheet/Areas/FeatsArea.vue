@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { Feats } from "../Components";
+import { Feats } from '../Components';
 export default {
   components: { Feats }
 }

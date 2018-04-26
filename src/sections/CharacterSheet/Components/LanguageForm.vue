@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     addSpeaker() {
-      this.model.speakers.push("");
+      this.model.speakers.push('');
     },
     removeSpeaker(index) {
       this.model.speakers.removeAt(index);

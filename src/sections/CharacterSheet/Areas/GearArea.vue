@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { ArmorItem, ShieldItem, ProtectiveItem } from "../Components";
+import { ArmorItem, ShieldItem, ProtectiveItem } from '../Components';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapActions } from '../Store';
 

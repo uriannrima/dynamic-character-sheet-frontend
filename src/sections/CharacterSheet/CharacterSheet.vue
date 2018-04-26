@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect'])
-  },
+  }
 }
 </script>
 

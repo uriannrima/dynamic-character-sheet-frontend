@@ -16,8 +16,8 @@ export default {
     close() {
       this.$emit('update:showModal', false);
     }
-  },
-  /* 
+  }
+  /*
   Can also be done through JSX.
   render() {
     const { isOpen, open, close } = this;

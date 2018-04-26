@@ -10,7 +10,6 @@ export { Actions, Mutations } from './mappings';
 export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers('Character');
 
 export class CharacterSyncing {
-
   constructor() {
     this.syncingMap = ['Character/updateSkill'];
   }

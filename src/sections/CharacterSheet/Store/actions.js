@@ -52,7 +52,7 @@ export default {
         Mutations.updateFeats,
         Mutations.updateSpecialAbilities,
         Mutations.updateLanguages,
-        Mutations.updateSpells,
+        Mutations.updateSpells
       ].forEach(mutation => {
         commit(mutation, character);
       });

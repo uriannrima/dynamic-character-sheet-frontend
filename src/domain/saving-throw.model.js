@@ -15,18 +15,18 @@ export class SavingThrow {
 export default SavingThrow;
 
 export const Will = new SavingThrow({
-  name: "will",
-  keyAbility: "wisdom"
+  name: 'will',
+  keyAbility: 'wisdom'
 });
 
 export const Reflex = new SavingThrow({
-  name: "reflex",
-  keyAbility: "dexterity"
+  name: 'reflex',
+  keyAbility: 'dexterity'
 });
 
 export const Fortitude = new SavingThrow({
-  name: "fortitude",
-  keyAbility: "constitution"
+  name: 'fortitude',
+  keyAbility: 'constitution'
 });
 
 export const All = {

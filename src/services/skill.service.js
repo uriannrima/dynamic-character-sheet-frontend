@@ -12,7 +12,7 @@ class SkillService extends AbstractService {
   async getDefaultSkills() {
     const query = {
       default: true,
-      $select: ["_id", "name", "keyScoreName", "untrained", "armorCheckPenalty", "hasSubValue"]
+      $select: ['_id', 'name', 'keyScoreName', 'untrained', 'armorCheckPenalty', 'hasSubValue']
     };
 
     return await this.getAll(query);

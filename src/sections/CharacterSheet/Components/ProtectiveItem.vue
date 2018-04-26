@@ -44,10 +44,10 @@
 <script>
 export default {
   props: [
-    "name",
-    "acBonus",
-    "weight",
-    "specialProperties"
+    'name',
+    'acBonus',
+    'weight',
+    'specialProperties'
   ]
 }
 </script>
