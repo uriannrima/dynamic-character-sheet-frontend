@@ -1,8 +1,21 @@
 // vue.config.js
 const path = require('path');
+const argv = require('optimist').argv;
 
 function resolve(dir) {
   return path.join(__dirname, dir);
+}
+
+function getConstantsPath() {
+  switch (process.env.NODE_ENV) {
+    case 'production':
+      return 'src/constants.prd.js'
+    default:
+      var path = `src/constants.dev.js`;
+      if (argv['constants']) path = `src/constants.${argv['constants']}.js`;
+      console.log('Constants Path', path);
+      return path;
+  }
 }
 
 function createCustomMergeConfig(config) {
@@ -18,8 +31,7 @@ function createCustomMergeConfig(config) {
         'store': resolve('src/store'),
         'utils': resolve('src/utils'),
         'vue$': 'vue/dist/vue.esm.js',
-        'Constants$': (process.env.NODE_ENV === 'production')
-          ? resolve('src/constants.prd.js') : resolve('src/constants.dev.js')
+        'Constants$': resolve(getConstantsPath())
       }
     }
   }
