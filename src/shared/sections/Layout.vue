@@ -1,10 +1,22 @@
 <template>
   <div>
-    <div>
-      <button v-if="isAuthenticated"
-              @click="doLogout">Logout</button>
-    </div>
-    <router-view></router-view>
+    <v-app>
+      <v-navigation-drawer v-model="drawer"
+                           clipped
+                           app></v-navigation-drawer>
+      <v-toolbar app
+                 clipped-left>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-title>{{$route.meta.title}}</v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+      <v-content app>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </v-content>
+      <v-footer app></v-footer>
+    </v-app>
   </div>
 </template>
 
@@ -14,6 +26,11 @@ import { mapGetters, mapActions } from 'store/AuthModule';
 export default {
   computed: {
     ...mapGetters(['isAuthenticated'])
+  },
+  data() {
+    return {
+      drawer: false
+    }
   },
   methods: {
     ...mapActions(['logout']),
@@ -26,12 +43,6 @@ export default {
 </script>
 
 <style>
-/* html {
-  background: url("../../../static/img/background.jpg") no-repeat center
-    center fixed;
-  background-size: cover;
-} */
-
 .html {
   background-color: lightgray;
 }

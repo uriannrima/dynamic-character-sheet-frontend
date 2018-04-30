@@ -13,6 +13,7 @@ import moduledComponentMixin from 'shared/mixins/moduled.component.mixin';
 
 /** Logic to load character into store. */
 const loadCharacter = async function (characterId = null) {
+  if (!CharacterModule.registered) return;
   if (!characterId) {
     await Store.dispatch('Character/newCharacter');
   } else {
@@ -23,6 +24,10 @@ const loadCharacter = async function (characterId = null) {
 
 export default {
   components: Pages,
+  beforeRouteEnter: async (to, from, next) => {
+    await loadCharacter(to.params.id)
+    next();
+  },
   beforeRouteUpdate: async (to, from, next) => {
     await loadCharacter(to.params.id)
     next();

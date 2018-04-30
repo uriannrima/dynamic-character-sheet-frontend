@@ -9,6 +9,7 @@ const routes = [
     path: '/home',
     component: Home,
     meta: {
+      title: 'Home',
       requiresAuth: true
     }
   },
@@ -17,6 +18,7 @@ const routes = [
     path: '/character/:id',
     component: CharacterSheet,
     meta: {
+      title: 'Character',
       requiresAuth: true
     }
   },
@@ -25,6 +27,7 @@ const routes = [
     path: '/character',
     component: CharacterSheet,
     meta: {
+      title: 'Character',
       requiresAuth: true
     }
   },

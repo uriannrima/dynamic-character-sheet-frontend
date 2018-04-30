@@ -6,7 +6,10 @@ import VueFeathers from 'vue-feathers';
 import VuejsDialog from 'vuejs-dialog';
 import Es6Promise from 'es6-promise';
 import feathers from './feathers';
+import Vuetify from 'vuetify';
+import 'babel-polyfill';
 
+Vue.use(Vuetify);
 Es6Promise.polyfill();
 Vue.component('v-select', vSelect);
 VueTouch.registerCustomEvent('doubletap', { type: 'tap', taps: 2 });

@@ -31,7 +31,8 @@
         <label>Player</label>
       </div>
       <div class="horizontal-container">
-        <input type="text"
+        <input name="Classes"
+               type="text"
                class="full-width-input"
                :value="classes"
                v-validate:classes.initial="'required'"
