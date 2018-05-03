@@ -1,4 +1,8 @@
-import { CharacterSheet, Home, Login } from '../sections';
+import { Login } from '../sections';
+
+// Lazy Load Components
+const CharacterSheet = () => import('../sections/CharacterSheet/CharacterSheet.vue')
+const Home = () => import('../sections/Home/Home.vue')
 
 const routes = [
   {
