@@ -3,19 +3,59 @@
     <v-app>
       <v-navigation-drawer v-model="drawer"
                            clipped
-                           app></v-navigation-drawer>
-      <v-toolbar app
-                 clipped-left>
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+                           app
+                           left>
+        <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                Sections
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+        <v-divider></v-divider>
+        <v-list dense
+                class="pt-0">
+          <v-list-tile v-for="section in sections"
+                       :key="section.title"
+                       router
+                       :to="{ name: section.name }">
+            <v-list-tile-action v-if="section.icon">
+              <v-icon>{{ section.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ section.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+      <v-toolbar fixed
+                 app
+                 clipped-left
+                 clipped-right
+                 v-if="isAuthenticated">
+        <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
         <v-toolbar-title>{{$route.meta.title}}</v-toolbar-title>
         <v-spacer></v-spacer>
+        <!-- <v-menu offset-y>
+          <v-btn icon
+                 slot="activator">
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile @click="doLogout">
+              <v-list-tile-title>Logout</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu> -->
       </v-toolbar>
       <v-content app>
         <v-container fluid>
           <router-view></router-view>
         </v-container>
       </v-content>
-      <v-footer app></v-footer>
+      <!-- <v-footer app></v-footer> -->
     </v-app>
   </div>
 </template>
@@ -24,16 +64,44 @@
 import { mapGetters, mapActions } from 'store/AuthModule';
 
 export default {
+  watch: {
+    $route: function () {
+      console.log(this.$route);
+    }
+  },
   computed: {
     ...mapGetters(['isAuthenticated'])
   },
   data() {
     return {
-      drawer: false
+      drawer: false,
+      sections: [
+        {
+          icon: 'home',
+          title: 'Home',
+          name: 'home'
+        },
+        {
+          icon: 'person',
+          title: 'Character',
+          name: 'newCharacter'
+        },
+        {
+          title: 'Logout',
+          name: 'logout',
+          click: () => {
+            this.toggleDrawer();
+            this.doLogout();
+          }
+        }
+      ]
     }
   },
   methods: {
     ...mapActions(['logout']),
+    toggleDrawer() {
+      this.drawer = !this.drawer;
+    },
     doLogout: async function () {
       var loggedOut = await this.logout();
       if (loggedOut) this.$router.push('/');

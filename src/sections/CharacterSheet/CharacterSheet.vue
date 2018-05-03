@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
-    <front class="page front" />
-    <cover class="page cover" />
+    <component :is="page"
+               class="page"></component>
   </div>
 </template>
 
@@ -36,12 +36,33 @@ export default {
   computed: {
     ...mapState(['_id'])
   },
+  data() {
+    return {
+      page: 'front'
+    }
+  },
   async created() {
     await loadCharacter(this.$route.params.id);
   },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect'])
-  }
+  },
+  navigations: [
+    {
+      icon: 'account_circle',
+      title: 'First Page',
+      click: () => {
+        this.page = 'front';
+      }
+    },
+    {
+      icon: 'book',
+      title: 'Second Page',
+      click: () => {
+        this.page = 'cover';
+      }
+    }
+  ]
 }
 </script>
 

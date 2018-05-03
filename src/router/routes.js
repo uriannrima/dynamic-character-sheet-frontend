@@ -6,10 +6,21 @@ const Home = () => import('../sections/Home/Home.vue')
 
 const routes = [
   {
+    name: 'logout',
+    path: '/logout',
+    beforeEnter: (to, from, next) => {
+      next({
+        path: '/login'
+      });
+    }
+  },
+  {
+    name: 'login',
     path: '/login',
     component: Login
   },
   {
+    name: 'home',
     path: '/home',
     component: Home,
     meta: {
@@ -28,7 +39,7 @@ const routes = [
   },
   {
     name: 'newCharacter',
-    path: '/character',
+    path: '/newCharacter',
     component: CharacterSheet,
     meta: {
       title: 'Character',

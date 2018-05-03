@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="front">
     <description-area class="description-area" />
     <ability-area class="ability-area" />
     <div class="black-box rounded h-md-up">

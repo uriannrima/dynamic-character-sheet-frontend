@@ -1,6 +1,16 @@
 <template>
   <div>
+    <v-subheader>Characters</v-subheader>
     <character-card-list :characters="characters"></character-card-list>
+    <v-btn color="blue"
+           dark
+           fixed
+           bottom
+           right
+           fab
+           @click="$router.push({ name: 'newCharacter' })">
+      <v-icon>add</v-icon>
+    </v-btn>
   </div>
 </template>
 <script>

@@ -1,14 +1,9 @@
 <template>
   <div class="character-card-list-component">
     <div class="character-search-container">
-      <input type="text"
-             class="search-character"
-             placeholder="Search Character Name"
-             v-model="searchName">
-      <router-link :to="{ name: 'newCharacter' }">
-        <span class="add-character-icon glyphicon glyphicon-plus"
-              title="Create new character"></span>
-      </router-link>
+      <v-text-field name="input-1"
+                    label="Search Character Name"
+                    v-model="searchName"></v-text-field>
     </div>
     <transition-group name="character-card-list"
                       tag="div"
@@ -83,12 +78,6 @@ export default {
 .search-character {
   width: 100%;
   text-align: center;
-}
-
-.add-character-icon {
-  position: absolute;
-  right: 20px;
-  top: 20%;
 }
 
 /**

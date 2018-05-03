@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cover">
     <div>
       <campaign-area class="campaign-area" />
       <gear-area class="gear-area" />
