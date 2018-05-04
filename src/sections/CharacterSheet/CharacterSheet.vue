@@ -1,12 +1,44 @@
 <template>
   <div class="main-container">
-    <component :is="page"
-               class="page"></component>
+    <full-screen-loading :loading="loading">
+      <component :is="page"
+                 class="page"></component>
+      <button @click="drawer = !drawer">Will be removed...</button>
+      <v-navigation-drawer v-model="drawer"
+                           temporary
+                           app
+                           right>
+        <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                Character Sheet Sections
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+        <v-divider></v-divider>
+        <v-list dense
+                class="pt-0">
+          <v-list-tile v-for="section in sections"
+                       :key="section.title"
+                       @click="section.click">
+            <v-list-tile-action v-if="section.icon">
+              <v-icon>{{ section.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ section.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+    </full-screen-loading>
   </div>
 </template>
 
 <script>
 import * as Pages from './Pages';
+import FullScreenLoading from 'shared/components/FullScreenLoadingComponent';
 import Store from 'store';
 import CharacterModule, { mapState, mapActions, Actions } from './Store';
 import moduledComponentMixin from 'shared/mixins/moduled.component.mixin';
@@ -22,23 +54,43 @@ const loadCharacter = async function (characterId = null) {
   }
 };
 
+const beforeRoute = function (to, from, next) {
+  next(vm => {
+    loadCharacter(to.params.id).then(() => {
+      vm.loading = false;
+    })
+  });
+}
+
 export default {
-  components: Pages,
-  beforeRouteEnter: async (to, from, next) => {
-    await loadCharacter(to.params.id)
-    next();
-  },
-  beforeRouteUpdate: async (to, from, next) => {
-    await loadCharacter(to.params.id)
-    next();
-  },
+  components: { ...Pages, FullScreenLoading },
+  beforeRouteEnter: beforeRoute,
+  beforeRouteUpdate: beforeRoute,
   mixins: [moduledComponentMixin('Character', CharacterModule)],
   computed: {
     ...mapState(['_id'])
   },
   data() {
     return {
-      page: 'front'
+      page: 'front',
+      loading: true,
+      drawer: false,
+      sections: [
+        {
+          icon: 'home',
+          title: 'Front Page',
+          click: () => {
+            this.page = 'front'
+          }
+        },
+        {
+          icon: 'person',
+          title: 'Cover page',
+          click: () => {
+            this.page = 'cover'
+          }
+        }
+      ]
     }
   },
   async created() {
@@ -46,23 +98,7 @@ export default {
   },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect'])
-  },
-  navigations: [
-    {
-      icon: 'account_circle',
-      title: 'First Page',
-      click: () => {
-        this.page = 'front';
-      }
-    },
-    {
-      icon: 'book',
-      title: 'Second Page',
-      click: () => {
-        this.page = 'cover';
-      }
-    }
-  ]
+  }
 }
 </script>
 

@@ -2,7 +2,7 @@
   <div>
     <v-app>
       <v-navigation-drawer v-model="drawer"
-                           clipped
+                           temporary
                            app
                            left>
         <v-toolbar flat>
@@ -28,6 +28,15 @@
               <v-list-tile-title>{{ section.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+          <v-divider></v-divider>
+          <v-list-tile @click="doLogout">
+            <v-list-tile-action>
+              <v-icon>power_settings_new</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Logout</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
         </v-list>
       </v-navigation-drawer>
       <v-toolbar fixed
@@ -38,17 +47,9 @@
         <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
         <v-toolbar-title>{{$route.meta.title}}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <!-- <v-menu offset-y>
-          <v-btn icon
-                 slot="activator">
-            <v-icon>more_vert</v-icon>
-          </v-btn>
-          <v-list>
-            <v-list-tile @click="doLogout">
-              <v-list-tile-title>Logout</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu> -->
+        <v-toolbar-side-icon @click.stop="toggleDrawer">
+          <v-icon>more_vert</v-icon>
+        </v-toolbar-side-icon>
       </v-toolbar>
       <v-content app>
         <v-container fluid>
@@ -64,11 +65,6 @@
 import { mapGetters, mapActions } from 'store/AuthModule';
 
 export default {
-  watch: {
-    $route: function () {
-      console.log(this.$route);
-    }
-  },
   computed: {
     ...mapGetters(['isAuthenticated'])
   },
@@ -85,14 +81,6 @@ export default {
           icon: 'person',
           title: 'Character',
           name: 'newCharacter'
-        },
-        {
-          title: 'Logout',
-          name: 'logout',
-          click: () => {
-            this.toggleDrawer();
-            this.doLogout();
-          }
         }
       ]
     }
@@ -105,6 +93,7 @@ export default {
     doLogout: async function () {
       var loggedOut = await this.logout();
       if (loggedOut) this.$router.push('/');
+      this.toggleDrawer();
     }
   }
 };

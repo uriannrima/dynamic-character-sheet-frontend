@@ -6,7 +6,8 @@
     "serve": "yarn install && vue-cli-service serve",
     "build": "yarn install && vue-cli-service build",
     "lint": "vue-cli-service lint --fix",
-    "api": "cd.. && cd dynamic-character-sheet-api && npm run dev"
+    "api": "cd.. && cd dynamic-character-sheet-api && npm run dev",
+    "api:mock": "json-server --watch db.json --host localhost --port 5000 --nc --id _id"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.2",
@@ -22,6 +23,7 @@
     "lodash.debounce": "^4.0.8",
     "material-design-icons-iconfont": "^3.0.3",
     "mini-toastr": "^0.8.1",
+    "portal-vue": "^1.3.0",
     "register-service-worker": "^1.0.0",
     "socket.io-client": "^2.1.0",
     "vee-validate": "^2.0.8",
@@ -40,6 +42,7 @@
     "@vue/cli-plugin-pwa": "^3.0.0-beta.7",
     "@vue/cli-service": "^3.0.0-beta.7",
     "@vue/eslint-config-standard": "^3.0.0-beta.7",
+    "json-server": "^0.12.2",
     "optimist": "^0.6.1",
     "vue-template-compiler": "^2.5.13"
   }
