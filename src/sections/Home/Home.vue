@@ -29,6 +29,10 @@ export default {
   },
   beforeRouteEnter: async function (to, from, next) {
     next(vm => {
+      vm.$vuetify.goTo(0, {
+        easing: 'easeInOutCubic',
+        duration: 250
+      });
       CharacterService.getAll().then(characters => {
         vm.characters = characters;
         vm.loading = false;

@@ -1,8 +1,11 @@
 <template>
   <div class="main-container">
     <full-screen-loading :loading="loading">
-      <component :is="page"
-                 class="page"></component>
+      <transition name="character-sheet-fade"
+                  mode="out-in">
+        <component :is="page"
+                   class="page"></component>
+      </transition>
       <button @click="drawer = !drawer">Will be removed...</button>
       <v-navigation-drawer v-model="drawer"
                            temporary
@@ -56,6 +59,10 @@ const loadCharacter = async function (characterId = null) {
 
 const beforeRoute = function (to, from, next) {
   next(vm => {
+    vm.$vuetify.goTo(0, {
+      easing: 'easeInOutCubic',
+      duration: 250
+    });
     loadCharacter(to.params.id).then(() => {
       vm.loading = false;
     })
@@ -366,5 +373,15 @@ textarea {
   .h-sm-only {
     display: none !important;
   }
+}
+
+/* Character Sheet Fade */
+.character-sheet-fade-enter-active,
+.character-sheet-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.character-sheet-fade-enter,
+.character-sheet-fade-leave-to {
+  opacity: 0;
 }
 </style>
