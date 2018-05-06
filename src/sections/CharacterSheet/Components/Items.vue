@@ -18,7 +18,7 @@
          v-show="!minimize">
       <item v-for="(item, index) in items"
             :key="index"
-            v-bind="$extract(item)"
+            v-bind="item"
             @onItemUpdate="$emit('onItemUpdate', { index, item: $event })"></item>
     </div>
     <div class="total-Item">

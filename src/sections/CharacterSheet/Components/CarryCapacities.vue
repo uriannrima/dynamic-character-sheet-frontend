@@ -2,7 +2,7 @@
   <div class="carry-capacities-component">
     <carry-capacity v-for="(carryCapacity, index) in carryCapacities"
                     :key="index"
-                    v-bind="$extract(carryCapacity)"
+                    v-bind="carryCapacity"
                     @onCarryCapacityUpdate="$emit('onCarryCapacityUpdate' , { index, carryCapacity: $event })"></carry-capacity>
   </div>
 </template>

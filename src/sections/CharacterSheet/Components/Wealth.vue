@@ -7,7 +7,7 @@
       <div class="coins-container">
         <coin v-for="(coin, index) in wealth.coins"
               :key="index"
-              v-bind="$extract(coin)"
+              v-bind="coin"
               @onCoinUpdate="$emit('onCoinUpdate', { index, coin: $event })"></coin>
       </div>
       <div class="treasure-container">

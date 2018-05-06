@@ -26,7 +26,7 @@
          v-show="!minimize">
       <skill v-for="(skill, index) in skills"
              :key="index"
-             v-bind="$extract(skill)"
+             v-bind="skill"
              :keyScoreModifier="getTempModifier(getAbilityScore(skill.keyScoreName))"
              :gearPenalty="getGearPenalty"
              @onSkillUpdate="updateSkill"

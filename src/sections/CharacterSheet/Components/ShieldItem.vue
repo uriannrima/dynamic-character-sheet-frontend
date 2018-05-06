@@ -82,6 +82,7 @@ export default {
 .shield-item-component > div:nth-child(4) {
   float: left;
   width: 50%;
+  background-color: white;
 }
 
 @media screen and (min-width: 1024px) {

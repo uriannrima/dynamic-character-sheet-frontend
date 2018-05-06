@@ -27,6 +27,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(30px, auto);
+  grid-row-gap: 2px;
 }
 
 .bab-input {

@@ -9,7 +9,7 @@
     <attack v-show="!minimize"
             v-for="(attack, index) in attacks"
             :key="index"
-            v-bind="$extract(attack)"
+            v-bind="attack"
             @onAttackUpdate="onUpdateAttack(index, $event)" />
   </div>
 </template>

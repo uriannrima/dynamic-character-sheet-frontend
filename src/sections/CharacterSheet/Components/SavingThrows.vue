@@ -11,7 +11,7 @@
     </div>
     <saving-throw v-for="(savingThrow, index) in savingThrows"
                   :key="index"
-                  v-bind='$extract(savingThrow)'
+                  v-bind='savingThrow'
                   :keyScoreName="savingThrow.keyAbility"
                   :keyScoreModifier="getTempModifier(getAbilityScore(savingThrow.keyAbility))"
                   @onUpdateSavingThrow="updateSavingThrow($event)" />

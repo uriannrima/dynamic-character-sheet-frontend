@@ -18,7 +18,7 @@
       <ability-score v-for="(abilityScore, index) in abilityScores"
                      :key="index"
                      :index="index"
-                     v-bind='$extract(abilityScore)'
+                     v-bind='abilityScore'
                      @onUpdateScore="$emit('onUpdateScore', $event)" />
     </div>
   </div>
@@ -49,6 +49,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-rows: 10% repeat(6, 15%);
+  grid-row-gap: 2px;
 }
 
 .ability-score-header > label {

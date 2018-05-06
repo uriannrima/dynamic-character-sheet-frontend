@@ -1,7 +1,7 @@
 <template>
   <div>
     <logo class="h-xl-up h-md-down"></logo>
-    <description v-bind="$extract(description)"
+    <description v-bind="description"
                  :classes="getClasses"
                  :sizeName="getSize"
                  @onCharacterSave="saveCharacter($event)"
