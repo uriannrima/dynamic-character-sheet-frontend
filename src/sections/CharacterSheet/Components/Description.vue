@@ -1,13 +1,6 @@
 <template>
   <div>
-    <div class="black-box rounded h-md-up">
-      <div>
-        <label>Description</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
-      </div>
-    </div>
-    <div class="description-component"
-         v-show="!minimize">
+    <div class="description-component">
       <div class="horizontal-container"
            style="position: relative;">
         <input type="text"
@@ -130,11 +123,9 @@
 </template>
 
 <script>
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import SizeService from 'services/size.service';
 
 export default {
-  mixins: [MinimizableMixin],
   props: [
     'name', 'player',
     'classes', 'race', 'alignment',

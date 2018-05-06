@@ -1,5 +1,5 @@
 <template>
-  <div class="attack-grid">
+  <div class="attacks-area attack-grid">
     <div class="saving-condition-grid">
       <saving-throws></saving-throws>
       <condition-modifiers :conditionModifiers="conditionModifiers"

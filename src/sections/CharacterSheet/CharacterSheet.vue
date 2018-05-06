@@ -4,7 +4,8 @@
       <transition name="character-sheet-fade"
                   mode="out-in">
         <component :is="page"
-                   class="page"></component>
+                   class="page"
+                   :area="area"></component>
       </transition>
       <right-drawer>
         <template slot-scope="{ actions }">
@@ -20,16 +21,27 @@
           <v-divider></v-divider>
           <v-list dense
                   class="pt-0">
-            <v-list-tile v-for="section in sections"
-                         :key="section.title"
-                         @click="section.click(actions.close)">
-              <v-list-tile-action v-if="section.icon">
-                <v-icon>{{ section.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ section.title }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+            <v-list-group v-for="section in sections"
+                          :key="section.title"
+                          :prepend-icon="section.icon"
+                          no-action>
+              <v-list-tile slot="activator"
+                           @click="section.click">
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ section.title }}</v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-list-tile v-for="child in section.children"
+                           :key="child.title"
+                           @click="child.click">
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ child.title }}</v-list-tile-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-icon>{{ child.icon }}</v-icon>
+                </v-list-tile-action>
+              </v-list-tile>
+            </v-list-group>
           </v-list>
         </template>
       </right-drawer>
@@ -77,15 +89,59 @@ export default {
     return {
       page: 'front',
       loading: true,
+      area: 'description-area',
       sections: [
         {
           icon: 'home',
           title: 'Front Page',
-          click: (closeDrawer) => {
+          click: () => {
             this.page = 'front';
-            closeDrawer();
             this.scrollTop();
-          }
+          },
+          children: [
+            {
+              icon: 'assignment',
+              title: 'Description',
+              click: () => {
+                this.area = 'description-area';
+              }
+            },
+            {
+              icon: 'accessibility',
+              title: 'Ability Scores',
+              click: () => {
+                this.area = 'ability-area';
+              }
+            },
+            {
+              icon: 'verified_user',
+              title: 'Armor Class',
+              click: () => {
+                this.area = 'armor-area';
+              }
+            },
+            {
+              icon: 'directions_run',
+              title: 'Initiative / Saving Throws',
+              click: () => {
+                this.area = 'initiative-area';
+              }
+            },
+            {
+              icon: 'colorize',
+              title: 'Combat',
+              click: () => {
+                this.area = 'attacks-area';
+              }
+            },
+            {
+              icon: 'view_list',
+              title: 'Skills',
+              click: () => {
+                this.area = 'skills-area';
+              }
+            }
+          ]
         },
         {
           icon: 'person',
@@ -164,7 +220,7 @@ export default {
 
 @media screen and (min-width: 568px) and (max-width: 767px) {
   .main-container {
-    width: 568px;
+    width: 100%;
   }
 }
 

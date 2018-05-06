@@ -1,13 +1,7 @@
 <template>
   <div>
-    <div class="black-box rounded h-md-up">
-      <div>
-        <label>Campaign</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
-      </div>
-    </div>
     <div class="campaign-grid"
-         v-show="!minimize">
+         >
       <div class="campaign-component">
         <input type="text"
                class="common-input only-bottom"
@@ -27,11 +21,9 @@
 </template>
 
 <script>
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapActions } from '../Store';
 
 export default {
-  mixins: [MinimizableMixin],
   computed: {
     ...mapState(['campaign', 'experience'])
   },

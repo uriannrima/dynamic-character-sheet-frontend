@@ -3,12 +3,10 @@
     <div class="black-box rounded">
       <div>
         <label>Feats</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
         <open-modal-button :showModal.sync="showModal"></open-modal-button>
       </div>
     </div>
-    <div class="feats-container"
-         v-show="!minimize">
+    <div class="feats-container">
       <feat v-for="(feat, index) in feats"
             :key="index"
             :feat="feat"
@@ -28,13 +26,12 @@
 
 <script>
 import { ModalContainerMixin } from 'shared/modal';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { Feat, FeatModal } from '../Components';
 import { mapState, mapMutations } from '../Store';
 
 export default {
   components: { Feat, FeatModal },
-  mixins: [ModalContainerMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin],
   computed: {
     ...mapState(['feats'])
   },

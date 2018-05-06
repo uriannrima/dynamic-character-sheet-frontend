@@ -3,12 +3,10 @@
     <div class="black-box rounded">
       <div>
         <label>Languages</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
         <open-modal-button :showModal.sync="showModal"></open-modal-button>
       </div>
     </div>
-    <div class="languages-container"
-         v-show="!minimize">
+    <div class="languages-container">
       <language v-for="(language, index) in languages"
                 :key="index"
                 :language="language"
@@ -28,13 +26,12 @@
 
 <script>
 import { ModalContainerMixin } from 'shared/modal';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { Language, LanguageModal } from '../Components';
 import { mapState, mapMutations } from '../Store';
 
 export default {
   components: { Language, LanguageModal },
-  mixins: [ModalContainerMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin],
   computed: {
     ...mapState(['languages'])
   },

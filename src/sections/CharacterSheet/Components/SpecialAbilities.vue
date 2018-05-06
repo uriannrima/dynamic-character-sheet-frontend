@@ -3,12 +3,10 @@
     <div class="black-box rounded">
       <div>
         <label>Special Abilities</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
         <open-modal-button :showModal.sync="showModal"></open-modal-button>
       </div>
     </div>
-    <div class="special-abilities-container"
-         v-show="!minimize">
+    <div class="special-abilities-container">
       <special-ability v-for="(specialAbility, index) in specialAbilities"
                        :key="index"
                        :specialAbility="specialAbility"
@@ -28,13 +26,12 @@
 
 <script>
 import { ModalContainerMixin } from 'shared/modal';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { SpecialAbility, SpecialAbilityModal } from '../Components';
 import { mapState, mapMutations } from '../Store';
 
 export default {
   components: { SpecialAbility, SpecialAbilityModal },
-  mixins: [ModalContainerMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin],
   computed: {
     ...mapState(['specialAbilities'])
   },

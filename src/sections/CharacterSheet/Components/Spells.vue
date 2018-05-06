@@ -3,12 +3,10 @@
     <div class="black-box rounded">
       <div>
         <label>Spells</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
         <open-modal-button :showModal.sync="showModal"></open-modal-button>
       </div>
     </div>
-    <div class="spells-component"
-         v-show="!minimize">
+    <div class="spells-component">
       <span class="spells-note">Domains/Specialty School</span>
       <input type="text"
              class="common-input only-bottom"
@@ -34,13 +32,12 @@
 
 <script>
 import { ModalContainerMixin } from 'shared/modal';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { SpellsGroup, SpellModal } from '../Components';
 import { mapState, mapMutations } from '../Store';
 
 export default {
   components: { SpellsGroup, SpellModal },
-  mixins: [ModalContainerMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin],
   computed: {
     ...mapState(['spells', 'domainSchool']),
     spellsPerGroup: function () {

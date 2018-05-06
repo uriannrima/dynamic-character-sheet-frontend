@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ability-area">
     <ability-scores :ability-scores="abilityScores"
                     @onUpdateScore="updateAbilityScore"></ability-scores>
   </div>

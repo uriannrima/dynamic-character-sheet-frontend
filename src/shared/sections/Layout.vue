@@ -4,7 +4,8 @@
       <v-navigation-drawer v-model="drawer"
                            temporary
                            app
-                           left>
+                           left
+                           v-if="isAuthenticated">
         <v-toolbar flat>
           <v-list>
             <v-list-tile>

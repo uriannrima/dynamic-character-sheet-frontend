@@ -1,19 +1,16 @@
 <template>
-  <div class="skills-component">
+  <div class="skills-area skills-component">
     <div class="skills-header">
       <div class="class-skill-container">
-        <label class="class-skill-label"
-               v-show="!minimize">Class Skill?</label>
+        <label class="class-skill-label">Class Skill?</label>
       </div>
       <div class="black-box rounded">
         <div>
           <label>Skills</label>
-          <minimize-button :minimize.sync="minimize"></minimize-button>
           <open-modal-button :showModal.sync="showModal"></open-modal-button>
         </div>
       </div>
-      <div class="headers-container"
-           v-show="!minimize">
+      <div class="headers-container">
         <label class="skill-name-header">Skill Name</label>
         <label class="skill-value-header">Key<br>Ability</label>
         <label class="skill-value-header">Skill<br>Modifier</label>
@@ -22,8 +19,7 @@
         <label class="skill-value-header">Misc<br>Modifier</label>
       </div>
     </div>
-    <div class="skills-body"
-         v-show="!minimize">
+    <div class="skills-body">
       <skill v-for="(skill, index) in skills"
              :key="index"
              v-bind="skill"
@@ -44,13 +40,12 @@
 <script>
 import { ModalContainerMixin } from 'shared/modal';
 import { Skill, SkillModal } from '../Components';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapGetters, mapActions } from '../Store';
 import SkillService from 'services/skill.service';
 
 export default {
   components: { Skill, SkillModal },
-  mixins: [ModalContainerMixin, MinimizableMixin],
+  mixins: [ModalContainerMixin],
   computed: {
     ...mapState(['skills']),
     ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty'])

@@ -1,29 +1,29 @@
 <template>
   <div class="front">
-    <description-area class="description-area" />
-    <ability-area class="ability-area" />
-    <div class="black-box rounded h-md-up">
-      <div>
-        <label>Combat</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
-      </div>
-    </div>
-    <armor-area v-show="!minimize" />
-    <initiative-area v-show="!minimize"
-                     class="initiative-area" />
-    <attacks-area v-show="!minimize"
-                  class="attacks-area" />
-    <skills-area class="skills-area" />
+    <transition name="character-sheet-fade"
+                mode="out-in">
+      <component :is="area"> </component>
+    </transition>
+    <!-- <description-area/>
+    <ability-area/>
+    <armor-area />
+    <initiative-area/>
+    <attacks-area/>
+    <skills-area/> -->
   </div>
 </template>
 
 <script>
 import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from '../Areas';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 
 export default {
-  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea },
-  mixins: [MinimizableMixin]
+  props: {
+    area: {
+      type: String,
+      default: 'description-area'
+    }
+  },
+  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea }
 }
 </script>
 

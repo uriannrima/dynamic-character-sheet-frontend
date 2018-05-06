@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="items-component"
-         v-show="!minimize">
+         >
       <item v-for="(item, index) in items"
             :key="index"
             v-bind="item"

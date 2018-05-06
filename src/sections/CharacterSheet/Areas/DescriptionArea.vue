@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="description-area">
     <logo class="h-xl-up h-md-down"></logo>
     <description v-bind="description"
                  :classes="getClasses"

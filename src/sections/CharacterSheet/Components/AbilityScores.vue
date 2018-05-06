@@ -1,13 +1,6 @@
 <template>
   <div class="abilities-score-wrapper">
-    <div class="black-box rounded h-md-up">
-      <div>
-        <label>Abilities Score</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
-      </div>
-    </div>
-    <div class="abilities-scores-container"
-         v-show="!minimize">
+    <div class="abilities-scores-container">
       <div class="ability-score-component ability-score-header">
         <label>Ability<br>Name</label>
         <label>Ability<br>Score</label>
@@ -26,11 +19,9 @@
 
 <script>
 import { AbilityScore } from '../Components';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 
 export default {
   components: { AbilityScore },
-  mixins: [MinimizableMixin],
   props: {
     abilityScores: {
       type: Object,

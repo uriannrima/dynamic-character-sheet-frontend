@@ -1,5 +1,5 @@
 <template>
-  <div class="armor-initiative-grid">
+  <div class="initiative-area armor-initiative-grid">
     <secondary-armor></secondary-armor>
     <initiative :keyScoreName="keyScore.name"
                 :keyScoreModifier="getTempModifier(keyScore)"></initiative>

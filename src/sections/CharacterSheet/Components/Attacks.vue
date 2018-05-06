@@ -1,13 +1,6 @@
 <template>
   <div class="attacks-component">
-    <div class="black-box rounded h-md-up">
-      <div>
-        <label>Attacks</label>
-        <minimize-button :minimize.sync="minimize"></minimize-button>
-      </div>
-    </div>
-    <attack v-show="!minimize"
-            v-for="(attack, index) in attacks"
+    <attack v-for="(attack, index) in attacks"
             :key="index"
             v-bind="attack"
             @onAttackUpdate="onUpdateAttack(index, $event)" />
