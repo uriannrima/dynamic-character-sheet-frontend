@@ -39,6 +39,8 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
+      <portal-target name="right-drawer"
+                     slim></portal-target>
       <v-toolbar fixed
                  app
                  clipped-left
@@ -47,7 +49,7 @@
         <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
         <v-toolbar-title>{{$route.meta.title}}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-side-icon @click.stop="toggleDrawer">
+        <v-toolbar-side-icon @click.stop="$root.$emit('toggle-right-drawer')">
           <v-icon>more_vert</v-icon>
         </v-toolbar-side-icon>
       </v-toolbar>

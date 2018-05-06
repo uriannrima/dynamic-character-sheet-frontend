@@ -8,7 +8,10 @@
            class="common-input ac-bb"
            readonly
            :value="getTotalArmor">
-    <span class="base-armor-label">= 10 +</span>
+    <input type="number"
+           class="common-input"
+           readonly
+           value="10">
     <input type="number"
            class="common-input"
            readonly
@@ -37,7 +40,7 @@
            class="common-input"
            :value="armorClass.miscModifier"
            @change="updateArmorClass({ miscModifier: $event.target.value * 1 })">
-    <label>&nbsp;</label>
+    <label>Base<br>Armor</label>
     <label class="h-md-down total-label">Total</label>
     <label class="h-md-down">&nbsp;</label>
     <label>Armor<br>Bonus</label>

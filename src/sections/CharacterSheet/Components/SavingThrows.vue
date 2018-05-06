@@ -39,16 +39,12 @@ export default {
   display: grid;
   grid-template-rows: 20% repeat(3, 1fr);
   align-items: center;
+
+  grid-row-gap: 2px;
 }
 
 .saving-throws-label {
-  font-size: 80% !important;
+  font-size: 78% !important;
   font-weight: bold;
-}
-
-@media screen and (min-width: 1024px) {
-  .saving-throws-component {
-    grid-row-gap: 2px;
-  }
 }
 </style>

@@ -70,16 +70,21 @@ export default {
 }
 
 .saving-throw-header label {
-  font-size: 50%;
+  font-size: 40%;
   line-height: 8px;
   text-transform: uppercase;
   text-align: center;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 1024px) {
   .saving-throw-grid {
     grid-column-gap: 5px;
     height: 100%;
+  }
+
+  .saving-throw-header label {
+    font-size: 50%;
   }
 
   .saving-throw-grid > input {

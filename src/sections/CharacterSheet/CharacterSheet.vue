@@ -6,35 +6,33 @@
         <component :is="page"
                    class="page"></component>
       </transition>
-      <button @click="drawer = !drawer">Will be removed...</button>
-      <v-navigation-drawer v-model="drawer"
-                           temporary
-                           app
-                           right>
-        <v-toolbar flat>
-          <v-list>
-            <v-list-tile>
-              <v-list-tile-title class="title">
-                Character Sheet Sections
-              </v-list-tile-title>
+      <right-drawer>
+        <template slot-scope="{ actions }">
+          <v-toolbar flat>
+            <v-list>
+              <v-list-tile>
+                <v-list-tile-title class="title">
+                  Character Sheet Sections
+                </v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-toolbar>
+          <v-divider></v-divider>
+          <v-list dense
+                  class="pt-0">
+            <v-list-tile v-for="section in sections"
+                         :key="section.title"
+                         @click="section.click(actions.close)">
+              <v-list-tile-action v-if="section.icon">
+                <v-icon>{{ section.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ section.title }}</v-list-tile-title>
+              </v-list-tile-content>
             </v-list-tile>
           </v-list>
-        </v-toolbar>
-        <v-divider></v-divider>
-        <v-list dense
-                class="pt-0">
-          <v-list-tile v-for="section in sections"
-                       :key="section.title"
-                       @click="section.click">
-            <v-list-tile-action v-if="section.icon">
-              <v-icon>{{ section.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ section.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-navigation-drawer>
+        </template>
+      </right-drawer>
     </full-screen-loading>
   </div>
 </template>
@@ -42,6 +40,7 @@
 <script>
 import * as Pages from './Pages';
 import FullScreenLoading from 'shared/components/FullScreenLoadingComponent';
+import RightDrawer from 'shared/components/RightDrawerComponent';
 import Store from 'store';
 import CharacterModule, { mapState, mapActions, Actions } from './Store';
 import moduledComponentMixin from 'shared/mixins/moduled.component.mixin';
@@ -59,10 +58,7 @@ const loadCharacter = async function (characterId = null) {
 
 const beforeRoute = function (to, from, next) {
   next(vm => {
-    vm.$vuetify.goTo(0, {
-      easing: 'easeInOutCubic',
-      duration: 250
-    });
+    vm.scrollTop();
     loadCharacter(to.params.id).then(() => {
       vm.loading = false;
     })
@@ -70,7 +66,7 @@ const beforeRoute = function (to, from, next) {
 }
 
 export default {
-  components: { ...Pages, FullScreenLoading },
+  components: { ...Pages, FullScreenLoading, RightDrawer },
   beforeRouteEnter: beforeRoute,
   beforeRouteUpdate: beforeRoute,
   mixins: [moduledComponentMixin('Character', CharacterModule)],
@@ -81,20 +77,23 @@ export default {
     return {
       page: 'front',
       loading: true,
-      drawer: false,
       sections: [
         {
           icon: 'home',
           title: 'Front Page',
-          click: () => {
-            this.page = 'front'
+          click: (closeDrawer) => {
+            this.page = 'front';
+            closeDrawer();
+            this.scrollTop();
           }
         },
         {
           icon: 'person',
           title: 'Cover page',
-          click: () => {
-            this.page = 'cover'
+          click: (closeDrawer) => {
+            this.page = 'cover';
+            closeDrawer();
+            this.scrollTop();
           }
         }
       ]
@@ -104,7 +103,14 @@ export default {
     await loadCharacter(this.$route.params.id);
   },
   methods: {
-    ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect'])
+    ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect']),
+    scrollTop() {
+      this.$vuetify.goTo(0, {
+        easing: 'easeInOutCubic',
+        duration: 250,
+        offset: -100
+      });
+    }
   }
 }
 </script>
@@ -117,7 +123,6 @@ export default {
 
 .main-container {
   margin: 0 auto;
-  padding: 0 15px;
   background: white;
 }
 
@@ -223,6 +228,12 @@ export default {
   text-transform: uppercase;
   text-align: center;
   font-weight: bolder;
+}
+
+@media screen and (max-width: 400px) {
+  .new-black-box > label {
+    font-size: 12px;
+  }
 }
 
 .lower-border {
