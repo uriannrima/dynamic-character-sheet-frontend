@@ -1,13 +1,11 @@
 <template>
-  <div class="background-container">
-    <div class="login-component">
-      <div class="form-container">
-        <component :is="formName"
-                   :disabled="processing"
-                   @toggleForm="toggleForm($event)"
-                   @onLogin="doLogin($event)"
-                   @onRegister="doRegistration($event)"></component>
-      </div>
+  <div class="login-component">
+    <div class="form-container">
+      <component :is="formName"
+                 :disabled="processing"
+                 @toggleForm="toggleForm($event)"
+                 @onLogin="doLogin($event)"
+                 @onRegister="doRegistration($event)"></component>
     </div>
   </div>
 </template>
@@ -80,11 +78,10 @@ doRegistration: async function (login) {
 
 <style>
 .login-component {
-  width: 360px;
+  width: 100%;
   padding: 8% 0 0;
   margin: auto;
   min-height: 300px;
-  transition: all 3 linear;
 }
 
 .form-container {

@@ -5,8 +5,9 @@
   "scripts": {
     "serve": "yarn install && vue-cli-service serve",
     "build": "yarn install && vue-cli-service build",
+    "deploy": "yarn build && firebase deploy",
     "lint": "vue-cli-service lint --fix",
-    "api": "cd.. && cd dynamic-character-sheet-api && npm run dev",
+    "api": "cd.. && cd dynamic-character-sheet-api && yarn dev",
     "api:mock": "json-server --watch db.json --host localhost --port 5000 --nc --id _id"
   },
   "dependencies": {

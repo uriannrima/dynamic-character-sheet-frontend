@@ -167,7 +167,7 @@ export default {
 
 @media screen and (max-width: 567px) {
   .main-container {
-    width: 360px;
+    width: 100%;
   }
 }
 
