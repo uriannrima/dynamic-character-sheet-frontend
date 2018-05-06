@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="description-component">
-      <div class="horizontal-container"
-           style="position: relative;">
+      <div class="horizontal-container">
         <input type="text"
                class="full-width-input"
                :value="name"
@@ -184,6 +183,7 @@ export default {
 .description-component label {
   font-size: 75%;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .description-component input,
@@ -194,12 +194,12 @@ export default {
 
 .three-part-area {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
 }
 
 .four-part-area {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
 }
 
 .full-width-input {
@@ -220,7 +220,17 @@ export default {
 @media screen and (max-width: 768px) {
   .description-component {
     grid-template-columns: 100%;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(6, auto);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .three-part-area {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .four-part-area {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 </style>

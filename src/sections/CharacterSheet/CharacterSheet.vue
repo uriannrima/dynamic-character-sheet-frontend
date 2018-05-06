@@ -25,15 +25,14 @@
                           :key="section.title"
                           :prepend-icon="section.icon"
                           no-action>
-              <v-list-tile slot="activator"
-                           @click="section.click">
+              <v-list-tile slot="activator">
                 <v-list-tile-content>
                   <v-list-tile-title>{{ section.title }}</v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
               <v-list-tile v-for="child in section.children"
                            :key="child.title"
-                           @click="child.click">
+                           @click="child.click(); actions.close();">
                 <v-list-tile-content>
                   <v-list-tile-title>{{ child.title }}</v-list-tile-title>
                 </v-list-tile-content>
@@ -94,63 +93,54 @@ export default {
         {
           icon: 'home',
           title: 'Front Page',
-          click: () => {
-            this.page = 'front';
-            this.scrollTop();
-          },
           children: [
             {
               icon: 'assignment',
               title: 'Description',
               click: () => {
-                this.area = 'description-area';
+                this.toggleArea('front', 'description-area');
               }
             },
             {
               icon: 'accessibility',
               title: 'Ability Scores',
               click: () => {
-                this.area = 'ability-area';
+                this.toggleArea('front', 'ability-area');
               }
             },
             {
               icon: 'verified_user',
               title: 'Armor Class',
               click: () => {
-                this.area = 'armor-area';
+                this.toggleArea('front', 'armor-area');
               }
             },
             {
               icon: 'directions_run',
               title: 'Initiative / Saving Throws',
               click: () => {
-                this.area = 'initiative-area';
+                this.toggleArea('front', 'initiative-area');
               }
             },
             {
               icon: 'colorize',
               title: 'Combat',
               click: () => {
-                this.area = 'attacks-area';
+                this.toggleArea('front', 'attacks-area');
               }
             },
             {
               icon: 'view_list',
               title: 'Skills',
               click: () => {
-                this.area = 'skills-area';
+                this.toggleArea('front', 'skills-area');
               }
             }
           ]
         },
         {
           icon: 'person',
-          title: 'Cover page',
-          click: (closeDrawer) => {
-            this.page = 'cover';
-            closeDrawer();
-            this.scrollTop();
-          }
+          title: 'Cover page'
         }
       ]
     }
@@ -160,6 +150,11 @@ export default {
   },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect']),
+    toggleArea(selectedPage, selectedArea) {
+      this.page = selectedPage;
+      this.area = selectedArea;
+      this.scrollTop();
+    },
     scrollTop() {
       this.$vuetify.goTo(0, {
         easing: 'easeInOutCubic',
@@ -179,7 +174,6 @@ export default {
 
 .main-container {
   margin: 0 auto;
-  background: white;
 }
 
 /** HD Resolution */
