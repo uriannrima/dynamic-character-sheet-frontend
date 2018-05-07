@@ -51,6 +51,9 @@ import { SpellForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {
+  $_veeValidate: {
+    validator: 'new'
+  },
   components: { SpellForm },
   mixins: [ModalMixin],
   created: function () {

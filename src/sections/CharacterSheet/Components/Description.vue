@@ -9,9 +9,6 @@
                name="Character Name"
                v-validate:name.initial="'required'">
         <label>Character Name</label>
-        <span class="save-button glyphicon glyphicon-floppy-save"
-              @click="$emit('onCharacterSave')"
-              v-show="!vErrors.any()"></span>
       </div>
       <div class="horizontal-container">
         <input type="text"
@@ -125,6 +122,9 @@
 import SizeService from 'services/size.service';
 
 export default {
+  inject: {
+    $validator: '$validator'
+  },
   props: [
     'name', 'player',
     'classes', 'race', 'alignment',

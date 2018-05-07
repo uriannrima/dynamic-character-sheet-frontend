@@ -3,9 +3,24 @@
     <full-screen-loading :loading="loading">
       <transition name="character-sheet-fade"
                   mode="out-in">
-        <component :is="page"
-                   class="page"
-                   :area="area"></component>
+        <div>
+          <component :is="page"
+                     class="page"
+                     :area="area"></component>
+          <v-fab-transition>
+            <v-btn color="blue"
+                   fixed
+                   bottom
+                   right
+                   fab
+                   small
+                   v-show="!loading"
+                   @click="$emit('onCharacterSave')"
+                   :disabled="vErrors.any()">
+              <v-icon>save</v-icon>
+            </v-btn>
+          </v-fab-transition>
+        </div>
       </transition>
       <right-drawer>
         <template slot-scope="{ actions }">
@@ -77,6 +92,9 @@ const beforeRoute = function (to, from, next) {
 }
 
 export default {
+  $_veeValidate: {
+    validator: 'new'
+  },
   components: { ...Pages, FullScreenLoading, RightDrawer },
   beforeRouteEnter: beforeRoute,
   beforeRouteUpdate: beforeRoute,
@@ -174,6 +192,7 @@ export default {
 
 .main-container {
   margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 /** HD Resolution */

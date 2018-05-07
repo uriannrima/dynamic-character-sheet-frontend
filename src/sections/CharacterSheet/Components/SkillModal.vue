@@ -53,6 +53,9 @@ import { SkillForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {
+  $_veeValidate: {
+    validator: 'new'
+  },
   components: { SkillForm },
   mixins: [ModalMixin],
   props: {

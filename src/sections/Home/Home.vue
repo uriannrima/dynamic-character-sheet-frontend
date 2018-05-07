@@ -1,16 +1,18 @@
 <template>
-  <div>
+  <div class="home-component">
     <full-screen-loading :loading="loading">
       <character-card-list :characters="characters"></character-card-list>
-      <v-btn color="blue"
-             dark
-             fixed
-             bottom
-             right
-             fab
-             @click="$router.push({ name: 'newCharacter' })">
-        <v-icon>add</v-icon>
-      </v-btn>
+      <v-fab-transition>
+        <v-btn color="blue"
+               fixed
+               bottom
+               right
+               fab
+               v-show="!loading"
+               @click="$router.push({ name: 'newCharacter' })">
+          <v-icon>add</v-icon>
+        </v-btn>
+      </v-fab-transition>
     </full-screen-loading>
   </div>
 </template>
@@ -52,3 +54,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.home-component {
+  margin-bottom: 55px;
+}
+</style>

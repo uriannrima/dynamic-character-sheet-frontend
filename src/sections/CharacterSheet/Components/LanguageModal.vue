@@ -51,6 +51,9 @@ import { LanguageForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {
+  $_veeValidate: {
+    validator: 'new'
+  },
   components: { LanguageForm },
   mixins: [ModalMixin],
   created: function () {

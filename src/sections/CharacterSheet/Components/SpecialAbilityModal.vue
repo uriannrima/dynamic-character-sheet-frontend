@@ -51,6 +51,9 @@ import { SpecialAbilityForm } from '../Components';
 import { ModalMixin } from 'shared/modal';
 
 export default {
+  $_veeValidate: {
+    validator: 'new'
+  },
   components: { SpecialAbilityForm },
   mixins: [ModalMixin],
   created: function () {
