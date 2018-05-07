@@ -84,6 +84,7 @@ const loadCharacter = async function (characterId = null) {
 
 const beforeRoute = function (to, from, next) {
   next(vm => {
+    vm.loading = true;
     vm.scrollTop();
     loadCharacter(to.params.id).then(() => {
       vm.loading = false;
@@ -105,7 +106,7 @@ export default {
   data() {
     return {
       page: 'front',
-      loading: true,
+      loading: false,
       area: 'description-area',
       sections: [
         {

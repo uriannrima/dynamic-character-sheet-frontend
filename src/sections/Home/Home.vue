@@ -25,12 +25,13 @@ export default {
   components: { CharacterCardList, FullScreenLoading },
   data: function () {
     return {
-      loading: true,
+      loading: false,
       characters: []
     };
   },
   beforeRouteEnter: async function (to, from, next) {
     next(vm => {
+      vm.loading = true;
       vm.$vuetify.goTo(0, {
         easing: 'easeInOutCubic',
         duration: 250
