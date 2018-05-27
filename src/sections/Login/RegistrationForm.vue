@@ -42,6 +42,9 @@
 
 <script>
 export default {
+  $_veeValidate: {
+    validator: 'new'
+  },
   props: ['disabled'],
   data() {
     return {
