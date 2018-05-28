@@ -1,10 +1,13 @@
+import { ActionTree } from 'vuex';
 import Cookies from 'js-cookie';
 import { Actions, Mutations } from './mappings';
 import AuthService from 'shared/services/auth/AuthService';
 import UserService from 'services/UserService';
-import Feathers from '../../feathers';
+import Feathers from '@/feathers';
+import { AuthState } from '@/store/modules/auth/types';
+import { RootState } from '@/store/types';
 
-export default {
+export const actions: ActionTree<AuthState, RootState> = {
   async [Actions.login]({ commit }, payload) {
     commit(Mutations.toggleProcessing, true);
     var userSession = await AuthService.login(payload);
@@ -33,7 +36,7 @@ export default {
     if (getters.isAuthenticated) {
       return true;
     } else {
-      const userSession = Cookies.getJSON('userSession');
+      const userSession = Cookies.getJSON('userSession') as { accessToken: string };
       if (userSession) {
         try {
           await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken });
@@ -51,3 +54,5 @@ export default {
     return false;
   }
 }
+
+export default actions;

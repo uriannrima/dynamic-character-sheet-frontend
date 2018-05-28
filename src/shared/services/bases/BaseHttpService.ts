@@ -3,11 +3,10 @@ import SocketLayer from '../layers//SocketLayer';
 import AuthService from '../auth/AuthService';
 
 export class BaseHttpService extends HttpLayer {
-  constructor({ url }) {
+  public socket: SocketLayer;
+  constructor({ url }: { url: string }) {
     super({ url });
-    Object.assign(this, {
-      socket: new SocketLayer(url)
-    });
+    this.socket = new SocketLayer({ serviceName: url.replace('/', '') });
   }
 
   async getHeaders() {
@@ -17,7 +16,7 @@ export class BaseHttpService extends HttpLayer {
     };
   }
 
-  async get(id) {
+  async get(id: string) {
     try {
       var headers = await this.getHeaders();
       return await this.service.get(this.url + `/${id}`, { headers });
@@ -35,7 +34,7 @@ export class BaseHttpService extends HttpLayer {
     }
   }
 
-  async saveOrUpdate(model) {
+  async saveOrUpdate(model: any) {
     try {
       var { _id } = model;
       var headers = await this.getHeaders();
@@ -47,12 +46,12 @@ export class BaseHttpService extends HttpLayer {
     }
   }
 
-  async remove(id) {
+  async remove(id: string) {
     var headers = await this.getHeaders();
     return await this.service.delete(this.url + `/${id}`, { headers });
   }
 
-  async patch(_id, patch) {
+  async patch(_id: string, patch: any) {
     try {
       var headers = await this.getHeaders();
       return await this.service.patch(this.url + `/${_id}`, patch, { headers });
@@ -61,12 +60,12 @@ export class BaseHttpService extends HttpLayer {
     }
   }
 
-  register(methodName, callback) {
+  register(methodName: string, callback: (...args: any[]) => void) {
     console.log("HttpLayer doesn't support registration. Using nested socket layer.");
-    this.socket.on(methodName, callback);
+    this.socket.feathers.on(methodName, callback);
   }
 
-  emit(methodName, payload) {
+  emit(methodName: string, payload: any) {
     console.log("HttpLayer doesn't support emit. Using nested socket layer.");
     this.socket.feathers.io.emit('custom', methodName, this.socket.serviceName, payload);
   }

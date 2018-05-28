@@ -1,4 +1,4 @@
-const Home = () => import('./Home');
+const Home = () => import('./Home.vue');
 
 export default [
   {

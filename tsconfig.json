@@ -11,10 +11,23 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "node"    ],
+      "node"
+    ],
     "paths": {
+      "Constants": [
+        "src/constants.dev.ts"
+      ],
       "@/*": [
         "src/*"
+      ],
+      "shared/*": [
+        "src/shared/*"
+      ],
+      "services/*": [
+        "src/services/*"
+      ],
+      "store/*":[
+        "src/store/*"
       ]
     }
   },

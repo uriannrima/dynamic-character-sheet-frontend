@@ -1,4 +1,4 @@
-const CharacterSheet = () => import('./CharacterSheet');
+const CharacterSheet = () => import('./CharacterSheet.vue');
 
 const baseRoute = {
   component: CharacterSheet,

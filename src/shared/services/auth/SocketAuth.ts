@@ -7,7 +7,7 @@ export default class SocketAuth extends SocketLayer {
     });
   }
 
-  async login(payload) {
+  async login(payload: any) {
     try {
       payload.strategy = 'local';
       var accessToken = await this.feathers.authenticate(payload);
@@ -17,12 +17,16 @@ export default class SocketAuth extends SocketLayer {
     }
   }
 
-  async logout() {
+  async logout(accessToken?: string | null | undefined) {
     try {
       this.feathers.logout();
       return true;
     } catch (error) {
       throw error;
     }
+  }
+
+  async refresh() {
+    console.log('Not implemented.');
   }
 }

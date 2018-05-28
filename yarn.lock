@@ -783,6 +783,31 @@
   version "1.0.0-beta.7"
   resolved "https://registry.yarnpkg.com/@shopify/draggable/-/draggable-1.0.0-beta.7.tgz#58c3619ffd88841d337c2922506f4a85540ba7ee"
 
+"@types/events@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+
+"@types/feathersjs__authentication-client@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/feathersjs__authentication-client/-/feathersjs__authentication-client-1.0.3.tgz#200190012dfa044f814eae7b24ffa448a449b253"
+
+"@types/feathersjs__feathers@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/feathersjs__feathers/-/feathersjs__feathers-3.0.3.tgz#7a86d47ea6f3d2c3d60e2278138a7590e680bc6a"
+  dependencies:
+    "@types/events" "*"
+    "@types/node" "*"
+
+"@types/feathersjs__socketio-client@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/feathersjs__socketio-client/-/feathersjs__socketio-client-1.0.1.tgz#913224bf44c2b4f0432718c4f53470968273427f"
+  dependencies:
+    "@types/socket.io-client" "*"
+
+"@types/js-cookie@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.1.0.tgz#a8916246aa994db646c66d54c854916213300a51"
+
 "@types/node@*":
   version "10.1.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.3.tgz#5c16980936c4e3c83ce64e8ed71fb37bd7aea135"
@@ -790,6 +815,10 @@
 "@types/node@^9.3.0":
   version "9.6.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.18.tgz#092e13ef64c47e986802c9c45a61c1454813b31d"
+
+"@types/socket.io-client@*":
+  version "1.4.32"
+  resolved "https://registry.yarnpkg.com/@types/socket.io-client/-/socket.io-client-1.4.32.tgz#988a65a0386c274b1c22a55377fab6a30789ac14"
 
 "@vue/babel-preset-app@^3.0.0-beta.11":
   version "3.0.0-beta.11"
@@ -4559,6 +4588,10 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "~3.0.0"
 
+lodash.unescape@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
+
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
@@ -6444,7 +6477,7 @@ semver-diff@^2.0.0:
   dependencies:
     semver "^5.0.3"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
+"semver@2 || 3 || 4 || 5", semver@5.5.0, semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
@@ -7123,6 +7156,13 @@ type-is@~1.6.15, type-is@~1.6.16:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typescript-eslint-parser@^15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/typescript-eslint-parser/-/typescript-eslint-parser-15.0.0.tgz#882fd3d7aabffbab0a7f98d2a59fb9a989c2b37f"
+  dependencies:
+    lodash.unescape "4.0.1"
+    semver "5.5.0"
 
 typescript@^2.8.3:
   version "2.8.3"

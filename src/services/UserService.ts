@@ -7,7 +7,7 @@ class UserService extends HttpLayer {
     });
   }
 
-  async register(payload) {
+  async register(payload: any) {
     try {
       var response = await this.service.post(this.url, payload);
       return response.data;

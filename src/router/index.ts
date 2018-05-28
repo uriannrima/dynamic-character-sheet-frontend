@@ -12,7 +12,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    Store.dispatch('AuthModule/refresh').then(authenticated => {
+    Store.dispatch('Auth/refresh').then(authenticated => {
       if (authenticated) {
         next();
       } else {

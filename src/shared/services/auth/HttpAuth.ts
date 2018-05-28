@@ -17,7 +17,7 @@ export default class HttpAuth extends HttpLayer {
     }
   }
 
-  async login(payload) {
+  async login(payload: any) {
     try {
       payload.strategy = 'local';
       var { data: { accessToken } } = await this.service.post(this.url, payload);
@@ -27,7 +27,7 @@ export default class HttpAuth extends HttpLayer {
     }
   }
 
-  async logout(accessToken) {
+  async logout(accessToken?: string | null | undefined) {
     try {
       var headers = { Authorization: accessToken }
       this.service.delete(this.url, { headers });

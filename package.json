@@ -15,6 +15,10 @@
     "@feathersjs/feathers": "^3.1.4",
     "@feathersjs/socketio-client": "^1.1.0",
     "@shopify/draggable": "^1.0.0-beta.6",
+    "@types/feathersjs__authentication-client": "^1.0.3",
+    "@types/feathersjs__feathers": "^3.0.3",
+    "@types/feathersjs__socketio-client": "^1.0.1",
+    "@types/js-cookie": "^2.1.0",
     "autoprefixer": "^8.3.0",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
@@ -50,6 +54,7 @@
     "@vue/eslint-config-standard": "^3.0.0-beta.7",
     "json-server": "^0.12.2",
     "optimist": "^0.6.1",
+    "typescript-eslint-parser": "^15.0.0",
     "vue-template-compiler": "^2.5.13"
   }
 }

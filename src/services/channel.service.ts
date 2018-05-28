@@ -5,11 +5,11 @@ class ChannelService extends BaseSocketService {
     super({ url: '/channels' });
   }
 
-  async sync(channelMapping, payload) {
-    return this.patch(channelMapping.join('/'), payload, {});
+  async sync(channelMapping: string[], payload: any) {
+    return this.patch(channelMapping.join('/'), payload);
   }
 
-  async onSync(callback) {
+  async onSync(callback: (...args: any[]) => void) {
     return this.register('patched', callback);
   }
 }

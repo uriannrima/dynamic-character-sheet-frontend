@@ -1,4 +1,4 @@
-const Login = () => import('./Login');
+const Login = () => import('./Login.vue');
 
 export default [
   {

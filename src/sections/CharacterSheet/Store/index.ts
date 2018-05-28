@@ -10,16 +10,17 @@ export { Actions, Mutations } from './mappings';
 export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers('Character');
 
 export class CharacterSyncing {
+  public syncingMap: string[];
   constructor() {
     this.syncingMap = ['Character/updateSkill'];
   }
 
-  emit(mutation, state) {
+  emit(mutation: string, state: any) {
     const characterId = state.CharacterModule._id;
     ChannelService.sync(['characters', characterId], mutation);
   }
 
-  register(store) {
+  register(store: any) {
     ChannelService.onSync((mutation) => {
       // TODO: Payload.sync included until mutation has meta options.
       var { sync, ...payload } = mutation.payload;

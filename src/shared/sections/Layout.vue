@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'store/AuthModule';
+import { mapGetters, mapActions } from 'store/modules/auth';
 
 export default {
   computed: {

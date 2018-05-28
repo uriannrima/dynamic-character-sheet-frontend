@@ -6,5 +6,4 @@ Vue.use(Vuex);
 
 const Store = new Vuex.Store(store);
 
-window.Store = Store;
 export default Store;
