@@ -1,15 +1,20 @@
-export default {
-  getAbilityScore: state => (scoreName) => {
+import { GetterTree } from 'vuex';
+import { CharacterState } from './state';
+import { RootState } from '@/store/types';
+import { AbilityScore } from '@/domain';
+
+export const getters: GetterTree<CharacterState, RootState> = {
+  getAbilityScore: state => (scoreName: string) => {
     return state.abilityScores[scoreName];
   },
   /**
    * Getters "getModifier" and "getTempModifier" are here to avoid errors on Vuex DevTools Time Travel.
    * Since it doesn't save the object with it's methods.
    */
-  getModifier: () => (abilityScore) => {
+  getModifier: () => (abilityScore: AbilityScore) => {
     return Math.floor((abilityScore.value - 10) / 2);
   },
-  getTempModifier: () => (abilityScore) => {
+  getTempModifier: () => (abilityScore: AbilityScore) => {
     return Math.floor((abilityScore.tempValue - 10) / 2);
   },
   getClasses: state => {
@@ -99,3 +104,5 @@ export default {
     return spellFailure;
   }
 }
+
+export default getters;

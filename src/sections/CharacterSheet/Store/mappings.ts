@@ -100,7 +100,9 @@ export const Mutations = {
   updateCarryCapacities: 'updateCarryCapacities',
   updateCoin: 'updateCoin',
   updateCoins: 'updateCoins',
-  updateTreasure: 'updateTreasure'
+  updateTreasure: 'updateTreasure',
+
+  updateKeyScore: 'updateKeyScore'
 };
 
 export const Mappings = {

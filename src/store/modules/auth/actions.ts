@@ -4,7 +4,7 @@ import { Actions, Mutations } from './mappings';
 import AuthService from 'shared/services/auth/AuthService';
 import UserService from 'services/UserService';
 import Feathers from '@/feathers';
-import { AuthState } from '@/store/modules/auth/types';
+import { AuthState } from '@/store/modules/auth/state';
 import { RootState } from '@/store/types';
 
 export const actions: ActionTree<AuthState, RootState> = {

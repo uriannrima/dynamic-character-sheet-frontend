@@ -1,5 +1,7 @@
-import { createNamespacedHelpers } from 'vuex';
+import { Module, createNamespacedHelpers } from 'vuex';
+import { namespace } from 'vuex-class';
 import { CharacterState } from './state';
+import { RootState } from '@/store/types';
 import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
@@ -7,32 +9,17 @@ import ChannelService from 'services/channel.service';
 
 export { default as Mappings } from './mappings';
 export { Actions, Mutations } from './mappings';
-export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers('Character');
 
-export class CharacterSyncing {
-  public syncingMap: string[];
-  constructor() {
-    this.syncingMap = ['Character/updateSkill'];
-  }
+const namespaceName = 'Character';
+export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers(namespaceName);
+export const Namespace = namespace(namespaceName);
 
-  emit(mutation: string, state: any) {
-    const characterId = state.CharacterModule._id;
-    ChannelService.sync(['characters', characterId], mutation);
-  }
-
-  register(store: any) {
-    ChannelService.onSync((mutation) => {
-      // TODO: Payload.sync included until mutation has meta options.
-      var { sync, ...payload } = mutation.payload;
-      if (sync) store.commit(mutation.type, payload);
-    });
-  }
-}
-
-export default {
+export const character: Module<CharacterState, RootState> = {
   namespaced: true,
   state: new CharacterState(),
   getters,
   actions,
   mutations
 };
+
+export default character;

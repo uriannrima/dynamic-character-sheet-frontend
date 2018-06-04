@@ -1,4 +1,5 @@
 import BaseSocketService from 'shared/services/bases/BaseSocketService';
+import { Character } from 'domain/character';
 
 class ChannelService extends BaseSocketService {
   constructor() {

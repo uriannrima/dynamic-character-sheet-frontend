@@ -1,6 +1,6 @@
 import { MutationTree } from 'vuex';
 import { Mutations } from './mappings';
-import { AuthState } from '@/store/modules/auth/types';
+import { AuthState } from '@/store/modules/auth/state';
 
 export const mutations: MutationTree<AuthState> = {
   [Mutations.saveUserSession](state, userSession: any = null) {

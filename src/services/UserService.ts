@@ -2,9 +2,7 @@ import HttpLayer from 'shared/services/layers/HttpLayer';
 
 class UserService extends HttpLayer {
   constructor() {
-    super({
-      url: '/users'
-    });
+    super({ url: '/users' });
   }
 
   async register(payload: any) {

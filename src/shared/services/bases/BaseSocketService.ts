@@ -1,52 +1,34 @@
 import SocketLayer from '../layers/SocketLayer';
+import { IEntity } from '@/domain/interfaces/IEntity';
+import { Paginated } from '@feathersjs/feathers';
 
-export default class BaseSocketService extends SocketLayer {
+export default abstract class BaseSocketService<TModel extends IEntity = any> extends SocketLayer {
   constructor({ url }: { url: string }) {
     super({ serviceName: url.replace('/', '') });
   }
 
-  async get(id: string = '', query = {}) {
-    const data = await this.service.get(id, { query });
-    return {
-      data
-    };
+  async get(id: string = '', query: any = {}): Promise<TModel> {
+    return await this.service.get(id, { query });
   }
 
-  async getAll(query = {}) {
-    const data = await this.service.find({ query });
-    return {
-      data
-    };
+  async find(query = {}): Promise<TModel[] | Paginated<TModel>> {
+    return await this.service.find({ query });
   }
 
-  async saveOrUpdate(model: any) {
+  async create(model: TModel): Promise<TModel> {
+    return await this.service.create(model);
+  }
+
+  async update(model: TModel): Promise<TModel> {
     const { _id } = model;
-    var data = null
-    if (_id) {
-      data = await this.service.update(_id, model);
-    } else {
-      data = await this.service.create(model);
-    }
-
-    return {
-      data
-    };
+    return await this.service.update(_id, model);
   }
 
-  async create(model: any) {
-    return {
-      data: await this.service.create(model)
-    };
+  async remove(id: string): Promise<TModel> {
+    return await this.service.remove(id);
   }
 
-  async remove(id: string) {
-    var data = await this.service.remove(id);
-    return {
-      data
-    }
-  }
-
-  async patch(_id: string, patch: any) {
+  async patch(_id: string, patch: any): Promise<TModel> {
     return await this.service.patch(_id, patch, {});
   }
 
@@ -54,7 +36,7 @@ export default class BaseSocketService extends SocketLayer {
     this.service.on(methodName, callback);
   }
 
-  emit(methodName: string, payload: any) {
+  emit(methodName: string, payload?: any) {
     this.feathers.io.emit('custom', methodName, this.serviceName, payload);
   }
 }

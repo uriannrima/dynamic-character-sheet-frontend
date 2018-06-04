@@ -1,11 +1,13 @@
 import { Module, createNamespacedHelpers } from 'vuex';
 import { namespace } from 'vuex-class';
-import { AuthState } from './types';
+import { AuthState } from './state';
 import { RootState } from '@/store/types';
-export { default as Mappings } from './mappings';
 import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
+
+export { default as Mappings } from './mappings';
+export { Actions, Mutations } from './mappings';
 
 const namespaceName = 'Auth';
 export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers(namespaceName);

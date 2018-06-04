@@ -1,11 +1,25 @@
+import { ActionTree } from 'vuex';
+
+import * as Modules from '@/domain';
+
 import { CharacterState } from './state';
+import { RootState } from '@/store/types';
 import { Actions, Mutations } from './mappings';
+
 import CharacterService from 'services/character.service';
-import NotificationService from 'services/NotificationService';
 import ChannelService from 'services/channel.service';
+
 import SkillService from 'services/skill.service';
 
-export default {
+declare module 'vuex' {
+  interface CommitOptions {
+    silent?: boolean;
+    root?: boolean;
+    meta: any;
+  }
+}
+
+export const actions: ActionTree<CharacterState, RootState> = {
   async [Actions.connect](context, characterId) {
     // Ask for the server to connect to character channel.
     ChannelService.create(['characters', characterId]);
@@ -16,8 +30,8 @@ export default {
   },
   async [Actions.newCharacter]({ commit }) {
     const newState = new CharacterState();
-    const skills = await SkillService.getDefaultSkills();
-    newState.skills = skills.map(skill => skill.toCharacterSkill());
+    const skills = await SkillService.getDefaultSkills() as Modules.Skill[];
+    newState.skills = skills.map(skill => skill);
     commit(Mutations.newCharacter, newState);
   },
   async [Actions.loadCharacter]({ commit }, characterId) {
@@ -57,9 +71,9 @@ export default {
         commit(mutation, character);
       });
     } catch (error) {
-      NotificationService.error({
-        message: error.message
-      });
+      // NotificationService.error({
+      //   message: error.message
+      // });
       console.error(error);
     }
   },
@@ -145,3 +159,5 @@ export default {
     commit(Mutations.updateTreasure, { wealth: { treasure } }, { meta: { sync: true } });
   }
 }
+
+export default actions;

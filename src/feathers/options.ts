@@ -1,4 +1,4 @@
-import { FeathersAuthClientConfig } from "@feathersjs/authentication-client";
+import { FeathersAuthClientConfig } from '@feathersjs/authentication-client';
 
 export default {
   Authentication: {

@@ -1,6 +1,8 @@
+import { RouteConfig } from 'vue-router';
+
 const Home = () => import('./Home.vue');
 
-export default [
+export const routes: RouteConfig[] = [
   {
     name: 'home',
     path: '/home',
@@ -11,3 +13,5 @@ export default [
     }
   }
 ];
+
+export default routes;

@@ -16,44 +16,34 @@
     </full-screen-loading>
   </div>
 </template>
-<script>
-import CharacterService from 'services/character.service';
-import CharacterCardList from './components/CharacterCardList';
-import FullScreenLoading from 'shared/components/FullScreenLoadingComponent';
 
-export default {
-  components: { CharacterCardList, FullScreenLoading },
-  data: function () {
-    return {
-      loading: false,
-      characters: []
-    };
-  },
-  beforeRouteEnter: async function (to, from, next) {
-    next(vm => {
+<script lang="ts">
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
+import { Route, Next } from 'vue-router';
+
+import { Character } from 'domain/character';
+import CharacterService from 'services/character.service';
+
+import CharacterCardList from './components/CharacterCardList.vue';
+import FullScreenLoading from 'shared/components/FullScreenLoadingComponent.vue';
+
+@Component({
+  components: { CharacterCardList, FullScreenLoading }
+})
+export default class Home extends Vue {
+  loading: boolean = false;
+  characters: Character[] = [];
+
+  async beforeRouteEnter(to: Route, from: Route, next: Next<Home>) {
+    next(async vm => {
       vm.loading = true;
-      vm.$vuetify.goTo(0, {
-        easing: 'easeInOutCubic',
-        duration: 250
-      });
-      CharacterService.getAll().then(characters => {
-        vm.characters = characters;
-        vm.loading = false;
-      });
+      const chars = (await CharacterService.getAll()) as Character[];
+      vm.characters = chars;
+      vm.loading = false;
     });
-  },
-  feathers: {
-    characters: {
-      created(newCharacter) {
-        this.characters.push(newCharacter);
-      },
-      updated(updatedCharacter) {
-        const index = this.characters.map(character => character._id).indexOf(updatedCharacter._id);
-        this.characters.splice(index, 1, updatedCharacter);
-      }
-    }
   }
-};
+}
 </script>
 
 <style scoped>

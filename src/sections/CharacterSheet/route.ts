@@ -1,3 +1,5 @@
+import { RouteConfig } from 'vue-router';
+
 const CharacterSheet = () => import('./CharacterSheet.vue');
 
 const baseRoute = {
@@ -8,7 +10,7 @@ const baseRoute = {
   }
 }
 
-export default [
+export const routes: RouteConfig[] = [
   Object.assign({
     name: 'character',
     path: '/character/:id'
@@ -18,3 +20,5 @@ export default [
     path: '/character'
   }, baseRoute)
 ];
+
+export default routes;
