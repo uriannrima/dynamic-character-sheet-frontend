@@ -1,13 +1,15 @@
-export class Size {
-  constructor({ _id, name, modifier, grappleBonus, hideBonus, carryBonus } = {}) {
-    Object.assign(this, {
-      _id,
-      name,
-      modifier,
-      grappleBonus,
-      hideBonus,
-      carryBonus
-    });
+import { IEntity } from './interfaces/IEntity';
+
+export class Size implements IEntity {
+  _id: string = '';
+  readonlyname: string = '';
+  readonly modifier: number = 0;
+  readonly grappleBonus: number = 0;
+  readonly hideBonus: number = 0;
+  readonly carryBonus: number = 0;
+
+  constructor(model?: Size | { _id?: string, name?: string, modifier?: number, grappleBonus?: number, hideBonus?: number, carryBonus?: number, }) {
+    Object.assign(this, model);
   }
 }
 

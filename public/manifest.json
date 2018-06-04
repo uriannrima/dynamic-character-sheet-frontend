@@ -1,6 +1,6 @@
 {
-  "name": "dynamic-character-sheet-frontend-new",
-  "short_name": "dynamic-character-sheet-frontend-new",
+  "name": "Web Dynamic Character Sheet",
+  "short_name": "WebDCS",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",

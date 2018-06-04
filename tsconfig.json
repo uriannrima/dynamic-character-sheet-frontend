@@ -28,6 +28,9 @@
       ],
       "store/*":[
         "src/store/*"
+      ],
+      "domain/*": [
+        "src/domain/*"
       ]
     }
   },

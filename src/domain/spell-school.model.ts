@@ -101,19 +101,29 @@ export const SpellSchools = [
   }
 ]
 
-export const SpellSchool = function ({ _id, name, description, subject, subSchools = '' }) {
-  return {
-    _id,
-    name,
-    description,
-    subject,
-    subSchools
+export class SpellSchool {
+  _id: string = '';
+  name: string = '';
+  description: string = '';
+  subject: string = '';
+  subSchools: SubSchool[] = [];
+
+  constructor(model?: SpellSchool | { _id?: string, name?: string, description?: string, subject?: string, subSchools?: SubSchool[] }) {
+    Object.assign(this, model);
+  }
+
+  get hasSubSchools() {
+    return this.subSchools && this.subSchools.length >= 1;
   }
 }
 
-export const SubSchool = function ({ name, description }) {
-  return {
-    name,
-    description
+export default SpellSchools;
+
+export class SubSchool {
+  name: string = '';
+  description: string = '';
+
+  constructor(model?: SubSchool | { name?: string, description?: string }) {
+    Object.assign(this, model);
   }
 };
