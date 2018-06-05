@@ -10,7 +10,7 @@
 <script>
 export default {
   props: ['value', 'label', 'title']
-};
+}
 </script>
 
 <style>

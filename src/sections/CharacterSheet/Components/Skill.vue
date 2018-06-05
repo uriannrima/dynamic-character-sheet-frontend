@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin';
+import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin'
 
 export default {
   mixins: [OnSelectedMixin],
@@ -54,25 +54,25 @@ export default {
     'gearPenalty'
   ],
   computed: {
-    hasSubValue() {
-      var { subValues } = this;
-      return subValues && subValues.length >= 1 && subValues[0].value;
+    hasSubValue () {
+      var { subValues } = this
+      return subValues && subValues.length >= 1 && subValues[0].value
     },
-    skillModifier() {
-      var penalty = this.checkPenalty;
-      if (this.name === 'Swim') penalty += penalty;
-      var rankModifier = this.rank;
-      if (!this.classSkill) rankModifier = Math.floor(rankModifier / 2);
-      return rankModifier + this.miscModifier + this.keyScoreModifier + penalty;
+    skillModifier () {
+      var penalty = this.checkPenalty
+      if (this.name === 'Swim') penalty += penalty
+      var rankModifier = this.rank
+      if (!this.classSkill) rankModifier = Math.floor(rankModifier / 2)
+      return rankModifier + this.miscModifier + this.keyScoreModifier + penalty
     },
-    checkPenalty() {
-      var penalty = 0;
+    checkPenalty () {
+      var penalty = 0
 
       if (this.armorCheckPenalty) {
-        penalty += this.gearPenalty;
+        penalty += this.gearPenalty
       }
 
-      return penalty;
+      return penalty
     }
   }
 }

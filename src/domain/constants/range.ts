@@ -1,13 +1,13 @@
-import { Base } from './base';
+import { Base } from './base'
 
 export class Range extends Base { }
 
 export class RangeWithDistance extends Range {
   distance: string = '';
 
-  constructor(model?: RangeWithDistance | { name?: string, description?: string, distance?: string }) {
-    super(model);
-    Object.assign(this, model);
+  constructor (model?: RangeWithDistance | { name?: string, description?: string, distance?: string }) {
+    super(model)
+    Object.assign(this, model)
   }
 }
 
@@ -43,4 +43,4 @@ export const All = [
     name: 'Miscellaneous',
     description: 'Some spells have no standard range category, just a range expressed in distance.'
   })
-];
+]

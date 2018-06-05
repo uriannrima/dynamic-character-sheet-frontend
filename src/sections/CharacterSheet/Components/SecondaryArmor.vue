@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from '../Store';
+import { mapGetters } from '../Store'
 
 export default {
   computed: {

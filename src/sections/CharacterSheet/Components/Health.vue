@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from '../Store';
+import { mapState, mapActions } from '../Store'
 
 export default {
   computed: {

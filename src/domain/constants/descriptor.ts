@@ -1,4 +1,4 @@
-import { Base } from './base';
+import { Base } from './base'
 
 export class Descriptor extends Base { }
 
@@ -127,4 +127,4 @@ export const All = [
     name: 'Water',
     description: 'Spells that manipulate water or conjure creatures from water-dominant planes or with the water subtype should have the water descriptor.'
   })
-];
+]

@@ -3,9 +3,9 @@ export class Ammunition {
   quantity: number = 0;
   notes: string = '';
 
-  constructor(model?: Ammunition | { name?: string, quantity?: number, notes?: string }) {
-    Object.assign(this, model);
+  constructor (model?: Ammunition | { name?: string, quantity?: number, notes?: string }) {
+    Object.assign(this, model)
   }
 }
 
-export default Ammunition;
+export default Ammunition

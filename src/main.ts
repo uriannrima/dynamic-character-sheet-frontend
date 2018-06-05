@@ -1,14 +1,14 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import './plugins';
-import './extensions';
-import './styles';
+import './plugins'
+import './extensions'
+import './styles'
 import './registerServiceWorker'
 
-import router from './router';
-import store from './store';
+import router from './router'
+import store from './store'
 
-import App from './App.vue';
+import App from './App.vue'
 
 Vue.config.productionTip = false
 
@@ -17,4 +17,4 @@ new Vue({
   el: '#dcs-app',
   router,
   render: h => h(App)
-});
+})

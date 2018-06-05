@@ -1,6 +1,6 @@
-import { IEntity } from './interfaces/IEntity';
-import { ISubValued } from './interfaces/ISubValued';
-import { SubValue } from './sub-value';
+import { IEntity } from './interfaces/IEntity'
+import { ISubValued } from './interfaces/ISubValued'
+import { SubValue } from './sub-value'
 
 export enum FeatType {
   NONE = 'None',
@@ -21,11 +21,11 @@ export class Feat implements IEntity, ISubValued<SubValue> {
   unique: boolean = false;
   subValues: SubValue[] = [];
 
-  constructor(model?: Feat | { _id?: string, title?: string, benefit?: string, type?: FeatType, preRequisite?: string, normal?: string, special?: string, unique?: boolean, subValues?: SubValue[] }) {
-    Object.assign(this, model);
+  constructor (model?: Feat | { _id?: string, title?: string, benefit?: string, type?: FeatType, preRequisite?: string, normal?: string, special?: string, unique?: boolean, subValues?: SubValue[] }) {
+    Object.assign(this, model)
   }
 
-  get hasSubValues() {
-    return this.subValues && this.subValues.length >= 1;
+  get hasSubValues () {
+    return this.subValues && this.subValues.length >= 1
   }
 };

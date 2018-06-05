@@ -1,6 +1,6 @@
-import { ISubValued } from './interfaces/ISubValued';
-import { IEntity } from './interfaces/IEntity';
-import { SubValue } from '@/domain/sub-value';
+import { ISubValued } from './interfaces/ISubValued'
+import { IEntity } from './interfaces/IEntity'
+import { SubValue } from '@/domain/sub-value'
 
 export enum SpecialAbilityType {
   NONE = 'None',
@@ -16,13 +16,13 @@ export class SpecialAbility implements IEntity, ISubValued<SubValue> {
   type: SpecialAbilityType = SpecialAbilityType.NONE;
   subValues: SubValue[] = [];
 
-  constructor(model?: SpecialAbility | { _id?: string, name?: string, description?: string, type?: SpecialAbilityType, subValues?: SubValue }) {
-    Object.assign(this, model);
+  constructor (model?: SpecialAbility | { _id?: string, name?: string, description?: string, type?: SpecialAbilityType, subValues?: SubValue }) {
+    Object.assign(this, model)
   }
 
-  get hasSubValues() {
-    return this.subValues && this.subValues.length >= 1;
+  get hasSubValues () {
+    return this.subValues && this.subValues.length >= 1
   }
 }
 
-export default SpecialAbility;
+export default SpecialAbility

@@ -1,6 +1,6 @@
-import { RouteConfig } from 'vue-router';
+import { RouteConfig } from 'vue-router'
 
-const Home = () => import('./Home.vue');
+const Home = () => import('./Home.vue')
 
 export const routes: RouteConfig[] = [
   {
@@ -12,6 +12,6 @@ export const routes: RouteConfig[] = [
       requiresAuth: true
     }
   }
-];
+]
 
-export default routes;
+export default routes

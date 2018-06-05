@@ -1,6 +1,6 @@
-import { RouteConfig } from 'vue-router';
+import { RouteConfig } from 'vue-router'
 
-const CharacterSheet = () => import('./CharacterSheet.vue');
+const CharacterSheet = () => import('./CharacterSheet.vue')
 
 const baseRoute = {
   component: CharacterSheet,
@@ -19,6 +19,6 @@ export const routes: RouteConfig[] = [
     name: 'newCharacter',
     path: '/character'
   }, baseRoute)
-];
+]
 
-export default routes;
+export default routes

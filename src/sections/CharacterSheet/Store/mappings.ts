@@ -44,7 +44,7 @@ export const Actions = {
   updateCarryCapacity: 'updateCarryCapacity',
   updateCoin: 'updateCoin',
   updateTreasure: 'updateTreasure'
-};
+}
 
 export const Mutations = {
   newCharacter: 'newCharacter',
@@ -103,11 +103,11 @@ export const Mutations = {
   updateTreasure: 'updateTreasure',
 
   updateKeyScore: 'updateKeyScore'
-};
+}
 
 export const Mappings = {
   Actions,
   Mutations
 }
 
-export default Mappings;
+export default Mappings

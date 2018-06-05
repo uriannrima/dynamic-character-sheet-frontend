@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin';
+import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin'
 
 export default {
   mixins: [OnSelectedMixin],
   props: ['spell'],
   computed: {
     spellSchool: function () {
-      return 'spell-' + this.spell.school.name.toLowerCase().replace(' ', '-');
+      return 'spell-' + this.spell.school.name.toLowerCase().replace(' ', '-')
     }
   }
 }

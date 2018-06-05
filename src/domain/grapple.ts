@@ -4,9 +4,9 @@ export class Grapple {
   sizeModifier: number = 0;
   miscModifier: number = 0;
 
-  constructor(model?: Grapple | { baseAttackBonus?: number, strengthModifier?: number, sizeModifier?: number, miscModifier?: number }) {
-    Object.assign(this, model);
+  constructor (model?: Grapple | { baseAttackBonus?: number, strengthModifier?: number, sizeModifier?: number, miscModifier?: number }) {
+    Object.assign(this, model)
   }
 }
 
-export default Grapple;
+export default Grapple

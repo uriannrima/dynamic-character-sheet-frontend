@@ -1,1 +1,1 @@
-import './utils/array.extensions.js';
+import './utils/array.extensions.js'

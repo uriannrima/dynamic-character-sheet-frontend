@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import { CarryCapacity } from './index';
+import { CarryCapacity } from './index'
 
 export default {
   components: { CarryCapacity },
   props: ['carryCapacities']
-};
+}
 </script>
 
 <style>

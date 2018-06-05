@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Languages } from '../Components';
+import { Languages } from '../Components'
 
 export default {
   components: { Languages }

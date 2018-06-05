@@ -11,17 +11,17 @@
 </template>
 
 <script>
-import LoginForm from './LoginForm';
-import RegistrationForm from './RegistrationForm';
-import { mapState, mapActions } from 'store/modules/auth';
+import LoginForm from './LoginForm'
+import RegistrationForm from './RegistrationForm'
+import { mapState, mapActions } from 'store/modules/auth'
 
 export default {
   components: { LoginForm, RegistrationForm },
-  data() {
+  data () {
     return {
       formName: 'login-form',
       disableButton: false
-    };
+    }
   },
   computed: {
     ...mapState(['processing'])
@@ -29,21 +29,21 @@ export default {
   methods: {
     ...mapActions(['login', 'register']),
     doLogin: async function (payload) {
-      var loggedIn = await this.login(payload);
+      var loggedIn = await this.login(payload)
       if (loggedIn) {
         if (this.$route.query.redirect) {
-          this.$router.push(this.$route.query.redirect);
+          this.$router.push(this.$route.query.redirect)
         } else {
-          this.$router.push('home');
+          this.$router.push('home')
         }
       }
     },
     doRegistration: async function (payload) {
-      await this.register(payload);
-      this.toggleForm('login-form');
+      await this.register(payload)
+      this.toggleForm('login-form')
     },
     toggleForm: function (formName) {
-      this.formName = formName;
+      this.formName = formName
     }
   }
 }

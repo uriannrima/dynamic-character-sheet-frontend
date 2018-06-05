@@ -43,18 +43,18 @@ export default {
     'tempModifier'
   ],
   computed: {
-    getTotal() {
+    getTotal () {
       return this.base +
         this.keyScoreModifier +
         this.magicModifier +
         this.miscModifier +
-        this.tempModifier;
+        this.tempModifier
     }
   },
   methods: {
-    updateSavingThrow(savingThrow) {
-      savingThrow.name = this.name;
-      this.$emit('onUpdateSavingThrow', savingThrow);
+    updateSavingThrow (savingThrow) {
+      savingThrow.name = this.name
+      this.$emit('onUpdateSavingThrow', savingThrow)
     }
   }
 }

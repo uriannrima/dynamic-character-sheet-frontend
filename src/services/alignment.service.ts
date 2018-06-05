@@ -8,11 +8,11 @@ const ALL_ALIGNMENTS = [
   'Chaotic Good',
   'Chaotic Neutral',
   'Chaotic Evil'
-];
+]
 
 export default {
   getAll: function () {
-    return ALL_ALIGNMENTS;
+    return ALL_ALIGNMENTS
   },
   getByName: function () {
 

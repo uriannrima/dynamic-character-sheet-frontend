@@ -1,4 +1,4 @@
-import { Base } from './base';
+import { Base } from './base'
 
 export class Component extends Base { }
 
@@ -23,4 +23,4 @@ export const All = [
     name: 'Divine Focus',
     description: 'A divine focus component is an item of spiritual significance. The divine focus for a cleric or a paladin is a holy symbol appropriate to the character’s faith. The divine focus for a druid or a ranger is a sprig of holly, or some other sacred plant. If the Components line includes F/ DF or M/ DF, the arcane version of the spell has a focus component or a material component (the abbreviation before the slash) and the divine version has a divine focus component (the abbreviation after the slash).'
   })
-];
+]

@@ -3,9 +3,9 @@ export class Item {
   page: string = '';
   weight: number = 0;
 
-  constructor(model?: Item | { name?: string, page?: string, weight?: number }) {
-    Object.assign(this, model);
+  constructor (model?: Item | { name?: string, page?: string, weight?: number }) {
+    Object.assign(this, model)
   }
 }
 
-export default Item;
+export default Item

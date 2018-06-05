@@ -1,4 +1,4 @@
-import { Base } from './base';
+import { Base } from './base'
 
 export class Effect extends Base { }
 
@@ -10,9 +10,9 @@ export class AreaEffect extends Effect {
   types: AreaType[] = [];
   formats: AreaFormat[] = [];
 
-  constructor(model?: AreaEffect | { name?: string, description?: string, types?: Base[], formats?: Base[] }) {
-    super(model);
-    Object.assign(this, model);
+  constructor (model?: AreaEffect | { name?: string, description?: string, types?: Base[], formats?: Base[] }) {
+    super(model)
+    Object.assign(this, model)
   }
 }
 

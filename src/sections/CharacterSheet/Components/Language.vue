@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin';
+import OnSelectedMixin from 'shared/mixins/methods/on.selected.mixin'
 
 export default {
   mixins: [OnSelectedMixin],

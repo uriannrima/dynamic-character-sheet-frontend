@@ -1,32 +1,32 @@
-import SocketLayer from '../layers/SocketLayer';
+import SocketLayer from '../layers/SocketLayer'
 
 export default class SocketAuth extends SocketLayer {
-  constructor() {
+  constructor () {
     super({
       serviceName: 'authentication'
-    });
+    })
   }
 
-  async login(payload: any) {
+  async login (payload: any) {
     try {
-      payload.strategy = 'local';
-      var accessToken = await this.feathers.authenticate(payload);
-      return accessToken;
+      payload.strategy = 'local'
+      var accessToken = await this.feathers.authenticate(payload)
+      return accessToken
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
-  async logout(accessToken?: string | null | undefined) {
+  async logout (accessToken?: string | null | undefined) {
     try {
-      this.feathers.logout();
-      return true;
+      this.feathers.logout(accessToken)
+      return true
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
-  async refresh() {
-    console.log('Not implemented.');
+  async refresh () {
+    console.log('Not implemented.')
   }
 }

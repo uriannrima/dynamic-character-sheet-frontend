@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Coin from './Coin';
+import Coin from './Coin'
 
 export default {
   components: { Coin },
@@ -31,7 +31,7 @@ export default {
       required: true
     }
   }
-};
+}
 </script>
 
 <style>

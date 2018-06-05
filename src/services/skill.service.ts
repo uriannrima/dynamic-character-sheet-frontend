@@ -1,19 +1,19 @@
-import AbstractService from './abstract.service';
-import { Skill } from '@/domain';
+import AbstractService from './abstract.service'
+import { Skill } from '@/domain'
 
 class SkillService extends AbstractService<Skill> {
-  constructor() {
-    super({ url: '/skills' });
+  constructor () {
+    super({ url: '/skills' })
   }
 
-  async getDefaultSkills() {
+  async getDefaultSkills () {
     const query = {
       default: true,
       $select: ['_id', 'name', 'keyScoreName', 'untrained', 'armorCheckPenalty', 'hasSubValue']
-    };
+    }
 
-    return await this.getAll(query);
+    return this.getAll(query)
   }
 }
 
-export default new SkillService();
+export default new SkillService()

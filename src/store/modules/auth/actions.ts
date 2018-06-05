@@ -1,58 +1,58 @@
-import { ActionTree } from 'vuex';
-import Cookies from 'js-cookie';
-import { Actions, Mutations } from './mappings';
-import AuthService from 'shared/services/auth/AuthService';
-import UserService from 'services/UserService';
-import Feathers from '@/feathers';
-import { AuthState } from '@/store/modules/auth/state';
-import { RootState } from '@/store/types';
+import { ActionTree } from 'vuex'
+import Cookies from 'js-cookie'
+import { Actions, Mutations } from './mappings'
+import AuthService from 'shared/services/auth/AuthService'
+import UserService from 'services/UserService'
+import Feathers from '@/feathers'
+import { AuthState } from '@/store/modules/auth/state'
+import { RootState } from '@/store/types'
 
 export const actions: ActionTree<AuthState, RootState> = {
-  async [Actions.login]({ commit }, payload) {
-    commit(Mutations.toggleProcessing, true);
-    var userSession = await AuthService.login(payload);
-    commit(Mutations.toggleProcessing, false);
+  async [Actions.login] ({ commit }, payload) {
+    commit(Mutations.toggleProcessing, true)
+    var userSession = await AuthService.login(payload)
+    commit(Mutations.toggleProcessing, false)
     if (userSession && userSession.accessToken) {
-      Cookies.set('userSession', userSession);
-      commit(Mutations.saveUserSession, userSession);
-      return true;
+      Cookies.set('userSession', userSession)
+      commit(Mutations.saveUserSession, userSession)
+      return true
     }
-    return false;
+    return false
   },
-  async [Actions.logout]({ commit }) {
-    commit(Mutations.toggleProcessing, true);
-    await AuthService.logout();
-    Cookies.remove('userSession');
-    commit(Mutations.saveUserSession, null);
-    commit(Mutations.toggleProcessing, false);
-    return true;
+  async [Actions.logout] ({ commit }) {
+    commit(Mutations.toggleProcessing, true)
+    await AuthService.logout()
+    Cookies.remove('userSession')
+    commit(Mutations.saveUserSession, null)
+    commit(Mutations.toggleProcessing, false)
+    return true
   },
-  async [Actions.register]({ commit }, payload) {
-    commit(Mutations.toggleProcessing, true);
-    await UserService.register(payload);
-    commit(Mutations.toggleProcessing, false);
+  async [Actions.register] ({ commit }, payload) {
+    commit(Mutations.toggleProcessing, true)
+    await UserService.register(payload)
+    commit(Mutations.toggleProcessing, false)
   },
-  async [Actions.refresh]({ commit, getters }) {
+  async [Actions.refresh] ({ commit, getters }) {
     if (getters.isAuthenticated) {
-      return true;
+      return true
     } else {
-      const userSession = Cookies.getJSON('userSession') as { accessToken: string };
+      const userSession = Cookies.getJSON('userSession') as { accessToken: string }
       if (userSession) {
         try {
-          await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken });
-          commit(Mutations.saveUserSession, userSession);
+          await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken })
+          commit(Mutations.saveUserSession, userSession)
         } catch ({ code }) {
           if (code === 401) {
-            Cookies.remove('userSession');
-            commit(Mutations.saveUserSession, null);
+            Cookies.remove('userSession')
+            commit(Mutations.saveUserSession, null)
           }
         }
-        return getters.isAuthenticated;
+        return getters.isAuthenticated
       }
     }
 
-    return false;
+    return false
   }
 }
 
-export default actions;
+export default actions

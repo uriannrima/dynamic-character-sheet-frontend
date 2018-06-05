@@ -1,7 +1,7 @@
-import { ISubValued } from './interfaces/ISubValued';
-import { IEntity } from './interfaces/IEntity';
-import SubValue from './sub-value';
-import { KeyAbilityType } from './enums/key-ability-type';
+import { ISubValued } from './interfaces/ISubValued'
+import { IEntity } from './interfaces/IEntity'
+import SubValue from './sub-value'
+import { KeyAbilityType } from './enums/key-ability-type'
 
 export class CharacterSkill implements IEntity, ISubValued<SubValue> {
   _id: string = '';
@@ -16,17 +16,17 @@ export class CharacterSkill implements IEntity, ISubValued<SubValue> {
   miscModifier: number = 0;
   hiddenModifier: number = 0;
 
-  constructor(model?: CharacterSkill | {
+  constructor (model?: CharacterSkill | {
   _id?: string, name?: string, keyAbility?: KeyAbilityType,
   untrained?: boolean, armorCheckPenalty?: boolean, classSkill?: boolean,
   hasSubValue?: boolean, subValues?: SubValue[], rank?: number,
   abilityModifier?: number, miscModifier?: number, hiddenModifier?: number
   }) {
-    Object.assign(this, model);
+    Object.assign(this, model)
   }
 
-  get hasSubValues() {
-    return this.subValues && this.subValues.length >= 1;
+  get hasSubValues () {
+    return this.subValues && this.subValues.length >= 1
   }
 }
 
@@ -41,7 +41,7 @@ export class Skill extends CharacterSkill {
   miscellaneous: string = '';
   aditionalInformation: string = '';
 
-  constructor(model?: Skill | {
+  constructor (model?: Skill | {
   _id?: string, name?: string, keyAbility?: KeyAbilityType,
   untrained?: boolean, armorCheckPenalty?: boolean, classSkill?: boolean,
   hasSubValue?: boolean, subValues?: SubValue[], rank?: number,
@@ -50,8 +50,8 @@ export class Skill extends CharacterSkill {
   synergy?: string, untrainedDescription?: string, restriction?: string,
   miscellaneous?: string, aditionalInformation?: string,
   }) {
-    super(model);
-    Object.assign(this, model);
+    super(model)
+    Object.assign(this, model)
   }
 };
 
@@ -91,6 +91,6 @@ export const All = [
   new Skill({ name: 'Tumble', keyAbility: KeyAbilityType.DEXTERITY, untrained: false, armorCheckPenalty: true }),
   new Skill({ name: 'Use Magic Device', keyAbility: KeyAbilityType.CHARISMA, untrained: false, armorCheckPenalty: false }),
   new Skill({ name: 'Use Rope', keyAbility: KeyAbilityType.DEXTERITY, untrained: true, armorCheckPenalty: false })
-];
+]
 
-export default Skill;
+export default Skill

@@ -17,16 +17,16 @@
 </template>
 
 <script>
-import { SingleSpellPerDay } from '../Components';
-import { mapState, mapGetters } from '../Store';
+import { SingleSpellPerDay } from '../Components'
+import { mapState, mapGetters } from '../Store'
 
 export default {
   components: { SingleSpellPerDay },
   computed: {
     ...mapState(['spells', 'spellPerDayList', 'keyAbilityScores']),
     ...mapGetters(['getAbilityScore', 'getTempModifier']),
-    keyScore() {
-      return this.getAbilityScore(this.keyAbilityScores.spells);
+    keyScore () {
+      return this.getAbilityScore(this.keyAbilityScores.spells)
     }
   }
 }

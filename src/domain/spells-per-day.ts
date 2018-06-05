@@ -3,9 +3,9 @@ export class SpellsPerDay {
   spellsPerDay: number = 0;
   bonusSpells: number = 0;
 
-  constructor(model?: SpellsPerDay | { spellLevel?: number, spellsPerDay?: number, bonusSpells?: number }) {
-    Object.assign(this, model);
+  constructor (model?: SpellsPerDay | { spellLevel?: number, spellsPerDay?: number, bonusSpells?: number }) {
+    Object.assign(this, model)
   }
 }
 
-export default SpellsPerDay;
+export default SpellsPerDay

@@ -6,15 +6,15 @@ const OpenModalButton = {
     </span>
   `,
   methods: {
-    toggle() {
-      this.$emit('update:showModal', !this.showModal);
+    toggle () {
+      this.$emit('update:showModal', !this.showModal)
     }
   }
-};
+}
 
 export default {
   components: { OpenModalButton },
-  data() {
+  data () {
     return {
       showModal: false,
       selected: null
@@ -22,8 +22,8 @@ export default {
   },
   methods: {
     onSelected: async function ({ model }) {
-      this.selected = model;
-      this.showModal = true;
+      this.selected = model
+      this.showModal = true
     }
   }
 }

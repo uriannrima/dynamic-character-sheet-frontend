@@ -17,23 +17,23 @@ export default {
       default: false
     }
   }, */
-  data() {
+  data () {
     return {
       open: false
     }
   },
-  created() {
-    this.$root.$on('toggle-right-drawer', this.toggleDrawer);
+  created () {
+    this.$root.$on('toggle-right-drawer', this.toggleDrawer)
   },
-  destroyed() {
-    this.$root.$off('toggle-right-drawer');
+  destroyed () {
+    this.$root.$off('toggle-right-drawer')
   },
   methods: {
-    toggleDrawer() {
-      this.open = !this.open;
+    toggleDrawer () {
+      this.open = !this.open
     },
-    close() {
-      this.open = false;
+    close () {
+      this.open = false
     }
   }
 }

@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import { ModalContainerMixin } from 'shared/modal';
-import { SpellsGroup, SpellModal } from '../Components';
-import { mapState, mapMutations } from '../Store';
+import { ModalContainerMixin } from 'shared/modal'
+import { SpellsGroup, SpellModal } from '../Components'
+import { mapState, mapMutations } from '../Store'
 
 export default {
   components: { SpellsGroup, SpellModal },
@@ -41,11 +41,11 @@ export default {
   computed: {
     ...mapState(['spells', 'domainSchool']),
     spellsPerGroup: function () {
-      return this.spells.groupBy(s => s.level);
+      return this.spells.groupBy(s => s.level)
     }
   },
-  created() {
-    this.arrayName = 'spells';
+  created () {
+    this.arrayName = 'spells'
   },
   methods: {
     ...mapMutations(['addSpell', 'removeSpell', 'updateDomainSchool'])

@@ -1,12 +1,12 @@
 export default function (name, module) {
   const mixin = {
-    created() {
+    created () {
       if (!module.hasOwnProperty('registered')) {
-        this.$store.registerModule(name, module);
-        module.registered = true;
+        this.$store.registerModule(name, module)
+        module.registered = true
       }
     }
   }
 
-  return mixin;
+  return mixin
 };

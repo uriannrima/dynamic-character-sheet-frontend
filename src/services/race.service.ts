@@ -6,11 +6,11 @@ const ALL_RACES = [
   'Half-Elf',
   'Half-Orc',
   'Halfing'
-];
+]
 
 export default {
   getAll: function () {
-    return ALL_RACES;
+    return ALL_RACES
   },
   getByName: function () {
 

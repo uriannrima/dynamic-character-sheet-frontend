@@ -1,7 +1,7 @@
 // Lazy Load Components
-import { Route as LoginRoute } from '../sections/Login';
-import { Route as HomeRoute } from '../sections/Home';
-import { Route as CharacterSheetRoutes } from '../sections/CharacterSheet';
+import { Route as LoginRoute } from '../sections/Login'
+import { Route as HomeRoute } from '../sections/Home'
+import { Route as CharacterSheetRoutes } from '../sections/CharacterSheet'
 
 const routes = [
   ...LoginRoute,
@@ -11,6 +11,6 @@ const routes = [
     path: '*',
     redirect: '/login'
   }
-];
+]
 
-export default routes;
+export default routes

@@ -1,13 +1,13 @@
-import { Base } from './base';
+import { Base } from './base'
 
 export class Duration extends Base { }
 
 export class Timed extends Duration {
   duration: string = '';
 
-  constructor(model?: Timed | { name?: string, description?: string, duration?: string }) {
-    super(model);
-    Object.assign(this, model);
+  constructor (model?: Timed | { name?: string, description?: string, duration?: string }) {
+    super(model)
+    Object.assign(this, model)
   }
 }
 
@@ -48,4 +48,4 @@ export const All = [
     description: `If the duration line ends with “(D)” you can dismiss the spell at will. You must be within range of the spell’s effect and must speak words of dismissal, which are usually a modified form of the spell’s verbal component. If the spell has no verbal component, you can dismiss the effect with a gesture. Dismissing a spell is a standard action that does not provoke attacks of opportunity.
         \nA spell that depends on concentration is dismissible by its very nature, and dismissing it does not take an action, since all you have to do to end the spell is to stop concentrating on your turn.`
   })
-];
+]

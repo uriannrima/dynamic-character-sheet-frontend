@@ -64,32 +64,32 @@
 </template>
 
 <script>
-import * as Pages from './Pages';
-import FullScreenLoading from 'shared/components/FullScreenLoadingComponent';
-import RightDrawer from 'shared/components/RightDrawerComponent';
-import Store from 'store';
-import CharacterModule, { mapState, mapActions, Actions } from './Store';
-import moduledComponentMixin from 'shared/mixins/moduled.component.mixin';
+import * as Pages from './Pages'
+import FullScreenLoading from 'shared/components/FullScreenLoadingComponent'
+import RightDrawer from 'shared/components/RightDrawerComponent'
+import Store from 'store'
+import CharacterModule, { mapState, mapActions, Actions } from './Store'
+import moduledComponentMixin from 'shared/mixins/moduled.component.mixin'
 
 /** Logic to load character into store. */
 const loadCharacter = async function (characterId = null) {
-  if (!CharacterModule.registered) return;
+  if (!CharacterModule.registered) return
   if (!characterId) {
-    await Store.dispatch('Character/newCharacter');
+    await Store.dispatch('Character/newCharacter')
   } else {
-    await Store.dispatch('Character/loadCharacter', characterId);
-    await Store.dispatch('Character/connect', characterId);
+    await Store.dispatch('Character/loadCharacter', characterId)
+    await Store.dispatch('Character/connect', characterId)
   }
-};
+}
 
 const beforeRoute = function (to, from, next) {
   next(vm => {
-    vm.loading = true;
-    vm.scrollTop();
+    vm.loading = true
+    vm.scrollTop()
     loadCharacter(to.params.id).then(() => {
-      vm.loading = false;
+      vm.loading = false
     })
-  });
+  })
 }
 
 export default {
@@ -100,9 +100,6 @@ export default {
   beforeRouteEnter: beforeRoute,
   beforeRouteUpdate: beforeRoute,
   mixins: [moduledComponentMixin('Character', CharacterModule)],
-  computed: {
-    ...mapState(['_id'])
-  },
   data() {
     return {
       page: 'front',
@@ -117,42 +114,42 @@ export default {
               icon: 'assignment',
               title: 'Description',
               click: () => {
-                this.toggleArea('front', 'description-area');
+                this.toggleArea('front', 'description-area')
               }
             },
             {
               icon: 'accessibility',
               title: 'Ability Scores',
               click: () => {
-                this.toggleArea('front', 'ability-area');
+                this.toggleArea('front', 'ability-area')
               }
             },
             {
               icon: 'verified_user',
               title: 'Armor Class',
               click: () => {
-                this.toggleArea('front', 'armor-area');
+                this.toggleArea('front', 'armor-area')
               }
             },
             {
               icon: 'directions_run',
               title: 'Initiative / Saving Throws',
               click: () => {
-                this.toggleArea('front', 'initiative-area');
+                this.toggleArea('front', 'initiative-area')
               }
             },
             {
               icon: 'colorize',
               title: 'Combat',
               click: () => {
-                this.toggleArea('front', 'attacks-area');
+                this.toggleArea('front', 'attacks-area')
               }
             },
             {
               icon: 'view_list',
               title: 'Skills',
               click: () => {
-                this.toggleArea('front', 'skills-area');
+                this.toggleArea('front', 'skills-area')
               }
             }
           ]
@@ -164,22 +161,25 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState(['_id'])
+  },
   async created() {
-    await loadCharacter(this.$route.params.id);
+    await loadCharacter(this.$route.params.id)
   },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect']),
     toggleArea(selectedPage, selectedArea) {
-      this.page = selectedPage;
-      this.area = selectedArea;
-      this.scrollTop();
+      this.page = selectedPage
+      this.area = selectedArea
+      this.scrollTop()
     },
     scrollTop() {
       this.$vuetify.goTo(0, {
         easing: 'easeInOutCubic',
         duration: 250,
         offset: -100
-      });
+      })
     }
   }
 }
@@ -353,7 +353,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Source Sans Pro", sans-serif !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 html {
@@ -374,12 +374,12 @@ input::-webkit-inner-spin-button {
   /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-input[type="number"] {
+input[type='number'] {
   text-align: center;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

@@ -1,2 +1,2 @@
-import Vue from 'vue';
-export const FormBus = new Vue();
+import Vue from 'vue'
+export const FormBus = new Vue()

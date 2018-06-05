@@ -1,39 +1,39 @@
-import HttpLayer from '../layers/HttpLayer';
+import HttpLayer from '../layers/HttpLayer'
 
 export default class HttpAuth extends HttpLayer {
-  constructor() {
+  constructor () {
     super({
       url: '/authentication'
-    });
+    })
   }
 
-  async refresh() {
+  async refresh () {
     try {
-      var payload = { strategy: 'jwt' };
-      var { data: { accessToken } } = await this.service.post(this.url, payload);
-      return accessToken;
+      var payload = { strategy: 'jwt' }
+      var { data: { accessToken } } = await this.service.post(this.url, payload)
+      return accessToken
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
-  async login(payload: any) {
+  async login (payload: any) {
     try {
-      payload.strategy = 'local';
-      var { data: { accessToken } } = await this.service.post(this.url, payload);
-      return accessToken;
+      payload.strategy = 'local'
+      var { data: { accessToken } } = await this.service.post(this.url, payload)
+      return accessToken
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
-  async logout(accessToken?: string | null | undefined) {
+  async logout (accessToken?: string | null | undefined) {
     try {
       var headers = { Authorization: accessToken }
-      this.service.delete(this.url, { headers });
-      return true;
+      this.service.delete(this.url, { headers })
+      return true
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 }

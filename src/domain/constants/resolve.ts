@@ -1,4 +1,4 @@
-import { Base } from './base';
+import { Base } from './base'
 
 export class Resolve extends Base { }
 
@@ -27,4 +27,4 @@ export const All = [
     name: 'Harmless',
     description: 'The spell is usually beneficial, not harmful, but a targeted creature can attempt a saving throw if it desires.'
   })
-];
+]

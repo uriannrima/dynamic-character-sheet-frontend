@@ -1,14 +1,14 @@
-import { SpellSchool, SpellSchools } from 'domain/spell-school';
-import AbstractService from './abstract.service';
+import { SpellSchool, SpellSchools } from 'domain/spell-school'
+import AbstractService from './abstract.service'
 
 class SpellSchoolService extends AbstractService<SpellSchool> {
-  constructor() {
-    super({ url: '/spellSchool' });
+  constructor () {
+    super({ url: '/spellSchool' })
   }
 
-  async getAll() {
-    return SpellSchools;
+  async getAll () {
+    return SpellSchools
   }
 }
 
-export default new SpellSchoolService();
+export default new SpellSchoolService()

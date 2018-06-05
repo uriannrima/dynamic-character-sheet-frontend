@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import { ModalContainerMixin } from 'shared/modal';
-import { Feat, FeatModal } from '../Components';
-import { mapState, mapMutations } from '../Store';
+import { ModalContainerMixin } from 'shared/modal'
+import { Feat, FeatModal } from '../Components'
+import { mapState, mapMutations } from '../Store'
 
 export default {
   components: { Feat, FeatModal },
@@ -35,9 +35,9 @@ export default {
   computed: {
     ...mapState(['feats'])
   },
-  created() {
+  created () {
     // character.update.mixin requirement.
-    this.arrayName = 'feats';
+    this.arrayName = 'feats'
   },
   methods: {
     ...mapMutations(['addFeat', 'removeFeat'])

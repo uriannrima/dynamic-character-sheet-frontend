@@ -1,19 +1,19 @@
-import { Descriptor } from './constants/descriptor';
-import { IEntity } from './interfaces/IEntity';
-import { SpellSchool } from './spell-school';
-import { Component } from './constants/component';
-import { Range } from './constants/range';
-import { Effect } from './constants/effect';
-import { Resolve } from './constants/resolve';
-import { Duration } from './constants/duration';
-import { CastingTime } from './enums/casting-time-type';
+import { Descriptor } from './constants/descriptor'
+import { IEntity } from './interfaces/IEntity'
+import { SpellSchool } from './spell-school'
+import { Component } from './constants/component'
+import { Range } from './constants/range'
+import { Effect } from './constants/effect'
+import { Resolve } from './constants/resolve'
+import { Duration } from './constants/duration'
+import { CastingTime } from './enums/casting-time-type'
 
 export class SpellSaveThrow {
   check: string = '';
   resolve: Resolve = new Resolve();
 
-  constructor(model?: SpellSaveThrow | { check?: string, resolve?: Resolve }) {
-    Object.assign(this, model);
+  constructor (model?: SpellSaveThrow | { check?: string, resolve?: Resolve }) {
+    Object.assign(this, model)
   }
 }
 
@@ -35,13 +35,13 @@ export class Spell implements IEntity {
   spellResistance: boolean = true;
   aditionalInformation: string = '';
 
-  constructor(model?: Spell | {
+  constructor (model?: Spell | {
   _id: string, name: string, school: SpellSchool, descriptors: Descriptor,
   level: number, components: Component, castingTimeAmount: number,
   castingTime: CastingTime, range: Range, targets: string, effect: string,
   durations: Duration, savingThrow: SpellSaveThrow, description: string,
   spellResistance: boolean, aditionalInformation: string,
   }) {
-    Object.assign(this, model);
+    Object.assign(this, model)
   }
 }

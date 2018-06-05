@@ -7,17 +7,17 @@ const MinimizeButton = {
     </span>
   `,
   methods: {
-    toggle() {
-      this.$emit('update:minimize', !this.minimize);
+    toggle () {
+      this.$emit('update:minimize', !this.minimize)
     }
   }
-};
+}
 
 export default {
   components: { MinimizeButton },
-  data() {
+  data () {
     return {
       minimize: false
-    };
+    }
   }
 }

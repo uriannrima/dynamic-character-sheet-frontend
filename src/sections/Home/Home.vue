@@ -35,7 +35,7 @@ export default class Home extends Vue {
   loading: boolean = false;
   characters: Character[] = [];
 
-  async beforeRouteEnter(to: Route, from: Route, next: Next<Home>) {
+  async beforeRouteEnter(_1: Route, _2: Route, next: Next<Home>) {
     next(async vm => {
       vm.loading = true;
       const chars = (await CharacterService.getAll()) as Character[];

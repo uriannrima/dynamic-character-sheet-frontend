@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { SpecialAbilities } from '../Components';
+import { SpecialAbilities } from '../Components'
 
 export default {
   components: { SpecialAbilities }

@@ -2,9 +2,9 @@ export class SubValue {
   title: string = '';
   value: string = '';
 
-  constructor(model?: SubValue | { title?: string, value?: string }) {
-    Object.assign(this, model);
+  constructor (model?: SubValue | { title?: string, value?: string }) {
+    Object.assign(this, model)
   }
 }
 
-export default SubValue;
+export default SubValue

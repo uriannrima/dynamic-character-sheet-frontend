@@ -10,16 +10,16 @@
 </template>
 
 <script>
-import { Health, Speed, PrimaryArmor } from '../Components';
-import { mapState, mapGetters } from '../Store';
+import { Health, Speed, PrimaryArmor } from '../Components'
+import { mapState, mapGetters } from '../Store'
 
 export default {
   components: { Health, Speed, PrimaryArmor },
   computed: {
     ...mapState(['keyAbilityScores']),
     ...mapGetters(['getAbilityScore', 'getTempModifier']),
-    keyScore() {
-      return this.getAbilityScore(this.keyAbilityScores.armor);
+    keyScore () {
+      return this.getAbilityScore(this.keyAbilityScores.armor)
     }
   }
 }

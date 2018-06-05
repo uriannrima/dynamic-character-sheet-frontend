@@ -48,23 +48,23 @@ export default {
     }
   },
   computed: {
-    getCharacterClasses() {
+    getCharacterClasses () {
       return this.character.classes
         .filter(classe => classe.name)
         .map(classe => `${classe.name} (${classe.level})`)
-        .reduce((reducer, classe) => reducer === '' ? classe : reducer + ', ' + classe, '');
+        .reduce((reducer, classe) => reducer === '' ? classe : reducer + ', ' + classe, '')
     },
-    getPassiveSkills() {
+    getPassiveSkills () {
       return this.character.skills.filter(
         ({ name }) => ['Perception', 'Listen', 'Spot'].indexOf(name) !== -1
-      );
+      )
     }
   },
   methods: {
-    confirmDelete() {
+    confirmDelete () {
       this.$dialog.confirm(`Do you really want to delete ${this.character.description.name}?`).then(() => {
-        this.$emit('onDelete', { character: this.character });
-      });
+        this.$emit('onDelete', { character: this.character })
+      })
     }
   }
 }

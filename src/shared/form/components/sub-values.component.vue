@@ -17,19 +17,19 @@
 </template>
 
 <script>
-import { SubValue } from 'domain/sub-value';
+import { SubValue } from 'domain/sub-value'
 
 export default {
   props: ['model'],
   methods: {
-    createSubValue() {
-      this.model.subValues.push(new SubValue());
+    createSubValue () {
+      this.model.subValues.push(new SubValue())
     },
-    removeSubValue(index) {
-      this.model.subValues.removeAt(index);
+    removeSubValue (index) {
+      this.model.subValues.removeAt(index)
     }
   }
-};
+}
 </script>
 
 <style>

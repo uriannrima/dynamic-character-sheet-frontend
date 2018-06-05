@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import { SavingThrow } from '../Components';
-import { mapState, mapGetters, mapActions } from '../Store';
+import { SavingThrow } from '../Components'
+import { mapState, mapGetters, mapActions } from '../Store'
 
 export default {
   components: { SavingThrow },

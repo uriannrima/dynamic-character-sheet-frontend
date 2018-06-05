@@ -9,8 +9,8 @@ export class Armor {
   weight: number = 0;
   specialProperties: string = '';
 
-  constructor(model?: Armor | { name?: string, type?: string, acBonus?: number, maxDex?: number, checkPenalty?: number, spellFailure?: number, speed?: number, weight?: number, specialProperties?: string }) {
-    Object.assign(this, model);
+  constructor (model?: Armor | { name?: string, type?: string, acBonus?: number, maxDex?: number, checkPenalty?: number, spellFailure?: number, speed?: number, weight?: number, specialProperties?: string }) {
+    Object.assign(this, model)
   }
 }
 
@@ -22,8 +22,8 @@ export class Shield {
   weight: number = 0;
   specialProperties: string = '';
 
-  constructor(model?: Shield | { name?: string, acBonus?: number, checkPenalty?: number, spellFailure?: number, weight?: number, specialProperties?: string }) {
-    Object.assign(this, model);
+  constructor (model?: Shield | { name?: string, acBonus?: number, checkPenalty?: number, spellFailure?: number, weight?: number, specialProperties?: string }) {
+    Object.assign(this, model)
   }
 }
 
@@ -33,8 +33,8 @@ export class ProtectiveItem {
   weight: number = 0;
   specialProperties: string = '';
 
-  constructor(model?: ProtectiveItem | { name?: string, acBonus?: number, weight?: number, specialProperties?: string }) {
-    Object.assign(this, model);
+  constructor (model?: ProtectiveItem | { name?: string, acBonus?: number, weight?: number, specialProperties?: string }) {
+    Object.assign(this, model)
   }
 }
 
@@ -43,9 +43,9 @@ export class Gear {
   shield: Shield = new Shield();
   protectiveItems: ProtectiveItem[] = [new ProtectiveItem(), new ProtectiveItem()];
 
-  constructor(model?: Gear | { armor?: Armor, shield?: Shield, protectiveItems?: ProtectiveItem[] }) {
-    Object.assign(this, model);
+  constructor (model?: Gear | { armor?: Armor, shield?: Shield, protectiveItems?: ProtectiveItem[] }) {
+    Object.assign(this, model)
   }
 }
 
-export default Gear;
+export default Gear

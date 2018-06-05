@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import Layout from './shared/sections/Layout.vue';
-import FullScreenLoading from './shared/components/FullScreenLoadingComponent.vue';
+import Layout from './shared/sections/Layout.vue'
+import FullScreenLoading from './shared/components/FullScreenLoadingComponent.vue'
 
 export default {
   components: { Layout, FullScreenLoading }

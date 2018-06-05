@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import { Item } from './index';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
+import { Item } from './index'
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin'
 
 export default {
   components: { Item },

@@ -5,12 +5,12 @@ export class SpellSchool {
   subject: string = '';
   subSchools: SubSchool[] = [];
 
-  constructor(model?: SpellSchool | { _id?: string, name?: string, description?: string, subject?: string, subSchools?: SubSchool[] }) {
-    Object.assign(this, model);
+  constructor (model?: SpellSchool | { _id?: string, name?: string, description?: string, subject?: string, subSchools?: SubSchool[] }) {
+    Object.assign(this, model)
   }
 
-  get hasSubSchools() {
-    return this.subSchools && this.subSchools.length >= 1;
+  get hasSubSchools () {
+    return this.subSchools && this.subSchools.length >= 1
   }
 }
 
@@ -18,8 +18,8 @@ export class SubSchool {
   name: string = '';
   description: string = '';
 
-  constructor(model?: SubSchool | { name?: string, description?: string }) {
-    Object.assign(this, model);
+  constructor (model?: SubSchool | { name?: string, description?: string }) {
+    Object.assign(this, model)
   }
 };
 
@@ -126,4 +126,4 @@ export const SpellSchools = [
   })
 ]
 
-export default SpellSchools;
+export default SpellSchools

@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import { Attack } from '../Components';
-import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
-import { mapState, mapActions } from '../Store';
+import { Attack } from '../Components'
+import MinimizableMixin from 'shared/mixins/states/minimizable.mixin'
+import { mapState, mapActions } from '../Store'
 
 export default {
   components: { Attack },
@@ -20,11 +20,11 @@ export default {
   },
   methods: {
     ...mapActions(['updateAttack']),
-    onUpdateAttack(index, attack) {
+    onUpdateAttack (index, attack) {
       this.updateAttack({
         index,
         attack
-      });
+      })
     }
   }
 }

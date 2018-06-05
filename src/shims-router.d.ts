@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import { RawLocation } from 'vue-router';
+import Vue from 'vue'
+import { RawLocation } from 'vue-router'
 
 declare module 'vue-router' {
   interface Next<T extends Vue = Vue> {

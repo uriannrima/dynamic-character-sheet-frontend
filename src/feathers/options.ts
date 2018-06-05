@@ -1,4 +1,4 @@
-import { FeathersAuthClientConfig } from '@feathersjs/authentication-client';
+import { FeathersAuthClientConfig } from '@feathersjs/authentication-client'
 
 export default {
   Authentication: {
@@ -11,4 +11,4 @@ export default {
     storageKey: 'feathers-jwt', // the key to store the accessToken in localstorage or AsyncStorage on React Native
     storage: undefined // Passing a WebStorage-compatible object to enable automatic storage on the client.
   } as FeathersAuthClientConfig
-};
+}

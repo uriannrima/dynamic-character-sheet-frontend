@@ -64,11 +64,11 @@ const ALL_CLASSES = [
     skillsPerLevel: 2,
     hitDice: 4
   }
-];
+]
 
 export default {
   get: function () {
-    return ALL_CLASSES;
+    return ALL_CLASSES
   },
   getByName: function () {
 

@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import LanguageService from 'services/language.service';
-import { LanguageForm } from '../Components';
-import { ModalMixin } from 'shared/modal';
+import LanguageService from 'services/language.service'
+import { LanguageForm } from '../Components'
+import { ModalMixin } from 'shared/modal'
 
 export default {
   $_veeValidate: {
@@ -57,8 +57,8 @@ export default {
   components: { LanguageForm },
   mixins: [ModalMixin],
   created: function () {
-    this.service = LanguageService;
-    this.modelName = 'language';
+    this.service = LanguageService
+    this.modelName = 'language'
   }
 }
 </script>

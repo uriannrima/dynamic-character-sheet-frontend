@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import { ModalContainerMixin } from 'shared/modal';
-import { Skill, SkillModal } from '../Components';
-import { mapState, mapGetters, mapActions } from '../Store';
-import SkillService from 'services/skill.service';
+import { ModalContainerMixin } from 'shared/modal'
+import { Skill, SkillModal } from '../Components'
+import { mapState, mapGetters, mapActions } from '../Store'
+import SkillService from 'services/skill.service'
 
 export default {
   components: { Skill, SkillModal },
@@ -53,9 +53,9 @@ export default {
   methods: {
     ...mapActions(['updateSkill', 'addSkill']),
     onSkillSelected: async function ({ model }) {
-      const skill = await SkillService.get(model._id);
-      model = Object.assign({}, skill, model);
-      this.onSelected({ model });
+      const skill = await SkillService.get(model._id)
+      model = Object.assign({}, skill, model)
+      this.onSelected({ model })
     }
   }
 }

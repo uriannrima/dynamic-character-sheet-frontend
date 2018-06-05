@@ -8,15 +8,15 @@
 
 <script>
 import { SecondaryArmor, Initiative } from '../Components'
-import { mapState, mapGetters } from '../Store';
+import { mapState, mapGetters } from '../Store'
 
 export default {
   components: { SecondaryArmor, Initiative },
   computed: {
     ...mapState(['keyAbilityScores']),
     ...mapGetters(['getAbilityScore', 'getTempModifier']),
-    keyScore() {
-      return this.getAbilityScore(this.keyAbilityScores.initiative);
+    keyScore () {
+      return this.getAbilityScore(this.keyAbilityScores.initiative)
     }
   }
 }

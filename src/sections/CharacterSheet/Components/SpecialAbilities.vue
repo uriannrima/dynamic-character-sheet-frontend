@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import { ModalContainerMixin } from 'shared/modal';
-import { SpecialAbility, SpecialAbilityModal } from '../Components';
-import { mapState, mapMutations } from '../Store';
+import { ModalContainerMixin } from 'shared/modal'
+import { SpecialAbility, SpecialAbilityModal } from '../Components'
+import { mapState, mapMutations } from '../Store'
 
 export default {
   components: { SpecialAbility, SpecialAbilityModal },
@@ -35,9 +35,9 @@ export default {
   computed: {
     ...mapState(['specialAbilities'])
   },
-  created() {
+  created () {
     // update.mixin requirement.
-    this.arrayName = 'specialAbilities';
+    this.arrayName = 'specialAbilities'
   },
   methods: {
     ...mapMutations(['addSpecialAbility', 'removeSpecialAbility'])

@@ -1,6 +1,6 @@
-import { RouteConfig } from 'vue-router';
+import { RouteConfig } from 'vue-router'
 
-const Login = () => import('./Login.vue');
+const Login = () => import('./Login.vue')
 
 export const routes: RouteConfig[] = [
   {
@@ -8,6 +8,6 @@ export const routes: RouteConfig[] = [
     path: '/login',
     component: Login
   }
-];
+]
 
-export default routes;
+export default routes

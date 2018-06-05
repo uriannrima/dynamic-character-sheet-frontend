@@ -1,4 +1,4 @@
-import ModelUtils from 'utils/model.utils';
+import ModelUtils from 'utils/model.utils'
 
 /**
  *
@@ -13,13 +13,13 @@ export default {
   arrayName: '',
   methods: {
     addToCharacter: function (model) {
-      ModelUtils.addTo(this.character, this.arrayName, model);
+      ModelUtils.addTo(this.character, this.arrayName, model)
     },
     removeFromCharacter: function (model) {
-      ModelUtils.removeFrom(this.character, this.arrayName, model);
+      ModelUtils.removeFrom(this.character, this.arrayName, model)
     },
     updateOnCharacter: function (model) {
-      ModelUtils.updateOn(this.character, this.arrayName, model);
+      ModelUtils.updateOn(this.character, this.arrayName, model)
     }
   }
 }

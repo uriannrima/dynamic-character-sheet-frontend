@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import SizeService from 'services/size.service';
+import SizeService from 'services/size.service'
 
 export default {
   inject: {
@@ -132,37 +132,37 @@ export default {
     'height', 'weight', 'eyes',
     'hair', 'skin', 'sizeName'
   ],
-  data() {
+  data () {
     return {
       allSizes: []
     }
   },
   created: async function () {
-    this.allSizes = await SizeService.getAll();
+    this.allSizes = await SizeService.getAll()
   },
   methods: {
-    parseStringToClasses(classesAsString) {
-      const classes = [];
-      const eachClass = classesAsString.split(',');
+    parseStringToClasses (classesAsString) {
+      const classes = []
+      const eachClass = classesAsString.split(',')
       eachClass.forEach(classe => {
         // If empty character
-        if (classe.trim() === '') return;
+        if (classe.trim() === '') return
         // Clear whitespaces
         // var classLevel = classe.replace(/ /g, "");
         // Regex to get level
-        var levelRegex = /\(([^)]+)\)/;
+        var levelRegex = /\(([^)]+)\)/
         // Get level data,
-        var levelData = levelRegex.exec(classe);
+        var levelData = levelRegex.exec(classe)
         // Extract level from data
-        var level = levelData && levelData.length > 1 ? levelData[1] : 1;
+        var level = levelData && levelData.length > 1 ? levelData[1] : 1
         // Remove level from field.
-        var classOnly = classe.replace(levelRegex, '');
+        var classOnly = classe.replace(levelRegex, '')
         classes.push({
           name: classOnly.trim(),
           level: level
-        });
-      });
-      return classes;
+        })
+      })
+      return classes
     }
   }
 }

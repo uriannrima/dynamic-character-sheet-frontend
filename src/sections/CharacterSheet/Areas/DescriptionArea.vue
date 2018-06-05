@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import { Logo, Description } from '../Components';
-import { mapState, mapGetters, mapActions } from '../Store';
+import { Logo, Description } from '../Components'
+import { mapState, mapGetters, mapActions } from '../Store'
 
 export default {
   components: { Logo, Description },

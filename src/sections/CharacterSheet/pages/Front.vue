@@ -14,16 +14,16 @@
 </template>
 
 <script>
-import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from '../Areas';
+import { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea } from '../Areas'
 
 export default {
+  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea },
   props: {
     area: {
       type: String,
       default: 'description-area'
     }
-  },
-  components: { DescriptionArea, AbilityArea, ArmorArea, InitiativeArea, AttacksArea, SkillsArea }
+  }
 }
 </script>
 
@@ -43,10 +43,10 @@ export default {
     grid-template-rows: 168px 112px 90px 918px;
     grid-row-gap: unset;
     grid-template-areas:
-      "description-area description-area description-area"
-      "ability-area armor-area armor-area"
-      "ability-area initiative-area skills-area"
-      "attacks-area attacks-area skills-area";
+      'description-area description-area description-area'
+      'ability-area armor-area armor-area'
+      'ability-area initiative-area skills-area'
+      'attacks-area attacks-area skills-area';
   }
 }
 

@@ -1,14 +1,14 @@
-import { Size, All } from 'domain/size';
-import AbstractService from './abstract.service';
+import { Size, All } from 'domain/size'
+import AbstractService from './abstract.service'
 
 class SizeService extends AbstractService<Size> {
-  constructor() {
-    super({ url: '/size' });
+  constructor () {
+    super({ url: '/size' })
   }
 
-  async getAll() {
-    return All;
+  async getAll () {
+    return All
   }
 }
 
-export default new SizeService();
+export default new SizeService()
