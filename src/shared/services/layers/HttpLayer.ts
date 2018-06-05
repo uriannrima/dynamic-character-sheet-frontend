@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import Constants from '@/constants.dev'
+import Constants from 'Constants'
 
 var service = axios.create({
   baseURL: Constants.API_URL + '/'

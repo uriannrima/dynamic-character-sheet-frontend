@@ -7,12 +7,13 @@ function resolve(dir) {
 }
 
 function getConstantsPath() {
+  const fileExtension = 'ts'
   switch (process.env.NODE_ENV) {
     case 'production':
-      return 'src/constants.prd.js'
+      return `src/constants.prd.${fileExtension}`
     default:
-      var path = `src/constants.dev.js`
-      if (argv['constants']) path = `src/constants.${argv['constants']}.js`
+      var path = `src/constants.dev.${fileExtension}`
+      if (argv['constants']) path = `src/constants.${argv['constants']}.${fileExtension}`
       console.log('Constants Path', path)
       return path
   }

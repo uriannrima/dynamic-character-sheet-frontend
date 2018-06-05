@@ -2,7 +2,7 @@ import feathers from '@feathersjs/feathers'
 import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
 import auth from '@feathersjs/authentication-client'
-import Constants from '@/constants.dev'
+import Constants from 'Constants'
 import Options from './options'
 
 const socket = io(Constants.SOCKET_URL)
