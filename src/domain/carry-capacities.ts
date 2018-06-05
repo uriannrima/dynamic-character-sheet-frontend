@@ -1,5 +1,3 @@
-import { IMap } from './interfaces/IMap'
-
 export class CarryCapacity {
   value: number = 0;
   label: string = '';

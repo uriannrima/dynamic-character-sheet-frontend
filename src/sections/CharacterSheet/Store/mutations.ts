@@ -8,25 +8,25 @@ import ObjectUtils from 'utils/object.utils'
 import { KeyAbilityType } from '@/domain/enums/key-ability-type'
 
 export const mutations: MutationTree<CharacterState> = {
-  [Mutations.newCharacter] (state, newState: CharacterState = new CharacterState()) {
+  [Mutations.newCharacter](state, newState: CharacterState = new CharacterState()) {
     ObjectUtils.extractTo(newState, state)
   },
-  [Mutations.updateId] (state, { _id }: { _id: string }) {
+  [Mutations.updateId](state, { _id }: { _id: string }) {
     state._id = _id
     window.history.pushState('', '', `/#/character/${_id}`)
   },
-  [Mutations.updateDescription] (state, { description }: { description: Modules.Description }) {
+  [Mutations.updateDescription](state, { description }: { description: Modules.Description }) {
     ObjectUtils.extractTo(description, state.description)
   },
-  [Mutations.updateClasses] (state, { classes }: { classes: Modules.Classe[] }) {
+  [Mutations.updateClasses](state, { classes }: { classes: Modules.Classe[] }) {
     // TODO: Remake it not to "rewrite" the array.
     // Avoid unnecessary reloads on components using getters.
     state.classes = classes
   },
-  [Mutations.updateSize] (state, { size }: { size: Modules.Size }) {
+  [Mutations.updateSize](state, { size }: { size: Modules.Size }) {
     ObjectUtils.extractTo(size, state.size)
   },
-  [Mutations.updateAbilityScores] (state, { abilityScores }: { abilityScores: IMap<Modules.AbilityScore> }) {
+  [Mutations.updateAbilityScores](state, { abilityScores }: { abilityScores: IMap<Modules.AbilityScore> }) {
     // Get abilityScores name
     Object.keys(abilityScores)
       // Map it to abilityScore
@@ -37,36 +37,36 @@ export const mutations: MutationTree<CharacterState> = {
         ObjectUtils.extractTo(abilityScore, stateAbilityScore)
       })
   },
-  [Mutations.updateAbilityScore] (state, abilityScore: Modules.AbilityScore) {
+  [Mutations.updateAbilityScore](state, abilityScore: Modules.AbilityScore) {
     const stateAbilityScore = state.abilityScores[abilityScore.name]
     ObjectUtils.extractTo(abilityScore, stateAbilityScore)
   },
-  [Mutations.updateStatus] (state, { status }: { status: Modules.Status }) {
+  [Mutations.updateStatus](state, { status }: { status: Modules.Status }) {
     ObjectUtils.extractTo(status, state.status)
   },
-  [Mutations.updateSpeed] (state, { speed }: { speed: string }) {
+  [Mutations.updateSpeed](state, { speed }: { speed: string }) {
     state.speed = speed
   },
-  [Mutations.updateGear] (state, { gear }: { gear: Modules.Gear }) {
+  [Mutations.updateGear](state, { gear }: { gear: Modules.Gear }) {
     ObjectUtils.extractTo(gear.armor, state.gear.armor)
     ObjectUtils.extractTo(gear.shield, state.gear.shield)
     gear.protectiveItems.forEach((protectiveItem, index) => {
       ObjectUtils.extractTo(protectiveItem, state.gear.protectiveItems[index])
     })
   },
-  [Mutations.updateKeyScore] (state, { name = '', keyScoreName = KeyAbilityType.NONE }: { name: string, keyScoreName: KeyAbilityType }) {
+  [Mutations.updateKeyScore](state, { name = '', keyScoreName = KeyAbilityType.NONE }: { name: string, keyScoreName: KeyAbilityType }) {
     state.keyAbilityScores[name] = keyScoreName
   },
-  [Mutations.updateArmorClass] (state, { armorClass }: { armorClass: Modules.ArmorClass }) {
+  [Mutations.updateArmorClass](state, { armorClass }: { armorClass: Modules.ArmorClass }) {
     ObjectUtils.extractTo(armorClass, state.armorClass)
   },
-  [Mutations.updateDamageReduction] (state, { damageReduction }: { damageReduction: string }) {
+  [Mutations.updateDamageReduction](state, { damageReduction }: { damageReduction: string }) {
     state.damageReduction = damageReduction
   },
-  [Mutations.updateInitiative] (state, { initiative }: { initiative: Modules.Initiative }) {
+  [Mutations.updateInitiative](state, { initiative }: { initiative: Modules.Initiative }) {
     ObjectUtils.extractTo(initiative, state.initiative)
   },
-  [Mutations.updateSavingThrows] (state, { savingThrows }: { savingThrows: IMap<Modules.SavingThrow> }) {
+  [Mutations.updateSavingThrows](state, { savingThrows }: { savingThrows: IMap<Modules.SavingThrow> }) {
     Object.keys(savingThrows)
       .map(savingThrowName => savingThrows[savingThrowName])
       .forEach(savingThrow => {
@@ -74,65 +74,67 @@ export const mutations: MutationTree<CharacterState> = {
         ObjectUtils.extractTo(savingThrow, stateSavingThrow)
       })
   },
-  [Mutations.updateSavingThrow] (state, savingThrow: Modules.SavingThrow) {
+  [Mutations.updateSavingThrow](state, savingThrow: Modules.SavingThrow) {
     const stateSavingThrow = state.savingThrows[savingThrow.name]
     ObjectUtils.extractTo(savingThrow, stateSavingThrow)
   },
-  [Mutations.updateConditionModifiers] (state, { conditionModifiers }: { conditionModifiers: string }) {
+  [Mutations.updateConditionModifiers](state, { conditionModifiers }: { conditionModifiers: string }) {
     state.conditionModifiers = conditionModifiers
   },
-  [Mutations.updateBaseAttackBonus] (state, { baseAttackBonus }: { baseAttackBonus: number[] }) {
+  [Mutations.updateBaseAttackBonus](state, { baseAttackBonus }: { baseAttackBonus: number[] }) {
     state.baseAttackBonus = baseAttackBonus
   },
-  [Mutations.updateSpellResistance] (state, { spellResistance }: { spellResistance: string }) {
+  [Mutations.updateSpellResistance](state, { spellResistance }: { spellResistance: string }) {
     state.spellResistance = spellResistance
   },
-  [Mutations.updateGrapple] (state, { grapple }: { grapple: Modules.Grapple }) {
+  [Mutations.updateGrapple](state, { grapple }: { grapple: Modules.Grapple }) {
     state.grapple = grapple
   },
-  [Mutations.updateAttacks] (state, { attacks = [] }: { attacks: Modules.Attack[] }) {
+  [Mutations.updateAttacks](state, { attacks = [] }: { attacks: Modules.Attack[] }) {
     attacks.forEach((attack, index) => {
       const stateAttack = state.attacks[index]
       ObjectUtils.extractTo(attack, stateAttack)
     })
   },
-  [Mutations.updateAttack] (state, { index, attack }: { index: number, attack: Modules.Attack }) {
+  [Mutations.updateAttack](state, { index, attack }: { index: number, attack: Modules.Attack }) {
     const stateAttack = state.attacks[index]
     ObjectUtils.extractTo(attack, stateAttack)
   },
-  [Mutations.updateSkills] (state, { skills = [] }: { skills: Modules.Skill[] }) {
-    // TODO
+  [Mutations.updateSkills](state, { skills = [] }: { skills: Modules.Skill[] }) {
+    state.skills = skills.map(skill => new Modules.Skill(skill));
   },
-  [Mutations.updateSkill] (state, skill) {
-    // TODO
+  [Mutations.updateSkill](state, updated: Modules.Skill) {
+    const filtered = state.skills.filter(skill => skill._id !== updated._id);
+    filtered.push(updated);
+    state.skills = filtered;
   },
-  [Mutations.updateCampaign] (state, { campaign }: { campaign: string }) {
+  [Mutations.updateCampaign](state, { campaign }: { campaign: string }) {
     state.campaign = campaign
   },
-  [Mutations.updateExperience] (state, { experience }: { experience: number }) {
+  [Mutations.updateExperience](state, { experience }: { experience: number }) {
     state.experience = experience
   },
-  [Mutations.updateArmor] (state, armor: Modules.Armor) {
+  [Mutations.updateArmor](state, armor: Modules.Armor) {
     ObjectUtils.extractTo(armor, state.gear.armor)
   },
-  [Mutations.updateShield] (state, shield: Modules.Shield) {
+  [Mutations.updateShield](state, shield: Modules.Shield) {
     ObjectUtils.extractTo(shield, state.gear.shield)
   },
-  [Mutations.updateProtectiveItem] (state, { index, protectiveItem }: { index: number, protectiveItem: Modules.ProtectiveItem }) {
+  [Mutations.updateProtectiveItem](state, { index, protectiveItem }: { index: number, protectiveItem: Modules.ProtectiveItem }) {
     const stateProtectiveItem = state.gear.protectiveItems[index]
     ObjectUtils.extractTo(protectiveItem, stateProtectiveItem)
   },
-  [Mutations.updateItems] (state, { items }: { items: Modules.Item[] }) {
+  [Mutations.updateItems](state, { items }: { items: Modules.Item[] }) {
     items.forEach((item, index) => {
       const stateItem = state.items[index]
       ObjectUtils.extractTo(item, stateItem)
     })
   },
-  [Mutations.updateItem] (state, { index, item }: { index: number, item: Modules.Item }) {
+  [Mutations.updateItem](state, { index, item }: { index: number, item: Modules.Item }) {
     const stateItem = state.items[index]
     ObjectUtils.extractTo(item, stateItem)
   },
-  [Mutations.updateCarryCapacities] (state, { carryCapacities }: { carryCapacities: Modules.CarryCapacities }) {
+  [Mutations.updateCarryCapacities](state, { carryCapacities }: { carryCapacities: Modules.CarryCapacities }) {
     Object.keys(carryCapacities)
       .forEach((carryCapacityName) => {
         const carryCapacity = carryCapacities[carryCapacityName]
@@ -140,15 +142,15 @@ export const mutations: MutationTree<CharacterState> = {
         ObjectUtils.extractTo(carryCapacity, stateCarryCapacity)
       })
   },
-  [Mutations.updateCarryCapacity] (state, { index, carryCapacity }: { index: number, carryCapacity: Modules.CarryCapacity }) {
+  [Mutations.updateCarryCapacity](state, { index, carryCapacity }: { index: number, carryCapacity: Modules.CarryCapacity }) {
     const stateCarryCapacity = state.carryCapacities[index]
     ObjectUtils.extractTo(carryCapacity, stateCarryCapacity)
   },
-  [Mutations.updateCoin] (state, { index, coin }: { index: number, coin: Modules.Coin }) {
+  [Mutations.updateCoin](state, { index, coin }: { index: number, coin: Modules.Coin }) {
     const stateCoin = state.wealth.coins[index]
     ObjectUtils.extractTo(coin, stateCoin)
   },
-  [Mutations.updateCoins] (state, { wealth: { coins } }: { wealth: Modules.Wealth }) {
+  [Mutations.updateCoins](state, { wealth: { coins } }: { wealth: Modules.Wealth }) {
     Object.keys(coins)
       .forEach((coinName) => {
         const coin = coins[coinName]
@@ -156,59 +158,59 @@ export const mutations: MutationTree<CharacterState> = {
         ObjectUtils.extractTo(coin, stateCoin)
       })
   },
-  async [Mutations.updateTreasure] (state, { wealth: { treasure } }: { wealth: Modules.Wealth }) {
+  async [Mutations.updateTreasure](state, { wealth: { treasure } }: { wealth: Modules.Wealth }) {
     state.wealth.treasure = treasure
   },
 
-  [Mutations.updateFeats] (state, { feats }: { feats: Modules.Feat[] }) {
+  [Mutations.updateFeats](state, { feats }: { feats: Modules.Feat[] }) {
     state.feats = feats.map(feat => feat)
   },
-  [Mutations.updateSpecialAbilities] (state, { specialAbilities }: { specialAbilities: Modules.SpecialAbility[] }) {
+  [Mutations.updateSpecialAbilities](state, { specialAbilities }: { specialAbilities: Modules.SpecialAbility[] }) {
     state.specialAbilities = specialAbilities.map(specialAbility => specialAbility)
   },
-  [Mutations.updateLanguages] (state, { languages }: { languages: Modules.Language[] }) {
+  [Mutations.updateLanguages](state, { languages }: { languages: Modules.Language[] }) {
     state.languages = languages.map(language => language)
   },
-  [Mutations.updateSpells] (state, { spells }: { spells: Modules.Spell[] }) {
+  [Mutations.updateSpells](state, { spells }: { spells: Modules.Spell[] }) {
     state.spells = spells.map(spell => spell)
   },
 
-  [Mutations.addSkill] (state, skill: Modules.CharacterSkill) {
+  [Mutations.addSkill](state, skill: Modules.CharacterSkill) {
     state.skills.push(skill)
   },
 
-  [Mutations.addFeat] (state, feat: Modules.Feat) {
+  [Mutations.addFeat](state, feat: Modules.Feat) {
     state.feats.push(feat)
   },
-  [Mutations.removeFeat] (state, feat: Modules.Feat) {
+  [Mutations.removeFeat](state, feat: Modules.Feat) {
     const index = state.feats.map(feat => feat._id).indexOf(feat._id)
     state.feats.splice(index, 1)
   },
 
-  [Mutations.addSpecialAbility] (state, specialAbility: Modules.SpecialAbility) {
+  [Mutations.addSpecialAbility](state, specialAbility: Modules.SpecialAbility) {
     state.specialAbilities.push(specialAbility)
   },
-  [Mutations.removeSpecialAbility] (state, specialAbility: Modules.SpecialAbility) {
+  [Mutations.removeSpecialAbility](state, specialAbility: Modules.SpecialAbility) {
     const index = state.specialAbilities.map(specialAbility => specialAbility._id).indexOf(specialAbility._id)
     state.specialAbilities.splice(index, 1)
   },
 
-  [Mutations.addLanguage] (state, language: Modules.Language) {
+  [Mutations.addLanguage](state, language: Modules.Language) {
     state.languages.push(language)
   },
-  [Mutations.removeLanguage] (state, language: Modules.Language) {
+  [Mutations.removeLanguage](state, language: Modules.Language) {
     const index = state.languages.map(language => language._id).indexOf(language._id)
     state.languages.splice(index, 1)
   },
 
-  [Mutations.addSpell] (state, spell: Modules.Spell) {
+  [Mutations.addSpell](state, spell: Modules.Spell) {
     state.spells.push(spell)
   },
-  [Mutations.removeSpell] (state, spell: Modules.Spell) {
+  [Mutations.removeSpell](state, spell: Modules.Spell) {
     const index = state.spells.map(spell => spell._id).indexOf(spell._id)
     state.spells.splice(index, 1)
   },
-  [Mutations.updateDomainSchool] (state, domainSchool: string) {
+  [Mutations.updateDomainSchool](state, domainSchool: string) {
     state.domainSchool = domainSchool
   }
 }

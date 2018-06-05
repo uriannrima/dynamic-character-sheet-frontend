@@ -28,7 +28,7 @@ export class Spell implements IEntity {
   castingTime: CastingTime = CastingTime.STANDARD_ACTION;
   range: Range = new Range();
   targets: string = '';
-  effect: string = '';
+  effect: Effect = new Effect();
   durations: Duration[] = [];
   savingThrow: SpellSaveThrow = new SpellSaveThrow();
   description: string = '';

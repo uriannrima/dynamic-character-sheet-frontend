@@ -28,9 +28,7 @@ import CharacterService from 'services/character.service';
 import CharacterCardList from './components/CharacterCardList.vue';
 import FullScreenLoading from 'shared/components/FullScreenLoadingComponent.vue';
 
-@Component({
-  components: { CharacterCardList, FullScreenLoading }
-})
+@Component({ components: { CharacterCardList, FullScreenLoading } })
 export default class Home extends Vue {
   loading: boolean = false;
   characters: Character[] = [];

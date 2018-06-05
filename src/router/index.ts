@@ -13,7 +13,7 @@ const routerOptions: RouterOptions = {
 
 const router = new VueRouter(routerOptions)
 
-router.beforeEach((to: Route, from: Route, next: Next) => {
+router.beforeEach((to: Route, _: Route, next: Next) => {
   if (to.matched.some((record: RouteRecord) => record.meta.requiresAuth)) {
     Store.dispatch('Auth/refresh').then(authenticated => {
       if (authenticated) {
@@ -24,7 +24,7 @@ router.beforeEach((to: Route, from: Route, next: Next) => {
           query: { redirect: to.fullPath }
         })
       }
-    }).catch(reason => {
+    }).catch(() => {
       next({
         path: '/login',
         query: { redirect: to.fullPath }

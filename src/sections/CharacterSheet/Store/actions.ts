@@ -20,7 +20,7 @@ declare module 'vuex' {
 }
 
 export const actions: ActionTree<CharacterState, RootState> = {
-  async [Actions.connect] (context, characterId) {
+  async [Actions.connect] (_, characterId) {
     // Ask for the server to connect to character channel.
     ChannelService.create(['characters', characterId])
   },
