@@ -9,6 +9,13 @@ import feathers from './feathers'
 import Vuetify from 'vuetify'
 import 'babel-polyfill'
 import PortalVue from 'portal-vue'
+import Component from 'vue-class-component'
+
+Component.registerHooks([
+  'beforeRouteEnter',
+  'beforeRouteLeave',
+  'beforeRouteUpdate'
+])
 
 Vue.use(Vuetify)
 Es6Promise.polyfill()
