@@ -29,7 +29,7 @@ import {
   SpellsArea,
   SpellSaveArea,
   SpellsPerDayArea
-} from '../Areas';
+} from '../Areas'
 
 export default {
   components: { CampaignArea, GearArea, PossessionsArea, FeatsArea, SpecialAbilitiesArea, LanguagesArea, SpellsArea, SpellSaveArea, SpellsPerDayArea }

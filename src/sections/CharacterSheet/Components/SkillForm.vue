@@ -173,8 +173,8 @@
 </template>
 
 <script>
-import { default as FormMixin } from 'shared/form/form.mixin';
-import { SubValuesComponent, SubValuesList } from 'shared/form/components';
+import { default as FormMixin } from 'shared/form/form.mixin'
+import { SubValuesComponent, SubValuesList } from 'shared/form/components'
 
 export default {
   components: { SubValuesComponent, SubValuesList },
@@ -190,7 +190,7 @@ export default {
         miscellaneous: false,
         aditionalInformation: false
       }
-    };
+    }
   }
 }
 </script>

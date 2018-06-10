@@ -23,16 +23,16 @@
 </template>
 
 <script>
-import { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from '../Components';
-import { mapState, mapGetters, mapActions } from '../Store';
+import { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks } from '../Components'
+import { mapState, mapGetters, mapActions } from '../Store'
 
 export default {
   components: { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
   computed: {
     ...mapState(['keyAbilityScores', 'conditionModifiers', 'spellResistance', 'size', 'grapple']),
     ...mapGetters(['getAbilityScore', 'getTempModifier', 'getBaseAttackBonus', 'getGrappleTotal']),
-    keyScore() {
-      return this.getAbilityScore(this.keyAbilityScores.grapple);
+    keyScore () {
+      return this.getAbilityScore(this.keyAbilityScores.grapple)
     }
   },
   methods: {

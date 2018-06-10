@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { SpellsPerDay } from '../Components';
+import { SpellsPerDay } from '../Components'
 
 export default {
   components: { SpellsPerDay }

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { AbilityScore } from '../Components';
+import { AbilityScore } from '../Components'
 
 export default {
   components: { AbilityScore },

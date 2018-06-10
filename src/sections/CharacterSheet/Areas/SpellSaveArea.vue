@@ -9,16 +9,16 @@
 </template>
 
 <script>
-import { SpellSave, ArcaneSpellFailure, ConditionModifiers } from '../Components';
-import { mapState, mapGetters } from '../Store';
+import { SpellSave, ArcaneSpellFailure, ConditionModifiers } from '../Components'
+import { mapState, mapGetters } from '../Store'
 
 export default {
   components: { SpellSave, ArcaneSpellFailure, ConditionModifiers },
   computed: {
     ...mapState(['keyAbilityScores']),
     ...mapGetters(['getAbilityScore', 'getTempModifier', 'getSpellFailure']),
-    keyScore() {
-      return this.getAbilityScore(this.keyAbilityScores.spells);
+    keyScore () {
+      return this.getAbilityScore(this.keyAbilityScores.spells)
     }
   }
 }

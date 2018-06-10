@@ -65,12 +65,9 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'store/AuthModule';
+import { mapGetters, mapActions } from 'store/modules/auth'
 
 export default {
-  computed: {
-    ...mapGetters(['isAuthenticated'])
-  },
   data() {
     return {
       drawer: false,
@@ -88,18 +85,21 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
   methods: {
     ...mapActions(['logout']),
     toggleDrawer() {
-      this.drawer = !this.drawer;
+      this.drawer = !this.drawer
     },
     doLogout: async function () {
-      var loggedOut = await this.logout();
-      if (loggedOut) this.$router.push('/');
-      this.toggleDrawer();
+      var loggedOut = await this.logout()
+      if (loggedOut) this.$router.push('/')
+      this.toggleDrawer()
     }
   }
-};
+}
 </script>
 
 <style>
@@ -149,7 +149,7 @@ button [disabled] {
   display: block;
 }
 
-.form-component.editing input[type="text"],
+.form-component.editing input[type='text'],
 .form-component.editing select,
 .form-component.editing textarea {
   width: 100%;

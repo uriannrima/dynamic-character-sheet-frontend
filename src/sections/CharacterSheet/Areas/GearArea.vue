@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { ArmorItem, ShieldItem, ProtectiveItem } from '../Components';
-import { mapState, mapActions } from '../Store';
+import { ArmorItem, ShieldItem, ProtectiveItem } from '../Components'
+import { mapState, mapActions } from '../Store'
 
 export default {
   components: { ArmorItem, ShieldItem, ProtectiveItem },

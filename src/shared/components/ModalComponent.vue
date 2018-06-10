@@ -13,8 +13,8 @@ export default {
     }
   },
   methods: {
-    close() {
-      this.$emit('update:showModal', false);
+    close () {
+      this.$emit('update:showModal', false)
     }
   }
   /*

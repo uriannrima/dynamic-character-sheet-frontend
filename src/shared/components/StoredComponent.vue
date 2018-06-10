@@ -10,19 +10,19 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       registered: false
     }
   },
-  created() {
+  created () {
     if (!this.registered) {
-      this.$store.registerModule(this.name, this.module);
-      this.registered = true;
+      this.$store.registerModule(this.name, this.module)
+      this.registered = true
     }
   },
-  render(h) {
-    return h('div', this.$slots.default);
+  render (h) {
+    return h('div', this.$slots.default)
   }
 }
 </script>

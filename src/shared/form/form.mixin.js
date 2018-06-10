@@ -1,4 +1,4 @@
-import { FormBus } from 'shared/form/';
+import { FormBus } from 'shared/form/'
 
 /**
  *
@@ -13,10 +13,10 @@ export default {
   },
   created: function () {
     FormBus.$on(this.modelName + ':clear', () => {
-      this.clear();
-    });
+      this.clear()
+    })
   },
   destroyed: function () {
-    FormBus.$off(this.modelName + ':clear');
+    FormBus.$off(this.modelName + ':clear')
   }
 }

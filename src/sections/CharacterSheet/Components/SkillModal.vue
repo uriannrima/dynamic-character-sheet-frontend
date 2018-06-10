@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import SkillService from 'services/skill.service';
-import { SkillForm } from '../Components';
-import { ModalMixin } from 'shared/modal';
+import SkillService from 'services/skill.service'
+import { SkillForm } from '../Components'
+import { ModalMixin } from 'shared/modal'
 
 export default {
   $_veeValidate: {
@@ -69,8 +69,8 @@ export default {
     }
   },
   created: function () {
-    this.service = SkillService;
-    this.modelName = 'skill';
+    this.service = SkillService
+    this.modelName = 'skill'
   }
 }
 </script>

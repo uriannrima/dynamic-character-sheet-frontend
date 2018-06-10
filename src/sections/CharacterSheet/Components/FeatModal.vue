@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import FeatService from 'services/feat.service';
-import { FeatForm } from '../Components';
-import { ModalMixin } from 'shared/modal';
+import FeatService from 'services/feat.service'
+import { FeatForm } from '../Components'
+import { ModalMixin } from 'shared/modal'
 
 export default {
   $_veeValidate: {
@@ -46,8 +46,8 @@ export default {
   components: { FeatForm },
   mixins: [ModalMixin],
   created: function () {
-    this.service = FeatService;
-    this.modelName = 'feat';
+    this.service = FeatService
+    this.modelName = 'feat'
   }
 }
 </script>

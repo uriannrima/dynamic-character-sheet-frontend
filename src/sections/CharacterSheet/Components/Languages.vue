@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import { ModalContainerMixin } from 'shared/modal';
-import { Language, LanguageModal } from '../Components';
-import { mapState, mapMutations } from '../Store';
+import { ModalContainerMixin } from 'shared/modal'
+import { Language, LanguageModal } from '../Components'
+import { mapState, mapMutations } from '../Store'
 
 export default {
   components: { Language, LanguageModal },
@@ -35,9 +35,9 @@ export default {
   computed: {
     ...mapState(['languages'])
   },
-  created() {
+  created () {
     // update.mixin requirement.
-    this.arrayName = 'languages';
+    this.arrayName = 'languages'
   },
   methods: {
     ...mapMutations(['addLanguage', 'removeLanguage'])

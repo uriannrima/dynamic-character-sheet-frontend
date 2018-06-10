@@ -125,13 +125,13 @@
 </template>
 
 <script>
-import { FormMixin } from 'shared/form';
-import { SubValuesComponent, SubValuesList } from 'shared/form/components';
+import { FormMixin } from 'shared/form'
+import { SubValuesComponent, SubValuesList } from 'shared/form/components'
 
 export default {
   components: { SubValuesComponent, SubValuesList },
   mixins: [FormMixin],
-  data() {
+  data () {
     return {
       has: {
         prerequisite: false,
@@ -143,11 +143,11 @@ export default {
       }
     }
   },
-  created() {
-    this.modelName = 'feat';
+  created () {
+    this.modelName = 'feat'
   },
   methods: {
-    clear() {
+    clear () {
       this.has = {
         prerequisite: false,
         special: false,

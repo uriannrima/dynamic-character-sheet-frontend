@@ -328,9 +328,9 @@
 </template>
 
 <script>
-import SpellService from 'services/spell.service';
-import SpellSchoolService from 'services/spell-school.service';
-import { default as FormMixin } from 'shared/form/form.mixin';
+import SpellService from 'services/spell.service'
+import SpellSchoolService from 'services/spell-school.service'
+import { default as FormMixin } from 'shared/form/form.mixin'
 export default {
   mixins: [FormMixin],
   data: function () {
@@ -356,67 +356,67 @@ export default {
   computed: {
     school: {
       get: function () {
-        return this.selectedSchool;
+        return this.selectedSchool
       },
       set: function (value) {
-        var { name, description } = value;
+        var { name, description } = value
         this.model.school = Object.assign({
           subSchool: '',
           name,
           description
-        });
-        this.selectedSchool = value;
+        })
+        this.selectedSchool = value
       }
     },
     range: {
       get: function () {
-        return this.selectedRange;
+        return this.selectedRange
       },
       set: function (value) {
-        this.model.range = Object.assign({}, value);
-        this.selectedRange = value;
+        this.model.range = Object.assign({}, value)
+        this.selectedRange = value
       }
     },
     effect: {
       get: function () {
-        return this.selectedEffect;
+        return this.selectedEffect
       },
       set: function (value) {
-        var { name, description } = value;
+        var { name, description } = value
         this.model.effect = Object.assign({
           type: '',
           format: '',
           name,
           description
-        });
-        this.selectedEffect = value;
+        })
+        this.selectedEffect = value
       }
     },
     savingThrow: {
       get: function () {
-        return this.model.savingThrow;
+        return this.model.savingThrow
       },
       set: function (value) {
-        this.model.savingThrow = value;
+        this.model.savingThrow = value
       }
     },
     describeDescriptors: function () {
-      return this.describe.descriptors.map(d => d.name);
+      return this.describe.descriptors.map(d => d.name)
     }
   },
   created: function () {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     fetchData: async function () {
-      this.allSchools = await SpellSchoolService.getAll();
-      this.allDescriptors = await SpellService.getAllDescriptors();
-      this.allComponents = await SpellService.getAllComponents();
-      this.allCastingTimes = await SpellService.getAllCastingTimes();
-      this.allRanges = await SpellService.getAllRanges();
-      this.allEffects = await SpellService.getAllEffects();
-      this.allDurations = await SpellService.getAllDurations();
-      this.allSavingThrowResolve = await SpellService.getAllSavingThrowResolve();
+      this.allSchools = await SpellSchoolService.getAll()
+      this.allDescriptors = await SpellService.getAllDescriptors()
+      this.allComponents = await SpellService.getAllComponents()
+      this.allCastingTimes = await SpellService.getAllCastingTimes()
+      this.allRanges = await SpellService.getAllRanges()
+      this.allEffects = await SpellService.getAllEffects()
+      this.allDurations = await SpellService.getAllDurations()
+      this.allSavingThrowResolve = await SpellService.getAllSavingThrowResolve()
     }
   }
 }

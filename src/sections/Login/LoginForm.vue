@@ -26,7 +26,7 @@ export default {
     validator: 'new'
   },
   props: ['disabled'],
-  data() {
+  data () {
     return {
       email: '',
       password: ''

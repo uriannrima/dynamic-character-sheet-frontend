@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { AbilityScores } from '../Components';
-import { mapState, mapActions } from '../Store';
+import { AbilityScores } from '../Components'
+import { mapState, mapActions } from '../Store'
 
 export default {
   components: { AbilityScores },

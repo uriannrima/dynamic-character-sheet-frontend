@@ -46,7 +46,7 @@ export default {
     validator: 'new'
   },
   props: ['disabled'],
-  data() {
+  data () {
     return {
       name: '',
       email: '',
@@ -54,11 +54,11 @@ export default {
     }
   },
   methods: {
-    register() {
+    register () {
       this.$validator.validateAll().then(result => {
         if (result) {
-          const { name, email, password } = this;
-          this.$emit('onRegister', { name, email, password });
+          const { name, email, password } = this
+          this.$emit('onRegister', { name, email, password })
         }
       })
     }

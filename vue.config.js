@@ -1,20 +1,21 @@
 // vue.config.js
-const path = require('path');
-const argv = require('optimist').argv;
+const path = require('path')
+const argv = require('optimist').argv
 
 function resolve(dir) {
-  return path.join(__dirname, dir);
+  return path.join(__dirname, dir)
 }
 
 function getConstantsPath() {
+  const fileExtension = 'ts'
   switch (process.env.NODE_ENV) {
     case 'production':
-      return 'src/constants.prd.js'
+      return `src/constants.prd.${fileExtension}`
     default:
-      var path = `src/constants.dev.js`;
-      if (argv['constants']) path = `src/constants.${argv['constants']}.js`;
-      console.log('Constants Path', path);
-      return path;
+      var path = `src/constants.dev.${fileExtension}`
+      if (argv['constants']) path = `src/constants.${argv['constants']}.${fileExtension}`
+      console.log('Constants Path', path)
+      return path
   }
 }
 
@@ -39,6 +40,6 @@ function createCustomMergeConfig(config) {
 
 module.exports = {
   configureWebpack: config => {
-    return createCustomMergeConfig();
+    return createCustomMergeConfig()
   }
 }

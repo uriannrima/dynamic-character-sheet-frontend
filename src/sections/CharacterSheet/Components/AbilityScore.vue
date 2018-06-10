@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import AbilityScore from 'domain/ability-score.model';
+import AbilityScore from 'domain/ability-score'
 
 export default {
   props: {
@@ -49,22 +49,22 @@ export default {
     }
   },
   computed: {
-    modifier() {
-      return Math.floor((this.value - 10) / 2);
+    modifier () {
+      return Math.floor((this.value - 10) / 2)
     },
-    tempModifier() {
-      return Math.floor((this.tempValue - 10) / 2);
+    tempModifier () {
+      return Math.floor((this.tempValue - 10) / 2)
     }
   },
   methods: {
-    updateScore($event, tempOnly) {
+    updateScore ($event, tempOnly) {
       const abilityScore = new AbilityScore({
         name: this.name.toLowerCase(),
         tempValue: $event.target.value * 1,
         value: $event.target.value * 1
-      });
-      if (tempOnly) delete abilityScore.value;
-      this.$emit('onUpdateScore', abilityScore);
+      })
+      if (tempOnly) delete abilityScore.value
+      this.$emit('onUpdateScore', abilityScore)
     }
   }
 }

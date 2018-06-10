@@ -1,9 +1,9 @@
 <script>
-import StoredComponent from 'shared/components/StoredComponent';
-import CharacterSheetModule from './Store';
+import StoredComponent from 'shared/components/StoredComponent'
+import CharacterSheetModule from './Store'
 
 export default {
-  render(h) {
+  render (h) {
     return h(StoredComponent, {
       props: {
         name: 'CharacterSheet',

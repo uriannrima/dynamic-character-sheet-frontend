@@ -1,0 +1,64 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "baseUrl": ".",
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "Constants": [
+        "src/constants.dev",
+        "src/constants.c9",
+        "src/constants.prd"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+      "services/*": [
+        "src/services/*"
+      ],
+      "shared/*": [
+        "src/shared/*"
+      ],
+      "feathers/*": [
+        "src/feathers/*"
+      ],
+      "domain/*": [
+        "src/domain/*"
+      ],
+      "router/*": [
+        "src/router/*"
+      ],
+      "sections/*": [
+        "src/sections/*"
+      ],
+      "store/*": [
+        "src/store/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -18,14 +18,14 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce';
-import CharacterCard from './CharacterCard';
-import CharacterService from 'services/character.service';
+import debounce from 'lodash.debounce'
+import CharacterCard from './CharacterCard'
+import CharacterService from 'services/character.service'
 
 export default {
   components: { CharacterCard },
   props: ['characters'],
-  data() {
+  data () {
     return {
       search: {
         name: ''
@@ -35,27 +35,27 @@ export default {
   computed: {
     searchName: {
       set: debounce(function (val) {
-        this.search.name = val;
+        this.search.name = val
       }, 500),
-      get() {
-        return this.search.name;
+      get () {
+        return this.search.name
       }
     },
-    filteredCharacters() {
-      const { name } = this.search;
-      return name ? this.characters.filter(character => character.description.name.toUpperCase().indexOf(name.toUpperCase()) !== -1) : this.characters;
+    filteredCharacters () {
+      const { name } = this.search
+      return name ? this.characters.filter(character => character.description.name.toUpperCase().indexOf(name.toUpperCase()) !== -1) : this.characters
     }
   },
   methods: {
-    async removeCharacter({ character }) {
+    async removeCharacter ({ character }) {
       try {
-        await CharacterService.remove(character._id);
+        await CharacterService.remove(character._id)
         const index = this.characters
           .map(character => character._id)
-          .indexOf(character._id);
-        this.characters.splice(index, 1);
+          .indexOf(character._id)
+        this.characters.splice(index, 1)
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     }
   }

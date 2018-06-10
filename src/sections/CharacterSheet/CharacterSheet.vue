@@ -1,95 +1,80 @@
 <template>
   <div class="main-container">
-    <full-screen-loading :loading="loading">
-      <transition name="character-sheet-fade"
-                  mode="out-in">
-        <div>
-          <component :is="page"
-                     class="page"
-                     :area="area"></component>
-          <v-fab-transition>
-            <v-btn color="blue"
-                   fixed
-                   bottom
-                   right
-                   fab
-                   small
-                   v-show="!loading"
-                   @click="$emit('onCharacterSave')"
-                   :disabled="vErrors.any()">
-              <v-icon>save</v-icon>
-            </v-btn>
-          </v-fab-transition>
-        </div>
-      </transition>
-      <right-drawer>
-        <template slot-scope="{ actions }">
-          <v-toolbar flat>
-            <v-list>
-              <v-list-tile>
-                <v-list-tile-title class="title">
-                  Character Sheet Sections
-                </v-list-tile-title>
-              </v-list-tile>
-            </v-list>
-          </v-toolbar>
-          <v-divider></v-divider>
-          <v-list dense
-                  class="pt-0">
-            <v-list-group v-for="section in sections"
-                          :key="section.title"
-                          :prepend-icon="section.icon"
-                          no-action>
-              <v-list-tile slot="activator">
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ section.title }}</v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile v-for="child in section.children"
-                           :key="child.title"
-                           @click="child.click(); actions.close();">
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ child.title }}</v-list-tile-title>
-                </v-list-tile-content>
-                <v-list-tile-action>
-                  <v-icon>{{ child.icon }}</v-icon>
-                </v-list-tile-action>
-              </v-list-tile>
-            </v-list-group>
-          </v-list>
-        </template>
-      </right-drawer>
-    </full-screen-loading>
+    <full-screen-loading-component :loading="loading">
+      <front></front>
+      <cover></cover>
+    </full-screen-loading-component>
   </div>
 </template>
 
-<script>
-import * as Pages from './Pages';
-import FullScreenLoading from 'shared/components/FullScreenLoadingComponent';
-import RightDrawer from 'shared/components/RightDrawerComponent';
-import Store from 'store';
-import CharacterModule, { mapState, mapActions, Actions } from './Store';
-import moduledComponentMixin from 'shared/mixins/moduled.component.mixin';
+<script lang="ts">
+import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
+import { Next } from 'vue-router';
 
-/** Logic to load character into store. */
-const loadCharacter = async function (characterId = null) {
-  if (!CharacterModule.registered) return;
-  if (!characterId) {
-    await Store.dispatch('Character/newCharacter');
-  } else {
-    await Store.dispatch('Character/loadCharacter', characterId);
-    await Store.dispatch('Character/connect', characterId);
+import * as Pages from './Pages';
+import { FullScreenLoadingComponent } from 'shared/components';
+
+import CharacterModule, { Namespace } from './Store';
+import { VuexComponent } from 'shared/mixins/vuex.component';
+
+@Component({
+  components: { ...Pages, FullScreenLoadingComponent },
+  mixins: [VuexComponent('Character', CharacterModule)]
+})
+export default class CharacterSheet extends Vue {
+  @Prop({ default: '', type: String })
+  id!: string;
+
+  loading: boolean = false;
+
+  async loadSheet(characterId: string) {
+    if (!CharacterModule.registered) return;
+    if (!characterId) {
+      this.newCharacter();
+    } else {
+      this.loadCharacter(characterId);
+      this.connect(characterId);
+    }
   }
-};
+
+  async beforeRouteEnter(_1, _2, next: Next<CharacterSheet>) {
+    next(async vm => {
+      vm.loading = true;
+      await vm.loadSheet(vm.id);
+      vm.loading = false;
+    });
+  }
+
+  @Namespace.Action loadCharacter!: (characterId: string) => void;
+  @Namespace.Action connect!: (characterId: string) => void;
+  @Namespace.Action newCharacter!: () => void;
+}
+/* 
+import * as Pages from './Pages'
+import { } } from    'shared/components'
+import Store from './Store'
+import CharacterModule, { mapState, mapActions, Actions } from './Store'
+import moduledComponentMixin from 'shared/mixins/moduled.component.mixin'
+
+const loadCharacter = async function (characterId = null) {
+  if (!CharacterModule.registered) return
+  if (!characterId) {
+    await Store.dispatch('Character/newCharacter')
+  } else {
+    await Store.dispatch('Character/loadCharacter', characterId)
+    await Store.dispatch('Character/connect', characterId)
+  }
+}
 
 const beforeRoute = function (to, from, next) {
   next(vm => {
-    vm.loading = true;
-    vm.scrollTop();
+    vm.loading = true
+    vm.scrollTop()
     loadCharacter(to.params.id).then(() => {
-      vm.loading = false;
+      vm.loading = false
     })
-  });
+  })
 }
 
 export default {
@@ -100,9 +85,6 @@ export default {
   beforeRouteEnter: beforeRoute,
   beforeRouteUpdate: beforeRoute,
   mixins: [moduledComponentMixin('Character', CharacterModule)],
-  computed: {
-    ...mapState(['_id'])
-  },
   data() {
     return {
       page: 'front',
@@ -117,42 +99,42 @@ export default {
               icon: 'assignment',
               title: 'Description',
               click: () => {
-                this.toggleArea('front', 'description-area');
+                this.toggleArea('front', 'description-area')
               }
             },
             {
               icon: 'accessibility',
               title: 'Ability Scores',
               click: () => {
-                this.toggleArea('front', 'ability-area');
+                this.toggleArea('front', 'ability-area')
               }
             },
             {
               icon: 'verified_user',
               title: 'Armor Class',
               click: () => {
-                this.toggleArea('front', 'armor-area');
+                this.toggleArea('front', 'armor-area')
               }
             },
             {
               icon: 'directions_run',
               title: 'Initiative / Saving Throws',
               click: () => {
-                this.toggleArea('front', 'initiative-area');
+                this.toggleArea('front', 'initiative-area')
               }
             },
             {
               icon: 'colorize',
               title: 'Combat',
               click: () => {
-                this.toggleArea('front', 'attacks-area');
+                this.toggleArea('front', 'attacks-area')
               }
             },
             {
               icon: 'view_list',
               title: 'Skills',
               click: () => {
-                this.toggleArea('front', 'skills-area');
+                this.toggleArea('front', 'skills-area')
               }
             }
           ]
@@ -164,25 +146,28 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState(['_id'])
+  },
   async created() {
-    await loadCharacter(this.$route.params.id);
+    await loadCharacter(this.$route.params.id)
   },
   methods: {
     ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect']),
     toggleArea(selectedPage, selectedArea) {
-      this.page = selectedPage;
-      this.area = selectedArea;
-      this.scrollTop();
+      this.page = selectedPage
+      this.area = selectedArea
+      this.scrollTop()
     },
     scrollTop() {
       this.$vuetify.goTo(0, {
         easing: 'easeInOutCubic',
         duration: 250,
         offset: -100
-      });
+      })
     }
   }
-}
+} */
 </script>
 
 <style>
@@ -353,7 +338,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Source Sans Pro", sans-serif !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 html {
@@ -374,12 +359,12 @@ input::-webkit-inner-spin-button {
   /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-input[type="number"] {
+input[type='number'] {
   text-align: center;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

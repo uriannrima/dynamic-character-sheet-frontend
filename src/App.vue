@@ -6,9 +6,9 @@
   </div>
 </template>
 
-<script>
-import Layout from './shared/sections/Layout';
-import FullScreenLoading from './shared/components/FullScreenLoadingComponent';
+<script lang="ts">
+import Layout from './shared/sections/Layout.vue'
+import FullScreenLoading from './shared/components/FullScreenLoadingComponent.vue'
 
 export default {
   components: { Layout, FullScreenLoading }

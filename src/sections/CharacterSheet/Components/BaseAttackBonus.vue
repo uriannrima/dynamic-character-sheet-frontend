@@ -14,8 +14,8 @@
 export default {
   props: ['baseAttackBonus'],
   methods: {
-    updateBaseAttackBonsu($event) {
-      const baseAttackBonus = $event.target.value.split('/').map(v => Number(v));
+    updateBaseAttackBonsu ($event) {
+      const baseAttackBonus = $event.target.value.split('/').map(v => Number(v))
       this.$emit('onUpdateBaseAttackBonus', { baseAttackBonus })
     }
   }

@@ -62,19 +62,19 @@
 </template>
 
 <script>
-import { FormMixin } from 'shared/form';
+import { FormMixin } from 'shared/form'
 
 export default {
   mixins: [FormMixin],
-  created() {
-    this.modelName = 'language';
+  created () {
+    this.modelName = 'language'
   },
   methods: {
-    addSpeaker() {
-      this.model.speakers.push('');
+    addSpeaker () {
+      this.model.speakers.push('')
     },
-    removeSpeaker(index) {
-      this.model.speakers.removeAt(index);
+    removeSpeaker (index) {
+      this.model.speakers.removeAt(index)
     }
   }
 }

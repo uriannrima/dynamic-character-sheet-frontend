@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import SpecialAbilityService from 'services/special-ability.service';
-import { SpecialAbilityForm } from '../Components';
-import { ModalMixin } from 'shared/modal';
+import SpecialAbilityService from 'services/special-ability.service'
+import { SpecialAbilityForm } from '../Components'
+import { ModalMixin } from 'shared/modal'
 
 export default {
   $_veeValidate: {
@@ -57,8 +57,8 @@ export default {
   components: { SpecialAbilityForm },
   mixins: [ModalMixin],
   created: function () {
-    this.service = SpecialAbilityService;
-    this.modelName = 'specialAbility';
+    this.service = SpecialAbilityService
+    this.modelName = 'specialAbility'
   }
 }
 </script>

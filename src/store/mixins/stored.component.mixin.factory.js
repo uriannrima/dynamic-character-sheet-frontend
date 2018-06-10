@@ -1,4 +1,4 @@
-import { createNamespacedHelpers } from 'vuex';
+import { createNamespacedHelpers } from 'vuex'
 
 /**
  * An mixin factory to configure a component with it's own vuex store module.
@@ -14,45 +14,45 @@ export default function ({ moduleNamespace, module, stateMapping, gettersMapping
   const mixin = {
     computed: {},
     methods: {},
-    created() {
+    created () {
       // Avoid register module more than once.
       // Caveat: If using hot-reload, if you make changes on  the script that contains the store
       // Or if you create the store in the same script that you define the component, everytime you change it
       // The component will register again the store, and it will have it's alreadyRegistered cleared out.
-      if (module.alreadyRegistered) return;
-      this.$store.registerModule(moduleNamespace, module);
-      module.alreadyRegistered = true;
+      if (module.alreadyRegistered) return
+      this.$store.registerModule(moduleNamespace, module)
+      module.alreadyRegistered = true
 
       // A bit of a hack to allow me to call submodules dispatchs in a better manner.
-      module.state._module = true;
+      module.state._module = true
 
       // Since the Vuex Store won't update on Vue DevTools Store Modules until there is a commit...
       // After the module has been registered we do a commit (could be a empty commit, but let's be a bit informative)
       // After this, Time Travel works.
       // Caveat: Again, if you use hot-reload, and the store loses it's information, it will register again and do a new commit.
-      if (commitRegistration) this.$store.commit((typeof commitRegistration === 'string') ? commitRegistration : 'ModuleRegistered', { moduleNamespace, module, stateMapping, gettersMapping, mutationsMapping, actionsMapping });
+      if (commitRegistration) this.$store.commit((typeof commitRegistration === 'string') ? commitRegistration : 'ModuleRegistered', { moduleNamespace, module, stateMapping, gettersMapping, mutationsMapping, actionsMapping })
     }
-  };
+  }
 
-  const namespace = (typeof moduleNamespace === 'object') ? moduleNamespace.join('/') : moduleNamespace;
+  const namespace = (typeof moduleNamespace === 'object') ? moduleNamespace.join('/') : moduleNamespace
 
-  function checkAndMerge(mappingOptions, mappingFunction, fromStore, toComponent) {
-    if (!fromStore || !toComponent) return;
+  function checkAndMerge (mappingOptions, mappingFunction, fromStore, toComponent) {
+    if (!fromStore || !toComponent) return
     if (mappingOptions) {
       if (typeof mappingOptions === 'boolean') {
-        toComponent = Object.assign(toComponent, { ...mappingFunction(Object.keys(fromStore)) });
+        toComponent = Object.assign(toComponent, { ...mappingFunction(Object.keys(fromStore)) })
       } else {
-        toComponent = Object.assign(toComponent, { ...mappingFunction(mappingOptions) });
+        toComponent = Object.assign(toComponent, { ...mappingFunction(mappingOptions) })
       }
     }
   };
 
-  const { mapState, mapGetters, mapMutations, mapActions } = createNamespacedHelpers(namespace);
+  const { mapState, mapGetters, mapMutations, mapActions } = createNamespacedHelpers(namespace)
 
-  checkAndMerge(stateMapping, mapState, module.state, mixin.computed);
-  checkAndMerge(gettersMapping, mapGetters, module.getters, mixin.computed);
-  checkAndMerge(mutationsMapping, mapMutations, module.mutations, mixin.methods);
-  checkAndMerge(actionsMapping, mapActions, module.actions, mixin.methods);
+  checkAndMerge(stateMapping, mapState, module.state, mixin.computed)
+  checkAndMerge(gettersMapping, mapGetters, module.getters, mixin.computed)
+  checkAndMerge(mutationsMapping, mapMutations, module.mutations, mixin.methods)
+  checkAndMerge(actionsMapping, mapActions, module.actions, mixin.methods)
 
-  return mixin;
+  return mixin
 };

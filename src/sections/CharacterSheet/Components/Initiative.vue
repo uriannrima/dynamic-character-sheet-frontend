@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from '../Store';
+import { mapState, mapGetters, mapActions } from '../Store'
 
 export default {
   props: ['keyScoreName', 'keyScoreModifier'],
