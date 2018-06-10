@@ -1,4 +1,5 @@
 import HttpLayer from '../layers/HttpLayer'
+import { LoginPayload } from './login-payload'
 
 export default class HttpAuth extends HttpLayer {
   constructor () {
@@ -17,7 +18,7 @@ export default class HttpAuth extends HttpLayer {
     }
   }
 
-  async login (payload: any) {
+  async login (payload: LoginPayload) {
     try {
       payload.strategy = 'local'
       var { data: { accessToken } } = await this.service.post(this.url, payload)

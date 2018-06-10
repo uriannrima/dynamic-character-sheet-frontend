@@ -16,28 +16,28 @@ export class SavingThrow {
 
 export default SavingThrow
 
-export const Will = new SavingThrow({
+export const will = new SavingThrow({
   name: 'Will',
   keyAbility: KeyAbilityType.WISDOM
 })
 
-export const Reflex = new SavingThrow({
+export const reflex = new SavingThrow({
   name: 'Reflex',
   keyAbility: KeyAbilityType.DEXTERITY
 })
 
-export const Fortitude = new SavingThrow({
+export const fortitude = new SavingThrow({
   name: 'Fortitude',
   keyAbility: KeyAbilityType.CONSTITUTION
 })
 
 export const All: { [savingThrowName: string]: SavingThrow } = {
-  Will, Reflex, Fortitude
+  will, reflex, fortitude
 }
 
 export enum SavingThrowType {
-  NONE = 'None',
-  WILL = 'Will',
-  REFLEX = 'Reflex',
-  FORTITUDE = 'Fortitude'
+  NONE = 'none',
+  WILL = 'will',
+  REFLEX = 'reflex',
+  FORTITUDE = 'fortitude'
 };

@@ -6,9 +6,10 @@ import UserService from 'services/UserService'
 import Feathers from '@/feathers'
 import { AuthState } from '@/store/modules/auth/state'
 import { RootState } from '@/store/types'
+import { LoginPayload } from '@/shared/services/auth/login-payload'
 
 export const actions: ActionTree<AuthState, RootState> = {
-  async [Actions.login] ({ commit }, payload) {
+  async [Actions.login]({ commit }, payload: LoginPayload) {
     commit(Mutations.toggleProcessing, true)
     var userSession = await AuthService.login(payload)
     commit(Mutations.toggleProcessing, false)
@@ -19,7 +20,7 @@ export const actions: ActionTree<AuthState, RootState> = {
     }
     return false
   },
-  async [Actions.logout] ({ commit }) {
+  async [Actions.logout]({ commit }) {
     commit(Mutations.toggleProcessing, true)
     await AuthService.logout()
     Cookies.remove('userSession')
@@ -27,12 +28,12 @@ export const actions: ActionTree<AuthState, RootState> = {
     commit(Mutations.toggleProcessing, false)
     return true
   },
-  async [Actions.register] ({ commit }, payload) {
+  async [Actions.register]({ commit }, payload) {
     commit(Mutations.toggleProcessing, true)
     await UserService.register(payload)
     commit(Mutations.toggleProcessing, false)
   },
-  async [Actions.refresh] ({ commit, getters }) {
+  async [Actions.refresh]({ commit, getters }) {
     if (getters.isAuthenticated) {
       return true
     } else {
@@ -55,4 +56,4 @@ export const actions: ActionTree<AuthState, RootState> = {
   }
 }
 
-export default actions
+export default actions;

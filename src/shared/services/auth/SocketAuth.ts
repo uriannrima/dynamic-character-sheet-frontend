@@ -1,13 +1,14 @@
 import SocketLayer from '../layers/SocketLayer'
+import { LoginPayload } from './login-payload'
 
 export default class SocketAuth extends SocketLayer {
-  constructor () {
+  constructor() {
     super({
       serviceName: 'authentication'
     })
   }
 
-  async login (payload: any) {
+  async login(payload: LoginPayload) {
     try {
       payload.strategy = 'local'
       var accessToken = await this.feathers.authenticate(payload)
@@ -17,7 +18,7 @@ export default class SocketAuth extends SocketLayer {
     }
   }
 
-  async logout (accessToken?: string | null | undefined) {
+  async logout(accessToken?: string | null | undefined) {
     try {
       this.feathers.logout(accessToken)
       return true
@@ -26,7 +27,7 @@ export default class SocketAuth extends SocketLayer {
     }
   }
 
-  async refresh () {
+  async refresh() {
     console.log('Not implemented.')
   }
 }

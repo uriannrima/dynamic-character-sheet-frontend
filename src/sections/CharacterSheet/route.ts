@@ -4,6 +4,7 @@ const CharacterSheet = () => import('./CharacterSheet.vue')
 
 const baseRoute = {
   component: CharacterSheet,
+  props: true,
   meta: {
     title: 'Character',
     requiresAuth: true

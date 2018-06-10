@@ -20,35 +20,35 @@ export class AbilityScore {
 
 export default AbilityScore
 
-export const Strength: AbilityScore = new AbilityScore({
+export const strength: AbilityScore = new AbilityScore({
   name: 'Strength'
 })
 
-export const Dexterity: AbilityScore = new AbilityScore({
+export const dexterity: AbilityScore = new AbilityScore({
   name: 'Dexterity'
 })
 
-export const Constitution: AbilityScore = new AbilityScore({
+export const constitution: AbilityScore = new AbilityScore({
   name: 'Constitution'
 })
 
-export const Intelligence: AbilityScore = new AbilityScore({
+export const intelligence: AbilityScore = new AbilityScore({
   name: 'Intelligence'
 })
 
-export const Wisdom: AbilityScore = new AbilityScore({
+export const wisdom: AbilityScore = new AbilityScore({
   name: 'Wisdom'
 })
 
-export const Charisma: AbilityScore = new AbilityScore({
+export const charisma: AbilityScore = new AbilityScore({
   name: 'Charisma'
 })
 
 export const All: IMap<AbilityScore> = {
-  Strength,
-  Dexterity,
-  Constitution,
-  Intelligence,
-  Wisdom,
-  Charisma
+  strength,
+  dexterity,
+  constitution,
+  intelligence,
+  wisdom,
+  charisma
 }

@@ -8,11 +8,14 @@
     <label class="wounds-label">Wounds/Current HP</label>
     <label class="nonlethal-label">Nonlethal<br>Damage</label>
     <input type="number"
-           class="common-input">
+           class="common-input"
+           :value="status.healthPoints">
     <input type="text"
-           class="common-input">
-    <input type="text"
-           class="common-input">
+           class="common-input"
+           :value="status.wounds">
+    <input type="number"
+           class="common-input"
+           :value="status.nonLethalDamage">
   </div>
 </template>
 
@@ -54,7 +57,7 @@ export default {
 @media screen and (min-width: 1024px) {
   .health-component {
     grid-template-columns: 12.2% 5.5% 54.5% 22.9%;
-    grid-template-areas: ". total-label wounds-label nonlethal-label";
+    grid-template-areas: '. total-label wounds-label nonlethal-label';
   }
 
   .health-bb {

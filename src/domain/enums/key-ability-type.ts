@@ -1,9 +1,9 @@
 export enum KeyAbilityType {
-  NONE = 'None',
-  STRENGTH = 'Strength',
-  DEXTERITY = 'Dexterity',
-  CONSTITUTION = 'Constitution',
-  INTELLIGENCE = 'Intelligence',
-  WISDOM = 'Wisdom',
-  CHARISMA = 'Charisma'
+  NONE = 'none',
+  STRENGTH = 'strength',
+  DEXTERITY = 'dexterity',
+  CONSTITUTION = 'constitution',
+  INTELLIGENCE = 'intelligence',
+  WISDOM = 'wisdom',
+  CHARISMA = 'charisma'
 };

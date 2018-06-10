@@ -42,7 +42,7 @@ export const mutations: MutationTree<CharacterState> = {
     ObjectUtils.extractTo(abilityScore, stateAbilityScore)
   },
   [Mutations.updateStatus](state, { status }: { status: Modules.Status }) {
-    ObjectUtils.extractTo(status, state.status)
+    state.status = new Modules.Status(status);
   },
   [Mutations.updateSpeed](state, { speed }: { speed: string }) {
     state.speed = speed
@@ -91,10 +91,7 @@ export const mutations: MutationTree<CharacterState> = {
     state.grapple = grapple
   },
   [Mutations.updateAttacks](state, { attacks = [] }: { attacks: Modules.Attack[] }) {
-    attacks.forEach((attack, index) => {
-      const stateAttack = state.attacks[index]
-      ObjectUtils.extractTo(attack, stateAttack)
-    })
+    state.attacks = attacks.map(attack => new Modules.Attack(attack));
   },
   [Mutations.updateAttack](state, { index, attack }: { index: number, attack: Modules.Attack }) {
     const stateAttack = state.attacks[index]
@@ -125,10 +122,7 @@ export const mutations: MutationTree<CharacterState> = {
     ObjectUtils.extractTo(protectiveItem, stateProtectiveItem)
   },
   [Mutations.updateItems](state, { items }: { items: Modules.Item[] }) {
-    items.forEach((item, index) => {
-      const stateItem = state.items[index]
-      ObjectUtils.extractTo(item, stateItem)
-    })
+    state.items = items.map(item => new Modules.Item(item));
   },
   [Mutations.updateItem](state, { index, item }: { index: number, item: Modules.Item }) {
     const stateItem = state.items[index]

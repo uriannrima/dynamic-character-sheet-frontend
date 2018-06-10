@@ -13,7 +13,8 @@ const namespaceName = 'Character'
 export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers(namespaceName)
 export const Namespace = namespace(namespaceName)
 
-export const character: Module<CharacterState, RootState> = {
+export const character: Module<CharacterState, RootState> & { registered: boolean } = {
+  registered: false,
   namespaced: true,
   state: new CharacterState(),
   getters,

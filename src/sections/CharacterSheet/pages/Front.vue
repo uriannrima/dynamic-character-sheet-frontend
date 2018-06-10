@@ -1,15 +1,11 @@
 <template>
   <div class="front">
-    <transition name="character-sheet-fade"
-                mode="out-in">
-      <component :is="area"> </component>
-    </transition>
-    <!-- <description-area/>
+    <description-area/>
     <ability-area/>
     <armor-area />
     <initiative-area/>
     <attacks-area/>
-    <skills-area/> -->
+    <skills-area/>
   </div>
 </template>
 
