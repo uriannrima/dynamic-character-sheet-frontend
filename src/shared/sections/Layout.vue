@@ -1,66 +1,6 @@
 <template>
   <div>
-    <v-app>
-      <v-navigation-drawer v-model="drawer"
-                           temporary
-                           app
-                           left
-                           v-if="isAuthenticated">
-        <v-toolbar flat>
-          <v-list>
-            <v-list-tile>
-              <v-list-tile-title class="title">
-                Sections
-              </v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-toolbar>
-        <v-divider></v-divider>
-        <v-list dense
-                class="pt-0">
-          <v-list-tile v-for="section in sections"
-                       :key="section.title"
-                       router
-                       :to="{ name: section.name }">
-            <v-list-tile-action v-if="section.icon">
-              <v-icon>{{ section.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ section.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-divider></v-divider>
-          <v-list-tile @click="doLogout">
-            <v-list-tile-action>
-              <v-icon>power_settings_new</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Logout</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-navigation-drawer>
-      <portal-target name="right-drawer"
-                     slim></portal-target>
-      <v-toolbar fixed
-                 app
-                 clipped-left
-                 clipped-right
-                 v-if="isAuthenticated">
-        <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
-        <v-toolbar-title>{{$route.meta.title}}</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-side-icon @click.stop="$root.$emit('toggle-right-drawer')">
-          <v-icon>more_vert</v-icon>
-        </v-toolbar-side-icon>
-      </v-toolbar>
-      <v-content app>
-        <v-container fluid>
-          <router-view></router-view>
-        </v-container>
-      </v-content>
-      <!-- <v-footer app></v-footer> -->
-    </v-app>
+    <router-view></router-view>
   </div>
 </template>
 

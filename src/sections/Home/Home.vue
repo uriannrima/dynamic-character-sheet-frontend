@@ -2,17 +2,6 @@
   <div class="home-component">
     <full-screen-loading :loading="loading">
       <character-card-list :characters="characters"></character-card-list>
-      <v-fab-transition>
-        <v-btn color="blue"
-               fixed
-               bottom
-               right
-               fab
-               v-show="!loading"
-               @click="$router.push({ name: 'newCharacter' })">
-          <v-icon>add</v-icon>
-        </v-btn>
-      </v-fab-transition>
     </full-screen-loading>
   </div>
 </template>
@@ -37,6 +26,7 @@ export default class Home extends Vue {
     next(async vm => {
       vm.loading = true;
       const chars = (await CharacterService.getAll()) as Character[];
+      console.log(chars);
       vm.characters = chars;
       vm.loading = false;
     });

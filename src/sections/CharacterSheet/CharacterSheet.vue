@@ -19,6 +19,7 @@ import CharacterModule, { Namespace } from './Store';
 import { VuexComponent } from 'shared/mixins/vuex.component';
 
 @Component({
+  $_veeValidate: { validator: 'new' },
   components: { ...Pages, FullScreenLoadingComponent },
   mixins: [VuexComponent('Character', CharacterModule)]
 })
@@ -50,124 +51,6 @@ export default class CharacterSheet extends Vue {
   @Namespace.Action connect!: (characterId: string) => void;
   @Namespace.Action newCharacter!: () => void;
 }
-/* 
-import * as Pages from './Pages'
-import { } } from    'shared/components'
-import Store from './Store'
-import CharacterModule, { mapState, mapActions, Actions } from './Store'
-import moduledComponentMixin from 'shared/mixins/moduled.component.mixin'
-
-const loadCharacter = async function (characterId = null) {
-  if (!CharacterModule.registered) return
-  if (!characterId) {
-    await Store.dispatch('Character/newCharacter')
-  } else {
-    await Store.dispatch('Character/loadCharacter', characterId)
-    await Store.dispatch('Character/connect', characterId)
-  }
-}
-
-const beforeRoute = function (to, from, next) {
-  next(vm => {
-    vm.loading = true
-    vm.scrollTop()
-    loadCharacter(to.params.id).then(() => {
-      vm.loading = false
-    })
-  })
-}
-
-export default {
-  $_veeValidate: {
-    validator: 'new'
-  },
-  components: { ...Pages, FullScreenLoading, RightDrawer },
-  beforeRouteEnter: beforeRoute,
-  beforeRouteUpdate: beforeRoute,
-  mixins: [moduledComponentMixin('Character', CharacterModule)],
-  data() {
-    return {
-      page: 'front',
-      loading: false,
-      area: 'description-area',
-      sections: [
-        {
-          icon: 'home',
-          title: 'Front Page',
-          children: [
-            {
-              icon: 'assignment',
-              title: 'Description',
-              click: () => {
-                this.toggleArea('front', 'description-area')
-              }
-            },
-            {
-              icon: 'accessibility',
-              title: 'Ability Scores',
-              click: () => {
-                this.toggleArea('front', 'ability-area')
-              }
-            },
-            {
-              icon: 'verified_user',
-              title: 'Armor Class',
-              click: () => {
-                this.toggleArea('front', 'armor-area')
-              }
-            },
-            {
-              icon: 'directions_run',
-              title: 'Initiative / Saving Throws',
-              click: () => {
-                this.toggleArea('front', 'initiative-area')
-              }
-            },
-            {
-              icon: 'colorize',
-              title: 'Combat',
-              click: () => {
-                this.toggleArea('front', 'attacks-area')
-              }
-            },
-            {
-              icon: 'view_list',
-              title: 'Skills',
-              click: () => {
-                this.toggleArea('front', 'skills-area')
-              }
-            }
-          ]
-        },
-        {
-          icon: 'person',
-          title: 'Cover page'
-        }
-      ]
-    }
-  },
-  computed: {
-    ...mapState(['_id'])
-  },
-  async created() {
-    await loadCharacter(this.$route.params.id)
-  },
-  methods: {
-    ...mapActions([Actions.loadCharacter, Actions.newCharacter, 'connect']),
-    toggleArea(selectedPage, selectedArea) {
-      this.page = selectedPage
-      this.area = selectedArea
-      this.scrollTop()
-    },
-    scrollTop() {
-      this.$vuetify.goTo(0, {
-        easing: 'easeInOutCubic',
-        duration: 250,
-        offset: -100
-      })
-    }
-  }
-} */
 </script>
 
 <style>

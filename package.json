@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint --no-fix",
     "deploy": "yarn build && firebase deploy",
     "api": "cd.. && cd dynamic-character-sheet-api && yarn dev",
-    "api:mock": "json-server --watch db.json --host localhost --port 5000 --nc --id _id"
+    "api:mock": "node mock/api-mock.js"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.2",

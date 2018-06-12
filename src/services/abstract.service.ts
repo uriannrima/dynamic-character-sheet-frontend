@@ -1,37 +1,41 @@
 import BaseSocketService from 'shared/services/bases/BaseSocketService'
+import BaseHttpService from 'shared/services/bases/BaseHttpService'
 import { IEntity } from '@/domain/interfaces/IEntity'
+import Constants from 'Constants';
 
-export default abstract class AbstractService<TModel extends IEntity> extends BaseSocketService<TModel> {
-  constructor ({ url }: { url: string }) {
-    super({ url })
+export default abstract class AbstractService<TModel extends IEntity> {
+  public service: BaseSocketService<TModel> | BaseHttpService<TModel>;
+
+  constructor({ url }: { url: string }) {
+    this.service = Constants.LAYER === 'HTTP' ? new BaseHttpService({ url }) : new BaseSocketService<TModel>({ url })
   }
 
-  async create (model?: any) {
+  async create(model?: any) {
     return model as TModel
   }
 
-  async getById (_id: string, query: any = {}) {
-    return super.get(_id, query)
+  async getById(_id: string, query: any = {}) {
+    return this.service.get(_id, query)
   }
 
-  async getAll (query = {}) {
-    return super.find(query)
+  async getAll(query = {}) {
+    return this.service.find(query)
   }
 
-  async saveOrUpdate (model: TModel) {
+  async saveOrUpdate(model: TModel) {
     const { _id } = model
     if (_id) {
-      return super.update(model)
+      return this.service.update(model)
     } else {
-      return super.create(model)
+      return this.service.create(model)
     }
   }
 
-  async remove (_id: string) {
-    return super.remove(_id)
+  async remove(_id: string) {
+    return this.service.remove(_id)
   }
 
-  async patch (_id: string, model: TModel) {
-    return super.patch(_id, model)
+  async patch(_id: string, model: TModel) {
+    return this.service.patch(_id, model)
   }
 }
