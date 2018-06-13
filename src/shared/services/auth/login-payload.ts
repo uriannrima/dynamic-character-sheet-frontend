@@ -1,5 +1,13 @@
-export interface LoginPayload {
+export interface AuthorizationPayload {
+  strategy?: string;
+}
+
+
+export interface LoginPayload extends AuthorizationPayload {
   email: string;
   password: string;
-  strategy?: string;
+}
+
+export interface RefreshPayload extends AuthorizationPayload {
+  accessToken?: string;
 }

@@ -26,7 +26,6 @@ export default class Home extends Vue {
     next(async vm => {
       vm.loading = true;
       const chars = (await CharacterService.getAll()) as Character[];
-      console.log(chars);
       vm.characters = chars;
       vm.loading = false;
     });

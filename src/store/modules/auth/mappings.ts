@@ -9,7 +9,8 @@ export const Mutations = {
   login: 'login',
   register: 'register',
   toggleProcessing: 'toggleProcessing',
-  saveUserSession: 'saveUserSession'
+  saveUserSession: 'saveUserSession',
+  clearUserSession: 'clearUserSession'
 }
 
 export const Mappings = {

@@ -1,5 +1,5 @@
 import HttpLayer from '../layers/HttpLayer'
-import { LoginPayload } from './login-payload'
+import { LoginPayload, RefreshPayload } from './login-payload'
 import { UserSession } from './UserSession';
 
 export default class HttpAuth extends HttpLayer {
@@ -9,10 +9,10 @@ export default class HttpAuth extends HttpLayer {
     })
   }
 
-  async refresh() {
+  async refresh(payload: RefreshPayload) {
     try {
-      var payload = { strategy: 'jwt' }
-      var { data: { accessToken } } = await this.service.post(this.url, payload)
+      payload.strategy = 'jwt';
+      var { data: { accessToken } } = await this.service.post<UserSession>(this.url, payload)
       return accessToken
     } catch (error) {
       throw error

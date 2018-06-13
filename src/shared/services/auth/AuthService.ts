@@ -1,7 +1,7 @@
 import SocketAuth from './SocketAuth'
 import HttpAuth from './HttpAuth'
 import Cookies from 'js-cookie'
-import { LoginPayload } from './login-payload'
+import { LoginPayload, RefreshPayload } from './login-payload'
 import Constants from 'Constants';
 
 export class AuthService {
@@ -11,9 +11,9 @@ export class AuthService {
     this.service = Constants.LAYER === 'HTTP' ? new HttpAuth() : new SocketAuth()
   }
 
-  async refresh() {
+  async refresh(payload: RefreshPayload) {
     try {
-      return this.service.refresh()
+      return this.service.refresh(payload)
     } catch (error) {
       console.log(error)
       return null

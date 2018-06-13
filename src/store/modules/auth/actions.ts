@@ -1,9 +1,7 @@
 import { ActionTree } from 'vuex'
-import Cookies from 'js-cookie'
 import { Actions, Mutations } from './mappings'
 import AuthService from 'shared/services/auth/AuthService'
 import UserService from 'services/UserService'
-import Feathers from '@/feathers'
 import { AuthState } from '@/store/modules/auth/state'
 import { RootState } from '@/store/types'
 import { LoginPayload } from '@/shared/services/auth/login-payload'
@@ -14,7 +12,6 @@ export const actions: ActionTree<AuthState, RootState> = {
     var userSession = await AuthService.login(payload)
     commit(Mutations.toggleProcessing, false)
     if (userSession && userSession.accessToken) {
-      Cookies.set('userSession', userSession)
       commit(Mutations.saveUserSession, userSession)
       return true
     }
@@ -23,8 +20,7 @@ export const actions: ActionTree<AuthState, RootState> = {
   async [Actions.logout]({ commit }) {
     commit(Mutations.toggleProcessing, true)
     await AuthService.logout()
-    Cookies.remove('userSession')
-    commit(Mutations.saveUserSession, null)
+    commit(Mutations.clearUserSession)
     commit(Mutations.toggleProcessing, false)
     return true
   },
@@ -37,15 +33,17 @@ export const actions: ActionTree<AuthState, RootState> = {
     if (getters.isAuthenticated) {
       return true
     } else {
-      const userSession = Cookies.getJSON('userSession') as { accessToken: string }
+      const userSession = getters.getUserSession;
       if (userSession) {
         try {
-          await Feathers.authenticate({ strategy: 'jwt', accessToken: userSession.accessToken })
-          commit(Mutations.saveUserSession, userSession)
+          const newAccessToken = await AuthService.refresh({ accessToken: userSession.accessToken });
+          if (newAccessToken) {
+            userSession.accessToken = newAccessToken;
+            commit(Mutations.saveUserSession, userSession)
+          }
         } catch ({ code }) {
           if (code === 401) {
-            Cookies.remove('userSession')
-            commit(Mutations.saveUserSession, null)
+            commit(Mutations.clearUserSession)
           }
         }
         return getters.isAuthenticated

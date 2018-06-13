@@ -1,5 +1,5 @@
 import SocketLayer from '../layers/SocketLayer'
-import { LoginPayload } from './login-payload'
+import { LoginPayload, RefreshPayload } from './login-payload'
 import { UserSession } from './UserSession';
 
 export default class SocketAuth extends SocketLayer {
@@ -28,7 +28,7 @@ export default class SocketAuth extends SocketLayer {
     }
   }
 
-  async refresh() {
+  async refresh(_: RefreshPayload) {
     console.log('Not implemented.')
   }
 }
