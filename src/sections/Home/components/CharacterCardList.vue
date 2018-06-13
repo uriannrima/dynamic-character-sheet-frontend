@@ -1,9 +1,8 @@
 <template>
   <div class="character-card-list-component">
     <div class="character-search-container">
-      <v-text-field name="input-1"
-                    label="Search Character Name"
-                    v-model="searchName"></v-text-field>
+      <label for="name-search">Search Character by Name</label>
+      <input name="name-search" type="text" v-model="searchName">
     </div>
     <transition-group name="character-card-list"
                       tag="div"
