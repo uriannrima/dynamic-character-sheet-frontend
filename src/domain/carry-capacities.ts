@@ -3,8 +3,12 @@ export class CarryCapacity {
   label: string = '';
   small: string = '';
 
-  constructor (model?: CarryCapacity | { value?: number, label?: string, small?: string }) {
-    Object.assign(this, model)
+  constructor(model?: CarryCapacity | { value?: number, label?: string, small?: string }) {
+    if (model) {
+      if (model.value) this.value = model.value;
+      if (model.label) this.label = model.label;
+      if (model.small) this.small = model.small;
+    }
   }
 }
 
@@ -17,10 +21,10 @@ export class CarryCapacities {
   liftOffGround: CarryCapacity = new CarryCapacity({ label: 'Lift Off<br>Ground', small: '2x Max Load' });
   pushOrDrag: CarryCapacity = new CarryCapacity({ label: 'Push Or<br>Drag', small: '5x Max Load' });
 
-  constructor (model?: CarryCapacities | {
-  lightLoad?: CarryCapacity, mediumLoad?: CarryCapacity,
-  heavyLoad?: CarryCapacity, liftOverHead?: CarryCapacity,
-  liftOffGround?: CarryCapacity, pushOrDra?: CarryCapacity
+  constructor(model?: CarryCapacities | {
+    lightLoad?: CarryCapacity, mediumLoad?: CarryCapacity,
+    heavyLoad?: CarryCapacity, liftOverHead?: CarryCapacity,
+    liftOffGround?: CarryCapacity, pushOrDra?: CarryCapacity
   }) {
     Object.assign(this, model)
   }

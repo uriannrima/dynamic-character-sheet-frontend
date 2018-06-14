@@ -28,14 +28,10 @@ export const mutations: MutationTree<CharacterState> = {
   },
   [Mutations.updateAbilityScores](state, { abilityScores }: { abilityScores: IMap<Modules.AbilityScore> }) {
     // Get abilityScores name
-    Object.keys(abilityScores)
-      // Map it to abilityScore
-      .map(abilityScoreName => abilityScores[abilityScoreName])
-      // Calculate modifiers.
-      .forEach(abilityScore => {
-        const stateAbilityScore = state.abilityScores[abilityScore.name]
-        ObjectUtils.extractTo(abilityScore, stateAbilityScore)
-      })
+    // Map it to abilityScore
+    Object.keys(abilityScores).map(abilityScoreName => {
+      state.abilityScores[abilityScoreName] = new Modules.AbilityScore(abilityScores[abilityScoreName])
+    })
   },
   [Mutations.updateAbilityScore](state, abilityScore: Modules.AbilityScore) {
     const stateAbilityScore = state.abilityScores[abilityScore.name]

@@ -12,8 +12,11 @@ export class SpellSaveThrow {
   check: string = '';
   resolve: Resolve = new Resolve();
 
-  constructor (model?: SpellSaveThrow | { check?: string, resolve?: Resolve }) {
-    Object.assign(this, model)
+  constructor(model?: SpellSaveThrow | { check?: string, resolve?: Resolve }) {
+    if (model) {
+      if (model.check) this.check = model.check;
+      if (model.resolve) this.resolve = new Resolve(model.resolve);
+    }
   }
 }
 
@@ -35,13 +38,29 @@ export class Spell implements IEntity {
   spellResistance: boolean = true;
   aditionalInformation: string = '';
 
-  constructor (model?: Spell | {
-  _id: string, name: string, school: SpellSchool, descriptors: Descriptor,
-  level: number, components: Component, castingTimeAmount: number,
-  castingTime: CastingTime, range: Range, targets: string, effect: string,
-  durations: Duration, savingThrow: SpellSaveThrow, description: string,
-  spellResistance: boolean, aditionalInformation: string,
+  constructor(model?: Spell | {
+    _id: string, name: string, school: SpellSchool, descriptors: Descriptor[],
+    level: number, components: Component[], castingTimeAmount: number,
+    castingTime: CastingTime, range: Range, targets: string, effect: Effect,
+    durations: Duration[], savingThrow: SpellSaveThrow, description: string,
+    spellResistance: boolean, aditionalInformation: string,
   }) {
-    Object.assign(this, model)
+    if (model) {
+      if (model._id) this._id = model._id
+      if (model.name) this.name = model.name
+      if (model.school) this.school = new SpellSchool(model.school)
+      if (model.descriptors) this.descriptors = model.descriptors.map(descriptor => new Descriptor(descriptor))
+      if (model.level) this.level = model.level
+      if (model.components) this.components = model.components.map(component => new Component(component))
+      if (model.castingTime) this.castingTime = model.castingTime
+      if (model.range) this.range = new Range(model.range)
+      if (model.targets) this.targets = model.targets
+      if (model.effect) this.effect = new Effect(model.effect)
+      if (model.durations) this.durations = model.durations.map(duration => new Duration(duration))
+      if (model.savingThrow) this.savingThrow = new SpellSaveThrow(model.savingThrow)
+      if (model.description) this.description = model.description
+      if (model.spellResistance) this.spellResistance = model.spellResistance
+      if (model.aditionalInformation) this.aditionalInformation = model.aditionalInformation
+    }
   }
 }

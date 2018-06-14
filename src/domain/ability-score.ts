@@ -5,15 +5,19 @@ export class AbilityScore {
   value: number = 10;
   tempValue: number = 10;
 
-  constructor (model?: AbilityScore | { name?: string, value?: number, tempValue?: number }) {
-    Object.assign(this, model)
+  constructor(model?: AbilityScore | { name: string, value?: number, tempValue?: number }) {
+    if (model) {
+      this.name = model.name;
+      if (model.value) this.value = model.value;
+      if (model.tempValue) this.tempValue = model.tempValue;
+    }
   }
 
-  get modifier () {
+  get modifier() {
     return Math.floor((this.value - 10) / 2)
   }
 
-  get tempModifier () {
+  get tempModifier() {
     return Math.floor((this.tempValue - 10) / 2)
   }
 };
@@ -21,27 +25,27 @@ export class AbilityScore {
 export default AbilityScore
 
 export const strength: AbilityScore = new AbilityScore({
-  name: 'Strength'
+  name: 'strength'
 })
 
 export const dexterity: AbilityScore = new AbilityScore({
-  name: 'Dexterity'
+  name: 'dexterity'
 })
 
 export const constitution: AbilityScore = new AbilityScore({
-  name: 'Constitution'
+  name: 'constitution'
 })
 
 export const intelligence: AbilityScore = new AbilityScore({
-  name: 'Intelligence'
+  name: 'intelligence'
 })
 
 export const wisdom: AbilityScore = new AbilityScore({
-  name: 'Wisdom'
+  name: 'wisdom'
 })
 
 export const charisma: AbilityScore = new AbilityScore({
-  name: 'Charisma'
+  name: 'charisma'
 })
 
 export const All: IMap<AbilityScore> = {

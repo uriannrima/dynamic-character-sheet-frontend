@@ -5,16 +5,19 @@ export class Alignment {
   nature: NatureType = NatureType.NEUTRAL;
   abdiction: AbdictionType = AbdictionType.NEUTRAL;
 
-  constructor (model?: Alignment | { nature?: NatureType, abdiction?: AbdictionType }) {
-    Object.assign(this, model)
+  constructor(model?: Alignment | { nature?: NatureType, abdiction?: AbdictionType }) {
+    if (model) {
+      if (model.nature) this.nature = model.nature;
+      if (model.abdiction) this.abdiction = model.abdiction;
+    }
   }
 
-  get description () {
+  get description() {
     if (this.abdiction === AbdictionType.NEUTRAL && this.nature === NatureType.NEUTRAL) return 'Neutral'
     return `${this.abdiction} ${this.nature}`
   }
 
-  get title () {
+  get title() {
     switch (this.abdiction) {
       case AbdictionType.LAWFUL:
         switch (this.nature) {

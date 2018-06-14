@@ -4,8 +4,13 @@ export class ArmorClass {
   deflectionModifier: number = 0;
   miscModifier: number = 0;
 
-  constructor (model?: ArmorClass | { base?: number, bonus?: number, shieldBonus?: number, dexModifier?: number, sizeModifier?: number, naturalArmor?: number, deflectionModifier?: number, miscModifier?: number }) {
-    Object.assign(this, model)
+  constructor(model?: ArmorClass | { base?: number, naturalArmor?: number, deflectionModifier?: number, miscModifier?: number }) {
+    if (model) {
+      if (model.base) this.base = model.base;
+      if (model.naturalArmor) this.naturalArmor = model.naturalArmor;
+      if (model.deflectionModifier) this.deflectionModifier = model.deflectionModifier;
+      if (model.miscModifier) this.miscModifier = model.miscModifier;
+    }
   }
 }
 

@@ -24,10 +24,6 @@ export class Character implements IEntity {
 
   gear: Modules.Gear = new Modules.Gear();
 
-  grapple: Modules.Grapple = new Modules.Grapple();
-
-  initiative: Modules.Initiative = new Modules.Initiative();
-
   items: Modules.Item[] = []
 
   languages: Modules.Language[] = [];
@@ -48,6 +44,10 @@ export class Character implements IEntity {
 
   baseAttackBonus: number[] = [];
 
+  grappleModifier: number = 0;
+
+  initiativeModifier: number = 0;
+
   domainSchool: string = '';
 
   speed: string = '';
@@ -62,7 +62,7 @@ export class Character implements IEntity {
 
   experience: number = 0;
 
-  constructor (model?: Character) {
+  constructor(model?: Character) {
     if (model) {
       this._id = model._id
 
@@ -86,10 +86,6 @@ export class Character implements IEntity {
 
       this.gear = new Modules.Gear(model.gear)
 
-      this.grapple = new Modules.Grapple(model.grapple)
-
-      this.initiative = new Modules.Initiative(model.initiative)
-
       this.items = model.items.map(item => new Modules.Item(item))
 
       this.languages = model.languages.map(language => new Modules.Language(language))
@@ -111,14 +107,18 @@ export class Character implements IEntity {
       this.wealth = new Modules.Wealth(model.wealth)
 
       this.baseAttackBonus = model.baseAttackBonus.map(bab => bab)
+
+      this.initiativeModifier = model.initiativeModifier
+
+      this.grappleModifier = model.grappleModifier
     }
   }
 
-  getAbilityScore (abilityName: KeyAbilityType) {
+  getAbilityScore(abilityName: KeyAbilityType) {
     return this.abilityScores[abilityName]
   }
 
-  getSavingThrow (savingThrowName: string) {
+  getSavingThrow(savingThrowName: string) {
     return this.savingThrows[savingThrowName]
   }
 }

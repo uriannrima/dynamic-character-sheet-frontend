@@ -1,10 +1,9 @@
 const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router('./mock/db.json');
+router.db._.id = '_id';
 
-const middlewares = jsonServer.defaults({
-  id: '_id'
-});
+const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
@@ -20,6 +19,14 @@ server.use('/authentication', (req, res) => {
   };
   res.status(200).json(userSession);
 });
+
+const channels = [];
+server.post('/channels', (_, res) => {
+  channels.push({
+    id: channels.length
+  });
+  res.json(channels[channels.length - 1]);
+})
 
 server.use(router);
 

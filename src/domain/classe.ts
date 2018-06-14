@@ -5,11 +5,15 @@ export class Classe {
   level?: number = 0;
   casterAbility?: CasterKeyAbilityType = CasterKeyAbilityType.NONE;
 
-  constructor (model?: Classe | { name?: string, level?: number, casterAbility?: CasterKeyAbilityType }) {
-    Object.assign(this, model)
+  constructor(model?: Classe | { name?: string, level?: number, casterAbility?: CasterKeyAbilityType }) {
+    if (model) {
+      if (model.name) this.name = model.name;
+      if (model.level) this.level = model.level;
+      if (model.casterAbility) this.casterAbility = model.casterAbility;
+    }
   }
 
-  get isCaster () {
+  get isCaster() {
     return this.casterAbility !== CasterKeyAbilityType.NONE
   }
 }

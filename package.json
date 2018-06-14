@@ -7,12 +7,12 @@
     "build": "yarn install && vue-cli-service build",
     "lint": "vue-cli-service lint --no-fix",
     "deploy": "yarn build && firebase deploy",
-    "api": "cd.. && cd dynamic-character-sheet-api && yarn dev",
-    "api:mock": "node mock/api-mock.js"
+    "api": "node mock/api-mock.js"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.2",
     "@feathersjs/feathers": "^3.1.4",
+    "@feathersjs/rest-client": "^1.4.0",
     "@feathersjs/socketio-client": "^1.1.0",
     "@shopify/draggable": "^1.0.0-beta.6",
     "@types/feathersjs__authentication-client": "^1.0.3",
