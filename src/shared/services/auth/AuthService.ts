@@ -2,13 +2,12 @@ import SocketAuth from './SocketAuth'
 import HttpAuth from './HttpAuth'
 import Cookies from 'js-cookie'
 import { LoginPayload, RefreshPayload } from './login-payload'
-import Constants from 'Constants';
 
 export class AuthService {
   public service: HttpAuth | SocketAuth;
 
   constructor() {
-    this.service = Constants.LAYER === 'HTTP' ? new HttpAuth() : new SocketAuth()
+    this.service = process.env.VUE_APP_LAYER === 'HTTP' ? new HttpAuth() : new SocketAuth()
   }
 
   async refresh(payload: RefreshPayload) {

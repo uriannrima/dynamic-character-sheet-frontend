@@ -1,8 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
-import Constants from 'Constants'
 
 var service = axios.create({
-  baseURL: Constants.API_URL + '/'
+  baseURL: process.env.VUE_APP_BASE_URL + '/'
 })
 
 export default class HttpLayer {
