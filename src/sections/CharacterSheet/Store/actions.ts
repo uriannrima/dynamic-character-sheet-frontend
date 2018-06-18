@@ -104,8 +104,8 @@ export const actions: ActionTree<CharacterState, RootState> = {
   async [Actions.updateDamageReduction]({ commit }, damageReduction) {
     commit(Mutations.updateDamageReduction, damageReduction, { meta: { sync: true } })
   },
-  async [Actions.updateInitiative]({ commit }, initiative) {
-    commit(Mutations.updateInitiative, { initiative }, { meta: { sync: true } })
+  async [Actions.updateInitiative]({ commit }, initiativeModifier) {
+    commit(Mutations.updateInitiative, { initiativeModifier }, { meta: { sync: true } })
   },
   async [Actions.updateSavingThrow]({ commit }, savingThrow) {
     commit(Mutations.updateSavingThrow, savingThrow, { meta: { sync: true } })

@@ -1,5 +1,5 @@
-import { Descriptor } from './constants/descriptor'
 import { IEntity } from './interfaces/IEntity'
+import { Descriptor } from './constants/descriptor'
 import { SpellSchool } from './spell-school'
 import { Component } from './constants/component'
 import { Range } from './constants/range'

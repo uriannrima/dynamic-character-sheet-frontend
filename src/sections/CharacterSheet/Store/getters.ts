@@ -71,14 +71,14 @@ export const getters: GetterTree<CharacterState, RootState> = {
     return state.gear.protectiveItems.reduce((acc, item) => acc + item.acBonus, 0)
   },
   getTotalInitiative: function (state, getters) {
-    return getters.getInitiativeKeyScore.tempModifier + state.initiative.miscModifier
+    return getters.getInitiativeKeyScore.tempModifier + state.initiativeModifier
   },
   getBaseAttackBonus: state => {
     return state.baseAttackBonus.join('/')
   },
   getGrappleTotal: (state, getters) => {
     return state.baseAttackBonus.map(bab => {
-      return bab + getters.getGrappleKeyScore.tempModifier + state.size.grappleBonus + state.grapple.miscModifier
+      return bab + getters.getGrappleKeyScore.tempModifier + state.size.grappleBonus + state.grappleModifier
     }).join('/')
   },
   getGearPenalty: (state) => {

@@ -59,16 +59,13 @@ export const mutations: MutationTree<CharacterState> = {
   [Mutations.updateDamageReduction](state, { damageReduction }: { damageReduction: string }) {
     state.damageReduction = damageReduction
   },
-  [Mutations.updateInitiative](state, { initiative }: { initiative: Modules.Initiative }) {
-    ObjectUtils.extractTo(initiative, state.initiative)
+  [Mutations.updateInitiative](state, { initiativeModifier }: { initiativeModifier: number }) {
+    state.initiativeModifier = initiativeModifier;
   },
   [Mutations.updateSavingThrows](state, { savingThrows }: { savingThrows: IMap<Modules.SavingThrow> }) {
-    Object.keys(savingThrows)
-      .map(savingThrowName => savingThrows[savingThrowName])
-      .forEach(savingThrow => {
-        const stateSavingThrow = state.savingThrows[savingThrow.name]
-        ObjectUtils.extractTo(savingThrow, stateSavingThrow)
-      })
+    Object.keys(savingThrows).map(savingThrowName => {
+      state.savingThrows[savingThrowName] = new Modules.SavingThrow(savingThrows[savingThrowName])
+    })
   },
   [Mutations.updateSavingThrow](state, savingThrow: Modules.SavingThrow) {
     const stateSavingThrow = state.savingThrows[savingThrow.name]

@@ -1,23 +1,24 @@
 <template>
   <div class="initiative-area armor-initiative-grid">
     <secondary-armor></secondary-armor>
-    <initiative :keyScoreName="keyScore.name"
-                :keyScoreModifier="getTempModifier(keyScore)"></initiative>
+    <initiative :total-initiative="getTotalInitiative"
+                :key-score-name="getInitiativeKeyScore.name"
+                :key-score-modifier="getInitiativeKeyScore.tempModifier"
+                @onUpdateInitiative="updateInitiative"></initiative>
   </div>
 </template>
 
 <script>
 import { SecondaryArmor, Initiative } from '../Components'
-import { mapState, mapGetters } from '../Store'
+import { mapState, mapGetters, mapActions } from '../Store'
 
 export default {
   components: { SecondaryArmor, Initiative },
   computed: {
-    ...mapState(['keyAbilityScores']),
-    ...mapGetters(['getAbilityScore', 'getTempModifier']),
-    keyScore () {
-      return this.getAbilityScore(this.keyAbilityScores.initiative)
-    }
+    ...mapGetters(['getTotalInitiative', 'getInitiativeKeyScore'])
+  },
+  methods: {
+    ...mapActions(['updateInitiative'])
   }
 }
 </script>

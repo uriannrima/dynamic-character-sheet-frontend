@@ -11,12 +11,12 @@
       <spell-resistance :spellResistance="spellResistance"
                         @onUpdateSpellResistance="updateSpellResistance"></spell-resistance>
     </div>
-    <grapple :keyScoreName="keyScore.name"
-             :keyScoreModifier="getTempModifier(keyScore)"
-             :sizeBonus="size.grappleBonus"
-             :baseAttackBonus="getBaseAttackBonus"
-             :miscModifier="grapple.miscModifier"
-             :grappleTotal="getGrappleTotal"
+    <grapple :key-score-name="getGrappleKeyScore.name"
+             :key-score-modifier="getGrappleKeyScore.tempModifier"
+             :size-bonus="size.grappleBonus"
+             :base-attack-bonus="getBaseAttackBonus"
+             :grapple-modifier="grappleModifier"
+             :grapple-total="getGrappleTotal"
              @onUpdateGrapple="updateGrapple"></grapple>
     <attacks></attacks>
   </div>
@@ -29,11 +29,8 @@ import { mapState, mapGetters, mapActions } from '../Store'
 export default {
   components: { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
   computed: {
-    ...mapState(['keyAbilityScores', 'conditionModifiers', 'spellResistance', 'size', 'grapple']),
-    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getBaseAttackBonus', 'getGrappleTotal']),
-    keyScore () {
-      return this.getAbilityScore(this.keyAbilityScores.grapple)
-    }
+    ...mapState(['keyAbilityScores', 'conditionModifiers', 'spellResistance', 'size', 'grappleModifier']),
+    ...mapGetters(['getAbilityScore', 'getBaseAttackBonus', 'getGrappleTotal', 'getGrappleKeyScore']),
   },
   methods: {
     ...mapActions(['updateConditionModifiers', 'updateBaseAttackBonus', 'updateSpellResistance', 'updateGrapple'])

@@ -23,4 +23,23 @@ export class SavingThrow {
   }
 }
 
+export const will = new SavingThrow({
+  name: 'Will',
+  keyAbility: KeyAbilityType.WISDOM
+})
+
+export const reflex = new SavingThrow({
+  name: 'Reflex',
+  keyAbility: KeyAbilityType.DEXTERITY
+})
+
+export const fortitude = new SavingThrow({
+  name: 'Fortitude',
+  keyAbility: KeyAbilityType.CONSTITUTION
+})
+
+export const All: { [savingThrowName: string]: SavingThrow } = {
+  will, reflex, fortitude
+}
+
 export default SavingThrow

@@ -7,15 +7,15 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="getTotalInitiative">
+           :value="totalInitiative">
     <input type="number"
            class="common-input"
            readonly
            :value="keyScoreModifier">
     <input type="number"
            class="common-input"
-           v-model.number="initiative.miscModifier"
-           @change="updateInitiative({ miscModifier: $event.target.value * 1 })">
+           v-model.number="initiativeModifier"
+           @change="$emit('onUpdateInitiative', $event.target.value * 1)">
     <label class="h-md-down">&nbsp;</label>
     <label class="h-md-down">&nbsp;</label>
     <label class="total-label">Total</label>
@@ -25,16 +25,24 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from '../Store'
-
 export default {
-  props: ['keyScoreName', 'keyScoreModifier'],
-  computed: {
-    ...mapState(['initiative']),
-    ...mapGetters(['getTotalInitiative'])
-  },
-  methods: {
-    ...mapActions(['updateInitiative'])
+  props: {
+    initiativeModifier: {
+      type: Number,
+      default: 0
+    },
+    keyScoreName: {
+      type: String,
+      default: ''
+    },
+    keyScoreModifier: {
+      type: Number,
+      default: 0
+    },
+    totalInitiative: {
+      type: Number,
+      default: 0
+    }
   }
 }
 </script>

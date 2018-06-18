@@ -22,7 +22,7 @@
            :value="sizeBonus">
     <input type="number"
            class="common-input"
-           :value="miscModifier"
+           :value="grappleModifier"
            @change="$emit('onUpdateGrapple', { miscModifier: $event.target.value * 1 })">
     <span class="h-md-down">&nbsp;</span>
     <span class="total-label"
@@ -53,7 +53,7 @@ export default {
       type: String,
       default: '0'
     },
-    miscModifier: {
+    grappleModifier: {
       type: Number,
       default: 0
     },
