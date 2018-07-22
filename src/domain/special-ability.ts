@@ -11,14 +11,15 @@ export enum SpecialAbilityType {
 
 export class SpecialAbility implements IEntity, ISubValued<SubValue> {
   _id: string = '';
+  _type: string = 'SpecialAbility';
   name: string = '';
   description: string = '';
   type: SpecialAbilityType = SpecialAbilityType.NONE;
   subValues: SubValue[] = [];
 
   constructor(model?: SpecialAbility | {
-    _id?: string, name?: string, description?: string,
-    type?: SpecialAbilityType, subValues?: SubValue[]
+  _id?: string, name?: string, description?: string,
+  type?: SpecialAbilityType, subValues?: SubValue[]
   }) {
     if (model) {
       if (model._id) this._id = model._id;

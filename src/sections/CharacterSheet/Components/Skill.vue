@@ -13,7 +13,7 @@
                v-if="hasSubValue">({{subValues[0].value}})</small>
       </div>
       <label class="skill-key-ability"
-             :class="{ 'armor-check-penalty': armorCheckPenalty }">{{keyScoreName.substring(0,3)}}</label>
+             :class="{ 'armor-check-penalty': armorCheckPenalty }">{{keyAbility.substring(0,3)}}</label>
       <input type="number"
              class="common-input"
              readonly
@@ -21,7 +21,7 @@
       <input type="number"
              class="only-bottom"
              readonly
-             :value="keyScoreModifier">
+             :value="keyAbilityModifier">
       <input type="number"
              class="only-bottom"
              :value="rank"
@@ -47,8 +47,8 @@ export default {
     'untrained',
     'armorCheckPenalty',
     'subValues',
-    'keyScoreName',
-    'keyScoreModifier',
+    'keyAbility',
+    'keyAbilityModifier',
     'rank',
     'miscModifier',
     'gearPenalty'
@@ -63,7 +63,7 @@ export default {
       if (this.name === 'Swim') penalty += penalty
       var rankModifier = this.rank
       if (!this.classSkill) rankModifier = Math.floor(rankModifier / 2)
-      return rankModifier + this.miscModifier + this.keyScoreModifier + penalty
+      return rankModifier + this.miscModifier + this.keyAbilityModifier + penalty
     },
     checkPenalty () {
       var penalty = 0

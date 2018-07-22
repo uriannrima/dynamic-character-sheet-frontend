@@ -1,7 +1,8 @@
-import { ISubValued } from "@/domain/interfaces/ISubValued";
+import { ISubValued } from '@/domain/interfaces/ISubValued';
 
 export class SpellSchool implements ISubValued<SubSchool> {
   _id: string = '';
+  _type: string = 'SpellSchool';
   name: string = '';
   description: string = '';
   subject: string = '';

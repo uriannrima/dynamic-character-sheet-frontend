@@ -30,6 +30,8 @@ server.post('/channels', (_, res) => {
 
 server.use(router);
 
-server.listen(5000, () => {
-  console.log('API Mock Running...')
+const port = process.env.PORT || 5000;
+
+server.listen(port, () => {
+  console.log(`API Mock running at ${port}`)
 });

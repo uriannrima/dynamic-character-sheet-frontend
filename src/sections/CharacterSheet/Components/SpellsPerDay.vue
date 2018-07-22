@@ -11,7 +11,7 @@
                           :key="index"
                           :spellPerDay="spellPerDayList[index]"
                           :spellLevel="spellLevel"
-                          :keyScoreModifier="getTempModifier(keyScore)"
+                          :keyAbilityModifier="getTempModifier(keyScore)"
                           :spellsPerLevel="spells.length"></single-spell-per-day>
   </div>
 </template>

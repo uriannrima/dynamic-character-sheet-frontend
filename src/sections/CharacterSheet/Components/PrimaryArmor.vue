@@ -23,7 +23,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="keyScoreModifier">
+           :value="keyAbilityModifier">
     <input type="number"
            class="common-input"
            readonly
@@ -45,7 +45,7 @@
     <label class="h-md-down">&nbsp;</label>
     <label>Armor<br>Bonus</label>
     <label>Shield<br>Bonus</label>
-    <label>{{ keyScoreName.substring(0, 3) }}<br>Modifier</label>
+    <label>{{ keyAbility.substring(0, 3) }}<br>Modifier</label>
     <label>Size<br>Modifier</label>
     <label>Natural<br>Armor</label>
     <label>Deflection<br>Modifier</label>
@@ -65,7 +65,7 @@
 import { mapState, mapGetters, mapActions } from '../Store'
 
 export default {
-  props: ['keyScoreName', 'keyScoreModifier'],
+  props: ['keyAbility', 'keyAbilityModifier'],
   computed: {
     ...mapState(['armorClass', 'size', 'damageReduction', 'gear']),
     ...mapGetters(['getTotalArmor', 'getDeflectionBonus'])

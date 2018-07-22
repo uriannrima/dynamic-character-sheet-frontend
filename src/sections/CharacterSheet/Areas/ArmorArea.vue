@@ -4,8 +4,8 @@
       <health></health>
       <speed></speed>
     </div>
-    <primary-armor :keyScoreName="keyScore.name"
-                   :keyScoreModifier="getTempModifier(keyScore)"></primary-armor>
+    <primary-armor :keyAbility="keyScore.name"
+                   :keyAbilityModifier="getTempModifier(keyScore)"></primary-armor>
   </div>
 </template>
 

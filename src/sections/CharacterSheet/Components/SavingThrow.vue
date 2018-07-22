@@ -2,7 +2,7 @@
   <div class="saving-throw-grid">
     <div class="black-box saving-throw-box">
       <label>{{name}}</label>
-      <label>({{keyScoreName}})</label>
+      <label>({{keyAbility}})</label>
     </div>
     <input type="number"
            class="common-input"
@@ -15,7 +15,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="keyScoreModifier">
+           :value="keyAbilityModifier">
     <input type="number"
            class="common-input"
            :value="magicModifier"
@@ -35,9 +35,9 @@
 export default {
   props: [
     'name',
-    'keyScoreName',
+    'keyAbility',
     'base',
-    'keyScoreModifier',
+    'keyAbilityModifier',
     'magicModifier',
     'miscModifier',
     'tempModifier'
@@ -45,7 +45,7 @@ export default {
   computed: {
     getTotal () {
       return this.base +
-        this.keyScoreModifier +
+        this.keyAbilityModifier +
         this.magicModifier +
         this.miscModifier +
         this.tempModifier

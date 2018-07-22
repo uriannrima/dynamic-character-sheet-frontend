@@ -2,6 +2,7 @@ import { IEntity } from './interfaces/IEntity'
 
 export class Language implements IEntity {
   readonly _id: string = '';
+  _type: string = 'Language';
   name: string = '';
   description: string = '';
   alphabet: string = '';

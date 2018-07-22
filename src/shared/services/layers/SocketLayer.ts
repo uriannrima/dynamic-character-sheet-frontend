@@ -1,9 +1,9 @@
 import feathers from '@/feathers'
 import { Service } from '@feathersjs/feathers'
 
-export default class SocketLayer {
+export default class SocketLayer<T = any> {
   feathers: any;
-  service: Service<any>;
+  service: Service<T>;
   serviceName: string;
 
   constructor ({ serviceName = '' }: { serviceName: string }) {

@@ -1,13 +1,9 @@
-import { SpellSchool, SpellSchools } from 'domain/spell-school'
+import { SpellSchool } from 'domain/spell-school'
 import AbstractService from './abstract.service'
 
 class SpellSchoolService extends AbstractService<SpellSchool> {
   constructor () {
-    super({ url: '/spellSchool' })
-  }
-
-  async getAll () {
-    return SpellSchools
+    super({ url: '/spell-schools' })
   }
 }
 

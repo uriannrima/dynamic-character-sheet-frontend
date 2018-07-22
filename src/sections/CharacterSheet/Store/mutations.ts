@@ -50,8 +50,8 @@ export const mutations: MutationTree<CharacterState> = {
       ObjectUtils.extractTo(protectiveItem, state.gear.protectiveItems[index])
     })
   },
-  [Mutations.updateKeyScore](state, { name = '', keyScoreName = KeyAbilityType.NONE }: { name: string, keyScoreName: KeyAbilityType }) {
-    state.keyAbilityScores[name] = keyScoreName
+  [Mutations.updateKeyScore](state, { name = '', keyAbility = KeyAbilityType.NONE }: { name: string, keyAbility: KeyAbilityType }) {
+    state.keyAbilityScores[name] = keyAbility
   },
   [Mutations.updateArmorClass](state, { armorClass }: { armorClass: Modules.ArmorClass }) {
     ObjectUtils.extractTo(armorClass, state.armorClass)
@@ -80,8 +80,8 @@ export const mutations: MutationTree<CharacterState> = {
   [Mutations.updateSpellResistance](state, { spellResistance }: { spellResistance: string }) {
     state.spellResistance = spellResistance
   },
-  [Mutations.updateGrapple](state, { grapple }: { grapple: Modules.Grapple }) {
-    state.grapple = grapple
+  [Mutations.updateGrapple](state, { grappleModifier }: { grappleModifier: number }) {
+    state.grappleModifier = grappleModifier
   },
   [Mutations.updateAttacks](state, { attacks = [] }: { attacks: Modules.Attack[] }) {
     state.attacks = attacks.map(attack => new Modules.Attack(attack));

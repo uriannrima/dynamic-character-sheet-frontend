@@ -2,6 +2,7 @@ import { IEntity } from './interfaces/IEntity'
 
 export class Size implements IEntity {
   readonly _id: string = '';
+  _type: string = 'Size';
   readonly name: string = '';
   readonly modifier: number = 0;
   readonly grappleBonus: number = 0;
@@ -9,8 +10,8 @@ export class Size implements IEntity {
   readonly carryBonus: number = 0;
 
   constructor(model?: Size | {
-    _id?: string, name?: string, modifier?: number,
-    grappleBonus?: number, hideBonus?: number, carryBonus?: number,
+  _id?: string, name?: string, modifier?: number,
+  grappleBonus?: number, hideBonus?: number, carryBonus?: number,
   }) {
     if (model) {
       if (model._id) this._id = model._id;

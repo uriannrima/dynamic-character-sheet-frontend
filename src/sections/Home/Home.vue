@@ -2,6 +2,7 @@
   <div class="home-component">
     <full-screen-loading :loading="loading">
       <character-card-list :characters="characters"></character-card-list>
+      <button>+</button>
     </full-screen-loading>
   </div>
 </template>

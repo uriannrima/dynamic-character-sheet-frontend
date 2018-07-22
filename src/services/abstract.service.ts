@@ -1,12 +1,13 @@
 import BaseSocketService from 'shared/services/bases/BaseSocketService'
 import BaseHttpService from 'shared/services/bases/BaseHttpService'
 import { IEntity } from '@/domain/interfaces/IEntity'
+import { IConstructor } from '@/services/MappingService';
 
 export default abstract class AbstractService<TModel extends IEntity> {
   public service: BaseSocketService<TModel> | BaseHttpService<TModel>;
 
-  constructor({ url }: { url: string }) {
-    this.service = process.env.VUE_APP_LAYER === 'HTTP' ? new BaseHttpService({ url }) : new BaseSocketService<TModel>({ url })
+  constructor({ url, constructors }: { url: string, constructors?: Array<IConstructor<TModel>> }) {
+    this.service = process.env.VUE_APP_LAYER === 'HTTP' ? new BaseHttpService({ url, constructors }) : new BaseSocketService<TModel>({ url, constructors })
   }
 
   async create(model?: any) {

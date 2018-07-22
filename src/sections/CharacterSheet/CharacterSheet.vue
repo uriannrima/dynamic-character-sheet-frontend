@@ -10,7 +10,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import { Next } from 'vue-router';
+import { Next, Route } from 'vue-router';
 
 import * as Pages from './Pages';
 import { FullScreenLoadingComponent } from 'shared/components';
@@ -22,7 +22,7 @@ import { VuexComponent } from 'shared/mixins/vuex.component';
   $_veeValidate: { validator: 'new' },
   components: { ...Pages, FullScreenLoadingComponent },
   mixins: [VuexComponent('Character', CharacterModule)]
-})
+  })
 export default class CharacterSheet extends Vue {
   @Prop({ default: '', type: String })
   id!: string;
@@ -39,7 +39,7 @@ export default class CharacterSheet extends Vue {
     }
   }
 
-  async beforeRouteEnter(_1, _2, next: Next<CharacterSheet>) {
+  async beforeRouteEnter(_1: Route, _2: Route, next: Next<CharacterSheet>) {
     next(async vm => {
       vm.loading = true;
       await vm.loadSheet(vm.id);

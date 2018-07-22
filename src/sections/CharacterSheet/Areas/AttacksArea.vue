@@ -30,7 +30,7 @@ export default {
   components: { SavingThrows, ConditionModifiers, BaseAttackBonus, SpellResistance, Grapple, Attacks },
   computed: {
     ...mapState(['keyAbilityScores', 'conditionModifiers', 'spellResistance', 'size', 'grappleModifier']),
-    ...mapGetters(['getAbilityScore', 'getBaseAttackBonus', 'getGrappleTotal', 'getGrappleKeyScore']),
+    ...mapGetters(['getAbilityScore', 'getBaseAttackBonus', 'getGrappleTotal', 'getGrappleKeyScore'])
   },
   methods: {
     ...mapActions(['updateConditionModifiers', 'updateBaseAttackBonus', 'updateSpellResistance', 'updateGrapple'])

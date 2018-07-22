@@ -22,9 +22,9 @@ export class CarryCapacities {
   pushOrDrag: CarryCapacity = new CarryCapacity({ label: 'Push Or<br>Drag', small: '5x Max Load' });
 
   constructor(model?: CarryCapacities | {
-    lightLoad?: CarryCapacity, mediumLoad?: CarryCapacity,
-    heavyLoad?: CarryCapacity, liftOverHead?: CarryCapacity,
-    liftOffGround?: CarryCapacity, pushOrDra?: CarryCapacity
+  lightLoad?: CarryCapacity, mediumLoad?: CarryCapacity,
+  heavyLoad?: CarryCapacity, liftOverHead?: CarryCapacity,
+  liftOffGround?: CarryCapacity, pushOrDra?: CarryCapacity
   }) {
     Object.assign(this, model)
   }

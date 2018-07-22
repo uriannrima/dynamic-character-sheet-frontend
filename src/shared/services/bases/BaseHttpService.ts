@@ -2,12 +2,14 @@ import HttpLayer from '../layers//HttpLayer'
 import SocketLayer from '../layers//SocketLayer'
 import AuthService from '../auth/AuthService'
 import { IEntity } from '@/domain/interfaces/IEntity'
+import { MappingService, IConstructor } from '@/services/MappingService';
 
 export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
   public socket: SocketLayer;
-  constructor({ url }: { url: string }) {
+  constructor({ url, constructors }: { url: string, constructors?: Array<IConstructor<TModel>> }) {
     super({ url })
     this.socket = new SocketLayer({ serviceName: url.replace('/', '') })
+    MappingService.addClassMaps(constructors)
   }
 
   async getHeaders() {
@@ -21,7 +23,7 @@ export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
     try {
       var headers = await this.getHeaders()
       const response = await this.service.get<TModel>(this.url + `/${id}`, { headers })
-      return response.data;
+      return MappingService.getIstanceAs(response.data);
     } catch (error) {
       throw error
     }
@@ -31,7 +33,7 @@ export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
     try {
       var headers = await this.getHeaders()
       const response = await this.service.get<TModel[]>(this.url, { headers })
-      return response.data;
+      return response.data.map(model => MappingService.getIstanceAs(model));
     } catch (error) {
       throw error
     }
@@ -40,7 +42,8 @@ export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
   async create(model: TModel) {
     try {
       var headers = await this.getHeaders()
-      return this.service.post<TModel>(this.url, model, { headers });
+      const response = await this.service.post<TModel>(this.url, model, { headers });
+      return MappingService.getIstanceAs(response.data);
     } catch (error) {
       throw error
     }
@@ -50,7 +53,8 @@ export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
     try {
       const { _id } = model
       var headers = await this.getHeaders()
-      return this.service.post<TModel>(this.url + `/${_id}`, model, { headers });
+      const response = await this.service.post<TModel>(this.url + `/${_id}`, model, { headers });
+      return MappingService.getIstanceAs(response.data);
     } catch (error) {
       throw error
     }
@@ -59,7 +63,8 @@ export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
   async remove(id: string) {
     try {
       var headers = await this.getHeaders()
-      return this.service.delete(this.url + `/${id}`, { headers })
+      const response = await this.service.delete(this.url + `/${id}`, { headers })
+      return MappingService.getIstanceAs(response.data);
     } catch (error) {
       throw error;
     }

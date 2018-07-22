@@ -11,7 +11,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="keyScoreModifier">
+           :value="keyAbilityModifier">
     <input type="number"
            class="common-input"
            v-model.number="initiativeModifier"
@@ -19,7 +19,7 @@
     <label class="h-md-down">&nbsp;</label>
     <label class="h-md-down">&nbsp;</label>
     <label class="total-label">Total</label>
-    <label>{{ keyScoreName.substring(0,3) }}<br>Modifier</label>
+    <label>{{ keyAbility.substring(0,3) }}<br>Modifier</label>
     <label>Misc<br>Modifier</label>
   </div>
 </template>
@@ -31,11 +31,11 @@ export default {
       type: Number,
       default: 0
     },
-    keyScoreName: {
+    keyAbility: {
       type: String,
       default: ''
     },
-    keyScoreModifier: {
+    keyAbilityModifier: {
       type: Number,
       default: 0
     },

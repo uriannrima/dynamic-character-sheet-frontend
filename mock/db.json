@@ -221,7 +221,7 @@
       "skills": [
         {
           "name": "Use Rope",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -835,7 +835,7 @@
       "skills": [
         {
           "name": "Appraise",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -856,7 +856,7 @@
         },
         {
           "name": "Balance",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -877,7 +877,7 @@
         },
         {
           "name": "Bluff",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -898,7 +898,7 @@
         },
         {
           "name": "Climb",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -919,7 +919,7 @@
         },
         {
           "name": "Concentration",
-          "keyScoreName": "constitution",
+          "keyAbility": "constitution",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -940,7 +940,7 @@
         },
         {
           "name": "Craft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -961,7 +961,7 @@
         },
         {
           "name": "Decipher Script",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -982,7 +982,7 @@
         },
         {
           "name": "Diplomacy",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1003,7 +1003,7 @@
         },
         {
           "name": "Disable Device",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1024,7 +1024,7 @@
         },
         {
           "name": "Disguise",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1045,7 +1045,7 @@
         },
         {
           "name": "Escape Artist",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1066,7 +1066,7 @@
         },
         {
           "name": "Forgery",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1087,7 +1087,7 @@
         },
         {
           "name": "Gather Information",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1108,7 +1108,7 @@
         },
         {
           "name": "Handle Animal",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1129,7 +1129,7 @@
         },
         {
           "name": "Heal",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1150,7 +1150,7 @@
         },
         {
           "name": "Hide",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1171,7 +1171,7 @@
         },
         {
           "name": "Intimidate",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1192,7 +1192,7 @@
         },
         {
           "name": "Jump",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1213,7 +1213,7 @@
         },
         {
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1234,7 +1234,7 @@
         },
         {
           "name": "Listen",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1255,7 +1255,7 @@
         },
         {
           "name": "Move Silently",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1276,7 +1276,7 @@
         },
         {
           "name": "Open Lock",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1297,7 +1297,7 @@
         },
         {
           "name": "Perform",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1318,7 +1318,7 @@
         },
         {
           "name": "Profession",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1339,7 +1339,7 @@
         },
         {
           "name": "Ride",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1360,7 +1360,7 @@
         },
         {
           "name": "Search",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1381,7 +1381,7 @@
         },
         {
           "name": "Sense Motive",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1402,7 +1402,7 @@
         },
         {
           "name": "Sleight of Hands",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1423,7 +1423,7 @@
         },
         {
           "name": "Spellcraft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1444,7 +1444,7 @@
         },
         {
           "name": "Spot",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1465,7 +1465,7 @@
         },
         {
           "name": "Survival",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1486,7 +1486,7 @@
         },
         {
           "name": "Swim",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1507,7 +1507,7 @@
         },
         {
           "name": "Tumble",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -1528,7 +1528,7 @@
         },
         {
           "name": "Use Magic Device",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -1549,7 +1549,7 @@
         },
         {
           "name": "Use Rope",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2074,7 +2074,7 @@
       "skills": [
         {
           "name": "Appraise",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2095,7 +2095,7 @@
         },
         {
           "name": "Balance",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2116,7 +2116,7 @@
         },
         {
           "name": "Bluff",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2137,7 +2137,7 @@
         },
         {
           "name": "Climb",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2158,7 +2158,7 @@
         },
         {
           "name": "Concentration",
-          "keyScoreName": "constitution",
+          "keyAbility": "constitution",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -2179,7 +2179,7 @@
         },
         {
           "name": "Craft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2200,7 +2200,7 @@
         },
         {
           "name": "Decipher Script",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2221,7 +2221,7 @@
         },
         {
           "name": "Diplomacy",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2242,7 +2242,7 @@
         },
         {
           "name": "Disable Device",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2263,7 +2263,7 @@
         },
         {
           "name": "Disguise",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2284,7 +2284,7 @@
         },
         {
           "name": "Escape Artist",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2305,7 +2305,7 @@
         },
         {
           "name": "Forgery",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2326,7 +2326,7 @@
         },
         {
           "name": "Gather Information",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2347,7 +2347,7 @@
         },
         {
           "name": "Handle Animal",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2368,7 +2368,7 @@
         },
         {
           "name": "Heal",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -2389,7 +2389,7 @@
         },
         {
           "name": "Hide",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2410,7 +2410,7 @@
         },
         {
           "name": "Intimidate",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -2431,7 +2431,7 @@
         },
         {
           "name": "Jump",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2452,7 +2452,7 @@
         },
         {
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -2473,7 +2473,7 @@
         },
         {
           "name": "Listen",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2494,7 +2494,7 @@
         },
         {
           "name": "Move Silently",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2515,7 +2515,7 @@
         },
         {
           "name": "Open Lock",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2536,7 +2536,7 @@
         },
         {
           "name": "Perform",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2557,7 +2557,7 @@
         },
         {
           "name": "Profession",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2578,7 +2578,7 @@
         },
         {
           "name": "Ride",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2599,7 +2599,7 @@
         },
         {
           "name": "Search",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2620,7 +2620,7 @@
         },
         {
           "name": "Sense Motive",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2641,7 +2641,7 @@
         },
         {
           "name": "Sleight of Hands",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2662,7 +2662,7 @@
         },
         {
           "name": "Spellcraft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -2683,7 +2683,7 @@
         },
         {
           "name": "Spot",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2704,7 +2704,7 @@
         },
         {
           "name": "Survival",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2725,7 +2725,7 @@
         },
         {
           "name": "Swim",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2746,7 +2746,7 @@
         },
         {
           "name": "Tumble",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -2767,7 +2767,7 @@
         },
         {
           "name": "Use Magic Device",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -2788,7 +2788,7 @@
         },
         {
           "name": "Use Rope",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3516,7 +3516,7 @@
       "skills": [
         {
           "name": "Appraise",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3537,7 +3537,7 @@
         },
         {
           "name": "Balance",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3558,7 +3558,7 @@
         },
         {
           "name": "Bluff",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3579,7 +3579,7 @@
         },
         {
           "name": "Climb",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3600,7 +3600,7 @@
         },
         {
           "name": "Concentration",
-          "keyScoreName": "constitution",
+          "keyAbility": "constitution",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3621,7 +3621,7 @@
         },
         {
           "name": "Craft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3642,7 +3642,7 @@
         },
         {
           "name": "Decipher Script",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3663,7 +3663,7 @@
         },
         {
           "name": "Diplomacy",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3684,7 +3684,7 @@
         },
         {
           "name": "Disable Device",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3705,7 +3705,7 @@
         },
         {
           "name": "Disguise",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3726,7 +3726,7 @@
         },
         {
           "name": "Escape Artist",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3747,7 +3747,7 @@
         },
         {
           "name": "Forgery",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3768,7 +3768,7 @@
         },
         {
           "name": "Gather Information",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3789,7 +3789,7 @@
         },
         {
           "name": "Handle Animal",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3810,7 +3810,7 @@
         },
         {
           "name": "Heal",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3831,7 +3831,7 @@
         },
         {
           "name": "Hide",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3852,7 +3852,7 @@
         },
         {
           "name": "Intimidate",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3873,7 +3873,7 @@
         },
         {
           "name": "Jump",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3894,7 +3894,7 @@
         },
         {
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3915,7 +3915,7 @@
         },
         {
           "name": "Listen",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3936,7 +3936,7 @@
         },
         {
           "name": "Move Silently",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -3957,7 +3957,7 @@
         },
         {
           "name": "Open Lock",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -3978,7 +3978,7 @@
         },
         {
           "name": "Perform",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -3999,7 +3999,7 @@
         },
         {
           "name": "Profession",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -4020,7 +4020,7 @@
         },
         {
           "name": "Ride",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -4041,7 +4041,7 @@
         },
         {
           "name": "Search",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -4062,7 +4062,7 @@
         },
         {
           "name": "Sense Motive",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -4083,7 +4083,7 @@
         },
         {
           "name": "Sleight of Hands",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -4104,7 +4104,7 @@
         },
         {
           "name": "Spellcraft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -4125,7 +4125,7 @@
         },
         {
           "name": "Spot",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -4146,7 +4146,7 @@
         },
         {
           "name": "Survival",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -4167,7 +4167,7 @@
         },
         {
           "name": "Swim",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -4188,7 +4188,7 @@
         },
         {
           "name": "Tumble",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": true,
@@ -4209,7 +4209,7 @@
         },
         {
           "name": "Use Magic Device",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -4230,7 +4230,7 @@
         },
         {
           "name": "Use Rope",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5033,7 +5033,7 @@
         {
           "_id": "59cf42652e94fd4660c530b5",
           "name": "Appraise",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5047,7 +5047,7 @@
         {
           "_id": "59d4ecc82c22271fd04e2bd3",
           "name": "Decipher Script",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5061,7 +5061,7 @@
         {
           "_id": "59d14179fa78bf47f8a36a03",
           "name": "Bluff",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5075,7 +5075,7 @@
         {
           "_id": "59d14322fa78bf47f8a36a04",
           "name": "Climb",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5089,7 +5089,7 @@
         {
           "_id": "59d516195b378b18385efa44",
           "name": "Forgery",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5103,7 +5103,7 @@
         {
           "_id": "59d5165c5b378b18385efa45",
           "name": "Gather Information",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5117,7 +5117,7 @@
         {
           "_id": "59d5353d5b378b18385efa47",
           "name": "Heal",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5131,7 +5131,7 @@
         {
           "_id": "59d535ae5b378b18385efa48",
           "name": "Hide",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5145,7 +5145,7 @@
         {
           "_id": "59d5364e5b378b18385efa49",
           "name": "Intimidate",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5159,7 +5159,7 @@
         {
           "_id": "59d536d75b378b18385efa4a",
           "name": "Jump",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5173,7 +5173,7 @@
         {
           "_id": "59d54899c9cf2a13e0bcbd14",
           "name": "Perform",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5192,7 +5192,7 @@
         {
           "_id": "59d548bdc9cf2a13e0bcbd15",
           "name": "Profession",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5211,7 +5211,7 @@
         {
           "_id": "59d5493ac9cf2a13e0bcbd17",
           "name": "Search",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5225,7 +5225,7 @@
         {
           "_id": "59d54970c9cf2a13e0bcbd18",
           "name": "Sense Motive",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5239,7 +5239,7 @@
         {
           "_id": "59d5499dc9cf2a13e0bcbd19",
           "name": "Sleight Of Hand",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5253,7 +5253,7 @@
         {
           "_id": "59d549f6c9cf2a13e0bcbd1b",
           "name": "Spot",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5267,7 +5267,7 @@
         {
           "_id": "59d54a4cc9cf2a13e0bcbd1d",
           "name": "Swim",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5281,7 +5281,7 @@
         {
           "_id": "59d4ed732c22271fd04e2bd4",
           "name": "Diplomacy",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5295,7 +5295,7 @@
         {
           "_id": "59d4eec2d3d50b41d4709d73",
           "name": "Disable Device",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5309,7 +5309,7 @@
         {
           "_id": "59d50de7771e643a48e1f03e",
           "name": "Escape Artist",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5323,7 +5323,7 @@
         {
           "_id": "59d5397d8389693050092e6f",
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5342,7 +5342,7 @@
         {
           "_id": "59d53f38c9cf2a13e0bcbd11",
           "name": "Listen",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5356,7 +5356,7 @@
         {
           "_id": "59d5482cc9cf2a13e0bcbd12",
           "name": "Move Silently",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5370,7 +5370,7 @@
         {
           "_id": "59d54860c9cf2a13e0bcbd13",
           "name": "Open Lock",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5384,7 +5384,7 @@
         {
           "_id": "59d54ad4c9cf2a13e0bcbd1f",
           "name": "Use Magic Device",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5398,7 +5398,7 @@
         {
           "_id": "59d54b30c9cf2a13e0bcbd20",
           "name": "Use Rope",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5412,7 +5412,7 @@
         {
           "_id": "59d13413d039a83db4a10bb5",
           "name": "Balance",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -5426,7 +5426,7 @@
         {
           "_id": "59d4c67d00c3bf35a06fd3ef",
           "name": "Concentration",
-          "keyScoreName": "constitution",
+          "keyAbility": "constitution",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5440,7 +5440,7 @@
         {
           "_id": "59d4eb5d2c22271fd04e2bd2",
           "name": "Craft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5459,7 +5459,7 @@
         {
           "_id": "59d4f7bdd3d50b41d4709d74",
           "name": "Disguise ",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5473,7 +5473,7 @@
         {
           "_id": "59d5342a5b378b18385efa46",
           "name": "Handle Animal",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5487,7 +5487,7 @@
         {
           "_id": "59d54904c9cf2a13e0bcbd16",
           "name": "Ride",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5501,7 +5501,7 @@
         {
           "_id": "59d549d2c9cf2a13e0bcbd1a",
           "name": "Spellcraft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5515,7 +5515,7 @@
         {
           "_id": "59d54a2ec9cf2a13e0bcbd1c",
           "name": "Survival",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -5529,7 +5529,7 @@
         {
           "_id": "59d54a8dc9cf2a13e0bcbd1e",
           "name": "Tumble",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6051,7 +6051,7 @@
         {
           "_id": "59cf42652e94fd4660c530b5",
           "name": "Appraise",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6074,7 +6074,7 @@
         {
           "_id": "59d4ecc82c22271fd04e2bd3",
           "name": "Decipher Script",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6097,7 +6097,7 @@
         {
           "_id": "59d14179fa78bf47f8a36a03",
           "name": "Bluff",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6120,7 +6120,7 @@
         {
           "_id": "59d14322fa78bf47f8a36a04",
           "name": "Climb",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6143,7 +6143,7 @@
         {
           "_id": "59d516195b378b18385efa44",
           "name": "Forgery",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6166,7 +6166,7 @@
         {
           "_id": "59d5165c5b378b18385efa45",
           "name": "Gather Information",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6189,7 +6189,7 @@
         {
           "_id": "59d5353d5b378b18385efa47",
           "name": "Heal",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6212,7 +6212,7 @@
         {
           "_id": "59d535ae5b378b18385efa48",
           "name": "Hide",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6235,7 +6235,7 @@
         {
           "_id": "59d5364e5b378b18385efa49",
           "name": "Intimidate",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6258,7 +6258,7 @@
         {
           "_id": "59d536d75b378b18385efa4a",
           "name": "Jump",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6281,7 +6281,7 @@
         {
           "_id": "59d54899c9cf2a13e0bcbd14",
           "name": "Perform",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6309,7 +6309,7 @@
         {
           "_id": "59d548bdc9cf2a13e0bcbd15",
           "name": "Profession",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6337,7 +6337,7 @@
         {
           "_id": "59d5493ac9cf2a13e0bcbd17",
           "name": "Search",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6360,7 +6360,7 @@
         {
           "_id": "59d54970c9cf2a13e0bcbd18",
           "name": "Sense Motive",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6383,7 +6383,7 @@
         {
           "_id": "59d5499dc9cf2a13e0bcbd19",
           "name": "Sleight Of Hand",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6406,7 +6406,7 @@
         {
           "_id": "59d549f6c9cf2a13e0bcbd1b",
           "name": "Spot",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6429,7 +6429,7 @@
         {
           "_id": "59d54a4cc9cf2a13e0bcbd1d",
           "name": "Swim",
-          "keyScoreName": "strength",
+          "keyAbility": "strength",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6452,7 +6452,7 @@
         {
           "_id": "59d4ed732c22271fd04e2bd4",
           "name": "Diplomacy",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6475,7 +6475,7 @@
         {
           "_id": "59d4eec2d3d50b41d4709d73",
           "name": "Disable Device",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6498,7 +6498,7 @@
         {
           "_id": "59d50de7771e643a48e1f03e",
           "name": "Escape Artist",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6521,7 +6521,7 @@
         {
           "_id": "59d5397d8389693050092e6f",
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6549,7 +6549,7 @@
         {
           "_id": "59d53f38c9cf2a13e0bcbd11",
           "name": "Listen",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6572,7 +6572,7 @@
         {
           "_id": "59d5482cc9cf2a13e0bcbd12",
           "name": "Move Silently",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6595,7 +6595,7 @@
         {
           "_id": "59d54860c9cf2a13e0bcbd13",
           "name": "Open Lock",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6618,7 +6618,7 @@
         {
           "_id": "59d54ad4c9cf2a13e0bcbd1f",
           "name": "Use Magic Device",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6641,7 +6641,7 @@
         {
           "_id": "59d54b30c9cf2a13e0bcbd20",
           "name": "Use Rope",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6664,7 +6664,7 @@
         {
           "_id": "59d13413d039a83db4a10bb5",
           "name": "Balance",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6687,7 +6687,7 @@
         {
           "_id": "59d4c67d00c3bf35a06fd3ef",
           "name": "Concentration",
-          "keyScoreName": "constitution",
+          "keyAbility": "constitution",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6710,7 +6710,7 @@
         {
           "_id": "59d4eb5d2c22271fd04e2bd2",
           "name": "Craft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6738,7 +6738,7 @@
         {
           "_id": "59d4f7bdd3d50b41d4709d74",
           "name": "Disguise ",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6761,7 +6761,7 @@
         {
           "_id": "59d5342a5b378b18385efa46",
           "name": "Handle Animal",
-          "keyScoreName": "charisma",
+          "keyAbility": "charisma",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6784,7 +6784,7 @@
         {
           "_id": "59d54904c9cf2a13e0bcbd16",
           "name": "Ride",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6807,7 +6807,7 @@
         {
           "_id": "59d549d2c9cf2a13e0bcbd1a",
           "name": "Spellcraft",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6830,7 +6830,7 @@
         {
           "_id": "59d54a2ec9cf2a13e0bcbd1c",
           "name": "Survival",
-          "keyScoreName": "wisdom",
+          "keyAbility": "wisdom",
           "untrained": true,
           "armorCheckPenalty": false,
           "classSkill": false,
@@ -6853,7 +6853,7 @@
         {
           "_id": "59d54a8dc9cf2a13e0bcbd1e",
           "name": "Tumble",
-          "keyScoreName": "dexterity",
+          "keyAbility": "dexterity",
           "untrained": true,
           "armorCheckPenalty": true,
           "classSkill": false,
@@ -6876,7 +6876,7 @@
         {
           "_id": "59d5397d8389693050092e6f",
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -6904,7 +6904,7 @@
         {
           "_id": "59d5397d8389693050092e6f",
           "name": "Knowledge",
-          "keyScoreName": "intelligence",
+          "keyAbility": "intelligence",
           "untrained": false,
           "armorCheckPenalty": false,
           "classSkill": true,
@@ -7608,7 +7608,7 @@
       "special": "A dwarf gets a +2 racial bonus on Appraise checks that are related to stone or metal items because dwarves are familiar with valuable items of all kinds (especially those made of stone or metal).\n\nThe master of a raven familiar gains a +3 bonus on Appraise checks.\n\nA character with the Diligent feat gets a +2 bonus on Appraise checks.",
       "synergy": "If you have 5 ranks in any Craft skill, you gain a +2 bonus on Appraise checks related to items made with that Craft skill.",
       "untrainedDescription": "For common items, failure on an untrained check means no estimate. For rare items, success means an estimate of 50% to 150% (2d6+3 times 10%).",
-      "keyScoreName": "intelligence",
+      "keyAbility": "intelligence",
       "default": true
     },
     {
@@ -7621,7 +7621,7 @@
       "special": "A character with the Diligent feat gets a +2 bonus on Decipher Script checks.",
       "synergy": "If you have 5 or more ranks in Decipher Script, you get a +2 bonus on Use Magic Device checks involving scrolls.",
       "default": true,
-      "keyScoreName": "intelligence"
+      "keyAbility": "intelligence"
     },
     {
       "_id": "59d14179fa78bf47f8a36a03",
@@ -7634,7 +7634,7 @@
       "synergy": "If you have 5 or more ranks in Bluff, you get a +2 bonus on Diplomacy, Intimidate, and Sleight of Hand checks, as well as on Disguise checks made when you know you’re being observed and you try to act in character.",
       "default": true,
       "aditionalInformation": "<table>\n    <caption>Bluff Examples</caption>\n    <thead>\n        <tr>\n            <th align=\"left\">Example Circumstances</th>\n            <th>Sense Motive Modifier</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>The target wants to believe you.</td>\n            <td>-5</td>\n        </tr>\n        <tr>\n            <td>The bluff is believable and doesn’t affect the target much.</td>\n            <td>+0</td>\n        </tr>\n        <tr>\n            <td>The bluff is a little hard to believe or puts the target at some risk.</td>\n            <td>+5</td>\n        </tr>\n        <tr>\n            <td>The bluff is hard to believe or puts the target at significant risk.</td>\n            <td>+10</td>\n        </tr>\n        <tr>\n            <td>The bluff is way out there, almost too incredible to consider.</td>\n            <td>+20</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d14322fa78bf47f8a36a04",
@@ -7647,7 +7647,7 @@
       "synergy": "If you have 5 or more ranks in Use Rope, you get a +2 bonus on Climb checks made to climb a rope, a knotted rope, or a rope-and-wall combination.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Climb DC</th>\n            <th>Example Surface or Activity</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>0</td>\n            <td>A slope too steep to walk up, or a knotted rope with a wall to brace against.</td>\n        </tr>\n        <tr>\n            <td>5</td>\n            <td>A rope with a wall to brace against, or a knotted rope, or a rope affected by the rope trick spell.</td>\n        </tr>\n        <tr>\n            <td>10</td>\n            <td>A surface with ledges to hold on to and stand on, such as a very rough wall or a ship’s rigging.</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Any surface with adequate handholds and footholds (natural or artificial), such as a very rough natural rock\n                surface or a tree, or an unknotted rope, or pulling yourself up when dangling by your hands.</td>\n        </tr>\n        <tr>\n            <td>20</td>\n            <td>An uneven surface with some narrow handholds and footholds, such as a typical wall in a dungeon or ruins.</td>\n        </tr>\n        <tr>\n            <td>25</td>\n            <td>A rough surface, such as a natural rock wall or a brick wall.</td>\n        </tr>\n        <tr>\n            <td>25</td>\n            <td>An overhang or ceiling with handholds but no footholds.</td>\n        </tr>\n        <tr>\n            <td>—</td>\n            <td>A perfectly smooth, flat, vertical surface cannot be climbed.</td>\n        </tr>\n    </tbody>\n</table>\n\n<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Climb DC Modifier<sup>1</sup></th>\n            <th>Example Surface or Activity</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>These modifiers are cumulative; use any that apply.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>-10</td>\n            <td style=\"white-space:normal\">Climbing a chimney (artificial or natural) or other location where you can brace against two opposite walls (reduces\n                DC by 10).</td>\n        </tr>\n        <tr>\n            <td>-5</td>\n            <td>Climbing a corner where you can brace against perpendicular walls (reduces DC by 5).</td>\n        </tr>\n        <tr>\n            <td>+5</td>\n            <td>Surface is slippery (increases DC by 5).</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "strength"
+      "keyAbility": "strength"
     },
     {
       "_id": "59d516195b378b18385efa44",
@@ -7661,7 +7661,7 @@
       "default": true,
       "untrainedDescription": "",
       "aditionalInformation": "<table id=\"forgeryCheckModifiers\" cellspacing=\"0\">\n    <caption>Forgery Check Modifiers</caption>\n    <thead>\n        <tr>\n            <th>Condition</th>\n            <th>Reader’s Forgery<br>Check Modifier</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Type of document unknown to reader</td>\n            <td>-2</td>\n        </tr>\n        <tr>\n            <td>Type of document somewhat known to reader</td>\n            <td>+0</td>\n        </tr>\n        <tr>\n            <td>Type of document well known to reader</td>\n            <td>+2</td>\n        </tr>\n        <tr>\n            <td>Handwriting not known to reader</td>\n            <td>-2</td>\n        </tr>\n        <tr>\n            <td>Handwriting somewhat known to reader</td>\n            <td>+0</td>\n        </tr>\n        <tr>\n            <td>Handwriting intimately known to reader</td>\n            <td>+2</td>\n        </tr>\n        <tr>\n            <td>Reader only casually reviews the document</td>\n            <td>-2</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "intelligence"
+      "keyAbility": "intelligence"
     },
     {
       "_id": "59d5165c5b378b18385efa45",
@@ -7673,7 +7673,7 @@
       "special": "A half-elf has a +2 racial bonus on Gather Information checks.\n\nIf you have the Investigator feat, you get a +2 bonus on Gather Information checks.",
       "synergy": "If you have 5 or more ranks in Knowledge (local), you get a +2 bonus on Gather Information checks.",
       "default": true,
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d5353d5b378b18385efa47",
@@ -7685,7 +7685,7 @@
       "special": "A character with the Self-Sufficient feat gets a +2 bonus on Heal checks.\n\nA healer’s kit gives you a +2 circumstance bonus on Heal checks.",
       "default": true,
       "aditionalInformation": "<table id=\"healDCs\" cellspacing=\"0\">\n    <caption>Heal DCs</caption>\n    <thead>\n        <tr>\n            <th>Task</th>\n            <th>Heal DC</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>First aid</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Long-term care</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Treat wound from <a href=\"/srd/equipment/goodsAndServices.htm#caltrops\" data-ytta-id=\"-\">caltrop</a>,<br><a class=\"spell\"\n                    href=\"/srd/spells/spikeGrowth.htm\" data-ytta-id=\"-\">spike growth</a>, or <a class=\"spell\" href=\"/srd/spells/spikeStones.htm\"\n                    data-ytta-id=\"-\">spike stones</a></td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Treat poison</td>\n            <td>Poison’s<br>save DC</td>\n        </tr>\n        <tr>\n            <td>Treat disease</td>\n            <td>Disease’s<br>save DC</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "wisdom"
+      "keyAbility": "wisdom"
     },
     {
       "_id": "59d535ae5b378b18385efa48",
@@ -7696,7 +7696,7 @@
       "action": "Usually none. Normally, you make a Hide check as part of movement, so it doesn’t take a separate action. However, hiding immediately after a ranged attack (see Sniping, above) is a move action.",
       "special": "If you are invisible, you gain a +40 bonus on Hide checks if you are immobile, or a +20 bonus on Hide checks if you’re moving.\n\nIf you have the Stealthy feat, you get a +2 bonus on Hide checks.\n\nA 13th-level ranger can attempt a Hide check in any sort of natural terrain, even if it doesn’t grant cover or concealment. A 17th-level ranger can do this even while being observed.",
       "default": true,
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d5364e5b378b18385efa49",
@@ -7708,7 +7708,7 @@
       "special": "You gain a +4 bonus on your Intimidate check for every size category that you are larger than your target. Conversely, you take a -4 penalty on your Intimidate check for every size category that you are smaller than your target.\n\nA character immune to fear can’t be intimidated, nor can nonintelligent creatures.\n\nIf you have the Persuasive feat, you get a +2 bonus on Intimidate checks.",
       "synergy": "If you have 5 or more ranks in Bluff, you get a +2 bonus on Intimidate checks.",
       "default": true,
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d536d75b378b18385efa4a",
@@ -7721,7 +7721,7 @@
       "synergy": "If you have 5 or more ranks in Tumble, you get a +2 bonus on Jump checks.\nIf you have 5 or more ranks in Jump, you get a +2 bonus on Tumble checks.",
       "default": true,
       "aditionalInformation": "<table id=\"longJumpDCs\" cellspacing=\"0\">\n    <caption>Long Jump DCs</caption>\n    <thead>\n        <tr>\n            <th>Long Jump Distance</th>\n            <th>Jump DC<sup>1</sup></th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>Requires a 20-foot running start. Without a running start, double the DC.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>5 feet</td>\n            <td>5</td>\n        </tr>\n        <tr>\n            <td>10 feet</td>\n            <td>10</td>\n        </tr>\n        <tr>\n            <td>15 feet</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>20 feet</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>25 feet</td>\n            <td>25</td>\n        </tr>\n        <tr>\n            <td>30 feet</td>\n            <td>30</td>\n        </tr>\n    </tbody>\n</table>\n\n<table id=\"highJumpDCs\" cellspacing=\"0\">\n    <caption>High Jump DCs</caption>\n    <thead>\n        <tr>\n            <th>High Jump Distance<sup>1</sup></th>\n            <th>Jump DC<sup>2</sup></th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>Not including vertical reach; see below.</li>\n                    <li>Requires a 20-foot running start. Without a running start, double the DC.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>1 foot</td>\n            <td>4</td>\n        </tr>\n        <tr>\n            <td>2 feet</td>\n            <td>8</td>\n        </tr>\n        <tr>\n            <td>3 feet</td>\n            <td>12</td>\n        </tr>\n        <tr>\n            <td>4 feet</td>\n            <td>16</td>\n        </tr>\n        <tr>\n            <td>5 feet</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>6 feet</td>\n            <td>24</td>\n        </tr>\n        <tr>\n            <td>7 feet</td>\n            <td>28</td>\n        </tr>\n        <tr>\n            <td>8 feet</td>\n            <td>32</td>\n        </tr>\n    </tbody>\n</table>\n\n<table id=\"verticalReach\" cellspacing=\"0\">\n    <caption>Vertical Reach</caption>\n    <thead>\n        <tr>\n            <th>Creature Size</th>\n            <th>Vertical Reach</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Colossal</td>\n            <td>128 ft.</td>\n        </tr>\n        <tr>\n            <td>Gargantuan</td>\n            <td>64 ft.</td>\n        </tr>\n        <tr>\n            <td>Huge</td>\n            <td>32 ft.</td>\n        </tr>\n        <tr>\n            <td>Large</td>\n            <td>16 ft.</td>\n        </tr>\n        <tr>\n            <td>Medium</td>\n            <td>8 ft.</td>\n        </tr>\n        <tr>\n            <td>Small</td>\n            <td>4 ft.</td>\n        </tr>\n        <tr>\n            <td>Tiny</td>\n            <td>2 ft.</td>\n        </tr>\n        <tr>\n            <td>Diminutive</td>\n            <td>1 ft.</td>\n        </tr>\n        <tr>\n            <td>Fine</td>\n            <td>½ ft.</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "strength"
+      "keyAbility": "strength"
     },
     {
       "_id": "59d54899c9cf2a13e0bcbd14",
@@ -7733,7 +7733,7 @@
       "special": "A bard must have at least 3 ranks in a Perform skill to inspire courage in his allies, or to use his countersong or his fascinate ability. A bard needs 6 ranks in a Perform skill to inspire competence, 9 ranks to use his suggestion ability, 12 ranks to inspire greatness, 15 ranks to use his song of freedom ability, 18 ranks to inspire heroics, and 21 ranks to use his mass suggestion ability. See Bardic Music in the bard class description.\n\nIn addition to using the Perform skill, you can entertain people with sleight of hand, tumbling, tightrope walking, and spells (especially illusions).",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Perform DC</th>\n            <th>Performance</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>10</td>\n            <td style=\"white-space:normal\">Routine performance. Trying to earn money by playing in public is essentially begging. You can earn 1d10 cp/day.</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Enjoyable performance. In a prosperous city, you can earn 1d10 sp/day.</td>\n        </tr>\n        <tr>\n            <td>20</td>\n            <td style=\"white-space:normal\">Great performance. In a prosperous city, you can earn 3d10 sp/day. In time, you may be invited to join a professional\n                troupe and may develop a regional reputation.</td>\n        </tr>\n        <tr>\n            <td>25</td>\n            <td style=\"white-space:normal\">Memorable performance. In a prosperous city, you can earn 1d6 gp/day. In time, you may come to the attention\n                of noble patrons and develop a national reputation.</td>\n        </tr>\n        <tr>\n            <td>30</td>\n            <td style=\"white-space:normal\">Extraordinary performance. In a prosperous city, you can earn 3d6 gp/day. In time, you may draw attention from\n                distant potential patrons, or even from extraplanar beings.</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "charisma",
+      "keyAbility": "charisma",
       "hasSubValue": true
     },
     {
@@ -7744,7 +7744,7 @@
       "action": "Not applicable. A single check generally represents a week of work.",
       "tryAgain": "Varies. An attempt to use a Profession skill to earn an income cannot be retried. You are stuck with whatever weekly wage your check result brought you. Another check may be made after a week to determine a new income for the next period of time. An attempt to accomplish some specific task can usually be retried.",
       "default": true,
-      "keyScoreName": "wisdom",
+      "keyAbility": "wisdom",
       "hasSubValue": true
     },
     {
@@ -7758,7 +7758,7 @@
       "restriction": "While anyone can use Search to find a trap whose DC is 20 or lower, only a rogue can use Search to locate traps with higher DCs. (Exception: The spell find traps temporarily enables a cleric to use the Search skill as if he were a rogue.)\n\nA dwarf, even one who is not a rogue, can use the Search skill to find a difficult trap (one with a DC higher than 20) if the trap is built into or out of stone. He gains a +2 racial bonus on the Search check from his stonecunning ability.",
       "default": true,
       "aditionalInformation": "<table id=\"searchDCs\" cellspacing=\"0\">\n    <caption>Search DCs</caption>\n    <thead>\n        <tr>\n            <th>Task</th>\n            <th>Search DC</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>Dwarves (even if they are not <a href=\"/srd/classes/rogue.htm\" data-ytta-id=\"-\">rogues</a>) can use Search\n                        to find traps built into or out of stone.</li>\n                    <li>A successful Search check can find a footprint or similar sign of a creature’s passage, but it won’t\n                        let you find or follow a trail. See the <a href=\"/srd/feats.htm#track\" data-ytta-id=\"-\">Track</a>                        feat for the appropriate DC.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>Ransack a chest full of junk to find a certain item</td>\n            <td>10</td>\n        </tr>\n        <tr>\n            <td>Notice a typical secret door or a simple trap</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Find a difficult nonmagical trap (<a href=\"/srd/classes/rogue.htm\" data-ytta-id=\"-\">rogue</a> only)<sup>1</sup></td>\n            <td>21 or higher</td>\n        </tr>\n        <tr>\n            <td>Find a magic trap (<a href=\"/srd/classes/rogue.htm\" data-ytta-id=\"-\">rogue</a> only)<sup>1</sup></td>\n            <td>25 + level of spell used to create trap</td>\n        </tr>\n        <tr>\n            <td>Notice a well-hidden secret door</td>\n            <td>30</td>\n        </tr>\n        <tr>\n            <td>Find a footprint</td>\n            <td>Varies<sup>2</sup></td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "intelligence"
+      "keyAbility": "intelligence"
     },
     {
       "_id": "59d54970c9cf2a13e0bcbd18",
@@ -7771,7 +7771,7 @@
       "synergy": "If you have 5 or more ranks in Sense Motive, you get a +2 bonus on Diplomacy checks.",
       "default": true,
       "aditionalInformation": "<table id=\"senseMotiveDCs\" cellspacing=\"0\">\n    <caption>Sense Motive DCs</caption>\n    <thead>\n        <tr>\n            <th>Task</th>\n            <th>Sense Motive DC</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Hunch</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Sense enchantment</td>\n            <td>25 or 15</td>\n        </tr>\n        <tr>\n            <td>Discern secret message</td>\n            <td>Varies</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "wisdom"
+      "keyAbility": "wisdom"
     },
     {
       "_id": "59d5499dc9cf2a13e0bcbd19",
@@ -7785,7 +7785,7 @@
       "synergy": "If you have 5 or more ranks in Bluff, you get a +2 bonus on Sleight of Hand checks.",
       "default": true,
       "aditionalInformation": "<table id=\"sleightofHandDCs\" cellspacing=\"0\">\n    <caption>Sleight of Hand DCs</caption>\n    <thead>\n        <tr>\n            <th>Sleight of Hand DC</th>\n            <th>Task</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>10</td>\n            <td>Palm a coin-sized object, make a coin disappear</td>\n        </tr>\n        <tr>\n            <td>20</td>\n            <td>Lift a small object from a person</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d549f6c9cf2a13e0bcbd1b",
@@ -7797,7 +7797,7 @@
       "special": "A fascinated creature takes a -4 penalty on Spot checks made as reactions.\n\nIf you have the Alertness feat, you get a +2 bonus on Spot checks.\n\nA ranger gains a bonus on Spot checks when using this skill against a favored enemy.\n\nAn elf has a +2 racial bonus on Spot checks.\n\nA half-elf has a +1 racial bonus on Spot checks.\n\nThe master of a hawk familiar gains a +3 bonus on Spot checks in daylight or other lighted areas.\n\nThe master of an owl familiar gains a +3 bonus on Spot checks in shadowy or other darkened areas.",
       "default": true,
       "aditionalInformation": "<table id=\"spotCheckPenalties\" cellspacing=\"0\" class=\"right\">\n    <caption>Spot Check Penalties</caption>\n    <thead>\n        <tr>\n            <th>Condition</th>\n            <th>Penalty</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Per 10 feet of distance</td>\n            <td>-1</td>\n        </tr>\n        <tr>\n            <td>Spotter distracted</td>\n            <td>-5</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "wisdom"
+      "keyAbility": "wisdom"
     },
     {
       "_id": "59d54a4cc9cf2a13e0bcbd1d",
@@ -7809,7 +7809,7 @@
       "special": "Swim checks are subject to double the normal armor check penalty and encumbrance penalty.\n\nIf you have the Athletic feat, you get a +2 bonus on Swim checks.\n\nIf you have the Endurance feat, you get a +4 bonus on Swim checks made to avoid taking nonlethal damage from fatigue.\n\nA creature with a swim speed can move through water at its indicated speed without making Swim checks. It gains a +8 racial bonus on any Swim check to perform a special action or avoid a hazard. The creature always can choose to take 10 on a Swim check, even if distracted or endangered when swimming. Such a creature can use the run action while swimming, provided that it swims in a straight line.",
       "default": true,
       "aditionalInformation": "<table id=\"swimDCs\" cellspacing=\"0\" class=\"right\">\n    <caption>Swim DCs</caption>\n    <thead>\n        <tr>\n            <th>Water</th>\n            <th>Swim DC</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>You can’t <a href=\"/srd/skills/usingSkills.htm#taking10\" data-ytta-id=\"-\">take 10</a> on a Swim check\n                        in stormy water, even if you aren’t otherwise being threatened or distracted.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>Calm water</td>\n            <td>10</td>\n        </tr>\n        <tr>\n            <td>Rough water</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Stormy water</td>\n            <td>20<sup>1</sup></td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "strength"
+      "keyAbility": "strength"
     },
     {
       "_id": "59d4ed732c22271fd04e2bd4",
@@ -7822,7 +7822,7 @@
       "synergy": "If you have 5 or more ranks in Bluff, Knowledge (nobility and royalty), or Sense Motive, you get a +2 bonus on Diplomacy checks.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th rowspan=\"2\" >Initial Attitude</th>\n            <th colspan=\"5\">New Attitude (DC to achieve)</th>\n        </tr>\n        <tr>\n            <th>Hostile</th>\n            <th>Unfriendly</th>\n            <th>Indifferent</th>\n            <th>Friendly</th>\n            <th>Helpful</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Hostile</td>\n            <td >Less than 20</td>\n            <td >20</td>\n            <td >25</td>\n            <td >35</td>\n            <td >50</td>\n        </tr>\n        <tr>\n            <td>Unfriendly</td>\n            <td >Less than 5</td>\n            <td >5</td>\n            <td >15</td>\n            <td >25</td>\n            <td >40</td>\n        </tr>\n        <tr>\n            <td>Indifferent</td>\n            <td >—</td>\n            <td >Less than 1</td>\n            <td >1</td>\n            <td >15</td>\n            <td >30</td>\n        </tr>\n        <tr>\n            <td>Friendly</td>\n            <td >—</td>\n            <td >—</td>\n            <td >Less than 1</td>\n            <td >1</td>\n            <td >20</td>\n        </tr>\n        <tr>\n            <td>Helpful</td>\n            <td >—</td>\n            <td >—</td>\n            <td >—</td>\n            <td >Less than 1</td>\n            <td >1</td>\n        </tr>\n    </tbody>\n</table>\n<table cellspacing=\"0\" style=\"margin-top:10px\">\n    <thead>\n            <tr>\n                <th>Attitude</th>\n                <th>Means</th>\n                <th>Possible Actions</th>\n            </tr></thead>\n\n    <tbody>\n        <tr>\n            <td>Hostile</td>\n            <td>Will take risks to hurt you</td>\n            <td>Attack, interfere, berate, flee</td>\n        </tr>\n        <tr>\n            <td>Unfriendly</td>\n            <td>Wishes you ill</td>\n            <td>Mislead, gossip, avoid, watch suspiciously, insult</td>\n        </tr>\n        <tr>\n            <td>Indifferent</td>\n            <td>Doesn’t much care</td>\n            <td>Socially expected interaction</td>\n        </tr>\n        <tr>\n            <td>Friendly</td>\n            <td>Wishes you well</td>\n            <td>Chat, advise, offer limited help, advocate</td>\n        </tr>\n        <tr>\n            <td>Helpful</td>\n            <td>Will take risks to help you</td>\n            <td>Protect, back up, heal, aid</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d4eec2d3d50b41d4709d73",
@@ -7837,7 +7837,7 @@
       "miscellaneous": "Other Ways To Beat A Trap\nIt’s possible to ruin many traps without making a Disable Device check.\n\nRanged Attack Traps\nOnce a trap’s location is known, the obvious way to ruin it is to smash the mechanism—assuming the mechanism can be accessed. Failing that, it’s possible to plug up the holes from which the projectiles emerge. Doing this prevents the trap from firing unless its ammunition does enough damage to break through the plugs.\n\nMelee Attack Traps\nThese devices can be thwarted by smashing the mechanism or blocking the weapons, as noted above. Alternatively, if a character studies the trap as it triggers, he might be able to time his dodges just right to avoid damage. A character who is doing nothing but studying a trap when it first goes off gains a +4 dodge bonus against its attacks if it is triggered again within the next minute.\n\nPits\nDisabling a pit trap generally ruins only the trapdoor, making it an uncovered pit. Filling in the pit or building a makeshift bridge across it is an application of manual labor, not the Disable Device skill. Characters could neutralize any spikes at the bottom of a pit by attacking them—they break just as daggers do.\n\nMagic Traps\nDispel magic helps here. Someone who succeeds on a caster level check against the level of the trap’s creator suppresses the trap for 1d4 rounds. This works only with a targeted dispel magic, not the area version.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Device</th>\n            <th>Time</th>\n            <th>Disable<br>Device DC<sup>1</sup></th>\n            <th>Example</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"4\">\n                <ol>\n                    <li>If you attempt to leave behind no trace of your tampering, add 5 to the DC.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>Simple</td>\n            <td>1 round</td>\n            <td>10</td>\n            <td>Jam a lock</td>\n        </tr>\n        <tr>\n            <td>Tricky</td>\n            <td>1d4 rounds</td>\n            <td>15</td>\n            <td>Sabotage a wagon wheel</td>\n        </tr>\n        <tr>\n            <td>Difficult</td>\n            <td>2d4 rounds</td>\n            <td>20</td>\n            <td>Disarm a trap, reset a trap</td>\n        </tr>\n        <tr>\n            <td>Wicked</td>\n            <td>2d4 rounds</td>\n            <td>25</td>\n            <td>Disarm a complex trap, cleverly sabotage a clockwork device</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "intelligence"
+      "keyAbility": "intelligence"
     },
     {
       "_id": "59d50de7771e643a48e1f03e",
@@ -7851,7 +7851,7 @@
       "synergy": "If you have 5 or more ranks in Escape Artist, you get a +2 bonus on Use Rope checks to bind someone.\nIf you have 5 or more ranks in Use Rope, you get a +2 bonus on Escape Artist checks when escaping from rope bonds.",
       "default": true,
       "aditionalInformation": "<table id=\"escapeArtistDCs\" cellspacing=\"0\">\n    <caption>Escape Artist DCs</caption>\n    <thead>\n        <tr>\n            <th>Restraint</th>\n            <th>Escape Artist DC</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Ropes</td>\n            <td>Binder’s <a href=\"/srd/skills/useRope.htm\" data-ytta-id=\"-\">Use Rope</a> check at +10</td>\n        </tr>\n        <tr>\n            <td><a href=\"/srd/equipment/weapons.htm#net\" data-ytta-id=\"-\">Net</a>, <a class=\"spell\" href=\"/srd/spells/animateRope.htm\"\n                    data-ytta-id=\"-\">animate rope</a> spell, <a class=\"spell\" href=\"/srd/spells/commandPlants.htm\" data-ytta-id=\"-\">command plants</a>                spell,<br><a class=\"spell\" href=\"/srd/spells/controlPlants.htm\" data-ytta-id=\"-\">control plants</a> spell,\n                or <a class=\"spell\" href=\"/srd/spells/entangle.htm\" data-ytta-id=\"-\">entangle</a> spell</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td><a class=\"spell\" href=\"/srd/spells/snare.htm\" data-ytta-id=\"-\">Snare</a> spell</td>\n            <td>23</td>\n        </tr>\n        <tr>\n            <td>Manacles</td>\n            <td>30</td>\n        </tr>\n        <tr>\n            <td>Tight space</td>\n            <td>30</td>\n        </tr>\n        <tr>\n            <td>Masterwork manacles</td>\n            <td>35</td>\n        </tr>\n        <tr>\n            <td>Grappler</td>\n            <td>Grappler’s grapple<br>check result</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d5397d8389693050092e6f",
@@ -7863,7 +7863,7 @@
       "synergy": "If you have 5 or more ranks in Knowledge (arcana), you get a +2 bonus on Spellcraft checks.\nIf you have 5 or more ranks in Knowledge (architecture and engineering), you get a +2 bonus on Search checks made to find secret doors or hidden compartments.\nIf you have 5 or more ranks in Knowledge (geography), you get a +2 bonus on Survival checks made to keep from getting lost or to avoid natural hazards.\nIf you have 5 or more ranks in Knowledge (history), you get a +2 bonus on bardic knowledge checks.\nIf you have 5 or more ranks in Knowledge (local), you get a +2 bonus on Gather Information checks.\nIf you have 5 or more ranks in Knowledge (nature), you get a +2 bonus on Survival checks made in aboveground natural environments (aquatic, desert, forest, hill, marsh, mountains, or plains).\nIf you have 5 or more ranks in Knowledge (nobility and royalty), you get a +2 bonus on Diplomacy checks.\nIf you have 5 or more ranks in Knowledge (religion), you get a +2 bonus on turning checks against undead.\nIf you have 5 or more ranks in Knowledge (the planes), you get a +2 bonus on Survival checks made while on other planes.\nIf you have 5 or more ranks in Knowledge (dungeoneering), you get a +2 bonus on Survival checks made while underground.\nIf you have 5 or more ranks in Survival, you get a +2 bonus on Knowledge (nature) checks.",
       "default": true,
       "aditionalInformation": "",
-      "keyScoreName": "intelligence",
+      "keyAbility": "intelligence",
       "hasSubValue": true
     },
     {
@@ -7876,7 +7876,7 @@
       "special": "When several characters are listening to the same thing, a single 1d20 roll can be used for all the individuals’ Listen checks.\n\nA fascinated creature takes a -4 penalty on Listen checks made as reactions.\n\nIf you have the Alertness feat, you get a +2 bonus on Listen checks.\n\nA ranger gains a bonus on Listen checks when using this skill against a favored enemy.\n\nAn elf, gnome, or halfling has a +2 racial bonus on Listen checks.\n\nA half-elf has a +1 racial bonus on Listen checks.\n\nA sleeping character may make Listen checks at a -10 penalty. A successful check awakens the sleeper.",
       "default": true,
       "aditionalInformation": "<table id=\"listenDCs\" cellspacing=\"0\">\n    <caption>Listen DCs</caption>\n    <thead>\n        <tr>\n            <th>Listen DC</th>\n            <th>Sound</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>If you beat the DC by 10 or more, you can make out what’s being said, assuming that you understand the\n                        language.\n                    </li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>-10</td>\n            <td>A battle</td>\n        </tr>\n        <tr>\n            <td>0</td>\n            <td>People talking<sup>1</sup></td>\n        </tr>\n        <tr>\n            <td>5</td>\n            <td>A person in medium armor walking at a slow<br>pace (10 ft./round) trying not to make any noise.</td>\n        </tr>\n        <tr>\n            <td>10</td>\n            <td>An unarmored person walking at a slow<br>pace (15 ft./round) trying not to make any noise</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td>A 1st-level <a href=\"/srd/classes/rogue.htm\" data-ytta-id=\"-\">rogue</a> using <a href=\"/srd/skills/moveSilently.htm\"\n                    data-ytta-id=\"-\">Move Silently</a><br>to sneak past the listener</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td>People whispering<sub>1</sub></td>\n        </tr>\n        <tr>\n            <td>19</td>\n            <td>A cat stalking</td>\n        </tr>\n        <tr>\n            <td>30</td>\n            <td>An owl gliding in for a kill</td>\n        </tr>\n    </tbody>\n</table>\n\n<table id=\"listenDCModifiers\" cellspacing=\"0\">\n    <caption>Listen DC Modifiers</caption>\n    <thead>\n        <tr>\n            <th>Listen DC<br>Modifier</th>\n            <th>Condition</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>+5</td>\n            <td>Through a door</td>\n        </tr>\n        <tr>\n            <td>+15</td>\n            <td>Through a stone wall</td>\n        </tr>\n        <tr>\n            <td>+1</td>\n            <td>Per 10 feet of distance</td>\n        </tr>\n        <tr>\n            <td>+5</td>\n            <td>Listener distracted</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "wisdom"
+      "keyAbility": "wisdom"
     },
     {
       "_id": "59d5482cc9cf2a13e0bcbd12",
@@ -7888,7 +7888,7 @@
       "special": "The master of a cat familiar gains a +3 bonus on Move Silently checks.\n\nA halfling has a +2 racial bonus on Move Silently checks.\n\nIf you have the Stealthy feat, you get a +2 bonus on Move Silently checks.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Surface</th>\n            <th>Check Modifier</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Noisy (scree, shallow or deep bog, undergrowth, dense rubble)</td>\n            <td>-2</td>\n        </tr>\n        <tr>\n            <td>Very noisy (dense undergrowth, deep snow)</td>\n            <td>-5</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d54860c9cf2a13e0bcbd13",
@@ -7899,7 +7899,7 @@
       "special": "If you have the Nimble Fingers feat, you get a +2 bonus on Open Lock checks.",
       "default": true,
       "aditionalInformation": "<table id=\"lockDCs\" cellspacing=\"0\">\n    <caption>Lock DCs</caption>\n    <thead>\n        <tr>\n            <th>Lock</th>\n            <th>DC</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Very simple lock</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Average lock</td>\n            <td>25</td>\n        </tr>\n        <tr>\n            <td>Good lock</td>\n            <td>30</td>\n        </tr>\n        <tr>\n            <td>Amazing lock</td>\n            <td>40</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d54ad4c9cf2a13e0bcbd1f",
@@ -7912,7 +7912,7 @@
       "synergy": "If you have 5 or more ranks in Spellcraft, you get a +2 bonus on Use Magic Device checks related to scrolls.\nIf you have 5 or more ranks in Decipher Script, you get a +2 bonus on Use Magic Device checks related to scrolls.\nIf you have 5 or more ranks in Use Magic Device, you get a +2 bonus to Spellcraft checks made to decipher spells on scrolls.",
       "default": true,
       "aditionalInformation": "<table id=\"useMagicDeviceDCs\" cellspacing=\"0\">\n    <caption>Use Magic Device DCs</caption>\n    <thead>\n        <tr>\n            <th>Task</th>\n            <th>Use Magic Device DC</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Activate blindly</td>\n            <td>25</td>\n        </tr>\n        <tr>\n            <td>Decipher a written spell</td>\n            <td>25 + spell level</td>\n        </tr>\n        <tr>\n            <td>Use a scroll</td>\n            <td>20 + caster level</td>\n        </tr>\n        <tr>\n            <td>Use a wand</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Emulate a class feature</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Emulate an ability score</td>\n            <td>See text</td>\n        </tr>\n        <tr>\n            <td>Emulate a race</td>\n            <td>25</td>\n        </tr>\n        <tr>\n            <td>Emulate an alignment</td>\n            <td>30</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d54b30c9cf2a13e0bcbd20",
@@ -7924,7 +7924,7 @@
       "synergy": "If you have 5 or more ranks in Use Rope, you get a +2 bonus on Climb checks made to climb a rope, a knotted rope, or a rope-and-wall combination.\nIf you have 5 or more ranks in Use Rope, you get a +2 bonus on Escape Artist checks when escaping from rope bonds.\nIf you have 5 or more ranks in Escape Artist, you get a +2 bonus on checks made to bind someone.",
       "default": true,
       "aditionalInformation": "<table id=\"useRopeDCs\" cellspacing=\"0\">\n    <caption>Use Rope DCs</caption>\n    <thead>\n        <tr>\n            <th>Use Rope DC</th>\n            <th>Task</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>Add 2 to the DC for every 10 feet the hook is thrown; see below.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>10</td>\n            <td>Tie a firm knot</td>\n        </tr>\n        <tr>\n            <td>10<sup>1</sup></td>\n            <td>Secure a grappling hook</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td>Tie a special knot, such as one that slips,<br>slides slowly, or loosens with a tug</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td>Tie a rope around yourself one-handed</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td>Splice two ropes together</td>\n        </tr>\n        <tr>\n            <td>Varies</td>\n            <td>Bind a character</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d13413d039a83db4a10bb5",
@@ -7937,7 +7937,7 @@
       "synergy": "If you have 5 or more ranks in Tumble, you get a +2 bonus on Balance checks.",
       "default": true,
       "aditionalInformation": "<table id=\"balanceDCs\" cellspacing=\"0\">\n\t<caption>Balance DCs</caption>\n\t<thead>\n\t\t<tr>\n\t\t\t<th >Narrow Surface</th>\n\t\t\t<th>Balance DC<sup>1</sup></th>\n\t\t\t<th >Difficult Surface</th>\n\t\t\t<th>Balance DC<sup>1</sup></th>\n\t\t</tr>\n\t</thead>\n\t<tfoot>\n\t\t<tr>\n\t\t\t<td colspan=\"4\">\n\t\t\t\t<ol>\n\t\t\t\t\t<li>Add modifiers from Narrow Surface Modifiers, below, as appropriate.</li>\n\t\t\t\t\t<li>Only if running or <a href=\"/srd/combat/specialAttacks.htm#charge\" data-ytta-id=\"-\">charging</a>. Failure by 4 or less means the character can’t <a href=\"/srd/combat/actionsInCombat.htm#run\" data-ytta-id=\"-\">run</a> or charge, but may otherwise act normally.</li>\n\t\t\t\t</ol>\n\t\t\t</td>\n\t\t</tr>\n\t</tfoot>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>7-12 inches wide</td>\n\t\t\t<td align=\"center\">10</td>\n\t\t\t<td>Uneven flagstone</td>\n\t\t\t<td align=\"center\">10<sup>2</sup></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>2-6 inches wide</td>\n\t\t\t<td align=\"center\">15</td>\n\t\t\t<td>Hewn stone floor</td>\n\t\t\t<td align=\"center\">10<sup>2</sup></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Less than 2 inches wide</td>\n\t\t\t<td align=\"center\">20</td>\n\t\t\t<td>Sloped or angled floor</td>\n\t\t\t<td align=\"center\">10<sup>2</sup></td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<table id=\"narrowSurfaceModifiers\" cellspacing=\"0\">\n\t<caption>Narrow Surface Modifiers</caption>\n\t<thead>\n\t\t<tr>\n\t\t\t<th >Surface</th>\n\t\t\t<th>DC Modifier<sup>1</sup></th>\n\t\t</tr>\n\t</thead>\n\t<tfoot>\n\t\t<tr>\n\t\t\t<td colspan=\"2\">\n\t\t\t\t<ol>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\tAdd the appropriate modifier to the Balance DC of a narrow surface.\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\tThese modifiers stack.\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</li>\n\t\t\t\t</ol>\n\t\t\t</td>\n\t\t</tr>\n\t</tfoot>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>Lightly obstructed </td>\n\t\t\t<td>+2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Severely obstructed</td>\n\t\t\t<td>+5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Lightly slippery</td>\n\t\t\t<td>+2</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Severely slippery</td>\n\t\t\t<td>+5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Sloped or angled</td>\n\t\t\t<td>+2</td>\n\t\t</tr>\n\t</tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d4c67d00c3bf35a06fd3ef",
@@ -7949,7 +7949,7 @@
       "special": "You can use Concentration to cast a spell, use a spell-like ability, or use a skill defensively, so as to avoid attacks of opportunity altogether. This doesn’t apply to other actions that might provoke attacks of opportunity.\n\nThe DC of the check is 15 (plus the spell’s level, if casting a spell or using a spell-like ability defensively). If the Concentration check succeeds, you may attempt the action normally without provoking any attacks of opportunity. A successful Concentration check still doesn’t allow you to take 10 on another check if you are in a stressful situation; you must make the check normally. If the Concentration check fails, the related action also automatically fails (with any appropriate ramifications), and the action is wasted, just as if your concentration had been disrupted by a distraction.\n\nA character with the Combat Casting feat gets a +4 bonus on Concentration checks made to cast a spell or use a spell-like ability while on the defensive or while grappling or pinned.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\" style=\"width:auto\">\n        <thead>\n            <tr>\n                <th>Concentration DC<sup>1</sup></th>\n                <th >Distraction</th>\n            </tr>\n        </thead>\n        <tfoot>\n            <tr>\n                <td colspan=\"2\">\n                    <ol>\n                        <li>If you are trying to cast, concentrate on, or direct a spell when the distraction occurs, add the level of the spell to the indicated DC.</li>\n                        <li>Such as during the casting of a spell with a casting time of 1 round or more, or the execution of an activity that takes more than a single <a href=\"http://www.d20srd.org/srd/combat/actionsInCombat.htm#fullRoundActions\" data-ytta-id=\"-\">full-round action</a> (such as <a href=\"http://www.d20srd.org/srd/skills/disableDevice.htm\" data-ytta-id=\"-\">Disable Device</a>). Also, damage stemming from an <a href=\"http://www.d20srd.org/srd/combat/attacksOfOpportunity.htm\" data-ytta-id=\"-\">attack of opportunity</a> or readied attack made in response to the spell being cast (for spells with a casting time of 1 <a href=\"http://www.d20srd.org/srd/combat/actionsInCombat.htm#standardActions\" data-ytta-id=\"-\">standard action</a>) or the action being taken (for activities requiring no more than a full-round action).</li>\n                        <li>Such as from <a class=\"spell\" href=\"http://www.d20srd.org/srd/spells/acidArrow.htm\" data-ytta-id=\"-\">acid arrow</a>.</li>\n                        <li>If the spell allows no save, use the save DC it would have if it did allow a save.</li>\n                    </ol>\n                </td>\n            </tr>\n        </tfoot>\n        <tbody>\n            <tr>\n                <td >10 + damage dealt</td>\n                <td style=\"width:100%\">Damaged during the action.<sup>2</sup></td>\n            </tr>\n            <tr>\n                <td >10 + half of continuous damage last dealt</td>\n                <td>Taking continuous damage during the action.<sup>3</sup></td>\n            </tr>\n            <tr>\n                <td >Distracting spell’s save DC</td>\n                <td>Distracted by nondamaging spell.<sup>4</sup></td>\n            </tr>\n            <tr>\n                <td >10</td>\n                <td style=\"white-space:normal\">Vigorous motion (on a moving mount, taking a bouncy wagon ride, in a small boat in rough water, belowdecks in a stormtossed ship).</td>\n            </tr>\n            <tr>\n                <td >15</td>\n                <td style=\"white-space:normal\">Violent motion (on a galloping horse, taking a very rough wagon ride, in a small boat in rapids, on the deck of a storm-tossed ship).</td>\n            </tr>\n            <tr>\n                <td >20</td>\n                <td>Extraordinarily violent motion (earthquake).</td>\n            </tr>\n            <tr>\n                <td >15</td>\n                <td><a href=\"http://www.d20srd.org/srd/conditionSummary.htm#entangled\" data-ytta-id=\"-\">Entangled</a>.</td>\n            </tr>\n            <tr>\n                <td >20</td>\n                <td style=\"white-space:normal\"><a href=\"http://www.d20srd.org/srd/conditionSummary.htm#grappling\" data-ytta-id=\"-\">Grappling</a> or <a href=\"http://www.d20srd.org/srd/conditionSummary.htm#pinned\" data-ytta-id=\"-\">pinned</a>. (You can cast only spells without somatic components for which you have any required material component in hand.)</td>\n            </tr>\n            <tr>\n                <td >5</td>\n                <td>Weather is a high wind carrying blinding rain or sleet.</td>\n            </tr>\n            <tr>\n                <td >10</td>\n                <td>Weather is wind-driven hail, dust, or debris.</td>\n            </tr>\n            <tr>\n                <td >Distracting spell’s save DC</td>\n                <td>Weather caused by a spell, such as <a class=\"spell\" href=\"http://www.d20srd.org/srd/spells/stormOfVengeance.htm\" data-ytta-id=\"-\">storm of vengeance</a>.<sup>4</sup></td>\n            </tr>\n        </tbody>\n    </table>",
-      "keyScoreName": "constitution"
+      "keyAbility": "constitution"
     },
     {
       "_id": "59d4eb5d2c22271fd04e2bd2",
@@ -7962,7 +7962,7 @@
       "synergy": "If you have 5 ranks in a Craft skill, you get a +2 bonus on Appraise checks related to items made with that Craft skill.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th >Item</th>\n            <th >Craft Skill</th>\n            <th >Craft DC</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"3\">\n                <ol>\n                    <li>You must be a spellcaster to craft any of these items.</li>\n                    <li>Traps have their own rules for construction.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td><a href=\"/srd/equipment/goodsAndServices.htm#acid\" data-ytta-id=\"-\">Acid</a></td>\n            <td>Alchemy<sup>1</sup></td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td><a href=\"/srd/equipment/goodsAndServices.htm#alchemistsFire\" data-ytta-id=\"-\">Alchemist’s fire</a>, <a href=\"/srd/equipment/goodsAndServices.htm#smokestick\"\n                    data-ytta-id=\"-\">smokestick</a>, or <a href=\"/srd/equipment/goodsAndServices.htm#tindertwig\" data-ytta-id=\"-\">tindertwig</a></td>\n            <td>Alchemy<sup>1</sup></td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td><a href=\"/srd/equipment/goodsAndServices.htm#antitoxin\" data-ytta-id=\"-\">Antitoxin</a>, <a href=\"/srd/equipment/goodsAndServices.htm#sunrod\"\n                    data-ytta-id=\"-\">sunrod</a>, <a href=\"/srd/equipment/goodsAndServices.htm#tanglefootBag\" data-ytta-id=\"-\">tanglefoot bag</a>,\n                or <a href=\"/srd/equipment/goodsAndServices.htm#thunderstone\" data-ytta-id=\"-\">thunderstone</a></td>\n            <td>Alchemy<sup>1</sup></td>\n            <td>25</td>\n        </tr>\n        <tr>\n            <td>Armor or shield</td>\n            <td>Armorsmithing</td>\n            <td>10 + AC bonus</td>\n        </tr>\n        <tr>\n            <td>Longbow or shortbow</td>\n            <td>Bowmaking</td>\n            <td>12</td>\n        </tr>\n        <tr>\n            <td>Composite longbow or composite shortbow</td>\n            <td>Bowmaking</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Composite longbow or composite shortbow with high strength rating</td>\n            <td>Bowmaking</td>\n            <td>15 + (2 × rating)</td>\n        </tr>\n        <tr>\n            <td>Crossbow</td>\n            <td>Weaponsmithing</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Simple melee or thrown weapon</td>\n            <td>Weaponsmithing</td>\n            <td>12</td>\n        </tr>\n        <tr>\n            <td>Martial melee or thrown weapon</td>\n            <td>Weaponsmithing</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Exotic melee or thrown weapon</td>\n            <td>Weaponsmithing</td>\n            <td>18</td>\n        </tr>\n        <tr>\n            <td>Mechanical trap</td>\n            <td>Trapmaking</td>\n            <td>Varies<sup>2</sup></td>\n        </tr>\n        <tr>\n            <td>Very simple item (wooden spoon)</td>\n            <td>Varies</td>\n            <td>5</td>\n        </tr>\n        <tr>\n            <td>Typical item (iron pot)</td>\n            <td>Varies</td>\n            <td>10</td>\n        </tr>\n        <tr>\n            <td>High-quality item (bell)</td>\n            <td>Varies</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Complex or superior item (lock)</td>\n            <td>Varies</td>\n            <td>20</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "intelligence",
+      "keyAbility": "intelligence",
       "hasSubValue": true
     },
     {
@@ -7976,7 +7976,7 @@
       "synergy": "If you have 5 or more ranks in Bluff, you get a +2 bonus on Disguise checks when you know that you’re being observed and you try to act in character.",
       "default": true,
       "aditionalInformation": "<table id=\"disguiseCheckModifiers\" cellspacing=\"0\">\n    <caption>Disguise Check Modifiers</caption>\n    <thead>\n        <tr>\n            <th>Disguise</th>\n            <th>Disguise Check<br>Modifier</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>These modifiers are cumulative; use any that apply.</li>\n                    <li>Per step of difference between your actual age category and your disguised age category. The steps are:\n                        young (younger than adulthood), adulthood, middle age, old, and venerable.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>Minor details only</td>\n            <td>+5</td>\n        </tr>\n        <tr>\n            <td>Disguised as different gender<sup>1</sup></td>\n            <td>-2</td>\n        </tr>\n        <tr>\n            <td>Disguised as different race<sup>1</sup></td>\n            <td>-2</td>\n        </tr>\n        <tr>\n            <td>Disguised as different age category<sup>1</sup></td>\n            <td>-2<sup>2</sup></td>\n        </tr>\n    </tbody>\n</table>\n<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Familiarity</th>\n            <th>Viewer’s <a href=\"/srd/skills/spot.htm\" data-ytta-id=\"-\">Spot</a><br>Check Bonus</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Recognizes on sight</td>\n            <td>+4</td>\n        </tr>\n        <tr>\n            <td>Friends or associates</td>\n            <td>+6</td>\n        </tr>\n        <tr>\n            <td>Close friends</td>\n            <td>+8</td>\n        </tr>\n        <tr>\n            <td>Intimate</td>\n            <td>+10</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d5342a5b378b18385efa46",
@@ -7990,7 +7990,7 @@
       "untrainedDescription": "If you have no ranks in Handle Animal, you can use a Charisma check to handle and push domestic animals, but you can’t teach, rear, or train animals. A druid or ranger with no ranks in Handle Animal can use a Charisma check to handle and push her animal companion, but she can’t teach, rear, or train other nondomestic animals.",
       "default": true,
       "aditionalInformation": "<table id=\"handleAnimalDCs\" cellspacing=\"0\">\n    <caption>Handle Animal DCs</caption>\n    <thead>\n        <tr>\n            <th>Task</th>\n            <th>Handle Animal DC</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Handle an animal</td>\n            <td>10</td>\n        </tr>\n        <tr>\n            <td>“Push” an animal</td>\n            <td>25</td>\n        </tr>\n        <tr>\n            <td>Rear a wild animal</td>\n            <td>15 + HD of animal</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Attack</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Come</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Defend</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Down</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Fetch</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Guard</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Heel</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Perform</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Seek</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Stay</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Track</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Teach trick: Work</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Combat riding</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Fighting</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Guarding</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Heavy labor</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Hunting</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Performance</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Train for purpose: Riding</td>\n            <td>15</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "charisma"
+      "keyAbility": "charisma"
     },
     {
       "_id": "59d54904c9cf2a13e0bcbd16",
@@ -8002,7 +8002,7 @@
       "synergy": "If you have 5 or more ranks in Handle Animal, you get a +2 bonus on Ride checks.",
       "default": true,
       "aditionalInformation": "<table id=\"rideDCs\" cellspacing=\"0\">\n    <caption>Ride DCs</caption>\n    <thead>\n        <tr>\n            <th>Task</th>\n            <th>Ride DC</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>Armor check penalty applies.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>Guide with knees</td>\n            <td>5</td>\n        </tr>\n        <tr>\n            <td>Stay in saddle</td>\n            <td>5</td>\n        </tr>\n        <tr>\n            <td>Fight with warhorse</td>\n            <td>10</td>\n        </tr>\n        <tr>\n            <td>Cover</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Soft fall</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Leap</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Spur mount</td>\n            <td>15</td>\n        </tr>\n        <tr>\n            <td>Control mount in battle</td>\n            <td>20</td>\n        </tr>\n        <tr>\n            <td>Fast mount or dismount</td>\n            <td>20<sup>1</sup></td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     },
     {
       "_id": "59d549d2c9cf2a13e0bcbd1a",
@@ -8015,7 +8015,7 @@
       "synergy": "If you have 5 or more ranks in Knowledge (arcana), you get a +2 bonus on Spellcraft checks.\nIf you have 5 or more ranks in Use Magic Device, you get a +2 bonus on Spellcraft checks to decipher spells on scrolls.\nIf you have 5 or more ranks in Spellcraft, you get a +2 bonus on Use Magic Device checks related to scrolls.\nAdditionally, certain spells allow you to gain information about magic, provided that you make a successful Spellcraft check as detailed in the spell description.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\" style=\"width:auto\">\n    <thead>\n        <tr>\n            <th>Spellcraft DC</th>\n            <th>Task</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>13</td>\n            <td style=\"white-space:normal\">When using <a class=\"spell\" href=\"/srd/spells/readMagic.htm\" data-ytta-id=\"-\">read magic</a>, identify a <a class=\"spell\"\n                    href=\"/srd/spells/glyphOfWarding.htm\" data-ytta-id=\"-\">glyph of warding</a>. No action required.</td>\n        </tr>\n        <tr>\n            <td>15 + spell level</td>\n            <td style=\"white-space:normal\">Identify a spell being cast. (You must see or hear the spell’s verbal or somatic components.) No action required.\n                No retry.</td>\n        </tr>\n        <tr>\n            <td>15 + spell level</td>\n            <td style=\"white-space:normal\">Learn a spell from a spellbook or scroll (<a href=\"/srd/classes/sorcererWizard.htm#wizard\" data-ytta-id=\"-\">wizard</a>                only). No retry for that spell until you gain at least 1 rank in Spellcraft (even if you find another source\n                to try to learn the spell from). Requires 8 hours.</td>\n        </tr>\n        <tr>\n            <td>15 + spell level</td>\n            <td style=\"white-space:normal\">Prepare a spell from a borrowed spellbook (<a href=\"/srd/classes/sorcererWizard.htm#wizard\" data-ytta-id=\"-\">wizard</a>                only). One try per day. No extra time required.</td>\n        </tr>\n        <tr>\n            <td>15 + spell level</td>\n            <td style=\"white-space:normal\">When casting <a class=\"spell\" href=\"/srd/spells/detectMagic.htm\" data-ytta-id=\"-\">detect magic</a>, determine\n                the school of magic involved in the aura of a single item or creature you can see. (If the aura is not a\n                spell effect, the DC is 15 + one-half caster level.) No action required.</td>\n        </tr>\n        <tr>\n            <td>19</td>\n            <td style=\"white-space:normal\">When using <a class=\"spell\" href=\"/srd/spells/readMagic.htm\" data-ytta-id=\"-\">read magic</a>, identify a symbol.\n                No action required.</td>\n        </tr>\n        <tr>\n            <td>20 + spell level</td>\n            <td style=\"white-space:normal\">Identify a spell that’s already in place and in effect. You must be able to see or detect the effects of the\n                spell. No action required. No retry.</td>\n        </tr>\n        <tr>\n            <td>20 + spell level</td>\n            <td style=\"white-space:normal\">Identify materials created or shaped by magic, such as noting that an iron wall is the result of a <a class=\"spell\"\n                    href=\"/srd/spells/wallOfIron.htm\" data-ytta-id=\"-\">wall of iron</a> spell. No action required. No retry.</td>\n        </tr>\n        <tr>\n            <td>20 + spell level</td>\n            <td style=\"white-space:normal\">Decipher a written spell (such as a scroll) without using <a class=\"spell\" href=\"/srd/spells/readMagic.htm\" data-ytta-id=\"-\">read magic</a>.\n                One try per day. Requires a <a href=\"/srd/combat/actionsInCombat.htm#fullRoundActions\" data-ytta-id=\"-\">full-round action</a>.</td>\n        </tr>\n        <tr>\n            <td>25 + spell level</td>\n            <td style=\"white-space:normal\">After rolling a <a href=\"/srd/combat/combatStatistics.htm#savingThrows\" data-ytta-id=\"-\">saving throw</a> against\n                a spell targeted on you, determine what that spell was. No action required. No retry.</td>\n        </tr>\n        <tr>\n            <td>25</td>\n            <td style=\"white-space:normal\">Identify a potion. Requires 1 minute. No retry.</td>\n        </tr>\n        <tr>\n            <td>20</td>\n            <td style=\"white-space:normal\">Draw a diagram to allow <a class=\"spell\" href=\"/srd/spells/dimensionalAnchor.htm\" data-ytta-id=\"-\">dimensional anchor</a>                to be cast on a magic circle spell. Requires 10 minutes. No retry. This check is made secretly so you do\n                not know the result.</td>\n        </tr>\n        <tr>\n            <td>30 or higher</td>\n            <td style=\"white-space:normal\">Understand a strange or unique magical effect, such as the effects of a magic stream. Time required varies. No\n                retry.\n            </td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "intelligence"
+      "keyAbility": "intelligence"
     },
     {
       "_id": "59d54a2ec9cf2a13e0bcbd1c",
@@ -8029,7 +8029,7 @@
       "restriction": "While anyone can use Survival to find tracks (regardless of the DC), or to follow tracks when the DC for the task is 10 or lower, only a ranger (or a character with the Track feat) can use Survival to follow tracks when the task has a higher DC.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\" style=\"width:auto\">\n    <thead>\n        <tr>\n            <th>Survival DC</th>\n            <th>Task</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>10</td>\n            <td style=\"white-space:normal\">Get along in the wild. Move up to one-half your overland speed while hunting and foraging (no food or water supplies\n                needed). You can provide food and water for one other person for every 2 points by which your check result\n                exceeds 10.</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Gain a +2 bonus on all <a href=\"/srd/combat/combatStatistics.htm#fortitude\" data-ytta-id=\"-\">Fortitude saves</a>                against severe weather while moving up to one-half your overland speed, or gain a +4 bonus if you remain\n                stationary. You may grant the same bonus to one other character for every 1 point by which your Survival\n                check result exceeds 15.</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Keep from getting lost or avoid natural hazards, such as quicksand.</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Predict the weather up to 24 hours in advance. For every 5 points by which your Survival check result exceeds\n                15, you can predict the weather for one additional day in advance.</td>\n        </tr>\n        <tr>\n            <td>Varies</td>\n            <td style=\"white-space:normal\">Follow tracks (see the <a href=\"/srd/feats.htm#track\" data-ytta-id=\"-\">Track</a> feat).</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "wisdom"
+      "keyAbility": "wisdom"
     },
     {
       "_id": "59d54a8dc9cf2a13e0bcbd1e",
@@ -8043,7 +8043,7 @@
       "synergy": "If you have 5 or more ranks in Tumble, you get a +2 bonus on Balance and Jump checks.\nIf you have 5 or more ranks in Jump, you get a +2 bonus on Tumble checks.",
       "default": true,
       "aditionalInformation": "<table cellspacing=\"0\" style=\"width:auto\">\n    <thead>\n        <tr>\n            <th>Tumble DC</th>\n            <th>Task</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Treat a fall as if it were 10 feet shorter than it really is when determining damage.</td>\n        </tr>\n        <tr>\n            <td>15</td>\n            <td style=\"white-space:normal\">Tumble at one-half speed as part of normal movement, provoking no <a href=\"/srd/combat/attacksOfOpportunity.htm\"\n                    data-ytta-id=\"-\">attacks of opportunity</a> while doing so. Failure means you provoke attacks of opportunity\n                normally. Check separately for each opponent you move past, in the order in which you pass them (player’s\n                choice of order in case of a tie). Each additional enemy after the first adds +2 to the Tumble DC.</td>\n        </tr>\n        <tr>\n            <td>25</td>\n            <td style=\"white-space:normal\">Tumble at one-half speed through an area occupied by an enemy (over, under, or around the opponent) as part of\n                normal movement, provoking no <a href=\"/srd/combat/attacksOfOpportunity.htm\" data-ytta-id=\"-\">attacks of opportunity</a>                while doing so. Failure means you stop before entering the enemy-occupied area and provoke an attack of opportunity\n                from that enemy. Check separately for each opponent. Each additional enemy after the first adds +2 to the\n                Tumble DC.</td>\n        </tr>\n    </tbody>\n</table>\n<table cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>Surface Is…</th>\n            <th>DC Modifier</th>\n        </tr>\n    </thead>\n    <tfoot>\n        <tr>\n            <td colspan=\"2\">\n                <ol>\n                    <li>Tumbling is impossible in a deep bog.</li>\n                </ol>\n            </td>\n        </tr>\n    </tfoot>\n    <tbody>\n        <tr>\n            <td>Lightly obstructed (scree, light rubble, shallow bog<sup>1</sup>, undergrowth)</td>\n            <td>+2</td>\n        </tr>\n        <tr>\n            <td>Severely obstructed (natural cavern floor, dense rubble, dense undergrowth)</td>\n            <td>+5</td>\n        </tr>\n        <tr>\n            <td>Lightly slippery (wet floor)</td>\n            <td>+2</td>\n        </tr>\n        <tr>\n            <td>Severely slippery (ice sheet)</td>\n            <td>+5</td>\n        </tr>\n        <tr>\n            <td>Sloped or angled</td>\n            <td>+2</td>\n        </tr>\n    </tbody>\n</table>",
-      "keyScoreName": "dexterity"
+      "keyAbility": "dexterity"
     }
   ],
   "special-abilities": [
@@ -9330,39 +9330,371 @@
       "password": "$2a$12$u.dehYP/WuSA7dX7SmV5quzxYXZkhDtB966yLlQCiXxFvq4luc0Em"
     }
   ],
-  "durations": [
+  "spell-durations": [
     {
+      "_id": "5b246f615325c401a1f07708",
       "name": "Timed",
       "description": "Many durations are measured in rounds, minutes, hours, or other increments. When the time is up, the magic goes away and the spell ends. If a spell’s duration is variable, the duration is rolled secretly so the caster doesn’t know how long the spell will last.",
       "duration": ""
     },
     {
+      "_id": "5b246f695325c401a1f07717",
       "name": "Instantaneous",
       "description": "The spell energy comes and goes the instant the spell is cast, though the consequences might be long-lasting."
     },
     {
+      "_id": "5b26972b5325c401a1f3af1f",
       "name": "Permanent",
       "description": "The energy remains as long as the effect does. This means the spell is vulnerable to dispel magic."
     },
     {
+      "_id": "5b2697315325c401a1f3af28",
       "name": "Concentration",
       "description": "The spell lasts as long as you concentrate on it. Concentrating to maintain a spell is a standard action that does not provoke attacks of opportunity. Anything that could break your concentration when casting a spell can also break your concentration while you’re maintaining one, causing the spell to end."
     },
     {
+      "_id": "5b2697475325c401a1f3af49",
       "name": "Subjects, Effects, and Areas",
-      "description": "If the spell affects creatures directly, the result travels with the subjects for the spell’s duration. If the spell creates an effect, the effect lasts for the duration. The effect might move or remain still. Such an effect can be destroyed prior to when its duration ends. If the spell affects an area, then the spell stays with that area for its duration. \nCreatures become subject to the spell when they enter the area and are no longer subject to it when they leave."
+      "description": "If the spell affects creatures directly, the result travels with the subjects for the spell’s duration. If the spell creates an effect, the effect lasts for the duration. The effect might move or remain still. Such an effect can be destroyed prior to when its duration ends. If the spell affects an area, then the spell stays with that area for its duration.\nCreatures become subject to the spell when they enter the area and are no longer subject to it when they leave."
     },
     {
+      "_id": "5b2697585325c401a1f3af66",
       "name": "Touch Spells and Holding the Charge",
-      "description": "In most cases, if you don’t discharge a touch spell on the round you cast it, you can hold the charge (postpone the discharge of the spell) indefinitely. You can make touch attacks round after round until the spell is discharged. If you cast another spell, the touch spell dissipates.        \nSome touch spells allow you to touch multiple targets as part of the spell. You can’t hold the charge of such a spell; you must touch all targets of the spell in the same round that you finish casting the spell."
+      "description": "In most cases, if you don’t discharge a touch spell on the round you cast it, you can hold the charge (postpone the discharge of the spell) indefinitely. You can make touch attacks round after round until the spell is discharged. If you cast another spell, the touch spell dissipates.\nSome touch spells allow you to touch multiple targets as part of the spell. You can’t hold the charge of such a spell; you must touch all targets of the spell in the same round that you finish casting the spell."
     },
     {
+      "_id": "5b2697615325c401a1f3af78",
       "name": "Triggered/Discharged",
       "description": "Occasionally a spells lasts for a set duration or until triggered or discharged."
     },
     {
+      "_id": "5b2697705325c401a1f3af97",
       "name": "Dismissible",
-      "description": "If the duration line ends with “(D)” you can dismiss the spell at will. You must be within range of the spell’s effect and must speak words of dismissal, which are usually a modified form of the spell’s verbal component. If the spell has no verbal component, you can dismiss the effect with a gesture. Dismissing a spell is a standard action that does not provoke attacks of opportunity.        \nA spell that depends on concentration is dismissible by its very nature, and dismissing it does not take an action, since all you have to do to end the spell is to stop concentrating on your turn."
+      "description": "If the duration line ends with “(D)” you can dismiss the spell at will. You must be within range of the spell’s effect and must speak words of dismissal, which are usually a modified form of the spell’s verbal component. If the spell has no verbal component, you can dismiss the effect with a gesture. Dismissing a spell is a standard action that does not provoke attacks of opportunity.\nA spell that depends on concentration is dismissible by its very nature, and dismissing it does not take an action, since all you have to do to end the spell is to stop concentrating on your turn."
+    }
+  ],
+  "spell-components": [
+    {
+      "_id": "5b2697b85325c401a1f3b020",
+      "name": "Verbal",
+      "description": "A verbal component is a spoken incantation. To provide a verbal component, you must be able to speak in a strong voice. A silence spell or a gag spoils the incantation (and thus the spell). a spellcaster who has been deafened has a 20% chance of spoiling any spell with a verbal component that he tries to cast."
+    },
+    {
+      "_id": "5b2697c15325c401a1f3b03c",
+      "name": "Somatic",
+      "description": "A somatic component is a measured and precise movement of the hand. You must have at least one hand free to provide a somatic component."
+    },
+    {
+      "_id": "5b2697c55325c401a1f3b047",
+      "name": "Material",
+      "description": "A material component consists of one or more physical substances or objects that are annihilated by the spell energies in the casting process. Unless a cost is given for a material component, the cost is negligible. Don’t bother to keep track of material components with negligible cost. Assume you have all you need as long as you have your spell component pouch."
+    },
+    {
+      "_id": "5b2697cb5325c401a1f3b050",
+      "name": "Focus",
+      "description": "A focus component is a prop of some sort. Unlike a material component, a focus is not consumed when the spell is cast and can be reused. As with material components, the cost for a focus is negligible unless a price is given. Assume that focus components of negligible cost are in your spell component pouch."
+    },
+    {
+      "_id": "5b2697cf5325c401a1f3b05a",
+      "name": "Divine Focus",
+      "description": "A divine focus component is an item of spiritual significance. The divine focus for a cleric or a paladin is a holy symbol appropriate to the character’s faith. The divine focus for a druid or a ranger is a sprig of holly, or some other sacred plant. If the Components line includes F/ DF or M/ DF, the arcane version of the spell has a focus component or a material component (the abbreviation before the slash) and the divine version has a divine focus component (the abbreviation after the slash)."
+    }
+  ],
+  "spell-descriptors": [
+    {
+      "_id": "5b2697ea5325c401a1f3b09c",
+      "name": "Acid",
+      "description": "Acid effects deal damage with chemical reactions rather than cold, electricity, heat, or vibration. This descriptor includes both actual acids and their chemical opposites, called bases or alkalines (such as ammonia and lye)."
+    },
+    {
+      "_id": "5b2697f25325c401a1f3b0ad",
+      "name": "Air",
+      "description": " Spells that create air, manipulate air, or conjure creatures from air-dominant planes or with the air subtype should have the air descriptor."
+    },
+    {
+      "_id": "5b2697f85325c401a1f3b0b6",
+      "name": "Chaotic",
+      "description": "Spells that draw upon the power of true chaos or conjure creatures from chaos-aligned planes or with the chaotic subtype should have the chaos descriptor."
+    },
+    {
+      "_id": "5b2697fd5325c401a1f3b0bf",
+      "name": "Cold",
+      "description": "Cold effects deal damage by making the target colder, typically by blasting it with supernaturally cooled matter or energy. Cold effects also include those that create ice, sleet, or snow out of nothing. They can cause frostbite, numbness, coordination problems, slowed movement and reactions, stupor, and death."
+    },
+    {
+      "_id": "5b2698015325c401a1f3b0c8",
+      "name": "Curse",
+      "description": "Curses are often permanent effects, and usually cannot be dispelled, but can be removed with a break enchantment, limited wish, miracle, remove curse, or wish."
+    },
+    {
+      "_id": "5b269851929144a9b34c7682",
+      "name": "Darkness",
+      "description": "Spells that create darkness or reduce the amount of light should have the darkness descriptor. Giving a spell the darkness descriptor indicates whether a spell like daylight is high enough level to counter or dispel it."
+    },
+    {
+      "_id": "5b269851929144a9b34c7683",
+      "name": "Death",
+      "description": "Spells with the death descriptor directly attack a creature’s life force to cause immediate death, or to draw on the power of a dead or dying creature. The death ward spell protects against death effects, and some creature types are immune to death effects."
+    },
+    {
+      "_id": "5b269851929144a9b34c7684",
+      "name": "Disease",
+      "description": "Disease effects give the target a disease, which may be an invading organism such as a bacteria or virus, an abnormal internal condition (such as a cancer or mental disorder,     or a recurring magical effect that acts like one of the former.Creatures with resistance or immunity to disease apply that resistance to their saving throw and the effects of disease spells. "
+    },
+    {
+      "_id": "5b269851929144a9b34c7685",
+      "name": "Draconic",
+      "description": "The draconic descriptor is for spells tied closely to dragons that those with draconic blood can cast them almost instinctually. Spells with the draconic descriptor were created by dragons in ages long past, and still resonate within the blood of true dragons to this day.\nCreatures of the dragon type with 5 or more racial hit dice can select a draconic spell as a spell known regardless of the class spell list it’s on. Each time such a creature gains an additional racial hit die, it can select a draconic spell in place of an existing spell known of the same or higher spell level."
+    },
+    {
+      "_id": "5b269851929144a9b34c7686",
+      "name": "Earth",
+      "description": "Spells that manipulate earth or conjure creatures from earth-dominant planes or with the earth subtype should have the earth descriptor."
+    },
+    {
+      "_id": "5b269851929144a9b34c7687",
+      "name": "Electricity",
+      "description": "Electricity effects involve the presence and flow of electrical charge, whether expressed in amperes or volts. Electricity deals damage to creatures by disrupting their biological systems. It deals damage to objects (as well as creatures) by heating the material it passes through, and thus technically many electricity spells could also be treated as fire spells, but for sake of game simplicity, it is better to just let electricity-based spells deal electricity damage. Electricity effects may stun, paralyze, or even kill."
+    },
+    {
+      "_id": "5b269851929144a9b34c7688",
+      "name": "Emotion",
+      "description": "Spells with this descriptor create emotions or manipulate the target’s existing emotions. Most emotion spells are enchantments, except for fear spells, which are usually necromancy."
+    },
+    {
+      "_id": "5b269852929144a9b34c768a",
+      "name": "Fear",
+      "description": "Spells with the fear descriptor create, enhance, or manipulate fear. Most fear spells are necromancy spells, though some are enchantment spells."
+    },
+    {
+      "_id": "5b269852929144a9b34c768b",
+      "name": "Fire",
+      "description": "Fire effects make the target hotter by creating fire, directly heating the target with magic or friction. Lava, steam, and boiling water all deal fire damage. Fire effects can also cause confusion, dizziness, exhaustion, fatigue, nausea, unconsciousness, and death. Spells that manipulate fire or conjure creatures from fire-dominant planes or with the fire subtype should have the fire descriptor."
+    },
+    {
+      "_id": "5b269852929144a9b34c768c",
+      "name": "Force",
+      "description": "Spells with the force descriptor create or manipulate magical force. Force spells affect incorporeal creatures normally (as if they were corporeal creatures)."
+    },
+    {
+      "_id": "5b269852929144a9b34c768d",
+      "name": "Good",
+      "description": "Spells that draw upon the power of true goodness or conjure creatures from good-aligned planes or with the good subtype should have the good descriptor."
+    },
+    {
+      "_id": "5b269852929144a9b34c768e",
+      "name": "Language-Dependent",
+      "description": "A language-dependent spell uses intelligible language as a medium for communication. If the target cannot understand or hear what the caster of a language-dependent spell says, the spell has no effect, even if the target fails its saving throw."
+    },
+    {
+      "_id": "5b269852929144a9b34c7689",
+      "name": "Evil",
+      "description": "Spells that draw upon evil powers or conjure creatures from evil-aligned planes or with the evil subtype should have the evil descriptor.\nCasting an evil spell is an evil act, but for most characters simply casting such a spell once isn’t enough to change her alignment; this only occurs if the spell is used for a truly abhorrent act, or if the caster established a pattern of casting evil spells over a long period. A wizard who uses animate dead to create guardians for defenseless people won’t turn evil, but he will if he does it over and over again. The GM decides whether the character’s alignment changes, but typically casting two evil spells is enough to turn a good creature nongood, and three or more evils spells move the caster from nongood to evil. The greater the amount of time between castings, the less likely alignment will change. Some spells require sacrificing a sentient creature, a major evil act that makes the caster evil in almost every circumstance.\n    \nThose who are forbidden from casting spells with an opposed alignment might lose their divine abilities if they circumvent that restriction (via Use Magic Device, for example, \n    depending on how strict their deities are.\n    \nThough this advice talks about evil spells, it also applies to spells with other alignment descriptors.\n    \nIn addition, you can move the target 5 units. This movement doesn’t provoke attacks of opportunity. A successful saving throw halves the damage and negates the movement.\n    \nAn undead creature takes no damage. Instead, you manipulate the undead, forcing it to take an immediate action to either move up to its speed (provoking attacks of opportunity as normal) or make a single attack against a creature of your choice in its reach.\n    \nEither of these is the most basic version of the action the creature can take (it doesn’t activate any special abilities that it could apply to the movement or attack, such as grab). A successful saving throw negates this effect. A mindless undead creature doesn’t receive a save against this effect."
+    },
+    {
+      "_id": "5b269852929144a9b34c768f",
+      "name": "Lawful",
+      "description": "Spells that draw upon the power of true law or conjure creatures from law-aligned planes or with the lawful subtype should have the law descriptor."
+    },
+    {
+      "_id": "5b269853929144a9b34c7690",
+      "name": "Light",
+      "description": "Spells that create significant amounts of light or attack darkness effects should have the light descriptor. Giving a spell the light descriptor indicates whether a spell like darkness is high enough level counter or dispel it."
+    },
+    {
+      "_id": "5b269853929144a9b34c7691",
+      "name": "Meditative",
+      "description": "Meditative spells fall into an unusual category and share the “meditative” descriptor. Meditative spells are not cast like other spells—they are cast during the period of the day when a spellcaster prepares her spells. A meditative spell must already be prepared at the time when you start your 1-hour spell preparation ritual, and at the end of that time, the meditative spell of your choosing is cast, leaving you with that one spell slot used for the remainder of the day. You can have only one meditative spell in effect on you at any one time. All meditative spells have a range of personal and a target of you, and they can’t be brewed into potions or part of similar one-use items like elixirs. A meditative spell can be placed on a scroll or in a wand, but the act of casting the spell must always be incorporated into the user’s spell-preparation time; it also takes 1 hour for a character who succeeds at an appropriate Use Magic Device check to operate such an item. "
+    },
+    {
+      "_id": "5b269853929144a9b34c7692",
+      "name": "Mind-Affecting",
+      "description": "Mindless creatures (those with an Intelligence score of “—”) and undead are immune to mind-affecting effects."
+    },
+    {
+      "_id": "5b269853929144a9b34c7693",
+      "name": "Pain",
+      "description": "Pain effects cause unpleasant sensations without any permanent physical damage (though a sensitive target may suffer mental repercussions from lengthy exposure to pain). Creatures that are immune to effects that require a Fort save (such as constructs and undead) are immune to pain effects."
+    },
+    {
+      "_id": "5b269853929144a9b34c7694",
+      "name": "Poison",
+      "description": "Poison effects use poison, venom, drugs, or similar toxic substances to disrupt and damage living creatures through chemical reactions. Technically, acids and poisons are both chemical reactions, but for the purpose of this game, they are categorized as different effects, with acids dealing hit point damage and poisons causing ability damage, ability drain, bleeding, confusion, convulsions, nausea, paralysis, reduced healing, suffocation, unconsciousness, or death. Creatures with resistance to poison (such as dwarves) apply that resistance to their saving throws and the effects of poison spells. Creatures with immunity are immune to poisonous aspects of poison spells, but not necessarily all effects of the spell (for example, a spell that creates a pit full of liquid poison could still trap or drown a poison-immune creature)."
+    },
+    {
+      "_id": "5b269853929144a9b34c7695",
+      "name": "Ruse",
+      "description": "The “ruse” descriptor applies to spells that appear to be other, usually more harmless spells in order for the caster to fool her opponents. Spells with the ruse descriptor are easily mistaken for other spells and are intended to confuse even onlookers trained in Spellcraft or Knowledge (arcana). Attempts to identify a ruse spell by its effects, its aura, its components, or other attributes with a skill check treat the spell as though it were a different spell, as indicated in the spell’s description. The one attempting the check can correctly identify the spell only by exceeding the DC by 10. The false spell is typically a level lower than the ruse spell, so skill checks use the DC for the lower-level spell. Even detect magic and most similar spells don’t prevent the caster from being fooled by a ruse spell. Analyze dweomer, greater arcane sight, and similar spells of the same or higher spell level that automatically identify spells reveal a ruse spell for what it is. Ruse spells that mimic harmless spells still list harmless on their saving throw or spell resistance lines; a creature that knows or suspects the true nature of the spell typically chooses to attempt the save."
+    },
+    {
+      "_id": "5b269853929144a9b34c7696",
+      "name": "Shadow",
+      "description": "Shadow spells manipulate matter or energy from the Shadow Plane, or allow transport to or from that plane."
+    },
+    {
+      "_id": "5b269854929144a9b34c7697",
+      "name": "Sonic",
+      "description": "Sonic effects transmit energy to the target through frequent oscillations of pressure through the air, water, or ground. Sounds that are too high or too low for the humanoid ear to detect can still transmit enough energy to cause harm, which means that these effects can even affect deafened creatures. Sound effects can cause hit point damage, deafness, dizziness, nausea, pain, shortness of breath, and temporary blindness, and can detect creatures using batlike echolocation."
+    },
+    {
+      "_id": "5b269854929144a9b34c7698",
+      "name": "Stone",
+      "description": "The [stone] descriptor is considered a subset of [earth] spells, and all spells with the [stone] descriptor are considered [earth] spells as well. Spells that have the [stone] designator do not deal spell damage, instead the damage they deal is treated as weapon damage. Thus, spell resistance is not effective against such spells and creatures immune to spells (such as many golems) are still affected by them. Because [stone] spells are considered to do weapon damage, they are affected by a creature’s Damage Reduction (if any). Each [stone] spell that does damage lists the effective material the spell is considered to be made of for purposes of penetrating DR. Despite the fact that cold iron is strongly tied to elemental stone, no magic spell can duplicate the effects of cold iron and thus [stone] spells never deal damage as a cold iron weapon. In all other regards, [stone] spells follow the normal rules for spells and spellcasting. Damaging [stone] spells do not penetrate an antimagic shell as the summoned rock winks out of existence when hitting the shell (much as summoned creatures do).\n    \nWhile liquid acids are well known, and have ties to the elemental plane of water, there are also solid caustic materials with ties to the elemental plane of earth. These include items such as lye (also known as caustic soda, a dry white material used in soap-making) and caustic potash (also known as alkali salt). The exact process by which these caustic solids burn and corrode is not the same as many liquid acids, but the effect on material exposed to them is very similar.\n    \nThus there are two elemental sources with which “acid” may be aligned. Black dragons, for example, are tied to the element of water and call forth a wet acidic breath that is also linked to that element. Sorcerers with an elemental earth bloodline, however, call upon the power of caustic salts and deal acid damage with a connection to elemental earth. Despite the two different elemental and alchemical sources of these caustic materials, for purposes of spells they both qualify as “acid” for game rule purposes."
+    },
+    {
+      "_id": "5b269854929144a9b34c7699",
+      "name": "Water",
+      "description": "Spells that manipulate water or conjure creatures from water-dominant planes or with the water subtype should have the water descriptor."
+    }
+  ],
+  "spell-effects": [
+    {
+      "_id": "5b269911929144a9b34c769a",
+      "name": "Ray",
+      "description": "Some effects are rays. You aim a ray as if using a ranged weapon, though typically you make a ranged touch attack rather than a normal ranged attack. As with a ranged weapon, you can fire into the dark or at an invisible creature and hope you hit something. You don’t have to see the creature you’re trying to hit, as you do with a targeted spell. Intervening creatures and obstacles, however, can block your line of sight or provide cover for the creature at which you’re aiming.           \nIf a ray spell has a duration, it’s the duration of the effect that the ray causes, not the length of time the ray itself persists.                \nIf a ray spell deals damage, you can score a critical hit just as if it were a weapon. A ray spell threatens a critical hit on a natural roll of 20 and deals double damage on a successful critical hit."
+    },
+    {
+      "_id": "5b269911929144a9b34c769b",
+      "name": "Spread",
+      "description": "Some effects, notably clouds and fogs, spread out from a point of origin, which must be a grid intersection. The effect can extend around corners and into areas that you can’t see. Figure distance by actual distance traveled, taking into account turns the spell effect takes. When determining distance for spread effects, count around walls, not through them. As with movement, do not trace diagonals across corners. You must designate the point of origin for such an effect, but you need not have line of effect (see below) to all portions of the effect."
+    },
+    {
+      "_id": "5b269912929144a9b34c769c",
+      "name": "Area",
+      "description": "Some spells affect an area. Sometimes a spell description specifies a specially defined area, but usually an area falls into one of the categories defined below. See more area of effect templates here.\nRegardless of the shape of the area, you select the point where the spell originates, but otherwise you don’t control which creatures or objects the spell affects. The point of origin of a spell is always a grid intersection. When determining whether a given creature is within the area of a spell, count out the distance from the point of origin in squares just as you do when moving a character or when determining the range for a ranged attack. The only difference is that instead of counting from the center of one square to the center of the next, you count from intersection to intersection.\nYou can count diagonally across a square, but remember that every second diagonal counts as 2 squares of distance. If the far edge of a square is within the spell’s area, anything within that square is within the spell’s area. If the spell’s area only touches the near edge of a square, however, anything within that square is unaffected by the spell.",
+      "types": [
+        {
+          "name": "Burst",
+          "description": "A burst spell affects whatever it catches in its area, including creatures that you can’t see. It can’t affect creatures with total cover from its point of origin (in other words, its effects don’t extend around corners). The default shape for a burst effect is a sphere, but some burst spells are specifically described as cone-shaped. a burst’s area defines how far from the point of origin the spell’s effect extends."
+        },
+        {
+          "name": "Emanation",
+          "description": "An emanation spell functions like a burst spell, except that the effect continues to radiate from the point of origin for the duration of the spell. Most emanations are cones or spheres."
+        },
+        {
+          "name": "Spread",
+          "description": "A spread spell extends out like a burst but can turn corners. You select the point of origin, and the spell spreads out a given distance in all directions. Figure the area the spell effect fills by taking into account any turns the spell effect takes."
+        }
+      ],
+      "formats": [
+        {
+          "name": "Cone",
+          "description": "A cone-shaped spell shoots away from you in a quarter-circle in the direction you designate. It starts from any corner of your square and widens out as it goes. Most cones are either bursts or emanations (see above, and thus won’t go around corners."
+        },
+        {
+          "name": "Cylinder",
+          "description": "When casting a cylinder-shaped spell, you select the spell’s point of origin. This point is the center of a horizontal circle, and the spell shoots down from the circle, filling a cylinder. A cylinder-shaped spell ignores any obstructions within its area."
+        },
+        {
+          "name": "Line",
+          "description": "A line-shaped spell shoots away from you in a line in the direction you designate. It starts from any corner of your square and extends to the limit of its range or until it strikes a barrier that blocks line of effect. A line-shaped spell affects all creatures in squares through which the line passes."
+        },
+        {
+          "name": "Sphere",
+          "description": "A sphere-shaped spell expands from its point of origin to fill a spherical area. Spheres may be bursts, emanations, or spreads."
+        },
+        {
+          "name": "Creatures",
+          "description": "A spell with this kind of area affects creatures directly (like a targeted spell, but it affects all creatures in an area of some kind rather than individual creatures you select. The area might be a spherical burst, a cone-shaped burst, or some other shape.\n              \nMany spells affect “living creatures,” which means all creatures other than constructs and undead. Creatures in the spell’s area that are not of the appropriate type do not count against the creatures affected."
+        },
+        {
+          "name": "Objects",
+          "description": "A spell with this kind of area affects objects within an area you select (as Creatures, but affecting objects instead)."
+        },
+        {
+          "name": "Other",
+          "description": "A spell can have a unique area, as defined in its description."
+        },
+        {
+          "name": "Shapeable",
+          "description": "If an area or effect entry ends with “(S,” you can shape the spell. a shaped effect or area can have no dimension smaller than 10 unit. Many effects or areas are given as cubes to make it easy to model irregular shapes. Three-dimensional volumes are most often needed to define aerial or underwater effects and areas."
+        }
+      ]
+    }
+  ],
+  "spell-ranges": [
+    {
+      "_id": "5b53575bf5583f93889bdfd4",
+      "name": "Personal",
+      "description": "The spell affects only you.",
+      "_type": "Range"
+    },
+    {
+      "_id": "5b53575cf5583f93889bdfd5",
+      "name": "Touch",
+      "description": "You must touch a creature or object to affect it. A touch spell that deals damage can score a critical hit just as a weapon can. A touch spell threatens a critical hit on a natural roll of 20 and deals double damage on a successful critical hit. Some touch spells allow you to touch multiple targets. You can touch up to 6 willing targets as part of the casting, but all targets of the spell must be touched in the same round that you finish casting the spell. If the spell allows you to touch targets over multiple rounds, touching 6 creatures is a full-round action.",
+      "_type": "Range"
+    },
+    {
+      "_id": "5b53575cf5583f93889bdfd6",
+      "name": "Close",
+      "description": "The spell reaches as far as 25 units away from you. The maximum range increases by 5 units for every two full caster levels.",
+      "distance": "25 ft. + 5 ft./2 levels",
+      "_type": "RangeWithDistance"
+    },
+    {
+      "_id": "5b53575cf5583f93889bdfd7",
+      "name": "Medium",
+      "description": "The spell reaches as far as 100 units + 10 units per caster level.",
+      "distance": "100 ft. + 10 ft./level",
+      "_type": "RangeWithDistance"
+    },
+    {
+      "_id": "5b53575df5583f93889bdfd8",
+      "name": "Long",
+      "description": "The spell reaches as far as 400 units + 40 units per caster level.",
+      "distance": "400 ft. + 40 ft./level",
+      "_type": "RangeWithDistance"
+    },
+    {
+      "_id": "5b53575df5583f93889bdfd9",
+      "name": "Unlimited",
+      "description": "The spell reaches anywhere on the same plane of existence.",
+      "_type": "Range"
+    },
+    {
+      "_id": "5b53575df5583f93889bdfda",
+      "name": "Miscellaneous",
+      "description": "Some spells have no standard range category, just a range expressed in distance.",
+      "_type": "Range"
+    }
+  ],
+  "spell-resolutions": [
+    {
+      "_id": "5b2699a5929144a9b34c76a0",
+      "name": "Negates",
+      "description": "The spell has no effect on a subject that makes a successful saving throw.",
+      "_type": "Resolve"
+    },
+    {
+      "_id": "5b2699a5929144a9b34c76a1",
+      "name": "Partial",
+      "description": "The spell has an effect on its subject. A successful saving throw means that some lesser effect occurs.",
+      "_type": "Resolve"
+    },
+    {
+      "_id": "5b2699a6929144a9b34c76a2",
+      "name": "Half",
+      "description": "The spell deals damage, and a successful saving throw halves the damage taken (round down).",
+      "_type": "Resolve"
+    },
+    {
+      "_id": "5b2699a6929144a9b34c76a3",
+      "name": "Disbelief",
+      "description": "A successful save lets the subject ignore the spell’s effect.",
+      "_type": "Resolve"
+    },
+    {
+      "_id": "5b2699a6929144a9b34c76a4",
+      "name": "Object",
+      "description": "The spell can be cast on objects, which receive saving throws only if they are magical or if they are attended (held, worn, grasped, or the like) by a creature resisting the spell, in which case the object uses the creature’s saving throw bonus unless its own bonus is greater. This notation does not mean that a spell can be cast only on objects. Some spells of this sort can be cast on creatures or objects. A magic item’s saving throw bonuses are each equal to 2 + 1/2 the item’s caster level.",
+      "_type": "Resolve"
+    },
+    {
+      "_id": "5b2699a6929144a9b34c76a5",
+      "name": "Harmless",
+      "description": "The spell is usually beneficial, not harmful, but a targeted creature can attempt a saving throw if it desires.",
+      "_type": "Resolve"
     }
   ]
 }

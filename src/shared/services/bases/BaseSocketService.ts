@@ -1,15 +1,18 @@
 import SocketLayer from '../layers/SocketLayer'
 import { IEntity } from '@/domain/interfaces/IEntity'
 import { Paginated } from '@feathersjs/feathers'
+import { MappingService, IConstructor } from '@/services/MappingService';
 
-export default class BaseSocketService<TModel extends IEntity = any> extends SocketLayer {
-  constructor({ url }: { url: string }) {
+export default class BaseSocketService<TModel extends IEntity = any> extends SocketLayer<TModel> {
+  constructor({ url, constructors }: { url: string, constructors?: Array<IConstructor<TModel>> }) {
     super({ serviceName: url.replace('/', '') })
+    MappingService.addClassMaps(constructors)
   }
 
   async get(id: string = '', query: any = {}): Promise<TModel> {
     try {
-      return this.service.get(id, { query })
+      const response = await this.service.get(id, { query })
+      return MappingService.getIstanceAs(response);
     } catch (error) {
       throw error;
     }
@@ -17,7 +20,13 @@ export default class BaseSocketService<TModel extends IEntity = any> extends Soc
 
   async find(query = {}): Promise<TModel[] | Paginated<TModel>> {
     try {
-      return this.service.find({ query })
+      const response = await this.service.find({ query })
+
+      if (response instanceof Array) {
+        return response.map(model => MappingService.getIstanceAs<TModel>(model));
+      }
+
+      return response;
     } catch (error) {
       throw error;
     }
@@ -25,7 +34,8 @@ export default class BaseSocketService<TModel extends IEntity = any> extends Soc
 
   async create(model: TModel): Promise<TModel> {
     try {
-      return this.service.create(model)
+      const response = await this.service.create(model);
+      return MappingService.getIstanceAs(response);
     } catch (error) {
       throw error
     }
@@ -34,7 +44,8 @@ export default class BaseSocketService<TModel extends IEntity = any> extends Soc
   async update(model: TModel): Promise<TModel> {
     try {
       const { _id } = model
-      return this.service.update(_id, model)
+      const response = await this.service.update(_id, model)
+      return MappingService.getIstanceAs(response);
     } catch (error) {
       throw error
     }
@@ -42,7 +53,8 @@ export default class BaseSocketService<TModel extends IEntity = any> extends Soc
 
   async remove(id: string): Promise<TModel> {
     try {
-      return this.service.remove(id)
+      const response = await this.service.remove(id)
+      return MappingService.getIstanceAs(response);
     } catch (error) {
       throw error;
     }

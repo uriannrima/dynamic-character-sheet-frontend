@@ -1,6 +1,6 @@
 <template>
   <div class="dc-area">
-    <spell-save :keyScoreModifier="getTempModifier(keyScore)"></spell-save>
+    <spell-save :keyAbilityModifier="getTempModifier(keyScore)"></spell-save>
     <arcane-spell-failure :spellFailure="getSpellFailure"></arcane-spell-failure>
     <div class="spell-condition-modifier-container">
       <condition-modifiers></condition-modifiers>

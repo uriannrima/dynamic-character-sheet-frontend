@@ -6,6 +6,8 @@ import { IEntity } from '@/domain/interfaces/IEntity'
 export class Character implements IEntity {
   _id: string = '';
 
+  _type: string = 'Character';
+
   description: Modules.Description = new Modules.Description();
 
   abilityScores: IMap<Modules.AbilityScore> = Modules.AbilityScores;

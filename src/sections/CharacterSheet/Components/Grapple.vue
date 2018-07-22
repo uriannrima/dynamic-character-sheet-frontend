@@ -15,7 +15,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="keyScoreModifier">
+           :value="keyAbilityModifier">
     <input type="number"
            class="common-input"
            readonly
@@ -28,7 +28,7 @@
     <span class="total-label"
           :value="grappleTotal">Total</span>
     <span>Base Attack<br>Bonus</span>
-    <span>{{keyScoreName}}<br>Modifier</span>
+    <span>{{keyAbility}}<br>Modifier</span>
     <span>Size<br>Modifier</span>
     <span>Misc<br>Modifier</span>
   </div>
@@ -37,11 +37,11 @@
 <script>
 export default {
   props: {
-    keyScoreName: {
+    keyAbility: {
       type: String,
       default: 'strength'
     },
-    keyScoreModifier: {
+    keyAbilityModifier: {
       type: Number,
       default: 0
     },

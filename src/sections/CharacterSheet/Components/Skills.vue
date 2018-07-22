@@ -23,7 +23,7 @@
       <skill v-for="(skill, index) in skills"
              :key="index"
              v-bind="skill"
-             :keyScoreModifier="getTempModifier(getAbilityScore(skill.keyScoreName))"
+             :keyAbilityModifier="getTempModifier(getAbilityScore(skill.keyAbility))"
              :gearPenalty="getGearPenalty"
              @onSkillUpdate="updateSkill"
              @onSelected="onSkillSelected"></skill>

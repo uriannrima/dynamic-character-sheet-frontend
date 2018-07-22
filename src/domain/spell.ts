@@ -1,11 +1,6 @@
 import { IEntity } from './interfaces/IEntity'
-import { Descriptor } from './constants/descriptor'
+import { Descriptor, Component, Range, Effect, Resolve, Duration } from './spell-components'
 import { SpellSchool } from './spell-school'
-import { Component } from './constants/component'
-import { Range } from './constants/range'
-import { Effect } from './constants/effect'
-import { Resolve } from './constants/resolve'
-import { Duration } from './constants/duration'
 import { CastingTime } from './enums/casting-time-type'
 
 export class SpellSaveThrow {
@@ -22,6 +17,7 @@ export class SpellSaveThrow {
 
 export class Spell implements IEntity {
   _id: string = '';
+  _type: string = 'Spell';
   name: string = '';
   school: SpellSchool = new SpellSchool();
   descriptors: Descriptor[] = [];
@@ -38,13 +34,7 @@ export class Spell implements IEntity {
   spellResistance: boolean = true;
   aditionalInformation: string = '';
 
-  constructor(model?: Spell | {
-    _id: string, name: string, school: SpellSchool, descriptors: Descriptor[],
-    level: number, components: Component[], castingTimeAmount: number,
-    castingTime: CastingTime, range: Range, targets: string, effect: Effect,
-    durations: Duration[], savingThrow: SpellSaveThrow, description: string,
-    spellResistance: boolean, aditionalInformation: string,
-  }) {
+  constructor(model?: Spell | { _id: string, name: string, school: SpellSchool, descriptors: Descriptor[], level: number, components: Component[], castingTimeAmount: number, castingTime: CastingTime, range: Range, targets: string, effect: Effect, durations: Duration[], savingThrow: SpellSaveThrow, description: string, spellResistance: boolean, aditionalInformation: string, }) {
     if (model) {
       if (model._id) this._id = model._id
       if (model.name) this.name = model.name

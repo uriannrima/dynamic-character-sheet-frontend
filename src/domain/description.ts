@@ -16,10 +16,10 @@ export class Description {
   skin: string = '';
 
   constructor(model?: Description | {
-    name?: string, player?: string, race?: string,
-    alignment?: Alignment, deity?: string, age?: number,
-    gender: GenderType, height?: number, weight?: number,
-    eyes?: string, hair?: string, skin?: string
+  name?: string, player?: string, race?: string,
+  alignment?: Alignment, deity?: string, age?: number,
+  gender: GenderType, height?: number, weight?: number,
+  eyes?: string, hair?: string, skin?: string
   }) {
     if (model) {
       if (model.name) this.name = model.name;

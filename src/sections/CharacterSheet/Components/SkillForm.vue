@@ -7,7 +7,7 @@
           <strong>Name:</strong>
         </span>
         <span>{{describe.name}}
-          <small>[{{describe.keyScoreName}}]</small>
+          <small>[{{describe.keyAbility}}]</small>
         </span>
       </div>
       <div>
@@ -79,7 +79,7 @@
       </div>
       <div>
         <span>Key Ability:</span>
-        <select v-model="model.keyScoreName"
+        <select v-model="model.keyAbility"
                 v-validate="'required'"
                 name="key ability">
           <option value="strength">Strength</option>

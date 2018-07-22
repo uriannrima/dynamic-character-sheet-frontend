@@ -1,12 +1,22 @@
 import { Base } from './base'
+import { IEntity } from '@/domain/interfaces/IEntity';
 
-export class Effect extends Base { }
+export class Effect extends Base implements IEntity {
+  _id: string = '';
+  _type: string = 'Effect';
+}
 
-export class AreaType extends Base { }
+export class AreaType extends Base {
+  _type: string = 'AreaType';
+}
 
-export class AreaFormat extends Base { }
+export class AreaFormat extends Base {
+  _type: string = 'AreaFormat';
+}
 
 export class AreaEffect extends Effect {
+  _type: string = 'AreaEffect';
+
   types: AreaType[] = [];
   formats: AreaFormat[] = [];
 

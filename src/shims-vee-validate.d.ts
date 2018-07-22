@@ -1,6 +1,6 @@
 import Vue, { ComponentOptions } from 'vue';
 
-declare module "vue/types/options" {
+declare module 'vue/types/options' {
   interface VeeValidateOptions {
     validator: string
   }

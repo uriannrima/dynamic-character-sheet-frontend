@@ -19,8 +19,8 @@ export class Shield extends ProtectiveItem {
   spellFailure: number = 0;
 
   constructor(model?: Shield | {
-    name?: string, acBonus?: number, checkPenalty?: number,
-    spellFailure?: number, weight?: number, specialProperties?: string
+  name?: string, acBonus?: number, checkPenalty?: number,
+  spellFailure?: number, weight?: number, specialProperties?: string
   }) {
     super(model);
     if (model) {
@@ -36,9 +36,9 @@ export class Armor extends Shield {
   speed: number = 0;
 
   constructor(model?: Armor | {
-    name?: string, type?: string, acBonus?: number,
-    maxDex?: number, checkPenalty?: number, spellFailure?: number,
-    speed?: number, weight?: number, specialProperties?: string
+  name?: string, type?: string, acBonus?: number,
+  maxDex?: number, checkPenalty?: number, spellFailure?: number,
+  speed?: number, weight?: number, specialProperties?: string
   }) {
     super(model);
     if (model) {

@@ -5,6 +5,7 @@ import { KeyAbilityType } from './enums/key-ability-type'
 
 export class CharacterSkill implements IEntity, ISubValued<SubValue> {
   _id: string = '';
+  _type: string = 'CharacterSkill';
   name: string = '';
   keyAbility: KeyAbilityType = KeyAbilityType.NONE;
   untrained: boolean = true;
@@ -17,10 +18,10 @@ export class CharacterSkill implements IEntity, ISubValued<SubValue> {
   hiddenModifier: number = 0;
 
   constructor(model?: CharacterSkill | {
-    _id?: string, name?: string, keyAbility?: KeyAbilityType,
-    untrained?: boolean, armorCheckPenalty?: boolean, classSkill?: boolean,
-    subValues?: SubValue[], rank?: number, abilityModifier?: number,
-    miscModifier?: number, hiddenModifier?: number
+  _id?: string, name?: string, keyAbility?: KeyAbilityType,
+  untrained?: boolean, armorCheckPenalty?: boolean, classSkill?: boolean,
+  subValues?: SubValue[], rank?: number, abilityModifier?: number,
+  miscModifier?: number, hiddenModifier?: number
   }) {
     if (model) {
       if (model._id) this._id = model._id;
@@ -43,6 +44,7 @@ export class CharacterSkill implements IEntity, ISubValued<SubValue> {
 }
 
 export class Skill extends CharacterSkill {
+  _type: string = 'Skill';
   check: string = '';
   action: string = '';
   tryAgain: string = '';
@@ -54,13 +56,13 @@ export class Skill extends CharacterSkill {
   aditionalInformation: string = '';
 
   constructor(model?: Skill | {
-    _id?: string, name?: string, keyAbility?: KeyAbilityType,
-    untrained?: boolean, armorCheckPenalty?: boolean, classSkill?: boolean,
-    hasSubValue?: boolean, subValues?: SubValue[], rank?: number,
-    abilityModifier?: number, miscModifier?: number, hiddenModifier?: number,
-    check?: string, action?: string, tryAgain?: string, special?: string,
-    synergy?: string, untrainedDescription?: string, restriction?: string,
-    miscellaneous?: string, aditionalInformation?: string,
+  _id?: string, name?: string, keyAbility?: KeyAbilityType,
+  untrained?: boolean, armorCheckPenalty?: boolean, classSkill?: boolean,
+  hasSubValue?: boolean, subValues?: SubValue[], rank?: number,
+  abilityModifier?: number, miscModifier?: number, hiddenModifier?: number,
+  check?: string, action?: string, tryAgain?: string, special?: string,
+  synergy?: string, untrainedDescription?: string, restriction?: string,
+  miscellaneous?: string, aditionalInformation?: string,
   }) {
     super(model)
     if (model) {

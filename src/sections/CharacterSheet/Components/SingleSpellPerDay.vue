@@ -7,7 +7,7 @@
     <input type="number"
            class="common-input"
            readonly
-           :value="10 + (spellLevel * 1) + keyScoreModifier">
+           :value="10 + (spellLevel * 1) + keyAbilityModifier">
     <label v-if="spellLevel == 0">0</label>
     <label v-if="spellLevel == 1">1st</label>
     <label v-if="spellLevel == 2">2nd</label>
@@ -30,7 +30,7 @@ export default {
     'spellsPerLevel',
     'spellPerDay',
     'spellLevel',
-    'keyScoreModifier'
+    'keyAbilityModifier'
   ]
 }
 </script>
