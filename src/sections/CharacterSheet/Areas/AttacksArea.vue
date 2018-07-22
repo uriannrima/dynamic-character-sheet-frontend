@@ -3,13 +3,13 @@
     <div class="saving-condition-grid">
       <saving-throws></saving-throws>
       <condition-modifiers :conditionModifiers="conditionModifiers"
-                           @onUpdateConditionModifiers="updateConditionModifiers"></condition-modifiers>
+                           @updateConditionModifiers="updateConditionModifiers"></condition-modifiers>
     </div>
     <div class="base-attack-resistance-grid">
       <base-attack-bonus :baseAttackBonus="getBaseAttackBonus"
-                         @onUpdateBaseAttackBonus="updateBaseAttackBonus"></base-attack-bonus>
+                         @updateBaseAttackBonus="updateBaseAttackBonus"></base-attack-bonus>
       <spell-resistance :spellResistance="spellResistance"
-                        @onUpdateSpellResistance="updateSpellResistance"></spell-resistance>
+                        @updateSpellResistance="updateSpellResistance"></spell-resistance>
     </div>
     <grapple :key-score-name="getGrappleKeyScore.name"
              :key-score-modifier="getGrappleKeyScore.tempModifier"
@@ -17,7 +17,7 @@
              :base-attack-bonus="getBaseAttackBonus"
              :grapple-modifier="grappleModifier"
              :grapple-total="getGrappleTotal"
-             @onUpdateGrapple="updateGrapple"></grapple>
+             @updateGrapple="updateGrapple"></grapple>
     <attacks></attacks>
   </div>
 </template>

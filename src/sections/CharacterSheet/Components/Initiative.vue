@@ -15,7 +15,7 @@
     <input type="number"
            class="common-input"
            v-model.number="initiativeModifier"
-           @change="$emit('onUpdateInitiative', $event.target.value * 1)">
+           @change="$emit('updateInitiative', $event.target.value * 1)">
     <label class="h-md-down">&nbsp;</label>
     <label class="h-md-down">&nbsp;</label>
     <label class="total-label">Total</label>

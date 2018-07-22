@@ -98,7 +98,7 @@ export class Character implements IEntity {
 
       this.size = new Modules.Size(model.size)
 
-      this.skills = model.skills.map(skill => new Modules.Skill(skill))
+      this.skills = model.skills.map(skill => new Modules.CharacterSkill(skill))
 
       this.specialAbilities = model.specialAbilities.map(specialAbility => new Modules.SpecialAbility(specialAbility))
 

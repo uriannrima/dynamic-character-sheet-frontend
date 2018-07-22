@@ -23,7 +23,7 @@
     <input type="number"
            class="common-input"
            :value="grappleModifier"
-           @change="$emit('onUpdateGrapple', { miscModifier: $event.target.value * 1 })">
+           @change="$emit('updateGrapple', { miscModifier: $event.target.value * 1 })">
     <span class="h-md-down">&nbsp;</span>
     <span class="total-label"
           :value="grappleTotal">Total</span>

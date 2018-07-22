@@ -3,7 +3,7 @@
     <attack v-for="(attack, index) in attacks"
             :key="index"
             v-bind="attack"
-            @onAttackUpdate="onUpdateAttack(index, $event)" />
+            @attackUpdate="onUpdateAttack(index, $event)" />
   </div>
 </template>
 

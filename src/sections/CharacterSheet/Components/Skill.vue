@@ -3,7 +3,7 @@
     <input type="checkbox"
            class="class-skill-checkbox"
            :checked="classSkill"
-           @change="$emit('onSkillUpdate', { _id, subValues, classSkill: $event.target.checked })">
+           @change="$emit('skillUpdate', { _id, subValues, classSkill: $event.target.checked })">
     <div class="skill-wrapper">
       <div class="skill-name-container">
         <v-touch tag="label" class="skill-name"
@@ -25,11 +25,11 @@
       <input type="number"
              class="only-bottom"
              :value="rank"
-             @change="$emit('onSkillUpdate', { _id, subValues, rank: $event.target.value * 1 })">
+             @change="$emit('skillUpdate', { _id, subValues, rank: $event.target.value * 1 })">
       <input type="number"
              class="only-bottom"
              :value="miscModifier"
-             @change="$emit('onSkillUpdate', { _id, subValues, miscModifier: $event.target.value * 1 })">
+             @change="$emit('skillUpdate', { _id, subValues, miscModifier: $event.target.value * 1 })">
     </div>
   </div>
 </template>

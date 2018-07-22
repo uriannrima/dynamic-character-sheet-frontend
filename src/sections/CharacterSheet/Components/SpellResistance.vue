@@ -6,7 +6,7 @@
     <input type="number"
            class="common-input"
            :value="spellResistance"
-           @change="$emit('onUpdateSpellResistance', { spellResistance: $event.target.value * 1})">
+           @change="$emit('updateSpellResistance', { spellResistance: $event.target.value * 1})">
   </div>
 </template>
 

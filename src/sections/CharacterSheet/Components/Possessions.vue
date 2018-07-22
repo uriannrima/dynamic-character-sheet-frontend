@@ -7,14 +7,14 @@
     </div>
     <items :items="items"
            :totalWeight="getTotalWeight"
-           @onItemUpdate="updateItem"></items>
+           @itemUpdate="updateItem"></items>
     <div class="carry-capacities-container">
       <carry-capacities :carryCapacities="carryCapacities"
-                        @onCarryCapacityUpdate="updateCarryCapacity"></carry-capacities>
+                        @carryCapacityUpdate="updateCarryCapacity"></carry-capacities>
     </div>
     <wealth :wealth="wealth"
-            @onCoinUpdate="updateCoin"
-            @onTreasureUpdate="updateTreasure"></wealth>
+            @coinUpdate="updateCoin"
+            @treasureUpdate="updateTreasure"></wealth>
   </div>
 </template>
 

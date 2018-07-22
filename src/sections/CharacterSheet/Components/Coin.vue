@@ -3,7 +3,7 @@
     <label :title="title">{{label}} —</label>
     <input type="number"
            :value="value"
-           @change="$emit('onCoinUpdate', { value: $event.target.value * 1 })">
+           @change="$emit('coinUpdate', { value: $event.target.value * 1 })">
   </div>
 </template>
 

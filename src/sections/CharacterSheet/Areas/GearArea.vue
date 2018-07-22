@@ -1,14 +1,14 @@
 <template>
   <div class="gear-area">
     <armor-item v-bind="gear.armor"
-                @onArmorUpdate="updateArmor($event)"></armor-item>
+                @armorUpdate="updateArmor($event)"></armor-item>
     <shield-item :shield="gear.shield"
                  v-bind="gear.shield"
-                 @onShieldUpdate="updateShield($event)"></shield-item>
+                 @shieldUpdate="updateShield($event)"></shield-item>
     <protective-item v-for="(protectiveItem, index) in gear.protectiveItems"
                      :key="index"
                      v-bind="protectiveItem"
-                     @onProtectiveItemUpdate="updateProtectiveItem({ index, protectiveItem: $event })"></protective-item>
+                     @protectiveItemUpdate="updateProtectiveItem({ index, protectiveItem: $event })"></protective-item>
   </div>
 
 </template>

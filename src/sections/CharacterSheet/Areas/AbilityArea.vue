@@ -1,7 +1,7 @@
 <template>
   <div class="ability-area">
     <ability-scores :ability-scores="abilityScores"
-                    @onUpdateScore="updateAbilityScore"></ability-scores>
+                    @updateScore="updateAbilityScore"></ability-scores>
   </div>
 </template>
 

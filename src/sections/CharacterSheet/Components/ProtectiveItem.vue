@@ -7,7 +7,7 @@
       <input type="text"
              class="common-input"
              :value="name"
-             @change="$emit('onProtectiveItemUpdate', { name: $event.target.value })">
+             @change="$emit('protectiveItemUpdate', { name: $event.target.value })">
     </div>
     <div>
       <div>
@@ -17,7 +17,7 @@
         <input type="number"
                class="common-input"
                :value="acBonus"
-               @change="$emit('onProtectiveItemUpdate', { acBonus: $event.target.value * 1 })">
+               @change="$emit('protectiveItemUpdate', { acBonus: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -26,7 +26,7 @@
         <input type="number"
                class="common-input"
                :value="weight"
-               @change="$emit('onProtectiveItemUpdate', { weight: $event.target.value * 1 })">
+               @change="$emit('protectiveItemUpdate', { weight: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -36,7 +36,7 @@
       <input type="text"
              class="common-input"
              :value="specialProperties"
-             @change="$emit('onProtectiveItemUpdate', { specialProperties: $event.target.value })">
+             @change="$emit('protectiveItemUpdate', { specialProperties: $event.target.value })">
     </div>
   </div>
 </template>

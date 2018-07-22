@@ -25,15 +25,15 @@
              v-bind="skill"
              :keyAbilityModifier="getTempModifier(getAbilityScore(skill.keyAbility))"
              :gearPenalty="getGearPenalty"
-             @onSkillUpdate="updateSkill"
-             @onSelected="onSkillSelected"></skill>
+             @skillUpdate="updateSkill"
+             @selected="onSkillSelected"></skill>
     </div>
     <skill-modal :show.sync="showModal"
                  :referenceList="skills"
                  :describe.sync="selected"
                  :canEdit="true"
-                 @onAdded="addSkill($event.model)"
-                 @onRemoved="removeSkill($event.model)"></skill-modal>
+                 @added="addSkill($event.model)"
+                 @removed="removeSkill($event.model)"></skill-modal>
   </div>
 </template>
 

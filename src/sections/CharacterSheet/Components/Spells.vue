@@ -16,7 +16,7 @@
                     :key="index"
                     :group="spellsGroup"
                     :spells="spells"
-                    @onSelected="onSelected"></spells-group>
+                    @selected="onSelected"></spells-group>
       <div class="no-content-container"
            v-if="spells.length == 0">
         <label>No spells</label>
@@ -25,8 +25,8 @@
     <spell-modal :show.sync="showModal"
                  :referenceList="spells"
                  :describe.sync="selected"
-                 @onAdded="addSpell($event.model)"
-                 @onRemoved="removeSpell($event.model)"></spell-modal>
+                 @added="addSpell($event.model)"
+                 @removed="removeSpell($event.model)"></spell-modal>
   </div>
 </template>
 

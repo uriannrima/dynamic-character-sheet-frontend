@@ -10,7 +10,7 @@
       <feat v-for="(feat, index) in feats"
             :key="index"
             :feat="feat"
-            @onSelected="onSelected"></feat>
+            @selected="onSelected"></feat>
       <div class="no-content-container"
            v-if="feats.length == 0">
         <label>No feats</label>
@@ -19,8 +19,8 @@
     <feat-modal :show.sync="showModal"
                 :referenceList="feats"
                 :describe.sync="selected"
-                @onAdded="addFeat($event.model)"
-                @onRemoved="removeFeat($event.model)"></feat-modal>
+                @added="addFeat($event.model)"
+                @removed="removeFeat($event.model)"></feat-modal>
   </div>
 </template>
 

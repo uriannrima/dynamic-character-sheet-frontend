@@ -3,7 +3,7 @@
     <input type="number"
            class="common-input"
            :value="value"
-           @change="$emit('onCarryCapacityUpdate' , { value: $event.target.value * 1 })">
+           @change="$emit('carryCapacityUpdate' , { value: $event.target.value * 1 })">
     <label v-html="label"></label>
     <small v-if="small">{{small}}</small>
   </div>

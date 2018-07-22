@@ -58,7 +58,7 @@ export default {
       this.$validator.validateAll().then(result => {
         if (result) {
           const { name, email, password } = this
-          this.$emit('onRegister', { name, email, password })
+          this.$emit('register', { name, email, password })
         }
       })
     }

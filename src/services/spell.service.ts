@@ -4,11 +4,11 @@ import AbstractService from './abstract.service';
 
 import {
   Descriptor, Component, RangeWithDistance,
-  Effect, AreaEffect, Timed, Duration, Resolve, Range
+  Effect, AreaEffect, TimedDuration, Duration, Resolve, Range
 } from '@/domain/spell-components';
 
 // Or Types become undefined right bellow. Don't know why.
-console.debug(Descriptor, Component, RangeWithDistance, Effect, AreaEffect, Timed, Duration, Resolve, Range);
+console.debug(Descriptor, Component, RangeWithDistance, Effect, AreaEffect, TimedDuration, Duration, Resolve, Range);
 
 export class SpellDescriptorService extends AbstractService<Descriptor> {
   constructor() {
@@ -36,7 +36,7 @@ export class SpellEffectService extends AbstractService<Effect> {
 
 export class SpellDurationService extends AbstractService<Duration> {
   constructor() {
-    super({ url: '/spell-durations', constructors: [Duration, Timed] });
+    super({ url: '/spell-durations', constructors: [Duration, TimedDuration] });
   }
 }
 

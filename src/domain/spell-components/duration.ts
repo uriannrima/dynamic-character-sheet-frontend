@@ -6,11 +6,11 @@ export class Duration extends Base implements IEntity {
   _type: string = 'Duration';
 }
 
-export class Timed extends Duration {
+export class TimedDuration extends Duration {
   duration: string = '';
-  _type: string = 'Timed';
+  _type: string = 'TimedDuration';
 
-  constructor(model?: Timed | { name?: string, description?: string, duration?: string }) {
+  constructor(model?: TimedDuration | { name?: string, description?: string, duration?: string }) {
     super(model)
     if (model) {
       if (model.duration) this.duration = model.duration;

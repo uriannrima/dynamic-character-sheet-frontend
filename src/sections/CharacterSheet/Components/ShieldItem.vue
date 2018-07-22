@@ -7,7 +7,7 @@
       <input type="text"
              class="common-input"
              :value="name"
-             @change="$emit('onShieldUpdate', { name: $event.target.value })">
+             @change="$emit('shieldUpdate', { name: $event.target.value })">
     </div>
     <div>
       <div>
@@ -17,7 +17,7 @@
         <input type="number"
                class="common-input"
                :value="acBonus"
-               @change="$emit('onShieldUpdate', { acBonus: $event.target.value * 1 })">
+               @change="$emit('shieldUpdate', { acBonus: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -26,7 +26,7 @@
         <input type="number"
                class="common-input"
                :value="weight"
-               @change="$emit('onShieldUpdate', { weight: $event.target.value * 1 })">
+               @change="$emit('shieldUpdate', { weight: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -36,7 +36,7 @@
       <input type="number"
              class="common-input"
              :value="checkPenalty"
-             @change="$emit('onShieldUpdate', { checkPenalty: $event.target.value * 1 })">
+             @change="$emit('shieldUpdate', { checkPenalty: $event.target.value * 1 })">
     </div>
     <div>
       <div class="new-black-box">
@@ -45,7 +45,7 @@
       <input type="number"
              class="common-input"
              :value="spellFailure"
-             @change="$emit('onShieldUpdate', { spellFailure: $event.target.value * 1 })">
+             @change="$emit('shieldUpdate', { spellFailure: $event.target.value * 1 })">
     </div>
     <div>
       <div class="new-black-box">
@@ -54,7 +54,7 @@
       <input type="text"
              class="common-input"
              :value="specialProperties"
-             @change="$emit('onShieldUpdate', { specialProperties: $event.target.value })">
+             @change="$emit('shieldUpdate', { specialProperties: $event.target.value })">
     </div>
   </div>
 </template>

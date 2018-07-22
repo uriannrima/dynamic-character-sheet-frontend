@@ -4,7 +4,7 @@
       <label class="condition-modifiers-label">condition Modifiers</label>
       <textarea class="common-textarea"
                 :value="conditionModifiers"
-                @change="$emit('onUpdateConditionModifiers', { conditionModifiers: $event.target.value })"></textarea>
+                @change="$emit('updateConditionModifiers', { conditionModifiers: $event.target.value })"></textarea>
     </div>
   </div>
 </template>

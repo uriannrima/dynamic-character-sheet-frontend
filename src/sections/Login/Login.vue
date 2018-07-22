@@ -4,8 +4,8 @@
       <component :is="formName"
                  :disabled="processing"
                  @toggleForm="toggleForm($event)"
-                 @onLogin="doLogin($event)"
-                 @onRegister="doRegistration($event)"></component>
+                 @login="doLogin($event)"
+                 @register="doRegistration($event)"></component>
     </div>
   </div>
 </template>

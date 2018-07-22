@@ -7,7 +7,7 @@
       <input type="text"
              class="common-input"
              :value="name"
-             @change="$emit('onAttackUpdate', { name : $event.target.value })">
+             @change="$emit('attackUpdate', { name : $event.target.value })">
     </div>
     <div>
       <div>
@@ -17,7 +17,7 @@
         <input type="text"
                class="common-input"
                :value="attackBonus"
-             @change="$emit('onAttackUpdate', { attackBonus : $event.target.value })">
+             @change="$emit('attackUpdate', { attackBonus : $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -26,7 +26,7 @@
         <input type="text"
                class="common-input"
                :value="damage"
-             @change="$emit('onAttackUpdate', { damage : $event.target.value })">
+             @change="$emit('attackUpdate', { damage : $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -35,7 +35,7 @@
         <input type="text"
                class="common-input"
                :value="critical"
-             @change="$emit('onAttackUpdate', { critical : $event.target.value })">
+             @change="$emit('attackUpdate', { critical : $event.target.value })">
       </div>
     </div>
     <div>
@@ -46,7 +46,7 @@
         <input type="text"
                class="common-input"
                :value="range"
-             @change="$emit('onAttackUpdate', { range : $event.target.value })">
+             @change="$emit('attackUpdate', { range : $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -55,7 +55,7 @@
         <input type="text"
                class="common-input"
                :value="type"
-             @change="$emit('onAttackUpdate', { type : $event.target.value })">
+             @change="$emit('attackUpdate', { type : $event.target.value })">
       </div>
     </div>
     <div>
@@ -65,7 +65,7 @@
       <input type="text"
              class="common-input"
              :value="notes"
-             @change="$emit('onAttackUpdate', { notes : $event.target.value })">
+             @change="$emit('attackUpdate', { notes : $event.target.value })">
     </div>
     <div v-if="ammunition">
       <label>Ammunition</label>

@@ -10,7 +10,7 @@
       <special-ability v-for="(specialAbility, index) in specialAbilities"
                        :key="index"
                        :specialAbility="specialAbility"
-                       @onSelected="onSelected"></special-ability>
+                       @selected="onSelected"></special-ability>
       <div class="no-content-container"
            v-if="specialAbilities.length == 0">
         <label>No special abilities</label>
@@ -19,8 +19,8 @@
     <special-ability-modal :show.sync="showModal"
                            :referenceList="specialAbilities"
                            :describe.sync="selected"
-                           @onAdded="addSpecialAbility($event.model)"
-                           @onRemoved="removeSpecialAbility($event.model)"></special-ability-modal>
+                           @added="addSpecialAbility($event.model)"
+                           @removed="removeSpecialAbility($event.model)"></special-ability-modal>
   </div>
 </template>
 

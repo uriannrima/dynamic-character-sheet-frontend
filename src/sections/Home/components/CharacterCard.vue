@@ -63,7 +63,7 @@ export default {
   methods: {
     confirmDelete () {
       this.$dialog.confirm(`Do you really want to delete ${this.character.description.name}?`).then(() => {
-        this.$emit('onDelete', { character: this.character })
+        this.$emit('delete', { character: this.character })
       })
     }
   }

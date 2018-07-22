@@ -4,7 +4,7 @@
     <initiative :total-initiative="getTotalInitiative"
                 :key-score-name="getInitiativeKeyScore.name"
                 :key-score-modifier="getInitiativeKeyScore.tempModifier"
-                @onUpdateInitiative="updateInitiative"></initiative>
+                @updateInitiative="updateInitiative"></initiative>
   </div>
 </template>
 

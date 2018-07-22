@@ -2,6 +2,7 @@
   "characters": [
     {
       "_id": "5aae8315f883d7077ad0e485",
+      "_type": "Character",
       "description": {
         "name": "Huunar",
         "player": "Hudson",
@@ -613,6 +614,7 @@
     },
     {
       "_id": "5aae87edf883d7077ad0e48a",
+      "_type": "Character",
       "description": {
         "name": "Lotar",
         "player": "Igor",
@@ -1860,6 +1862,7 @@
     },
     {
       "_id": "5aca3684a1cdd300147a488d",
+      "_type": "Character",
       "description": {
         "name": "Carrie White",
         "player": "Simone",
@@ -3302,6 +3305,7 @@
     },
     {
       "_id": "5aae82eaf883d7077ad0e484",
+      "_type": "Character",
       "description": {
         "name": "Jason Viper",
         "player": "Marcelo",
@@ -4818,6 +4822,7 @@
     },
     {
       "_id": "5ad28552aedcc81c987db75e",
+      "_type": "Character",
       "description": {
         "name": "Saving for skills",
         "player": "Luciano",
@@ -5832,6 +5837,7 @@
     },
     {
       "_id": "5aadbdb4cbd8873778592e68",
+      "_type": "Character",
       "description": {
         "name": "Ha'nairu",
         "player": "Luciano",
@@ -7223,6 +7229,7 @@
   "feats": [
     {
       "_id": "59b9dd43d799d82f60e08432",
+      "_type": "Feat",
       "title": "Acrobatic",
       "benefit": "You get a +2 bonus on all Jump checks and Tumble checks.",
       "type": "General",
@@ -7231,6 +7238,7 @@
     },
     {
       "_id": "59c334633dec553324539323",
+      "_type": "Feat",
       "title": "Rapid Shot",
       "benefit": "You can get one extra attack per round with a ranged weapon. The attack is at your highest base attack bonus, but each attack you make in that round (the extra one and the normal ones) takes a -2 penalty. You must use the full attack action to use this feat.",
       "type": "General",
@@ -7241,6 +7249,7 @@
     },
     {
       "_id": "59c334bf3dec553324539326",
+      "_type": "Feat",
       "title": "Point Blank Shot",
       "benefit": "You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet.",
       "type": "General",
@@ -7250,6 +7259,7 @@
     },
     {
       "_id": "59c33d840fcb742600a87a47",
+      "_type": "Feat",
       "title": "Weapon Focus",
       "type": "General",
       "benefit": "You gain a +1 bonus on all attack rolls you make using the selected weapon.",
@@ -7263,6 +7273,7 @@
     },
     {
       "_id": "59c3406e0fcb742600a87a4c",
+      "_type": "Feat",
       "title": "Weapon Finesse",
       "benefit": "With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls.",
       "type": "General",
@@ -7273,6 +7284,7 @@
     },
     {
       "_id": "59c5a6c8bc76c940e0692ffb",
+      "_type": "Feat",
       "title": "Scribe Scroll",
       "benefit": "You can create a scroll of any spell that you know. Scribing a scroll takes one day for each 1,000 gp in its base price. The base price of a scroll is its spell level × its caster level × 25 gp. To scribe a scroll, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price.\n\nAny scroll that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when scribing the scroll.",
       "type": "Item Creation",
@@ -7282,6 +7294,7 @@
     },
     {
       "_id": "59c5a6edbc76c940e0692ffd",
+      "_type": "Feat",
       "title": "Spell Focus",
       "benefit": "Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select.",
       "type": "General",
@@ -7294,6 +7307,7 @@
     },
     {
       "_id": "59c5a751bc76c940e0693001",
+      "_type": "Feat",
       "title": "Unsettling Enchantment ",
       "benefit": "Any foe required to save against an enchantment spell you cast takes a -2 penalty on attack rolls and to AC for 1 round, regardless of the result of the save. This is a mindaffecting effect.",
       "type": "General",
@@ -7304,6 +7318,7 @@
     },
     {
       "_id": "59c5a771bc76c940e0693003",
+      "_type": "Feat",
       "title": "Skill Focus",
       "benefit": "You get a +3 bonus on all checks involving that skill.",
       "type": "General",
@@ -7316,6 +7331,7 @@
     },
     {
       "_id": "59c5a9f5bc76c940e0693007",
+      "_type": "Feat",
       "title": "Spell Penetration",
       "benefit": "You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature’s spell resistance.",
       "type": "General",
@@ -7324,6 +7340,7 @@
     },
     {
       "_id": "5a846c5096c55345e40f0f16",
+      "_type": "Feat",
       "title": "asd",
       "benefit": "123",
       "type": "General",
@@ -7331,6 +7348,7 @@
     },
     {
       "_id": "5aae8760f883d7077ad0e487",
+      "_type": "Feat",
       "title": "Improved Sunder",
       "benefit": "When you strike at an object held or carried by an opponent (such as a weapon or shield), you do not provoke an attack of opportunity.\n\nYou also gain a +4 bonus on any attack roll made to attack an object held or carried by another character.",
       "type": "General",
@@ -7338,6 +7356,7 @@
     },
     {
       "_id": "5aca569f36461b001456a27f",
+      "_type": "Feat",
       "title": "Spell Focus: Necromancy",
       "benefit": "Spell Focus: Necromancy feat bonuses are based on your Hit Dice.",
       "type": "General",
@@ -7345,6 +7364,7 @@
     },
     {
       "_id": "59c33b300fcb742600a87a44",
+      "_type": "Feat",
       "title": "Power Attack",
       "benefit": "On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your base attack bonus. The penalty on attacks and bonus on damage apply until your next turn.",
       "type": "General",
@@ -7355,6 +7375,7 @@
     },
     {
       "_id": "59c33e960fcb742600a87a49",
+      "_type": "Feat",
       "title": "Improved Smiting",
       "benefit": "Whenever you make a smite attack, your attack overcomes damage reduction as if had an alignment, and you deal an extra +1d6 points of damage to targets of a specific alignment. If the smite attack has an alignment associated with it, it deals its extra damage to foes of that alignment and it is treated as having the opposite alignment for overcoming damage reduction. For example, a paladin's smite evil attacks are treated as having the good alignment and deal +1d6 damage to evil targets, while a blackguard's smite good attacks are treated as having the evil alignment and deal +1d6 damage to good targets. If the smite attack has no alignment associated with it, you must choose an alignment component (chaotic, evil, good, or lawful) when you select the feat. Your smite attacks overcome damage reduction as if they had that alignment, and deal +1d6 points of damage to foes of the opposite alignment. For example, a lawful neutral cleric of St. Cuthbert with the Destruction domain who selected this feat must choose for his smite attacks to be lawfully aligned (and these attacks would deal +1d6 points of damage to chaotic targets). A lawful evil cleric of Hextor with the Destruction domain could choose to have his smite attacks be lawfully or evilly aligned (and these attacks would deal +1d6 points of damage to chaotic targets or to good targets, respectively). You can't choose an alignment component that isn't part of your alignment, and once this choice is made, it can never be changed. If you later change alignment so that the chosen alignment component is no longer part of your alignment, you lose the BENEFITS of this feat.",
       "type": "General",
@@ -7365,6 +7386,7 @@
     },
     {
       "_id": "59c5a714bc76c940e0692fff",
+      "_type": "Feat",
       "title": "Greater Spell Focus",
       "benefit": "Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select. This bonus stacks with the bonus from Spell Focus.",
       "type": "General",
@@ -7377,6 +7399,7 @@
     },
     {
       "_id": "59c5a7a6bc76c940e0693005",
+      "_type": "Feat",
       "title": "Touch of Distraction",
       "benefit": "As long as you have an enchantment spell of 3rd level or higher available to cast, you can cloud the mind of a creature within 30 feet as a standard action. The target takes a -2 penalty on its next single attack roll or Reflex saving throw. If the target makes no attacks or Reflex saves within a number of rounds equal to the level of the highest-level enchantment spell you have available to cast, the effect ends. Multiple uses of this feat don't stack. \n\nThis is an enchantment (compulsion), mind-affecting effect. As a secondary benefit, you gain a +1 competence bonus to your caster level when casting enchantment spells.",
       "type": "Reserve",
@@ -7386,6 +7409,7 @@
     },
     {
       "_id": "5aae8625f883d7077ad0e486",
+      "_type": "Feat",
       "title": "Combat Brute",
       "benefit": "The Combat Brute feat enables the use of three tactical maneuvers.\n\nAdvancing Blows: To use this maneuver, you must make a successful bull rush attempt against a foe. During the next round, all your attacks against that foe gain a +1 bonus on attack and damage rolls for each square your bull rush moved that foe. For example, if you pushed an orc back 10 (2 squares) feet with a bull rush, you would gain a +2 bonus on attack and damage rolls against that orc on the following round.\n\nSundering Cleave: To use this maneuver, you must destroy a foe's weapon or shield with a successful sunder attempt (see page 158 of the Player's Handbook). If you do so, you gain an immediate additional melee attack against the foe. The additional attack is with the same weapon and at the same attack bonus as the attack that destroyed the weapon or shield.\nMomentum Swing: To use this maneuver, you must charge a foe in the first round, and you must make an attack using your Power Attack feat in the second round. The penalty you take on your attack roll must be -5 or worse. Your attacks during the second round gain a bonus equal to your attack roll penalty x 1-1/2, or x 3 if you're using a two-handed weapon or a one-handed weapon wielded in two hands. For instance, if you choose to take a -6 penalty on your attack roll, you can deal an extra 9 points of damage, or an extra 18 points if you're using a two-handed weapon or a one-handed weapon wielded in two hands.",
       "type": "General",
@@ -7393,6 +7417,7 @@
     },
     {
       "_id": "5aae879cf883d7077ad0e488",
+      "_type": "Feat",
       "title": "Improved Bull Rush",
       "benefit": "When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender.",
       "type": "General",
@@ -7400,6 +7425,7 @@
     },
     {
       "_id": "5aae87e0f883d7077ad0e489",
+      "_type": "Feat",
       "title": "Shock trooper",
       "benefit": "The Shock Trooper feat enables the use of three tactical maneuvers.\n\nDirected Bull Rush: To use this maneuver, you must make a successful bull rush attempt as part of a charge. For every square you push your foe back, you may also push that foe one square to the left or right.\n\nDomino Rush: To use this maneuver, you must make a successful bull rush attempt that forces a foe into the same square as another foe. You may make a free trip attempt against both foes at the same time, and neither foe gets a chance to trip you if your attempt fails.\n\nHeedless Charge: To use this maneuver, you must charge and make the attack at the end of the charge using your Power Attack feat. The penalty you take on your attack roll must be -5 or worse. In addition to normal charge modifiers (which give you a -2 penalty to AC and a +2 bonus on the attack roll), you can assign any portion of the attack roll penalty from Power Attack to your Armor Class instead, up to a maximum equal to your base attack bonus.",
       "type": "General",
@@ -7407,6 +7433,7 @@
     },
     {
       "_id": "5aca55af36461b001456a27d",
+      "_type": "Feat",
       "title": "Tomb-Tainted Soul",
       "benefit": "our soul is tainted by the foul touch of undeath.",
       "type": "General",
@@ -7415,6 +7442,7 @@
     },
     {
       "_id": "5aca562f36461b001456a27e",
+      "_type": "Feat",
       "title": "Mother Cyst",
       "benefit": "You grow an internal cyst of undead fl esh called a mother cyst. The cyst may be noticeable as a discolored swelling on your skin, if desired. The mother cyst is slightly painful, but otherwise isn't harmful. The mother cyst grants you access to a selection of cyst-related spells listed below (and described in Chapter 4 of this book). You cast these spells like any other spell you can cast, once you host a mother cyst (if you are a caster who prepares spells, you can prepare all necrotic cyst spells without referring to a spellbook, as if you had the Spell Mastery feat for each such spell). Necrotic Cyst Spells: 1st--necrotic awareness; 2nd--necrotic cyst, necrotic scrying; 3rd--necrotic bloat; 4th--necrotic domination; 5th--necrotic burst; 6th--necrotic eruption; 7th--necrotic tumor; 8th--necrotic empowerment; 9th--necrotic termination.",
       "type": "General",
@@ -7423,6 +7451,7 @@
     },
     {
       "_id": "5aca572336461b001456a280",
+      "_type": "Feat",
       "title": "Spell Focus: Necromancy",
       "benefit": "1 HD: +1 to save DCs of necromancy spells you cast.\n6 HD: +1 caster level on all necromancy spells.\n11 HD: You can command 1.5x as many undead through Animate Dead.\n16 HD: You heal from negative energy damage (in addition to positive energy damage if that healed you).",
       "type": "General",
@@ -7430,6 +7459,7 @@
     },
     {
       "_id": "5aca576a36461b001456a281",
+      "_type": "Feat",
       "title": "Spell Focus: Necromancy",
       "benefit": "Spell Focus: Necromancy feat bonuses are based on your Hit Dice.",
       "type": "General",
@@ -7438,6 +7468,7 @@
     },
     {
       "_id": "5aca57be36461b001456a282",
+      "_type": "Feat",
       "title": "Greater Spell Focus: Necromancy",
       "benefit": "Greater Spell Focus: Necromancy feat bonuses are based on your Hit Dice and stack with Spell Focus: Necromancy.",
       "type": "General",
@@ -7446,6 +7477,7 @@
     },
     {
       "_id": "5acac7207b5aff0014b33d83",
+      "_type": "Feat",
       "title": "Two-weapon Fighting",
       "benefit": "Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6.",
       "type": "General",
@@ -7455,6 +7487,7 @@
     },
     {
       "_id": "5acac77c7b5aff0014b33d84",
+      "_type": "Feat",
       "title": "Weapon Focus",
       "benefit": "You gain a +1 bonus on all attack rolls you make using the selected weapon.",
       "type": "General",
@@ -7464,6 +7497,7 @@
     },
     {
       "_id": "5acac84c7b5aff0014b33d85",
+      "_type": "Feat",
       "title": "Precise Shot",
       "benefit": "You can shoot or throw ranged weapons at an opponent engaged in melee without taking the standard -4 penalty on your attack roll (see Shooting or Throwing into a Melee, page 140).",
       "type": "General",
@@ -7475,6 +7509,7 @@
   "languages": [
     {
       "_id": "5a848036e2eb613754d8293a",
+      "_type": "Language",
       "name": "Common",
       "description": "Common was the trade language of Faerûn. Almost every sentient, civilized being spoke a smattering of it, and most were fluent. While most could not read or write the language, generally, the people of Faerûn were able to converse with each other in this language.",
       "alphabet": "Common",
@@ -7482,6 +7517,7 @@
     },
     {
       "_id": "5a848397de04b31a54610f28",
+      "_type": "Language",
       "name": "Elven",
       "description": "Elven (commonly called Elvish and sometimes referred to as the True Tongue) was the language (or language family) of the Tel’Quessir (e.g., eladrin, elves, and drow). Its script was known as Espruar.",
       "alphabet": "Elven",
@@ -7489,6 +7525,7 @@
     },
     {
       "_id": "5aadde6af883d7077ad0e480",
+      "_type": "Language",
       "name": "Draconic",
       "description": "Draconic was the language of dragons. It used its own distinct alphabet, called Iokharic. Other native speakers included members of draconic-related races, such as kobolds and dragonborn, and members of reptilian races such as lizardfolk and troglodytes. The language was also used as a primary means of arcane notation throughout Toril.",
       "alphabet": "Iokharic",
@@ -7496,6 +7533,7 @@
     },
     {
       "_id": "5aae8a21f883d7077ad0e48f",
+      "_type": "Language",
       "name": "Orcish",
       "description": "",
       "alphabet": "Orcish",
@@ -7503,6 +7541,7 @@
     },
     {
       "_id": "5acacc147b5aff0014b33d8f",
+      "_type": "Language",
       "name": "Chondathan",
       "description": "",
       "alphabet": "Thorass",
@@ -7510,6 +7549,7 @@
     },
     {
       "_id": "5acacc587b5aff0014b33d90",
+      "_type": "Language",
       "name": "Undercommon",
       "description": "",
       "alphabet": "Espruar",
@@ -7517,6 +7557,7 @@
     },
     {
       "_id": "5acaccce7b5aff0014b33d91",
+      "_type": "Language",
       "name": "Dwarven",
       "description": "",
       "alphabet": "Dwarven",
@@ -7526,6 +7567,7 @@
   "sizes": [
     {
       "_id": "59cf1a6b8e50301cf13d3adf",
+      "_type": "Size",
       "name": "Fine",
       "attackDCBonus": 8,
       "grappleBonus": -16,
@@ -7534,6 +7576,7 @@
     },
     {
       "_id": "59cf1a818e50301cf13d3b6a",
+      "_type": "Size",
       "name": "Diminutive",
       "attackDCBonus": 4,
       "grappleBonus": -12,
@@ -7542,6 +7585,7 @@
     },
     {
       "_id": "59cf1aaa8e50301cf13d3c41",
+      "_type": "Size",
       "name": "Tiny",
       "attackDCBonus": 2,
       "grappleBonus": -8,
@@ -7550,6 +7594,7 @@
     },
     {
       "_id": "59cf1abc8e50301cf13d3c94",
+      "_type": "Size",
       "name": "Small",
       "attackDCBonus": 1,
       "grappleBonus": -4,
@@ -7558,6 +7603,7 @@
     },
     {
       "_id": "59cf1adf8e50301cf13d3d57",
+      "_type": "Size",
       "name": "Medium",
       "attackDCBonus": 0,
       "grappleBonus": 0,
@@ -7566,6 +7612,7 @@
     },
     {
       "_id": "59cf1af88e50301cf13d3dd7",
+      "_type": "Size",
       "name": "Large",
       "attackDCBonus": -1,
       "grappleBonus": 4,
@@ -7574,6 +7621,7 @@
     },
     {
       "_id": "59cf1b0e8e50301cf13d3e5d",
+      "_type": "Size",
       "name": "Huge",
       "attackDCBonus": -2,
       "grappleBonus": 8,
@@ -7582,6 +7630,7 @@
     },
     {
       "_id": "59cf1b1d8e50301cf13d3ea7",
+      "_type": "Size",
       "name": "Gargantuan",
       "attackDCBonus": -4,
       "grappleBonus": 12,
@@ -7590,6 +7639,7 @@
     },
     {
       "_id": "59cf1b368e50301cf13d3f35",
+      "_type": "Size",
       "name": "Collosal",
       "attackDCBonus": -8,
       "grappleBonus": 16,
@@ -7600,6 +7650,7 @@
   "skills": [
     {
       "_id": "59cf42652e94fd4660c530b5",
+      "_type": "Skill",
       "name": "Appraise",
       "untrained": true,
       "check": "You can appraise common or well-known objects with a DC 12 Appraise check. Failure means that you estimate the value at 50% to 150% (2d6+3 times 10%,) of its actual value.\n\nAppraising a rare or exotic item requires a successful check against DC 15, 20, or higher. If the check is successful, you estimate the value correctly; failure means you cannot estimate the item’s value.\n\nA magnifying glass gives you a +2 circumstance bonus on Appraise checks involving any item that is small or highly detailed, such as a gem. A merchant’s scale gives you a +2 circumstance bonus on Appraise checks involving any items that are valued by weight, including anything made of precious metals.\n\nThese bonuses stack.",
@@ -7613,6 +7664,7 @@
     },
     {
       "_id": "59d4ecc82c22271fd04e2bd3",
+      "_type": "Skill",
       "name": "Decipher Script",
       "untrained": false,
       "check": "You can decipher writing in an unfamiliar language or a message written in an incomplete or archaic form. The base DC is 20 for the simplest messages, 25 for standard texts, and 30 or higher for intricate, exotic, or very old writing.\n\nIf the check succeeds, you understand the general content of a piece of writing about one page long (or the equivalent). If the check fails, make a DC 5 Wisdom check to see if you avoid drawing a false conclusion about the text. (Success means that you do not draw a false conclusion; failure means that you do.)\n\nBoth the Decipher Script check and (if necessary) the Wisdom check are made secretly, so that you can’t tell whether the conclusion you draw is true or false.",
@@ -7625,6 +7677,7 @@
     },
     {
       "_id": "59d14179fa78bf47f8a36a03",
+      "_type": "Skill",
       "name": "Bluff",
       "untrained": true,
       "check": "A Bluff check is opposed by the target’s Sense Motive check. See the accompanying table for examples of different kinds of bluffs and the modifier to the target’s Sense Motive check for each ones.\n\nFavorable and unfavorable circumstances weigh heavily on the outcome of a bluff. Two circumstances can weigh against you: The bluff is hard to believe, or the action that the target is asked to take goes against its self-interest, nature, personality, orders, or the like. If it’s important, you can distinguish between a bluff that fails because the target doesn’t believe it and one that fails because it just asks too much of the target. For instance, if the target gets a +10 bonus on its Sense Motive check because the bluff demands something risky, and the Sense Motive check succeeds by 10 or less, then the target didn’t so much see through the bluff as prove reluctant to go along with it. A target that succeeds by 11 or more has seen through the bluff.\n\nA successful Bluff check indicates that the target reacts as you wish, at least for a short time (usually 1 round or less) or believes something that you want it to believe. Bluff, however, is not a suggestion spell.\n\nA bluff requires interaction between you and the target. Creatures unaware of you cannot be bluffed.\n\nFeinting in Combat\nYou can also use Bluff to mislead an opponent in melee combat (so that it can’t dodge your next attack effectively). To feint, make a Bluff check opposed by your target’s Sense Motive check, but in this case, the target may add its base attack bonus to the roll along with any other applicable modifiers.\n\nIf your Bluff check result exceeds this special Sense Motive check result, your target is denied its Dexterity bonus to AC (if any) for the next melee attack you make against it. This attack must be made on or before your next turn.\n\nFeinting in this way against a nonhumanoid is difficult because it’s harder to read a strange creature’s body language; you take a -4 penalty on your Bluff check. Against a creature of animal Intelligence (1 or 2) it’s even harder; you take a -8 penalty. Against a nonintelligent creature, it’s impossible.\n\nFeinting in combat does not provoke an attack of opportunity.\n\nCreating a Diversion to Hide\nYou can use the Bluff skill to help you hide. A successful Bluff check gives you the momentary diversion you need to attempt a Hide check while people are aware of you. This usage does not provoke an attack of opportunity.\n\nDelivering a Secret Message\nYou can use Bluff to get a message across to another character without others understanding it. The DC is 15 for simple messages, or 20 for complex messages, especially those that rely on getting across new information. Failure by 4 or less means you can’t get the message across. Failure by 5 or more means that some false information has been implied or inferred. Anyone listening to the exchange can make a Sense Motive check opposed by the Bluff check you made to transmit in order to intercept your message (see Sense Motive).",
@@ -7638,6 +7691,7 @@
     },
     {
       "_id": "59d14322fa78bf47f8a36a04",
+      "_type": "Skill",
       "name": "Climb",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7651,6 +7705,7 @@
     },
     {
       "_id": "59d516195b378b18385efa44",
+      "_type": "Skill",
       "name": "Forgery",
       "untrained": true,
       "check": "Forgery requires writing materials appropriate to the document being forged, enough light or sufficient visual acuity to see the details of what you’re writing, wax for seals (if appropriate), and some time. To forge a document on which the handwriting is not specific to a person (military orders, a government decree, a business ledger, or the like), you need only to have seen a similar document before, and you gain a +8 bonus on your check. To forge a signature, you need an autograph of that person to copy, and you gain a +4 bonus on the check. To forge a longer document written in the hand of some particular person, a large sample of that person’s handwriting is needed.\n\nThe Forgery check is made secretly, so that you’re not sure how good your forgery is. As with Disguise, you don’t even need to make a check until someone examines the work. Your Forgery check is opposed by the Forgery check of the person who examines the document to check its authenticity. The examiner gains modifiers on his or her check if any of the conditions on the table below exist.\n\nA document that contradicts procedure, orders, or previous knowledge, or one that requires sacrifice on the part of the person checking the document can increase that character’s suspicion (and thus create favorable circumstances for the checker’s opposing Forgery check).",
@@ -7665,6 +7720,7 @@
     },
     {
       "_id": "59d5165c5b378b18385efa45",
+      "_type": "Skill",
       "name": "Gather Information",
       "untrained": true,
       "check": "An evening’s time, a few gold pieces for buying drinks and making friends, and a DC 10 Gather Information check get you a general idea of a city’s major news items, assuming there are no obvious reasons why the information would be withheld. The higher your check result, the better the information.\n\nIf you want to find out about a specific rumor, or a specific item, or obtain a map, or do something else along those lines, the DC for the check is 15 to 25, or even higher.",
@@ -7677,6 +7733,7 @@
     },
     {
       "_id": "59d5353d5b378b18385efa47",
+      "_type": "Skill",
       "name": "Heal",
       "untrained": true,
       "check": "The DC and effect depend on the task you attempt.\n\nFirst Aid\nYou usually use first aid to save a dying character. If a character has negative hit points and is losing hit points (at the rate of 1 per round, 1 per hour, or 1 per day), you can make him or her stable. A stable character regains no hit points but stops losing them.\n\nLong-Term Care\nProviding long-term care means treating a wounded person for a day or more. If your Heal check is successful, the patient recovers hit points or ability score points (lost to ability damage) at twice the normal rate: 2 hit points per level for a full 8 hours of rest in a day, or 4 hit points per level for each full day of complete rest; 2 ability score points for a full 8 hours of rest in a day, or 4 ability score points for each full day of complete rest.\n\nYou can tend as many as six patients at a time. You need a few items and supplies (bandages, salves, and so on) that are easy to come by in settled lands. Giving long-term care counts as light activity for the healer. You cannot give long-term care to yourself.\n\nTreat Wound from Caltrop, Spike Growth, or Spike Stones\nA creature wounded by stepping on a caltrop moves at one-half normal speed. A successful Heal check removes this movement penalty.\n\nA creature wounded by a spike growth or spike stones spell must succeed on a Reflex save or take injuries that reduce his speed by one-third. Another character can remove this penalty by taking 10 minutes to dress the victim’s injuries and succeeding on a Heal check against the spell’s save DC.\n\nTreat Poison\nTo treat poison means to tend a single character who has been poisoned and who is going to take more damage from the poison (or suffer some other effect). Every time the poisoned character makes a saving throw against the poison, you make a Heal check. The poisoned character uses your check result or his or her saving throw, whichever is higher.\n\nTreat Disease\nTo treat a disease means to tend a single diseased character. Every time he or she makes a saving throw against disease effects, you make a Heal check. The diseased character uses your check result or his or her saving throw, whichever is higher.",
@@ -7689,6 +7746,7 @@
     },
     {
       "_id": "59d535ae5b378b18385efa48",
+      "_type": "Skill",
       "name": "Hide",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7700,6 +7758,7 @@
     },
     {
       "_id": "59d5364e5b378b18385efa49",
+      "_type": "Skill",
       "name": "Intimidate",
       "untrained": true,
       "check": "You can change another’s behavior with a successful check. Your Intimidate check is opposed by the target’s modified level check (1d20 + character level or Hit Dice + target’s Wisdom bonus [if any] + target’s modifiers on saves against fear). If you beat your target’s check result, you may treat the target as friendly, but only for the purpose of actions taken while it remains intimidated. (That is, the target retains its normal attitude, but will chat, advise, offer limited help, or advocate on your behalf while intimidated. See the Diplomacy skill, above, for additional details.) The effect lasts as long as the target remains in your presence, and for 1d6×10 minutes afterward. After this time, the target’s default attitude toward you shifts to unfriendly (or, if normally unfriendly, to hostile).\n\nIf you fail the check by 5 or more, the target provides you with incorrect or useless information, or otherwise frustrates your efforts.\n\nDemoralize Opponent\nYou can also use Intimidate to weaken an opponent’s resolve in combat. To do so, make an Intimidate check opposed by the target’s modified level check (see above). If you win, the target becomes shaken for 1 round. A shaken character takes a -2 penalty on attack rolls, ability checks, and saving throws. You can intimidate only an opponent that you threaten in melee combat and that can see you.",
@@ -7712,6 +7771,7 @@
     },
     {
       "_id": "59d536d75b378b18385efa4a",
+      "_type": "Skill",
       "name": "Jump",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7725,6 +7785,7 @@
     },
     {
       "_id": "59d54899c9cf2a13e0bcbd14",
+      "_type": "Skill",
       "name": "Perform",
       "untrained": true,
       "check": "You can impress audiences with your talent and skill.",
@@ -7738,6 +7799,7 @@
     },
     {
       "_id": "59d548bdc9cf2a13e0bcbd15",
+      "_type": "Skill",
       "name": "Profession",
       "untrained": false,
       "check": "You can practice your trade and make a decent living, earning about half your Profession check result in gold pieces per week of dedicated work. You know how to use the tools of your trade, how to perform the profession’s daily tasks, how to supervise helpers, and how to handle common problems.",
@@ -7749,6 +7811,7 @@
     },
     {
       "_id": "59d5493ac9cf2a13e0bcbd17",
+      "_type": "Skill",
       "name": "Search",
       "untrained": true,
       "check": "You generally must be within 10 feet of the object or surface to be searched. The table below gives DCs for typical tasks involving the Search skill.",
@@ -7762,6 +7825,7 @@
     },
     {
       "_id": "59d54970c9cf2a13e0bcbd18",
+      "_type": "Skill",
       "name": "Sense Motive",
       "untrained": true,
       "check": "A successful check lets you avoid being bluffed. You can also use this skill to determine when “something is up” (that is, something odd is going on) or to assess someone’s trustworthiness.\n\nHunch\nThis use of the skill involves making a gut assessment of the social situation. You can get the feeling from another’s behavior that something is wrong, such as when you’re talking to an impostor. Alternatively, you can get the feeling that someone is trustworthy.\n\nSense Enchantment\nYou can tell that someone’s behavior is being influenced by an enchantment effect (by definition, a mind-affecting effect), even if that person isn’t aware of it. The usual DC is 25, but if the target is dominated (see dominate person), the DC is only 15 because of the limited range of the target’s activities.\n\nDiscern Secret Message\nYou may use Sense Motive to detect that a hidden message is being transmitted via the Bluff skill. In this case, your Sense Motive check is opposed by the Bluff check of the character transmitting the message. For each piece of information relating to the message that you are missing, you take a -2 penalty on your Sense Motive check. If you succeed by 4 or less, you know that something hidden is being communicated, but you can’t learn anything specific about its content. If you beat the DC by 5 or more, you intercept and understand the message. If you fail by 4 or less, you don’t detect any hidden communication. If you fail by 5 or more, you infer some false information.",
@@ -7775,6 +7839,7 @@
     },
     {
       "_id": "59d5499dc9cf2a13e0bcbd19",
+      "_type": "Skill",
       "name": "Sleight Of Hand",
       "untrained": false,
       "armorCheckPenalty": true,
@@ -7789,6 +7854,7 @@
     },
     {
       "_id": "59d549f6c9cf2a13e0bcbd1b",
+      "_type": "Skill",
       "name": "Spot",
       "untrained": true,
       "check": "The Spot skill is used primarily to detect characters or creatures who are hiding. Typically, your Spot check is opposed by the Hide check of the creature trying not to be seen. Sometimes a creature isn’t intentionally hiding but is still difficult to see, so a successful Spot check is necessary to notice it.\n\nA Spot check result higher than 20 generally lets you become aware of an invisible creature near you, though you can’t actually see it.\n\nSpot is also used to detect someone in disguise, and to read lips when you can’t hear or understand what someone is saying.\n\nSpot checks may be called for to determine the distance at which an encounter begins. A penalty applies on such checks, depending on the distance between the two individuals or groups, and an additional penalty may apply if the character making the Spot check is distracted (not concentrating on being observant).\n\nRead Lips\nTo understand what someone is saying by reading lips, you must be within 30 feet of the speaker, be able to see him or her speak, and understand the speaker’s language. (This use of the skill is language-dependent.) The base DC is 15, but it increases for complex speech or an inarticulate speaker. You must maintain a line of sight to the lips being read.\n\nIf your Spot check succeeds, you can understand the general content of a minute’s worth of speaking, but you usually still miss certain details. If the check fails by 4 or less, you can’t read the speaker’s lips. If the check fails by 5 or more, you draw some incorrect conclusion about the speech. The check is rolled secretly in this case, so that you don’t know whether you succeeded or missed by 5.",
@@ -7801,6 +7867,7 @@
     },
     {
       "_id": "59d54a4cc9cf2a13e0bcbd1d",
+      "_type": "Skill",
       "name": "Swim",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7813,6 +7880,7 @@
     },
     {
       "_id": "59d4ed732c22271fd04e2bd4",
+      "_type": "Skill",
       "name": "Diplomacy",
       "untrained": true,
       "check": "You can change the attitudes of others (nonplayer characters) with a successful Diplomacy check; see the Influencing NPC Attitudes sidebar, below, for basic DCs. In negotiations, participants roll opposed Diplomacy checks, and the winner gains the advantage. Opposed checks also resolve situations when two advocates or diplomats plead opposite cases in a hearing before a third party.",
@@ -7826,6 +7894,7 @@
     },
     {
       "_id": "59d4eec2d3d50b41d4709d73",
+      "_type": "Skill",
       "name": "Disable Device",
       "untrained": false,
       "check": "The Disable Device check is made secretly, so that you don’t necessarily know whether you’ve succeeded.\n\nThe DC depends on how tricky the device is. Disabling (or rigging or jamming) a fairly simple device has a DC of 10; more intricate and complex devices have higher DCs.\n\nIf the check succeeds, you disable the device. If it fails by 4 or less, you have failed but can try again. If you fail by 5 or more, something goes wrong. If the device is a trap, you spring it. If you’re attempting some sort of sabotage, you think the device is disabled, but it still works normally.\n\nYou also can rig simple devices such as saddles or wagon wheels to work normally for a while and then fail or fall off some time later (usually after 1d4 rounds or minutes of use).",
@@ -7841,6 +7910,7 @@
     },
     {
       "_id": "59d50de7771e643a48e1f03e",
+      "_type": "Skill",
       "name": "Escape Artist",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7855,6 +7925,7 @@
     },
     {
       "_id": "59d5397d8389693050092e6f",
+      "_type": "Skill",
       "name": "Knowledge",
       "untrained": false,
       "check": "Answering a question within your field of study has a DC of 10 (for really easy questions), 15 (for basic questions), or 20 to 30 (for really tough questions).\n\nIn many cases, you can use this skill to identify monsters and their special powers or vulnerabilities. In general, the DC of such a check equals 10 + the monster’s HD. A successful check allows you to remember a bit of useful information about that monster.\n\nFor every 5 points by which your check result exceeds the DC, you recall another piece of useful information.",
@@ -7868,6 +7939,7 @@
     },
     {
       "_id": "59d53f38c9cf2a13e0bcbd11",
+      "_type": "Skill",
       "name": "Listen",
       "untrained": true,
       "check": "Your Listen check is either made against a DC that reflects how quiet the noise is that you might hear, or it is opposed by your target’s Move Silently check.\n\nIn the case of people trying to be quiet, the DCs given on the table could be replaced by Move Silently checks, in which case the indicated DC would be their average check result.",
@@ -7880,6 +7952,7 @@
     },
     {
       "_id": "59d5482cc9cf2a13e0bcbd12",
+      "_type": "Skill",
       "name": "Move Silently",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7892,6 +7965,7 @@
     },
     {
       "_id": "59d54860c9cf2a13e0bcbd13",
+      "_type": "Skill",
       "name": "Open Lock",
       "untrained": false,
       "check": "The DC for opening a lock varies from 20 to 40, depending on the quality of the lock, as given on the table below.",
@@ -7903,6 +7977,7 @@
     },
     {
       "_id": "59d54ad4c9cf2a13e0bcbd1f",
+      "_type": "Skill",
       "name": "Use Magic Device",
       "untrained": false,
       "check": "You can use this skill to read a spell or to activate a magic item. Use Magic Device lets you use a magic item as if you had the spell ability or class features of another class, as if you were a different race, or as if you were of a different alignment.\n\nYou make a Use Magic Device check each time you activate a device such as a wand. If you are using the check to emulate an alignment or some other quality in an ongoing manner, you need to make the relevant Use Magic Device check once per hour.\n\nYou must consciously choose which requirement to emulate. That is, you must know what you are trying to emulate when you make a Use Magic Device check for that purpose. The DCs for various tasks involving Use Magic Device checks are summarized on the table below.\n\nActivate Blindly\nSome magic items are activated by special words, thoughts, or actions. You can activate such an item as if you were using the activation word, thought, or action, even when you’re not and even if you don’t know it. You do have to perform some equivalent activity in order to make the check. That is, you must speak, wave the item around, or otherwise attempt to get it to activate. You get a special +2 bonus on your Use Magic Device check if you’ve activated the item in question at least once before. If you fail by 9 or less, you can’t activate the device. If you fail by 10 or more, you suffer a mishap. A mishap means that magical energy gets released but it doesn’t do what you wanted it to do. The default mishaps are that the item affects the wrong target or that uncontrolled magical energy is released, dealing 2d6 points of damage to you. This mishap is in addition to the chance for a mishap that you normally run when you cast a spell from a scroll that you could not otherwise cast yourself.\n\nDecipher a Written Spell\nThis usage works just like deciphering a written spell with the Spellcraft skill, except that the DC is 5 points higher. Deciphering a written spell requires 1 minute of concentration.\n\nEmulate an Ability Score\nTo cast a spell from a scroll, you need a high score in the appropriate ability (Intelligence for wizard spells, Wisdom for divine spells, or Charisma for sorcerer or bard spells). Your effective ability score (appropriate to the class you’re emulating when you try to cast the spell from the scroll) is your Use Magic Device check result minus 15. If you already have a high enough score in the appropriate ability, you don’t need to make this check.\n\nEmulate an Alignment\nSome magic items have positive or negative effects based on the user’s alignment. Use Magic Device lets you use these items as if you were of an alignment of your choice. You can emulate only one alignment at a time.\n\nEmulate a Class Feature\nSometimes you need to use a class feature to activate a magic item. In this case, your effective level in the emulated class equals your Use Magic Device check result minus 20. This skill does not let you actually use the class feature of another class. It just lets you activate items as if you had that class feature. If the class whose feature you are emulating has an alignment requirement, you must meet it, either honestly or by emulating an appropriate alignment with a separate Use Magic Device check (see above).\n\nEmulate a Race\nSome magic items work only for members of certain races, or work better for members of those races. You can use such an item as if you were a race of your choice. You can emulate only one race at a time.\n\nUse a Scroll\nIf you are casting a spell from a scroll, you have to decipher it first. Normally, to cast a spell from a scroll, you must have the scroll’s spell on your class spell list. Use Magic Device allows you to use a scroll as if you had a particular spell on your class spell list. The DC is equal to 20 + the caster level of the spell you are trying to cast from the scroll. In addition, casting a spell from a scroll requires a minimum score (10 + spell level) in the appropriate ability. If you don’t have a sufficient score in that ability, you must emulate the ability score with a separate Use Magic Device check (see above).\n\nThis use of the skill also applies to other spell completion magic items.\n\nUse a Wand\nNormally, to use a wand, you must have the wand’s spell on your class spell list. This use of the skill allows you to use a wand as if you had a particular spell on your class spell list. This use of the skill also applies to other spell trigger magic items, such as staffs.",
@@ -7916,6 +7991,7 @@
     },
     {
       "_id": "59d54b30c9cf2a13e0bcbd20",
+      "_type": "Skill",
       "name": "Use Rope",
       "untrained": true,
       "check": "Most tasks with a rope are relatively simple. The DCs for various tasks utilizing this skill are summarized on the table below.\n\nSecure a Grappling Hook\nSecuring a grappling hook requires a Use Rope check (DC 10, +2 for every 10 feet of distance the grappling hook is thrown, to a maximum DC of 20 at 50 feet). Failure by 4 or less indicates that the hook fails to catch and falls, allowing you to try again. Failure by 5 or more indicates that the grappling hook initially holds, but comes loose after 1d4 rounds of supporting weight. This check is made secretly, so that you don’t know whether the rope will hold your weight.\n\nBind a Character\nWhen you bind another character with a rope, any Escape Artist check that the bound character makes is opposed by your Use Rope check.\n\nYou get a +10 bonus on this check because it is easier to bind someone than to escape from bonds. You don’t even make your Use Rope check until someone tries to escape.\n\nUse Rope DCs\nUse Rope DC\tTask\n¹ Add 2 to the DC for every 10 feet the hook is thrown; see below.\n10\tTie a firm knot\n10¹ Secure a grappling hook\n15\tTie a special knot, such as one that slips, slides slowly, or loosens with a tug\n15\tTie a rope around yourself one-handed\n15\tSplice two ropes together\nVaries\tBind a character",
@@ -7928,6 +8004,7 @@
     },
     {
       "_id": "59d13413d039a83db4a10bb5",
+      "_type": "Skill",
       "name": "Balance",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -7941,6 +8018,7 @@
     },
     {
       "_id": "59d4c67d00c3bf35a06fd3ef",
+      "_type": "Skill",
       "name": "Concentration",
       "untrained": true,
       "check": "You must make a Concentration check whenever you might potentially be distracted (by taking damage, by harsh weather, and so on) while engaged in some action that requires your full attention. Such actions include casting a spell, concentrating on an active spell, directing a spell, using a spell-like ability, or using a skill that would provoke an attack of opportunity. In general, if an action wouldn’t normally provoke an attack of opportunity, you need not make a Concentration check to avoid being distracted.\n\nIf the Concentration check succeeds, you may continue with the action as normal. If the check fails, the action automatically fails and is wasted. If you were in the process of casting a spell, the spell is lost. If you were concentrating on an active spell, the spell ends as if you had ceased concentrating on it. If you were directing a spell, the direction fails but the spell remains active. If you were using a spell-like ability, that use of the ability is lost. A skill use also fails, and in some cases a failed skill check may have other ramifications as well.",
@@ -7953,6 +8031,7 @@
     },
     {
       "_id": "59d4eb5d2c22271fd04e2bd2",
+      "_type": "Skill",
       "name": "Craft",
       "untrained": true,
       "check": "You can practice your trade and make a decent living, earning about half your check result in gold pieces per week of dedicated work. You know how to use the tools of your trade, how to perform the craft’s daily tasks, how to supervise untrained helpers, and how to handle common problems. (Untrained laborers and assistants earn an average of 1 silver piece per day.)\n\nThe basic function of the Craft skill, however, is to allow you to make an item of the appropriate type. The DC depends on the complexity of the item to be created. The DC, your check results, and the price of the item determine how long it takes to make a particular item. The item’s finished price also determines the cost of raw materials.\n\nIn some cases, the fabricate spell can be used to achieve the results of a Craft check with no actual check involved. However, you must make an appropriate Craft check when using the spell to make articles requiring a high degree of craftsmanship.\n\nA successful Craft check related to woodworking in conjunction with the casting of the ironwood spell enables you to make wooden items that have the strength of steel.\n\nWhen casting the spell minor creation, you must succeed on an appropriate Craft check to make a complex item.\n\nAll crafts require artisan’s tools to give the best chance of success. If improvised tools are used, the check is made with a -2 circumstance penalty. On the other hand, masterwork artisan’s tools provide a +2 circumstance bonus on the check.\n\nTo determine how much time and money it takes to make an item, follow these steps.\n\nFind the item’s price. Put the price in silver pieces (1 gp = 10 sp).\nFind the DC from the table below.\nPay one-third of the item’s price for the cost of raw materials.\nMake an appropriate Craft check representing one week’s work. If the check succeeds, multiply your check result by the DC. If the result × the DC equals the price of the item in sp, then you have completed the item. (If the result × the DC equals double or triple the price of the item in silver pieces, then you’ve completed the task in one-half or one-third of the time. Other multiples of the DC reduce the time in the same manner.) If the result × the DC doesn’t equal the price, then it represents the progress you’ve made this week. Record the result and make a new Craft check for the next week. Each week, you make more progress until your total reaches the price of the item in silver pieces.\nIf you fail a check by 4 or less, you make no progress this week.\n\nIf you fail by 5 or more, you ruin half the raw materials and have to pay half the original raw material cost again.\n\nProgress by the Day\nYou can make checks by the day instead of by the week. In this case your progress (check result × DC) is in copper pieces instead of silver pieces.\n\nCreating Masterwork Items\nYou can make a masterwork item—a weapon, suit of armor, shield, or tool that conveys a bonus on its use through its exceptional craftsmanship, not through being magical. To create a masterwork item, you create the masterwork component as if it were a separate item in addition to the standard item. The masterwork component has its own price (300 gp for a weapon or 150 gp for a suit of armor or a shield) and a Craft DC of 20. Once both the standard component and the masterwork component are completed, the masterwork item is finished. Note: The cost you pay for the masterwork component is one-third of the given amount, just as it is for the cost in raw materials.\n\nRepairing Items\nGenerally, you can repair an item by making checks against the same DC that it took to make the item in the first place. The cost of repairing an item is one-fifth of the item’s price.",
@@ -7967,6 +8046,7 @@
     },
     {
       "_id": "59d4f7bdd3d50b41d4709d74",
+      "_type": "Skill",
       "name": "Disguise ",
       "untrained": true,
       "check": "Your Disguise check result determines how good the disguise is, and it is opposed by others’ Spot check results. If you don’t draw any attention to yourself, others do not get to make Spot checks. If you come to the attention of people who are suspicious (such as a guard who is watching commoners walking through a city gate), it can be assumed that such observers are taking 10 on their Spot checks.\n\nYou get only one Disguise check per use of the skill, even if several people are making Spot checks against it. The Disguise check is made secretly, so that you can’t be sure how good the result is.\n\nThe effectiveness of your disguise depends in part on how much you’re attempting to change your appearance.\n\nIf you are impersonating a particular individual, those who know what that person looks like get a bonus on their Spot checks according to the table below. Furthermore, they are automatically considered to be suspicious of you, so opposed checks are always called for.\n\nUsually, an individual makes a Spot check to see through your disguise immediately upon meeting you and each hour thereafter. If you casually meet many different creatures, each for a short time, check once per day or hour, using an average Spot modifier for the group.",
@@ -7980,6 +8060,7 @@
     },
     {
       "_id": "59d5342a5b378b18385efa46",
+      "_type": "Skill",
       "name": "Handle Animal",
       "untrained": true,
       "check": "The DC depends on what you are trying to do.\n\nHandle an Animal\nThis task involves commanding an animal to perform a task or trick that it knows. If the animal is wounded or has taken any nonlethal damage or ability score damage, the DC increases by 2. If your check succeeds, the animal performs the task or trick on its next action.\n\n“Push” an Animal\nTo push an animal means to get it to perform a task or trick that it doesn’t know but is physically capable of performing. This category also covers making an animal perform a forced march or forcing it to hustle for more than 1 hour between sleep cycles. If the animal is wounded or has taken any nonlethal damage or ability score damage, the DC increases by 2. If your check succeeds, the animal performs the task or trick on its next action.\n\nTeach an Animal a Trick\nYou can teach an animal a specific trick with one week of work and a successful Handle Animal check against the indicated DC. An animal with an Intelligence score of 1 can learn a maximum of three tricks, while an animal with an Intelligence score of 2 can learn a maximum of six tricks. Possible tricks (and their associated DCs) include, but are not necessarily limited to, the following.\n\nAttack (DC 20): The animal attacks apparent enemies. You may point to a particular creature that you wish the animal to attack, and it will comply if able. Normally, an animal will attack only humanoids, monstrous humanoids, giants, or other animals. Teaching an animal to attack all creatures (including such unnatural creatures as undead and aberrations) counts as two tricks.\n\nCome (DC 15): The animal comes to you, even if it normally would not do so.\n\nDefend (DC 20): The animal defends you (or is ready to defend you if no threat is present), even without any command being given. Alternatively, you can command the animal to defend a specific other character.\n\nDown (DC 15): The animal breaks off from combat or otherwise backs down. An animal that doesn’t know this trick continues to fight until it must flee (due to injury, a fear effect, or the like) or its opponent is defeated.\n\nFetch (DC 15): The animal goes and gets something. If you do not point out a specific item, the animal fetches some random object.\n\nGuard (DC 20): The animal stays in place and prevents others from approaching.\n\nHeel (DC 15): The animal follows you closely, even to places where it normally wouldn’t go.\n\nPerform (DC 15): The animal performs a variety of simple tricks, such as sitting up, rolling over, roaring or barking, and so on.\n\nSeek (DC 15): The animal moves into an area and looks around for anything that is obviously alive or animate.\n\nStay (DC 15): The animal stays in place, waiting for you to return. It does not challenge other creatures that come by, though it still defends itself if it needs to.\n\nTrack (DC 20): The animal tracks the scent presented to it. (This requires the animal to have the scent ability)\n\nWork (DC 15): The animal pulls or pushes a medium or heavy load.\n\nTrain an Animal for a Purpose\nRather than teaching an animal individual tricks, you can simply train it for a general purpose. Essentially, an animal’s purpose represents a preselected set of known tricks that fit into a common scheme, such as guarding or heavy labor. The animal must meet all the normal prerequisites for all tricks included in the training package. If the package includes more than three tricks, the animal must have an Intelligence score of 2.\n\nAn animal can be trained for only one general purpose, though if the creature is capable of learning additional tricks (above and beyond those included in its general purpose), it may do so. Training an animal for a purpose requires fewer checks than teaching individual tricks does, but no less time.\n\nCombat Riding (DC 20): An animal trained to bear a rider into combat knows the tricks attack, come, defend, down, guard, and heel. Training an animal for combat riding takes six weeks. You may also “upgrade” an animal trained for riding to one trained for combat riding by spending three weeks and making a successful DC 20 Handle Animal check. The new general purpose and tricks completely replace the animal’s previous purpose and any tricks it once knew. Warhorses and riding dogs are already trained to bear riders into combat, and they don’t require any additional training for this purpose.\n\nFighting (DC 20): An animal trained to engage in combat knows the tricks attack, down, and stay. Training an animal for fighting takes three weeks.\n\nGuarding (DC 20): An animal trained to guard knows the tricks attack, defend, down, and guard. Training an animal for guarding takes four weeks.\n\nHeavy Labor (DC 15): An animal trained for heavy labor knows the tricks come and work. Training an animal for heavy labor takes two weeks.\n\nHunting (DC 20): An animal trained for hunting knows the tricks attack, down, fetch, heel, seek, and track. Training an animal for hunting takes six weeks.\n\nPerformance (DC 15): An animal trained for performance knows the tricks come, fetch, heel, perform, and stay. Training an animal for performance takes five weeks.\n\nRiding (DC 15): An animal trained to bear a rider knows the tricks come, heel, and stay. Training an animal for riding takes three weeks.\n\nRear a Wild Animal\nTo rear an animal means to raise a wild creature from infancy so that it becomes domesticated. A handler can rear as many as three creatures of the same kind at once.\n\nA successfully domesticated animal can be taught tricks at the same time it’s being raised, or it can be taught as a domesticated animal later.",
@@ -7994,6 +8075,7 @@
     },
     {
       "_id": "59d54904c9cf2a13e0bcbd16",
+      "_type": "Skill",
       "name": "Ride",
       "untrained": true,
       "check": "Typical riding actions don’t require checks. You can saddle, mount, ride, and dismount from a mount without a problem.\n\nThe following tasks do require checks.\n\nGuide with Knees\nYou can react instantly to guide your mount with your knees so that you can use both hands in combat. Make your Ride check at the start of your turn. If you fail, you can use only one hand this round because you need to use the other to control your mount.\n\nStay in Saddle\nYou can react instantly to try to avoid falling when your mount rears or bolts unexpectedly or when you take damage. This usage does not take an action.\n\nFight with Warhorse\nIf you direct your war-trained mount to attack in battle, you can still make your own attack or attacks normally. This usage is a free action.\n\nCover\nYou can react instantly to drop down and hang alongside your mount, using it as cover. You can’t attack or cast spells while using your mount as cover. If you fail your Ride check, you don’t get the cover benefit. This usage does not take an action.\n\nSoft Fall\nYou can react instantly to try to take no damage when you fall off a mount—when it is killed or when it falls, for example. If you fail your Ride check, you take 1d6 points of falling damage. This usage does not take an action.\n\nLeap\nYou can get your mount to leap obstacles as part of its movement. Use your Ride modifier or the mount’s Jump modifier, whichever is lower, to see how far the creature can jump. If you fail your Ride check, you fall off the mount when it leaps and take the appropriate falling damage (at least 1d6 points). This usage does not take an action, but is part of the mount’s movement.\n\nSpur Mount\nYou can spur your mount to greater speed with a move action. A successful Ride check increases the mount’s speed by 10 feet for 1 round but deals 1 point of damage to the creature. You can use this ability every round, but each consecutive round of additional speed deals twice as much damage to the mount as the previous round (2 points, 4 points, 8 points, and so on).\n\nControl Mount in Battle\nAs a move action, you can attempt to control a light horse, pony, heavy horse, or other mount not trained for combat riding while in battle. If you fail the Ride check, you can do nothing else in that round. You do not need to roll for warhorses or warponies.\n\nFast Mount or Dismount\nYou can attempt to mount or dismount from a mount of up to one size category larger than yourself as a free action, provided that you still have a move action available that round. If you fail the Ride check, mounting or dismounting is a move action. You can’t use fast mount or dismount on a mount more than one size category larger than yourself.",
@@ -8006,6 +8088,7 @@
     },
     {
       "_id": "59d549d2c9cf2a13e0bcbd1a",
+      "_type": "Skill",
       "name": "Spellcraft",
       "untrained": false,
       "check": "You can identify spells and magic effects. The DCs for Spellcraft checks relating to various tasks are summarized on the table below.",
@@ -8019,6 +8102,7 @@
     },
     {
       "_id": "59d54a2ec9cf2a13e0bcbd1c",
+      "_type": "Skill",
       "name": "Survival",
       "untrained": true,
       "check": "You can keep yourself and others safe and fed in the wild. The table below gives the DCs for various tasks that require Survival checks.\n\nSurvival does not allow you to follow difficult tracks unless you are a ranger or have the Track feat (see the Restriction section below).",
@@ -8033,6 +8117,7 @@
     },
     {
       "_id": "59d54a8dc9cf2a13e0bcbd1e",
+      "_type": "Skill",
       "name": "Tumble",
       "untrained": true,
       "armorCheckPenalty": true,
@@ -8049,6 +8134,7 @@
   "special-abilities": [
     {
       "_id": "5a83501fc383ae1a54b1f943",
+      "_type": "SpecialAbility",
       "name": "Aura of Good",
       "description": "The power of a paladin’s aura of good (see the detect good spell) is equal to her paladin level.",
       "type": "Extraordinary Ability",
@@ -8056,6 +8142,7 @@
     },
     {
       "_id": "5a835066c383ae1a54b1f944",
+      "_type": "SpecialAbility",
       "name": "Detect Evil",
       "description": "At will, a paladin can use detect evil, as the spell. A paladin can, as a move action, concentrate on a single item or individual within 60 feet and determine if it is evil, learning the strength of its aura as if having studied it for 3 rounds. While focusing on one individual or object, the paladin does not detect evil in any other object or individual within range.",
       "type": "Spell-Like Ability",
@@ -8063,6 +8150,7 @@
     },
     {
       "_id": "5a83507ac383ae1a54b1f945",
+      "_type": "SpecialAbility",
       "name": "Smite Evil",
       "description": "Once per day, a paladin can call out to the powers of good to aid her in her struggle against evil. As a swift action, the paladin chooses one target within sight to smite. If this target is evil, the paladin adds her Cha bonus (if any) to her attack rolls and adds her paladin level to all damage rolls made against the target of her smite. If the target of smite evil is an outsider with the evil subtype, an evil-aligned dragon, or an undead creature, the bonus to damage on the first successful attack increases to 2 points of damage per level the paladin possesses. Regardless of the target, smite evil attacks automatically bypass any DR the creature might possess.\n\nIn addition, while smite evil is in effect, the paladin gains a deflection bonus equal to her Charisma modifier (if any) to her AC against attacks made by the target of the smite. If the paladin targets a creature that is not evil, the smite is wasted with no effect.\n\nThe smite evil effect remains until the target of the smite is dead or the next time the paladin rests and regains her uses of this ability. At 4th level, and at every three levels thereafter, the paladin may smite evil one additional time per day, as indicated on Table: Paladin, to a maximum of seven times per day at 19th level.",
       "type": "Supernatural Ability",
@@ -8070,6 +8158,7 @@
     },
     {
       "_id": "5a83508ac383ae1a54b1f946",
+      "_type": "SpecialAbility",
       "name": "Lay on Hands",
       "description": "Beginning at 2nd level, a paladin can heal wounds (her own or those of others) by touch. Each day she can use this ability a number of times equal to 1/2 her paladin level plus her Charisma modifier. With one use of this ability, a paladin can heal 1d6 hit points of damage for every two paladin levels she possesses. Using this ability is a standard action, unless the paladin targets herself, in which case it is a swift action. Despite the name of this ability, a paladin only needs one free hand to use this ability.\n\nAlternatively, a paladin can use this healing power to deal damage to undead creatures, dealing 1d6 points of damage for every two levels the paladin possesses. Using lay on hands in this way requires a successful melee touch attack and doesn’t provoke an attack of opportunity. Undead do not receive a saving throw against this damage.",
       "type": "Supernatural Ability",
@@ -8077,6 +8166,7 @@
     },
     {
       "_id": "5a83509ac383ae1a54b1f947",
+      "_type": "SpecialAbility",
       "name": "Divine Grace",
       "description": "At 2nd level, a paladin gains a bonus equal to her Charisma bonus (if any) on all Saving Throws.",
       "type": "Supernatural Ability",
@@ -8084,6 +8174,7 @@
     },
     {
       "_id": "5a8393bec383ae1a54b1f948",
+      "_type": "SpecialAbility",
       "name": "Darkvision",
       "description": "Darkvision is the extraordinary ability to see with no light source at all, out to a range specified for the creature. Darkvision is black and white only (colors cannot be discerned). It does not allow characters to see anything that they could not see otherwise—invisible objects are still invisible, and illusions are still visible as what they seem to be. Likewise, darkvision subjects a creature to gaze attacks normally. The presence of light does not spoil darkvision.",
       "type": "Extraordinary Ability",
@@ -8091,168 +8182,196 @@
     },
     {
       "_id": "5a848138e2eb613754d8293b",
+      "_type": "SpecialAbility",
       "name": "Sneak Attack",
       "description": "If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.\n\nThe rogue’s attack deals extra damage anytime her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied. Ranged attacks can count as sneak attacks only if the target is within 30 feet.\n\nWith a weapon that deals nonlethal damage (like a sap, whip, or an unarmed strike), a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual –4 penalty.\n\nThe rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aaddd41f883d7077ad0e47e",
+      "_type": "SpecialAbility",
       "name": "Air Resistance",
       "description": "+1 racial bonus on saving throws against all air spells and effects. This bonus increases by +1 for every five class levels the genasi attains.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5a84823be2eb613754d82944",
+      "_type": "SpecialAbility",
       "name": "Evasion",
       "description": "At 2nd level and higher, a rogue can avoid even magical and unusual attacks with great agility. If she makes a successful Reflex saving throw against an attack that normally deals half damage on a successful save, she instead takes no damage. Evasion can be used only if the rogue is wearing light armor or no armor. A helpless rogue does not gain the benefit of evasion.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aaddc95f883d7077ad0e47c",
+      "_type": "SpecialAbility",
       "name": "Instant Daze",
       "description": "When an enemy that has HD equal to or less than your wizard level makes a melee attack against you, you can render him dazed (Will negates). This is a compulsion, mindaffecting ability.",
       "type": "Spell-Like Ability"
     },
     {
       "_id": "5aaddcdbf883d7077ad0e47d",
+      "_type": "SpecialAbility",
       "name": "Levitate",
       "description": "Levitate allows you to move yourself, another creature, or an object up and down as you wish. A creature must be willing to be levitated, and an object must be unattended or possessed by a willing creature. You can mentally direct the recipient to move up or down as much as 20 feet each round; doing so is a move action. You cannot move the recipient horizontally, but the recipient could clamber along the face of a cliff, for example, or push against a ceiling to move laterally (generally at half its base land speed).\n\nA levitating creature that attacks with a melee or ranged weapon finds itself increasingly unstable; the first attack has a -1 penalty on attack rolls, the second -2, and so on, to a maximum penalty of -5. A full round spent stabilizing allows the creature to begin again at -1.",
       "type": "Spell-Like Ability"
     },
     {
       "_id": "5aaddd67f883d7077ad0e47f",
+      "_type": "SpecialAbility",
       "name": "Breathless",
       "description": "Air genasi do not breathe, so they are immune to drowning, suffocation, and attacks that require inhalation (such as some types of poisons).",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aae8886f883d7077ad0e48b",
+      "_type": "SpecialAbility",
       "name": "Rage",
       "description": "A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies).\n\nA barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aae8886f883d7077ad0e48c",
+      "_type": "SpecialAbility",
       "name": "Rage",
       "description": "A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies).\n\nA barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aae88e7f883d7077ad0e48d",
+      "_type": "SpecialAbility",
       "name": "Improved Uncanny Dodge",
       "description": "At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aae892ef883d7077ad0e48e",
+      "_type": "SpecialAbility",
       "name": "Trap Sense",
       "description": "Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aca53be36461b001456a275",
+      "_type": "SpecialAbility",
       "name": "Charnel Touch",
       "description": "Negative energy flows through a dread necromancer's body, concentrating in her hands. At will, but no more than once per round, she can make a melee touch attack against a living foe that deals 1d8 points of damage, +1 per four class levels. This touch heals undead creatures, restoring 1 hit point per touch, +1 per four class levels. A dread necromancer can use the spectral hand spell to deliver this attack from a distance.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aca53f336461b001456a276",
+      "_type": "SpecialAbility",
       "name": "Rebuke Undead",
       "description": "A dread necromancer can rebuke or command undead creatures by channeling negative energy through her body. See the cleric class feature described on page 33 of the Player's Handbook.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aca542036461b001456a277",
+      "_type": "SpecialAbility",
       "name": "Negative Energy Burst",
       "description": "Beginning at 3rd level, a dread necromancer gains the ability to emit a burst of negative energy from her body, harming living creatures within 5 feet of her. This burst deals 1d4 points of damage per class level. A successful Will save (DC 10 + 1/2 her class level + Cha modifier) reduces damage by half. Undead creatures within this burst are healed the same amount of hit points as the damage she deals to living creatures. A dread necromancer can use this ability once per day at 3rd level, and one additional time per day for every five levels she attains beyond 3rd (2/day at 8th level, 3/day at 13th level, and 4/day at 18th level).",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aca544936461b001456a278",
+      "_type": "SpecialAbility",
       "name": "Fear Aura",
       "description": "Beginning at 5th level, a dread necromancer radiates a 5-foot-radius fear aura as a free action. Enemies in the area must succeed on a Will save (DC 10 + 1/2 her class level + her Cha modifier) or become shaken. A creature who successfully saves cannot be affected by that dread necromancer's fear aura for 24 hours",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aca546236461b001456a279",
+      "_type": "SpecialAbility",
       "name": "Scabrous Touch",
       "description": "Starting at 6th level, once per day a dread necromancer can use her charnel touch to inflict disease on a creature she touches. This ability works like the contagion spell (see page 213 of the Player's Handbook), inflicting the disease of her choice immediately, with no incubation period, unless the target makes a successful Fortitude save (DC10 + 1/2 her class level + her Cha modifier). The DC for subsequent saving throws to resist the effects of the disease depends on the disease inflicted; see page 292 of the Dungeon Master's Guide for details.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aca548536461b001456a27a",
+      "_type": "SpecialAbility",
       "name": "Mental Bastion",
       "description": "Starting at 4th level, a dread necromancer gains a +2 bonus on saving throws made to resist sleep, stunning, paralysis, poison, or disease. This bonus increases to +4 at 14th level.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5aca549d36461b001456a27b",
+      "_type": "SpecialAbility",
       "name": "Advanced Learning",
       "description": "At 4th level, a dread necromancer can add a new spell to her list, representing the result of personal study and experimentation. The spell must be a cleric or wizard spell of the necromancy school, and of a level no higher than that of the highest-level spell the dread necromancer already knows. Once a new spell is selected, it is added to that dread necromancer's spell list and can be cast just like any other spell she knows. If a spell is both a cleric spell and a wizard spell, use the lower of the two spell levels (when different) to determine what level the spell is for a dread necromancer. A dread necromancer gains an additional new spell at 8th, 12th, 16th, and 20th level.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5aca54e036461b001456a27c",
+      "_type": "SpecialAbility",
       "name": "Summon Familiar",
       "description": "At 7th level or anytime thereafter, a dread necromancer can obtain a familiar. The familiar she acquires is more powerful than a standard wizard's or sorcerer's familiar, but it is unequivocally evil. The player of a dread necromancer character chooses one of the following creatures: imp (devil), quasit (demon), vargouille, or ghostly visage. All these creatures are described in the Monster Manual except for the ghostly visage, an undead symbiont described on page 221 of the Fiend Folio.\n\nA dread necromancer's familiar gains the usual familiar benefi ts given on pages 52—53 of the Player's Handbook, with two exceptions. Its type does not change, and it does not gain the exceptional ability to speak with other creatures of its kind.A dread necromancer's familiar can use its ability to deliver touch spells such as its master's charnel touch, scabrous touch, or enervating touch attack. The master must use a standard action to imbue the touch attack into her familiar.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5acac8be7b5aff0014b33d86",
+      "_type": "SpecialAbility",
       "name": "AC Bonus (Ninja)",
       "description": "A ninja is highly trained at dodging blows, and she has a sixth sense that lets her avoid even unanticipated attacks. When unarmored and unencumbered, a ninja adds her Wisdom bonus (if any) to her Armor Class. This ability does not stack with the monk?s AC bonus ability (a ninja with levels of monk does not add the bonus twice). In addition, a ninja gains a +1 bonus to AC at 5th level. This bonus increases by 1 for every five ninja levels thereafter (+2 at 10th, +3 at 15th, and +4 at 20th level).\n\nThese bonuses to AC apply even against touch attacks or when a ninja is flat-footed. The character loses these bonuses when she is immobilized or helpless, when she wears any armor, when she carries a shield, or when she carries a medium or heavy load.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5acac94f7b5aff0014b33d87",
+      "_type": "SpecialAbility",
       "name": "Ki Power",
       "description": "A ninja can channel her ki to manifest special powers of stealth and mobility. She can use her ki powers a number of times per day equal to one-half her class level (minimum 1) plus her Wisdom bonus (if any). Ki powers can be used only if a ninja is wearing no armor and is unencumbered.\n\nAs long as a ninja's ki pool isn't empty (that is, as long as she has at least one daily use remaining), she gains a +2 bonus on her Will saves.\n\nA ninja's ki powers are ghost step, ki dodge, ghost strike, greater ki dodge, and ghost walk. Each power is described under a separate entry below.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5acac9727b5aff0014b33d88",
+      "_type": "SpecialAbility",
       "name": "Sudden Strike",
       "description": "If a ninja can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage. Whenever a ninja's target is denied a Dexterity bonus to Armor Class (whether the target actually has a Dexterity bonus or not), the ninja deals an extra 1d6 points of damage with her attack. This extra damage increases by 1d6 points for every two ninja levels thereafter. A ninja can't use sudden strike when flanking an opponent unless that opponent is denied its Dexterity bonus to AC.\n\nThis damage also applies to ranged attacks against targets up to 30 feet away. Creatures with concealment, creatures without discernible anatomies, and creatures immune to extra damage from critical hits are all immune to sudden strikes. A ninja can't make a sudden strike while striking the limbs of a creature whose vitals are out of reach.\nA ninja can't use sudden strike to deliver nonlethal damage. Weapons capable of dealing only nonlethal damage don't deal extra damage when used as part of a sudden strike.\nThe extra damage from the sudden strike ability stacks with the extra damage from sneak attack whenever both would apply to the same target.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5a848146e2eb613754d8293c",
+      "_type": "SpecialAbility",
       "name": "Trapfinding",
       "description": "Rogues (and only rogues) can use the Search skill to locate traps when the task has a Difficulty Class higher than 20. Finding a nonmagical trap has a DC of at least 20, or higher if it is well hidden. Finding a magic trap has a DC of 25 + the level of the spell used to create it.\n\nRogues (and only rogues) can use the Disable Device skill to disarm magic traps. A magic trap generally has a DC of 25 + the level of the spell used to create it.\nA rogue who beats a trap's DC by 10 or more with a Disable Device check can study a trap, figure out how it works, and bypass it (with her party) without disarming it.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5acacace7b5aff0014b33d89",
+      "_type": "SpecialAbility",
       "name": "Ghost Step",
       "description": "Starting at 2nd level, a ninja can spend one daily use of her ki power to become invisible for 1 round. Using this ability is a swift action (see Swift Actions and Immediate Actions, page 137) that does not provoke attacks of opportunity. At 10th level, a ninja can become ethereal when using ghost step instead of becoming invisible.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5acacb027b5aff0014b33d8a",
+      "_type": "SpecialAbility",
       "name": "Poison Use",
       "description": "At 3rd level and higher, a ninja never risks accidentally poisoning herself when applying poison to a weapon",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5acacb1c7b5aff0014b33d8b",
+      "_type": "SpecialAbility",
       "name": "Great Leap",
       "description": "At 4th level and higher, a ninja always makes Jump checks as if she were running and had the Run feat, enabling her to make long jumps without a running start and granting a +4 bonus on the jump (see the skill description, page 77 of the Player?s Handbook). This ability can be used only if she is wearing no armor and is carrying no more than a light load.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5acacb337b5aff0014b33d8c",
+      "_type": "SpecialAbility",
       "name": "Acrobatics",
       "description": "Starting at 6th level, a ninja gains a +2 bonus on Climb, Jump, and Tumble checks. This bonus increases to +4 at 12th level and +6 at 18th level.",
       "type": "Extraordinary Ability"
     },
     {
       "_id": "5acacb567b5aff0014b33d8d",
+      "_type": "SpecialAbility",
       "name": "Ki Dodge",
       "description": "At 6th level and higher, a ninja can spend one daily use of her ki power to cause an attack against her to miss when it might otherwise hit. When a ninja activates this ability, her outline shifts and wavers, granting her concealment (20% miss chance) against all attacks for 1 round. Using this ability is a swift action that does not provoke attacks of opportunity.\n\nSee invisibility has no effect on concealment granted by the ki dodge ability, but true seeing negates the miss chance. This concealment does not stack with that caused by other effects that grant concealment or by spells such as blink or displacement.",
       "type": "Supernatural Ability"
     },
     {
       "_id": "5acacb9c7b5aff0014b33d8e",
+      "_type": "SpecialAbility",
       "name": "Speed Climb",
       "description": "A ninja of 7th level or higher can scramble up or down walls and slopes with great speed. She can climb at her speed as a move action with no penalty; however, she must begin and end the round on a horizontal surface (such as the ground or a rooftop). If she does not end her movement on a horizontal surface, she falls, taking falling damage as appropriate for her distance above the ground.\nA ninja needs only one free hand to use this ability. This ability can be used only if a ninja is wearing no armor and is carrying no more than a light load.",
       "type": "Extraordinary Ability"
@@ -8261,30 +8380,35 @@
   "spell-schools": [
     {
       "_id": "59e16eac8e50301cf1a549d1",
+      "_type": "SpellSchool",
       "name": "Abjuration",
       "description": "Abjuration spells are protective in nature, though some of them have aggressive uses. They create magical barriers, negate harmful effects, harm trespassers, or banish creatures to other planes of existence.",
       "subject": "Abjurer"
     },
     {
       "_id": "59e16f248e50301cf1a54ce4",
+      "_type": "SpellSchool",
       "name": "Evocation",
       "description": "Evocation spells manipulate magical energy to produce a desired effect. Some call up blasts of fire or lightning. Others channel positive energy to heal wounds.",
       "subject": "Evoker"
     },
     {
       "_id": "59e16f648e50301cf1a54e90",
+      "_type": "SpellSchool",
       "name": "Necromancy",
       "description": "Necromancy spells manipulate the energies of life and death. Such spells can grant an extra reserve of life force, drain the life energy from another creature, create the undead, or even bring the dead back to life. \nCreating the undead through the use of necromancy spells such as animate dead is not a good act, and only evil casters use such spells frequently.",
       "subject": "Necromancer"
     },
     {
       "_id": "59e16f908e50301cf1a54fa3",
+      "_type": "SpellSchool",
       "name": "Transmutation",
       "description": "Transmutation spells change the properties of a creature, object, or environment. They might turn an enemy into a harmless creature, bolster the strength of an ally, make an object move at the caster’s command, or enhance a creature’s innate healing abilities to rapidly recover from injury.",
       "subject": "Transmuter"
     },
     {
       "_id": "59e16ec88e50301cf1a54a97",
+      "_type": "SpellSchool",
       "name": "Conjuration",
       "description": "Conjuration spells involve the transportation of objects and creatures from one location to another. Some spells summon creatures or objects to the caster’s side, whereas others allow the caster to teleport to another location. Some conjurations create objects or effects out of nothing.",
       "subject": "Conjurer",
@@ -8313,6 +8437,7 @@
     },
     {
       "_id": "59e16eee8e50301cf1a54b83",
+      "_type": "SpellSchool",
       "name": "Divination",
       "description": "Divination spells reveal information, whether in the form of secrets long forgotten, glimpses of the future, the locations of hidden things, the truth behind illusions, or visions of distant people or places.",
       "subject": "Diviner",
@@ -8325,6 +8450,7 @@
     },
     {
       "_id": "59e16f078e50301cf1a54c27",
+      "_type": "SpellSchool",
       "name": "Enchantment",
       "description": "Enchantment spells affect the minds of others, influencing or controlling their behavior. Such spells can make enemies see the caster as a friend, force creatures to take a course of action, or even control another creature like a puppet.",
       "subject": "Enchanter",
@@ -8341,6 +8467,7 @@
     },
     {
       "_id": "59e16f448e50301cf1a54dbc",
+      "_type": "SpellSchool",
       "name": "Illusion",
       "description": "Illusion spells deceive the senses or minds of others. They cause people to see things that are not there, to miss things that are there, to hear phantom noises, or to remember things that never happened. Some illusions create phantom images that any creature can see, but the most insidious illusions plant an image directly in the mind of a creature.",
       "subject": "Illusionist",
@@ -8371,6 +8498,7 @@
   "spells": [
     {
       "_id": "59e7a242a23f5406e47485e6",
+      "_type": "Spell",
       "name": "Detect Poison",
       "school": {
         "subSchool": "",
@@ -8413,6 +8541,7 @@
     },
     {
       "_id": "59e632e6f17fce08709d5106",
+      "_type": "Spell",
       "name": "Magic Missiles",
       "school": {
         "subSchool": "",
@@ -8460,6 +8589,7 @@
     },
     {
       "_id": "59e7502da23f5406e47485e2",
+      "_type": "Spell",
       "name": "Burning Hands",
       "school": {
         "subSchool": "",
@@ -8518,6 +8648,7 @@
     },
     {
       "_id": "59e7870ba23f5406e47485e3",
+      "_type": "Spell",
       "name": "Scorching Ray",
       "school": {
         "subSchool": "",
@@ -8570,6 +8701,7 @@
     },
     {
       "_id": "59e79c0ba23f5406e47485e4",
+      "_type": "Spell",
       "name": "Resistance",
       "school": {
         "subSchool": "",
@@ -8621,6 +8753,7 @@
     },
     {
       "_id": "59e79ee5a23f5406e47485e5",
+      "_type": "Spell",
       "name": "Acid Spash",
       "school": {
         "subSchool": {
@@ -8676,6 +8809,7 @@
     },
     {
       "_id": "5aaddf27f883d7077ad0e481",
+      "_type": "Spell",
       "name": "Arcane Mark",
       "school": {
         "subSchool": "",
@@ -8717,6 +8851,7 @@
     },
     {
       "_id": "5aae6f823cebc41b2c5514f0",
+      "_type": "Spell",
       "name": "Daze",
       "school": {
         "subSchool": {
@@ -8773,6 +8908,7 @@
     },
     {
       "_id": "5aae6fdd3cebc41b2c5514f1",
+      "_type": "Spell",
       "name": "Detect magic",
       "school": {
         "subSchool": "",
@@ -8823,6 +8959,7 @@
     },
     {
       "_id": "5aae70363cebc41b2c5514f2",
+      "_type": "Spell",
       "name": "Charm Person",
       "school": {
         "subSchool": {
@@ -8873,6 +9010,7 @@
     },
     {
       "_id": "5aae70893cebc41b2c5514f3",
+      "_type": "Spell",
       "name": "Tasha's Hideous Laughter",
       "school": {
         "name": "Enchantment",
@@ -8927,6 +9065,7 @@
     },
     {
       "_id": "5aae70ff3cebc41b2c5514f4",
+      "_type": "Spell",
       "name": "Melf's Acid Arrow",
       "school": {
         "subSchool": {
@@ -8987,6 +9126,7 @@
     },
     {
       "_id": "5aae717e3cebc41b2c5514f5",
+      "_type": "Spell",
       "name": "Deep Slumber",
       "school": {
         "subSchool": {
@@ -9043,6 +9183,7 @@
     },
     {
       "_id": "5ab683cf596cdf0f5c069da0",
+      "_type": "Spell",
       "name": "Teste",
       "school": {
         "subSchool": {
@@ -9073,6 +9214,7 @@
     },
     {
       "_id": "5ab683e8596cdf0f5c069da1",
+      "_type": "Spell",
       "name": "Teste",
       "school": {
         "subValues": ""
@@ -9098,6 +9240,7 @@
     },
     {
       "_id": "5ab683f3596cdf0f5c069da2",
+      "_type": "Spell",
       "name": "TEste",
       "school": {
         "subValues": ""
@@ -9123,6 +9266,7 @@
     },
     {
       "_id": "5ab683fe596cdf0f5c069da3",
+      "_type": "Spell",
       "name": "ASd",
       "school": {
         "subValues": ""
@@ -9148,6 +9292,7 @@
     },
     {
       "_id": "5ab68406596cdf0f5c069da4",
+      "_type": "Spell",
       "name": "ASDasdasd",
       "school": {
         "subValues": "",
@@ -9177,6 +9322,7 @@
     },
     {
       "_id": "5ab68412596cdf0f5c069da5",
+      "_type": "Spell",
       "name": "DDASD",
       "school": {
         "subValues": "",
@@ -9206,6 +9352,7 @@
     },
     {
       "_id": "5aca58b736461b001456a283",
+      "_type": "Spell",
       "name": "Necrotic Cyst",
       "school": {
         "subValues": ""
@@ -9254,6 +9401,7 @@
     },
     {
       "_id": "5aca595c36461b001456a284",
+      "_type": "Spell",
       "name": "Teste",
       "school": {
         "subValues": ""
@@ -9301,30 +9449,35 @@
   "users": [
     {
       "_id": "5aa4a04dd0c1bc29a4a7d103",
+      "_type": "User",
       "name": "Uriann Rima",
       "email": "luscious.ds@gmail.com",
       "password": "$2a$12$pgByfkuf8Bf0YhdKYFU8de8scuYMHjUsq6DGhqb5GVI83UuLrMe5q"
     },
     {
       "_id": "5aadcc27f883d7077ad0e47b",
+      "_type": "User",
       "name": "Huunar",
       "email": "hudson3101@yahoo.com.br",
       "password": "$2a$12$XTuBlz2algZQMNH.VjfvnuQv5YChZYerqfB.UYjPjYzgrxqaS0do6"
     },
     {
       "_id": "5aae8174f883d7077ad0e482",
+      "_type": "User",
       "name": "Jason_viper",
       "email": "danshimaru_0@hotmail.com",
       "password": "$2a$12$5GXH9ZqgZvdI8luwnuf1S.3YBB.3uLutIHTUmCnstLLe7SlQ/Lelq"
     },
     {
       "_id": "5aae81c7f883d7077ad0e483",
+      "_type": "User",
       "name": "Otiluck",
       "email": "igorsantos067@gmail.com",
       "password": "$2a$12$7FSxCM09f.YLQUIBUXE/OOdWnOkaBOBEFwKzIz4g/Wmn20K9Uu3ZC"
     },
     {
       "_id": "5aca3593a1cdd300147a488c",
+      "_type": "User",
       "name": "Simone Chara",
       "email": "simonechara@gmail.com",
       "password": "$2a$12$u.dehYP/WuSA7dX7SmV5quzxYXZkhDtB966yLlQCiXxFvq4luc0Em"
@@ -9333,42 +9486,50 @@
   "spell-durations": [
     {
       "_id": "5b246f615325c401a1f07708",
+      "_type": "TimedDuration",
       "name": "Timed",
       "description": "Many durations are measured in rounds, minutes, hours, or other increments. When the time is up, the magic goes away and the spell ends. If a spell’s duration is variable, the duration is rolled secretly so the caster doesn’t know how long the spell will last.",
       "duration": ""
     },
     {
       "_id": "5b246f695325c401a1f07717",
+      "_type": "Duration",
       "name": "Instantaneous",
       "description": "The spell energy comes and goes the instant the spell is cast, though the consequences might be long-lasting."
     },
     {
       "_id": "5b26972b5325c401a1f3af1f",
+      "_type": "Duration",
       "name": "Permanent",
       "description": "The energy remains as long as the effect does. This means the spell is vulnerable to dispel magic."
     },
     {
       "_id": "5b2697315325c401a1f3af28",
+      "_type": "Duration",
       "name": "Concentration",
       "description": "The spell lasts as long as you concentrate on it. Concentrating to maintain a spell is a standard action that does not provoke attacks of opportunity. Anything that could break your concentration when casting a spell can also break your concentration while you’re maintaining one, causing the spell to end."
     },
     {
       "_id": "5b2697475325c401a1f3af49",
+      "_type": "Duration",
       "name": "Subjects, Effects, and Areas",
       "description": "If the spell affects creatures directly, the result travels with the subjects for the spell’s duration. If the spell creates an effect, the effect lasts for the duration. The effect might move or remain still. Such an effect can be destroyed prior to when its duration ends. If the spell affects an area, then the spell stays with that area for its duration.\nCreatures become subject to the spell when they enter the area and are no longer subject to it when they leave."
     },
     {
       "_id": "5b2697585325c401a1f3af66",
+      "_type": "Duration",
       "name": "Touch Spells and Holding the Charge",
       "description": "In most cases, if you don’t discharge a touch spell on the round you cast it, you can hold the charge (postpone the discharge of the spell) indefinitely. You can make touch attacks round after round until the spell is discharged. If you cast another spell, the touch spell dissipates.\nSome touch spells allow you to touch multiple targets as part of the spell. You can’t hold the charge of such a spell; you must touch all targets of the spell in the same round that you finish casting the spell."
     },
     {
       "_id": "5b2697615325c401a1f3af78",
+      "_type": "Duration",
       "name": "Triggered/Discharged",
       "description": "Occasionally a spells lasts for a set duration or until triggered or discharged."
     },
     {
       "_id": "5b2697705325c401a1f3af97",
+      "_type": "Duration",
       "name": "Dismissible",
       "description": "If the duration line ends with “(D)” you can dismiss the spell at will. You must be within range of the spell’s effect and must speak words of dismissal, which are usually a modified form of the spell’s verbal component. If the spell has no verbal component, you can dismiss the effect with a gesture. Dismissing a spell is a standard action that does not provoke attacks of opportunity.\nA spell that depends on concentration is dismissible by its very nature, and dismissing it does not take an action, since all you have to do to end the spell is to stop concentrating on your turn."
     }
@@ -9376,26 +9537,31 @@
   "spell-components": [
     {
       "_id": "5b2697b85325c401a1f3b020",
+      "_type": "Component",
       "name": "Verbal",
       "description": "A verbal component is a spoken incantation. To provide a verbal component, you must be able to speak in a strong voice. A silence spell or a gag spoils the incantation (and thus the spell). a spellcaster who has been deafened has a 20% chance of spoiling any spell with a verbal component that he tries to cast."
     },
     {
       "_id": "5b2697c15325c401a1f3b03c",
+      "_type": "Component",
       "name": "Somatic",
       "description": "A somatic component is a measured and precise movement of the hand. You must have at least one hand free to provide a somatic component."
     },
     {
       "_id": "5b2697c55325c401a1f3b047",
+      "_type": "Component",
       "name": "Material",
       "description": "A material component consists of one or more physical substances or objects that are annihilated by the spell energies in the casting process. Unless a cost is given for a material component, the cost is negligible. Don’t bother to keep track of material components with negligible cost. Assume you have all you need as long as you have your spell component pouch."
     },
     {
       "_id": "5b2697cb5325c401a1f3b050",
+      "_type": "Component",
       "name": "Focus",
       "description": "A focus component is a prop of some sort. Unlike a material component, a focus is not consumed when the spell is cast and can be reused. As with material components, the cost for a focus is negligible unless a price is given. Assume that focus components of negligible cost are in your spell component pouch."
     },
     {
       "_id": "5b2697cf5325c401a1f3b05a",
+      "_type": "Component",
       "name": "Divine Focus",
       "description": "A divine focus component is an item of spiritual significance. The divine focus for a cleric or a paladin is a holy symbol appropriate to the character’s faith. The divine focus for a druid or a ranger is a sprig of holly, or some other sacred plant. If the Components line includes F/ DF or M/ DF, the arcane version of the spell has a focus component or a material component (the abbreviation before the slash) and the divine version has a divine focus component (the abbreviation after the slash)."
     }
@@ -9403,146 +9569,175 @@
   "spell-descriptors": [
     {
       "_id": "5b2697ea5325c401a1f3b09c",
+      "_type": "Descriptor",
       "name": "Acid",
       "description": "Acid effects deal damage with chemical reactions rather than cold, electricity, heat, or vibration. This descriptor includes both actual acids and their chemical opposites, called bases or alkalines (such as ammonia and lye)."
     },
     {
       "_id": "5b2697f25325c401a1f3b0ad",
+      "_type": "Descriptor",
       "name": "Air",
       "description": " Spells that create air, manipulate air, or conjure creatures from air-dominant planes or with the air subtype should have the air descriptor."
     },
     {
       "_id": "5b2697f85325c401a1f3b0b6",
+      "_type": "Descriptor",
       "name": "Chaotic",
       "description": "Spells that draw upon the power of true chaos or conjure creatures from chaos-aligned planes or with the chaotic subtype should have the chaos descriptor."
     },
     {
       "_id": "5b2697fd5325c401a1f3b0bf",
+      "_type": "Descriptor",
       "name": "Cold",
       "description": "Cold effects deal damage by making the target colder, typically by blasting it with supernaturally cooled matter or energy. Cold effects also include those that create ice, sleet, or snow out of nothing. They can cause frostbite, numbness, coordination problems, slowed movement and reactions, stupor, and death."
     },
     {
       "_id": "5b2698015325c401a1f3b0c8",
+      "_type": "Descriptor",
       "name": "Curse",
       "description": "Curses are often permanent effects, and usually cannot be dispelled, but can be removed with a break enchantment, limited wish, miracle, remove curse, or wish."
     },
     {
       "_id": "5b269851929144a9b34c7682",
+      "_type": "Descriptor",
       "name": "Darkness",
       "description": "Spells that create darkness or reduce the amount of light should have the darkness descriptor. Giving a spell the darkness descriptor indicates whether a spell like daylight is high enough level to counter or dispel it."
     },
     {
       "_id": "5b269851929144a9b34c7683",
+      "_type": "Descriptor",
       "name": "Death",
       "description": "Spells with the death descriptor directly attack a creature’s life force to cause immediate death, or to draw on the power of a dead or dying creature. The death ward spell protects against death effects, and some creature types are immune to death effects."
     },
     {
       "_id": "5b269851929144a9b34c7684",
+      "_type": "Descriptor",
       "name": "Disease",
       "description": "Disease effects give the target a disease, which may be an invading organism such as a bacteria or virus, an abnormal internal condition (such as a cancer or mental disorder,     or a recurring magical effect that acts like one of the former.Creatures with resistance or immunity to disease apply that resistance to their saving throw and the effects of disease spells. "
     },
     {
       "_id": "5b269851929144a9b34c7685",
+      "_type": "Descriptor",
       "name": "Draconic",
       "description": "The draconic descriptor is for spells tied closely to dragons that those with draconic blood can cast them almost instinctually. Spells with the draconic descriptor were created by dragons in ages long past, and still resonate within the blood of true dragons to this day.\nCreatures of the dragon type with 5 or more racial hit dice can select a draconic spell as a spell known regardless of the class spell list it’s on. Each time such a creature gains an additional racial hit die, it can select a draconic spell in place of an existing spell known of the same or higher spell level."
     },
     {
       "_id": "5b269851929144a9b34c7686",
+      "_type": "Descriptor",
       "name": "Earth",
       "description": "Spells that manipulate earth or conjure creatures from earth-dominant planes or with the earth subtype should have the earth descriptor."
     },
     {
       "_id": "5b269851929144a9b34c7687",
+      "_type": "Descriptor",
       "name": "Electricity",
       "description": "Electricity effects involve the presence and flow of electrical charge, whether expressed in amperes or volts. Electricity deals damage to creatures by disrupting their biological systems. It deals damage to objects (as well as creatures) by heating the material it passes through, and thus technically many electricity spells could also be treated as fire spells, but for sake of game simplicity, it is better to just let electricity-based spells deal electricity damage. Electricity effects may stun, paralyze, or even kill."
     },
     {
       "_id": "5b269851929144a9b34c7688",
+      "_type": "Descriptor",
       "name": "Emotion",
       "description": "Spells with this descriptor create emotions or manipulate the target’s existing emotions. Most emotion spells are enchantments, except for fear spells, which are usually necromancy."
     },
     {
       "_id": "5b269852929144a9b34c768a",
+      "_type": "Descriptor",
       "name": "Fear",
       "description": "Spells with the fear descriptor create, enhance, or manipulate fear. Most fear spells are necromancy spells, though some are enchantment spells."
     },
     {
       "_id": "5b269852929144a9b34c768b",
+      "_type": "Descriptor",
       "name": "Fire",
       "description": "Fire effects make the target hotter by creating fire, directly heating the target with magic or friction. Lava, steam, and boiling water all deal fire damage. Fire effects can also cause confusion, dizziness, exhaustion, fatigue, nausea, unconsciousness, and death. Spells that manipulate fire or conjure creatures from fire-dominant planes or with the fire subtype should have the fire descriptor."
     },
     {
       "_id": "5b269852929144a9b34c768c",
+      "_type": "Descriptor",
       "name": "Force",
       "description": "Spells with the force descriptor create or manipulate magical force. Force spells affect incorporeal creatures normally (as if they were corporeal creatures)."
     },
     {
       "_id": "5b269852929144a9b34c768d",
+      "_type": "Descriptor",
       "name": "Good",
       "description": "Spells that draw upon the power of true goodness or conjure creatures from good-aligned planes or with the good subtype should have the good descriptor."
     },
     {
       "_id": "5b269852929144a9b34c768e",
+      "_type": "Descriptor",
       "name": "Language-Dependent",
       "description": "A language-dependent spell uses intelligible language as a medium for communication. If the target cannot understand or hear what the caster of a language-dependent spell says, the spell has no effect, even if the target fails its saving throw."
     },
     {
       "_id": "5b269852929144a9b34c7689",
+      "_type": "Descriptor",
       "name": "Evil",
       "description": "Spells that draw upon evil powers or conjure creatures from evil-aligned planes or with the evil subtype should have the evil descriptor.\nCasting an evil spell is an evil act, but for most characters simply casting such a spell once isn’t enough to change her alignment; this only occurs if the spell is used for a truly abhorrent act, or if the caster established a pattern of casting evil spells over a long period. A wizard who uses animate dead to create guardians for defenseless people won’t turn evil, but he will if he does it over and over again. The GM decides whether the character’s alignment changes, but typically casting two evil spells is enough to turn a good creature nongood, and three or more evils spells move the caster from nongood to evil. The greater the amount of time between castings, the less likely alignment will change. Some spells require sacrificing a sentient creature, a major evil act that makes the caster evil in almost every circumstance.\n    \nThose who are forbidden from casting spells with an opposed alignment might lose their divine abilities if they circumvent that restriction (via Use Magic Device, for example, \n    depending on how strict their deities are.\n    \nThough this advice talks about evil spells, it also applies to spells with other alignment descriptors.\n    \nIn addition, you can move the target 5 units. This movement doesn’t provoke attacks of opportunity. A successful saving throw halves the damage and negates the movement.\n    \nAn undead creature takes no damage. Instead, you manipulate the undead, forcing it to take an immediate action to either move up to its speed (provoking attacks of opportunity as normal) or make a single attack against a creature of your choice in its reach.\n    \nEither of these is the most basic version of the action the creature can take (it doesn’t activate any special abilities that it could apply to the movement or attack, such as grab). A successful saving throw negates this effect. A mindless undead creature doesn’t receive a save against this effect."
     },
     {
       "_id": "5b269852929144a9b34c768f",
+      "_type": "Descriptor",
       "name": "Lawful",
       "description": "Spells that draw upon the power of true law or conjure creatures from law-aligned planes or with the lawful subtype should have the law descriptor."
     },
     {
       "_id": "5b269853929144a9b34c7690",
+      "_type": "Descriptor",
       "name": "Light",
       "description": "Spells that create significant amounts of light or attack darkness effects should have the light descriptor. Giving a spell the light descriptor indicates whether a spell like darkness is high enough level counter or dispel it."
     },
     {
       "_id": "5b269853929144a9b34c7691",
+      "_type": "Descriptor",
       "name": "Meditative",
       "description": "Meditative spells fall into an unusual category and share the “meditative” descriptor. Meditative spells are not cast like other spells—they are cast during the period of the day when a spellcaster prepares her spells. A meditative spell must already be prepared at the time when you start your 1-hour spell preparation ritual, and at the end of that time, the meditative spell of your choosing is cast, leaving you with that one spell slot used for the remainder of the day. You can have only one meditative spell in effect on you at any one time. All meditative spells have a range of personal and a target of you, and they can’t be brewed into potions or part of similar one-use items like elixirs. A meditative spell can be placed on a scroll or in a wand, but the act of casting the spell must always be incorporated into the user’s spell-preparation time; it also takes 1 hour for a character who succeeds at an appropriate Use Magic Device check to operate such an item. "
     },
     {
       "_id": "5b269853929144a9b34c7692",
+      "_type": "Descriptor",
       "name": "Mind-Affecting",
       "description": "Mindless creatures (those with an Intelligence score of “—”) and undead are immune to mind-affecting effects."
     },
     {
       "_id": "5b269853929144a9b34c7693",
+      "_type": "Descriptor",
       "name": "Pain",
       "description": "Pain effects cause unpleasant sensations without any permanent physical damage (though a sensitive target may suffer mental repercussions from lengthy exposure to pain). Creatures that are immune to effects that require a Fort save (such as constructs and undead) are immune to pain effects."
     },
     {
       "_id": "5b269853929144a9b34c7694",
+      "_type": "Descriptor",
       "name": "Poison",
       "description": "Poison effects use poison, venom, drugs, or similar toxic substances to disrupt and damage living creatures through chemical reactions. Technically, acids and poisons are both chemical reactions, but for the purpose of this game, they are categorized as different effects, with acids dealing hit point damage and poisons causing ability damage, ability drain, bleeding, confusion, convulsions, nausea, paralysis, reduced healing, suffocation, unconsciousness, or death. Creatures with resistance to poison (such as dwarves) apply that resistance to their saving throws and the effects of poison spells. Creatures with immunity are immune to poisonous aspects of poison spells, but not necessarily all effects of the spell (for example, a spell that creates a pit full of liquid poison could still trap or drown a poison-immune creature)."
     },
     {
       "_id": "5b269853929144a9b34c7695",
+      "_type": "Descriptor",
       "name": "Ruse",
       "description": "The “ruse” descriptor applies to spells that appear to be other, usually more harmless spells in order for the caster to fool her opponents. Spells with the ruse descriptor are easily mistaken for other spells and are intended to confuse even onlookers trained in Spellcraft or Knowledge (arcana). Attempts to identify a ruse spell by its effects, its aura, its components, or other attributes with a skill check treat the spell as though it were a different spell, as indicated in the spell’s description. The one attempting the check can correctly identify the spell only by exceeding the DC by 10. The false spell is typically a level lower than the ruse spell, so skill checks use the DC for the lower-level spell. Even detect magic and most similar spells don’t prevent the caster from being fooled by a ruse spell. Analyze dweomer, greater arcane sight, and similar spells of the same or higher spell level that automatically identify spells reveal a ruse spell for what it is. Ruse spells that mimic harmless spells still list harmless on their saving throw or spell resistance lines; a creature that knows or suspects the true nature of the spell typically chooses to attempt the save."
     },
     {
       "_id": "5b269853929144a9b34c7696",
+      "_type": "Descriptor",
       "name": "Shadow",
       "description": "Shadow spells manipulate matter or energy from the Shadow Plane, or allow transport to or from that plane."
     },
     {
       "_id": "5b269854929144a9b34c7697",
+      "_type": "Descriptor",
       "name": "Sonic",
       "description": "Sonic effects transmit energy to the target through frequent oscillations of pressure through the air, water, or ground. Sounds that are too high or too low for the humanoid ear to detect can still transmit enough energy to cause harm, which means that these effects can even affect deafened creatures. Sound effects can cause hit point damage, deafness, dizziness, nausea, pain, shortness of breath, and temporary blindness, and can detect creatures using batlike echolocation."
     },
     {
       "_id": "5b269854929144a9b34c7698",
+      "_type": "Descriptor",
       "name": "Stone",
       "description": "The [stone] descriptor is considered a subset of [earth] spells, and all spells with the [stone] descriptor are considered [earth] spells as well. Spells that have the [stone] designator do not deal spell damage, instead the damage they deal is treated as weapon damage. Thus, spell resistance is not effective against such spells and creatures immune to spells (such as many golems) are still affected by them. Because [stone] spells are considered to do weapon damage, they are affected by a creature’s Damage Reduction (if any). Each [stone] spell that does damage lists the effective material the spell is considered to be made of for purposes of penetrating DR. Despite the fact that cold iron is strongly tied to elemental stone, no magic spell can duplicate the effects of cold iron and thus [stone] spells never deal damage as a cold iron weapon. In all other regards, [stone] spells follow the normal rules for spells and spellcasting. Damaging [stone] spells do not penetrate an antimagic shell as the summoned rock winks out of existence when hitting the shell (much as summoned creatures do).\n    \nWhile liquid acids are well known, and have ties to the elemental plane of water, there are also solid caustic materials with ties to the elemental plane of earth. These include items such as lye (also known as caustic soda, a dry white material used in soap-making) and caustic potash (also known as alkali salt). The exact process by which these caustic solids burn and corrode is not the same as many liquid acids, but the effect on material exposed to them is very similar.\n    \nThus there are two elemental sources with which “acid” may be aligned. Black dragons, for example, are tied to the element of water and call forth a wet acidic breath that is also linked to that element. Sorcerers with an elemental earth bloodline, however, call upon the power of caustic salts and deal acid damage with a connection to elemental earth. Despite the two different elemental and alchemical sources of these caustic materials, for purposes of spells they both qualify as “acid” for game rule purposes."
     },
     {
       "_id": "5b269854929144a9b34c7699",
+      "_type": "Descriptor",
       "name": "Water",
       "description": "Spells that manipulate water or conjure creatures from water-dominant planes or with the water subtype should have the water descriptor."
     }
@@ -9550,62 +9745,76 @@
   "spell-effects": [
     {
       "_id": "5b269911929144a9b34c769a",
+      "_type": "Effect",
       "name": "Ray",
       "description": "Some effects are rays. You aim a ray as if using a ranged weapon, though typically you make a ranged touch attack rather than a normal ranged attack. As with a ranged weapon, you can fire into the dark or at an invisible creature and hope you hit something. You don’t have to see the creature you’re trying to hit, as you do with a targeted spell. Intervening creatures and obstacles, however, can block your line of sight or provide cover for the creature at which you’re aiming.           \nIf a ray spell has a duration, it’s the duration of the effect that the ray causes, not the length of time the ray itself persists.                \nIf a ray spell deals damage, you can score a critical hit just as if it were a weapon. A ray spell threatens a critical hit on a natural roll of 20 and deals double damage on a successful critical hit."
     },
     {
       "_id": "5b269911929144a9b34c769b",
+      "_type": "Effect",
       "name": "Spread",
       "description": "Some effects, notably clouds and fogs, spread out from a point of origin, which must be a grid intersection. The effect can extend around corners and into areas that you can’t see. Figure distance by actual distance traveled, taking into account turns the spell effect takes. When determining distance for spread effects, count around walls, not through them. As with movement, do not trace diagonals across corners. You must designate the point of origin for such an effect, but you need not have line of effect (see below) to all portions of the effect."
     },
     {
       "_id": "5b269912929144a9b34c769c",
+      "_type": "AreaEffect",
       "name": "Area",
       "description": "Some spells affect an area. Sometimes a spell description specifies a specially defined area, but usually an area falls into one of the categories defined below. See more area of effect templates here.\nRegardless of the shape of the area, you select the point where the spell originates, but otherwise you don’t control which creatures or objects the spell affects. The point of origin of a spell is always a grid intersection. When determining whether a given creature is within the area of a spell, count out the distance from the point of origin in squares just as you do when moving a character or when determining the range for a ranged attack. The only difference is that instead of counting from the center of one square to the center of the next, you count from intersection to intersection.\nYou can count diagonally across a square, but remember that every second diagonal counts as 2 squares of distance. If the far edge of a square is within the spell’s area, anything within that square is within the spell’s area. If the spell’s area only touches the near edge of a square, however, anything within that square is unaffected by the spell.",
       "types": [
         {
+          "_type": "AreaType",
           "name": "Burst",
           "description": "A burst spell affects whatever it catches in its area, including creatures that you can’t see. It can’t affect creatures with total cover from its point of origin (in other words, its effects don’t extend around corners). The default shape for a burst effect is a sphere, but some burst spells are specifically described as cone-shaped. a burst’s area defines how far from the point of origin the spell’s effect extends."
         },
         {
+          "_type": "AreaType",
           "name": "Emanation",
           "description": "An emanation spell functions like a burst spell, except that the effect continues to radiate from the point of origin for the duration of the spell. Most emanations are cones or spheres."
         },
         {
+          "_type": "AreaType",
           "name": "Spread",
           "description": "A spread spell extends out like a burst but can turn corners. You select the point of origin, and the spell spreads out a given distance in all directions. Figure the area the spell effect fills by taking into account any turns the spell effect takes."
         }
       ],
       "formats": [
         {
+          "_type": "AreaFormat",
           "name": "Cone",
           "description": "A cone-shaped spell shoots away from you in a quarter-circle in the direction you designate. It starts from any corner of your square and widens out as it goes. Most cones are either bursts or emanations (see above, and thus won’t go around corners."
         },
         {
+          "_type": "AreaFormat",
           "name": "Cylinder",
           "description": "When casting a cylinder-shaped spell, you select the spell’s point of origin. This point is the center of a horizontal circle, and the spell shoots down from the circle, filling a cylinder. A cylinder-shaped spell ignores any obstructions within its area."
         },
         {
+          "_type": "AreaFormat",
           "name": "Line",
           "description": "A line-shaped spell shoots away from you in a line in the direction you designate. It starts from any corner of your square and extends to the limit of its range or until it strikes a barrier that blocks line of effect. A line-shaped spell affects all creatures in squares through which the line passes."
         },
         {
+          "_type": "AreaFormat",
           "name": "Sphere",
           "description": "A sphere-shaped spell expands from its point of origin to fill a spherical area. Spheres may be bursts, emanations, or spreads."
         },
         {
+          "_type": "AreaFormat",
           "name": "Creatures",
           "description": "A spell with this kind of area affects creatures directly (like a targeted spell, but it affects all creatures in an area of some kind rather than individual creatures you select. The area might be a spherical burst, a cone-shaped burst, or some other shape.\n              \nMany spells affect “living creatures,” which means all creatures other than constructs and undead. Creatures in the spell’s area that are not of the appropriate type do not count against the creatures affected."
         },
         {
+          "_type": "AreaFormat",
           "name": "Objects",
           "description": "A spell with this kind of area affects objects within an area you select (as Creatures, but affecting objects instead)."
         },
         {
+          "_type": "AreaFormat",
           "name": "Other",
           "description": "A spell can have a unique area, as defined in its description."
         },
         {
+          "_type": "AreaFormat",
           "name": "Shapeable",
           "description": "If an area or effect entry ends with “(S,” you can shape the spell. a shaped effect or area can have no dimension smaller than 10 unit. Many effects or areas are given as cubes to make it easy to model irregular shapes. Three-dimensional volumes are most often needed to define aerial or underwater effects and areas."
         }

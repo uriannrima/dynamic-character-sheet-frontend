@@ -14,7 +14,7 @@
                   v-bind='savingThrow'
                   :keyAbility="savingThrow.keyAbility"
                   :keyAbilityModifier="getTempModifier(getAbilityScore(savingThrow.keyAbility))"
-                  @onUpdateSavingThrow="updateSavingThrow($event)" />
+                  @updateSavingThrow="updateSavingThrow($event)" />
   </div>
 </template>
 

@@ -8,13 +8,13 @@
         <coin v-for="(coin, index) in wealth.coins"
               :key="index"
               v-bind="coin"
-              @onCoinUpdate="$emit('onCoinUpdate', { index, coin: $event })"></coin>
+              @coinUpdate="$emit('coinUpdate', { index, coin: $event })"></coin>
       </div>
       <div class="treasure-container">
         <label class="condition-modifiers-label">Treasures</label>
         <textarea class="common-textarea"
                   :value="wealth.treasure"
-                  @change="$emit('onTreasureUpdate', $event.target.value)"></textarea>
+                  @change="$emit('treasureUpdate', $event.target.value)"></textarea>
       </div>
     </div>
   </div>

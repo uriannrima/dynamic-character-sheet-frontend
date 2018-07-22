@@ -90,13 +90,12 @@ export const mutations: MutationTree<CharacterState> = {
     const stateAttack = state.attacks[index]
     ObjectUtils.extractTo(attack, stateAttack)
   },
-  [Mutations.updateSkills](state, { skills = [] }: { skills: Modules.Skill[] }) {
-    state.skills = skills.map(skill => new Modules.Skill(skill));
+  [Mutations.updateSkills](state, { skills = [] }: { skills: Modules.CharacterSkill[] }) {
+    state.skills = skills.map(skill => new Modules.CharacterSkill(skill));
   },
-  [Mutations.updateSkill](state, updated: Modules.Skill) {
-    const filtered = state.skills.filter(skill => skill._id !== updated._id);
-    filtered.push(updated);
-    state.skills = filtered;
+  [Mutations.updateSkill](state, updated: Modules.CharacterSkill) {
+    const indexOf = state.skills.map(skill => skill._id).indexOf(updated._id);
+    ObjectUtils.extractTo(updated, state.skills[indexOf]);
   },
   [Mutations.updateCampaign](state, { campaign }: { campaign: string }) {
     state.campaign = campaign

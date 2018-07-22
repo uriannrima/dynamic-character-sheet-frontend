@@ -7,7 +7,7 @@
       <input type="text"
              class="common-input"
              :value="name"
-             @change="$emit('onArmorUpdate', { name: $event.target.value })">
+             @change="$emit('armorUpdate', { name: $event.target.value })">
     </div>
     <div>
       <div>
@@ -17,7 +17,7 @@
         <input type="text"
                class="common-input"
                :value="type"
-               @change="$emit('onArmorUpdate', { type: $event.target.value })">
+               @change="$emit('armorUpdate', { type: $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -26,7 +26,7 @@
         <input type="number"
                class="common-input"
                :value="acBonus"
-               @change="$emit('onArmorUpdate', { acBonus: $event.target.value * 1 })">
+               @change="$emit('armorUpdate', { acBonus: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -35,7 +35,7 @@
         <input type="number"
                class="common-input"
                :value="maxDex"
-               @change="$emit('onArmorUpdate', { maxDex: $event.target.value * 1 })">
+               @change="$emit('armorUpdate', { maxDex: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -46,7 +46,7 @@
         <input type="number"
                class="common-input"
                :value="checkPenalty"
-               @change="$emit('onArmorUpdate', { checkPenalty: $event.target.value * 1 })">
+               @change="$emit('armorUpdate', { checkPenalty: $event.target.value * 1 })">
       </div>
       <div>
         <div class="new-black-box">
@@ -55,7 +55,7 @@
         <input type="number"
                class="common-input"
                :value="spellFailure"
-               @change="$emit('onArmorUpdate', { spellFailure: $event.target.value * 1 })">
+               @change="$emit('armorUpdate', { spellFailure: $event.target.value * 1 })">
       </div>
     </div>
     <div>
@@ -66,7 +66,7 @@
         <input type="text"
                class="common-input"
                :value="speed"
-               @change="$emit('onArmorUpdate', { speed: $event.target.value })">
+               @change="$emit('armorUpdate', { speed: $event.target.value })">
       </div>
       <div>
         <div class="new-black-box">
@@ -75,7 +75,7 @@
         <input type="number"
                class="common-input"
                :value="weight"
-               @change="$emit('onArmorUpdate', { weight: $event.target.value * 1})">
+               @change="$emit('armorUpdate', { weight: $event.target.value * 1})">
       </div>
     </div>
     <div>
@@ -85,7 +85,7 @@
       <input type="text"
              class="common-input"
              :value="specialProperties"
-             @change="$emit('onArmorUpdate', { specialProperties: $event.target.value })">
+             @change="$emit('armorUpdate', { specialProperties: $event.target.value })">
     </div>
   </div>
 </template>

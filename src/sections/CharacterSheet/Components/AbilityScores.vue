@@ -12,7 +12,7 @@
                      :key="index"
                      :index="index"
                      v-bind='abilityScore'
-                     @onUpdateScore="$emit('onUpdateScore', $event)" />
+                     @updateScore="$emit('updateScore', $event)" />
     </div>
   </div>
 </template>

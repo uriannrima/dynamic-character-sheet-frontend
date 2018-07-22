@@ -11,7 +11,7 @@
                       :key="character._id"
                       :character="character"
                       class="character-card"
-                      @onDelete="removeCharacter($event)"></character-card>
+                      @delete="removeCharacter($event)"></character-card>
     </transition-group>
   </div>
 </template>

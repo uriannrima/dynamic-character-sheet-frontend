@@ -54,7 +54,7 @@ export default {
   methods: {
     updateSavingThrow (savingThrow) {
       savingThrow.name = this.name
-      this.$emit('onUpdateSavingThrow', savingThrow)
+      this.$emit('updateSavingThrow', savingThrow)
     }
   }
 }

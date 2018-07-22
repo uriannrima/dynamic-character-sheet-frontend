@@ -4,10 +4,10 @@
     <description v-bind="description"
                  :classes="getClasses"
                  :sizeName="getSize"
-                 @onCharacterSave="saveCharacter($event)"
-                 @onDescriptionUpdate="updateDescription($event)"
-                 @onClassesUpdate="updateClasses($event)"
-                 @onSizeUpdate="updateSize($event)"></description>
+                 @characterSave="saveCharacter($event)"
+                 @descriptionUpdate="updateDescription($event)"
+                 @classesUpdate="updateClasses($event)"
+                 @sizeUpdate="updateSize($event)"></description>
   </div>
 </template>
 

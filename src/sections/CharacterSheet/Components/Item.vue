@@ -7,18 +7,18 @@
       <input type="text"
              class="common-input"
              :value="name"
-             @change="$emit('onItemUpdate', { name: $event.target.value })">
+             @change="$emit('itemUpdate', { name: $event.target.value })">
       <span class="item-drag-handler glyphicon glyphicon-move"></span>
     </div>
     <input type="text"
            class="common-input"
            :value="page"
-           @change="$emit('onItemUpdate', { page: $event.target.value })">
+           @change="$emit('itemUpdate', { page: $event.target.value })">
     <input type="number"
            class="common-input"
            step="0.1"
            :value="weight"
-           @change="$emit('onItemUpdate', { weight: $event.target.value * 1 })">
+           @change="$emit('itemUpdate', { weight: $event.target.value * 1 })">
   </div>
 </template>
 

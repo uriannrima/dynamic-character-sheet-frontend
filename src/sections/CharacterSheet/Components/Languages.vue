@@ -10,7 +10,7 @@
       <language v-for="(language, index) in languages"
                 :key="index"
                 :language="language"
-                @onSelected="onSelected"></language>
+                @selected="onSelected"></language>
       <div class="no-content-container"
            v-if="languages.length == 0">
         <label>No languages</label>
@@ -19,8 +19,8 @@
     <language-modal :show.sync="showModal"
                     :referenceList="languages"
                     :describe.sync="selected"
-                    @onAdded="addLanguage($event.model)"
-                    @onRemoved="removeLanguage($event.model)"></language-modal>
+                    @added="addLanguage($event.model)"
+                    @removed="removeLanguage($event.model)"></language-modal>
   </div>
 </template>
 

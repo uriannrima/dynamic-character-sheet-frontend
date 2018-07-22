@@ -88,13 +88,13 @@ export default {
       if (this.checkDuplicate(model)) {
         this.isDuplicated = true
       } else {
-        this.$emit('onAdded', { model })
+        this.$emit('added', { model })
         this.close()
       }
     },
     remove: function () {
       let { describe: model } = this
-      this.$emit('onRemoved', { model })
+      this.$emit('removed', { model })
       this.close()
     },
     save: async function () {
@@ -110,7 +110,7 @@ export default {
           if (this.checkDuplicate(model)) {
             this.isDuplicated = true
           } else {
-            this.$emit('onUpdated', { model })
+            this.$emit('updated', { model })
             this.close()
           }
         }

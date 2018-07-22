@@ -2,6 +2,6 @@ export interface IRevivable {
   _type: string;
 }
 
-export interface IEntity extends IRevivable {
-  readonly _id: string;
+export interface IEntity<T = string> extends IRevivable {
+  readonly _id: T;
 }

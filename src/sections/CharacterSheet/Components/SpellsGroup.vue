@@ -6,7 +6,7 @@
       <spell v-for="(spell, index) in spells"
              :key="index"
              :spell="spell"
-             @onSelected="onSelect($event.model)"></spell>
+             @selected="onSelect($event.model)"></spell>
     </div>
   </div>
 </template>
