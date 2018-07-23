@@ -14,8 +14,8 @@ export abstract class AbstractSkill implements IEntity {
   armorCheckPenalty: boolean = false;
 
   constructor(model?: AbstractSkill | {
-    _id?: string, name?: string, keyAbility?: KeyAbilityType,
-    untrained?: boolean, armorCheckPenalty?: boolean
+  _id?: string, name?: string, keyAbility?: KeyAbilityType,
+  untrained?: boolean, armorCheckPenalty?: boolean
   }) {
     if (model) {
       if (model._id) this._id = model._id;
@@ -41,11 +41,11 @@ export class Skill extends AbstractSkill {
   aditionalInformation: string = '';
 
   constructor(model?: Skill | {
-    _id?: string, name?: string, keyAbility?: KeyAbilityType,
-    untrained?: boolean, armorCheckPenalty?: boolean, check?: string,
-    action?: string, tryAgain?: string, special?: string, synergy?: string,
-    untrainedDescription?: string, restriction?: string, miscellaneous?: string,
-    aditionalInformation?: string,
+  _id?: string, name?: string, keyAbility?: KeyAbilityType,
+  untrained?: boolean, armorCheckPenalty?: boolean, check?: string,
+  action?: string, tryAgain?: string, special?: string, synergy?: string,
+  untrainedDescription?: string, restriction?: string, miscellaneous?: string,
+  aditionalInformation?: string,
   }) {
     super(model);
     if (model) {
@@ -73,9 +73,9 @@ export class CharacterSkill extends AbstractSkill implements ISubValued<SubValue
   hiddenModifier: number = 0;
 
   constructor(model?: CharacterSkill | {
-    _id?: string, _skillId?: string, classSkill?: boolean,
-    subValues?: SubValue[], rank?: number, abilityModifier?: number,
-    miscModifier?: number, hiddenModifier?: number
+  _id?: string, _skillId?: string, classSkill?: boolean,
+  subValues?: SubValue[], rank?: number, abilityModifier?: number,
+  miscModifier?: number, hiddenModifier?: number
   }) {
     super(model);
     if (model) {

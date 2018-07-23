@@ -1,6 +1,7 @@
 import { RouteConfig } from 'vue-router'
 
 const CharacterSheet = () => import('./CharacterSheet.vue')
+const NewSheet = () => import('./NewSheet.vue')
 
 const baseRoute = {
   component: CharacterSheet,
@@ -19,7 +20,12 @@ export const routes: RouteConfig[] = [
   Object.assign({
     name: 'newCharacter',
     path: '/character'
-  }, baseRoute)
+  }, baseRoute),
+  {
+    name: 'sheet',
+    path: '/sheet',
+    component: NewSheet
+  }
 ]
 
 export default routes
