@@ -20,6 +20,14 @@ export class AbilityScore {
   get tempModifier() {
     return Math.floor((this.tempValue - 10) / 2)
   }
+
+  get modifierAbs() {
+    return Math.abs(this.modifier);
+  }
+
+  get tempModifierAbs() {
+    return Math.abs(this.tempModifier);
+  }
 };
 
 export default AbilityScore

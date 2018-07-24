@@ -9,8 +9,8 @@ export class SavingThrow {
   tempModifier: number = 0;
 
   constructor(model?: SavingThrow | {
-  name?: string, keyAbility?: KeyAbilityType, base?: number,
-  magicModifier?: number, miscModifier?: number, tempModifier?: number
+    name?: string, keyAbility?: KeyAbilityType, base?: number,
+    magicModifier?: number, miscModifier?: number, tempModifier?: number
   }) {
     if (model) {
       if (model.name) this.name = model.name;
@@ -20,6 +20,10 @@ export class SavingThrow {
       if (model.miscModifier) this.miscModifier = model.miscModifier;
       if (model.tempModifier) this.tempModifier = model.tempModifier;
     }
+  }
+
+  get total() {
+    return this.base + this.magicModifier + this.miscModifier + this.tempModifier;
   }
 }
 
@@ -39,7 +43,7 @@ export const fortitude = new SavingThrow({
 })
 
 export const All: { [savingThrowName: string]: SavingThrow } = {
-  will, reflex, fortitude
+  fortitude, reflex, will
 }
 
 export default SavingThrow

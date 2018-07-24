@@ -37,58 +37,61 @@
     </header>
     <div class="sheet__section">
       <div class="scores-resume">
-        <div class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">Strength</span>
-          <span class="scores-resume__ability-score__value">10
-            <small>(0)</small>
-          </span>
-        </div>
-        <div class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">Dexterity</span>
-          <span class="scores-resume__ability-score__value">16
-            <small>(+3)</small>
-          </span>
-        </div>
-        <div class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">Constitution</span>
-          <span class="scores-resume__ability-score__value">12
-            <small>(+1)</small>
-          </span>
-        </div>
-        <div class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">Intelligence</span>
-          <span class="scores-resume__ability-score__value">22
-            <small>(+6)</small>
-          </span>
-        </div>
-        <div class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">Wisdom</span>
-          <span class="scores-resume__ability-score__value">11
-            <small>(0)</small>
-          </span>
-        </div>
-        <div class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">Charisma</span>
-          <span class="scores-resume__ability-score__value">14
-            <small>(+2)</small>
-          </span>
+        <div v-for="abilityScore in abilityScores"
+             :key="abilityScore.name"
+             class="scores-resume__ability-score">
+          <span class="scores-resume__ability-score__heading">{{abilityScore.name}}</span>
+          <div class="scores-resume__ability-score__value">
+            <span>
+              {{abilityScore.tempModifier}}
+            </span>
+          </div>
+          <small>({{abilityScore.tempValue}})</small>
         </div>
       </div>
-    </div>
-    <div class="sheet__subsection">
-      Sub Section
-      <input v-model="iconName">
-      <input v-model="iconColor">
+      <div class="savings-resume">
+        <span class="savings-resume__heading">Saving Throws</span>
+        <div class="savings-resume__saving-throws-container">
+          <div v-for="savingThrow in savingThrows"
+               :key="savingThrow.name"
+               class="savings-resume__saving-throw">
+            <span class="savings-resume__saving-throw__heading">{{savingThrow.name}}</span>
+            <div class="savings-resume__saving-throw__value">
+              <span>
+                {{getSavingThrowTotal(savingThrow)}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import CharacterModule, { mapState } from './Store';
+import VuexComponent from 'shared/mixins/vuex.component';
+
 export default {
+  mixins: [VuexComponent('Character', CharacterModule)],
   data: () => ({
     iconName: 'ra-aura',
     iconColor: 'black'
-  })
+  }),
+  computed: {
+    ...mapState(['abilityScores', 'savingThrows'])
+  },
+  methods: {
+    getModifierSign(abilityScore) {
+      return abilityScore.tempModifier >= 0 ? '+' : '-';
+    },
+    getSavingThrowTotal(savingThrow) {
+      return (
+        this.abilityScores[savingThrow.keyAbility].tempModifier +
+        savingThrow.total
+      );
+    }
+  }
 };
 </script>
 
@@ -159,6 +162,7 @@ export default {
     }
   }
 }
+
 .status {
   display: flex;
   flex-direction: column;
@@ -204,32 +208,110 @@ export default {
   }
 }
 
+.resume-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  border: solid 1px black;
+  margin: 10px 3px;
+  border-radius: 5px;
+
+  &__heading {
+    @extend .text-xs;
+    font-weight: bold;
+    color: white;
+
+    border: solid 1px black;
+    border-radius: 5px;
+    margin-top: -8px;
+    background-color: black;
+    width: 78px;
+  }
+
+  &__value {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    span {
+      @extend .text-5xl;
+      font-weight: bold;
+      position: relative;
+    }
+
+    i {
+      position: absolute;
+      right: 110%;
+      font-style: normal;
+      color: gray;
+    }
+  }
+}
+
 .scores-resume {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 
   &__ability-score {
-    flex: 30%;
-    text-align: center;
-    border: solid 1px black;
-    margin: 3px;
-    border-radius: 5px;
+    @extend .resume-card;
+    height: 95px;
 
     &__heading {
-      @extend .text-sm;
-      font-weight: bold;
-      color: gray;
+      @extend .resume-card__heading;
     }
 
     &__value {
-      @extend .text-2xl;
-      font-weight: bold;
+      @extend .resume-card__value;
     }
 
     span {
       display: block;
       text-transform: uppercase;
+    }
+
+    small {
+      border: solid 1px black;
+      border-radius: 5px;
+      margin-bottom: -8px;
+      background-color: white;
+      width: 42px;
+    }
+  }
+}
+
+.savings-resume {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  margin-top: 5px;
+  border-top: solid 2px red;
+  padding: 5px;
+
+  &__heading {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__saving-throws-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__saving-throw {
+    @extend .resume-card;
+
+    &__heading {
+      @extend .resume-card__heading;
+    }
+
+    &__value {
+      @extend .resume-card__value;
     }
   }
 }
