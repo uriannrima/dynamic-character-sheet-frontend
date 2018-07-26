@@ -13,7 +13,7 @@ export const mutations: MutationTree<CharacterState> = {
   },
   [Mutations.updateId](state, { _id }: { _id: string }) {
     state._id = _id
-    window.history.pushState('', '', `/#/character/${_id}`)
+    window.history.pushState('', '', `/#/sheet/${_id}`)
   },
   [Mutations.updateDescription](state, { description }: { description: Modules.Description }) {
     ObjectUtils.extractTo(description, state.description)

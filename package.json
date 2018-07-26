@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "run-p serve api",
-    "serve": "yarn install && vue-cli-service serve",
-    "build": "yarn install && vue-cli-service build",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
     "deploy": "yarn build && firebase deploy",

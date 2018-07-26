@@ -22,9 +22,15 @@ export const routes: RouteConfig[] = [
     path: '/character'
   }, baseRoute),
   {
-    name: 'sheet',
+    name: 'newSheet',
     path: '/sheet',
     component: NewSheet
+  },
+  {
+    name: 'sheet',
+    path: '/sheet/:id',
+    component: NewSheet,
+    props: true
   }
 ]
 

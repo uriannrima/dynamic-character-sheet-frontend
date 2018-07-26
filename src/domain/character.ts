@@ -52,7 +52,7 @@ export class Character implements IEntity {
 
   domainSchool: string = '';
 
-  speed: string = '';
+  speed: string = '30 ft.';
 
   damageReduction: string = '';
 

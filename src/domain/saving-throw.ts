@@ -9,8 +9,8 @@ export class SavingThrow {
   tempModifier: number = 0;
 
   constructor(model?: SavingThrow | {
-    name?: string, keyAbility?: KeyAbilityType, base?: number,
-    magicModifier?: number, miscModifier?: number, tempModifier?: number
+  name?: string, keyAbility?: KeyAbilityType, base?: number,
+  magicModifier?: number, miscModifier?: number, tempModifier?: number
   }) {
     if (model) {
       if (model.name) this.name = model.name;

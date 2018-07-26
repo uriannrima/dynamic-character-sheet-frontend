@@ -1,87 +1,158 @@
 <template>
-  <div class="sheet">
-    <header class="sheet__header">
-      <div class="sheet__header__details">
-        <div class="details">
-          <div class="details__avatar">
-            <div class="avatar">
-              <i class="avatar__icon ra"
-                 :class="iconName"
-                 :style="{color : iconColor}"></i>
+  <loading-component :is-loading="isLoading">
+    <div class="sheet">
+      <header class="sheet__header">
+        <div class="sheet__header__details">
+          <div class="details">
+            <div class="details__avatar">
+              <div class="avatar">
+                <i class="avatar__icon ra"
+                   :class="iconName"
+                   :style="{color : iconColor}"></i>
+              </div>
             </div>
-          </div>
-          <div class="details__body">
-            <span class="details__body__heading">
-              Uriann
-              <small class="details__body__race">(Half-Elf)</small>
-            </span>
-            <div class="details__body__classes">
-              <span>Wizard / M. Specialist / Fatespinner</span>
-            </div>
-            <span class="details__body__level">
-              <span>Level 1 / Level 2 / Level 3</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="status">
-        <div class="hitpoints">
-          <span class="hitpoints__heading">
-            Hit Points
-          </span>
-          <span class="hitpoints__value">
-            333/333
-          </span>
-        </div>
-      </div>
-    </header>
-    <div class="sheet__section">
-      <div class="scores-resume">
-        <div v-for="abilityScore in abilityScores"
-             :key="abilityScore.name"
-             class="scores-resume__ability-score">
-          <span class="scores-resume__ability-score__heading">{{abilityScore.name}}</span>
-          <div class="scores-resume__ability-score__value">
-            <span>
-              {{abilityScore.tempModifier}}
-            </span>
-          </div>
-          <small>({{abilityScore.tempValue}})</small>
-        </div>
-      </div>
-      <div class="savings-resume">
-        <span class="savings-resume__heading">Saving Throws</span>
-        <div class="savings-resume__saving-throws-container">
-          <div v-for="savingThrow in savingThrows"
-               :key="savingThrow.name"
-               class="savings-resume__saving-throw">
-            <span class="savings-resume__saving-throw__heading">{{savingThrow.name}}</span>
-            <div class="savings-resume__saving-throw__value">
-              <span>
-                {{getSavingThrowTotal(savingThrow)}}
+            <div class="details__body">
+              <span class="details__body__header">
+                Uriann
+                <small class="details__body__race">(Half-Elf)</small>
               </span>
+              <div class="details__body__classes">
+                <span>Wizard / M. Specialist / Fatespinner</span>
+              </div>
+              <span class="details__body__level">
+                <span>Level 1 / Level 2 / Level 3</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="status">
+          <div class="hitpoints">
+            <span class="hitpoints__header">
+              Hit Points
+            </span>
+            <span class="hitpoints__value">
+              333/333
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="sheet__section">
+        <div class="resume-cards">
+          <span class="resume-cards__header">Ability Scores</span>
+          <div class="resume-cards__body">
+            <div v-for="abilityScore in abilityScores"
+                 :key="abilityScore.name"
+                 class="resume-card">
+              <span class="resume-card__header">{{abilityScore.name}}</span>
+              <div class="resume-card__body">
+                <span>
+                  {{abilityScore.tempModifier}}
+                </span>
+                <small>({{abilityScore.tempValue}})</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-cards">
+          <span class="resume-cards__header">Saving Throws</span>
+          <div class="resume-cards__body">
+            <div v-for="savingThrow in savingThrows"
+                 :key="savingThrow.name"
+                 class="resume-card">
+              <span class="resume-card__header">{{savingThrow.name}}</span>
+              <div class="resume-card__body">
+                <span>
+                  {{getSavingThrowTotal(savingThrow)}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-cards">
+          <span class="resume-cards__header">Miscelaneous</span>
+          <div class="resume-cards__body">
+            <div class="resume-card">
+              <span class="resume-card__header">Initiative</span>
+              <div class="resume-card__body">
+                <span>{{totalInitiative}}</span>
+              </div>
+            </div>
+            <div class="resume-card">
+              <span class="resume-card__header">Speed</span>
+              <div class="resume-card__body">
+                <span>{{speed}}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </loading-component>
 </template>
 
 <script>
-import CharacterModule, { mapState } from './Store';
+import CharacterModule, { mapState, mapActions } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
+import { LoadingComponent } from 'shared/components';
+
+const beforeRoute = function(to, from, next) {
+  next(async vm => {
+    vm.isLoading = true;
+    vm.loadSheet(vm.id);
+    vm.isLoading = false;
+  });
+};
 
 export default {
+  components: { LoadingComponent },
   mixins: [VuexComponent('Character', CharacterModule)],
+  beforeRouteEnter(to, from, next) {
+    next(async vm => {
+      vm.isLoading = true;
+      vm.loadSheet(vm.id);
+      vm.isLoading = false;
+    });
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.isLoading = true;
+    this.loadSheet(to.params.id);
+    this.isLoading = false;
+    next();
+  },
+  props: {
+    id: {
+      type: String
+    }
+  },
   data: () => ({
+    isLoading: false,
     iconName: 'ra-aura',
     iconColor: 'black'
   }),
   computed: {
-    ...mapState(['abilityScores', 'savingThrows'])
+    ...mapState([
+      'abilityScores',
+      'savingThrows',
+      'initiativeModifier',
+      'keyAbilityScores',
+      'speed'
+    ]),
+    totalInitiative() {
+      return (
+        this.abilityScores[this.keyAbilityScores.initiative].tempModifier +
+        this.initiativeModifier
+      );
+    }
   },
   methods: {
+    ...mapActions(['loadCharacter', 'newCharacter']),
+    loadSheet(characterId) {
+      if (!characterId) {
+        this.newCharacter();
+      } else {
+        this.loadCharacter(characterId);
+      }
+    },
     getModifierSign(abilityScore) {
       return abilityScore.tempModifier >= 0 ? '+' : '-';
     },
@@ -101,7 +172,7 @@ export default {
 .sheet {
   display: flex;
   flex-direction: column;
-  height: 120vh;
+  height: 100vh;
   padding-top: 72px;
 
   &__header {
@@ -113,6 +184,7 @@ export default {
     top: 0;
     display: flex;
     justify-content: space-between;
+    border-bottom: solid 2px red;
 
     &__details {
       display: flex;
@@ -122,14 +194,9 @@ export default {
 
   &__section {
     padding: 2px 0;
-    border-width: 2px 0;
-    border-style: solid;
-    border-color: red;
   }
 
   &__subsection {
-    padding: 5px 0;
-    flex: 1;
   }
 }
 
@@ -143,7 +210,7 @@ export default {
     flex-direction: column;
     margin-left: 5px;
 
-    &__heading {
+    &__header {
       @extend .text-lg;
       color: white;
     }
@@ -182,7 +249,7 @@ export default {
   padding: 5px;
   background-color: #ffffff2b;
 
-  &__heading {
+  &__header {
     @extend .text-2xs;
     text-transform: uppercase;
   }
@@ -208,110 +275,78 @@ export default {
   }
 }
 
-.resume-card {
+.resume-cards {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-  text-align: center;
   border: solid 1px black;
-  margin: 10px 3px;
-  border-radius: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
 
-  &__heading {
-    @extend .text-xs;
+  &__header {
+    text-transform: uppercase;
     font-weight: bold;
-    color: white;
-
-    border: solid 1px black;
-    border-radius: 5px;
-    margin-top: -8px;
+    text-align: center;
     background-color: black;
-    width: 78px;
+    color: white;
+    border-radius: 10px 10px 0 0;
   }
 
-  &__value {
+  &__body {
     display: flex;
-    justify-content: center;
-    position: relative;
-
-    span {
-      @extend .text-5xl;
-      font-weight: bold;
-      position: relative;
-    }
-
-    i {
-      position: absolute;
-      right: 110%;
-      font-style: normal;
-      color: gray;
-    }
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
-}
 
-.scores-resume {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  .resume-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+    border: solid 1px black;
+    margin: 10px 3px;
+    border-radius: 5px;
 
-  &__ability-score {
-    @extend .resume-card;
-    height: 95px;
+    &__header {
+      @extend .text-xs;
+      font-weight: bold;
+      color: white;
 
-    &__heading {
-      @extend .resume-card__heading;
-    }
+      border: solid 1px black;
+      border-radius: 5px;
+      margin-top: -8px;
+      background-color: black;
+      width: 78px;
 
-    &__value {
-      @extend .resume-card__value;
-    }
-
-    span {
-      display: block;
       text-transform: uppercase;
     }
 
-    small {
-      border: solid 1px black;
-      border-radius: 5px;
-      margin-bottom: -8px;
-      background-color: white;
-      width: 42px;
-    }
-  }
-}
+    &__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-.savings-resume {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+      span {
+        @extend .text-5xl;
+        font-weight: bold;
+        position: relative;
+      }
 
-  margin-top: 5px;
-  border-top: solid 2px red;
-  padding: 5px;
+      i {
+        position: absolute;
+        right: 110%;
+        font-style: normal;
+        color: gray;
+      }
 
-  &__heading {
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  &__saving-throws-container {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  &__saving-throw {
-    @extend .resume-card;
-
-    &__heading {
-      @extend .resume-card__heading;
-    }
-
-    &__value {
-      @extend .resume-card__value;
+      small {
+        border: solid 1px black;
+        border-radius: 5px;
+        margin-bottom: -8px;
+        background-color: white;
+        width: 42px;
+      }
     }
   }
 }
