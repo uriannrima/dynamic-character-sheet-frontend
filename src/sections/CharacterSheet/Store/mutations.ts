@@ -91,7 +91,7 @@ export const mutations: MutationTree<CharacterState> = {
     ObjectUtils.extractTo(attack, stateAttack)
   },
   [Mutations.updateSkills](state, { skills = [] }: { skills: Modules.CharacterSkill[] }) {
-    state.skills = skills.map(skill => new Modules.CharacterSkill(skill));
+    state.skills = skills;
   },
   [Mutations.updateSkill](state, updated: Modules.CharacterSkill) {
     const indexOf = state.skills.map(skill => skill._id).indexOf(updated._id);

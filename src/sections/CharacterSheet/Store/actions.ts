@@ -34,6 +34,11 @@ export const actions: ActionTree<CharacterState, RootState> = {
     newState.skills = skills.map(skill => Modules.CharacterSkill.createFromSkill(skill));
     commit(Mutations.newCharacter, newState)
   },
+  async [Actions.resetSkills]({ commit }) {
+    const defaultSkills = await SkillService.getDefaultSkills() as Modules.Skill[]
+    const skills = defaultSkills.map(skill => Modules.CharacterSkill.createFromSkill(skill));
+    commit(Mutations.updateSkills, { skills })
+  },
   async [Actions.loadCharacter]({ commit }, characterId) {
     try {
       const character = await CharacterService.getById(characterId);

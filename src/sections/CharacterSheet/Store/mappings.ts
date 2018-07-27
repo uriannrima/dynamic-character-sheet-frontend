@@ -4,6 +4,7 @@ export const Actions = {
   saveCharacter: 'saveCharacter',
   loadCharacter: 'loadCharacter',
   newCharacter: 'newCharacter',
+
   updateDescription: 'updateDescription',
   updateClasses: 'updateClasses',
   updateSize: 'updateSize',
@@ -21,26 +22,23 @@ export const Actions = {
   updateGrapple: 'updateGrapple',
   updateAttacks: 'updateAttacks',
   updateAttack: 'updateAttack',
+  resetSkills: 'resetSkills',
   updateSkills: 'updateSkills',
   updateSkill: 'updateSkill',
   updateCampaign: 'updateCampaign',
   updateExperience: 'updateExperience',
-
   updateArmor: 'updateArmor',
   updateShield: 'updateShield',
   updateProtectiveItem: 'updateProtectiveItem',
   updateItems: 'updateItems',
   updateItem: 'updateItem',
-
   updateFeats: 'updateFeats',
   updateSpecialAbilities: 'updateSpecialAbilities',
   updateLanguages: 'updateLanguages',
   updateSpells: 'updateSpells',
   updateSpellSave: 'updateSpellSave',
-
   addSkill: 'addSkill',
   removeSkill: 'removeSkill',
-
   updateCarryCapacity: 'updateCarryCapacity',
   updateCoin: 'updateCoin',
   updateTreasure: 'updateTreasure'

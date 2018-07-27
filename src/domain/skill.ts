@@ -68,6 +68,7 @@ export class CharacterSkill extends AbstractSkill implements ISubValued<SubValue
 
   classSkill: boolean = false;
   subValues: SubValue[] = [];
+  
   rank: number = 0;
   miscModifier: number = 0;
   hiddenModifier: number = 0;

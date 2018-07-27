@@ -13,14 +13,14 @@
             </div>
             <div class="details__body">
               <span class="details__body__header">
-                Uriann
-                <small class="details__body__race">(Half-Elf)</small>
+                {{description.name}}
+                <small class="details__body__race">({{description.race}})</small>
               </span>
               <div class="details__body__classes">
-                <span>Wizard / M. Specialist / Fatespinner</span>
+                <span>{{classes.map(classe => classe.name).join(' / ')}}</span>
               </div>
               <span class="details__body__level">
-                <span>Level 1 / Level 2 / Level 3</span>
+                <span>{{classes.map(classe => `Level ${classe.level}`).join(' / ')}}</span>
               </span>
             </div>
           </div>
@@ -31,19 +31,20 @@
               Hit Points
             </span>
             <span class="hitpoints__value">
-              333/333
+              {{`${status.healthPoints} / ${status.healthPoints}`}}
             </span>
           </div>
         </div>
       </header>
-      <div class="sheet__section">
+      <div class="sheet__section"
+           v-show="selectedSection === 'ability & saves'">
         <div class="resume-cards">
           <span class="resume-cards__header">Ability Scores</span>
           <div class="resume-cards__body">
             <div v-for="abilityScore in abilityScores"
                  :key="abilityScore.name"
-                 class="resume-card">
-              <span class="resume-card__header">{{abilityScore.name}}</span>
+                 class="resume-card--thinner">
+              <span class="resume-card__header">{{abilityScore.name.substring(0,3)}}</span>
               <div class="resume-card__body">
                 <span>
                   {{abilityScore.tempModifier}}
@@ -58,7 +59,7 @@
           <div class="resume-cards__body">
             <div v-for="savingThrow in savingThrows"
                  :key="savingThrow.name"
-                 class="resume-card">
+                 class="resume-card--thinner">
               <span class="resume-card__header">{{savingThrow.name}}</span>
               <div class="resume-card__body">
                 <span>
@@ -86,6 +87,42 @@
           </div>
         </div>
       </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'skills'">
+        <div class="resume-cards">
+          <span class="resume-cards__header">Skills</span>
+          <div class="resume-cards__body--column">
+            <div v-for="skill in skills"
+                 :key="skill._id">
+              {{skill.name}} - {{getSkillTotal(skill)}}
+            </div>
+          </div>
+        </div>
+        <button @click="resetCharacterSkill">Reset Skills</button>
+      </div>
+    </div>
+    {{selectedSection}}
+    <div :class="{ 'section-menu--opened' : isSectionMenuOpen, 'section-menu' : !isSectionMenuOpen }">
+      <div class="section-menu__mask"
+           v-show="isSectionMenuOpen"
+           @click="toggleSectionMenu"></div>
+      <div class="section-menu__content">
+        <div class="section-menu__menu"
+             v-show="isSectionMenuOpen">
+          <div v-for="section in sections"
+               :key="section"
+               class="section-menu-item"
+               @click="toggleSection(section); toggleSectionMenu();">
+            <span>{{section}}</span>
+          </div>
+        </div>
+        <div class="section-menu__footer">
+          <i class="material-icons sections-icons"
+             @click="toggleSectionMenu">
+            {{isSectionMenuOpen ? 'close' : 'apps' }}
+          </i>
+        </div>
+      </div>
     </div>
   </loading-component>
 </template>
@@ -94,6 +131,9 @@
 import CharacterModule, { mapState, mapActions } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
 import { LoadingComponent } from 'shared/components';
+
+const delay = async duration =>
+  new Promise((resolve, reject) => setTimeout(resolve, duration));
 
 const beforeRoute = function(to, from, next) {
   next(async vm => {
@@ -109,13 +149,13 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(async vm => {
       vm.isLoading = true;
-      vm.loadSheet(vm.id);
+      await vm.loadSheet(vm.id);
       vm.isLoading = false;
     });
   },
-  beforeRouteUpdate(to, from, next) {
+  async beforeRouteUpdate(to, from, next) {
     this.isLoading = true;
-    this.loadSheet(to.params.id);
+    await this.loadSheet(to.params.id);
     this.isLoading = false;
     next();
   },
@@ -126,16 +166,32 @@ export default {
   },
   data: () => ({
     isLoading: false,
-    iconName: 'ra-aura',
-    iconColor: 'black'
+
+    iconName: 'ra-ball',
+    iconColor: 'purple',
+
+    isSectionMenuOpen: false,
+    selectedSection: 'ability & saves',
+    sections: [
+      'skills',
+      'combat',
+      'gear',
+      'spells',
+      'ability & saves',
+      'feats & traits'
+    ]
   }),
   computed: {
     ...mapState([
+      'description',
+      'classes',
       'abilityScores',
       'savingThrows',
       'initiativeModifier',
       'keyAbilityScores',
-      'speed'
+      'speed',
+      'status',
+      'skills'
     ]),
     totalInitiative() {
       return (
@@ -145,13 +201,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['loadCharacter', 'newCharacter']),
-    loadSheet(characterId) {
-      if (!characterId) {
-        this.newCharacter();
-      } else {
-        this.loadCharacter(characterId);
-      }
+    ...mapActions(['loadCharacter', 'newCharacter', 'resetSkills']),
+    async loadSheet(characterId) {
+      return delay(3000).then(() => {
+        if (!characterId) {
+          return this.newCharacter();
+        } else {
+          return this.loadCharacter(characterId);
+        }
+      });
     },
     getModifierSign(abilityScore) {
       return abilityScore.tempModifier >= 0 ? '+' : '-';
@@ -161,6 +219,18 @@ export default {
         this.abilityScores[savingThrow.keyAbility].tempModifier +
         savingThrow.total
       );
+    },
+    getSkillTotal(skill) {
+      return this.abilityScores[skill.keyAbility].tempModifier + skill.rank + skill.miscModifier + skill.hiddenModifier;
+    },
+    toggleSectionMenu() {
+      this.isSectionMenuOpen = !this.isSectionMenuOpen;
+    },
+    toggleSection(sectionName) {
+      this.selectedSection = sectionName;
+    },
+    resetCharacterSkill() {
+      this.resetSkills();
     }
   }
 };
@@ -193,7 +263,7 @@ export default {
   }
 
   &__section {
-    padding: 2px 0;
+    padding: 2px 5px 70px;
   }
 
   &__subsection {
@@ -295,6 +365,11 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    &--column {
+      @extend .resume-cards__body;
+      flex-direction: column;
+    }
   }
 
   .resume-card {
@@ -305,8 +380,14 @@ export default {
     flex: 1;
     text-align: center;
     border: solid 1px black;
-    margin: 10px 3px;
+    margin: 10px;
     border-radius: 5px;
+
+    &--thinner {
+      @extend .resume-card;
+      flex: unset;
+      width: 25%;
+    }
 
     &__header {
       @extend .text-xs;
@@ -317,7 +398,7 @@ export default {
       border-radius: 5px;
       margin-top: -8px;
       background-color: black;
-      width: 78px;
+      padding: 0 5px;
 
       text-transform: uppercase;
     }
@@ -345,9 +426,73 @@ export default {
         border-radius: 5px;
         margin-bottom: -8px;
         background-color: white;
-        width: 42px;
+        padding: 0 5px;
       }
     }
   }
+}
+
+.section-menu {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  border: solid 1px black;
+
+  &--opened {
+    @extend .section-menu;
+    top: 0;
+    left: 0;
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  &__content {
+    flex: 1;
+    z-index: 1;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .section-menu-item {
+      border: solid 1px black;
+      border-radius: 5px;
+      display: flex;
+      width: 45%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      background-color: black;
+      color: white;
+
+      span {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.sections-icons {
+  font-size: 45px;
 }
 </style>
