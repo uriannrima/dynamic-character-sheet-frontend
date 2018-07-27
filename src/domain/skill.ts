@@ -65,10 +65,8 @@ export class Skill extends AbstractSkill {
 export class CharacterSkill extends AbstractSkill implements ISubValued<SubValue> {
   readonly _type: string = 'CharacterSkill';
   _skillId: string = '';
-
   classSkill: boolean = false;
   subValues: SubValue[] = [];
-  
   rank: number = 0;
   miscModifier: number = 0;
   hiddenModifier: number = 0;

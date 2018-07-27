@@ -92,16 +92,30 @@
         <div class="resume-cards">
           <span class="resume-cards__header">Skills</span>
           <div class="resume-cards__body--column">
-            <div v-for="skill in skills"
-                 :key="skill._id">
-              {{skill.name}} - {{getSkillTotal(skill)}}
+            <span v-if="skills.length <= 0"
+                  class="skills--no-skill">No skills</span>
+            <div v-else
+                 v-for="skill in skills"
+                 :key="skill._id"
+                 class="skill">
+              <div class="skill__icon">
+                <i class="material-icons">
+                  search
+                </i>
+              </div>
+              <div class="skill__details">
+                <span>{{skill.name}}</span>
+                <small>SubValue</small>
+              </div>
+              <div class="skill__value">
+                <span>{{getSkillTotal(skill)}}</span>
+              </div>
             </div>
           </div>
         </div>
         <button @click="resetCharacterSkill">Reset Skills</button>
       </div>
     </div>
-    {{selectedSection}}
     <div :class="{ 'section-menu--opened' : isSectionMenuOpen, 'section-menu' : !isSectionMenuOpen }">
       <div class="section-menu__mask"
            v-show="isSectionMenuOpen"
@@ -221,7 +235,12 @@ export default {
       );
     },
     getSkillTotal(skill) {
-      return this.abilityScores[skill.keyAbility].tempModifier + skill.rank + skill.miscModifier + skill.hiddenModifier;
+      return (
+        this.abilityScores[skill.keyAbility].tempModifier +
+        skill.rank +
+        skill.miscModifier +
+        skill.hiddenModifier
+      );
     },
     toggleSectionMenu() {
       this.isSectionMenuOpen = !this.isSectionMenuOpen;
@@ -242,7 +261,6 @@ export default {
 .sheet {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding-top: 72px;
 
   &__header {
@@ -349,8 +367,9 @@ export default {
   display: flex;
   flex-direction: column;
   border: solid 1px black;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border-radius: 10px;
+  padding-bottom: 5px;
 
   &__header {
     text-transform: uppercase;
@@ -494,5 +513,41 @@ export default {
 
 .sections-icons {
   font-size: 45px;
+}
+
+.skills--no-skill {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  border: solid 1px black;
+
+  &__icon {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+
+    span {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+
+  &__value {
+    @extend .skill__icon;
+  }
 }
 </style>
