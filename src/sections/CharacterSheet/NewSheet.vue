@@ -47,7 +47,7 @@
               <span class="resume-card__header">{{abilityScore.name.substring(0,3)}}</span>
               <div class="resume-card__body">
                 <span>
-                  {{abilityScore.tempModifier}}
+                  {{abilityScore.tempModifier | signed }}
                 </span>
                 <small>({{abilityScore.tempValue}})</small>
               </div>
@@ -63,7 +63,7 @@
               <span class="resume-card__header">{{savingThrow.name}}</span>
               <div class="resume-card__body">
                 <span>
-                  {{getSavingThrowTotal(savingThrow)}}
+                  {{getSavingThrowTotal(savingThrow) | signed}}
                 </span>
               </div>
             </div>
@@ -75,13 +75,13 @@
             <div class="resume-card">
               <span class="resume-card__header">Initiative</span>
               <div class="resume-card__body">
-                <span>{{totalInitiative}}</span>
+                <span>{{totalInitiative | signed}}</span>
               </div>
             </div>
             <div class="resume-card">
               <span class="resume-card__header">Speed</span>
               <div class="resume-card__body">
-                <span>{{speed}}</span>
+                <span>{{ speed }}</span>
               </div>
             </div>
           </div>
@@ -94,21 +94,46 @@
           <div class="resume-cards__body--column">
             <span v-if="skills.length <= 0"
                   class="skills--no-skill">No skills</span>
-            <div v-else
-                 v-for="skill in skills"
-                 :key="skill._id"
-                 class="skill">
-              <div class="skill__icon">
-                <i class="material-icons">
-                  search
-                </i>
+            <div v-else>
+              <div class="skills__header">
+                <div class="skills__header__icon">
+                </div>
+                <div class="skills__header__is-class">
+                  <span>CS?</span>
+                </div>
+                <div class="skills__header__name">
+                  <span>Skill</span>
+                </div>
+                <div class="skills__header__key-ability">
+                  <span>Ability</span>
+                </div>
+                <div class="skills__header__modifier">
+                  <span>Mod</span>
+                </div>
               </div>
-              <div class="skill__details">
-                <span>{{skill.name}}</span>
-                <small>SubValue</small>
-              </div>
-              <div class="skill__value">
-                <span>{{getSkillTotal(skill)}}</span>
+              <div class="skills__list">
+                <div v-for="skill in orderedSkills"
+                     :key="skill._id"
+                     class="skill">
+                  <div class="skill__icon">
+                    <i class="material-icons">
+                      search
+                    </i>
+                  </div>
+                  <div class="skill__is-class">
+                    <label></label>
+                  </div>
+                  <div class="skill__details">
+                    <span>{{skill.name}}</span>
+                    <small v-show="skill.name === 'Knowledge'">Arcana</small>
+                  </div>
+                  <div class="skill__key-ability">
+                    <span>{{ skill.keyAbility.substring(0,3) }}</span>
+                  </div>
+                  <div class="skill__modifier">
+                    <span>{{getSkillTotal(skill) | signed}}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -212,6 +237,9 @@ export default {
         this.abilityScores[this.keyAbilityScores.initiative].tempModifier +
         this.initiativeModifier
       );
+    },
+    orderedSkills() {
+      return this.skills.orderBy(skill => skill.name);
     }
   },
   methods: {
@@ -368,8 +396,8 @@ export default {
   flex-direction: column;
   border: solid 1px black;
   margin-bottom: 10px;
-  border-radius: 10px;
-  padding-bottom: 5px;
+  border-radius: 10px 10px 0 0;
+  padding-bottom: 10px;
 
   &__header {
     text-transform: uppercase;
@@ -460,7 +488,7 @@ export default {
   justify-content: flex-end;
   align-items: flex-end;
 
-  border: solid 1px black;
+  padding: 10px;
 
   &--opened {
     @extend .section-menu;
@@ -512,7 +540,13 @@ export default {
 }
 
 .sections-icons {
-  font-size: 45px;
+  @extend .text-4xl;
+
+  border: solid 1px black;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  padding: 2px;
 }
 
 .skills--no-skill {
@@ -521,33 +555,117 @@ export default {
   font-weight: bold;
 }
 
+$skill__is-class--width: 10%;
+$skill__icon--width: 10%;
+$skill__name--width: 55%;
+$skill__key-ability--width: 15%;
+$skill__modifier--width: 10%;
+
+$skill__border-bottom-color: 1px solid #d8d8d8;
+
+.skills {
+  &__header {
+    display: flex;
+
+    span {
+      @extend .text-xs;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    &__is-class {
+      width: $skill__is-class--width;
+      text-align: center;
+    }
+
+    &__icon {
+      width: $skill__icon--width;
+      text-align: center;
+    }
+
+    &__name {
+      width: $skill__name--width;
+    }
+
+    &__key-ability {
+      width: $skill__key-ability--width;
+      text-align: center;
+    }
+
+    &__modifier {
+      width: $skill__modifier--width;
+      text-align: center;
+    }
+  }
+}
+
 .skill {
   display: flex;
   align-items: center;
-  border: solid 1px black;
+  height: 32px;
+
+  > div {
+    height: 100%;
+  }
+
+  &__is-class {
+    @extend .skill__icon;
+    @extend .text-sm;
+    width: $skill__is-class--width;
+    text-align: center;
+
+    > label {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: 1px dotted rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+    }
+
+    .checked {
+      background-color: black;
+    }
+  }
 
   &__icon {
+    @extend .text-sm;
     display: flex;
-    flex: 1;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    width: $skill__icon--width;
   }
 
   &__details {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 80%;
+    width: $skill__name--width;
+    border-bottom: $skill__border-bottom-color;
 
     span {
-      text-transform: uppercase;
-      font-weight: bold;
+      @extend .text-sm;
+    }
+
+    small {
+      @extend .text-xs;
     }
   }
 
-  &__value {
+  &__key-ability {
     @extend .skill__icon;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: $skill__key-ability--width;
+    border-bottom: $skill__border-bottom-color;
+    color: $secondary-value__color;
+  }
+
+  &__modifier {
+    @extend .skill__icon;
+    font-weight: bold;
+    width: $skill__modifier--width;
+    border-bottom: $skill__border-bottom-color;
   }
 }
 </style>

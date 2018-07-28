@@ -3,6 +3,7 @@ Text Size
 Thanks TailwindCSS.
 You should REALLY try this library: https://tailwindcss.com/docs/text-sizing/
 **/
+
 .text-2xs {
   font-size: 0.5rem;
 }
@@ -42,3 +43,7 @@ You should REALLY try this library: https://tailwindcss.com/docs/text-sizing/
 .text-5xl {
   font-size: 3rem;
 }
+
+/** Colors **/
+$primary-value__color: #000000;
+$secondary-value__color: #838383;
