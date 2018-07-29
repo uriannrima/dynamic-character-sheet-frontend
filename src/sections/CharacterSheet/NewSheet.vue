@@ -93,8 +93,9 @@
           <span class="resume-cards__header">Skills</span>
           <div class="resume-cards__body--column">
             <span v-if="skills.length <= 0"
-                  class="skills--no-skill">No skills</span>
-            <div v-else>
+                  class="list--no-items">No skills</span>
+            <div v-else
+                 class="skills">
               <div class="skills__header">
                 <div class="skills__header__icon">
                 </div>
@@ -201,7 +202,45 @@
         </div>
         <div class="resume-cards">
           <span class="resume-cards__header">Attacks</span>
-          <div class="resume-cards__body">
+          <div class="resume-cards__body--column">
+            <span v-if="attacks.length <= 0"
+                  class="list--no-items">No attacks</span>
+            <div v-else
+                 class="attacks">
+              <div class="attacks__header">
+                <span class="attacks__header__icon"></span>
+                <span class="attacks__header__name">Attack</span>
+                <span class="attacks__header__range">Range</span>
+                <span class="attacks__header__hit">Hit</span>
+                <span class="attacks__header__damage">Damage</span>
+              </div>
+              <div class="attacks__list">
+                <div v-for="attack in attacks"
+                     :key="attack._id"
+                     class="attack">
+                  <span class="attack__icon">
+                    <i class="icon-high-shot">
+                    </i>
+                  </span>
+                  <div class="attack__name">
+                    <span>{{attack.name}}</span>
+                    <small>Melee Weapon</small>
+                  </div>
+                  <div class="attack__range">
+                    <span>{{attack.range}}</span>
+                    <small>Reach</small>
+                  </div>
+                  <span class="attack__hit">{{attack.attackBonus}}</span>
+                  <div class="attack__damage">
+                    <div>
+                      <span>{{attack.damage}}</span>
+                      <i class="ra ra-drill"></i>
+                    </div>
+                    <small>{{attack.critical}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -296,7 +335,8 @@ export default {
       'status',
       'skills',
       'spellResistance',
-      'damageReduction'
+      'damageReduction',
+      'attacks'
     ]),
     ...mapGetters([
       'getTotalInitiative',
@@ -465,7 +505,6 @@ export default {
   border: solid 1px black;
   margin-bottom: 10px;
   border-radius: 10px 10px 0 0;
-  padding-bottom: 10px;
 
   &__header {
     text-transform: uppercase;
@@ -484,6 +523,7 @@ export default {
     &--column {
       @extend .resume-cards__body;
       flex-direction: column;
+      flex-wrap: unset;
     }
   }
 
@@ -617,7 +657,7 @@ export default {
   padding: 2px;
 }
 
-.skills--no-skill {
+.list--no-items {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -740,6 +780,124 @@ $skill__border-bottom-color: 1px solid #d8d8d8;
     font-weight: bold;
     width: $skill__modifier--width;
     border-bottom: $skill__border-bottom-color;
+  }
+}
+
+$attack__icon--width: 10%;
+$attack__name--width: 34%;
+$attack__range--width: 18%;
+$attack__hit--width: 14%;
+$attack__damage--width: 24%;
+
+.attacks {
+  &__header {
+    display: flex;
+
+    > span {
+      @extend .text-xs;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    &__icon {
+      width: $attack__icon--width;
+    }
+    &__name {
+      width: $attack__name--width;
+    }
+    &__range {
+      width: $attack__range--width;
+    }
+    &__hit {
+      width: $attack__hit--width;
+    }
+    &__damage {
+      width: $attack__damage--width;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+.attack {
+  display: flex;
+
+  &__icon {
+    @extend .skill__icon;
+    width: $attack__icon--width;
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: $attack__name--width;
+
+    > span {
+      @extend .text-sm;
+    }
+
+    > small {
+      @extend .text-xs;
+      color: $secondary-value__color;
+    }
+  }
+
+  &__range {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: $attack__range--width;
+
+    > span {
+      @extend .text-sm;
+      font-weight: bold;
+    }
+
+    > small {
+      @extend .text-xs;
+      color: $secondary-value__color;
+    }
+  }
+
+  &__hit {
+    @extend .text-base;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: $attack__hit--width;
+  }
+
+  &__damage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: $attack__damage--width;
+
+    i {
+      margin-left: 3px;
+    }
+
+    span {
+      @extend .text-sm;
+    }
+
+    small {
+      @extend .text-2sm;
+      color: $secondary-value__color;
+    }
+  }
+
+  + .attack {
+    margin-top: 8px;
+    border-top: 1px dotted #eaeaea;
+    padding-top: 8px;
   }
 }
 </style>

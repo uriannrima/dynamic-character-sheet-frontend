@@ -1,7 +1,11 @@
 import { KeyAbilityType } from './enums/key-ability-type'
 import { AttackType } from './enums/attack-type'
+import { IEntity } from '@/domain/interfaces/IEntity';
+import UUID from '@/utils/uuid';
 
-export class Attack {
+export class Attack implements IEntity {
+  _id: string = '';
+  _type: string = 'Attack';
   name: string = '';
   attackBonus: string = '';
   damage: string = '';
@@ -12,8 +16,9 @@ export class Attack {
   keyAbility: KeyAbilityType = KeyAbilityType.NONE;
   hasAmmunition: boolean = false;
 
-  constructor(model?: Attack | { name?: string, attackBonus?: string, damage?: string, critical?: string, range?: string, type?: AttackType, notes?: string, keyAbility?: KeyAbilityType, hasAmmunition?: boolean }) {
+  constructor(model?: Attack | { _id?: string, name?: string, attackBonus?: string, damage?: string, critical?: string, range?: string, type?: AttackType, notes?: string, keyAbility?: KeyAbilityType, hasAmmunition?: boolean }) {
     if (model) {
+      this._id = model._id ? model._id : UUID.generate();
       if (model.name) this.name = model.name;
       if (model.attackBonus) this.attackBonus = model.attackBonus;
       if (model.damage) this.damage = model.damage;

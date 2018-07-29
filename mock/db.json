@@ -184,39 +184,6 @@
           "notes": "1d6 dmg to weapon",
           "keyAbility": "",
           "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
         }
       ],
       "skills": [],
@@ -479,50 +446,7 @@
       "conditionModifiers": "",
       "spellResistance": 0,
       "attacks": [
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        }
+        
       ],
       "skills": [],
       "campaign": "",
@@ -812,50 +736,7 @@
       "conditionModifiers": "",
       "spellResistance": 0,
       "attacks": [
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        }
+        
       ],
       "skills": [],
       "campaign": "",
@@ -1312,17 +1193,6 @@
           "notes": "",
           "keyAbility": "",
           "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
         }
       ],
       "skills": [],
@@ -1642,28 +1512,6 @@
           "range": "22 sqm",
           "type": "Ranged/Piercing",
           "notes": "+1 bab for being masterwork.",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "",
-          "attackBonus": "",
-          "damage": "",
-          "critical": "",
-          "range": "",
-          "type": "",
-          "notes": "",
           "keyAbility": "",
           "hasAmmunition": false
         }
