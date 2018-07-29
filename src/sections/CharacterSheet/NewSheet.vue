@@ -75,7 +75,7 @@
             <div class="resume-card">
               <span class="resume-card__header">Initiative</span>
               <div class="resume-card__body">
-                <span>{{totalInitiative | signed}}</span>
+                <span>{{getTotalInitiative | signed}}</span>
               </div>
             </div>
             <div class="resume-card">
@@ -99,7 +99,7 @@
                 <div class="skills__header__icon">
                 </div>
                 <div class="skills__header__is-class">
-                  <span>CS?</span>
+                  <span>CS</span>
                 </div>
                 <div class="skills__header__name">
                   <span>Skill</span>
@@ -125,7 +125,7 @@
                   </div>
                   <div class="skill__details">
                     <span>{{skill.name}}</span>
-                    <small v-show="skill.name === 'Knowledge'">Arcana</small>
+                    <small v-show="skill.hasSubValues">Arcana</small>
                   </div>
                   <div class="skill__key-ability">
                     <span>{{ skill.keyAbility.substring(0,3) }}</span>
@@ -139,6 +139,71 @@
           </div>
         </div>
         <button @click="resetCharacterSkill">Reset Skills</button>
+      </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'combat'">
+        <div class="resume-cards">
+          <span class="resume-cards__header">Offensive</span>
+          <div class="resume-cards__body">
+            <div class="resume-card">
+              <span class="resume-card__header">Base Attack Bonus</span>
+              <div class="resume-card__body">
+                <span>{{ getBaseAttackBonus }}</span>
+              </div>
+            </div>
+            <div class="resume-card">
+              <span class="resume-card__header">Grapple</span>
+              <div class="resume-card__body">
+                <span>{{ getGrappleTotal }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-cards">
+          <span class="resume-cards__header">Defensive</span>
+          <div class="resume-cards__body">
+            <div class="resume-card">
+              <span class="resume-card__header">Armor Class</span>
+              <div class="resume-card__body">
+                <span>{{ getTotalArmor }}</span>
+              </div>
+            </div>
+            <div class="resume-card">
+              <span class="resume-card__header">Touch</span>
+              <div class="resume-card__body">
+                <span>{{ getTouchArmor }}</span>
+              </div>
+            </div>
+            <div class="resume-card">
+              <span class="resume-card__header">Flat-Footed</span>
+              <div class="resume-card__body">
+                <span>{{ getFlatFooted }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-cards">
+          <span class="resume-cards__header">Special Attributes</span>
+          <div class="resume-cards__body">
+            <div class="resume-card">
+              <span class="resume-card__header">Spell Resistance</span>
+              <div class="resume-card__body">
+                <span>{{ spellResistance }}</span>
+              </div>
+            </div>
+            <div class="resume-card">
+              <span class="resume-card__header">Damage Reduction</span>
+              <div class="resume-card__body">
+                <span>{{ getTouchArmor }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-cards">
+          <span class="resume-cards__header">Attacks</span>
+          <div class="resume-cards__body">
+          </div>
+        </div>
       </div>
     </div>
     <div :class="{ 'section-menu--opened' : isSectionMenuOpen, 'section-menu' : !isSectionMenuOpen }">
@@ -167,7 +232,7 @@
 </template>
 
 <script>
-import CharacterModule, { mapState, mapActions } from './Store';
+import CharacterModule, { mapState, mapActions, mapGetters } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
 import { LoadingComponent } from 'shared/components';
 
@@ -226,18 +291,21 @@ export default {
       'classes',
       'abilityScores',
       'savingThrows',
-      'initiativeModifier',
       'keyAbilityScores',
       'speed',
       'status',
-      'skills'
+      'skills',
+      'spellResistance',
+      'damageReduction'
     ]),
-    totalInitiative() {
-      return (
-        this.abilityScores[this.keyAbilityScores.initiative].tempModifier +
-        this.initiativeModifier
-      );
-    },
+    ...mapGetters([
+      'getTotalInitiative',
+      'getBaseAttackBonus',
+      'getGrappleTotal',
+      'getTotalArmor',
+      'getTouchArmor',
+      'getFlatFooted'
+    ]),
     orderedSkills() {
       return this.skills.orderBy(skill => skill.name);
     }
@@ -309,7 +377,7 @@ export default {
   }
 
   &__section {
-    padding: 2px 5px 70px;
+    padding: 5px 5px 55px;
   }
 
   &__subsection {
@@ -456,7 +524,7 @@ export default {
       justify-content: center;
 
       span {
-        @extend .text-5xl;
+        @extend .text-4xl;
         font-weight: bold;
         position: relative;
       }
@@ -595,6 +663,12 @@ $skill__border-bottom-color: 1px solid #d8d8d8;
     &__modifier {
       width: $skill__modifier--width;
       text-align: center;
+    }
+  }
+
+  &__list {
+    > div:nth-child(even) {
+      background-color: #80808012;
     }
   }
 }

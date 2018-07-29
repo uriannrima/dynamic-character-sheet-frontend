@@ -108,7 +108,7 @@ export class Character implements IEntity {
 
       this.wealth = new Modules.Wealth(model.wealth)
 
-      this.baseAttackBonus = model.baseAttackBonus.map(bab => bab)
+      this.baseAttackBonus = model.baseAttackBonus
 
       this.initiativeModifier = model.initiativeModifier
 

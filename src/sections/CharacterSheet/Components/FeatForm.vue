@@ -4,9 +4,9 @@
     <div v-if="describe">
       <div>
         <span>
-          <strong>Title:</strong>
+          <strong>Name:</strong>
         </span>
-        <span>{{describe.title}}
+        <span>{{describe.name}}
           <small>[{{describe.type}}]</small>
         </span>
       </div>
@@ -51,12 +51,12 @@
     <div v-else
          class="form-component editing">
       <div>
-        <span>Title:</span>
+        <span>Name:</span>
         <input type="text"
                v-validate="'required'"
-               v-model.trim="model.title"
-               name="title">
-        <span v-show="vErrors.has('title')">{{ vErrors.first('title') }}</span>
+               v-model.trim="model.name"
+               name="name">
+        <span v-show="vErrors.has('name')">{{ vErrors.first('name') }}</span>
       </div>
       <div>
         <span>Type:</span>

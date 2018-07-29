@@ -3,7 +3,7 @@
            class="feat"
            :class="featType"
            v-on:tap="onSelect(feat)">
-    {{feat.title}}
+    {{feat.name}}
     <small v-if="feat.subValues[0]">({{feat.subValues[0].value}})</small>
   </v-touch>
 </template>
@@ -20,7 +20,7 @@ export default {
     },
     featTooltip: function () {
       var tooltip = ''
-      tooltip += this.feat.title + ' [' + this.feat.type + ']'
+      tooltip += this.feat.name + ' [' + this.feat.type + ']'
 
       if (this.feat.prerequisite) tooltip += '\n\nPrerequisite: ' + this.feat.prerequisite
       if (this.feat.benefit) tooltip += '\n\nBenefit: ' + this.feat.benefit

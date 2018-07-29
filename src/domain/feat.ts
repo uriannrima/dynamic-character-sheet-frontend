@@ -6,7 +6,7 @@ import { FeatType } from './enums/feat-type';
 export class Feat implements IEntity, ISubValued<SubValue> {
   readonly _id: string = '';
   _type: string = 'Feat';
-  title: string = '';
+  name: string = '';
   benefit: string = '';
   type: FeatType = FeatType.NONE;
   preRequisite: string = '';
@@ -16,13 +16,13 @@ export class Feat implements IEntity, ISubValued<SubValue> {
   subValues: SubValue[] = [];
 
   constructor(model?: Feat | {
-  _id?: string, title?: string, benefit?: string,
+  _id?: string, name?: string, benefit?: string,
   type?: FeatType, preRequisite?: string, normal?: string,
   special?: string, unique?: boolean, subValues?: SubValue[]
   }) {
     if (model) {
       if (model._id) this._id = model._id;
-      if (model.title) this.title = model.title;
+      if (model.name) this.name = model.name;
       if (model.benefit) this.benefit = model.benefit;
       if (model.type) this.type = model.type;
       if (model.preRequisite) this.preRequisite = model.preRequisite;
