@@ -11,12 +11,12 @@ export class Attack implements IEntity {
   damage: string = '';
   critical: string = '';
   range: string = '';
-  type: AttackType = AttackType.NONE;
+  types: AttackType[] = [AttackType.NONE];
   notes: string = '';
   keyAbility: KeyAbilityType = KeyAbilityType.NONE;
   hasAmmunition: boolean = false;
 
-  constructor(model?: Attack | { _id?: string, name?: string, attackBonus?: string, damage?: string, critical?: string, range?: string, type?: AttackType, notes?: string, keyAbility?: KeyAbilityType, hasAmmunition?: boolean }) {
+  constructor(model?: Attack | { _id?: string, name?: string, attackBonus?: string, damage?: string, critical?: string, range?: string, types?: AttackType[], notes?: string, keyAbility?: KeyAbilityType, hasAmmunition?: boolean }) {
     if (model) {
       this._id = model._id ? model._id : UUID.generate();
       if (model.name) this.name = model.name;
@@ -24,11 +24,15 @@ export class Attack implements IEntity {
       if (model.damage) this.damage = model.damage;
       if (model.critical) this.critical = model.critical;
       if (model.range) this.range = model.range;
-      if (model.type) this.type = model.type;
+      if (model.types) this.types = model.types;
       if (model.notes) this.notes = model.notes;
       if (model.keyAbility) this.keyAbility = model.keyAbility;
       if (model.hasAmmunition) this.hasAmmunition = model.hasAmmunition;
     }
+  }
+
+  get type() {
+    return this.types[0];
   }
 }
 

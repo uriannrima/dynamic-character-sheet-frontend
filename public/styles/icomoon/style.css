@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?jr55dl');
-  src:  url('fonts/icomoon.eot?jr55dl#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?jr55dl') format('truetype'),
-    url('fonts/icomoon.woff?jr55dl') format('woff'),
-    url('fonts/icomoon.svg?jr55dl#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?iv6frz');
+  src:  url('fonts/icomoon.eot?iv6frz#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?iv6frz') format('truetype'),
+    url('fonts/icomoon.woff?iv6frz') format('woff'),
+    url('fonts/icomoon.svg?iv6frz#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,144 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-scroll-unfurled:before {
+  content: "\e90d";
+}
+.icon-secret-book:before {
+  content: "\e90e";
+}
+.icon-convince:before {
+  content: "\e90f";
+}
+.icon-stone-crafting:before {
+  content: "\e910";
+}
+.icon-rear-aura:before {
+  content: "\e911";
+}
+.icon-lips:before {
+  content: "\e912";
+}
+.icon-grapple:before {
+  content: "\e913";
+}
+.icon-body-balance:before {
+  content: "\e914";
+}
+.icon-handcuffs:before {
+  content: "\e915";
+}
+.icon-duality-mask:before {
+  content: "\e916";
+}
+.icon-wolf-trap:before {
+  content: "\e917";
+}
+.icon-shaking-hands:before {
+  content: "\e918";
+}
+.icon-arm-bandage:before {
+  content: "\e919";
+}
+.icon-jumping-dog:before {
+  content: "\e91a";
+}
+.icon-talk:before {
+  content: "\e91b";
+}
+.icon-newspaper:before {
+  content: "\e91c";
+}
+.icon-angry-eyes:before {
+  content: "\e91d";
+}
+.icon-invisible:before {
+  content: "\e91e";
+}
+.icon-jump-across:before {
+  content: "\e91f";
+}
+.icon-enlightenment:before {
+  content: "\e920";
+}
+.icon-mute:before {
+  content: "\e921";
+}
+.icon-human-ear:before {
+  content: "\e922";
+}
+.icon-lock-picking:before {
+  content: "\e923";
+}
+.icon-suspicious:before {
+  content: "\e924";
+}
+.icon-cavalry:before {
+  content: "\e925";
+}
+.icon-farmer:before {
+  content: "\e926";
+}
+.icon-drama-masks:before {
+  content: "\e927";
+}
+.icon-spell-book:before {
+  content: "\e928";
+}
+.icon-robber-hand:before {
+  content: "\e929";
+}
+.icon-eye-target:before {
+  content: "\e92a";
+}
+.icon-pool-dive:before {
+  content: "\e92b";
+}
+.icon-forest-camp:before {
+  content: "\e92c";
+}
+.icon-acrobatic:before {
+  content: "\e92d";
+}
+.icon-crystal-wand:before {
+  content: "\e92e";
+}
+.icon-knot:before {
+  content: "\e92f";
+}
+.icon-chest-armor:before {
+  content: "\e90c";
+}
+.icon-t-shirt:before {
+  content: "\e902";
+}
+.icon-shoulder-scales:before {
+  content: "\e903";
+}
+.icon-barbute:before {
+  content: "\e904";
+}
+.icon-gloves:before {
+  content: "\e905";
+}
+.icon-curly-mask:before {
+  content: "\e906";
+}
+.icon-ring:before {
+  content: "\e907";
+}
+.icon-emerald-necklace:before {
+  content: "\e908";
+}
+.icon-belt-armor:before {
+  content: "\e909";
+}
+.icon-walking-boot:before {
+  content: "\e90a";
+}
+.icon-bracers:before {
+  content: "\e90b";
+}
 .icon-cut-diamond:before {
   content: "\e900";
 }

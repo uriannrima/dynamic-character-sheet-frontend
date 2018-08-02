@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition name="loading-fade">
+    <fade-component>
       <div class="loading-wrapper"
            v-show="isLoading">
         <section class="loading">
@@ -9,7 +9,7 @@
           <span class="loading__anim"></span>
         </section>
       </div>
-    </transition>
+    </fade-component>
     <div v-show="!isLoading">
       <slot></slot>
     </div>
@@ -17,7 +17,10 @@
 </template>
 
 <script>
+import FadeComponent from './FadeComponent';
+
 export default {
+  components: { FadeComponent },
   props: {
     isLoading: {
       type: Boolean,
@@ -34,6 +37,8 @@ export default {
   align-items: center;
   min-height: 100vh;
   z-index: 9999;
+  position: absolute;
+  background-color: white;
 }
 
 .loading {
@@ -61,16 +66,6 @@ export default {
   border-top-color: rgba(3, 155, 229, 1);
   border-radius: 50%;
   animation: rotate 600ms infinite linear;
-}
-
-.loading-fade-enter-active,
-.loading-fade-leave-active {
-  transition: opacity 1s;
-}
-
-.loading-fade-enter,
-.loading-fade-leave-to {
-  opacity: 0;
 }
 
 @keyframes rotate {

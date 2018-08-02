@@ -173,19 +173,7 @@
       },
       "conditionModifiers": "",
       "spellResistance": 0,
-      "attacks": [
-        {
-          "name": "Adamantine Great Axe of Sundering + 1",
-          "attackBonus": "13/8",
-          "damage": "1d12 + 8",
-          "critical": "x3",
-          "range": "Melee",
-          "type": "Slashing",
-          "notes": "1d6 dmg to weapon",
-          "keyAbility": "",
-          "hasAmmunition": false
-        }
-      ],
+      "attacks": [],
       "skills": [],
       "campaign": "",
       "experience": "",
@@ -445,9 +433,7 @@
       },
       "conditionModifiers": "",
       "spellResistance": 0,
-      "attacks": [
-        
-      ],
+      "attacks": [],
       "skills": [],
       "campaign": "",
       "experience": "",
@@ -735,9 +721,7 @@
       },
       "conditionModifiers": "",
       "spellResistance": 0,
-      "attacks": [
-        
-      ],
+      "attacks": [],
       "skills": [],
       "campaign": "",
       "experience": "",
@@ -1160,41 +1144,7 @@
       },
       "conditionModifiers": "",
       "spellResistance": 0,
-      "attacks": [
-        {
-          "name": "Sai MW (Melee)",
-          "attackBonus": "5/5",
-          "damage": "1d4+1/0",
-          "critical": "20/x2",
-          "range": "Melee",
-          "type": "Bludgeoning",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "Kukri MW (Melee)",
-          "attackBonus": "5/5",
-          "damage": "1d4+1/0",
-          "critical": "18-20/x2",
-          "range": "Melee",
-          "type": "Slashing",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "Shuriken",
-          "attackBonus": "9/9",
-          "damage": "1d2+2/1",
-          "critical": "x2",
-          "range": "10 ft.",
-          "type": "Piercing",
-          "notes": "",
-          "keyAbility": "",
-          "hasAmmunition": false
-        }
-      ],
+      "attacks": [],
       "skills": [],
       "campaign": "",
       "experience": "",
@@ -1492,34 +1442,117 @@
       },
       "conditionModifiers": "",
       "spellResistance": 0,
-      "attacks": [
-        {
-          "name": "Wand of Melf's Acid Arrow",
-          "attackBonus": "6",
-          "damage": "2d4",
-          "critical": "20",
-          "range": "400 ft",
-          "type": "Acid/Magic",
-          "notes": "Does another 2d4 next round. (48 charges)",
-          "keyAbility": "",
-          "hasAmmunition": false
-        },
-        {
-          "name": "Masterwork Longbow",
-          "attackBonus": "7",
-          "damage": "1d8",
-          "critical": "x3",
-          "range": "22 sqm",
-          "type": "Ranged/Piercing",
-          "notes": "+1 bab for being masterwork.",
-          "keyAbility": "",
-          "hasAmmunition": false
-        }
-      ],
+      "attacks": [],
       "skills": [],
       "campaign": "123141",
       "experience": 123,
-      "items": [],
+      "items": [
+        {
+          "name": "Abacus",
+          "type": "Gear",
+          "special": "Adventuring Gear",
+          "weight": 2,
+          "quantity": 1,
+          "cost": 0.1,
+          "slot": "None"
+        },
+        {
+          "name": "Chain Mail",
+          "type": "Heavy Armor",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Body"
+        },
+        {
+          "name": "Wooden Shield",
+          "type": "Light Shield",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Weapon"
+        },
+        {
+          "name": "Necklace of Protection + 1",
+          "type": "Gear",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Neck"
+        },
+        {
+          "name": "Ring of Waterbreathing",
+          "type": "Gear",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Finger"
+        },
+        {
+          "name": "Mask of the Betrayer",
+          "type": "Gear",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Face"
+        },
+        {
+          "name": "Simple Hat",
+          "type": "Gear",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Head"
+        },
+        {
+          "name": "Mother Shahraz's Seduction",
+          "type": "Vestiment",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Shoulders"
+        },
+        {
+          "name": "BdsB Tunic",
+          "type": "Vestiment",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Torso"
+        },
+        {
+          "name": "Bracelets of Warm Breath",
+          "type": "Vestiment",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Arms"
+        },
+        {
+          "name": "Boots of Haste",
+          "type": "Vestiment",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Feet"
+        },
+        {
+          "name": "Mangaza's Madness",
+          "type": "Vestiment",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Waist"
+        },
+        {
+          "name": "Light's Gifted Hand",
+          "type": "Vestiment",
+          "weight": 55,
+          "quantity": 1,
+          "cost": 75,
+          "slot": "Hands"
+        }
+      ],
       "carryCapacities": {
         "lightLoad": {
           "value": 1,

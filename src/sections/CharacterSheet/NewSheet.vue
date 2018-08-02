@@ -224,25 +224,30 @@
                   </span>
                   <div class="attack__name">
                     <span>{{attack.name}}</span>
-                    <small>Melee Weapon</small>
+                    <small>{{attack.type}}</small>
                   </div>
                   <div class="attack__range">
                     <span>{{attack.range}}</span>
-                    <small>Reach</small>
+                    <small v-show="false">Reach</small>
                   </div>
                   <span class="attack__hit">{{attack.attackBonus}}</span>
                   <div class="attack__damage">
                     <div>
                       <span>{{attack.damage}}</span>
-                      <i class="ra ra-drill"></i>
+                      <i class="ra"
+                         :class="getAttackTypeIcon(attack)"></i>
                     </div>
-                    <small>{{attack.critical}}</small>
+                    <small v-show="false">{{attack.critical}}</small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'inventory'">
+        <inventory :items="items"></inventory>
       </div>
     </div>
     <div :class="{ 'section-menu--opened' : isSectionMenuOpen, 'section-menu' : !isSectionMenuOpen }">
@@ -275,6 +280,8 @@ import CharacterModule, { mapState, mapActions, mapGetters } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
 import { LoadingComponent } from 'shared/components';
 
+import { Inventory } from './NComponents';
+
 const delay = async duration =>
   new Promise((resolve, reject) => setTimeout(resolve, duration));
 
@@ -287,7 +294,7 @@ const beforeRoute = function(to, from, next) {
 };
 
 export default {
-  components: { LoadingComponent },
+  components: { LoadingComponent, Inventory },
   mixins: [VuexComponent('Character', CharacterModule)],
   beforeRouteEnter(to, from, next) {
     next(async vm => {
@@ -316,11 +323,11 @@ export default {
     isSectionMenuOpen: false,
     selectedSection: 'ability & saves',
     sections: [
+      'ability & saves',
       'skills',
       'combat',
-      'gear',
+      'inventory',
       'spells',
-      'ability & saves',
       'feats & traits'
     ]
   }),
@@ -336,7 +343,8 @@ export default {
       'skills',
       'spellResistance',
       'damageReduction',
-      'attacks'
+      'attacks',
+      'items'
     ]),
     ...mapGetters([
       'getTotalInitiative',
@@ -386,6 +394,25 @@ export default {
     },
     resetCharacterSkill() {
       this.resetSkills();
+    },
+    getAttackTypeIcon(attack) {
+      switch (attack.type) {
+        case 'Bludgeoning':
+          return 'ra-large-hammer';
+          break;
+        case 'Piercing':
+          return 'ra-drill';
+          break;
+        case 'Slashing':
+          return 'ra-spinning-sword';
+          break;
+        case 'Acid':
+          return 'ra-acid';
+          break;
+        default:
+          return '';
+          break;
+      }
     }
   }
 };
