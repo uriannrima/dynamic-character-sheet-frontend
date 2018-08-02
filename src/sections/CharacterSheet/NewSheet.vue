@@ -89,56 +89,8 @@
       </div>
       <div class="sheet__section"
            v-show="selectedSection === 'skills'">
-        <div class="resume-cards">
-          <span class="resume-cards__header">Skills</span>
-          <div class="resume-cards__body--column">
-            <span v-if="skills.length <= 0"
-                  class="list--no-items">No skills</span>
-            <div v-else
-                 class="skills">
-              <div class="skills__header">
-                <div class="skills__header__icon">
-                </div>
-                <div class="skills__header__is-class">
-                  <span>CS</span>
-                </div>
-                <div class="skills__header__name">
-                  <span>Skill</span>
-                </div>
-                <div class="skills__header__key-ability">
-                  <span>Ability</span>
-                </div>
-                <div class="skills__header__modifier">
-                  <span>Mod</span>
-                </div>
-              </div>
-              <div class="skills__list">
-                <div v-for="skill in orderedSkills"
-                     :key="skill._id"
-                     class="skill">
-                  <div class="skill__icon">
-                    <i class="material-icons">
-                      search
-                    </i>
-                  </div>
-                  <div class="skill__is-class">
-                    <label></label>
-                  </div>
-                  <div class="skill__details">
-                    <span>{{skill.name}}</span>
-                    <small v-show="skill.hasSubValues">Arcana</small>
-                  </div>
-                  <div class="skill__key-ability">
-                    <span>{{ skill.keyAbility.substring(0,3) }}</span>
-                  </div>
-                  <div class="skill__modifier">
-                    <span>{{getSkillTotal(skill) | signed}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <skills :abilityScores="abilityScores"
+                :skills="skills"></skills>
         <button @click="resetCharacterSkill">Reset Skills</button>
       </div>
       <div class="sheet__section"
@@ -280,7 +232,7 @@ import CharacterModule, { mapState, mapActions, mapGetters } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
 import { LoadingComponent } from 'shared/components';
 
-import { Inventory } from './NComponents';
+import { Inventory, Skills } from './NComponents';
 
 const delay = async duration =>
   new Promise((resolve, reject) => setTimeout(resolve, duration));
@@ -294,7 +246,7 @@ const beforeRoute = function(to, from, next) {
 };
 
 export default {
-  components: { LoadingComponent, Inventory },
+  components: { LoadingComponent, Inventory, Skills },
   mixins: [VuexComponent('Character', CharacterModule)],
   beforeRouteEnter(to, from, next) {
     next(async vm => {
@@ -378,14 +330,6 @@ export default {
         savingThrow.total
       );
     },
-    getSkillTotal(skill) {
-      return (
-        this.abilityScores[skill.keyAbility].tempModifier +
-        skill.rank +
-        skill.miscModifier +
-        skill.hiddenModifier
-      );
-    },
     toggleSectionMenu() {
       this.isSectionMenuOpen = !this.isSectionMenuOpen;
     },
@@ -419,7 +363,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../public/styles/variables.scss';
+@import '../../../public/styles/components.scss';
 
 .sheet {
   display: flex;
@@ -690,125 +634,6 @@ export default {
   font-weight: bold;
 }
 
-$skill__is-class--width: 10%;
-$skill__icon--width: 10%;
-$skill__name--width: 55%;
-$skill__key-ability--width: 15%;
-$skill__modifier--width: 10%;
-
-$skill__border-bottom-color: 1px solid #d8d8d8;
-
-.skills {
-  &__header {
-    display: flex;
-
-    span {
-      @extend .text-xs;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    &__is-class {
-      width: $skill__is-class--width;
-      text-align: center;
-    }
-
-    &__icon {
-      width: $skill__icon--width;
-      text-align: center;
-    }
-
-    &__name {
-      width: $skill__name--width;
-    }
-
-    &__key-ability {
-      width: $skill__key-ability--width;
-      text-align: center;
-    }
-
-    &__modifier {
-      width: $skill__modifier--width;
-      text-align: center;
-    }
-  }
-
-  &__list {
-    > div:nth-child(even) {
-      background-color: #80808012;
-    }
-  }
-}
-
-.skill {
-  display: flex;
-  align-items: center;
-  height: 32px;
-
-  > div {
-    height: 100%;
-  }
-
-  &__is-class {
-    @extend .skill__icon;
-    @extend .text-sm;
-    width: $skill__is-class--width;
-    text-align: center;
-
-    > label {
-      content: '';
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border: 1px dotted rgba(0, 0, 0, 0.8);
-      border-radius: 50%;
-    }
-
-    .checked {
-      background-color: black;
-    }
-  }
-
-  &__icon {
-    @extend .text-sm;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: $skill__icon--width;
-  }
-
-  &__details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: $skill__name--width;
-    border-bottom: $skill__border-bottom-color;
-
-    span {
-      @extend .text-sm;
-    }
-
-    small {
-      @extend .text-xs;
-    }
-  }
-
-  &__key-ability {
-    @extend .skill__icon;
-    text-transform: uppercase;
-    font-weight: bold;
-    width: $skill__key-ability--width;
-    border-bottom: $skill__border-bottom-color;
-    color: $secondary-value__color;
-  }
-
-  &__modifier {
-    @extend .skill__icon;
-    font-weight: bold;
-    width: $skill__modifier--width;
-    border-bottom: $skill__border-bottom-color;
-  }
-}
 
 $attack__icon--width: 10%;
 $attack__name--width: 34%;
@@ -854,7 +679,7 @@ $attack__damage--width: 24%;
   display: flex;
 
   &__icon {
-    @extend .skill__icon;
+    @extend .dcs__icon;
     width: $attack__icon--width;
   }
 

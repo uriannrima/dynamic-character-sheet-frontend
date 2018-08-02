@@ -1,53 +1,29 @@
-/** 
-Text Size
-Thanks TailwindCSS.
-You should REALLY try this library: https://tailwindcss.com/docs/text-sizing/
-**/
+/** Text Sizes **/
 
-.text-2xs {
-  font-size: 0.5rem;
-}
+$text-2xs: 0.5rem;
+$text-xs: 0.675rem;
+$text-2sm: 0.75rem;
+$text-sm: 0.875rem;
+$text-base: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.25rem;
+$text-2xl: 1.5rem;
+$text-3xl: 1.875rem;
+$text-4xl: 2.25rem;
+$text-5xl: 3rem;
+/** Check Size **/
 
-.text-xs {
-  font-size: 0.675rem;
-}
-
-.text-2sm {
-  font-size: 0.750rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-}
-
-.text-base {
-  font-size: 1rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-}
-
+$check--size: 12px;
 /** Colors **/
+
 $primary-value__color: #000000;
 $secondary-value__color: #838383;
+$success_color: #008000;
+/** Skills Variable **/
+
+$skill__is-class--width: 10%;
+$skill__icon--width: 10%;
+$skill__name--width: 55%;
+$skill__key-ability--width: 15%;
+$skill__modifier--width: 10%;
+$skill__border-bottom-color: 1px solid #d8d8d8;

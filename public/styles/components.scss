@@ -1,0 +1,75 @@
+@import "./variables.scss";
+/** 
+Text Size
+Thanks TailwindCSS.
+You should REALLY try this library: https://tailwindcss.com/docs/text-sizing/
+**/
+
+.text-2xs {
+  font-size: $text-2xs;
+}
+
+.text-xs {
+  font-size: $text-xs;
+}
+
+.text-2sm {
+  font-size: $text-2sm;
+}
+
+.text-sm {
+  font-size: $text-sm;
+}
+
+.text-base {
+  font-size: $text-base;
+}
+
+.text-lg {
+  font-size: $text-lg;
+}
+
+.text-xl {
+  font-size: $text-xl;
+}
+
+.text-2xl {
+  font-size: $text-2xl;
+}
+
+.text-3xl {
+  font-size: $text-3xl;
+}
+
+.text-4xl {
+  font-size: $text-4xl;
+}
+
+.text-5xl {
+  font-size: $text-5xl;
+}
+
+/** Components **/
+
+.dcs {
+  &__icon {
+    @extend .text-sm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $skill__icon--width;
+  }
+  &__check {
+    >label {
+      content: '';
+      display: inline-block;
+      width: $check--size;
+      height: $check--size;
+      border: 1px dotted rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+    }
+    .checked {
+      background-color: black;
+    }
+  }
+}

@@ -15,9 +15,9 @@
           <span class="item__slot">Slot</span>
         </div>
         <div class="items__list">
-          <item v-for="item in items"
-                :key="item.name"
-                :item="item"></item>
+          <inventory-item v-for="item in items"
+                          :key="item.name"
+                          :item="item"></inventory-item>
         </div>
       </div>
     </div>
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import Item from './Item';
+import InventoryItem from './InventoryItem';
 
 export default {
-  components: { Item },
+  components: { InventoryItem },
   props: {
     items: {
       type: Array,
@@ -89,8 +89,8 @@ $item__slot--width: 10%;
   .item__active {
     width: $item__active--width;
     text-align: center;
-
-    input[checkbox] {
+    .checked {
+      background-color: $success_color;
     }
   }
   .item__name {

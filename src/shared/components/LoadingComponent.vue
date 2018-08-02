@@ -30,12 +30,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .loading-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-width: 100vw;
   z-index: 9999;
   position: absolute;
   background-color: white;
@@ -47,25 +48,25 @@ export default {
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-}
 
-.loading__author {
-  font-weight: normal;
-  font-size: 0.9rem;
-  color: rgba(189, 189, 189, 1);
-  margin: 0.6rem 0 2rem 0;
-  display: block;
-}
+  &__author {
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: rgba(189, 189, 189, 1);
+    margin: 0.6rem 0 2rem 0;
+    display: block;
+  }
 
-.loading__anim {
-  width: 35px;
-  height: 35px;
-  display: inline-block;
-  border: 5px solid rgba(189, 189, 189, 0.25);
-  border-left-color: rgba(3, 155, 229, 1);
-  border-top-color: rgba(3, 155, 229, 1);
-  border-radius: 50%;
-  animation: rotate 600ms infinite linear;
+  &__anim {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border: 5px solid rgba(189, 189, 189, 0.25);
+    border-left-color: rgba(3, 155, 229, 1);
+    border-top-color: rgba(3, 155, 229, 1);
+    border-radius: 50%;
+    animation: rotate 600ms infinite linear;
+  }
 }
 
 @keyframes rotate {

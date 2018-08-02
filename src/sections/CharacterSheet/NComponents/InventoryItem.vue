@@ -1,8 +1,9 @@
 <template>
   <div class="item">
-    <input v-if="item.slot !== 'None'"
-           class="item__active"
-           type="checkbox">
+    <div v-if="item.slot !== 'None'"
+         class="dcs__check item__active">
+      <label></label>
+    </div>
     <span v-else
           class="item__active">--</span>
     <div class="item__name">
@@ -13,7 +14,8 @@
     <span class="item__quantity">{{item.quantity}}</span>
     <span class="item__cost">{{item.cost}}</span>
     <span class="item__slot">
-      <i :class="slotIcon" v-show="slotIcon"></i>
+      <i :class="slotIcon"
+         v-show="slotIcon"></i>
       <span v-show="!slotIcon">{{item.slot}}</span>
     </span>
   </div>
