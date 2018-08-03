@@ -639,6 +639,7 @@ export default {
       margin-bottom: 10px;
       background-color: black;
       color: white;
+      height: 35px;
 
       span {
         text-transform: uppercase;

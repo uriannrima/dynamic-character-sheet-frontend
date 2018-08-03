@@ -52,14 +52,14 @@ export default {
       default: () => []
     }
   },
-  methods: {
-    featsGroupedBy(feats, fn) {
-      return feats.groupBy(fn);
-    }
-  },
   computed: {
     featsGroupedByType() {
       return this.feats.orderBy(feat => feat.name).groupBy(feat => feat.type);
+    }
+  },
+  methods: {
+    featsGroupedBy(feats, fn) {
+      return feats.groupBy(fn);
     }
   }
 };
