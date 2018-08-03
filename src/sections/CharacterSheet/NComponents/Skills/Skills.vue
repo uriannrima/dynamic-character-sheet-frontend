@@ -41,7 +41,7 @@ export default {
   props: {
     skills: {
       type: Array,
-      default: []
+      default: () => []
     },
     abilityScores: {
       type: Object,
@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../../public/styles/components.scss';
+@import '~public/styles/components.scss';
 
 .skills {
   &__header {

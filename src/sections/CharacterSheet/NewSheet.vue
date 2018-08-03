@@ -89,7 +89,7 @@
       </div>
       <div class="sheet__section"
            v-show="selectedSection === 'skills'">
-        <skills :abilityScores="abilityScores"
+        <skills :ability-scores="abilityScores"
                 :skills="skills"></skills>
         <button @click="resetCharacterSkill">Reset Skills</button>
       </div>
@@ -201,6 +201,10 @@
            v-show="selectedSection === 'inventory'">
         <inventory :items="items"></inventory>
       </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'spells'">
+        <spells :ability-scores="abilityScores" :spells="spells"></spells>
+      </div>
     </div>
     <div :class="{ 'section-menu--opened' : isSectionMenuOpen, 'section-menu' : !isSectionMenuOpen }">
       <div class="section-menu__mask"
@@ -232,7 +236,7 @@ import CharacterModule, { mapState, mapActions, mapGetters } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
 import { LoadingComponent } from 'shared/components';
 
-import { Inventory, Skills } from './NComponents';
+import { Inventory, Skills, Spells } from './NComponents';
 
 const delay = async duration =>
   new Promise((resolve, reject) => setTimeout(resolve, duration));
@@ -246,7 +250,7 @@ const beforeRoute = function(to, from, next) {
 };
 
 export default {
-  components: { LoadingComponent, Inventory, Skills },
+  components: { LoadingComponent, Inventory, Skills, Spells },
   mixins: [VuexComponent('Character', CharacterModule)],
   beforeRouteEnter(to, from, next) {
     next(async vm => {
@@ -296,7 +300,8 @@ export default {
       'spellResistance',
       'damageReduction',
       'attacks',
-      'items'
+      'items',
+      'spells'
     ]),
     ...mapGetters([
       'getTotalInitiative',
@@ -343,19 +348,14 @@ export default {
       switch (attack.type) {
         case 'Bludgeoning':
           return 'ra-large-hammer';
-          break;
         case 'Piercing':
           return 'ra-drill';
-          break;
         case 'Slashing':
           return 'ra-spinning-sword';
-          break;
         case 'Acid':
           return 'ra-acid';
-          break;
         default:
           return '';
-          break;
       }
     }
   }
@@ -633,7 +633,6 @@ export default {
   text-transform: uppercase;
   font-weight: bold;
 }
-
 
 $attack__icon--width: 10%;
 $attack__name--width: 34%;

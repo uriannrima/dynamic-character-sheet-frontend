@@ -18,7 +18,10 @@ $check--size: 12px;
 
 $primary-value__color: #000000;
 $secondary-value__color: #838383;
+$secodary-border__color: #eaeaea;
 $success_color: #008000;
+$spells__group__header--color: #C53131;
+$spell__action__cast--color: #C53131;
 /** Skills Variable **/
 
 $skill__is-class--width: 10%;
@@ -27,3 +30,11 @@ $skill__name--width: 55%;
 $skill__key-ability--width: 15%;
 $skill__modifier--width: 10%;
 $skill__border-bottom-color: 1px solid #d8d8d8;
+/** Spells Variable **/
+
+$spell__action--width: 0%;
+$spell__name--width: 30%;
+$spell__time--width: 12%;
+$spell__range--width: 16%;
+$spell__hit--width: 22%;
+$spell__effects--width: 20%;

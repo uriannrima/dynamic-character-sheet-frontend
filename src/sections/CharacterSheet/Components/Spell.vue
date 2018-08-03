@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .spell {
   display: inline-block;
   border-radius: 0.5em;

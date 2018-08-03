@@ -31,10 +31,20 @@ export class Spell implements IEntity {
   durations: Duration[] = [];
   savingThrow: SpellSaveThrow = new SpellSaveThrow();
   description: string = '';
+  quickDescription: string = '';
   spellResistance: boolean = true;
   aditionalInformation: string = '';
 
-  constructor(model?: Spell | { _id: string, name: string, school: SpellSchool, descriptors: Descriptor[], level: number, components: Component[], castingTimeAmount: number, castingTime: CastingTime, range: Range, targets: string, effect: Effect, durations: Duration[], savingThrow: SpellSaveThrow, description: string, spellResistance: boolean, aditionalInformation: string, }) {
+  constructor(model?: Spell | {
+    _id: string, name: string, school: SpellSchool,
+    descriptors: Descriptor[], level: number,
+    components: Component[], castingTimeAmount: number,
+    castingTime: CastingTime, range: Range, targets: string,
+    effect: Effect, durations: Duration[],
+    savingThrow: SpellSaveThrow, description: string,
+    quickDescription: string, spellResistance: boolean,
+    aditionalInformation: string,
+  }) {
     if (model) {
       if (model._id) this._id = model._id
       if (model.name) this.name = model.name
@@ -49,6 +59,7 @@ export class Spell implements IEntity {
       if (model.durations) this.durations = model.durations.map(duration => new Duration(duration))
       if (model.savingThrow) this.savingThrow = new SpellSaveThrow(model.savingThrow)
       if (model.description) this.description = model.description
+      if (model.quickDescription) this.quickDescription = model.quickDescription
       if (model.spellResistance) this.spellResistance = model.spellResistance
       if (model.aditionalInformation) this.aditionalInformation = model.aditionalInformation
     }

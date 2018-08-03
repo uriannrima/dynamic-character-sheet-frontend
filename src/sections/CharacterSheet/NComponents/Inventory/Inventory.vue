@@ -32,14 +32,14 @@ export default {
   props: {
     items: {
       type: Array,
-      default: []
+      default: () => []
     }
   }
 };
 </script>
 
 <style lang="scss">
-@import '../../../../public/styles/variables.scss';
+@import '~public/styles/variables.scss';
 input {
   margin: 0;
 }

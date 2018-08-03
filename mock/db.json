@@ -1613,7 +1613,137 @@
       "feats": [],
       "specialAbilities": [],
       "languages": [],
-      "spells": [],
+      "spells": [
+        {
+          "_id": "1",
+          "name": "Tasha's Hideous Laughter",
+          "level": 2,
+          "school": "Enchantment",
+          "castingTime": {
+            "type": "STANDARD_ACTION",
+            "amount": "1"
+          },
+          "range": [
+            {
+              "type": "Target",
+              "distance": 25,
+              "scale": {
+                "value": 5,
+                "per": 2
+              }
+            }
+          ],
+          "duration": {
+            "unit": "Minute",
+            "scale": {
+              "per": 1
+            }
+          },
+          "savingThrow": {
+            "keyAbility": "Will",
+            "resolve": "Negates"
+          },
+          "effects": [
+            "Prone"
+          ]
+        },
+        {
+          "_id": "2",
+          "name": "Burning Hands",
+          "level": 1,
+          "school": "Enchantment",
+          "castingTime": {
+            "type": "STANDARD_ACTION",
+            "amount": "1"
+          },
+          "range": [
+            {
+              "type": "Self",
+              "distance": 0,
+              "area": {
+                "type": "Cone",
+                "size": 15
+              }
+            }
+          ],
+          "duration": "Instantaneous",
+          "savingThrow": {
+            "keyAbility": "Reflex",
+            "resolve": "Half"
+          },
+          "effects": [
+            {
+              "damage": "d6",
+              "type": "fire",
+              "scale": {
+                "per": 1,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "_id": "3",
+          "name": "Gust of Wind",
+          "level": 2,
+          "school": "Evocation",
+          "castingTime": {
+            "type": "STANDARD_ACTION",
+            "amount": "1"
+          },
+          "range": [
+            {
+              "type": "Target",
+              "distance": 60
+            }
+          ],
+          "duration": {
+            "unit": "Round"
+          },
+          "savingThrow": {
+            "keyAbility": "Fortitude",
+            "resolve": "Negates"
+          },
+          "effects": [
+            "Control"
+          ]
+        },
+        {
+          "_id": "4",
+          "name": "Magic Missile",
+          "level": 1,
+          "school": "Evocation",
+          "castingTime": {
+            "type": "STANDARD_ACTION",
+            "amount": "1"
+          },
+          "range": [
+            {
+              "type": "Target",
+              "distance": 100,
+              "scale": {
+                "value": 10,
+                "per": 1
+              }
+            }
+          ],
+          "duration": "Instantaneous",
+          "savingThrow": {
+            "keyAbility": "None"
+          },
+          "effects": [
+            {
+              "damage": "d4+1",
+              "type": "Force",
+              "scale": {
+                "per": 2,
+                "max": 5,
+                "multiplicative": true
+              }
+            }
+          ]
+        }
+      ],
       "domainSchool": "",
       "spellPerDayList": []
     }
