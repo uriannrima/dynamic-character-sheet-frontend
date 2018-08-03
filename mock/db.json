@@ -1610,10 +1610,194 @@
         },
         "treasure": "A lot of gems."
       },
-      "feats": [],
-      "specialAbilities": [],
-      "languages": [],
+      "feats": [
+        {
+          "_id": "1",
+          "name": "Weapon and Armor Proficiency",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "Wizards are proficient with the club, dagger, heavy crossbow, light crossbow, and quarterstaff, but not with any type of armor or shield. Armor of any type interferes with a wizard’s movements, which can cause her spells with somatic components to fail. Spells",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "2",
+          "name": "Spellcasting",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "You can cast prepared wizard spells using INT as your spellcasting modifier and wizard spells in your spellbook as rituals if they have the ritual tag. You can use an arcane focus as a spellcasting focus.",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "3",
+          "name": "Bonus Languages",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "A wizard may substitute Draconic for one of the bonus languages available to the character because of her race.",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "4",
+          "name": "Familiar",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "A wizard can obtain a familiar in exactly the same manner as a sorcerer can.",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "5",
+          "name": "Scribe Scroll",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "At 1st level, a wizard gains Scribe Scroll as a bonus feat.",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "6",
+          "name": "Bonus Feats",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "At 5th, 10th, 15th, and 20th level, a wizard gains a bonus feat. At each such opportunity, she can choose a metamagic feat, an item creation feat, or Spell Mastery. The wizard must still meet all prerequisites for a bonus feat, including caster level minimums.",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "7",
+          "name": "Spellbooks",
+          "type": "Class Feature",
+          "class": "Wizard",
+          "quickDescription": "A wizard must study her spellbook each day to prepare her spells. She cannot prepare any spell not recorded in her spellbook, except for read magic, which all wizards can prepare from memory. A wizard begins play with a spellbook containing all 0-level wizard spells (except those from her prohibited school or schools, if any; see School Specialization, below) plus three 1st-level spells of your choice. For each point of Intelligence bonus the wizard has, the spellbook holds one additional 1st-level spell of your choice. At each new wizard level, she gains two new spells of any spell level or levels that she can cast (based on her new wizard level) for her spellbook. At any time, a wizard can also add spells found in other wizards’ spellbooks to her own.",
+          "page":"Player's Handbook v.3.5, p. 55"
+        },
+        {
+          "_id": "8",
+          "name": "Empower Spell",
+          "type": "Metamagic",
+          "class": "",
+          "quickDescription": "All variable, numeric effects of an empowered spell are increased by one-half. Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell’s actual level.",
+          "page":"Player's Handbook v.3.5, p. 93"
+        },
+        {
+          "_id": "9",
+          "name": "Endurance",
+          "type": "General",
+          "class": "",
+          "quickDescription": "You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage, Constitution checks made to continue running, Constitution checks made to avoid nonlethal damage from a forced march, Constitution checks made to hold your breath, Constitution checks made to avoid nonlethal damage from starvation or thirst, Fortitude saves made to avoid nonlethal damage from hot or cold environments, and Fortitude saves made to resist damage from suffocation. Also, you may sleep in light or medium armor without becoming fatigued.",
+          "page":"Player's Handbook v.3.5, p. 93"
+        },
+        {
+          "_id": "10",
+          "name": "Forge Ring",
+          "type": "Item Creation",
+          "class": "",
+          "quickDescription": "You can create any ring whose prerequisites you meet. Crafting a ring takes one day for each 1,000 gp in its base price. To craft a ring, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price.",
+          "page": "Player's Handbook v.3.5, p. 94"
+        },
+        {
+          "_id": "11",
+          "name": "Touch of Distraction",
+          "type": "Reserve",
+          "class": "",
+          "quickDescription": "As long as you have an enchantment spell of 3rd level or higher available to cast, you can cloud the mind of a creature within 30 feet as a standard action. The target takes a -2 penalty on its next single attack roll or Reflex saving throw. If the target makes no attacks or Reflex saves within a number of rounds equal to the level of the highest-level enchantment spell you have available to cast, the effect ends. Multiple uses of this feat don't stack. This is an enchantment (compulsion), mind-affecting effect. As a secondary benefit, you gain a +1 competence bonus to your caster level when casting enchantment spells.",
+          "page": "Complete Mage, p. 48"
+        },        
+        {
+          "_id":"12",
+          "name": "Weapon and Armor Proficiency",
+          "type": "Class Feature",
+          "class": "Fighter",
+          "quickDescription": "A fighter is proficient with all simple and martial weapons and with all armor (heavy, medium, and light) and shields (including tower shields).",
+          "page": "Player's Handbook v.3.5, p. 37"
+        },        
+        {
+          "_id":"13",
+          "name": "Bonus Feats",
+          "type": "Class Feature",
+          "class": "Fighter",
+          "quickDescription": "At 1st level, a fighter gets a bonus combat-oriented feat in addition to the feat that any 1st-level character gets and the bonus feat granted to a human character. The fighter gains an additional bonus feat at 2nd level and every two fighter levels thereafter (4th, 6th, 8th, 10th, 12th, 14th, 16th, 18th, and 20th). These bonus feats must be drawn from the feats noted as fighter bonus feats. A fighter must still meet all prerequisites for a bonus feat, including ability score and base attack bonus minimums.",
+          "page": "Player's Handbook v.3.5, p. 37"
+        }
+      ],
+      "specialAbilities": [
+        {
+          "_id": "1",
+          "name": "Low-Light Vision",
+          "type": "RacialTrait",
+          "race": "Half-elf",
+          "quickDescription": "A half-elf can see twice as far as a human in starlight, moonlight, torchlight, and similar conditions of poor illumination. She retains the ability to distinguish color and detail under these conditions."
+        },
+        {
+          "_id": "2",
+          "name": "Fey Ancestry",
+          "type": "RacialTrait",
+          "race": "Half-elf",
+          "quickDescription": "You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
+        },
+        {
+          "_id": "3",
+          "name": "Skill Bonuses",
+          "type": "RacialTrait",
+          "race": "Half-elf",
+          "quickDescription": "+1 racial bonus on Listen, Search, and Spot checks. +2 racial bonus on Diplomacy and Gather Information checks."
+        },
+        {
+          "_id": "4",
+          "name": "Elven Blood",
+          "type": "RacialTrait",
+          "race": "Half-elf",
+          "quickDescription": "For all effects related to race, a half-elf is considered an elf."
+        }
+      ],
+      "languages": [
+        {
+          "_id": "1",
+          "name": "Common"
+        },
+        {
+          "_id": "2",
+          "name": "Elven"
+        },
+        {
+          "_id": "3",
+          "name": "Draconic"
+        }
+      ],
       "spells": [
+        {
+          "_id": "5",
+          "name": "Acid Splash",
+          "level": 0,
+          "school": "Conjuration",
+          "castingTime": {
+            "type": "STANDARD_ACTION",
+            "amount": "1"
+          },
+          "range": [
+            {
+              "type": "Target",
+              "distance": 25,
+              "scale": {
+                "value": 5,
+                "per": 2
+              }
+            }
+          ],
+          "duration": "Instantaneous",
+          "savingThrow": {
+            "keyAbility": "None"
+          },
+          "hit": {
+            "keyAbility": "dexterity",
+            "type": "Ranged Touch"
+          },
+          "effects": [
+            {
+              "damage": "d3",
+              "type": "Acid",
+              "scale": {
+                "per": 3
+              }
+            }
+          ]
+        },
         {
           "_id": "1",
           "name": "Tasha's Hideous Laughter",

@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .feats-container {
   border: solid 1px black;
 }

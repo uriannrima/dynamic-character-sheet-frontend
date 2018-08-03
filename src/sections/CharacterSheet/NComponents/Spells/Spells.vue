@@ -9,7 +9,8 @@
              :key="key"
              class="spells__group">
           <div class="spells__group__header">
-            <span>
+            <span v-if="key === '0'">Cantrips</span>
+            <span v-else>
               <cardinal-component :cardinal="Number(key)"></cardinal-component> Level</span>
             <div class="spells__group__slots"></div>
           </div>
@@ -21,7 +22,7 @@
               <span class="spells__header__name">Name</span>
               <span class="spells__header__time">Time</span>
               <span class="spells__header__range">Range</span>
-              <span class="spells__header__hit">HIT / DC</span>
+              <span class="spells__header__dchit">DC / HIT</span>
               <span class="spells__header__effects">Effects</span>
             </div>
             <div class="spells__list">
@@ -41,12 +42,20 @@
                 <span class="spell__time">{{spell.castingTime.amount}} SA</span>
                 <div class="spell__range">
                   <span>{{spell.range[0].type}}</span>
-                  <small>{{spell.range[0].distance}}</small>
+                  <small v-if="spell.range[0].distance">{{spell.range[0].distance + (spell.range[0].scale ? ((characterLevel / spell.range[0].scale.per) * spell.range[0].scale.value) : 0)}} ft.</small>
+                  <small v-if="spell.range[0].area">{{spell.range[0].area.size}} ft. {{spell.range[0].area.type}}</small>
                 </div>
-                <div class="spell__hit">
-                  <span class="spell__hit__modifier">{{10 + spell.level + abilityScores.intelligence.tempModifier | signed }}</span>
-                  <small class="spell__hit__saving-throw">{{spell.savingThrow.keyAbility}}</small>
-                  <small class="spell__hit__resolve">{{spell.savingThrow.resolve}}</small>
+                <div v-if="!spell.hit"
+                     class="spell__dchit">
+                  <span class="spell__dchit__modifier"
+                        v-if="spell.savingThrow.keyAbility !== 'None'">{{10 + spell.level + abilityScores.intelligence.tempModifier | signed }}</span>
+                  <small class="spell__dchit__saving-throw">{{spell.savingThrow.keyAbility}}</small>
+                  <small class="spell__dchit__resolve">{{spell.savingThrow.resolve}}</small>
+                </div>
+                <div v-else
+                     class="spell__dchit">
+                  <span class="spell__dchit__modifier">{{baseAttackBonus + abilityScores[spell.hit.keyAbility].tempModifier | signed }}</span>
+                  <small class="spell__dchit__saving-throw">{{spell.hit.type}}</small>
                 </div>
                 <div class="spell__effects">
                   <div v-for="(effect, index) in spell.effects"
@@ -74,7 +83,7 @@ export default {
   props: {
     characterLevel: {
       type: Number,
-      default: 9
+      default: 6
     },
     spells: {
       type: Array,
@@ -83,6 +92,10 @@ export default {
     abilityScores: {
       type: Object,
       required: true
+    },
+    baseAttackBonus: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
@@ -121,8 +134,8 @@ export default {
     width: $spell__range--width;
     text-align: center;
   }
-  &__hit {
-    width: $spell__hit--width;
+  &__dchit {
+    width: $spell__dchit--width;
     text-align: center;
   }
   &__effects {
@@ -176,7 +189,7 @@ export default {
   &__name,
   &__time,
   &__range,
-  &__hit,
+  &__dchit,
   &__effects {
     display: flex;
     flex-direction: column;
@@ -185,7 +198,7 @@ export default {
 
   &__time,
   &__range,
-  &__hit {
+  &__dchit {
     align-items: center;
   }
 
@@ -218,8 +231,9 @@ export default {
     }
   }
 
-  &__hit {
+  &__dchit {
     &__saving-throw {
+      font-size: 12px;
       font-weight: bold;
     }
     &__modifier {
@@ -227,6 +241,7 @@ export default {
       font-weight: bold;
     }
     &__resolve {
+      font-size: 12px;
       font-style: italic;
     }
   }

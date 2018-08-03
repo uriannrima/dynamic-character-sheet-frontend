@@ -203,7 +203,21 @@
       </div>
       <div class="sheet__section"
            v-show="selectedSection === 'spells'">
-        <spells :ability-scores="abilityScores" :spells="spells"></spells>
+        <spells :base-attack-bonus="baseAttackBonus[0]"
+                :ability-scores="abilityScores"
+                :spells="spells"></spells>
+      </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'feats'">
+        <feats :feats="feats"></feats>
+      </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'special abilities'">
+        <special-abilities :special-abilities="specialAbilities"></special-abilities>
+      </div>
+      <div class="sheet__section"
+           v-show="selectedSection === 'languages'">
+        <languages :languages="languages"></languages>
       </div>
     </div>
     <div :class="{ 'section-menu--opened' : isSectionMenuOpen, 'section-menu' : !isSectionMenuOpen }">
@@ -236,7 +250,14 @@ import CharacterModule, { mapState, mapActions, mapGetters } from './Store';
 import VuexComponent from 'shared/mixins/vuex.component';
 import { LoadingComponent } from 'shared/components';
 
-import { Inventory, Skills, Spells } from './NComponents';
+import {
+  Inventory,
+  Skills,
+  Spells,
+  Feats,
+  SpecialAbilities,
+  Languages
+} from './NComponents';
 
 const delay = async duration =>
   new Promise((resolve, reject) => setTimeout(resolve, duration));
@@ -250,7 +271,15 @@ const beforeRoute = function(to, from, next) {
 };
 
 export default {
-  components: { LoadingComponent, Inventory, Skills, Spells },
+  components: {
+    LoadingComponent,
+    Inventory,
+    Skills,
+    Spells,
+    Feats,
+    SpecialAbilities,
+    Languages
+  },
   mixins: [VuexComponent('Character', CharacterModule)],
   beforeRouteEnter(to, from, next) {
     next(async vm => {
@@ -284,7 +313,9 @@ export default {
       'combat',
       'inventory',
       'spells',
-      'feats & traits'
+      'feats',
+      'special abilities',
+      'languages'
     ]
   }),
   computed: {
@@ -301,7 +332,11 @@ export default {
       'damageReduction',
       'attacks',
       'items',
-      'spells'
+      'spells',
+      'feats',
+      'specialAbilities',
+      'languages',
+      'baseAttackBonus'
     ]),
     ...mapGetters([
       'getTotalInitiative',
@@ -318,7 +353,7 @@ export default {
   methods: {
     ...mapActions(['loadCharacter', 'newCharacter', 'resetSkills']),
     async loadSheet(characterId) {
-      return delay(3000).then(() => {
+      return delay(1500).then(() => {
         if (!characterId) {
           return this.newCharacter();
         } else {
