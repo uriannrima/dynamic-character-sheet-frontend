@@ -16,16 +16,16 @@ export class CharacterSyncing {
   }
 
   emit(mutation, state) {
-    const characterId = state.CharacterModule._id;
-    ChannelService.sync(['characters', characterId], mutation);
+    // const characterId = state.CharacterModule._id;
+    // ChannelService.sync(['characters', characterId], mutation);
   }
 
   register(store) {
-    ChannelService.onSync((mutation) => {
-      // TODO: Payload.sync included until mutation has meta options.
-      var { sync, ...payload } = mutation.payload;
-      if (sync) store.commit(mutation.type, payload);
-    });
+    // ChannelService.onSync((mutation) => {
+    //   // TODO: Payload.sync included until mutation has meta options.
+    //   var { sync, ...payload } = mutation.payload;
+    //   if (sync) store.commit(mutation.type, payload);
+    // });
   }
 }
 

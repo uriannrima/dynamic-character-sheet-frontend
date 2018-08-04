@@ -2,13 +2,13 @@ import { CharacterState } from './state';
 import { Actions, Mutations } from './mappings';
 import CharacterService from 'services/character.service';
 import NotificationService from 'services/NotificationService';
-import ChannelService from 'services/channel.service';
+// import ChannelService from 'services/channel.service';
 import SkillService from 'services/skill.service';
 
 export default {
   async [Actions.connect](context, characterId) {
     // Ask for the server to connect to character channel.
-    ChannelService.create(['characters', characterId]);
+    // ChannelService.create(['characters', characterId]);
   },
   async [Actions.saveCharacter]({ commit, state }) {
     const character = await CharacterService.saveOrUpdate(state);
@@ -20,8 +20,10 @@ export default {
     newState.skills = skills.map(skill => skill.toCharacterSkill());
     commit(Mutations.newCharacter, newState);
   },
-  async [Actions.loadCharacter]({ commit }, characterId) {
+  async [Actions.loadCharacter]({ commit, dispatch }, characterId) {
     try {
+      dispatch(Actions.newCharacter);
+      
       const character = await CharacterService.get(characterId);
 
       // Load character mutations
