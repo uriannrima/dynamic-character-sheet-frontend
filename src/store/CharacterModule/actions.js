@@ -7,8 +7,7 @@ import SkillService from 'services/skill.service';
 
 export default {
   async [Actions.connect](context, characterId) {
-    // Ask for the server to connect to character channel.
-    // ChannelService.create(['characters', characterId]);
+    console.log('Connect', characterId);
   },
   async [Actions.saveCharacter]({ commit, state }) {
     const character = await CharacterService.saveOrUpdate(state);
