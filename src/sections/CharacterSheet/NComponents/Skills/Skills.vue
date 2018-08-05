@@ -122,6 +122,17 @@ export default {
     width: $skill__name--width;
     border-bottom: $skill__border-bottom-color;
 
+    .untrained-skill::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-left: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background-color: black;
+      vertical-align: middle;
+    }
+
     span {
       @extend .text-sm;
     }
@@ -138,6 +149,12 @@ export default {
     width: $skill__key-ability--width;
     border-bottom: $skill__border-bottom-color;
     color: $secondary-value__color;
+  }
+
+  .check-penalty {
+    span::after {
+      content: '*';
+    }
   }
 
   &__modifier {

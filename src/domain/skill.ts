@@ -14,15 +14,15 @@ export abstract class AbstractSkill implements IEntity {
   armorCheckPenalty: boolean = false;
 
   constructor(model?: AbstractSkill | {
-  _id?: string, name?: string, keyAbility?: KeyAbilityType,
-  untrained?: boolean, armorCheckPenalty?: boolean
+    _id?: string, name?: string, keyAbility?: KeyAbilityType,
+    untrained?: boolean, armorCheckPenalty?: boolean
   }) {
     if (model) {
-      if (model._id) this._id = model._id;
-      if (model.name) this.name = model.name;
-      if (model.keyAbility) this.keyAbility = model.keyAbility;
-      if (model.untrained) this.untrained = model.untrained;
-      if (model.armorCheckPenalty) this.armorCheckPenalty = model.armorCheckPenalty;
+      if (model._id !== undefined) this._id = model._id;
+      if (model.name !== undefined) this.name = model.name;
+      if (model.keyAbility !== undefined) this.keyAbility = model.keyAbility;
+      if (model.untrained !== undefined) this.untrained = model.untrained;
+      if (model.armorCheckPenalty !== undefined) this.armorCheckPenalty = model.armorCheckPenalty;
     }
   }
 }
@@ -41,49 +41,49 @@ export class Skill extends AbstractSkill {
   aditionalInformation: string = '';
 
   constructor(model?: Skill | {
-  _id?: string, name?: string, keyAbility?: KeyAbilityType,
-  untrained?: boolean, armorCheckPenalty?: boolean, check?: string,
-  action?: string, tryAgain?: string, special?: string, synergy?: string,
-  untrainedDescription?: string, restriction?: string, miscellaneous?: string,
-  aditionalInformation?: string,
+    _id?: string, name?: string, keyAbility?: KeyAbilityType,
+    untrained?: boolean, armorCheckPenalty?: boolean, check?: string,
+    action?: string, tryAgain?: string, special?: string, synergy?: string,
+    untrainedDescription?: string, restriction?: string, miscellaneous?: string,
+    aditionalInformation?: string,
   }) {
     super(model);
     if (model) {
-      if (model.check) this.check = model.check;
-      if (model.action) this.action = model.action;
-      if (model.tryAgain) this.tryAgain = model.tryAgain;
-      if (model.special) this.special = model.special;
-      if (model.synergy) this.synergy = model.synergy;
-      if (model.untrainedDescription) this.untrainedDescription = model.untrainedDescription;
-      if (model.restriction) this.restriction = model.restriction;
-      if (model.miscellaneous) this.miscellaneous = model.miscellaneous;
-      if (model.aditionalInformation) this.aditionalInformation = model.aditionalInformation;
+      if (model.check !== undefined) this.check = model.check;
+      if (model.action !== undefined) this.action = model.action;
+      if (model.tryAgain !== undefined) this.tryAgain = model.tryAgain;
+      if (model.special !== undefined) this.special = model.special;
+      if (model.synergy !== undefined) this.synergy = model.synergy;
+      if (model.untrainedDescription !== undefined) this.untrainedDescription = model.untrainedDescription;
+      if (model.restriction !== undefined) this.restriction = model.restriction;
+      if (model.miscellaneous !== undefined) this.miscellaneous = model.miscellaneous;
+      if (model.aditionalInformation !== undefined) this.aditionalInformation = model.aditionalInformation;
     }
   }
 };
 
-export class CharacterSkill extends AbstractSkill implements ISubValued<SubValue> {
+export class CharacterSkill extends AbstractSkill implements ISubValued<string> {
   readonly _type: string = 'CharacterSkill';
   _skillId: string = '';
   classSkill: boolean = false;
-  subValues: SubValue[] = [];
+  subValues: Array<string> = [];
   rank: number = 0;
   miscModifier: number = 0;
   hiddenModifier: number = 0;
 
   constructor(model?: CharacterSkill | {
-  _id?: string, _skillId?: string, classSkill?: boolean,
-  subValues?: SubValue[], rank?: number, abilityModifier?: number,
-  miscModifier?: number, hiddenModifier?: number
+    _id?: string, _skillId?: string, classSkill?: boolean,
+    subValues?: Array<string>, rank?: number, abilityModifier?: number,
+    miscModifier?: number, hiddenModifier?: number
   }) {
     super(model);
     if (model) {
-      if (model._skillId) this._skillId = model._skillId;
-      if (model.classSkill) this.classSkill = model.classSkill;
-      if (model.subValues) this.subValues = model.subValues.map(subValue => new SubValue(subValue));
-      if (model.rank) this.rank = model.rank;
-      if (model.miscModifier) this.miscModifier = model.miscModifier;
-      if (model.hiddenModifier) this.hiddenModifier = model.hiddenModifier;
+      if (model._skillId !== undefined) this._skillId = model._skillId;
+      if (model.classSkill !== undefined) this.classSkill = model.classSkill;
+      if (model.subValues !== undefined) this.subValues = model.subValues;
+      if (model.rank !== undefined) this.rank = model.rank;
+      if (model.miscModifier !== undefined) this.miscModifier = model.miscModifier;
+      if (model.hiddenModifier !== undefined) this.hiddenModifier = model.hiddenModifier;
     }
   }
 

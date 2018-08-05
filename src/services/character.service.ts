@@ -1,9 +1,11 @@
 import { Character } from 'domain/character'
 import AbstractService from './abstract.service'
 
+console.debug(Character);
+
 class CharacterService extends AbstractService<Character> {
   constructor() {
-    super({ url: '/characters' })
+    super({ url: '/characters', constructors: [Character] })
   }
 
   async connect(characterId: string) {

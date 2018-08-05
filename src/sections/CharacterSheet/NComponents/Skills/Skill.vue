@@ -9,10 +9,10 @@
       <label></label>
     </div>
     <div class="skill__details">
-      <span>{{skill.name}}</span>
-      <small v-show="skill.hasSubValues">Arcana</small>
+      <span :class="{'untrained-skill' : skill.untrained}">{{skill.name}}</span>
+      <small v-show="skill.hasSubValues">{{skill.subValues[0]}}</small>
     </div>
-    <div class="skill__key-ability">
+    <div class="skill__key-ability" :class="{'check-penalty' : skill.armorCheckPenalty}">
       <span>{{ skill.keyAbility.substring(0,3) }}</span>
     </div>
     <div class="skill__modifier">

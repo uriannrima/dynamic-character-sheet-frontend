@@ -60,25 +60,24 @@ You should REALLY try this library: https://tailwindcss.com/docs/text-sizing/
     width: $skill__icon--width;
   }
   &__check {
-    >label {
+    label {
       content: '';
       display: inline-block;
       width: $check--size;
       height: $check--size;
       border: 1px dotted rgba(0, 0, 0, 0.8);
       border-radius: 50%;
-    }
-    .checked {
-      background-color: black;
+      &.checked {
+        background-color: black;
+      }
     }
   }
 }
 
-.group {    
+.group {
   &__header {
     border-bottom: solid 1px $secodary-border__color;
     padding: 5px 0 0 5px;
-
     span {
       font-size: 13px;
       color: $spells__group__header--color;
@@ -86,24 +85,23 @@ You should REALLY try this library: https://tailwindcss.com/docs/text-sizing/
       text-transform: uppercase;
     }
   }
-
   &__body {
     padding: 5px;
   }
-
   .group-item {
-    &__name {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+    &__header {
       font-weight: bold;
       font-size: 13px;
     }
-
     small {
       white-space: nowrap;
       font-style: italic;
       color: $secondary-value__color;
     }
-
-    &__quick-description {
+    &__content {
       font-size: 12px;
     }
   }

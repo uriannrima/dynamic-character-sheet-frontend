@@ -1443,7 +1443,532 @@
       "conditionModifiers": "",
       "spellResistance": 0,
       "attacks": [],
-      "skills": [],
+      "skills": [
+        {
+          "_id": "02f2bd2e-4730-4ad0-8387-f71d7b0786d0",
+          "_type": "CharacterSkill",
+          "name": "Appraise",
+          "keyAbility": "intelligence",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59cf42652e94fd4660c530b5",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "16adf539-0535-4ae4-8d3d-2cce9a056036",
+          "_type": "CharacterSkill",
+          "name": "Decipher Script",
+          "keyAbility": "intelligence",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d4ecc82c22271fd04e2bd3",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "c1314508-6ac5-430c-a026-a1f6013e66eb",
+          "_type": "CharacterSkill",
+          "name": "Bluff",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d14179fa78bf47f8a36a03",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "55718bca-27be-4c59-8745-1f1a7eed4205",
+          "_type": "CharacterSkill",
+          "name": "Climb",
+          "keyAbility": "strength",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d14322fa78bf47f8a36a04",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "c0090f09-aa4f-4b5b-bdbf-aa3721e2dfe8",
+          "_type": "CharacterSkill",
+          "name": "Forgery",
+          "keyAbility": "intelligence",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d516195b378b18385efa44",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "0ec2c7b9-bd2c-4075-89aa-a78ebc7be8fc",
+          "_type": "CharacterSkill",
+          "name": "Gather Information",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5165c5b378b18385efa45",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "162552e9-7fbc-4da8-8a19-4b4434f115f5",
+          "_type": "CharacterSkill",
+          "name": "Heal",
+          "keyAbility": "wisdom",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5353d5b378b18385efa47",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "e3f62840-cb98-40e0-8b89-b079d5d350ac",
+          "_type": "CharacterSkill",
+          "name": "Hide",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d535ae5b378b18385efa48",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "4d292cd9-ef34-4aa9-9f1c-7203cca296f0",
+          "_type": "CharacterSkill",
+          "name": "Intimidate",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5364e5b378b18385efa49",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "378bce8d-e017-4ccd-aa78-2130a117e92b",
+          "_type": "CharacterSkill",
+          "name": "Jump",
+          "keyAbility": "strength",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d536d75b378b18385efa4a",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "1c50260b-8a0b-4736-8a02-7ed1404625fb",
+          "_type": "CharacterSkill",
+          "name": "Perform",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54899c9cf2a13e0bcbd14",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "86a2deed-48ca-43c9-822f-db60ad8853fa",
+          "_type": "CharacterSkill",
+          "name": "Profession",
+          "keyAbility": "wisdom",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d548bdc9cf2a13e0bcbd15",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "0c229f1b-b312-438b-accb-6f5947db24f5",
+          "_type": "CharacterSkill",
+          "name": "Search",
+          "keyAbility": "intelligence",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5493ac9cf2a13e0bcbd17",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "b0c791c6-155f-4a4d-82d6-a9e76b0a718a",
+          "_type": "CharacterSkill",
+          "name": "Sense Motive",
+          "keyAbility": "wisdom",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54970c9cf2a13e0bcbd18",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "d0526cc5-ea8c-43ae-81c3-c589b37ac971",
+          "_type": "CharacterSkill",
+          "name": "Sleight Of Hand",
+          "keyAbility": "dexterity",
+          "untrained": false,
+          "armorCheckPenalty": true,
+          "_skillId": "59d5499dc9cf2a13e0bcbd19",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "e855f2d9-6448-4c39-91d6-d949a9daa325",
+          "_type": "CharacterSkill",
+          "name": "Spot",
+          "keyAbility": "wisdom",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d549f6c9cf2a13e0bcbd1b",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "c9b4c93c-65dc-4708-86b1-b44cc3a067ea",
+          "_type": "CharacterSkill",
+          "name": "Swim",
+          "keyAbility": "strength",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d54a4cc9cf2a13e0bcbd1d",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "b3891472-e210-45f7-ac0b-9c3f0ad7203d",
+          "_type": "CharacterSkill",
+          "name": "Diplomacy",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d4ed732c22271fd04e2bd4",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "3645b4e2-3cfc-45c0-962d-ecd57b59a3d5",
+          "_type": "CharacterSkill",
+          "name": "Disable Device",
+          "keyAbility": "intelligence",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d4eec2d3d50b41d4709d73",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "8192d147-6455-4249-a4e1-dc16b06a4667",
+          "_type": "CharacterSkill",
+          "name": "Escape Artist",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d50de7771e643a48e1f03e",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "b264b1c3-cad9-4588-af40-9bbfba0fb3d4",
+          "_type": "CharacterSkill",
+          "name": "Knowledge",
+          "keyAbility": "intelligence",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5397d8389693050092e6f",
+          "classSkill": false,
+          "subValues": [
+            "Arcana"
+          ],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "b264b1c3-cad9-4588-af40-9bbfba0fb3d1",
+          "_type": "CharacterSkill",
+          "name": "Knowledge",
+          "keyAbility": "intelligence",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5397d8389693050092e6f",
+          "classSkill": false,
+          "subValues": [
+            "Planes"
+          ],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "e3a6599f-3360-46ee-913f-d0ca57db0d3f",
+          "_type": "CharacterSkill",
+          "name": "Listen",
+          "keyAbility": "wisdom",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d53f38c9cf2a13e0bcbd11",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "8db44bb0-d321-448f-aaf4-dd48516c7fe1",
+          "_type": "CharacterSkill",
+          "name": "Move Silently",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d5482cc9cf2a13e0bcbd12",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "bc16543e-58d7-4a2b-8484-cb8f54809096",
+          "_type": "CharacterSkill",
+          "name": "Open Lock",
+          "keyAbility": "dexterity",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54860c9cf2a13e0bcbd13",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "86b96b51-9775-41c6-8652-4abc6220e847",
+          "_type": "CharacterSkill",
+          "name": "Use Magic Device",
+          "keyAbility": "charisma",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54ad4c9cf2a13e0bcbd1f",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "ae45a498-ef4c-49c7-86b2-e0935842dbd8",
+          "_type": "CharacterSkill",
+          "name": "Use Rope",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54b30c9cf2a13e0bcbd20",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "11bcd73d-5a2f-4036-821d-a9b63d8ca364",
+          "_type": "CharacterSkill",
+          "name": "Balance",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d13413d039a83db4a10bb5",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "59625cbe-7237-4a1b-b6ac-69208d33c642",
+          "_type": "CharacterSkill",
+          "name": "Concentration",
+          "keyAbility": "constitution",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d4c67d00c3bf35a06fd3ef",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "4a4a977b-4b5a-4f1d-99b1-4f14a420cfb2",
+          "_type": "CharacterSkill",
+          "name": "Craft",
+          "keyAbility": "intelligence",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d4eb5d2c22271fd04e2bd2",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "774d835e-5d4b-46f7-99e6-cffcbb8836a7",
+          "_type": "CharacterSkill",
+          "name": "Disguise ",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d4f7bdd3d50b41d4709d74",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "08dfbf2f-126d-4656-ab66-2961d71d2ade",
+          "_type": "CharacterSkill",
+          "name": "Handle Animal",
+          "keyAbility": "charisma",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d5342a5b378b18385efa46",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "9869f736-fa5b-4454-9334-52d3bf5b3563",
+          "_type": "CharacterSkill",
+          "name": "Ride",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54904c9cf2a13e0bcbd16",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "ce7279ec-35de-442d-a472-c69d80da3ab1",
+          "_type": "CharacterSkill",
+          "name": "Spellcraft",
+          "keyAbility": "intelligence",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d549d2c9cf2a13e0bcbd1a",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "ce7279ec-35de-442d-a472-c69d80da3ab2",
+          "_type": "CharacterSkill",
+          "name": "Spellcraft",
+          "keyAbility": "intelligence",
+          "untrained": false,
+          "armorCheckPenalty": false,
+          "_skillId": "59d549d2c9cf2a13e0bcbd1a",
+          "classSkill": false,
+          "subValues": [
+            "Enchantment"
+          ],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "98fb8ecc-2af8-422b-a634-bdaa6d8cc1a5",
+          "_type": "CharacterSkill",
+          "name": "Survival",
+          "keyAbility": "wisdom",
+          "untrained": true,
+          "armorCheckPenalty": false,
+          "_skillId": "59d54a2ec9cf2a13e0bcbd1c",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        },
+        {
+          "_id": "a16d8c89-4409-4b7f-8339-06753338b90a",
+          "_type": "CharacterSkill",
+          "name": "Tumble",
+          "keyAbility": "dexterity",
+          "untrained": true,
+          "armorCheckPenalty": true,
+          "_skillId": "59d54a8dc9cf2a13e0bcbd1e",
+          "classSkill": false,
+          "subValues": [],
+          "rank": 0,
+          "miscModifier": 0,
+          "hiddenModifier": 0
+        }
+      ],
       "campaign": "123141",
       "experience": 123,
       "items": [
@@ -1616,79 +2141,79 @@
           "name": "Weapon and Armor Proficiency",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "Wizards are proficient with the club, dagger, heavy crossbow, light crossbow, and quarterstaff, but not with any type of armor or shield. Armor of any type interferes with a wizard’s movements, which can cause her spells with somatic components to fail. Spells",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "Wizards are proficient with the club, dagger, heavy crossbow, light crossbow, and quarterstaff, but not with any type of armor or shield. Armor of any type interferes with a wizard’s movements, which can cause her spells with somatic components to fail. Spells",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "2",
           "name": "Spellcasting",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "You can cast prepared wizard spells using INT as your spellcasting modifier and wizard spells in your spellbook as rituals if they have the ritual tag. You can use an arcane focus as a spellcasting focus.",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "You can cast prepared wizard spells using INT as your spellcasting modifier and wizard spells in your spellbook as rituals if they have the ritual tag. You can use an arcane focus as a spellcasting focus.",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "3",
           "name": "Bonus Languages",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "A wizard may substitute Draconic for one of the bonus languages available to the character because of her race.",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "A wizard may substitute Draconic for one of the bonus languages available to the character because of her race.",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "4",
           "name": "Familiar",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "A wizard can obtain a familiar in exactly the same manner as a sorcerer can.",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "A wizard can obtain a familiar in exactly the same manner as a sorcerer can.",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "5",
           "name": "Scribe Scroll",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "At 1st level, a wizard gains Scribe Scroll as a bonus feat.",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "At 1st level, a wizard gains Scribe Scroll as a bonus feat.",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "6",
           "name": "Bonus Feats",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "At 5th, 10th, 15th, and 20th level, a wizard gains a bonus feat. At each such opportunity, she can choose a metamagic feat, an item creation feat, or Spell Mastery. The wizard must still meet all prerequisites for a bonus feat, including caster level minimums.",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "At 5th, 10th, 15th, and 20th level, a wizard gains a bonus feat. At each such opportunity, she can choose a metamagic feat, an item creation feat, or Spell Mastery. The wizard must still meet all prerequisites for a bonus feat, including caster level minimums.",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "7",
           "name": "Spellbooks",
           "type": "Class Feature",
           "class": "Wizard",
-          "quickDescription": "A wizard must study her spellbook each day to prepare her spells. She cannot prepare any spell not recorded in her spellbook, except for read magic, which all wizards can prepare from memory. A wizard begins play with a spellbook containing all 0-level wizard spells (except those from her prohibited school or schools, if any; see School Specialization, below) plus three 1st-level spells of your choice. For each point of Intelligence bonus the wizard has, the spellbook holds one additional 1st-level spell of your choice. At each new wizard level, she gains two new spells of any spell level or levels that she can cast (based on her new wizard level) for her spellbook. At any time, a wizard can also add spells found in other wizards’ spellbooks to her own.",
-          "page":"Player's Handbook v.3.5, p. 55"
+          "snippet": "A wizard must study her spellbook each day to prepare her spells. She cannot prepare any spell not recorded in her spellbook, except for read magic, which all wizards can prepare from memory. A wizard begins play with a spellbook containing all 0-level wizard spells (except those from her prohibited school or schools, if any; see School Specialization, below) plus three 1st-level spells of your choice. For each point of Intelligence bonus the wizard has, the spellbook holds one additional 1st-level spell of your choice. At each new wizard level, she gains two new spells of any spell level or levels that she can cast (based on her new wizard level) for her spellbook. At any time, a wizard can also add spells found in other wizards’ spellbooks to her own.",
+          "page": "Player's Handbook v.3.5, p. 55"
         },
         {
           "_id": "8",
           "name": "Empower Spell",
           "type": "Metamagic",
           "class": "",
-          "quickDescription": "All variable, numeric effects of an empowered spell are increased by one-half. Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell’s actual level.",
-          "page":"Player's Handbook v.3.5, p. 93"
+          "snippet": "All variable, numeric effects of an empowered spell are increased by one-half. Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell’s actual level.",
+          "page": "Player's Handbook v.3.5, p. 93"
         },
         {
           "_id": "9",
           "name": "Endurance",
           "type": "General",
           "class": "",
-          "quickDescription": "You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage, Constitution checks made to continue running, Constitution checks made to avoid nonlethal damage from a forced march, Constitution checks made to hold your breath, Constitution checks made to avoid nonlethal damage from starvation or thirst, Fortitude saves made to avoid nonlethal damage from hot or cold environments, and Fortitude saves made to resist damage from suffocation. Also, you may sleep in light or medium armor without becoming fatigued.",
-          "page":"Player's Handbook v.3.5, p. 93"
+          "snippet": "You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage, Constitution checks made to continue running, Constitution checks made to avoid nonlethal damage from a forced march, Constitution checks made to hold your breath, Constitution checks made to avoid nonlethal damage from starvation or thirst, Fortitude saves made to avoid nonlethal damage from hot or cold environments, and Fortitude saves made to resist damage from suffocation. Also, you may sleep in light or medium armor without becoming fatigued.",
+          "page": "Player's Handbook v.3.5, p. 93"
         },
         {
           "_id": "10",
           "name": "Forge Ring",
           "type": "Item Creation",
           "class": "",
-          "quickDescription": "You can create any ring whose prerequisites you meet. Crafting a ring takes one day for each 1,000 gp in its base price. To craft a ring, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price.",
+          "snippet": "You can create any ring whose prerequisites you meet. Crafting a ring takes one day for each 1,000 gp in its base price. To craft a ring, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price.",
           "page": "Player's Handbook v.3.5, p. 94"
         },
         {
@@ -1696,23 +2221,23 @@
           "name": "Touch of Distraction",
           "type": "Reserve",
           "class": "",
-          "quickDescription": "As long as you have an enchantment spell of 3rd level or higher available to cast, you can cloud the mind of a creature within 30 feet as a standard action. The target takes a -2 penalty on its next single attack roll or Reflex saving throw. If the target makes no attacks or Reflex saves within a number of rounds equal to the level of the highest-level enchantment spell you have available to cast, the effect ends. Multiple uses of this feat don't stack. This is an enchantment (compulsion), mind-affecting effect. As a secondary benefit, you gain a +1 competence bonus to your caster level when casting enchantment spells.",
+          "snippet": "As long as you have an enchantment spell of 3rd level or higher available to cast, you can cloud the mind of a creature within 30 feet as a standard action. The target takes a -2 penalty on its next single attack roll or Reflex saving throw. If the target makes no attacks or Reflex saves within a number of rounds equal to the level of the highest-level enchantment spell you have available to cast, the effect ends. Multiple uses of this feat don't stack. This is an enchantment (compulsion), mind-affecting effect. As a secondary benefit, you gain a +1 competence bonus to your caster level when casting enchantment spells.",
           "page": "Complete Mage, p. 48"
-        },        
+        },
         {
-          "_id":"12",
+          "_id": "12",
           "name": "Weapon and Armor Proficiency",
           "type": "Class Feature",
           "class": "Fighter",
-          "quickDescription": "A fighter is proficient with all simple and martial weapons and with all armor (heavy, medium, and light) and shields (including tower shields).",
+          "snippet": "A fighter is proficient with all simple and martial weapons and with all armor (heavy, medium, and light) and shields (including tower shields).",
           "page": "Player's Handbook v.3.5, p. 37"
-        },        
+        },
         {
-          "_id":"13",
+          "_id": "13",
           "name": "Bonus Feats",
           "type": "Class Feature",
           "class": "Fighter",
-          "quickDescription": "At 1st level, a fighter gets a bonus combat-oriented feat in addition to the feat that any 1st-level character gets and the bonus feat granted to a human character. The fighter gains an additional bonus feat at 2nd level and every two fighter levels thereafter (4th, 6th, 8th, 10th, 12th, 14th, 16th, 18th, and 20th). These bonus feats must be drawn from the feats noted as fighter bonus feats. A fighter must still meet all prerequisites for a bonus feat, including ability score and base attack bonus minimums.",
+          "snippet": "At 1st level, a fighter gets a bonus combat-oriented feat in addition to the feat that any 1st-level character gets and the bonus feat granted to a human character. The fighter gains an additional bonus feat at 2nd level and every two fighter levels thereafter (4th, 6th, 8th, 10th, 12th, 14th, 16th, 18th, and 20th). These bonus feats must be drawn from the feats noted as fighter bonus feats. A fighter must still meet all prerequisites for a bonus feat, including ability score and base attack bonus minimums.",
           "page": "Player's Handbook v.3.5, p. 37"
         }
       ],
@@ -1720,44 +2245,53 @@
         {
           "_id": "1",
           "name": "Low-Light Vision",
-          "type": "RacialTrait",
+          "type": "Racial Trait",
           "race": "Half-elf",
-          "quickDescription": "A half-elf can see twice as far as a human in starlight, moonlight, torchlight, and similar conditions of poor illumination. She retains the ability to distinguish color and detail under these conditions."
+          "snippet": "A half-elf can see twice as far as a human in starlight, moonlight, torchlight, and similar conditions of poor illumination. She retains the ability to distinguish color and detail under these conditions."
         },
         {
           "_id": "2",
           "name": "Fey Ancestry",
-          "type": "RacialTrait",
+          "type": "Racial Trait",
           "race": "Half-elf",
-          "quickDescription": "You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
+          "snippet": "You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
         },
         {
           "_id": "3",
           "name": "Skill Bonuses",
-          "type": "RacialTrait",
+          "type": "Racial Trait",
           "race": "Half-elf",
-          "quickDescription": "+1 racial bonus on Listen, Search, and Spot checks. +2 racial bonus on Diplomacy and Gather Information checks."
+          "snippet": "+1 racial bonus on Listen, Search, and Spot checks. +2 racial bonus on Diplomacy and Gather Information checks."
         },
         {
           "_id": "4",
           "name": "Elven Blood",
-          "type": "RacialTrait",
+          "type": "Racial Trait",
           "race": "Half-elf",
-          "quickDescription": "For all effects related to race, a half-elf is considered an elf."
+          "snippet": "For all effects related to race, a half-elf is considered an elf."
         }
       ],
       "languages": [
         {
           "_id": "1",
-          "name": "Common"
+          "name": "Common",
+          "description": "Common was the trade language of Faerûn. Almost every sentient, civilized being spoke a smattering of it, and most were fluent. While most could not read or write the language, generally, the people of Faerûn were able to converse with each other in this language.",
+          "alphabet": "Common",
+          "speakers": "Humans, halflings, half-elves, half-orcs"
         },
         {
           "_id": "2",
-          "name": "Elven"
+          "name": "Elven",
+          "description": "Elven (commonly called Elvish and sometimes referred to as the True Tongue) was the language (or language family) of the Tel’Quessir (e.g., eladrin, elves, and drow). Its script was known as Espruar.",
+          "alphabet": "Elven",
+          "speakers": "Elves"
         },
         {
           "_id": "3",
-          "name": "Draconic"
+          "name": "Draconic",
+          "description": "Draconic was the language of dragons. It used its own distinct alphabet, called Iokharic. Other native speakers included members of draconic-related races, such as kobolds and dragonborn, and members of reptilian races such as lizardfolk and troglodytes. The language was also used as a primary means of arcane notation throughout Toril.",
+          "alphabet": "Iokharic",
+          "speakers": "Dragons, Dragonborn, Kobolds, Lizardfolk, Troglodytes, Wyverns"
         }
       ],
       "spells": [

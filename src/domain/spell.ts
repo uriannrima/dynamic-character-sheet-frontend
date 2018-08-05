@@ -1,67 +1,99 @@
-import { IEntity } from './interfaces/IEntity'
-import { Descriptor, Component, Range, Effect, Resolve, Duration } from './spell-components'
-import { SpellSchool } from './spell-school'
-import { CastingTime } from './enums/casting-time-type'
+import { IEntity } from "@/domain/interfaces/IEntity";
+import { KeyAbilityType } from "@/domain/enums/key-ability-type";
 
-export class SpellSaveThrow {
-  check: string = '';
-  resolve: Resolve = new Resolve();
+export enum CastingType {
+  NONE = 'None',
+  STANDARD_ACTION = 'Standard Action'
+}
+export class CastingTime {
+  type: CastingType = CastingType.NONE;
+  amount: number = 0;
+}
 
-  constructor(model?: SpellSaveThrow | { check?: string, resolve?: Resolve }) {
-    if (model) {
-      if (model.check) this.check = model.check;
-      if (model.resolve) this.resolve = new Resolve(model.resolve);
-    }
-  }
+export enum RangeType {
+  NONE = 'None',
+  TARGET = 'Target',
+  SELF = 'Self'
+}
+
+export class Scale {
+  value: number = 0;
+  per: number = 0;
+  max: number = 0;
+}
+
+export enum AreaType {
+  NONE = 'None',
+  CONE = 'Cone',
+  LINE = 'Line',
+  RADIUS = 'Radius'
+}
+
+export class Area {
+  type: AreaType = AreaType.NONE;
+  size: number = 0;
+  scale?: Scale;
+}
+
+export class Range {
+  type: RangeType = RangeType.NONE;
+  distance: number = 0;
+  scale?: Scale;
+  area?: Area;
+}
+
+export class Duration {
+  unit: string = '';
+  scale?: Scale;
+}
+
+export class SavingThrow {
+  keyAbility: KeyAbilityType = KeyAbilityType.NONE;
+  resolve: string = '';
+}
+
+export class Hit {
+  keyAbility: KeyAbilityType = KeyAbilityType.NONE;
+  type: string = '';
+}
+
+export class Damage {
+  damage: string = '';
+  type: string = '';
+  scale?: Scale;
 }
 
 export class Spell implements IEntity {
   _id: string = '';
   _type: string = 'Spell';
   name: string = '';
-  school: SpellSchool = new SpellSchool();
-  descriptors: Descriptor[] = [];
   level: number = 0;
-  components: Component[] = [];
-  castingTimeAmount: number = 1
-  castingTime: CastingTime = CastingTime.STANDARD_ACTION;
+  school: string = '';
+  castingTime: CastingTime = new CastingTime();
   range: Range = new Range();
-  targets: string = '';
-  effect: Effect = new Effect();
-  durations: Duration[] = [];
-  savingThrow: SpellSaveThrow = new SpellSaveThrow();
-  description: string = '';
-  quickDescription: string = '';
-  spellResistance: boolean = true;
-  aditionalInformation: string = '';
+  duration: string | Duration = 'None';
+  savingThrow: SavingThrow = new SavingThrow();
+  hit?: Hit;
+  effects: Array<string | Damage> = [];
 
-  constructor(model?: Spell | {
-    _id: string, name: string, school: SpellSchool,
-    descriptors: Descriptor[], level: number,
-    components: Component[], castingTimeAmount: number,
-    castingTime: CastingTime, range: Range, targets: string,
-    effect: Effect, durations: Duration[],
-    savingThrow: SpellSaveThrow, description: string,
-    quickDescription: string, spellResistance: boolean,
-    aditionalInformation: string,
+  constructor(model: Spell | {
+    _id?: string, _type?: string, name?: string,
+    level?: number, school?: string, castingTime?: CastingTime,
+    range?: Range, duration?: string | Duration, savingThrow?: SavingThrow,
+    hit?: Hit, effects?: Array<string | Damage>,
   }) {
     if (model) {
-      if (model._id) this._id = model._id
-      if (model.name) this.name = model.name
-      if (model.school) this.school = new SpellSchool(model.school)
-      if (model.descriptors) this.descriptors = model.descriptors.map(descriptor => new Descriptor(descriptor))
-      if (model.level) this.level = model.level
-      if (model.components) this.components = model.components.map(component => new Component(component))
-      if (model.castingTime) this.castingTime = model.castingTime
-      if (model.range) this.range = new Range(model.range)
-      if (model.targets) this.targets = model.targets
-      if (model.effect) this.effect = new Effect(model.effect)
-      if (model.durations) this.durations = model.durations.map(duration => new Duration(duration))
-      if (model.savingThrow) this.savingThrow = new SpellSaveThrow(model.savingThrow)
-      if (model.description) this.description = model.description
-      if (model.quickDescription) this.quickDescription = model.quickDescription
-      if (model.spellResistance) this.spellResistance = model.spellResistance
-      if (model.aditionalInformation) this.aditionalInformation = model.aditionalInformation
+      if (model._id !== undefined) this._id = model._id;
+      if (model._type !== undefined) this._type = model._type;
+      if (model.name !== undefined) this.name = model.name;
+      if (model.level !== undefined) this.level = model.level;
+      if (model.school !== undefined) this.school = model.school;
+      if (model.castingTime !== undefined) this.castingTime = model.castingTime;
+      if (model.range !== undefined) this.range = model.range;
+      if (model.duration !== undefined) this.duration = model.duration;
+      if (model.savingThrow !== undefined) this.savingThrow = model.savingThrow;
+      if (model.hit !== undefined) this.hit = model.hit;
+      if (model.effects !== undefined) this.effects = model.effects;
     }
   }
 }

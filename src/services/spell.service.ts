@@ -2,68 +2,19 @@ import { Spell } from 'domain/spell';
 import { CastingTime } from 'domain/enums/casting-time-type';
 import AbstractService from './abstract.service';
 
-import {
-  Descriptor, Component, RangeWithDistance,
-  Effect, AreaEffect, TimedDuration, Duration, Resolve, Range
-} from '@/domain/spell-components';
-
-// Or Types become undefined right bellow. Don't know why.
-console.debug(Descriptor, Component, RangeWithDistance, Effect, AreaEffect, TimedDuration, Duration, Resolve, Range);
-
-export class SpellDescriptorService extends AbstractService<Descriptor> {
-  constructor() {
-    super({ url: '/spell-descriptors', constructors: [Descriptor] });
-  }
-}
-
-export class SpellComponentService extends AbstractService<Component> {
-  constructor() {
-    super({ url: '/spell-components', constructors: [Component] });
-  }
-}
-
-export class SpellRangeService extends AbstractService<Range> {
-  constructor() {
-    super({ url: '/spell-ranges', constructors: [Range, RangeWithDistance] });
-  }
-}
-
-export class SpellEffectService extends AbstractService<Effect> {
-  constructor() {
-    super({ url: '/spell-effects', constructors: [Effect, AreaEffect] });
-  }
-}
-
-export class SpellDurationService extends AbstractService<Duration> {
-  constructor() {
-    super({ url: '/spell-durations', constructors: [Duration, TimedDuration] });
-  }
-}
-
-export class SpellResolutionService extends AbstractService<Resolve> {
-  constructor() {
-    super({ url: '/spell-resolutions', constructors: [Resolve] });
-  }
-}
+console.debug(Spell);
 
 class SpellService extends AbstractService<Spell> {
-  spellDescriptorService: SpellDescriptorService = new SpellDescriptorService();
-  spellComponentService: SpellComponentService = new SpellComponentService();
-  spellRangeService: SpellRangeService = new SpellRangeService();
-  spellEffectsService: SpellEffectService = new SpellEffectService();
-  spellDurationService: SpellDurationService = new SpellDurationService();
-  spellResolveService: SpellResolutionService = new SpellResolutionService();
-
   constructor() {
-    super({ url: '/spells' });
+    super({ url: '/spells', constructors: [Spell] });
   }
 
   async getAllDescriptors() {
-    return this.spellDescriptorService.getAll();
+    return [];
   }
 
   async getAllComponents() {
-    return this.spellComponentService.getAll();
+    return [];
   }
 
   async getAllCastingTimes() {
@@ -71,19 +22,19 @@ class SpellService extends AbstractService<Spell> {
   }
 
   async getAllRanges() {
-    return this.spellRangeService.getAll();
+    return [];
   }
 
   async getAllEffects() {
-    return this.spellEffectsService.getAll();
+    return [];
   }
 
   async getAllDurations() {
-    return this.spellDurationService.getAll();
+    return [];
   }
 
   async getAllSavingThrowResolve() {
-    return this.spellResolveService.getAll();
+    return [];
   }
 }
 

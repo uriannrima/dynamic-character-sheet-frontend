@@ -4,48 +4,24 @@
     <div class="resume-cards__body--column">
       <span v-if="feats.length <= 0"
             class="list--no-items">No feats</span>
-      <div v-else
-           class="groups">
-        <div v-for="(feats, key) in featsGroupedByType"
-             :key="key"
-             class="group">
-          <div class="group__header"
-               v-show="key">
-            <span>{{key}}</span>
-          </div>
-          <div class="group__body">
-            <div class="group"
-                 v-for="(feats, key) in featsGroupedBy(feats, feat => feat.class)"
-                 :key="key">
-              <div class="group__header"
-                   v-show="key">
-                <span>{{key}}</span>
-              </div>
-              <div class="group__body">
-                <div v-for="feat in feats"
-                     :key="feat._id"
-                     class="group-item">
-                  <div class="group-item__name">
-                    <span>{{feat.name}}</span>
-                    <small v-show="feat.page"> ({{feat.page}}) </small>
-                  </div>
-                  <div class="group-item__quick-description">
-                    <span>{{feat.quickDescription}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <group-component v-else
+                       :list="feats"
+                       :group-by-fn="feat => feat.type">
+        <template slot-scope="{ groupKey, groupList }">
+          <group-component :list="groupList"
+                           :group-by-fn="feat => feat.class">
+          </group-component>
+        </template>
+      </group-component>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
+import GroupComponent from 'shared/components/GroupComponent';
 
 export default {
+  components: { GroupComponent },
   props: {
     feats: {
       type: Array,
@@ -58,8 +34,8 @@ export default {
     }
   },
   methods: {
-    featsGroupedBy(feats, fn) {
-      return feats.groupBy(fn);
+    groupedBy(array, fn) {
+      return array.groupBy(fn);
     }
   }
 };

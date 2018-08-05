@@ -113,6 +113,20 @@ export class Character implements IEntity {
       this.initiativeModifier = model.initiativeModifier
 
       this.grappleModifier = model.grappleModifier
+
+      this.domainSchool = model.domainSchool
+
+      this.speed = model.speed
+
+      this.damageReduction = model.damageReduction
+
+      this.conditionModifiers = model.conditionModifiers
+
+      this.spellResistance = model.spellResistance
+
+      this.campaign = model.campaign
+
+      this.experience = model.experience
     }
   }
 
