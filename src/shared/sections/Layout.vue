@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'store/modules/auth'
+import { mapGetters, mapActions } from 'store/modules/auth';
 
 export default {
   data() {
@@ -23,7 +21,7 @@ export default {
           name: 'newCharacter'
         }
       ]
-    }
+    };
   },
   computed: {
     ...mapGetters(['isAuthenticated'])
@@ -31,15 +29,15 @@ export default {
   methods: {
     ...mapActions(['logout']),
     toggleDrawer() {
-      this.drawer = !this.drawer
+      this.drawer = !this.drawer;
     },
-    doLogout: async function () {
-      var loggedOut = await this.logout()
-      if (loggedOut) this.$router.push('/')
-      this.toggleDrawer()
+    doLogout: async function() {
+      var loggedOut = await this.logout();
+      if (loggedOut) this.$router.push('/');
+      this.toggleDrawer();
     }
   }
-}
+};
 </script>
 
 <style>

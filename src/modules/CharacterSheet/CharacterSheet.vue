@@ -10,28 +10,39 @@
       <feats-section v-show="selectedSection === 'feats'"></feats-section>
       <special-abilities-section v-show="selectedSection === 'special abilities'"></special-abilities-section>
       <languages-section v-show="selectedSection === 'languages'"></languages-section>
+      <section-menu :open="isSectionMenuOpen"
+                    :sections="sections"
+                    @click="toggleSection"
+                    @toggle="toggleSectionMenu"></section-menu>
     </sheet>
-    <section-menu :open="isSectionMenuOpen"
-                  :sections="sections"
-                  @click="toggleSection"
-                  @toggle="toggleSectionMenu"></section-menu>
+    <slideout panel=".sheet">
+      <div>
+        This is some content.
+      </div>
+    </slideout>
   </loading-component>
 </template>
 
 <script>
 import VuexComponent from 'shared/mixins/vuex.component';
-import { LoadingComponent } from 'shared/components';
+import { LoadingComponent, Slideout } from 'shared/components';
 import { SectionMenu } from './SectionMenu';
 import * as Sheet from './Sheet';
 import * as Sections from './Sections';
 
-import CharacterModule, { mapState, mapActions } from './Store';
+import CharacterModule, { mapActions } from './Store';
 
 const delay = async duration =>
   new Promise((resolve, reject) => setTimeout(resolve, duration));
 
 export default {
-  components: { LoadingComponent, SectionMenu, ...Sheet, ...Sections },
+  components: {
+    LoadingComponent,
+    SectionMenu,
+    ...Sheet,
+    ...Sections,
+    Slideout
+  },
   mixins: [VuexComponent('Character', CharacterModule)],
   async beforeRouteEnter(to, from, next) {
     next(async vm => {
@@ -88,3 +99,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.testing-out {
+  width: 100%;
+  height: 100%;
+  background-color: #252121;
+  padding: 5px;
+}
+</style>
