@@ -15,7 +15,8 @@
                   :sections="sections"
                   @click="toggleSection"
                   @toggle="toggleSectionMenu"></section-menu>
-    <slideout panel=".sheet">
+    <slideout :open.sync="isSidebarOpen"
+              panel=".sheet">
     </slideout>
   </loading-component>
 </template>
@@ -72,7 +73,8 @@ export default {
       'feats',
       'special abilities',
       'languages'
-    ]
+    ],
+    isSidebarOpen: false
   }),
   methods: {
     ...mapActions(['loadCharacter', 'newCharacter']),

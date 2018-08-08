@@ -1,5 +1,5 @@
 <template>
-  <v-touch @swipe="toggle"
+  <v-touch @swipe="handleSwipe"
            :swipe-options="{ direction: 'horizontal' }"
            id="menu"
            :style="styles.menu">
@@ -27,6 +27,10 @@ import Slideout from 'slideout';
 
 export default {
   props: {
+    open: {
+      type: Boolean,
+      defaullt: false
+    },
     panel: {
       type: String,
       required: true
@@ -44,6 +48,9 @@ export default {
       default: 'right'
     }
   },
+  data: () => ({
+    slideoutOpen: false
+  }),
   computed: {
     styles() {
       var width = '100vw';
@@ -64,6 +71,9 @@ export default {
       };
     }
   },
+  watch: {
+    open: 'toggle'
+  },
   mounted() {
     const { panel, menu, padding, tolerance, side } = this;
     this.slideoutRef = new Slideout({
@@ -74,6 +84,10 @@ export default {
       side
     });
 
+    this.slideoutRef.on('open', () => {
+      this.updateOpen(true);
+    });
+
     for (var key in this.$listeners) {
       this.slideoutRef.on(key, this.$listeners[key]);
     }
@@ -82,13 +96,23 @@ export default {
     this.slideoutRef.destroy();
   },
   methods: {
-    toggle($event) {
+    handleSwipe($event) {
       if (
         (this.side === 'right' && $event.direction === 4) ||
         (this.side === 'left' && $event.direction === 2)
       ) {
-        this.slideoutRef.toggle();
+        this.updateOpen(false);
       }
+    },
+    toggle(open) {
+      if (open && !this.slideoutRef._opened) {
+        this.slideoutRef.open();
+      } else if (!open && this.slideoutRef._opened) {
+        this.slideoutRef.close();
+      }
+    },
+    updateOpen(open) {
+      this.$emit('update:open', open);
     }
   }
 };
