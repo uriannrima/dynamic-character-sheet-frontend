@@ -54,11 +54,11 @@ export class Character implements IEntity {
 
   speed: string = '30 ft.';
 
-  damageReduction: string = '';
+  damageReduction: string = '0';
 
   conditionModifiers: string = '';
 
-  spellResistance: string = '';
+  spellResistance: string = '0';
 
   campaign: string = '';
 

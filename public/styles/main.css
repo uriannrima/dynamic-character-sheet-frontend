@@ -1,7 +1,65 @@
-* {
+@page {
+  size: A4;
+  margin: 0;
+}
+
+/** Global CSS */
+
+.debug {
+  background-color: rgb(255, 0, 255);
+}
+
+/** Core CSS */
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+html {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  text-align: center;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[readonly] {
+  background-color: #ccc;
+}
+
+.attention {
+  background-color: yellow;
+}
+
+textarea {
+  resize: none;
 }

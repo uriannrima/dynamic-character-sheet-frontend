@@ -20,10 +20,10 @@ export class Feat implements IEntity, ISubValued<string> {
   subValues: string[] = [];
 
   constructor(model?: Feat | {
-    _id?: string, name?: string, benefit?: string,
-    type?: FeatType, preRequisite?: string, normal?: string,
-    special?: string, unique?: boolean, subValues?: string[],
-    class?: string, snippet?: string, page: string
+  _id?: string, name?: string, benefit?: string,
+  type?: FeatType, preRequisite?: string, normal?: string,
+  special?: string, unique?: boolean, subValues?: string[],
+  class?: string, snippet?: string, page: string
   }) {
     if (model) {
       if (model._id) this._id = model._id;

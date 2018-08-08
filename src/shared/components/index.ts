@@ -1,7 +1,5 @@
-export { default as FullScreenLoadingComponent } from './FullScreenLoadingComponent.vue'
 export { default as LoadingComponent } from './LoadingComponent.vue'
 export { default as FadeComponent } from './FadeComponent.vue'
 export { default as ModalComponent } from './ModalComponent.vue'
-export { default as StoredComponent } from './StoredComponent.vue'
 export { default as CardinalComponent } from './CardinalComponent.vue'
 export { default as GroupComponent } from './GroupComponent.vue'

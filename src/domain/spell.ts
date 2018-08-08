@@ -1,5 +1,5 @@
-import { IEntity } from "@/domain/interfaces/IEntity";
-import { KeyAbilityType } from "@/domain/enums/key-ability-type";
+import { IEntity } from '@/domain/interfaces/IEntity';
+import { KeyAbilityType } from '@/domain/enums/key-ability-type';
 
 export enum CastingType {
   NONE = 'None',
@@ -77,10 +77,10 @@ export class Spell implements IEntity {
   effects: Array<string | Damage> = [];
 
   constructor(model: Spell | {
-    _id?: string, _type?: string, name?: string,
-    level?: number, school?: string, castingTime?: CastingTime,
-    range?: Range, duration?: string | Duration, savingThrow?: SavingThrow,
-    hit?: Hit, effects?: Array<string | Damage>,
+  _id?: string, _type?: string, name?: string,
+  level?: number, school?: string, castingTime?: CastingTime,
+  range?: Range, duration?: string | Duration, savingThrow?: SavingThrow,
+  hit?: Hit, effects?: Array<string | Damage>,
   }) {
     if (model) {
       if (model._id !== undefined) this._id = model._id;

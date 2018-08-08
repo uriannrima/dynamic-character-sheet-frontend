@@ -6,4 +6,10 @@ Vue.use(Vuex)
 
 const Store = new Vuex.Store(store)
 
+declare global {
+  interface Window { Store: any; }
+}
+
+window.Store = Store;
+
 export default Store

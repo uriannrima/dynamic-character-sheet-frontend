@@ -2,7 +2,7 @@
   <div>
     <fade-component>
       <div class="loading-wrapper"
-           v-show="isLoading">
+           v-show="loading">
         <section class="loading">
           This app is still under construction, so please avoid filling personal information
           <span class="loading__author"> - Guy behind this app</span>
@@ -10,7 +10,7 @@
         </section>
       </div>
     </fade-component>
-    <div v-show="!isLoading">
+    <div v-show="!loading">
       <slot></slot>
     </div>
   </div>
@@ -22,7 +22,7 @@ import FadeComponent from './FadeComponent';
 export default {
   components: { FadeComponent },
   props: {
-    isLoading: {
+    loading: {
       type: Boolean,
       required: true
     }

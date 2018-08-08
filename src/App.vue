@@ -1,17 +1,17 @@
 <template>
   <div>
-    <full-screen-loading :loading="false">
+    <loading-component :loading="false">
       <layout></layout>
-    </full-screen-loading>
+    </loading-component>
   </div>
 </template>
 
 <script lang="ts">
 import Layout from './shared/sections/Layout.vue'
-import FullScreenLoading from './shared/components/FullScreenLoadingComponent.vue'
+import LoadingComponent from './shared/components/LoadingComponent.vue'
 
 export default {
-  components: { Layout, FullScreenLoading }
+  components: { Layout, LoadingComponent }
 }
 </script>
 

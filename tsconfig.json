@@ -39,8 +39,8 @@
       "router/*": [
         "src/router/*"
       ],
-      "sections/*": [
-        "src/sections/*"
+      "modules/*": [
+        "src/modules/*"
       ],
       "store/*": [
         "src/store/*"

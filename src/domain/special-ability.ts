@@ -20,9 +20,9 @@ export class SpecialAbility implements IEntity, ISubValued<string> {
   subValues: string[] = [];
 
   constructor(model?: SpecialAbility | {
-    _id?: string, name?: string, description?: string,
-    type?: SpecialAbilityType, subValues?: string[],
-    race?: string, snippet?: string
+  _id?: string, name?: string, description?: string,
+  type?: SpecialAbilityType, subValues?: string[],
+  race?: string, snippet?: string
   }) {
     if (model) {
       if (model._id) this._id = model._id;

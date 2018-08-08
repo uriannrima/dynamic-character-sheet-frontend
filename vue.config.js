@@ -12,7 +12,7 @@ function createCustomMergeConfig(_) {
         'public': resolve('public'),
         'feathers': resolve('src/feathers'),
         'domain': resolve('src/domain'),
-        'sections': resolve('src/sections'),
+        'modules': resolve('src/modules'),
         'services': resolve('src/services'),
         'shared': resolve('src/shared'),
         'store': resolve('src/store'),
