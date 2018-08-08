@@ -44,23 +44,6 @@ export default {
       default: 'right'
     }
   },
-  mounted() {
-    const { panel, menu, padding, tolerance, side } = this;
-    this.slideoutRef = new Slideout({
-      panel: document.querySelector(panel),
-      menu: this.$el,
-      padding: padding || document.body.clientWidth,
-      tolerance,
-      side
-    });
-    
-    for (var key in this.$listeners) {
-      this.slideoutRef.on(key, this.$listeners[key]);
-    }
-  },
-  destroyed() {
-    this.slideoutRef.destroy();
-  },
   computed: {
     styles() {
       var width = '100vw';
@@ -80,6 +63,23 @@ export default {
         }
       };
     }
+  },
+  mounted() {
+    const { panel, menu, padding, tolerance, side } = this;
+    this.slideoutRef = new Slideout({
+      panel: document.querySelector(panel),
+      menu: this.$el,
+      padding: padding || document.body.clientWidth,
+      tolerance,
+      side
+    });
+
+    for (var key in this.$listeners) {
+      this.slideoutRef.on(key, this.$listeners[key]);
+    }
+  },
+  destroyed() {
+    this.slideoutRef.destroy();
   },
   methods: {
     toggle($event) {
