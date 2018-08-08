@@ -31,5 +31,6 @@ export default {
   display: flex;
   flex-direction: column;
   padding-top: 72px;
+  box-shadow: rgb(136, 136, 136) 0 0px 10px;
 }
 </style>

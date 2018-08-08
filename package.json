@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
     "deploy": "yarn build && firebase deploy",
-    "api": "nodemon mock/api-mock.js --watch mock"
+    "api": "nodemon mock/api-mock.js --watch mock --host 0.0.0.0 --port 5000"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.2",

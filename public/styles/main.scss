@@ -26,6 +26,9 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 *,

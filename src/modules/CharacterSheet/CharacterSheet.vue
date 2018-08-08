@@ -10,15 +10,12 @@
       <feats-section v-show="selectedSection === 'feats'"></feats-section>
       <special-abilities-section v-show="selectedSection === 'special abilities'"></special-abilities-section>
       <languages-section v-show="selectedSection === 'languages'"></languages-section>
-      <section-menu :open="isSectionMenuOpen"
-                    :sections="sections"
-                    @click="toggleSection"
-                    @toggle="toggleSectionMenu"></section-menu>
     </sheet>
+    <section-menu :open="isSectionMenuOpen"
+                  :sections="sections"
+                  @click="toggleSection"
+                  @toggle="toggleSectionMenu"></section-menu>
     <slideout panel=".sheet">
-      <div>
-        This is some content.
-      </div>
     </slideout>
   </loading-component>
 </template>
@@ -64,7 +61,6 @@ export default {
   },
   data: () => ({
     isLoading: false,
-
     isSectionMenuOpen: false,
     selectedSection: 'ability & saves',
     sections: [
@@ -99,12 +95,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.testing-out {
-  width: 100%;
-  height: 100%;
-  background-color: #252121;
-  padding: 5px;
-}
-</style>

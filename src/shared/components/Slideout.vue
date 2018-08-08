@@ -1,10 +1,14 @@
 <template>
-  <div id="menu">
+  <v-touch @swipe="toggle"
+           :swipe-options="{ direction: 'horizontal' }"
+           id="menu"
+           :style="styles.menu">
     <div class="slideout__panel">
       <div class="slideout__panel__top">
         <slot name="top"></slot>
       </div>
-      <div class="slideout__panel__content">
+      <div class="slideout__panel__content"
+           :style="styles.content">
         <slot>
           <div class="default-content">
             <span>Nothing selected.</span>
@@ -15,7 +19,7 @@
         <slot name="bottom"></slot>
       </div>
     </div>
-  </div>
+  </v-touch>
 </template>
 
 <script>
@@ -27,13 +31,9 @@ export default {
       type: String,
       required: true
     },
-    menu: {
-      type: String,
-      default: '#menu'
-    },
     padding: {
       type: Number,
-      default: 295
+      default: 0
     },
     tolerance: {
       type: Number,
@@ -48,14 +48,48 @@ export default {
     const { panel, menu, padding, tolerance, side } = this;
     this.slideoutRef = new Slideout({
       panel: document.querySelector(panel),
-      menu: document.querySelector(menu),
-      padding,
+      menu: this.$el,
+      padding: padding || document.body.clientWidth,
       tolerance,
       side
     });
+    
+    for (var key in this.$listeners) {
+      this.slideoutRef.on(key, this.$listeners[key]);
+    }
   },
   destroyed() {
     this.slideoutRef.destroy();
+  },
+  computed: {
+    styles() {
+      var width = '100vw';
+      if (
+        this.padding &&
+        this.padding > 0 &&
+        this.padding <= document.body.clientWidth
+      ) {
+        width = `${this.padding}px`;
+      }
+      return {
+        menu: {
+          width
+        },
+        content: {
+          width
+        }
+      };
+    }
+  },
+  methods: {
+    toggle($event) {
+      if (
+        (this.side === 'right' && $event.direction === 4) ||
+        (this.side === 'left' && $event.direction === 2)
+      ) {
+        this.slideoutRef.toggle();
+      }
+    }
   }
 };
 </script>
@@ -73,7 +107,6 @@ body {
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 295px;
     min-height: 100vh;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -119,7 +152,7 @@ body {
       background: #fff;
       padding: 0 10px;
       overflow-y: auto;
-      min-width: 295px;
+      touch-action: none;
 
       .default-content {
         flex: 1;
@@ -132,6 +165,12 @@ body {
     }
     &__bottom {
     }
+  }
+  &__toggle-button {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    font-size: 20px;
   }
 }
 </style>

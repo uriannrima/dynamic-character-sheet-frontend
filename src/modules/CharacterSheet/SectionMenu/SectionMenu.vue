@@ -61,6 +61,7 @@ export default {
   align-items: flex-end;
 
   padding: 10px;
+  z-index: 1;
 
   &--opened {
     @extend .section-menu;
