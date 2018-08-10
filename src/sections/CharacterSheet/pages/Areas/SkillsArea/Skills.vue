@@ -24,7 +24,7 @@
     </div>
     <div class="skills-body"
          v-show="!minimize">
-      <skill v-for="(skill, index) in skills"
+      <skill v-for="(skill, index) in skillsOrderedByName"
              :key="index"
              v-bind="$extract(skill)"
              :keyScoreModifier="getTempModifier(getAbilityScore(skill.keyScoreName))"
@@ -53,7 +53,10 @@ export default {
   mixins: [ModalContainerMixin, MinimizableMixin],
   computed: {
     ...mapState(['skills']),
-    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty'])
+    ...mapGetters(['getAbilityScore', 'getTempModifier', 'getGearPenalty']),
+    skillsOrderedByName() {
+      return this.skills.orderBy(s => s.name);
+    }
   },
   methods: {
     ...mapActions(['updateSkill', 'addSkill']),
