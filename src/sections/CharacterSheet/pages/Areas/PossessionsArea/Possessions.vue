@@ -36,7 +36,8 @@
       <carry-capacities :carryCapacities="carryCapacities"></carry-capacities>
     </div>
     <wealth v-show="!minimize"
-            :wealth="wealth"></wealth>
+            :wealth="wealth"
+            @updateWealth="updateWealth"></wealth>
   </div>
 </template>
 
@@ -61,7 +62,7 @@ export default {
     ...mapGetters(['getTotalWeight'])
   },
   methods: {
-    ...mapMutations(['updateItem']),
+    ...mapMutations(['updateItem', 'updateWealth']),
     handleResize: function () {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }

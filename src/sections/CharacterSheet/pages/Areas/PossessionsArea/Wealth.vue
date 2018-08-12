@@ -6,25 +6,39 @@
     <div class="wealth-component">
       <div class="money-container">
         <div class="money-component">
-          <label for="" title="Copper Pieces">CP —</label>
-          <input type="number" v-model.number="wealth.copper">
+          <label for=""
+                 title="Copper Pieces">CP —</label>
+          <input type="number"
+                 :value="wealth.copper"
+                 @change="change($event, { copper : $event.target.value * 1 })">
         </div>
         <div class="money-component">
-          <label for="" title="Silver Pieces">SP —</label>
-          <input type="number" v-model.number="wealth.silver">
+          <label for=""
+                 title="Silver Pieces">SP —</label>
+          <input type="number"
+                 :value="wealth.silver"
+                 @change="change($event, { silver : $event.target.value * 1 })">
         </div>
         <div class="money-component">
-          <label for="" title="Gold Pieces">GP —</label>
-          <input type="number" v-model.number="wealth.gold">
+          <label for=""
+                 title="Gold Pieces">GP —</label>
+          <input type="number"
+                 :value="wealth.gold"
+                 @change="change($event, { gold : $event.target.value * 1 })">
         </div>
         <div class="money-component">
-          <label for="" title="Platinum Pieces">PP —</label>
-          <input type="number" v-model.number="wealth.platinum">
+          <label for=""
+                 title="Platinum Pieces">PP —</label>
+          <input type="number"
+                 :value="wealth.platinum"
+                 @change="change($event, { platinum : $event.target.value * 1 })">
         </div>
       </div>
       <div class="treasure-container">
         <label class="condition-modifiers-label">Treasures</label>
-        <textarea class="common-textarea" v-model="wealth.treasure"></textarea>
+        <textarea class="common-textarea"
+                  :value="wealth.treasure"
+                  @change="change($event, { treasure : $event.target.value })"></textarea>
       </div>
     </div>
   </div>
@@ -32,8 +46,13 @@
 
 <script>
 export default {
-  props: ["wealth"]
-}
+  props: ['wealth'],
+  methods: {
+    change($event, wealth) {
+      this.$emit('updateWealth', Object.assign({}, $event, { wealth }));
+    }
+  }
+};
 </script>
 
 <style>

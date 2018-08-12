@@ -212,5 +212,8 @@ export default {
   },
   [Mutations.updateDomainSchool](state, domainSchool) {
     state.domainSchool = domainSchool;
+  },
+  [Mutations.updateWealth](state, { wealth }) {
+    ObjectUtils.extractTo(wealth, state.wealth);
   }
 }

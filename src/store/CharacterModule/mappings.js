@@ -37,7 +37,9 @@ export const Actions = {
   updateSpellSave: 'updateSpellSave',
 
   addSkill: 'addSkill',
-  removeSkill: 'removeSkill'
+  removeSkill: 'removeSkill',
+
+  updateWealth: 'updateWealth'
 };
 
 export const Mutations = {
@@ -88,7 +90,9 @@ export const Mutations = {
   addSpell: 'addSpell',
   removeSpell: 'removeSpell',
   updateDomainSchool: 'updateDomainSchool',
-  updateSpellSave: 'updateSpellSave'
+  updateSpellSave: 'updateSpellSave',
+
+  updateWealth: 'updateWealth'
 };
 
 export const Mappings = {

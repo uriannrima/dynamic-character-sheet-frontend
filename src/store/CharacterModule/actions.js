@@ -22,7 +22,7 @@ export default {
   async [Actions.loadCharacter]({ commit, dispatch }, characterId) {
     try {
       dispatch(Actions.newCharacter);
-      
+
       const character = await CharacterService.get(characterId);
 
       // Load character mutations
@@ -120,5 +120,8 @@ export default {
   },
   async [Actions.updateExperience]({ commit }, experience) {
     commit(Mutations.updateExperience, { experience }, { meta: { sync: true } });
+  },
+  async [Actions.updateWealth]({ commit }, { wealth }) {
+    commit(Mutations.updateWealth, { wealth }, { meta: { sync: true } });
   }
 }
