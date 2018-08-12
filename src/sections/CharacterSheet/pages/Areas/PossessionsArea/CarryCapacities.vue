@@ -2,7 +2,8 @@
   <div class="carry-capacities-component">
     <carry-capacity v-for="(carryCapacity, index) in carryCapacities"
                     :key="index"
-                    v-bind="$extract(carryCapacity)"></carry-capacity>
+                    v-bind="$extract(carryCapacity)"
+                    @updateCarryCapacity="updateCarryCapacities($event, index)"></carry-capacity>
   </div>
 </template>
 
@@ -11,8 +12,14 @@ import { CarryCapacity } from './';
 
 export default {
   components: { CarryCapacity },
-  props: ["carryCapacities"]
-}
+  props: ['carryCapacities'],
+  methods: {
+    updateCarryCapacities($event, key) {
+      const carryCapacities = { [key]: $event };
+      this.$emit('updateCarryCapacities', { carryCapacities });
+    }
+  }
+};
 </script>
 
 <style>

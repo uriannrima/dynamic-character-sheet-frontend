@@ -215,5 +215,10 @@ export default {
   },
   [Mutations.updateWealth](state, { wealth }) {
     ObjectUtils.extractTo(wealth, state.wealth);
+  },
+  [Mutations.updateCarryCapacities](state, { carryCapacities }) {
+    Object.keys(carryCapacities).map(carryCapacityName => {
+      ObjectUtils.extractTo(carryCapacities[carryCapacityName], state.carryCapacities[carryCapacityName]);
+    });
   }
 }

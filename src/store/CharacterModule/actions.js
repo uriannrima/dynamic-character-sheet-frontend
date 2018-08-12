@@ -51,6 +51,8 @@ export default {
         Mutations.updateSpecialAbilities,
         Mutations.updateLanguages,
         Mutations.updateSpells,
+        Mutations.updateWealth,
+        Mutations.updateCarryCapacities
       ].forEach(mutation => {
         commit(mutation, character);
       });
@@ -123,5 +125,8 @@ export default {
   },
   async [Actions.updateWealth]({ commit }, { wealth }) {
     commit(Mutations.updateWealth, { wealth }, { meta: { sync: true } });
+  },
+  async [Actions.updateCarryCapacities]({ commit }, { carryCapacities }) {
+    commit(Mutations.updateCarryCapacities, { carryCapacities }, { meta: { sync: true } });
   }
 }

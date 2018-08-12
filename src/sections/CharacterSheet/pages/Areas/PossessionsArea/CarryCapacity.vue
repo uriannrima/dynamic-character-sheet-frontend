@@ -2,7 +2,8 @@
   <div class="carry-capacity-component">
     <input type="number"
            class="common-input"
-           :value="value">
+           :value="value"
+           @change="updateCarryCapacity($event,  { value: $event.target.value })">
     <label v-html="label"></label>
     <small v-if="small">{{small}}</small>
   </div>
@@ -10,12 +11,13 @@
 
 <script>
 export default {
-  props: [
-    'value',
-    'label',
-    'small'
-  ]
-}
+  props: ['value', 'label', 'small'],
+  methods: {
+    updateCarryCapacity($event, model) {
+      this.$emit('updateCarryCapacity', model);
+    }
+  }
+};
 </script>
 
 <style>

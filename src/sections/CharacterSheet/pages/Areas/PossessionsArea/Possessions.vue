@@ -33,7 +33,8 @@
     </div>
     <div class="carry-capacities-container"
          v-show="!minimize">
-      <carry-capacities :carryCapacities="carryCapacities"></carry-capacities>
+      <carry-capacities :carryCapacities="carryCapacities"
+                        @updateCarryCapacities="updateCarryCapacities"></carry-capacities>
     </div>
     <wealth v-show="!minimize"
             :wealth="wealth"
@@ -42,7 +43,7 @@
 </template>
 
 <script>
-import { Item, CarryCapacities, Wealth } from "./";
+import { Item, CarryCapacities, Wealth } from './';
 import ResizeMixin from 'shared/mixins/events/resize.handler.mixin';
 import MinimizableMixin from 'shared/mixins/states/minimizable.mixin';
 import { mapState, mapGetters, mapMutations } from 'store/CharacterModule';
@@ -62,12 +63,12 @@ export default {
     ...mapGetters(['getTotalWeight'])
   },
   methods: {
-    ...mapMutations(['updateItem', 'updateWealth']),
-    handleResize: function () {
+    ...mapMutations(['updateItem', 'updateWealth', 'updateCarryCapacities']),
+    handleResize: function() {
       this.showSecondHeader = window.innerWidth >= this.minimumWidth;
     }
   }
-}
+};
 </script>
 
 <style>
