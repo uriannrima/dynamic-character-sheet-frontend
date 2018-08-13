@@ -9,6 +9,7 @@ import feathers from './feathers'
 import 'babel-polyfill'
 import PortalVue from 'portal-vue'
 import Component from 'vue-class-component'
+import VueMarkdown from 'vue-markdown';
 
 Component.registerHooks([
   'beforeRouteEnter',
@@ -24,3 +25,4 @@ Vue.use(VeeValidate, { inject: false, classes: true, errorBagName: 'vErrors' })
 Vue.use(VueTouch, { name: 'v-touch' })
 Vue.use(VuejsDialog)
 Vue.use(PortalVue)
+Vue.component('v-md', VueMarkdown)

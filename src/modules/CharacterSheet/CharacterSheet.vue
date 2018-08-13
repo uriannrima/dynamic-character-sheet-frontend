@@ -1,7 +1,8 @@
 <template>
   <loading-component :loading="isLoading">
     <sheet>
-      <ability-saves v-show="selectedSection === 'ability & saves'">
+      <ability-saves v-show="selectedSection === 'ability & saves'"
+                     @select="toggleSidebar">
       </ability-saves>
       <skills-section v-show="selectedSection === 'skills'"></skills-section>
       <combat v-show="selectedSection === 'combat'"></combat>
@@ -17,6 +18,7 @@
                   @toggle="toggleSectionMenu"></section-menu>
     <slideout :open.sync="isSidebarOpen"
               panel=".sheet">
+      <portal-target name="slideout-portal"></portal-target>
     </slideout>
   </loading-component>
 </template>
@@ -93,6 +95,9 @@ export default {
     toggleSection({ section }) {
       this.selectedSection = section;
       this.toggleSectionMenu();
+    },
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
     }
   }
 };

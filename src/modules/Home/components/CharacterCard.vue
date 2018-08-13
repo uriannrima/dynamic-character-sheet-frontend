@@ -29,7 +29,7 @@
             {{abilityScore.name.substring(0, 3)}}
           </span>
           <small>
-            {{abilityScore.value}}({{abilityScore.tempModifier}})
+            {{abilityScore.total}}({{abilityScore.modifier}})
           </small>
         </div>
       </div>

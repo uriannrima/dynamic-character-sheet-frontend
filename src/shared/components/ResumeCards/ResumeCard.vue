@@ -1,5 +1,6 @@
 <template>
-  <div :class="{'resume-card--thinner' : thinner, 'resume-card' : !thinner}">
+  <div :class="{'resume-card--thinner' : thinner, 'resume-card' : !thinner, 'attention': attention}"
+       v-on="$listeners">
     <span class="resume-card__header">
       <slot name="header"></slot>
     </span>
@@ -13,6 +14,10 @@
 export default {
   props: {
     thinner: {
+      type: Boolean,
+      default: false
+    },
+    attention: {
       type: Boolean,
       default: false
     }
@@ -34,6 +39,10 @@ export default {
     border: solid 1px black;
     margin: 10px;
     border-radius: 5px;
+
+    &.attention {
+      background-color: $attention_color;
+    }
 
     &--thinner {
       @extend .resume-card;

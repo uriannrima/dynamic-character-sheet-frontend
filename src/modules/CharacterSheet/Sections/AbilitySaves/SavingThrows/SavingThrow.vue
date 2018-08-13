@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     total() {
-      return this.savingThrow.total + this.keyAbilityScore.tempModifier;
+      return this.savingThrow.total + this.keyAbilityScore.modifier;
     }
   }
 };

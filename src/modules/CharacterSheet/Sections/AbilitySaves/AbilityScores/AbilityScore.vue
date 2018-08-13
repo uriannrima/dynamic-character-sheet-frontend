@@ -1,11 +1,13 @@
 <template>
-  <resume-card thinner>
+  <resume-card thinner
+               @click="select"
+               :attention="attention">
     <span slot="header">{{name.substring(0,3)}}</span>
     <template>
       <span>
-        {{tempModifier | signed }}
+        {{modifier | signed }}
       </span>
-      <small>({{tempValue}})</small>
+      <small>({{total}})</small>
     </template>
   </resume-card>
 </template>
@@ -20,12 +22,26 @@ export default {
       type: String,
       required: true
     },
-    tempModifier: {
+    modifier: {
       type: null
     },
-    tempValue: {
+    total: {
       type: Number,
       required: true
+    },
+    modifiers: {
+      type: Array,
+      default: () => []
+    }
+  },
+  computed: {
+    attention() {
+      return this.modifiers.filter(modifier => modifier.temporary).length >= 1;
+    }
+  },
+  methods: {
+    select($event) {
+      this.$emit('select', Object.assign($event, { abilityScore: this.name }));
     }
   }
 };

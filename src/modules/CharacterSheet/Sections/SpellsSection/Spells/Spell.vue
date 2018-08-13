@@ -19,13 +19,13 @@
     <div v-if="!spell.hit"
          class="spell__dchit">
       <span class="spell__dchit__modifier"
-            v-if="spell.savingThrow.keyAbility !== 'None'">{{10 + spell.level + abilityScores.intelligence.tempModifier | signed }}</span>
+            v-if="spell.savingThrow.keyAbility !== 'None'">{{10 + spell.level + abilityScores.intelligence.modifier | signed }}</span>
       <small class="spell__dchit__saving-throw">{{spell.savingThrow.keyAbility}}</small>
       <small class="spell__dchit__resolve">{{spell.savingThrow.resolve}}</small>
     </div>
     <div v-else
          class="spell__dchit">
-      <span class="spell__dchit__modifier">{{baseAttackBonus + abilityScores[spell.hit.keyAbility].tempModifier | signed }}</span>
+      <span class="spell__dchit__modifier">{{baseAttackBonus + abilityScores[spell.hit.keyAbility].modifier | signed }}</span>
       <small class="spell__dchit__saving-throw">{{spell.hit.type}}</small>
     </div>
     <div class="spell__effects">

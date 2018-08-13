@@ -1,32 +1,42 @@
 import { IMap } from './interfaces/IMap'
+import { IEntity } from '@/domain/interfaces/IEntity';
 
-export class AbilityScore {
+export class AbilityScoreModifier {
   name: string = '';
-  value: number = 10;
-  tempValue: number = 10;
+  value: number = 0;
+  temporary: boolean = false;
+}
 
-  constructor(model?: AbilityScore | { name: string, value?: number, tempValue?: number }) {
+export class AbilityScore implements IEntity<string> {
+  _type: string = 'AbilityScore';
+  name: string = '';
+  base: number = 10;
+  modifiers: AbilityScoreModifier[] = [];
+
+  constructor(model?: AbilityScore | { name: string, base?: number, modifiers?: AbilityScoreModifier[] }) {
     if (model) {
       this.name = model.name;
-      if (model.value) this.value = model.value;
-      if (model.tempValue) this.tempValue = model.tempValue;
+      if (model.base !== undefined) this.base = model.base;
+      if (model.modifiers !== undefined) this.modifiers = model.modifiers;
     }
   }
 
-  get modifier() {
-    return Math.floor((this.value - 10) / 2)
+  get _id() {
+    return this.name.toLowerCase();
   }
 
-  get tempModifier() {
-    return Math.floor((this.tempValue - 10) / 2)
+  get total() {
+    return this.modifiers.reduce((accumulator, modifier) => {
+      return accumulator + modifier.value;
+    }, this.base);
+  }
+
+  get modifier() {
+    return Math.floor((this.total - 10) / 2)
   }
 
   get modifierAbs() {
     return Math.abs(this.modifier);
-  }
-
-  get tempModifierAbs() {
-    return Math.abs(this.tempModifier);
   }
 };
 

@@ -174,9 +174,9 @@ body {
       border-right: 3px solid #c53131;
       flex: 1;
       background: #fff;
-      padding: 0 10px;
+      padding: 10px 10px 0;
       overflow-y: auto;
-      touch-action: none;
+      touch-action: pan-y;
 
       .default-content {
         flex: 1;

@@ -36,7 +36,7 @@ export default {
   computed: {
     skillModifier() {
       return (
-        this.keyAbilityScore.tempModifier +
+        this.keyAbilityScore.modifier +
         this.skill.rank +
         this.skill.miscModifier +
         this.skill.hiddenModifier

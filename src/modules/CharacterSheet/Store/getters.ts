@@ -1,21 +1,10 @@
 import { GetterTree } from 'vuex'
 import { CharacterState } from './state'
 import { RootState } from '@/store/types'
-import { AbilityScore } from '@/domain'
 
 export const getters: GetterTree<CharacterState, RootState> = {
   getAbilityScore: state => (scoreName: string) => {
     return state.abilityScores[scoreName]
-  },
-  /**
-   * Getters "getModifier" and "getTempModifier" are here to avoid errors on Vuex DevTools Time Travel.
-   * Since it doesn't save the object with it's methods.
-   */
-  getModifier: () => (abilityScore: AbilityScore) => {
-    return Math.floor((abilityScore.value - 10) / 2)
-  },
-  getTempModifier: () => (abilityScore: AbilityScore) => {
-    return Math.floor((abilityScore.tempValue - 10) / 2)
   },
   getClasses: state => {
     return state.classes
@@ -45,7 +34,7 @@ export const getters: GetterTree<CharacterState, RootState> = {
     return 10 +
       getters.getArmorBonus +
       getters.getShieldBonus +
-      getters.getArmorKeyScore.tempModifier +
+      getters.getArmorKeyScore.modifier +
       state.size.modifier +
       state.armorClass.naturalArmor +
       getters.getDeflectionBonus +
@@ -53,7 +42,7 @@ export const getters: GetterTree<CharacterState, RootState> = {
   },
   getTouchArmor: (state, getters) => {
     return 10 +
-      getters.getArmorKeyScore.tempModifier +
+      getters.getArmorKeyScore.modifier +
       state.size.modifier +
       getters.getDeflectionBonus +
       state.armorClass.miscModifier
@@ -71,14 +60,14 @@ export const getters: GetterTree<CharacterState, RootState> = {
     return state.gear.protectiveItems.reduce((acc, item) => acc + item.acBonus, 0)
   },
   getTotalInitiative: function (state, getters) {
-    return getters.getInitiativeKeyScore.tempModifier + state.initiativeModifier
+    return getters.getInitiativeKeyScore.modifier + state.initiativeModifier
   },
   getBaseAttackBonus: state => {
     return state.baseAttackBonus.join('/')
   },
   getGrappleTotal: (state, getters) => {
     return state.baseAttackBonus.map(bab => {
-      return bab + getters.getGrappleKeyScore.tempModifier + state.size.grappleBonus + state.grappleModifier
+      return bab + getters.getGrappleKeyScore.modifier + state.size.grappleBonus + state.grappleModifier
     }).join('/')
   },
   getGearPenalty: (state) => {

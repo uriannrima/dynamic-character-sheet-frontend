@@ -37,45 +37,59 @@
       "abilityScores": {
         "strength": {
           "name": "strength",
-          "value": 20,
-          "tempValue": 20,
-          "modifier": 5,
-          "tempModifier": 5
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "dexterity": {
           "name": "dexterity",
-          "value": 16,
-          "tempValue": 16,
-          "modifier": 3,
-          "tempModifier": 3
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "constitution": {
           "name": "constitution",
-          "value": 18,
-          "tempValue": 18,
-          "modifier": 4,
-          "tempModifier": 4
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "intelligence": {
           "name": "intelligence",
-          "value": 11,
-          "tempValue": 11,
-          "modifier": 0,
-          "tempModifier": 0
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "wisdom": {
           "name": "wisdom",
-          "value": 14,
-          "tempValue": 14,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "charisma": {
           "name": "charisma",
-          "value": 8,
-          "tempValue": 8,
-          "modifier": -1,
-          "tempModifier": -1
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         }
       },
       "keyAbilityScores": {
@@ -298,45 +312,59 @@
       "abilityScores": {
         "strength": {
           "name": "strength",
-          "value": 20,
-          "tempValue": 20,
-          "modifier": 5,
-          "tempModifier": 5
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "dexterity": {
           "name": "dexterity",
-          "value": 16,
-          "tempValue": 16,
-          "modifier": 3,
-          "tempModifier": 3
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "constitution": {
           "name": "constitution",
-          "value": 18,
-          "tempValue": 18,
-          "modifier": 4,
-          "tempModifier": 4
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "intelligence": {
           "name": "intelligence",
-          "value": 11,
-          "tempValue": 11,
-          "modifier": 0,
-          "tempModifier": 0
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "wisdom": {
           "name": "wisdom",
-          "value": 15,
-          "tempValue": 15,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "charisma": {
           "name": "charisma",
-          "value": 14,
-          "tempValue": 14,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         }
       },
       "keyAbilityScores": {
@@ -586,45 +614,59 @@
       "abilityScores": {
         "strength": {
           "name": "strength",
-          "value": 12,
-          "tempValue": 12,
-          "modifier": 1,
-          "tempModifier": 1
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "dexterity": {
           "name": "dexterity",
-          "value": 15,
-          "tempValue": 15,
-          "modifier": 2,
-          "tempModifier": 2
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "constitution": {
           "name": "constitution",
-          "value": 13,
-          "tempValue": 13,
-          "modifier": 1,
-          "tempModifier": 1
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "intelligence": {
           "name": "intelligence",
-          "value": 16,
-          "tempValue": 16,
-          "modifier": 3,
-          "tempModifier": 3
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "wisdom": {
           "name": "wisdom",
-          "value": 15,
-          "tempValue": 15,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "charisma": {
           "name": "charisma",
-          "value": 17,
-          "tempValue": 19,
-          "modifier": 3,
-          "tempModifier": 4
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         }
       },
       "keyAbilityScores": {
@@ -1009,45 +1051,59 @@
       "abilityScores": {
         "strength": {
           "name": "strength",
-          "value": 13,
-          "tempValue": 13,
-          "modifier": 1,
-          "tempModifier": 1
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "dexterity": {
           "name": "dexterity",
-          "value": 18,
-          "tempValue": 18,
-          "modifier": 4,
-          "tempModifier": 4
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "constitution": {
           "name": "constitution",
-          "value": 15,
-          "tempValue": 15,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "intelligence": {
           "name": "intelligence",
-          "value": 17,
-          "tempValue": 17,
-          "modifier": 3,
-          "tempModifier": 3
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "wisdom": {
           "name": "wisdom",
-          "value": 18,
-          "tempValue": 18,
-          "modifier": 4,
-          "tempModifier": 4
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         },
         "charisma": {
           "name": "charisma",
-          "value": 13,
-          "tempValue": 13,
-          "modifier": 1,
-          "tempModifier": 1
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 0
+            }
+          ]
         }
       },
       "keyAbilityScores": {
@@ -1307,45 +1363,79 @@
       "abilityScores": {
         "strength": {
           "name": "strength",
-          "value": 12,
-          "tempValue": 12,
-          "modifier": 1,
-          "tempModifier": 1
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 1
+            }
+          ]
         },
         "dexterity": {
           "name": "dexterity",
-          "value": 18,
-          "tempValue": 18,
-          "modifier": 4,
-          "tempModifier": 4
+          "base": 10,
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 6
+            },
+            {
+              "name": "Racial",
+              "value": 2
+            }
+          ]
         },
         "constitution": {
           "name": "constitution",
-          "value": 14,
-          "tempValue": 14,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 4
+            }
+          ]
         },
         "intelligence": {
           "name": "intelligence",
-          "value": 22,
-          "tempValue": 22,
-          "modifier": 6,
-          "tempModifier": 6
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 8
+            },
+            {
+              "name": "Racial",
+              "value": 2
+            },
+            {
+              "name": "Magic Item",
+              "value": 2
+            }
+          ]
         },
         "wisdom": {
           "name": "wisdom",
-          "value": 10,
-          "tempValue": 10,
-          "modifier": 0,
-          "tempModifier": 0
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 2
+            },
+            {
+              "name": "Racial",
+              "value": -2
+            }
+          ]
         },
         "charisma": {
           "name": "charisma",
-          "value": 14,
-          "tempValue": 14,
-          "modifier": 2,
-          "tempModifier": 2
+          "modifiers": [
+            {
+              "name": "Creation",
+              "value": 6
+            },
+            {
+              "name": "Racial",
+              "value": -2
+            }
+          ]
         }
       },
       "keyAbilityScores": {
@@ -5144,6 +5234,39 @@
       "name": "Harmless",
       "description": "The spell is usually beneficial, not harmful, but a targeted creature can attempt a saving throw if it desires.",
       "_type": "Resolve"
+    }
+  ],
+  "ability-scores": [
+    {
+      "_id": "strength",
+      "name": "Strength",
+      "snippet": "Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.",
+      "description": "#### Strength Checks \n A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. The Athletics skill reflects aptitude in certain kinds of Strength checks. \n #### Athletics \n Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities: \n * You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off. \n * You try to jump an unusually long distance or pull off a stunt midjump. \n * You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
+    },
+    {
+      "_id": "charisma",
+      "name": "Charisma",
+      "snippet": "Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality."
+    },
+    {
+      "_id": "dexterity",
+      "name": "Dexterity",
+      "snippet": "Dexterity measures agility, reflexes, and balance."
+    },
+    {
+      "_id": "constitution",
+      "name": "Constitution",
+      "snippet": "Constitution measures health, stamina, and vital force."
+    },
+    {
+      "_id": "wisdom",
+      "name": "Wisdom",
+      "snippet": "Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition."
+    },
+    {
+      "_id": "intelligence",
+      "name": "Intelligence",
+      "snippet": "Intelligence measures mental acuity, accuracy of recall, and the ability to reason."
     }
   ]
 }
