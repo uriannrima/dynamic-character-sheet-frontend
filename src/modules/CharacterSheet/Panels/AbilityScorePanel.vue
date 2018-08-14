@@ -97,6 +97,10 @@ export default {
     align-items: center;
     margin-bottom: 10px;
     border-bottom: solid 1px $disable_color;
+
+    i {
+      font-size: 25px;
+    }
   }
 
   &__body {
@@ -108,10 +112,6 @@ export default {
 }
 
 .ability-score {
-  i {
-    font-size: 25px;
-  }
-
   &__title {
     font-size: 18px;
     font-weight: bold;

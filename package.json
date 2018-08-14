@@ -44,6 +44,7 @@
     "vue": "^2.5.16",
     "vue-class-component": "^6.0.0",
     "vue-feathers": "^0.1.0",
+    "vue-form-generator": "^2.2.2",
     "vue-markdown": "^2.2.4",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",

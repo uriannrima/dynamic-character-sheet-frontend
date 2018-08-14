@@ -10,7 +10,7 @@
         <small class="details__body__race">({{race}})</small>
       </span>
       <div class="details__body__classes">
-        <span>{{classes.map(classe => classe.name).join(' / ')}}</span>
+        <span>{{classes.map(classe => classe.name.charAt(0).toUpperCase() + classe.name.slice(1)).join(' / ')}}</span>
       </div>
       <span class="details__body__level">
         <span>{{classes.map(classe => `Level ${classe.level}`).join(' / ')}}</span>

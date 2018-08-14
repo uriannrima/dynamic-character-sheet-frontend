@@ -17,5 +17,6 @@ export default {};
   &__header {
     margin-bottom: 10px;
   }
+  padding-bottom: 55px;
 }
 </style>

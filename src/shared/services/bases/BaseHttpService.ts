@@ -53,7 +53,7 @@ export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
     try {
       const { _id } = model
       var headers = await this.getHeaders()
-      const response = await this.service.post<TModel>(this.url + `/${_id}`, model, { headers });
+      const response = await this.service.put<TModel>(this.url + `/${_id}`, model, { headers });
       return MappingService.getIstanceAs(response.data);
     } catch (error) {
       throw error

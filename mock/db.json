@@ -5240,33 +5240,38 @@
     {
       "_id": "strength",
       "name": "Strength",
-      "snippet": "Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.",
-      "description": "#### Strength Checks \n A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. The Athletics skill reflects aptitude in certain kinds of Strength checks. \n #### Athletics \n Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities: \n * You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off. \n * You try to jump an unusually long distance or pull off a stunt midjump. \n * You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
+      "snippet": "Strength measures your character’s muscle and physical power.",
+      "description": "This ability is especially important for fighters, barbarians, paladins, rangers, and monks because it helps them prevail in combat. Strength also limits the amount of equipment your character can carry.\n\n#### Checks:\n\nYou apply your character’s Strength modifier to:\n\n* Melee attack rolls.\n* Damage rolls when using a melee weapon or a thrown weapon (including a sling). (Exceptions: Off-hand attacks receive only one-half the character’s Strength bonus, while two-handed attacks receive one and a half times the Strength bonus. A Strength penalty, but not a bonus, applies to attacks made with a bow that is not a composite bow.)\n* Climb, Jump, and Swim checks. These are the skills that have Strength as their key ability.\n* Strength checks (for breaking down doors and the like)."
     },
     {
       "_id": "charisma",
       "name": "Charisma",
-      "snippet": "Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality."
+      "snippet": "Charisma measures a character’s force of personality, persuasiveness, personal magnetism, ability to lead, and physical attractiveness.",
+      "description": "This ability represents actual strength of personality, not merely how one is perceived by others in a social setting. Charisma is most important for paladins, sorcerers, and bards. It is also important for clerics, since it affects their ability to turn undead. Every creature has a Charisma score.\n\n#### Checks:\n\nYou apply your character’s Charisma modifier to:\n\n* Bluff, Diplomacy, Disguise, Gather Information, Handle Animal, Intimidate, Perform, and Use Magic Device checks. These are the skills that have Charisma as their key ability.\n* Checks that represent attempts to influence others.\n* Turning checks for clerics and paladins attempting to turn zombies, vampires, and other undead.\n\n#### Casting Spells:\nSorcerers and bards get bonus spells based on their Charisma scores. The minimum Charisma score needed to cast a sorcerer or bard spell is 10 + the spell’s level."
     },
     {
       "_id": "dexterity",
       "name": "Dexterity",
-      "snippet": "Dexterity measures agility, reflexes, and balance."
+      "snippet": "Dexterity measures hand-eye coordination, agility, reflexes, and balance.",
+      "description": "This ability is the most important one for rogues, but it’s also high on the list for characters who typically wear light or medium armor (rangers and barbarians) or no armor at all (monks, wizards, and sorcerers), and for anyone who wants to be a skilled archer.\n\n#### Checks:\n\nYou apply your character’s Dexterity modifier to:\n\n* Ranged attack rolls, including those for attacks made with bows, crossbows, throwing axes, and other ranged weapons.\n* Armor Class (AC), provided that the character can react to the attack.\n* Reflex saving throws, for avoiding fireballs and other attacks that you can escape by moving quickly.\n* Balance, Escape Artist, Hide, Move Silently, Open Lock, Ride, Sleight of Hand, Tumble, and Use Rope checks. These are the skills that have Dexterity as their key ability."
     },
     {
       "_id": "constitution",
       "name": "Constitution",
-      "snippet": "Constitution measures health, stamina, and vital force."
+      "snippet": "Constitution represents your character’s health and stamina.",
+      "description": "A Constitution bonus increases a character’s hit points, so the ability is important for all classes.\n\n#### Checks: \n\nYou apply your character’s Constitution modifier to:\n\n* Each roll of a Hit Die (though a penalty can never drop a result below 1—that is, a character always gains at least 1 hit point each time he or she advances in level).\n* Fortitude saving throws, for resisting poison and similar threats.\n* Concentration checks. Concentration is a skill, important to spellcasters, that has Constitution as its key ability.\n\n#### Special:\nIf a character’s Constitution score changes enough to alter his or her Constitution modifier, the character’s hit points also increase or decrease accordingly."
     },
     {
       "_id": "wisdom",
       "name": "Wisdom",
-      "snippet": "Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition."
+      "snippet": "Wisdom describes a character’s willpower, common sense, perception, and intuition.",
+      "description": "While Intelligence represents one’s ability to analyze information, Wisdom represents being in tune with and aware of one’s surroundings. Wisdom is the most important ability for clerics and druids, and it is also important for paladins and rangers. If you want your character to have acute senses, put a high score in Wisdom. Every creature has a Wisdom score.\n\n#### Checks: \n\nYou apply your character’s Wisdom modifier to:\n\n* Will saving throws (for negating the effect of charm person and other spells).\n* Heal, Listen, Profession, Sense Motive, Spot, and Survival checks. These are the skills that have Wisdom as their key ability.\n\n#### Casting Spells: \n\nClerics, druids, paladins, and rangers get bonus spells based on their Wisdom scores. The minimum Wisdom score needed to cast a cleric, druid, paladin, or ranger spell is 10 + the spell’s level."
     },
     {
       "_id": "intelligence",
       "name": "Intelligence",
-      "snippet": "Intelligence measures mental acuity, accuracy of recall, and the ability to reason."
+      "snippet": "Intelligence determines how well your character learns and reasons. ",
+      "description": "This ability is important for wizards because it affects how many spells they can cast, how hard their spells are to resist, and how powerful their spells can be. It’s also important for any character who wants to have a wide assortment of skills.\n\n\n#### Checks:\n\nYou apply your character’s Intelligence modifier to:\n\n* The number of languages your character knows at the start of the game.\n* The number of skill points gained each level. (But your character always gets at least 1 skill point per level.)\n* Appraise, Craft, Decipher Script, Disable Device, Forgery, Knowledge, Search, and Spellcraft checks. These are the skills that have Intelligence as their key ability.\n\n#### Casting Spells: \n\nA wizard gains bonus spells based on her Intelligence score. The minimum Intelligence score needed to cast a wizard spell is 10 + the spell’s level.\n\n#### Common Intelligence:\n\nAn animal has an Intelligence score of 1 or 2. A creature of humanlike intelligence has a score of at least 3."
     }
   ]
 }

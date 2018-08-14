@@ -10,6 +10,7 @@ import 'babel-polyfill'
 import PortalVue from 'portal-vue'
 import Component from 'vue-class-component'
 import VueMarkdown from 'vue-markdown';
+import VueFormGenerator from 'vue-form-generator';
 
 Component.registerHooks([
   'beforeRouteEnter',
@@ -26,3 +27,4 @@ Vue.use(VueTouch, { name: 'v-touch' })
 Vue.use(VuejsDialog)
 Vue.use(PortalVue)
 Vue.component('v-md', VueMarkdown)
+Vue.use(VueFormGenerator);
