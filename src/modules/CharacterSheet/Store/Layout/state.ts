@@ -1,3 +1,18 @@
+import { IMap } from "@/domain/interfaces/IMap";
+import { AbilityScore, SavingThrow, Skill } from "@/domain";
+
+export class SheetBlock {
+  _id: string = '';
+  name: string = '';
+  snippet: string = '';
+  description?: string;
+}
+
+export class Sheet {
+  abilityScore?: IMap<AbilityScore>;
+  savingThrow?: IMap<SavingThrow>;
+  miscelaneous?: IMap<SheetBlock>;
+}
 
 export class LayoutState {
   isLoading: boolean = false;
@@ -15,4 +30,5 @@ export class LayoutState {
   ];
   selectedSection: string = this.sections[0];
   portalName: string = '';
+  sheet: Sheet = {}
 }

@@ -6,7 +6,7 @@
            v-for="savingThrow in savingThrows"
            :key="savingThrow.name">
         <form>
-          <vue-form-generator :schema="savingThrowSchema"
+          <vue-form-generator :schema="schema"
                               :model="savingThrow">
           </vue-form-generator>
           <div class="edit-panel__controls">
@@ -22,7 +22,7 @@
            v-for="abilityScore in abilityScores"
            :key="abilityScore.name">
         <form>
-          <vue-form-generator :schema="abilityScoreSchema"
+          <vue-form-generator :schema="schema"
                               :model="abilityScore">
           </vue-form-generator>
           <div class="edit-panel__description-preview">
@@ -36,18 +36,38 @@
         </form>
       </div>
     </div>
+    <div class="miscelaneous">
+      <h4>Miscelaneous</h4>
+      <div class="edit-panel"
+           v-for="misc in miscelaneous"
+           :key="misc.name">
+        <form>
+          <vue-form-generator :schema="schema"
+                              :model="misc">
+          </vue-form-generator>
+          <div class="edit-panel__description-preview">
+            <label>Description Preview:</label>
+            <v-md :source="misc.description"></v-md>
+          </div>
+          <div class="edit-panel__controls">
+            <button class="btn btn-success"
+                    @click.prevent="saveMiscelaneous(misc)">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import AbilityScoresService from '@services/ability-scores.service';
-import SavingThrowsService from '@services/saving-throws.service';
+import SheetService from '@services/sheet.service';
 
 export default {
   data: () => ({
     abilityScores: {},
     savingThrows: {},
-    abilityScoreSchema: {
+    miscelaneous: {},
+    schema: {
       fields: [
         {
           type: 'input',
@@ -67,36 +87,23 @@ export default {
           rows: 12
         }
       ]
-    },
-    savingThrowSchema: {
-      fields: [
-        {
-          type: 'input',
-          inputType: 'text',
-          label: 'Name',
-          model: 'name'
-        },
-        {
-          type: 'textArea',
-          label: 'Snippet',
-          model: 'snippet',
-          rows: 6
-        }
-      ]
     }
   }),
   async created() {
-    const abilityScores = await AbilityScoresService.getAll();
-    const savingThrows = await SavingThrowsService.getAll();
-    this.abilityScores = abilityScores;
-    this.savingThrows = savingThrows;
+    const descriptions = await SheetService.getDescriptions();
+    this.abilityScores = descriptions.abilityScores;
+    this.savingThrows = descriptions.savingThrows;
+    this.miscelaneous = descriptions.miscelaneous;
   },
   methods: {
     async saveAbilityScore(abilityScore) {
-      await AbilityScoresService.saveOrUpdate(abilityScore);
+      await SheetService.updateDescription('ability-scores', abilityScore);
     },
     async saveSavingThrow(savingThrow) {
-      await SavingThrowsService.saveOrUpdate(savingThrow);
+      await SheetService.updateDescription('saving-throws', savingThrow);
+    },
+    async saveMiscelaneous(miscelaneous) {
+      await SheetService.updateDescription('miscelaneous', miscelaneous);
     }
   }
 };

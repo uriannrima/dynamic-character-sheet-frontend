@@ -5245,5 +5245,19 @@
       "name": "Will",
       "snippet": "These saves reflect your resistance to mental influence as well as many magical effects. \n\nApply your Wisdom modifier to your Will saving throws."
     }
+  ],
+  "miscelaneous": [
+    {
+      "_id": "initiative",
+      "name": "Initiative",
+      "snippet": "Every round, each combatant gets to do something. The combatants' initiative checks, from highest to lowest, determine the order in which they act, from first to last.",
+      "description": "#### Initiative Checks\nAt the start of a battle, each combatant makes a single initiative check. An initiative check is a Dexterity check. Each character applies his or her Dexterity modifier to the roll, and anyone with the Improved Initiative feat gets an additional +4 bonus on the check. The GM finds out what order characters are acting in, counting down from highest result to lowest, and each character acts in turn. On all following rounds, the characters act in the same order (unless a character takes an action that results in his or her initiative changing; see Special Initiative Actions). If two or more combatants have the same initiative check result, the combatants who are tied go in order of total initiative modifier (including Dexterity modifier and Improved Initiative bonus, if applicable). If there is still a tie, roll a die.\n\n*Flat-Footed*: At the start of a battle, before the character has had a chance to act (specifically, before the character's first turn in the initiative order), the character is flat-footed. A character can't use his or her Dexterity bonus to Defense or make attacks of opportunity while flat-footed.\n\n#### Joining a Battle\nIf characters enter a battle after it has begun, they roll initiative at that time and act whenever their turn comes up in the existing order."
+    },
+    {
+      "_id": "speed",
+      "name": "Speed",
+      "snippet": "Your speed tells you how far you can move in a round and still do something, such as attack or cast a spell. Your speed depends mostly on your race and what armor you’re wearing.",
+      "description": "Dwarves, gnomes, and halflings have a speed of 20 feet (4 squares), or 15 feet (3 squares) when wearing medium or heavy armor (except for dwarves, who move 20 feet in any armor).\n\nHumans, elves, half-elves, and half-orcs have a speed of 30 feet (6 squares), or 20 feet (4 squares) in medium or heavy armor.\n\nIf you use two move actions in a round (sometimes called a “double move” action), you can move up to double your speed. If you spend the entire round to run all out, you can move up to quadruple your speed (or triple if you are in heavy armor)."
+    }
   ]
 }
