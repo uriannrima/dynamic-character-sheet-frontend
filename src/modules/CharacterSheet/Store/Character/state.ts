@@ -1,5 +1,5 @@
-import { Character } from '@/domain'
-import { KeyAbilityType } from '@/domain/enums/key-ability-type'
+import { Character } from '@domain'
+import { KeyAbilityType } from '@domain/enums/key-ability-type'
 
 export class KeyAbilityScores {
   [check: string]: KeyAbilityType

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ResumeCards } from 'shared/components/ResumeCards';
+import { ResumeCards } from '@shared/components/ResumeCards';
 import SavingThrow from './SavingThrow';
 
 export default {

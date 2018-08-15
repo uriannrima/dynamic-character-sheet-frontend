@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'store/modules/auth';
+import { mapGetters, mapActions } from '@store/modules/auth';
 
 export default {
   data() {

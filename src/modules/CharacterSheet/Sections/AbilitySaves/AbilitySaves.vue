@@ -5,7 +5,7 @@
     <saving-throws :saving-throws="savingThrows"
                    :ability-scores="abilityScores"></saving-throws>
     <miscelaneous></miscelaneous>
-    <portal to="slideout-portal">
+    <portal :to="portalName">
       <ability-score-panel v-if="selectedAbilityScore !== null"
                            :ability-score="selectedAbilityScore"></ability-score-panel>
     </portal>
@@ -13,16 +13,17 @@
 </template>
 
 <script>
-import SheetSection from 'shared/components/SheetSection';
+import SheetSection from '@shared/components/SheetSection';
 
 import { AbilityScores } from './AbilityScores';
 import { Miscelaneous } from './Miscelaneous';
 import { SavingThrows } from './SavingThrows';
 
-import { mapState } from 'modules/CharacterSheet/Store';
-import { AbilityScorePanel } from 'modules/CharacterSheet/Panels';
+import { mapState } from '@modules/CharacterSheet/Store/Character';
+import { mapMutations as layoutMutations } from '@modules/CharacterSheet/Store/Layout';
+import { AbilityScorePanel } from '@modules/CharacterSheet/Panels';
 
-import AbilityScoreService from 'services/ability-scores.service';
+import AbilityScoreService from '@services/ability-scores.service';
 
 export default {
   components: {
@@ -33,12 +34,14 @@ export default {
     AbilityScorePanel
   },
   data: () => ({
+    portalName: 'ability-score-panel',
     selectedAbilityScore: null
   }),
   computed: {
     ...mapState(['abilityScores', 'savingThrows'])
   },
   methods: {
+    ...layoutMutations(['setPortalName']),
     async openAbilityScorePanel({ abilityScore }) {
       try {
         const score = await AbilityScoreService.getById(abilityScore);
@@ -46,6 +49,7 @@ export default {
         characterScore.snippet = score.snippet;
         characterScore.description = score.description;
         this.selectedAbilityScore = characterScore;
+        this.setPortalName(this.portalName);
         this.$emit('select');
       } catch (error) {
         throw error;

@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import Panel from 'shared/components/PanelComponent';
+import Panel from '@shared/components/PanelComponent';
 
 export default {
   components: { Panel },

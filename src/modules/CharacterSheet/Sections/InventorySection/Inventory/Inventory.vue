@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ResumeCards } from 'shared/components/ResumeCards';
+import { ResumeCards } from '@shared/components/ResumeCards';
 import InventoryItem from './InventoryItem';
 
 export default {

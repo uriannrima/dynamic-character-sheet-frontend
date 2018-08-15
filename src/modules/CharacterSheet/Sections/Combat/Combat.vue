@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import SheetSection from 'shared/components/SheetSection';
+import SheetSection from '@shared/components/SheetSection';
 
 import Offensive from './Offensive';
 import Defensive from './Defensive';
 import SpecialAttributes from './SpecialAttributes';
 import { Attacks } from './Attacks';
 
-import { mapState, mapGetters } from 'modules/CharacterSheet/Store';
+import { mapState, mapGetters } from '@modules/CharacterSheet/Store/Character';
 
 export default {
   components: {

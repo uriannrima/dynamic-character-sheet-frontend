@@ -1,4 +1,4 @@
-import { Character } from 'domain/character'
+import { Character } from '@domain/character'
 import AbstractService from './abstract.service'
 
 console.debug(Character);

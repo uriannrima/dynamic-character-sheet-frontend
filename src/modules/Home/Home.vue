@@ -12,11 +12,11 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { Route, Next } from 'vue-router';
 
-import { Character } from 'domain/character';
-import CharacterService from 'services/character.service';
+import { Character } from '@domain/character';
+import CharacterService from '@services/character.service';
 
 import CharacterCardList from './components/CharacterCardList.vue';
-import LoadingComponent from 'shared/components/LoadingComponent.vue';
+import LoadingComponent from '@shared/components/LoadingComponent.vue';
 
 @Component({ components: { CharacterCardList, LoadingComponent } })
 export default class Home extends Vue {

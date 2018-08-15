@@ -1,5 +1,5 @@
 import AbstractService from './abstract.service'
-import { Skill } from '@/domain'
+import { Skill } from '@domain'
 
 class SkillService extends AbstractService<Skill> {
   constructor() {

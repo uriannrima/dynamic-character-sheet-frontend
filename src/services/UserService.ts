@@ -1,4 +1,4 @@
-import HttpLayer from 'shared/services/layers/HttpLayer'
+import HttpLayer from '@shared/services/layers/HttpLayer'
 
 class UserService extends HttpLayer {
   constructor () {

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import CardinalComponent from 'shared/components/CardinalComponent';
+import CardinalComponent from '@shared/components/CardinalComponent';
 
 import SpellsList from './SpellsList';
 

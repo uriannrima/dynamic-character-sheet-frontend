@@ -1,5 +1,5 @@
-import { IEntity } from '@/domain/interfaces/IEntity';
-import { KeyAbilityType } from '@/domain/enums/key-ability-type';
+import { IEntity } from '@domain/interfaces/IEntity';
+import { KeyAbilityType } from '@domain/enums/key-ability-type';
 
 export enum CastingType {
   NONE = 'None',

@@ -1,5 +1,5 @@
 import { IMap } from './interfaces/IMap'
-import { IEntity } from '@/domain/interfaces/IEntity';
+import { IEntity } from '@domain/interfaces/IEntity';
 
 export class AbilityScoreModifier {
   name: string = '';

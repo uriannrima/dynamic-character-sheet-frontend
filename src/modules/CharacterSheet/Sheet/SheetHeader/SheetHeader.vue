@@ -15,7 +15,7 @@
 import { Details } from './Details';
 import Status from './Status';
 
-import { mapState } from 'modules/CharacterSheet/Store';
+import { mapState } from '@modules/CharacterSheet/Store/Character';
 
 export default {
   components: { 'dcs-details': Details, Status },

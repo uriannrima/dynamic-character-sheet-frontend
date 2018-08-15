@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { GroupComponent } from 'shared/components';
+import { GroupComponent } from '@shared/components';
 
 export default {
   components: { GroupComponent },

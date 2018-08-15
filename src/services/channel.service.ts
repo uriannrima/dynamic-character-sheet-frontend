@@ -1,4 +1,4 @@
-import BaseSocketService from 'shared/services/bases/BaseSocketService'
+import BaseSocketService from '@shared/services/bases/BaseSocketService'
 
 class ChannelService extends BaseSocketService {
   constructor () {

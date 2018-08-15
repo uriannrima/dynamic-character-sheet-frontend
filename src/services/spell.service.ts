@@ -1,5 +1,5 @@
-import { Spell } from 'domain/spell';
-import { CastingTime } from 'domain/enums/casting-time-type';
+import { Spell } from '@domain/spell';
+import { CastingTime } from '@domain/enums/casting-time-type';
 import AbstractService from './abstract.service';
 
 console.debug(Spell);

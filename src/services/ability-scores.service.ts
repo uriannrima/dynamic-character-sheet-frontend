@@ -1,4 +1,4 @@
-import { AbilityScore } from 'domain/ability-score';
+import { AbilityScore } from '@domain/ability-score';
 import AbstractService from './abstract.service'
 
 console.debug(AbilityScore);

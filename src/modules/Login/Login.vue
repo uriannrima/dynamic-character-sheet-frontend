@@ -13,7 +13,7 @@
 <script>
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
-import { mapState, mapActions } from 'store/modules/auth'
+import { mapState, mapActions } from '@store/modules/auth'
 
 export default {
   components: { LoginForm, RegistrationForm },

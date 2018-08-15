@@ -14,23 +14,32 @@
     </sheet>
     <section-menu :open="isSectionMenuOpen"
                   :sections="sections"
-                  @click="toggleSection"
+                  @click="setSelectedSection($event.section); toggleSectionMenu();"
                   @toggle="toggleSectionMenu"></section-menu>
-    <slideout :open.sync="isSidebarOpen"
+    <slideout :open="isSidebarOpen"
+              @update:open="toggleSidebar"
               panel=".sheet">
-      <portal-target name="slideout-portal"></portal-target>
+      <portal-target v-if="portalName"
+                     :name="portalName"></portal-target>
     </slideout>
   </loading-component>
 </template>
 
 <script>
-import VuexComponent from 'shared/mixins/vuex.component';
-import { LoadingComponent, Slideout } from 'shared/components';
+import VuexComponent from '@shared/mixins/vuex.component';
+import { LoadingComponent, Slideout } from '@shared/components';
 import { SectionMenu } from './SectionMenu';
 import * as Sheet from './Sheet';
 import * as Sections from './Sections';
 
-import CharacterModule, { mapActions } from './Store';
+import CharacterModule, {
+  mapActions as characterActions
+} from './Store/Character';
+
+import LayoutModule, {
+  mapState as layoutState,
+  mapMutations as layoutMutations
+} from './Store/Layout';
 
 const delay = async duration =>
   new Promise((resolve, reject) => setTimeout(resolve, duration));
@@ -43,18 +52,29 @@ export default {
     ...Sections,
     Slideout
   },
-  mixins: [VuexComponent('Character', CharacterModule)],
+  mixins: [
+    VuexComponent([
+      {
+        name: 'Character',
+        module: CharacterModule
+      },
+      {
+        name: 'CharacterSheetLayout',
+        module: LayoutModule
+      }
+    ])
+  ],
   async beforeRouteEnter(to, from, next) {
     next(async vm => {
-      vm.isLoading = true;
+      vm.toggleLoading(true);
       await vm.loadSheet(vm.id);
-      vm.isLoading = false;
+      vm.toggleLoading(false);
     });
   },
   async beforeRouteUpdate(to, from, next) {
-    this.isLoading = true;
+    this.toggleLoading(true);
     await this.loadSheet(to.params.id);
-    this.isLoading = false;
+    this.toggleLoading(false);
     next();
   },
   props: {
@@ -62,24 +82,25 @@ export default {
       type: String
     }
   },
-  data: () => ({
-    isLoading: false,
-    isSectionMenuOpen: false,
-    selectedSection: 'ability & saves',
-    sections: [
-      'ability & saves',
-      'skills',
-      'combat',
-      'inventory',
-      'spells',
-      'feats',
-      'special abilities',
-      'languages'
-    ],
-    isSidebarOpen: false
-  }),
+  computed: {
+    ...layoutState([
+      'isLoading',
+      'isSectionMenuOpen',
+      'isSidebarOpen',
+      'sections',
+      'selectedSection',
+      'portalName'
+    ])
+  },
   methods: {
-    ...mapActions(['loadCharacter', 'newCharacter']),
+    ...characterActions(['loadCharacter', 'newCharacter']),
+    ...layoutMutations([
+      'toggleLoading',
+      'toggleSectionMenu',
+      'toggleSidebar',
+      'setPortalName',
+      'setSelectedSection'
+    ]),
     async loadSheet(characterId) {
       return delay(1500).then(() => {
         if (!characterId) {
@@ -88,16 +109,6 @@ export default {
           return this.loadCharacter(characterId);
         }
       });
-    },
-    toggleSectionMenu() {
-      this.isSectionMenuOpen = !this.isSectionMenuOpen;
-    },
-    toggleSection({ section }) {
-      this.selectedSection = section;
-      this.toggleSectionMenu();
-    },
-    toggleSidebar() {
-      this.isSidebarOpen = !this.isSidebarOpen;
     }
   }
 };

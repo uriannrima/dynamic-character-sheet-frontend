@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import AbilityScoresService from 'services/ability-scores.service';
+import AbilityScoresService from '@services/ability-scores.service';
 
 export default {
   data: () => ({

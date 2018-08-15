@@ -1,7 +1,7 @@
 import * as Modules from './index'
 import { IMap } from './interfaces/IMap'
 import { KeyAbilityType } from './enums/key-ability-type'
-import { IEntity } from '@/domain/interfaces/IEntity'
+import { IEntity } from '@domain/interfaces/IEntity'
 
 export class Character implements IEntity {
   _id: string = '';

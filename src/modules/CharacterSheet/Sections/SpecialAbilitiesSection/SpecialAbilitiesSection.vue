@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import SheetSection from 'shared/components/SheetSection';
+import SheetSection from '@shared/components/SheetSection';
 
 import SpecialAbilities from './SpecialAbilities';
 
-import { mapState } from 'modules/CharacterSheet/Store';
+import { mapState } from '@modules/CharacterSheet/Store/Character';
 
 export default {
   components: { SheetSection, SpecialAbilities },

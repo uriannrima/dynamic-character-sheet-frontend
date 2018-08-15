@@ -24,28 +24,52 @@
       "@/*": [
         "src/*"
       ],
-      "services/*": [
+      "@services": [
+        "src/services"
+      ],
+      "@services/*": [
         "src/services/*"
       ],
-      "shared/*": [
+      "@shared": [
+        "src/shared"
+      ],
+      "@shared/*": [
         "src/shared/*"
       ],
-      "feathers/*": [
+      "@feathers": [
+        "src/feathers"
+      ],
+      "@feathers/*": [
         "src/feathers/*"
       ],
-      "domain/*": [
+      "@domain": [
+        "src/domain"
+      ],
+      "@domain/*": [
         "src/domain/*"
       ],
-      "router/*": [
+      "@router": [
+        "src/router"
+      ],
+      "@router/*": [
         "src/router/*"
       ],
-      "modules/*": [
+      "@modules": [
+        "src/modules"
+      ],
+      "@modules/*": [
         "src/modules/*"
       ],
-      "store/*": [
+      "@store": [
+        "src/store"
+      ],
+      "@store/*": [
         "src/store/*"
       ],
-      "utils/*": [
+      "@utils": [
+        "src/utils"
+      ],
+      "@utils/*": [
         "src/utils/*"
       ]
     }

@@ -12,7 +12,7 @@
 import Initiative from './Initiative';
 import Speed from './Speed';
 
-import { mapState, mapGetters } from 'modules/CharacterSheet/Store';
+import { mapState, mapGetters } from '@modules/CharacterSheet/Store/Character';
 
 export default {
   components: { Initiative, Speed },

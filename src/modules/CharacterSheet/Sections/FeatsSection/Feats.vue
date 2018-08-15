@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import GroupComponent from 'shared/components/GroupComponent';
+import GroupComponent from '@shared/components/GroupComponent';
 
 export default {
   components: { GroupComponent },

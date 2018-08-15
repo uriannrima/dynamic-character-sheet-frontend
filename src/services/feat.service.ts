@@ -1,4 +1,4 @@
-import { Feat } from 'domain/feat'
+import { Feat } from '@domain/feat'
 import AbstractService from './abstract.service'
 
 class FeatService extends AbstractService<Feat> {

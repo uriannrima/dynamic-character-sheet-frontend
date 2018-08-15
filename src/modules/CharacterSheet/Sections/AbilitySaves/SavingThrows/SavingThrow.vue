@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { ResumeCard } from 'shared/components/ResumeCards';
+import { ResumeCard } from '@shared/components/ResumeCards';
 
 export default {
   components: { ResumeCard },

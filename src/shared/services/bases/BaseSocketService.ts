@@ -1,5 +1,5 @@
 import SocketLayer from '../layers/SocketLayer'
-import { IEntity } from '@/domain/interfaces/IEntity'
+import { IEntity } from '@domain/interfaces/IEntity'
 import { Paginated } from '@feathersjs/feathers'
 import { MappingService, IConstructor } from '@/services/MappingService';
 

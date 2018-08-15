@@ -1,4 +1,4 @@
-import { Language } from 'domain/language'
+import { Language } from '@domain/language'
 import AbstractService from './abstract.service'
 
 class LanguageService extends AbstractService<Language> {
