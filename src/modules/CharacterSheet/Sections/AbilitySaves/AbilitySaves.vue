@@ -3,11 +3,18 @@
     <ability-scores :ability-scores="abilityScores"
                     @select="openAbilityScorePanel"></ability-scores>
     <saving-throws :saving-throws="savingThrows"
-                   :ability-scores="abilityScores"></saving-throws>
+                   :ability-scores="abilityScores"
+                   @select="openSavingThrowPanel"></saving-throws>
     <miscelaneous></miscelaneous>
-    <portal :to="portalName">
+    <portal :to="portals.abilityScore">
       <ability-score-panel v-if="selectedAbilityScore !== null"
                            :ability-score="selectedAbilityScore"></ability-score-panel>
+    </portal>
+    <portal :to="portals.savingThrow">
+      <saving-throw-panel v-if="selectedSavingThrow !== null"
+                          :saving-throw="selectedSavingThrow"
+                          :key-ability-score="abilityScores[selectedSavingThrow.keyAbility]">
+      </saving-throw-panel>
     </portal>
   </sheet-section>
 </template>
@@ -21,9 +28,13 @@ import { SavingThrows } from './SavingThrows';
 
 import { mapState } from '@modules/CharacterSheet/Store/Character';
 import { mapMutations as layoutMutations } from '@modules/CharacterSheet/Store/Layout';
-import { AbilityScorePanel } from '@modules/CharacterSheet/Panels';
+import {
+  AbilityScorePanel,
+  SavingThrowPanel
+} from '@modules/CharacterSheet/Panels';
 
 import AbilityScoreService from '@services/ability-scores.service';
+import SavingThrowsService from '@services/saving-throws.service';
 
 export default {
   components: {
@@ -31,11 +42,16 @@ export default {
     AbilityScores,
     Miscelaneous,
     SavingThrows,
-    AbilityScorePanel
+    AbilityScorePanel,
+    SavingThrowPanel
   },
   data: () => ({
-    portalName: 'ability-score-panel',
-    selectedAbilityScore: null
+    portals: {
+      abilityScore: 'ability-score-panel',
+      savingThrow: 'saving-throw-panel'
+    },
+    selectedAbilityScore: null,
+    selectedSavingThrow: null
   }),
   computed: {
     ...mapState(['abilityScores', 'savingThrows'])
@@ -49,7 +65,19 @@ export default {
         characterScore.snippet = score.snippet;
         characterScore.description = score.description;
         this.selectedAbilityScore = characterScore;
-        this.setPortalName(this.portalName);
+        this.setPortalName(this.portals.abilityScore);
+        this.$emit('select');
+      } catch (error) {
+        throw error;
+      }
+    },
+    async openSavingThrowPanel({ savingThrow }) {
+      try {
+        const save = await SavingThrowsService.getById(savingThrow);
+        const characterSave = this.savingThrows[savingThrow];
+        characterSave.snippet = save.snippet;
+        this.selectedSavingThrow = characterSave;
+        this.setPortalName(this.portals.savingThrow);
         this.$emit('select');
       } catch (error) {
         throw error;

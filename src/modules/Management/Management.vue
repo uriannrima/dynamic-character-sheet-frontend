@@ -1,19 +1,35 @@
 <template>
   <div class="management">
+    <div class="saving-throws">
+      <h4>Saving Throws</h4>
+      <div class="edit-panel"
+           v-for="savingThrow in savingThrows"
+           :key="savingThrow.name">
+        <form>
+          <vue-form-generator :schema="savingThrowSchema"
+                              :model="savingThrow">
+          </vue-form-generator>
+          <div class="edit-panel__controls">
+            <button class="btn btn-success"
+                    @click.prevent="saveSavingThrow(savingThrow)">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="ability-scores">
-      <h1>Ability Scores</h1>
-      <div class="ability-score"
+      <h4>Ability Scores</h4>
+      <div class="edit-panel"
            v-for="abilityScore in abilityScores"
            :key="abilityScore.name">
         <form>
           <vue-form-generator :schema="abilityScoreSchema"
                               :model="abilityScore">
           </vue-form-generator>
-          <div class="ability-score__description-preview">
+          <div class="edit-panel__description-preview">
             <label>Description Preview:</label>
             <v-md :source="abilityScore.description"></v-md>
           </div>
-          <div class="ability-score__controls">
+          <div class="edit-panel__controls">
             <button class="btn btn-success"
                     @click.prevent="saveAbilityScore(abilityScore)">Save</button>
           </div>
@@ -25,20 +41,14 @@
 
 <script>
 import AbilityScoresService from '@services/ability-scores.service';
+import SavingThrowsService from '@services/saving-throws.service';
 
 export default {
   data: () => ({
     abilityScores: {},
+    savingThrows: {},
     abilityScoreSchema: {
       fields: [
-        // {
-        //   type: 'input',
-        //   inputType: 'text',
-        //   label: 'Id',
-        //   model: '_id',
-        //   readonly: true,
-        //   disabled: true
-        // },
         {
           type: 'input',
           inputType: 'text',
@@ -57,15 +67,36 @@ export default {
           rows: 12
         }
       ]
+    },
+    savingThrowSchema: {
+      fields: [
+        {
+          type: 'input',
+          inputType: 'text',
+          label: 'Name',
+          model: 'name'
+        },
+        {
+          type: 'textArea',
+          label: 'Snippet',
+          model: 'snippet',
+          rows: 6
+        }
+      ]
     }
   }),
   async created() {
     const abilityScores = await AbilityScoresService.getAll();
+    const savingThrows = await SavingThrowsService.getAll();
     this.abilityScores = abilityScores;
+    this.savingThrows = savingThrows;
   },
   methods: {
     async saveAbilityScore(abilityScore) {
       await AbilityScoresService.saveOrUpdate(abilityScore);
+    },
+    async saveSavingThrow(savingThrow) {
+      await SavingThrowsService.saveOrUpdate(savingThrow);
     }
   }
 };
@@ -77,7 +108,7 @@ export default {
 .management {
 }
 
-.ability-score {
+.edit-panel {
   border: solid 1px black;
   margin-bottom: 14px;
   &__description-preview {

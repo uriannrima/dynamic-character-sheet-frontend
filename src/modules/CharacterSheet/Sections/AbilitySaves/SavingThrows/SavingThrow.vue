@@ -1,10 +1,13 @@
 <template>
-  <resume-card thinner>
-    <span slot="header">{{savingThrow.name}}</span>
+  <resume-card thinner
+               @click="select"
+               :attention="attention">
+    <span slot="header">{{name}}</span>
     <template>
       <span>
-        {{total| signed }}
+        {{ total + keyAbilityScore.modifier | signed }}
       </span>
+      <small>({{total}})</small>
     </template>
   </resume-card>
 </template>
@@ -15,18 +18,31 @@ import { ResumeCard } from '@shared/components/ResumeCards';
 export default {
   components: { ResumeCard },
   props: {
-    savingThrow: {
-      type: Object,
+    name: {
+      type: String,
+      required: true
+    },
+    total: {
+      type: Number,
       required: true
     },
     keyAbilityScore: {
       type: Object,
       required: true
+    },
+    modifiers: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {
-    total() {
-      return this.savingThrow.total + this.keyAbilityScore.modifier;
+    attention() {
+      return this.modifiers.filter(modifier => modifier.temporary).length >= 1;
+    }
+  },
+  methods: {
+    select($event) {
+      this.$emit('select', Object.assign($event, { savingThrow: this.name }));
     }
   }
 };

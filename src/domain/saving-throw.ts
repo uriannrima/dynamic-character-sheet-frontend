@@ -1,29 +1,34 @@
 import { KeyAbilityType } from './enums/key-ability-type'
+import { IEntity } from '@/domain/interfaces/IEntity';
+import { IModified, Modifier } from '@/domain/interfaces/IModified';
 
-export class SavingThrow {
+export class SavingThrow implements IEntity<string>, IModified {
+  _id: string = '';
+  _type: string = 'SavingThrow';
+
   name: string = '';
   keyAbility: KeyAbilityType = KeyAbilityType.NONE;
   base: number = 0;
-  magicModifier: number = 0;
-  miscModifier: number = 0;
-  tempModifier: number = 0;
 
-  constructor(model?: SavingThrow | {
-  name?: string, keyAbility?: KeyAbilityType, base?: number,
-  magicModifier?: number, miscModifier?: number, tempModifier?: number
-  }) {
+  modifiers: Modifier[] = [];
+
+  constructor(model?: SavingThrow | { name?: string, keyAbility?: KeyAbilityType, base?: number, modifiers?: Modifier[] }) {
     if (model) {
       if (model.name) this.name = model.name;
       if (model.keyAbility) this.keyAbility = model.keyAbility;
       if (model.base) this.base = model.base;
-      if (model.magicModifier) this.magicModifier = model.magicModifier;
-      if (model.miscModifier) this.miscModifier = model.miscModifier;
-      if (model.tempModifier) this.tempModifier = model.tempModifier;
+      if (model.modifiers !== undefined) this.modifiers = model.modifiers;
     }
   }
 
   get total() {
-    return this.base + this.magicModifier + this.miscModifier + this.tempModifier;
+    return this.modifiers.reduce((accumulator, modifier) => {
+      return accumulator + modifier.value;
+    }, this.base);
+  }
+
+  get hasModifiers() {
+    return this.modifiers && this.modifiers.length >= 1;
   }
 }
 

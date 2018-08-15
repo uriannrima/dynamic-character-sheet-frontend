@@ -2,6 +2,9 @@
   <div class="modifiers-manager">
     <modifier v-if="base"
               :modifier="{ name:'Base', value: base }"></modifier>
+    <modifier v-if="abilityModifier"
+              :modifier="{ name:'Ability Modifier', value: abilityModifier }"
+              colorize></modifier>
     <modifier v-for="(modifier, $index) in modifiers"
               :key="$index"
               :modifier="modifier"
@@ -21,6 +24,10 @@ export default {
   components: { Modifier, AddModifier },
   props: {
     base: {
+      type: Number,
+      default: 0
+    },
+    abilityModifier: {
       type: Number,
       default: 0
     },

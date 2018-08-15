@@ -4,8 +4,11 @@
     <template slot-scope="{ list: savingThrows }">
       <saving-throw v-for="savingThrow in savingThrows"
                     :key="savingThrow.name"
-                    :saving-throw="savingThrow"
-                    :keyAbilityScore="abilityScores[savingThrow.keyAbility]">
+                    :name="savingThrow.name"
+                    :total="savingThrow.total"
+                    :key-ability-score="abilityScores[savingThrow.keyAbility]"
+                    :modifiers="savingThrow.modifiers"
+                    v-on="$listeners">
       </saving-throw>
     </template>
   </resume-cards>

@@ -161,28 +161,19 @@
           "name": "fortitude",
           "keyAbility": "constitution",
           "base": 7,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "reflex": {
           "name": "reflex",
           "keyAbility": "dexterity",
           "base": 1,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "will": {
           "name": "will",
           "keyAbility": "wisdom",
           "base": 1,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         }
       },
       "conditionModifiers": "",
@@ -435,28 +426,19 @@
           "name": "fortitude",
           "keyAbility": "constitution",
           "base": 7,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 2
+          "modifiers": []
         },
         "reflex": {
           "name": "reflex",
           "keyAbility": "dexterity",
           "base": 1,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "will": {
           "name": "will",
           "keyAbility": "wisdom",
           "base": 1,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         }
       },
       "conditionModifiers": "",
@@ -737,28 +719,19 @@
           "name": "fortitude",
           "keyAbility": "constitution",
           "base": 2,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "reflex": {
           "name": "reflex",
           "keyAbility": "dexterity",
           "base": 2,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "will": {
           "name": "will",
           "keyAbility": "wisdom",
           "base": 5,
-          "abilityModifier": 0,
-          "magicModifier": 0,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         }
       },
       "conditionModifiers": "",
@@ -1174,28 +1147,19 @@
           "name": "fortitude",
           "keyAbility": "constitution",
           "base": 2,
-          "abilityModifier": 0,
-          "magicModifier": 1,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "reflex": {
           "name": "reflex",
           "keyAbility": "dexterity",
           "base": 5,
-          "abilityModifier": 0,
-          "magicModifier": 1,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "will": {
           "name": "will",
           "keyAbility": "wisdom",
           "base": 2,
-          "abilityModifier": 0,
-          "magicModifier": 1,
-          "miscModifier": 2,
-          "tempModifier": 0
+          "modifiers": []
         }
       },
       "conditionModifiers": "",
@@ -1506,28 +1470,19 @@
           "name": "fortitude",
           "keyAbility": "constitution",
           "base": 2,
-          "abilityModifier": 0,
-          "magicModifier": 2,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "reflex": {
           "name": "reflex",
           "keyAbility": "dexterity",
           "base": 2,
-          "abilityModifier": 0,
-          "magicModifier": 2,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         },
         "will": {
           "name": "will",
           "keyAbility": "wisdom",
           "base": 6,
-          "abilityModifier": 0,
-          "magicModifier": 2,
-          "miscModifier": 0,
-          "tempModifier": 0
+          "modifiers": []
         }
       },
       "conditionModifiers": "",
@@ -5272,6 +5227,23 @@
       "name": "Intelligence",
       "snippet": "Intelligence determines how well your character learns and reasons. ",
       "description": "This ability is important for wizards because it affects how many spells they can cast, how hard their spells are to resist, and how powerful their spells can be. It’s also important for any character who wants to have a wide assortment of skills.\n\n\n#### Checks:\n\nYou apply your character’s Intelligence modifier to:\n\n* The number of languages your character knows at the start of the game.\n* The number of skill points gained each level. (But your character always gets at least 1 skill point per level.)\n* Appraise, Craft, Decipher Script, Disable Device, Forgery, Knowledge, Search, and Spellcraft checks. These are the skills that have Intelligence as their key ability.\n\n#### Casting Spells: \n\nA wizard gains bonus spells based on her Intelligence score. The minimum Intelligence score needed to cast a wizard spell is 10 + the spell’s level.\n\n#### Common Intelligence:\n\nAn animal has an Intelligence score of 1 or 2. A creature of humanlike intelligence has a score of at least 3."
+    }
+  ],
+  "saving-throws": [
+    {
+      "_id": "fortitude",
+      "name": "Fortitude",
+      "snippet": "These saves measure your ability to stand up to physical punishment or attacks against your vitality and health.\n\nApply your Constitution modifier to your Fortitude saving throws."
+    },
+    {
+      "_id": "reflex",
+      "name": "Reflex",
+      "snippet": "These saves test your ability to dodge area attacks.\n\nApply your Dexterity modifier to your Reflex saving throws."
+    },
+    {
+      "_id": "will",
+      "name": "Will",
+      "snippet": "These saves reflect your resistance to mental influence as well as many magical effects. \n\nApply your Wisdom modifier to your Will saving throws."
     }
   ]
 }

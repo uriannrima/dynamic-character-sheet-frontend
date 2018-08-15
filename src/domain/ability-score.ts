@@ -1,19 +1,14 @@
 import { IMap } from './interfaces/IMap'
 import { IEntity } from '@domain/interfaces/IEntity';
+import { IModified, Modifier } from '@/domain/interfaces/IModified';
 
-export class AbilityScoreModifier {
-  name: string = '';
-  value: number = 0;
-  temporary: boolean = false;
-}
-
-export class AbilityScore implements IEntity<string> {
+export class AbilityScore implements IEntity<string>, IModified {
   _type: string = 'AbilityScore';
   name: string = '';
   base: number = 10;
-  modifiers: AbilityScoreModifier[] = [];
+  modifiers: Modifier[] = [];
 
-  constructor(model?: AbilityScore | { name: string, base?: number, modifiers?: AbilityScoreModifier[] }) {
+  constructor(model?: AbilityScore | { name: string, base?: number, modifiers?: Modifier[] }) {
     if (model) {
       this.name = model.name;
       if (model.base !== undefined) this.base = model.base;
@@ -37,6 +32,10 @@ export class AbilityScore implements IEntity<string> {
 
   get modifierAbs() {
     return Math.abs(this.modifier);
+  }
+
+  get hasModifiers() {
+    return this.modifiers && this.modifiers.length >= 1;
   }
 };
 
