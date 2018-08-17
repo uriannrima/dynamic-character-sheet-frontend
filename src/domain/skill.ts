@@ -1,6 +1,6 @@
-import { ISubValued } from './interfaces/ISubValued'
-import { IEntity } from './interfaces/IEntity'
-import { KeyAbilityType } from './enums/key-ability-type'
+import { ISubValued } from '@/domain/interfaces/ISubValued'
+import { IEntity } from '@/domain/interfaces/IEntity'
+import { KeyAbilityType } from '@/domain/enums/key-ability-type'
 import UUID from '@/utils/uuid';
 
 export abstract class AbstractSkill implements IEntity {

@@ -1,6 +1,6 @@
-import HttpLayer from '../layers/HttpLayer'
-import { LoginPayload, RefreshPayload } from './login-payload'
-import { UserSession } from './UserSession';
+import HttpLayer from '@/shared/services/layers/HttpLayer'
+import { LoginPayload, RefreshPayload } from '@/shared/services/auth/login-payload'
+import { UserSession } from '@/shared/services/auth/UserSession';
 
 export default class HttpAuth extends HttpLayer {
   constructor() {

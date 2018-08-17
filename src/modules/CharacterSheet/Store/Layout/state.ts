@@ -1,5 +1,5 @@
-import { IMap } from "@/domain/interfaces/IMap";
-import { AbilityScore, SavingThrow, Skill } from "@/domain";
+import { IMap } from '@/domain/interfaces/IMap';
+import { AbilityScore, SavingThrow } from '@/domain';
 
 export class SheetBlock {
   _id: string = '';

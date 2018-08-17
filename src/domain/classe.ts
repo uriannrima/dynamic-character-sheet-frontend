@@ -1,4 +1,4 @@
-import { CasterKeyAbilityType } from './enums/caster-key-ability-type'
+import { CasterKeyAbilityType } from '@/domain/enums/caster-key-ability-type'
 
 export class Classe {
   name?: string = '';

@@ -1,11 +1,11 @@
 import { MutationTree } from 'vuex'
-import { Mutations } from './mappings'
-import { CharacterState } from './state'
-import { IMap } from '@domain/interfaces/IMap'
+import { Mutations } from '@/modules/CharacterSheet/Store/Character/mappings'
+import { CharacterState } from '@/modules/CharacterSheet/Store/Character/state'
+import { IMap } from '@/domain/interfaces/IMap'
 
-import * as Modules from '@domain'
-import ObjectUtils from '@utils/object.utils'
-import { KeyAbilityType } from '@domain/enums/key-ability-type'
+import * as Modules from '@/domain'
+import ObjectUtils from '@/utils/object.utils'
+import { KeyAbilityType } from '@/domain/enums/key-ability-type'
 
 export const mutations: MutationTree<CharacterState> = {
   [Mutations.newCharacter](state, newState: CharacterState = new CharacterState()) {

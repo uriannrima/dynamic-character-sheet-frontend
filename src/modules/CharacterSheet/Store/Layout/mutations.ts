@@ -1,6 +1,6 @@
 import { MutationTree } from 'vuex'
-import { Mutations } from './mappings'
-import { LayoutState } from './state'
+import { Mutations } from '@/modules/CharacterSheet/Store/Layout/mappings'
+import { LayoutState } from '@/modules/CharacterSheet/Store/Layout/state'
 
 export const mutations: MutationTree<LayoutState> = {
   [Mutations.toggleLoading](state, isLoading?: boolean) {

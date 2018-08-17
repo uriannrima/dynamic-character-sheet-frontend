@@ -1,6 +1,6 @@
-import SocketLayer from '../layers/SocketLayer'
-import { LoginPayload, RefreshPayload } from './login-payload'
-import { UserSession } from './UserSession';
+import SocketLayer from '@/shared/services/layers/SocketLayer'
+import { LoginPayload, RefreshPayload } from '@/shared/services/auth/login-payload'
+import { UserSession } from '@/shared/services/auth/UserSession';
 
 export default class SocketAuth extends SocketLayer {
   constructor() {

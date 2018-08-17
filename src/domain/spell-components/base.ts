@@ -1,4 +1,4 @@
-import { IRevivable } from '@domain/interfaces/IEntity';
+import { IRevivable } from '@/domain/interfaces/IEntity';
 
 export abstract class Base implements IRevivable {
   name: string = '';

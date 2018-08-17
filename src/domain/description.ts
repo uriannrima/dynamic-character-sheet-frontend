@@ -1,5 +1,5 @@
-import Alignment from './alignment'
-import { GenderType } from './enums/gender-type'
+import Alignment from '@/domain/alignment'
+import { GenderType } from '@/domain/enums/gender-type'
 
 export class Description {
   name: string = '';

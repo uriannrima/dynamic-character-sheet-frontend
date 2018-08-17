@@ -1,4 +1,5 @@
 // CSS Imports.
+import 'normalize.css';
 import 'public/styles/main.scss';
 import 'public/styles/slideout.scss';
 import 'public/styles/glyphicon.css'

@@ -1,6 +1,6 @@
-import { IEntity } from './interfaces/IEntity'
-import { ISubValued } from './interfaces/ISubValued'
-import { FeatType } from './enums/feat-type';
+import { IEntity } from '@/domain/interfaces/IEntity'
+import { ISubValued } from '@/domain/interfaces/ISubValued'
+import { FeatType } from '@/domain/enums/feat-type';
 
 export class Feat implements IEntity, ISubValued<string> {
   readonly _id: string = '';

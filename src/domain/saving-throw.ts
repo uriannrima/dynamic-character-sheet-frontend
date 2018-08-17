@@ -1,4 +1,4 @@
-import { KeyAbilityType } from './enums/key-ability-type'
+import { KeyAbilityType } from '@/domain/enums/key-ability-type'
 import { IEntity } from '@/domain/interfaces/IEntity';
 import { IModified, Modifier } from '@/domain/interfaces/IModified';
 

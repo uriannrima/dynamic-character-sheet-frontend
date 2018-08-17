@@ -1,8 +1,8 @@
-export { AbilitySaves } from './AbilitySaves';
-export { Combat } from './Combat';
-export { FeatsSection } from './FeatsSection';
-export { InventorySection } from './InventorySection';
-export { LanguagesSection } from './LanguagesSection';
-export { SkillsSection } from './SkillsSection';
-export { SpecialAbilitiesSection } from './SpecialAbilitiesSection';
-export { SpellsSection } from './SpellsSection';
+export { AbilitySaves } from '@/modules/CharacterSheet/Sections/AbilitySaves';
+export { Combat } from '@/modules/CharacterSheet/Sections/Combat';
+export { FeatsSection } from '@/modules/CharacterSheet/Sections/FeatsSection';
+export { InventorySection } from '@/modules/CharacterSheet/Sections/InventorySection';
+export { LanguagesSection } from '@/modules/CharacterSheet/Sections/LanguagesSection';
+export { SkillsSection } from '@/modules/CharacterSheet/Sections/SkillsSection';
+export { SpecialAbilitiesSection } from '@/modules/CharacterSheet/Sections/SpecialAbilitiesSection';
+export { SpellsSection } from '@/modules/CharacterSheet/Sections/SpellsSection';

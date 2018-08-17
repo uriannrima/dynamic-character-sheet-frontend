@@ -1,5 +1,5 @@
-import { AbdictionType } from './enums/abdiction-type'
-import { NatureType } from './enums/nature-type'
+import { AbdictionType } from '@/domain/enums/abdiction-type'
+import { NatureType } from '@/domain/enums/nature-type'
 
 export class Alignment {
   nature: NatureType = NatureType.NEUTRAL;

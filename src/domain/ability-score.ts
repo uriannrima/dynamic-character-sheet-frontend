@@ -1,5 +1,5 @@
-import { IMap } from './interfaces/IMap'
-import { IEntity } from '@domain/interfaces/IEntity';
+import { IMap } from '@/domain/interfaces/IMap'
+import { IEntity } from '@/domain/interfaces/IEntity';
 import { IModified, Modifier } from '@/domain/interfaces/IModified';
 
 export class AbilityScore implements IEntity<string>, IModified {

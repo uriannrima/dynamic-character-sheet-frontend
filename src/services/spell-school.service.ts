@@ -1,5 +1,5 @@
-import { SpellSchool } from '@domain/spell-school'
-import AbstractService from './abstract.service'
+import { SpellSchool } from '@/domain/spell-school'
+import AbstractService from '@/services/abstract.service'
 
 class SpellSchoolService extends AbstractService<SpellSchool> {
   constructor () {

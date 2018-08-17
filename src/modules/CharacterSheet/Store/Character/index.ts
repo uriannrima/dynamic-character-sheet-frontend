@@ -1,13 +1,13 @@
 import { Module, createNamespacedHelpers } from 'vuex'
 import { namespace } from 'vuex-class'
-import { CharacterState } from './state'
+import { CharacterState } from '@/modules/CharacterSheet/Store/Character/state'
 import { RootState } from '@/store/types'
-import getters from './getters'
-import actions from './actions'
-import mutations from './mutations'
+import getters from '@/modules/CharacterSheet/Store/Character/getters'
+import actions from '@/modules/CharacterSheet/Store/Character/actions'
+import mutations from '@/modules/CharacterSheet/Store/Character/mutations'
 
-export { default as Mappings } from './mappings'
-export { Actions, Mutations } from './mappings'
+export { default as Mappings } from '@/modules/CharacterSheet/Store/Character/mappings'
+export { Actions, Mutations } from '@/modules/CharacterSheet/Store/Character/mappings'
 
 const namespaceName = 'Character'
 export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers(namespaceName)

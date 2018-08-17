@@ -1,6 +1,6 @@
 import { StoreOptions } from 'vuex'
-import { RootState } from './types'
-import Auth from './modules/auth'
+import { RootState } from '@/store/types'
+import Auth from '@/store/modules/auth'
 
 export const store: StoreOptions<RootState> = {
   modules: { Auth }

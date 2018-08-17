@@ -1,5 +1,5 @@
 import { GetterTree } from 'vuex'
-import { CharacterState } from './state'
+import { CharacterState } from '@/modules/CharacterSheet/Store/Character/state'
 import { RootState } from '@/store/types'
 
 export const getters: GetterTree<CharacterState, RootState> = {

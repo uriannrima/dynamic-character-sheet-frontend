@@ -2,11 +2,11 @@ import Vue from 'vue'
 
 import './plugins'
 import './extensions'
-import './styles'
+import '@/styles'
 import './registerServiceWorker'
 
-import router from './router'
-import store from './store'
+import router from '@/router'
+import store from '@/store'
 
 import App from './App.vue'
 

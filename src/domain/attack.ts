@@ -1,6 +1,6 @@
-import { KeyAbilityType } from './enums/key-ability-type'
-import { AttackType } from './enums/attack-type'
-import { IEntity } from '@domain/interfaces/IEntity';
+import { KeyAbilityType } from '@/domain/enums/key-ability-type'
+import { AttackType } from '@/domain/enums/attack-type'
+import { IEntity } from '@/domain/interfaces/IEntity';
 import UUID from '@/utils/uuid';
 
 export class Attack implements IEntity {

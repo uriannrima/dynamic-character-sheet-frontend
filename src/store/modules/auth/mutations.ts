@@ -1,5 +1,5 @@
 import { MutationTree } from 'vuex'
-import { Mutations } from './mappings'
+import { Mutations } from '@/store/modules/auth/mappings'
 import { AuthState } from '@/store/modules/auth/state'
 import Cookies from 'js-cookie'
 

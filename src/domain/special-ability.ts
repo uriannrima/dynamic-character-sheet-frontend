@@ -1,5 +1,5 @@
-import { ISubValued } from './interfaces/ISubValued'
-import { IEntity } from './interfaces/IEntity'
+import { ISubValued } from '@/domain/interfaces/ISubValued'
+import { IEntity } from '@/domain/interfaces/IEntity'
 
 export enum SpecialAbilityType {
   NONE = 'None',

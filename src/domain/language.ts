@@ -1,4 +1,4 @@
-import { IEntity } from './interfaces/IEntity'
+import { IEntity } from '@/domain/interfaces/IEntity'
 
 export class Language implements IEntity {
   readonly _id: string = '';

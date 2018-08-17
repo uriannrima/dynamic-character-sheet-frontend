@@ -1,38 +1,11 @@
 <template>
   <form class="register-form">
-    <label>Account Name</label>
-    <div>
-      <input type="text"
-             name="name"
-             v-model="name"
-             v-validate="'required'">
-      <span class="registration-error-icon glyphicon glyphicon-exclamation-sign"
-            v-show="vErrors.has('name')"
-            :title="vErrors.first('name')"></span>
-    </div>
-    <label>E-mail</label>
-    <div>
-      <input type="text"
-             name="email"
-             v-model="email"
-             v-validate="'required|email'">
-      <span class="registration-error-icon glyphicon glyphicon-exclamation-sign"
-            v-show="vErrors.has('email')"
-            :title="vErrors.first('email')"></span>
-    </div>
-    <label>Password</label>
-    <div>
-      <input type="password"
-             name="password"
-             placeholder="At least 4 characters."
-             v-model="password"
-             v-validate="{ required: true, min: 4}">
-      <span class="registration-error-icon glyphicon glyphicon-exclamation-sign"
-            v-show="vErrors.has('password')"
-            :title="vErrors.first('password')"></span>
-    </div>
+    <vue-form-generator :schema="formSchema"
+                        :model="registration"
+                        :options="{ validateAfterChanged: true }">
+    </vue-form-generator>
     <button @click.prevent="register()"
-            :disabled="vErrors.any() || disabled">Register</button>
+            :disabled="$v.registration.$invalid || disabled">Register</button>
     <p class="message">Already registered?
       <a href
          @click.prevent="$emit('toggleForm', 'login-form')">Sign In</a>
@@ -41,29 +14,83 @@
 </template>
 
 <script>
+import { validators } from 'vue-form-generator';
+import { required, email, minLength } from 'vuelidate/lib/validators';
+
 export default {
-  $_veeValidate: {
-    validator: 'new'
-  },
   props: ['disabled'],
-  data () {
+  data() {
     return {
-      name: '',
-      email: '',
-      password: ''
+      formSchema: {
+        fields: [
+          {
+            type: 'input',
+            inputType: 'text',
+            label: 'Name',
+            model: 'name',
+            required: true,
+            min: 4,
+            validator: validators.string.locale({
+              fieldIsRequired: 'Name is required.',
+              textTooSmall: 'Name must be at least {1} characters.'
+            })
+          },
+          {
+            type: 'input',
+            inputType: 'text',
+            label: 'Email',
+            model: 'email',
+            required: true,
+            validator: validators.string.locale({
+              fieldIsRequired: 'Email is required.'
+            })
+          },
+          {
+            type: 'input',
+            inputType: 'password',
+            label: 'Password',
+            model: 'password',
+            required: true,
+            min: 4,
+            validator: validators.string.locale({
+              fieldIsRequired: 'The password is required.',
+              textTooSmall: 'Password must be at least {1} characters.'
+            })
+          }
+        ]
+      },
+      registration: {
+        name: '',
+        email: '',
+        password: ''
+      }
+    };
+  },
+  validations: {
+    registration: {
+      name: {
+        required,
+        minLength: minLength(4)
+      },
+      email: {
+        required,
+        email
+      },
+      password: {
+        required,
+        minLength: minLength(4)
+      }
     }
   },
   methods: {
-    register () {
-      this.$validator.validateAll().then(result => {
-        if (result) {
-          const { name, email, password } = this
-          this.$emit('register', { name, email, password })
-        }
-      })
+    register() {
+      if (!this.$v.registration.$invalid) {
+        this.registration.email = this.registration.email.toLowerCase();
+        this.$emit('register', this.registration);
+      }
     }
   }
-}
+};
 </script>
 
 <style>

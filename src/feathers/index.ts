@@ -3,7 +3,7 @@ import socketClient from '@feathersjs/socketio-client'
 import restClient from '@feathersjs/rest-client';
 import io from 'socket.io-client'
 import auth from '@feathersjs/authentication-client'
-import Options from './options'
+import Options from '@/feathers/options'
 
 const app = feathers()
 

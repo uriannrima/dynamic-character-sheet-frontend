@@ -1,5 +1,5 @@
-import { Language } from '@domain/language'
-import AbstractService from './abstract.service'
+import { Language } from '@/domain/language'
+import AbstractService from '@/services/abstract.service'
 
 class LanguageService extends AbstractService<Language> {
   constructor () {

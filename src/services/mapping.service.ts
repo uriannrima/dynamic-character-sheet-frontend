@@ -1,4 +1,4 @@
-import { IRevivable } from '@domain/interfaces/IEntity';
+import { IRevivable } from '@/domain/interfaces/IEntity';
 
 export interface IConstructor<T> {
   new(...args: any[]): T

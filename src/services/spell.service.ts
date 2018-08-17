@@ -1,6 +1,6 @@
-import { Spell } from '@domain/spell';
-import { CastingTime } from '@domain/enums/casting-time-type';
-import AbstractService from './abstract.service';
+import { Spell } from '@/domain/spell';
+import { CastingTime } from '@/domain/enums/casting-time-type';
+import AbstractService from '@/services/abstract.service';
 
 console.debug(Spell);
 

@@ -1,15 +1,15 @@
 import { ActionTree } from 'vuex'
 
-import * as Modules from '@domain'
+import * as Modules from '@/domain'
 
-import { CharacterState } from './state'
+import { CharacterState } from '@/modules/CharacterSheet/Store/Character/state'
 import { RootState } from '@/store/types'
-import { Actions, Mutations } from './mappings'
+import { Actions, Mutations } from '@/modules/CharacterSheet/Store/Character/mappings'
 
-import CharacterService from '@services/character.service'
-import ChannelService from '@services/channel.service'
+import CharacterService from '@/services/character.service'
+import ChannelService from '@/services/channel.service'
 
-import SkillService from '@services/skill.service'
+import SkillService from '@/services/skill.service'
 
 declare module 'vuex' {
   interface CommitOptions {
