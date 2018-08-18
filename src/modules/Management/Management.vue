@@ -1,5 +1,29 @@
 <template>
-  <div class="management">
+  <div class="management uk-grid uk-grid-small">
+    <div class="sidebar uk-width-1-1 uk-width-small@s">
+      <ul class="uk-nav"
+          v-for="(section, name) in sections"
+          :key="name">
+        <li class="uk-parent">
+          <router-link :to="{ path: `/management/${name}` }"
+                       class="nav-title">{{ name| spaced | capitalized }}</router-link>
+          <ul class="uk-nav-sub">
+            <li v-for="innerSection in section"
+                :key="innerSection._id">
+              <router-link :to="{ path: `/management/${name}/${innerSection._id}` }">{{ innerSection._id | spaced | capitalized }}
+              </router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="content uk-width-expand">
+      <div class="uk-container uk-margin-top">
+        <router-view :ability-scores="sections.abilityScores"></router-view>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="management">
     <div class="saving-throws">
       <h4>Saving Throws</h4>
       <div class="edit-panel"
@@ -56,55 +80,21 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import AbilityScoresManager from './AbilityScoresManager';
 import SheetService from '@services/sheet.service';
 
 export default {
+  components: { AbilityScoresManager },
   data: () => ({
-    abilityScores: {},
-    savingThrows: {},
-    miscelaneous: {},
-    schema: {
-      fields: [
-        {
-          type: 'input',
-          inputType: 'text',
-          label: 'Name',
-          model: 'name'
-        },
-        {
-          type: 'textArea',
-          label: 'Snippet',
-          model: 'snippet'
-        },
-        {
-          type: 'textArea',
-          label: 'Description',
-          model: 'description',
-          rows: 12
-        }
-      ]
-    }
+    sections: {},
+    selectedSection: ''
   }),
   async created() {
-    const descriptions = await SheetService.getDescriptions();
-    this.abilityScores = descriptions.abilityScores;
-    this.savingThrows = descriptions.savingThrows;
-    this.miscelaneous = descriptions.miscelaneous;
-  },
-  methods: {
-    async saveAbilityScore(abilityScore) {
-      await SheetService.updateDescription('ability-scores', abilityScore);
-    },
-    async saveSavingThrow(savingThrow) {
-      await SheetService.updateDescription('saving-throws', savingThrow);
-    },
-    async saveMiscelaneous(miscelaneous) {
-      await SheetService.updateDescription('miscelaneous', miscelaneous);
-    }
+    this.sections = await SheetService.getSectionsDescriptions();
   }
 };
 </script>
@@ -113,6 +103,12 @@ export default {
 @import '~public/styles/components.scss';
 
 .management {
+  height: 100vh;
+  .sidebar {
+    background-color: #2f353a;
+  }
+  .content {
+  }
 }
 
 .edit-panel {
@@ -127,5 +123,12 @@ export default {
     justify-content: flex-end;
     padding: 0 12px 10px;
   }
+}
+
+.nav-title {
+  font-size: 80%;
+  font-weight: 700;
+  color: #e4e7ea;
+  text-transform: uppercase;
 }
 </style>

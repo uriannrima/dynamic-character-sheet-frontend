@@ -30,6 +30,7 @@
     "rpg-awesome": "^0.1.1",
     "slideout": "^1.0.1",
     "socket.io-client": "^2.1.0",
+    "uikit": "^3.0.0-rc.11",
     "vue": "^2.5.16",
     "vue-feathers": "^0.1.0",
     "vue-form-generator": "^2.2.2",

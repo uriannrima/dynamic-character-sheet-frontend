@@ -18,7 +18,7 @@ export class SheetService {
     this.baseUrl = baseUrl;
   }
 
-  async getDescriptions(sections: { name: string, url: string }[] = defaultDescriptions) {
+  async getSectionsDescriptions(sections: { name: string, url: string }[] = defaultDescriptions) {
     const results = await Promise.all(sections.map(section => {
       return fetch(this.baseUrl + section.url).then(response => response.json());
     }));
@@ -29,7 +29,7 @@ export class SheetService {
     return descriptions;
   }
 
-  async updateDescription(url: string, body: any) {
+  async updateSectionDescription(url: string, body: any) {
     return fetch(`${this.baseUrl}${url}/${body._id}`, {
       method: 'PUT',
       headers: {

@@ -186,7 +186,6 @@ body {
         align-items: center;
         color: $secondary-value__color;
       }
-      
       .vue-portal-target {
         flex: 1;
       }
