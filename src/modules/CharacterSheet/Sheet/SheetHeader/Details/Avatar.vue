@@ -1,40 +1,43 @@
 <template>
-  <div class="avatar">
-    <i class="avatar__icon ra"
-       :class="iconName"
-       :style="{color : iconColor}"></i>
+  <div>
+    <avatar v-bind="$props">
+      <avatar-icon class="ra"
+                   v-bind="$props"
+                   :class="iconName">
+      </avatar-icon>
+    </avatar>
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    iconName: {
-      type: String,
-      default: 'ra-ball'
-    },
-    iconColor: {
-      type: String,
-      default: 'purple'
-    }
-  }
-};
-</script>
+import VueTypes from 'vue-types';
+import styled from 'vue-styled-components';
 
-<style lang="scss">
-.avatar {
-  width: 3em;
-  height: 3em;
+const props = {
+  size: VueTypes.string.def('3em'),
+  iconName: VueTypes.string.def('ra-ball'),
+  iconColor: VueTypes.string.def('purple'),
+  iconSize: VueTypes.string.def('2.6em')
+};
+
+const Avatar = styled('div', props)`
+  width: ${props => props.size};
+  height: ${props => props.size};
   border-radius: 10%;
   border: solid 1px black;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  &__icon {
-    font-size: 2.6em;
-    color: darkgoldenrod;
-  }
-}
-</style>
+const AvatarIcon = styled('i', props)`
+  font-size: ${props => props.iconSize};
+  color: ${props => props.iconColor};
+`;
+
+export default {
+  components: { Avatar, AvatarIcon },
+  props
+};
+</script>

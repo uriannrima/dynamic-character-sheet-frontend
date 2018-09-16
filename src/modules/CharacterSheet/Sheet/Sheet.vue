@@ -1,7 +1,8 @@
 <template>
   <div class="sheet">
     <sheet-header :icon-name="iconName"
-                  :icon-color="iconColor"></sheet-header>
+                  :icon-color="iconColor">
+    </sheet-header>
     <slot></slot>
   </div>
 </template>
