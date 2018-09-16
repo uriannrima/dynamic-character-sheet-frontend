@@ -6,8 +6,8 @@
                 avatar-size="3em"
                 icon-size="2.8em"></avatar>
         <character-details name="Uriann"
-                           race="Half-elf"
-                           :classes="[{name: 'Wizard', level: 1}]">
+                           race="Half-Elf"
+                           :classes="[{name: 'Wizard', level: 3}, {name: 'M. Specialist', level: 3}]">
         </character-details>
       </flex-container>
     </div>

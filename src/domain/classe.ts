@@ -1,9 +1,9 @@
 import { CasterKeyAbilityType } from '@/domain/enums/caster-key-ability-type'
 
 export class Classe {
-  name?: string = '';
-  level?: number = 0;
-  casterAbility?: CasterKeyAbilityType = CasterKeyAbilityType.NONE;
+  name: string = '';
+  level: number = 0;
+  casterAbility: CasterKeyAbilityType = CasterKeyAbilityType.NONE;
 
   constructor(model?: Classe | { name?: string, level?: number, casterAbility?: CasterKeyAbilityType }) {
     if (model) {

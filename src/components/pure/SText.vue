@@ -8,7 +8,7 @@
 import Vue from 'vue';
 import VueTypes from 'vue-types';
 import styled from 'vue-styled-components';
-import { Theme, ITheme } from './Theme';
+import { Theme, ITheme, getTheme } from './Theme';
 
 class STextProps {
   theme: ITheme | any = Theme;
@@ -27,17 +27,18 @@ const props = new STextProps();
 
 const SText = styled('span', props)`
   ${(props: STextProps) => {
-    const { theme }: { theme: ITheme } = props;
+    const theme = getTheme(props);
     var color = theme.primary;
 
-    if (theme.secondary) color = theme.secondary;
-    if (theme.success) color = theme.success;
-    if (theme.failure) color = theme.failure;
-    if (theme.disabled) color = theme.disabled;
-    if (theme.attention) color = theme.attention;
+    if (props.secondary) color = theme.secondary;
+    if (props.success) color = theme.success;
+    if (props.failure) color = theme.failure;
+    if (props.disabled) color = theme.disabled;
+    if (props.attention) color = theme.attention;
 
     return `color: ${color}`;
   }};
+
   ${(props: STextProps) => props.bold && 'font-weight: bold;'};
   ${(props: STextProps) => props.italic && 'font-style: italic;'};
   ${(props: STextProps) => {

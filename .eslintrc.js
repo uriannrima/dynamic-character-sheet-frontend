@@ -9,6 +9,8 @@ module.exports = {
     '@vue/typescript'
   ],
   'rules': {
+    // Bugged? Styled Component Error.
+    // 'space-infix-ops': 0,
     // Warning return await
     'no-return-await': 1,
     // Warning for unused variables.

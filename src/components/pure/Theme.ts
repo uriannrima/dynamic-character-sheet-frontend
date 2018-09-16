@@ -29,4 +29,8 @@ export const DefaultTheme = {
 
 export const Theme = VueTypes.shape(ThemeProps).def(() => DefaultTheme);
 
+export const getTheme = function (props: any): ITheme {
+  return props.theme ? props.theme : DefaultTheme;
+};
+
 export default Theme;
