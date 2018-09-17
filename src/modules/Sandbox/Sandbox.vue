@@ -1,33 +1,45 @@
 <template>
   <div class="Sandbox">
-    <div class="Header">
-      <flex-container>
-        <avatar class="Avatar"
-                avatar-size="3em"
-                icon-size="2.8em"></avatar>
-        <character-details name="Uriann"
-                           race="Half-Elf"
-                           :classes="[{name: 'Wizard', level: 3}, {name: 'M. Specialist', level: 3}]">
-        </character-details>
-      </flex-container>
+    <div>
+      <span>Default:</span>
+      <themed-button>Normal</themed-button>
+      <themed-button primary>Primary</themed-button>
+    </div>
+    <div>
+      <span>Colored Themed:</span>
+      <theme-provider :theme="coloredTheme">
+        <themed-button>Themed</themed-button>
+        <themed-button primary>Themeed Primary</themed-button>
+      </theme-provider>
+    </div><div>
+      <span>Dark Themed:</span>
+      <theme-provider :theme="darkTheme">
+        <themed-button>Themed</themed-button>
+        <themed-button primary>Themeed Primary</themed-button>
+      </theme-provider>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { Avatar, FlexContainer } from '@/components/pure';
-import { CharacterDetails } from '@/components/character';
+import { SheetHeader } from '@/components/character-sheet';
+import { ThemeProvider } from '@/components/pure/ThemeProvider';
+import ThemedButton from './TButton.vue';
+
 export default Vue.extend({
-  components: { Avatar, FlexContainer, CharacterDetails }
+  components: { SheetHeader, ThemeProvider, ThemedButton },
+  data() {
+    return {
+      coloredTheme: {
+        main: 'mediumseagreen',
+        primary: 'orange'
+      },
+      darkTheme: {
+        main: 'gray',
+        primary: 'blueviolet'
+      }
+    };
+  }
 });
 </script>
-
-<style lang="scss" scoped>
-.Header {
-  padding: 0.5rem;
-  .Avatar {
-    margin-right: 0.5rem;
-  }
-}
-</style>

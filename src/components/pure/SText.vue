@@ -28,13 +28,13 @@ const props = new STextProps();
 const SText = styled('span', props)`
   ${(props: STextProps) => {
     const theme = getTheme(props);
-    var color = theme.primary;
+    var color = theme.text.primary;
 
-    if (props.secondary) color = theme.secondary;
-    if (props.success) color = theme.success;
-    if (props.failure) color = theme.failure;
-    if (props.disabled) color = theme.disabled;
-    if (props.attention) color = theme.attention;
+    if (props.secondary) color = theme.text.secondary;
+    if (props.success) color = theme.text.success;
+    if (props.failure) color = theme.text.failure;
+    if (props.disabled) color = theme.text.disabled;
+    if (props.attention) color = theme.text.attention;
 
     return `color: ${color}`;
   }};
