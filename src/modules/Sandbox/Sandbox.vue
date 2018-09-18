@@ -2,21 +2,16 @@
   <div class="Sandbox">
     <div>
       <span>Default:</span>
-      <themed-button>Normal</themed-button>
+      <themed-button>Main</themed-button>
       <themed-button primary>Primary</themed-button>
-    </div>
-    <div>
-      <span>Colored Themed:</span>
+      <span>Themed:</span>
       <theme-provider :theme="coloredTheme">
-        <themed-button>Themed</themed-button>
-        <themed-button primary>Themeed Primary</themed-button>
+        <themed-button @click="$emit('main-button')">Main</themed-button>
+        <themed-button primary
+                       @click="$emit('primary-button')">Primary</themed-button>
       </theme-provider>
-    </div><div>
-      <span>Dark Themed:</span>
-      <theme-provider :theme="darkTheme">
-        <themed-button>Themed</themed-button>
-        <themed-button primary>Themeed Primary</themed-button>
-      </theme-provider>
+      <input v-model="coloredTheme.main">
+      <input v-model="coloredTheme.primary">
     </div>
   </div>
 </template>
@@ -32,12 +27,8 @@ export default Vue.extend({
   data() {
     return {
       coloredTheme: {
-        main: 'mediumseagreen',
-        primary: 'orange'
-      },
-      darkTheme: {
-        main: 'gray',
-        primary: 'blueviolet'
+        main: 'purple',
+        primary: 'gray'
       }
     };
   }

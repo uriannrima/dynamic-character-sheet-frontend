@@ -43,17 +43,17 @@ export const withTheme = (Component: any) => {
     ...ThemeInjectorBase,
     render(h) {
       const { theme } = this as any;
-
-      if (theme === undefined) {
-        return h(Component, {
-          attrs: this.$attrs
-        }, this.$slots.default);
-      } else {
-        return h(Component, {
-          attrs: this.$attrs,
+      var componentProperties: any = {
+        attrs: this.$attrs,
+        on: this.$listeners
+      };
+      if (theme) {
+        componentProperties = {
+          ...componentProperties,
           props: { theme }
-        }, this.$slots.default);
+        }
       }
+      return h(Component, componentProperties, this.$slots.default);
     }
   })
 };
