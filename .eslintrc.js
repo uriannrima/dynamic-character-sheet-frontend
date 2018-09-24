@@ -1,14 +1,17 @@
 module.exports = {
-  'root': true,
-  'env': {
-    'browser': true
+  root: true,
+  env: {
+    node: true,
+    browser: true
   },
   'extends': [
     'plugin:vue/essential',
     '@vue/standard',
     '@vue/typescript'
   ],
-  'rules': {
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // Bugged? Styled Component Error.
     // 'space-infix-ops': 0,
     // Warning return await
@@ -26,8 +29,6 @@ module.exports = {
     'arrow-parens': 0,
     // allow async-await
     'generator-star-spacing': 0,
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // Allow use of 'new'
     'no-new': 0,
     // Allow extension functions to native objects.
@@ -59,5 +60,8 @@ module.exports = {
         'renderError'
       ]
     }]
+  },
+  parserOptions: {
+    parser: 'typescript-eslint-parser'
   }
 }

@@ -1,1 +1,2 @@
-import './utils/array.extensions.js'
+import './utils/array.extensions'
+import './utils/vue.extensions'

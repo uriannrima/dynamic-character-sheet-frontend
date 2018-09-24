@@ -18,9 +18,13 @@ export default {
     return new Promise((resolve, reject) => {
       var reader = new FileReader()
       reader.readAsText(file)
-      reader.onload = function (event: FileReaderProgressEvent) {
-        var character = JSON.parse(event.target && event.target.result)
-        resolve(character)
+      reader.onload = function (event: ProgressEvent) {
+        if (typeof reader.result === 'string') {
+          var character = JSON.parse(reader.result)
+          resolve(character)
+        } else {
+          reject();
+        }
       }
       reader.onerror = function (event) {
         reject(event)

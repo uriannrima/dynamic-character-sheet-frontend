@@ -3,12 +3,11 @@ import VueTouch from 'vue-touch'
 import VueFeathers from 'vue-feathers'
 import Es6Promise from 'es6-promise'
 import feathers from './feathers'
-import 'babel-polyfill'
 import PortalVue from 'portal-vue'
 import Component from 'vue-class-component'
-import VueMarkdown from 'vue-markdown';
-import VueFormGenerator from 'vue-form-generator';
-import Vuelidate from 'vuelidate';
+import VueMarkdown from 'vue-markdown'
+import VueFormGenerator from 'vue-form-generator'
+import Vuelidate from 'vuelidate'
 
 Component.registerHooks([
   'beforeRouteEnter',
@@ -22,5 +21,5 @@ Vue.use(VueFeathers, feathers)
 Vue.use(VueTouch, { name: 'v-touch' })
 Vue.use(PortalVue)
 Vue.component('v-md', VueMarkdown)
-Vue.use(VueFormGenerator);
-Vue.use(Vuelidate);
+Vue.use(VueFormGenerator)
+Vue.use(Vuelidate)
