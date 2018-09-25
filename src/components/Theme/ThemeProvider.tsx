@@ -55,22 +55,20 @@ const ThemeInjectorBase = {
  * @param Component Component that will be wrapped.
  */
 export const withTheme = (Component: any) => {
+  console.log(Component);
   return Vue.extend({
-    ...Component.options,
     ...ThemeInjectorBase,
     render(h) {
-      const { theme } = this as any;
+      const { $attrs, $listeners, $props, theme, $slots } = this as any;
       var componentProperties: any = {
-        attrs: this.$attrs,
-        on: this.$listeners
-      };
-      if (theme) {
-        componentProperties = {
-          ...componentProperties,
-          props: { theme }
+        attrs: $attrs,
+        on: $listeners,
+        props: {
+          ...$props,
+          ...(theme && { theme })
         }
-      }
-      return h(Component, componentProperties, this.$slots.default);
+      };
+      return h(Component, componentProperties, $slots.default);
     }
   })
 };
