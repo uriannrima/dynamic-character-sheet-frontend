@@ -19,7 +19,7 @@
 <script>
 import debounce from 'lodash.debounce'
 import CharacterCard from './CharacterCard'
-import CharacterService from '@services/domain/character.service'
+import CharacterService from '@services/domain/CharacterService'
 
 export default {
   components: { CharacterCard },

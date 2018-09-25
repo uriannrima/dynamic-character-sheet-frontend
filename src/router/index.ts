@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: [0] */
 import Vue from 'vue'
 import VueRouter, { RouteRecord, RouterOptions, Route, Next } from 'vue-router'
-import routes from '@/router/routes'
+import routes from './routes'
 import Store from '@/store'
 
 Vue.use(VueRouter)

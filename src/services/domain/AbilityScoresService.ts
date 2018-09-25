@@ -1,5 +1,5 @@
 import { AbilityScore } from '@/domain/ability-score'
-import AbstractService from '@/services/domain/abstract.service'
+import AbstractService from '@/services/domain/AbstractService'
 
 console.debug(AbilityScore);
 

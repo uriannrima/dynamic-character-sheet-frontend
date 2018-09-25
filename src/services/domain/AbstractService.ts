@@ -1,7 +1,7 @@
 import BaseSocketService from '@/services/bases/BaseSocketService'
 import BaseHttpService from '@/services/bases/BaseHttpService'
 import { IEntity } from '@/domain/interfaces/IEntity'
-import { IConstructor } from '@/services/bases/mapping.service';
+import { IConstructor } from '@/services/bases/MappingService';
 
 export default abstract class AbstractService<TModel extends IEntity> {
   public service: BaseSocketService<TModel> | BaseHttpService<TModel>;

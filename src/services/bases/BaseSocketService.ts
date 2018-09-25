@@ -1,7 +1,7 @@
 import SocketLayer from '@/services/layers/SocketLayer'
 import { IEntity } from '@/domain/interfaces/IEntity'
 import { Paginated } from '@feathersjs/feathers'
-import { MappingService, IConstructor } from '@/services/bases/mapping.service';
+import { MappingService, IConstructor } from '@/services/bases/MappingService';
 
 export default class BaseSocketService<TModel extends IEntity = any> extends SocketLayer<TModel> {
   constructor({ url, constructors }: { url: string, constructors?: Array<IConstructor<TModel>> }) {

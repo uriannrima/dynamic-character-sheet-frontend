@@ -17,6 +17,7 @@
     "@feathersjs/rest-client": "^1.4.5",
     "@feathersjs/socketio-client": "^1.1.4",
     "axios": "^0.18.0",
+    "emotion": "^9.2.10",
     "es6-promise": "^4.2.5",
     "js-cookie": "^2.2.0",
     "material-design-icons-iconfont": "^3.0.3",

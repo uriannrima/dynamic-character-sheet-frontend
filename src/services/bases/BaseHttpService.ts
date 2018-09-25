@@ -2,7 +2,7 @@ import HttpLayer from '@/services/layers/HttpLayer'
 import SocketLayer from '@/services/layers/SocketLayer'
 import AuthService from '@/services/auth/AuthService'
 import { IEntity } from '@/domain/interfaces/IEntity'
-import { MappingService, IConstructor } from '@/services/bases/mapping.service';
+import { MappingService, IConstructor } from '@/services/bases/MappingService';
 
 export class BaseHttpService<TModel extends IEntity = any> extends HttpLayer {
   public socket: SocketLayer;

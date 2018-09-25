@@ -1,14 +1,14 @@
 import VueTypes from 'vue-types';
 
 export interface IHeaderTheme {
-  primary: string;
+  main: string;
   secondary: string;
 }
 
 export interface ITextTheme {
-  primary: string;
+  main: string;
   secondary: string;
-  success: string;
+  primary: string;
   failure: string;
   disabled: string;
   attention: string;
@@ -21,30 +21,30 @@ export interface ITheme {
 
 export const ThemeProps = {
   text: VueTypes.shape({
-    primary: VueTypes.string,
+    main: VueTypes.string,
     secondary: VueTypes.string,
-    success: VueTypes.string,
+    primary: VueTypes.string,
     failure: VueTypes.string,
     disabled: VueTypes.string,
     attention: VueTypes.string
   }),
   header: VueTypes.shape({
-    primary: VueTypes.string,
+    main: VueTypes.string,
     secondary: VueTypes.string
   })
 };
 
 export const DefaultTheme: ITheme = {
   text: {
-    primary: '#000000',
+    main: '#000000',
     secondary: '#838383',
-    success: '#008000',
+    primary: '#008000',
     failure: '#C53131',
     disabled: '#838383',
     attention: '#f1f199'
   },
   header: {
-    primary: '#FFFFFF',
+    main: '#FFFFFF',
     secondary: '#838383'
   }
 };

@@ -33,8 +33,8 @@ import {
   SavingThrowPanel
 } from '@/pages/CharacterSheet/Panels';
 
-import AbilityScoreService from '@services/domain/ability-scores.service';
-import SavingThrowsService from '@services/domain/saving-throws.service';
+import AbilityScoreService from '@services/domain/AbilityScoresService';
+import SavingThrowsService from '@services/domain/SavingThrowsService';
 
 export default {
   components: {

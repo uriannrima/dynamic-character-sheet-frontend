@@ -6,10 +6,10 @@ import { CharacterState } from '@/pages/CharacterSheet/Store/Character/state'
 import { RootState } from '@/store/types'
 import { Actions, Mutations } from '@/pages/CharacterSheet/Store/Character/mappings'
 
-import CharacterService from '@/services/domain/character.service'
-import ChannelService from '@/services/domain/channel.service'
+import CharacterService from '@/services/domain/CharacterService'
+import ChannelService from '@/services/domain/ChannelService'
 
-import SkillService from '@/services/domain/skill.service'
+import SkillService from '@/services/domain/SkillService'
 
 declare module 'vuex' {
   interface CommitOptions {

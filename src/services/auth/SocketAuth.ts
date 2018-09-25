@@ -1,5 +1,5 @@
 import SocketLayer from '@/services/layers/SocketLayer'
-import { LoginPayload, RefreshPayload } from '@/services/auth/login-payload'
+import { LoginPayload, RefreshPayload } from '@/services/auth/LoginPayload'
 import { UserSession } from '@/services/auth/UserSession';
 
 export default class SocketAuth extends SocketLayer {

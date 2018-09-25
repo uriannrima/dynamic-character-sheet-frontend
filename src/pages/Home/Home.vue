@@ -13,7 +13,7 @@ import { Component } from 'vue-property-decorator';
 import { Route, Next } from 'vue-router';
 
 import { Character } from '@domain/character';
-import CharacterService from '@services/domain/character.service';
+import CharacterService from '@services/domain/CharacterService';
 
 import CharacterCardList from './components/CharacterCardList.vue';
 import LoadingComponent from '@/components/LoadingComponent.vue';

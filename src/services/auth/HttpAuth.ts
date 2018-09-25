@@ -1,5 +1,5 @@
 import HttpLayer from '@/services/layers/HttpLayer'
-import { LoginPayload, RefreshPayload } from '@/services/auth/login-payload'
+import { LoginPayload, RefreshPayload } from '@/services/auth/LoginPayload'
 import { UserSession } from '@/services/auth/UserSession';
 
 export default class HttpAuth extends HttpLayer {

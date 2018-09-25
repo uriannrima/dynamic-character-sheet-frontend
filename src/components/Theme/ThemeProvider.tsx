@@ -56,6 +56,7 @@ const ThemeInjectorBase = {
  */
 export const withTheme = (Component: any) => {
   return Vue.extend({
+    ...Component.options,
     ...ThemeInjectorBase,
     render(h) {
       const { theme } = this as any;

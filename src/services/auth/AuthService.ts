@@ -1,7 +1,7 @@
 import SocketAuth from '@/services/auth/SocketAuth'
 import HttpAuth from '@/services/auth/HttpAuth'
 import Cookies from 'js-cookie'
-import { LoginPayload, RefreshPayload } from '@/services/auth/login-payload'
+import { LoginPayload, RefreshPayload } from '@/services/auth/LoginPayload'
 
 export class AuthService {
   public service: HttpAuth | SocketAuth;

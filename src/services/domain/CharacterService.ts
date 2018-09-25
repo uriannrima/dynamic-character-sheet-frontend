@@ -1,5 +1,5 @@
 import { Character } from '@/domain/character'
-import AbstractService from '@/services/domain/abstract.service'
+import AbstractService from '@/services/domain/AbstractService'
 
 console.debug(Character);
 

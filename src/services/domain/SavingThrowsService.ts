@@ -1,5 +1,5 @@
 import { SavingThrow } from '@/domain/saving-throw';
-import AbstractService from '@/services/domain/abstract.service'
+import AbstractService from '@/services/domain/AbstractService'
 
 console.debug(SavingThrow);
 
