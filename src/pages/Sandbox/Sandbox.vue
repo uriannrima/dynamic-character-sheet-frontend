@@ -1,19 +1,19 @@
 <template>
   <div class="Sandbox">
-    {{counter}}
+    <!-- {{counter}}
     <styled-button :primary="primary">StyledButton</styled-button>
     <theme-provider :theme="theme">
       <styled-button :primary="primary">StyledButton</styled-button>
-    </theme-provider>
+    </theme-provider> -->
   </div>
 </template>
 
 <script>
-import StyledButton from '@/components/StyledButton.vue';
+import DcsButton from '@/components/DcsButton.vue';
 import { ThemeProvider } from '@/components/Theme';
 
 export default {
-  components: { StyledButton, ThemeProvider },
+  components: { DcsButton, ThemeProvider },
   data: () => ({
     counter: 0,
     primary: false,

@@ -9509,9 +9509,9 @@ vue-feathers@^0.1.0:
   dependencies:
     feathers "*"
 
-vue-form-generator@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/vue-form-generator/-/vue-form-generator-2.2.2.tgz#7b419ff830e0b5a21d9033d65b4583d264336e8e"
+vue-form-generator@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/vue-form-generator/-/vue-form-generator-2.3.0.tgz#b35de569851490577259f0c710128e1d8d30f717"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"
@@ -9559,6 +9559,10 @@ vue-markdown@^2.2.4:
     markdown-it-sup "^1.0.0"
     markdown-it-task-lists "^2.0.1"
     markdown-it-toc-and-anchor "^4.1.2"
+
+vue-material@^1.0.0-beta-10.2:
+  version "1.0.0-beta-10.2"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-1.0.0-beta-10.2.tgz#c3effea97e0c5a0c696b0051d5ef9c6e6cf2a5ed"
 
 vue-property-decorator@^7.0.0:
   version "7.1.1"

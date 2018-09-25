@@ -55,7 +55,6 @@ const ThemeInjectorBase = {
  * @param Component Component that will be wrapped.
  */
 export const withTheme = (Component: any) => {
-  console.log(Component);
   return Vue.extend({
     ...ThemeInjectorBase,
     render(h) {
