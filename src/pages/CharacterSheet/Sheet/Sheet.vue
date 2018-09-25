@@ -1,17 +1,46 @@
 <template>
   <div class="sheet">
-    <sheet-header :icon-name="iconName"
-                  :icon-color="iconColor">
-    </sheet-header>
-    <slot></slot>
+    <store-container store-name="Character"
+                     :mapState="['description', 'classes','status']">
+      <sheet-header slot-scope="{ description, classes, status }">
+        <flex-container>
+          <dcs-avatar :icon-name="iconName"
+                      :icon-color="iconColor">
+          </dcs-avatar>
+          <dcs-details :name="description.name"
+                       :race="description.race"
+                       :classes="classes">
+          </dcs-details>
+          <dcs-status :status="status">
+          </dcs-status>
+        </flex-container>
+      </sheet-header>
+    </store-container>
+    <slot>
+    </slot>
   </div>
 </template>
 
 <script>
-import { SheetHeader } from './SheetHeader';
+import FlexContainer from '@/components/FlexContainer';
+import StoreContainer from '@/store/components/StoreContainer.vue';
+
+import {
+  SheetHeader,
+  Avatar as DcsAvatar,
+  Details as DcsDetails,
+  Status as DcsStatus
+} from './SheetHeader';
 
 export default {
-  components: { SheetHeader },
+  components: {
+    SheetHeader,
+    FlexContainer,
+    DcsAvatar,
+    DcsDetails,
+    DcsStatus,
+    StoreContainer
+  },
   props: {
     iconName: {
       type: String,

@@ -26,7 +26,7 @@ export const createThemeProvider = (themeProps: PropOptions = { type: Object, re
      * Render slots.
      */
     render() {
-      return <div>{this.$slots.default}</div>;
+      return this.$slots.default && this.$slots.default[0];
     }
   });
 }

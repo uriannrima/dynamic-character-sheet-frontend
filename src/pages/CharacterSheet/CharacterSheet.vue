@@ -20,7 +20,8 @@
               @update:open="toggleSidebar"
               panel=".sheet">
       <portal-target v-if="portalName"
-                     :name="portalName"></portal-target>
+                     :name="portalName">
+      </portal-target>
     </slideout>
   </loading-component>
 </template>

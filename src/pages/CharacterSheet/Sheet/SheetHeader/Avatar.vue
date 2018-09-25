@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <avatar v-bind="$props">
-      <avatar-icon class="ra"
-                   v-bind="$props"
-                   :class="iconName">
-      </avatar-icon>
-    </avatar>
-  </div>
+  <avatar v-bind="$props">
+    <avatar-icon class="ra"
+                 v-bind="$props"
+                 :class="iconName">
+    </avatar-icon>
+  </avatar>
 </template>
 
 <script>
