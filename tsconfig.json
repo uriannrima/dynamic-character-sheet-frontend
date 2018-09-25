@@ -31,12 +31,6 @@
       "@services/*": [
         "src/services/*"
       ],
-      "@shared": [
-        "src/shared"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
       "@feathers": [
         "src/feathers"
       ],
@@ -55,11 +49,11 @@
       "@router/*": [
         "src/router/*"
       ],
-      "@modules": [
-        "src/modules"
+      "@pages": [
+        "src/pages"
       ],
-      "@modules/*": [
-        "src/modules/*"
+      "@pages/*": [
+        "src/pages/*"
       ],
       "@store": [
         "src/store"

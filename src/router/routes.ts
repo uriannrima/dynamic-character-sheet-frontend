@@ -1,7 +1,7 @@
 // Lazy Load Components
-import { Route as LoginRoute } from '@/modules/Login';
-import { Route as HomeRoute } from '@/modules/Home';
-import { Route as CharacterSheetRoutes } from '@/modules/CharacterSheet';
+import { Route as LoginRoute } from '@/pages/Login';
+import { Route as HomeRoute } from '@/pages/Home';
+import { Route as CharacterSheetRoutes } from '@/pages/CharacterSheet';
 
 const routes = [
   ...LoginRoute,

@@ -1,10 +1,10 @@
 import { ActionTree } from 'vuex'
 import { Actions, Mutations } from '@/store/modules/auth/mappings'
-import AuthService from '@/shared/services/auth/AuthService'
-import UserService from '@/services/user.service'
+import AuthService from '@/services/auth/AuthService'
+import UserService from '@/services/auth/user.service'
 import { AuthState } from '@/store/modules/auth/state'
 import { RootState } from '@/store/types'
-import { LoginPayload } from '@/shared/services/auth/login-payload'
+import { LoginPayload } from '@/services/auth/login-payload'
 
 export const actions: ActionTree<AuthState, RootState> = {
   async [Actions.login]({ commit }, payload: LoginPayload) {

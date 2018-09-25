@@ -1,13 +1,13 @@
 <template>
-  <layout></layout>
+  <default></default>
 </template>
 
 <script lang="ts">
-import Layout from './shared/sections/Layout.vue';
-import LoadingComponent from './shared/components/LoadingComponent.vue';
+import Default from '@/layouts/Default.vue';
+import LoadingComponent from '@/components/LoadingComponent.vue';
 
 export default {
-  components: { Layout, LoadingComponent }
+  components: { Default, LoadingComponent }
 };
 </script>
 

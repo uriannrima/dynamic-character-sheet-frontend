@@ -1,1 +1,6 @@
-export { default as Theme } from './Theme';
+export { default as LoadingComponent } from './LoadingComponent.vue'
+export { default as FadeComponent } from './FadeComponent.vue'
+export { default as ModalComponent } from './ModalComponent.vue'
+export { default as CardinalComponent } from './CardinalComponent.vue'
+export { default as GroupComponent } from './GroupComponent.vue'
+export { default as Slideout } from './Slideout.vue'
