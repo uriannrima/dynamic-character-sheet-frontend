@@ -1,17 +1,18 @@
 <template>
   <div class="sheet">
-    <store-container store-name="Character"
-                     :mapState="['description', 'classes','status']">
-      <sheet-header slot-scope="{ description, classes, status }">
+    <store-container module="Character"
+                     namespaced
+                     :map-state="['description', 'classes', 'status']">
+      <sheet-header slot-scope="{ state }">
         <flex-container>
           <dcs-avatar :icon-name="iconName"
                       :icon-color="iconColor">
           </dcs-avatar>
-          <dcs-details :name="description.name"
-                       :race="description.race"
-                       :classes="classes">
+          <dcs-details :name="state.description.name"
+                       :race="state.description.race"
+                       :classes="state.classes">
           </dcs-details>
-          <dcs-status :status="status">
+          <dcs-status :status="state.status">
           </dcs-status>
         </flex-container>
       </sheet-header>
@@ -53,14 +54,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-@import '~public/styles/components.scss';
-
-.sheet {
-  display: flex;
-  flex-direction: column;
-  padding-top: 72px;
-  box-shadow: rgb(136, 136, 136) 0 0px 10px;
-}
-</style>
