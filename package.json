@@ -49,6 +49,7 @@
     "@types/feathersjs__socketio-client": "^1.0.1",
     "@types/jest": "^23.1.4",
     "@types/js-cookie": "^2.2.0",
+    "@types/webpack-env": "^1.13.6",
     "@vue/cli-plugin-babel": "^3.0.3",
     "@vue/cli-plugin-eslint": "^3.0.3",
     "@vue/cli-plugin-pwa": "^3.0.3",

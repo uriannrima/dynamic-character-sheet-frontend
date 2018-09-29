@@ -835,6 +835,10 @@
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
 
+"@types/webpack-env@^1.13.6":
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
+
 "@vue/babel-preset-app@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@vue/babel-preset-app/-/babel-preset-app-3.0.1.tgz#24188938e93f259f7141a6a1190da9c511d123d8"
