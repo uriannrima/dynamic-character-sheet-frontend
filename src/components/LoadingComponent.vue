@@ -17,10 +17,7 @@
 </template>
 
 <script>
-import FadeComponent from './FadeComponent';
-
 export default {
-  components: { FadeComponent },
   props: {
     loading: {
       type: Boolean,

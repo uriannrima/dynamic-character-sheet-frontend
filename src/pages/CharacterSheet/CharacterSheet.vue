@@ -6,16 +6,14 @@
       <loading-component :loading="isLoading">
         <sheet-wrapper>
           <sheet>
-            <character-sheet-header slot="header"></character-sheet-header>
+            <character-sheet-header slot="header">
+            </character-sheet-header>
             <component :is="selectedSection"
-                       @select="setSelectedAttribute($event); toggleSidebar();"></component>
+                       @select="setSelectedAttribute($event); toggleSidebar();">
+            </component>
           </sheet>
         </sheet-wrapper>
-        <fab-menu :open="isSectionMenuOpen"
-                  :items="sections"
-                  @click="setSelectedSection($event.meta.item.value); toggleSectionMenu();"
-                  @toggle="toggleSectionMenu">
-        </fab-menu>
+        <character-sheet-section-menu></character-sheet-section-menu>
         <slideout :open="isSidebarOpen"
                   @update:open="toggleSidebar"
                   panel=".sheet">
@@ -34,9 +32,9 @@
 <script>
 import styled from 'vue-styled-components';
 import VuexComponent from '@/store/mixins/vuex.component';
-import StoreContainer from '@/store/components/StoreContainer';
 import { LoadingComponent, Sheet, FabMenu, Slideout } from '@/components';
 import { CharacterSheetHeader } from './CharacterSheetHeader';
+import { CharacterSheetSectionMenu } from './CharacterSheetSectionMenu';
 import * as Sections from './Sections';
 
 import CharacterModule, {
@@ -54,13 +52,9 @@ const SheetWrapper = styled('div')`
 
 export default {
   components: {
-    StoreContainer,
-    LoadingComponent,
-    Sheet,
     CharacterSheetHeader,
+    CharacterSheetSectionMenu,
     ...Sections,
-    FabMenu,
-    Slideout,
     SheetWrapper
   },
   mixins: [

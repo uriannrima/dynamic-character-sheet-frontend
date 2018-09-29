@@ -22,11 +22,8 @@ import { AbilityScores } from './AbilityScores';
 import { Miscelaneous } from './Miscelaneous';
 import { SavingThrows } from './SavingThrows';
 
-import StoreContainer from '@/store/components/StoreContainer';
-
 export default {
   components: {
-    StoreContainer,
     AbilityScores,
     Miscelaneous,
     SavingThrows

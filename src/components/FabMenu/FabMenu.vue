@@ -23,10 +23,7 @@
 </template>
 
 <script>
-import FabMenuItem from './FabMenuItem';
-
 export default {
-  components: { FabMenuItem },
   props: {
     open: {
       type: Boolean,

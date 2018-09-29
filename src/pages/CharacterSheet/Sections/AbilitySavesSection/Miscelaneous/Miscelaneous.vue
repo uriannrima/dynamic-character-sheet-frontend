@@ -23,10 +23,8 @@
 import Initiative from './Initiative';
 import Speed from './Speed';
 
-import StoreContainer from '@/store/components/StoreContainer';
-
 export default {
-  components: { StoreContainer, Initiative, Speed }
+  components: { Initiative, Speed }
 };
 </script>
 

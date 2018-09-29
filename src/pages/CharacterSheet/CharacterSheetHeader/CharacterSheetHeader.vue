@@ -4,7 +4,7 @@
                    :map-state="mapState">
     <flex-container align="center"
                     slot-scope="{ state : { description, classes, status } }">
-      <dcs-avatar></dcs-avatar>
+      <avatar></avatar>
       <dcs-details :name="description.name"
                    :race="description.race"
                    :classes="classes">
@@ -16,17 +16,11 @@
 </template>
 
 <script>
-import { StoreContainer } from '@/store/components';
-import { FlexContainer } from '@/components';
-import { Avatar as DcsAvatar } from '@/components/Avatar';
 import DcsDetails from './Details.vue';
 import DcsStatus from './Status.vue';
 
 export default {
   components: {
-    StoreContainer,
-    FlexContainer,
-    DcsAvatar,
     DcsDetails,
     DcsStatus
   },

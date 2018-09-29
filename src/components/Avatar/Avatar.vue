@@ -11,7 +11,6 @@
 
 <script>
 import VueTypes from 'vue-types';
-import { AvatarWrapper, AvatarIcon } from '.';
 
 const props = {
   size: VueTypes.string.def('3em'),
@@ -21,7 +20,6 @@ const props = {
 };
 
 export default {
-  components: { AvatarWrapper, AvatarIcon },
   props
 };
 </script>
