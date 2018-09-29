@@ -1,34 +1,23 @@
-import { IMap } from '@/domain/interfaces/IMap';
-import { AbilityScore, SavingThrow } from '@/domain';
 
-export class SheetBlock {
-  _id: string = '';
-  name: string = '';
-  snippet: string = '';
-  description?: string;
-}
-
-export class Sheet {
-  abilityScore?: IMap<AbilityScore>;
-  savingThrow?: IMap<SavingThrow>;
-  miscelaneous?: IMap<SheetBlock>;
-}
+interface Section {
+  label: string;
+  value: string;
+};
 
 export class LayoutState {
   isLoading: boolean = false;
   isSectionMenuOpen: boolean = false;
   isSidebarOpen: boolean = false;
-  sections: string[] = [
-    'ability & saves',
-    'skills',
-    'combat',
-    'inventory',
-    'spells',
-    'feats',
-    'special abilities',
-    'languages'
+  sections: Section[] = [
+    { label: 'ability & saves', value: 'ability-saves-section' },
+    { label: 'skills', value: 'skills-section' },
+    { label: 'combat', value: 'combat-section' },
+    { label: 'inventory', value: 'inventory-section' },
+    { label: 'spells', value: 'spells-section' },
+    { label: 'feats', value: 'feats-section' },
+    { label: 'special abilities', value: 'special-abilities-section' },
+    { label: 'languages', value: 'languages-section' }
   ];
-  selectedSection: string = this.sections[0];
-  portalName: string = '';
-  sheet: Sheet = {}
+  selectedSection: string = this.sections[0].value;
+  selectedAttribute: any = {};
 }

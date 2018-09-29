@@ -1,23 +1,23 @@
 <template>
-  <sheet-section>
+  <div class="special-abilities-section">
     <special-abilities :special-abilities="specialAbilities"></special-abilities>
-  </sheet-section>
+  </div>
 </template>
 
 <script>
-import SheetSection from '@/components/SheetSection';
-
 import SpecialAbilities from './SpecialAbilities';
 
 import { mapState } from '@/pages/CharacterSheet/Store/Character';
 
 export default {
-  components: { SheetSection, SpecialAbilities },
+  components: { SpecialAbilities },
   computed: {
     ...mapState(['specialAbilities'])
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.special-abilities-section {
+}
 </style>

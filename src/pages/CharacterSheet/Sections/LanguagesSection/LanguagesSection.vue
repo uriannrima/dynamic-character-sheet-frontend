@@ -1,23 +1,23 @@
 <template>
-  <sheet-section>
+  <div class="languages-section">
     <languages :languages="languages"></languages>
-  </sheet-section>
+  </div>
 </template>
 
 <script>
-import SheetSection from '@/components/SheetSection';
-
 import Languages from './Languages';
 
 import { mapState } from '@/pages/CharacterSheet/Store/Character';
 
 export default {
-  components: { SheetSection, Languages },
+  components: { Languages },
   computed: {
     ...mapState(['languages'])
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.languages-section {
+}
 </style>

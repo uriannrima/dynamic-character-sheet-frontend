@@ -5,8 +5,8 @@ export const Mutations = {
   toggleLoading: 'toggleLoading',
   toggleSectionMenu: 'toggleSectionMenu',
   toggleSidebar: 'toggleSidebar',
-  setPortalName: 'setPortalName',
-  setSelectedSection: 'setSelectedSection'
+  setSelectedSection: 'setSelectedSection',
+  setSelectedAttribute: 'setSelectedAttribute'
 }
 
 export const Mappings = {

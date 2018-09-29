@@ -1,23 +1,23 @@
 <template>
-  <sheet-section>
+  <div class="skills-section">
     <skills :skills="skills"
             :ability-scores="abilityScores"></skills>
-  </sheet-section>
+  </div>
 </template>
 
 <script>
-import SheetSection from '@/components/SheetSection';
 import Skills from './Skills';
 
 import { mapState } from '@/pages/CharacterSheet/Store/Character';
 
 export default {
-  components: { SheetSection, Skills },
+  components: { Skills },
   computed: {
     ...mapState(['skills', 'abilityScores'])
   }
 };
 </script>
-
-<style>
+<style lang="scss" scoped>
+.skills-section {
+}
 </style>

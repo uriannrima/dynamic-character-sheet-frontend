@@ -20,7 +20,9 @@ export default {
             return mapping;
           }, {});
         } else {
-          return storeState[this.mapState];
+          return {
+            [this.mapState]: storeState[this.mapState]
+          };
         }
       }
     },
@@ -33,7 +35,9 @@ export default {
             return mapping;
           }, {});
         } else {
-          return storeGetters[this.getNamespaced(this.mapGetters)];
+          return {
+            [this.mapGetters]: storeGetters[this.getNamespaced(this.mapGetters)]
+          };
         }
       }
     },
@@ -50,7 +54,9 @@ export default {
           const mappedMutation = payload => {
             this.$store.commit(this.getNamespaced(this.mapMutations), payload);
           };
-          return mappedMutation;
+          return {
+            [this.mapMutations]: mappedMutation
+          };
         }
       }
     },
@@ -67,7 +73,9 @@ export default {
           const mappedAction = payload => {
             this.$store.dispatch(this.getNamespaced(this.mapActions), payload);
           };
-          return mappedAction;
+          return {
+            [this.mapActions]: mappedAction
+          };
         }
       }
     }
@@ -78,15 +86,15 @@ export default {
     }
   },
   render(h) {
-    return (
+    const element =
       this.$scopedSlots.default &&
       this.$scopedSlots.default({
         state: this.mappedState,
         getters: this.mappedGetters,
         mutations: this.mappedMutations,
         actions: this.mappedActions
-      })
-    );
+      });
+    return element && Array.isArray(element) ? element[0] : element;
   }
 };
 </script>

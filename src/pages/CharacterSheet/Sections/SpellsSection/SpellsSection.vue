@@ -1,22 +1,20 @@
 <template>
-  <sheet-section>
+  <div class="spells-section">
     <spells :spells="spells"
             :classes="getClasses"
             :ability-scores="abilityScores"
             :base-attack-bonus="baseAttackBonus[0]">
     </spells>
-  </sheet-section>
+  </div>
 </template>
 
 <script>
-import SheetSection from '@/components/SheetSection';
-
 import { Spells } from './Spells';
 
 import { mapState } from '@/pages/CharacterSheet/Store/Character';
 
 export default {
-  components: { SheetSection, Spells },
+  components: { Spells },
   computed: {
     ...mapState(['spells', 'classes', 'abilityScores', 'baseAttackBonus']),
     getClasses() {

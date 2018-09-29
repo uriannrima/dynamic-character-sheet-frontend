@@ -7,6 +7,7 @@ class FlexContainerProps {
   vertical: boolean | any = VueTypes.bool.def(false);
   wrap: boolean | any = VueTypes.bool.def(false);
   justify: string | any = VueTypes.string;
+  align: string | any = VueTypes.string;
 }
 
 const props = new FlexContainerProps();
@@ -17,6 +18,7 @@ const props = new FlexContainerProps();
  */
 export default styled('div', props)`
   display: flex;
+  flex: 1;
   ${(props: FlexContainerProps) => {
     return props.vertical && `flex-direction: column;`;
   }};
@@ -25,6 +27,9 @@ export default styled('div', props)`
   }};
   ${(props: FlexContainerProps) => {
     return props.justify && `justify-content: ${props.justify};`;
+  }};
+  ${(props: FlexContainerProps) => {
+    return props.align && `align-items: ${props.align};`;
   }};
 `;
 </script>

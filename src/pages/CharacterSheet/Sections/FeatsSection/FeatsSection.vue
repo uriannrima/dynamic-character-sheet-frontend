@@ -1,23 +1,22 @@
 <template>
-  <sheet-section>
+  <div class="feats-section">
     <feats :feats="feats"></feats>
-  </sheet-section>
+  </div>
 </template>
 
 <script>
-import SheetSection from '@/components/SheetSection';
-
 import Feats from './Feats';
-
 import { mapState } from '@/pages/CharacterSheet/Store/Character';
 
 export default {
-  components: { SheetSection, Feats },
+  components: { Feats },
   computed: {
     ...mapState(['feats'])
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.feats-section {
+}
 </style>

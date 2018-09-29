@@ -1,23 +1,23 @@
 <template>
-  <sheet-section>
+  <div class="inventory-section">
     <inventory :items="items"></inventory>
-  </sheet-section>
+  </div>
 </template>
 
 <script>
-import SheetSection from '@/components/SheetSection';
-
 import { Inventory } from './Inventory';
 
 import { mapState } from '@/pages/CharacterSheet/Store/Character';
 
 export default {
-  components: { SheetSection, Inventory },
+  components: { Inventory },
   computed: {
     ...mapState(['items'])
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.inventory-section {
+}
 </style>
