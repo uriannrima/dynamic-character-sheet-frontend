@@ -9,19 +9,29 @@ export default {
     mapMutations: [Array, String]
   },
   computed: {
+    storeState() {
+      let storeState = this.$store.state;
+      if (this.module) {
+        if (this.module.indexOf('/') !== -1) {
+          this.module.split('/').forEach(subModule => {
+            storeState = storeState[subModule];
+          });
+        } else {
+          storeState = this.$store.state[this.module];
+        }
+      }
+      return storeState;
+    },
     mappedState() {
       if (this.mapState) {
-        const storeState = this.module
-          ? this.$store.state[this.module]
-          : this.$store.state;
         if (Array.isArray(this.mapState)) {
           return this.mapState.reduce((mapping, state) => {
-            mapping[state] = storeState[state];
+            mapping[state] = this.storeState[state];
             return mapping;
           }, {});
         } else {
           return {
-            [this.mapState]: storeState[this.mapState]
+            [this.mapState]: this.storeState[this.mapState]
           };
         }
       }
@@ -81,6 +91,7 @@ export default {
     }
   },
   methods: {
+    getStoreState() {},
     getNamespaced(name) {
       return this.namespaced ? `${this.module}/${name}` : name;
     }

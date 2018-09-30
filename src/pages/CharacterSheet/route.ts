@@ -1,9 +1,9 @@
 import { RouteConfig } from 'vue-router'
 
-const CharacterSheet = () => import('./CharacterSheet.vue')
+const CharacterSheetPage = () => import('./CharacterSheetPage.vue')
 
 const baseRoute = {
-  component: CharacterSheet,
+  component: CharacterSheetPage,
   props: true,
   meta: {
     title: 'Character',

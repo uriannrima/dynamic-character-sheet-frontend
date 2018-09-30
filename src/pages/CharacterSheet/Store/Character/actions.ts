@@ -74,7 +74,7 @@ export const actions: ActionTree<CharacterState, RootState> = {
         Mutations.updateSpells
       ].forEach(mutation => {
         commit(mutation, character)
-      })
+      });
     } catch (error) {
       // NotificationService.error({
       //   message: error.message

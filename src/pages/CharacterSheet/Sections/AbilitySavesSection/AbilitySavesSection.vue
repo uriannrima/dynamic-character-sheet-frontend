@@ -1,5 +1,5 @@
 <template>
-  <store-container module="Character"
+  <store-container module="CharacterSheet/Character"
                    namespaced
                    :map-state="['abilityScores', 'savingThrows']">
     <div class="ability-save-section"

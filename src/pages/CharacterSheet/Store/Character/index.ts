@@ -9,7 +9,7 @@ import mutations from './mutations'
 export { default as Mappings } from './mappings'
 export { Actions, Mutations } from './mappings'
 
-const namespaceName = 'Character'
+const namespaceName = 'CharacterSheet/Character'
 export const { mapState, mapGetters, mapActions, mapMutations } = createNamespacedHelpers(namespaceName)
 export const Namespace = namespace(namespaceName)
 

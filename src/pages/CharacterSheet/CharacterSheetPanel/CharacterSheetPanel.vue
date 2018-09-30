@@ -1,5 +1,5 @@
 <template>
-  <store-container module="CharacterSheetLayout"
+  <store-container module="CharacterSheet/Layout"
                    namespaced
                    :map-state="[ 'isSidebarOpen',  'selectedAttribute']"
                    map-mutations="toggleSidebar">

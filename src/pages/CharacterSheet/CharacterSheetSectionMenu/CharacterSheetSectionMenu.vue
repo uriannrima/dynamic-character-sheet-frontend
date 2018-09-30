@@ -1,5 +1,5 @@
 <template>
-  <store-container module="CharacterSheetLayout"
+  <store-container module="CharacterSheet/Layout"
                    namespaced
                    :map-state="['sections', 'isSectionMenuOpen']">
     <template slot-scope="mappings">
