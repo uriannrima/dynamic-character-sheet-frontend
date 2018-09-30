@@ -1,41 +1,27 @@
 <template>
-  <store-container module="CharacterSheetLayout"
-                   namespaced
-                   :map-state="[ 'sections', 'isSectionMenuOpen', 'isLoading', 'isSidebarOpen', 'selectedSection', 'selectedAttribute']">
-    <template slot-scope="{ state : { sections, isSectionMenuOpen, isLoading, isSidebarOpen, selectedSection, selectedAttribute } }">
-      <loading-component :loading="isLoading">
-        <sheet-wrapper>
-          <sheet>
-            <character-sheet-header slot="header">
-            </character-sheet-header>
-            <component :is="selectedSection"
-                       @select="setSelectedAttribute($event); toggleSidebar();">
-            </component>
-          </sheet>
-        </sheet-wrapper>
-        <character-sheet-section-menu></character-sheet-section-menu>
-        <slideout :open="isSidebarOpen"
-                  @update:open="toggleSidebar"
-                  panel=".sheet">
-          <!-- <portal-target name="character-sheet-slideout-portal">
-          </portal-target> -->
-          <div>
-            Painel:
-            <pre>{{selectedAttribute}}</pre>
-          </div>
-        </slideout>
-      </loading-component>
-    </template>
-  </store-container>
+  <character-sheet-loading>
+    <character-sheet-wrapper class="sheet-wrapper">
+      <sheet>
+        <character-sheet-header slot="header">
+        </character-sheet-header>
+        <character-sheet-section>
+        </character-sheet-section>
+      </sheet>
+    </character-sheet-wrapper>
+    <character-sheet-section-menu></character-sheet-section-menu>
+    <character-sheet-panel panel-selector=".sheet-wrapper"></character-sheet-panel>
+  </character-sheet-loading>
 </template>
 
 <script>
-import styled from 'vue-styled-components';
 import VuexComponent from '@/store/mixins/vuex.component';
-import { LoadingComponent, Sheet, FabMenu, Slideout } from '@/components';
+import { Sheet } from '@/components';
 import { CharacterSheetHeader } from './CharacterSheetHeader';
 import { CharacterSheetSectionMenu } from './CharacterSheetSectionMenu';
-import * as Sections from './Sections';
+import { CharacterSheetPanel } from './CharacterSheetPanel';
+import { CharacterSheetSection } from './CharacterSheetSection';
+import { CharacterSheetLoading } from './CharacterSheetLoading';
+import { CharacterSheetWrapper } from './CharacterSheetWrapper';
 
 import CharacterModule, {
   mapActions as characterActions
@@ -43,19 +29,14 @@ import CharacterModule, {
 
 import LayoutModule, { mapMutations as layoutMutations } from './Store/Layout';
 
-const delay = async duration =>
-  new Promise((resolve, reject) => setTimeout(resolve, duration));
-
-const SheetWrapper = styled('div')`
-  padding-bottom: 55px;
-`;
-
 export default {
   components: {
     CharacterSheetHeader,
     CharacterSheetSectionMenu,
-    ...Sections,
-    SheetWrapper
+    CharacterSheetPanel,
+    CharacterSheetSection,
+    CharacterSheetLoading,
+    CharacterSheetWrapper
   },
   mixins: [
     VuexComponent([
@@ -83,21 +64,13 @@ export default {
   },
   methods: {
     ...characterActions(['loadCharacter', 'newCharacter']),
-    ...layoutMutations([
-      'toggleLoading',
-      'toggleSectionMenu',
-      'toggleSidebar',
-      'setSelectedSection',
-      'setSelectedAttribute'
-    ]),
+    ...layoutMutations(['toggleLoading']),
     async loadSheet(characterId) {
-      return delay(1500).then(() => {
-        if (!characterId) {
-          return this.newCharacter();
-        } else {
-          return this.loadCharacter(characterId);
-        }
-      });
+      if (!characterId) {
+        return this.newCharacter();
+      } else {
+        return this.loadCharacter(characterId);
+      }
     }
   }
 };

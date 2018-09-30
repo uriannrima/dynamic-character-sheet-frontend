@@ -22,7 +22,7 @@ export default {
 .status {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  min-width: 100px;
   justify-content: space-around;
   padding: 0 0.25rem;
 }

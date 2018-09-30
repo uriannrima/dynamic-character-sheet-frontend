@@ -3,12 +3,15 @@
                    namespaced
                    :map-state="mapState">
     <flex-container align="center"
+                    justify="space-between"
                     slot-scope="{ state : { description, classes, status } }">
-      <avatar></avatar>
-      <dcs-details :name="description.name"
-                   :race="description.race"
-                   :classes="classes">
-      </dcs-details>
+      <flex-container>
+        <avatar></avatar>
+        <dcs-details :name="description.name"
+                     :race="description.race"
+                     :classes="classes">
+        </dcs-details>
+      </flex-container>
       <dcs-status :status="status">
       </dcs-status>
     </flex-container>
