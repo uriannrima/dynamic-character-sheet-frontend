@@ -1,6 +1,7 @@
 import { MutationTree } from 'vuex'
 import { Mutations } from '@/pages/CharacterSheet/Store/Layout/mappings'
 import { LayoutState } from '@/pages/CharacterSheet/Store/Layout/state'
+import { Modifier } from '@/domain/interfaces/IModified';
 
 export const mutations: MutationTree<LayoutState> = {
   [Mutations.toggleLoading](state, isLoading?: boolean) {
@@ -20,6 +21,12 @@ export const mutations: MutationTree<LayoutState> = {
   },
   [Mutations.setSlideoutPanel](state, panelName: string) {
     state.panelName = panelName;
+  },
+  [Mutations.addSelectedAttributeModifier](state, modifier: Modifier) {
+    state.selectedAttribute.modifiers.push(modifier);
+  },
+  [Mutations.removeSelectedAttributeModifier](state, modifierIndex: number) {
+    state.selectedAttribute.modifiers.splice(modifierIndex, 1);
   }
 }
 

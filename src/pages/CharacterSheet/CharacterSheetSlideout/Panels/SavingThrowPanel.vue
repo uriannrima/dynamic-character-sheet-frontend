@@ -1,12 +1,13 @@
 <template>
   <base-panel :title="selected.name"
-              :modifier="selected.total + selected.keyAbilityScore.modifier"
+              :sub-title="selected.total + selected.keyAbilityScore.modifier"
               :snippet="selected.snippet"
               :description="selected.description"
               manageable
               :base="selected.base"
               :ability-modifier="selected.keyAbilityScore.modifier"
-              :modifiers="selected.modifiers">
+              :modifiers="selected.modifiers"
+              v-on="$listeners">
   </base-panel>
 </template>
 

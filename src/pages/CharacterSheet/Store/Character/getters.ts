@@ -60,7 +60,10 @@ export const getters: GetterTree<CharacterState, RootState> = {
     return state.gear.protectiveItems.reduce((acc, item) => acc + item.acBonus, 0)
   },
   getTotalInitiative: function (state, getters) {
-    return getters.getInitiativeKeyScore.modifier + state.initiativeModifier
+    const totalModifier = state.initiativeModifiers.reduce((acc, modifier) => {
+      return acc + modifier.value;
+    }, 0);
+    return getters.getInitiativeKeyScore.modifier + totalModifier;
   },
   getBaseAttackBonus: state => {
     return state.baseAttackBonus.join('/')

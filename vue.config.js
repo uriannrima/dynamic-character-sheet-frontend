@@ -7,6 +7,7 @@ function resolve(dir) {
 
 function createCustomMergeConfig(_) {
   return {
+    devtool: 'source-map',
     resolve: {
       alias: {
         'public': resolve('public'),

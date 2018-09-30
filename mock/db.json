@@ -150,7 +150,7 @@
           }
         ]
       },
-      "initiativeModifier": 0,
+      "initiativeModifiers": [],
       "baseAttackBonus": [
         8,
         1
@@ -416,7 +416,7 @@
           }
         ]
       },
-      "initiativeModifier": 0,
+      "initiativeModifiers": [],
       "baseAttackBonus": [
         0
       ],
@@ -709,7 +709,7 @@
           }
         ]
       },
-      "initiativeModifier": 0,
+      "initiativeModifiers": [],
       "baseAttackBonus": [
         3
       ],
@@ -1137,7 +1137,7 @@
           }
         ]
       },
-      "initiativeModifier": 0,
+      "initiativeModifiers": [],
       "baseAttackBonus": [
         5
       ],
@@ -1460,7 +1460,7 @@
           }
         ]
       },
-      "initiativeModifier": 0,
+      "initiativeModifiers": [],
       "baseAttackBonus": [
         2
       ],

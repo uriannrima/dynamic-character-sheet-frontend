@@ -1,3 +1,4 @@
+import { BasePanel } from '@/pages/CharacterSheet/Store/Layout/types';
 
 interface Section {
   label: string;

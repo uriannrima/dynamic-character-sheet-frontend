@@ -8,7 +8,9 @@ export const Mutations = {
   toggleSidebar: 'toggleSidebar',
   setSelectedSection: 'setSelectedSection',
   setSelectedAttribute: 'setSelectedAttribute',
-  setSlideoutPanel: 'setSlideoutPanel'
+  setSlideoutPanel: 'setSlideoutPanel',
+  addSelectedAttributeModifier: 'addSelectedAttributeModifier',
+  removeSelectedAttributeModifier: 'removeSelectedAttributeModifier'
 }
 
 export const Mappings = {

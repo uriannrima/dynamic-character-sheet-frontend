@@ -1,14 +1,12 @@
 <template>
-  <!-- <pre>
-  {{selected}}
-</pre> -->
   <base-panel :title="selected.name"
-              :modifier="selected.total"
+              :sub-title="selected.total"
               :snippet="selected.snippet"
               :description="selected.description"
               manageable
               :base="selected.base"
-              :modifiers="selected.modifiers">
+              :modifiers="selected.modifiers"
+              v-on="$listeners">
   </base-panel>
 </template>
 

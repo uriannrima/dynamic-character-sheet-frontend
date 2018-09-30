@@ -1,11 +1,14 @@
 <template>
   <store-container module="CharacterSheet/Layout"
                    namespaced
-                   :map-state="['panelName', 'selectedAttribute']">
+                   :map-state="['panelName', 'selectedAttribute']"
+                   :map-actions="['addModifier', 'removeModifier']">
     <template slot-scope="mappings">
       <div class="character-sheet-panel">
         <component :is="mappings.state.panelName"
-                   :selected="mappings.state.selectedAttribute">
+                   :selected="mappings.state.selectedAttribute"
+                   @add-modifier="mappings.actions.addModifier"
+                   @remove-modifier="mappings.actions.removeModifier">
         </component>
       </div>
     </template>
@@ -13,11 +16,10 @@
 </template>
 
 <script>
-import AbilityScorePanel from './Panels/AbilityScorePanel';
-import SavingThrowPanel from './Panels/SavingThrowPanel';
+import * as Panels from './Panels';
 
 export default {
-  components: { AbilityScorePanel, SavingThrowPanel }
+  components: { ...Panels }
 };
 </script>
 

@@ -1,27 +1,19 @@
 
 import { Module, createNamespacedHelpers } from 'vuex'
 import { RootState } from '@/store/types'
+import { CharacterSheetState } from './state';
 
 import Layout from './Layout'
 import Character from './Character'
 
+import actions from './actions';
+
 export const { mapActions } = createNamespacedHelpers('CharacterSheet');
 
-export const CharacterSheet: Module<{}, RootState> = {
+export const CharacterSheet: Module<CharacterSheetState, RootState> = {
   namespaced: true,
   modules: { Layout, Character },
-  actions: {
-    async loadCharacter({ commit, dispatch }, characterId) {
-      commit('Layout/toggleLoading', true);
-      await dispatch('Character/loadCharacter', characterId);
-      commit('Layout/toggleLoading', false);
-    },
-    async newCharacter({ commit, dispatch }) {
-      commit('Layout/toggleLoading', true);
-      dispatch('Character/newCharacter');
-      commit('Layout/toggleLoading', false);
-    }
-  }
+  actions
 }
 
 export default CharacterSheet

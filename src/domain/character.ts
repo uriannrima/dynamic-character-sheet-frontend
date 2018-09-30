@@ -2,6 +2,7 @@ import * as Modules from '@/domain'
 import { IMap } from '@/domain/interfaces/IMap'
 import { KeyAbilityType } from '@/domain/enums/key-ability-type'
 import { IEntity } from '@/domain/interfaces/IEntity'
+import { Modifier } from '@/domain/interfaces/IModified';
 
 export class Character implements IEntity {
   _id: string = '';
@@ -30,7 +31,7 @@ export class Character implements IEntity {
 
   languages: Modules.Language[] = [];
 
-  savingThrows: IMap<Modules.SavingThrow> = Modules.SavingThrows;
+  savingThrows: IMap<Modules.SavingThrow & { keyAbilityScore?: Modules.AbilityScore }> = Modules.SavingThrows;
 
   size: Modules.Size = new Modules.Size();
 
@@ -48,7 +49,7 @@ export class Character implements IEntity {
 
   grappleModifier: number = 0;
 
-  initiativeModifier: number = 0;
+  initiativeModifiers: Modifier[] = [];
 
   domainSchool: string = '';
 
@@ -110,7 +111,7 @@ export class Character implements IEntity {
 
       this.baseAttackBonus = model.baseAttackBonus
 
-      this.initiativeModifier = model.initiativeModifier
+      this.initiativeModifiers = model.initiativeModifiers
 
       this.grappleModifier = model.grappleModifier
 

@@ -10,7 +10,7 @@
           <span class="base-panel__title">{{ title }}</span>
         </slot>
         <slot name="panel-modifier">
-          <small class="base-panel__modifier">({{ modifier }})</small>
+          <small class="base-panel__sub-title">({{ subTitle }})</small>
         </slot>
       </div>
     </slot>
@@ -40,7 +40,7 @@
 export default {
   props: {
     title: String,
-    modifier: [String, Number],
+    subTitle: [String, Number],
     icon: String,
     snippet: String,
     description: String,
@@ -82,7 +82,7 @@ export default {
     margin-left: 5px;
   }
 
-  &__modifier {
+  &__sub-title {
     display: inline-flex;
     vertical-align: middle;
     margin-left: 5px;
@@ -94,6 +94,10 @@ export default {
   }
 
   &__description {
+    * {
+      font-size: 75%;
+    }
+
     h1,
     h2,
     h3,
