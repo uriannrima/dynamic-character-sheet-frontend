@@ -1,25 +1,26 @@
 <template>
   <store-container module="CharacterSheet/Layout"
                    namespaced
-                   :map-state="[ 'isSidebarOpen',  'selectedAttribute']"
+                   :map-state="[ 'isSidebarOpen']"
                    map-mutations="toggleSidebar">
     <template slot-scope="mappings">
       <slideout :open="mappings.state.isSidebarOpen"
                 @update:open="mappings.mutations.toggleSidebar"
-                :panel="panelSelector">
-        <div>
-          Painel:
-          <pre>{{mappings.state.selectedAttribute}}</pre>
-        </div>
+                :panel="slideoutSelector">
+        <character-sheet-panel>
+        </character-sheet-panel>
       </slideout>
     </template>
   </store-container>
 </template>
 
 <script>
+import CharacterSheetPanel from './CharacterSheetPanel.vue';
+
 export default {
+  components: { CharacterSheetPanel },
   props: {
-    panelSelector: {
+    slideoutSelector: {
       type: String,
       required: true
     }

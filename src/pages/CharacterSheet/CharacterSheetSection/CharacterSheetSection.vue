@@ -12,17 +12,16 @@
 
 <script>
 import * as Sections from '../Sections';
-import { mapMutations as layoutMutations } from '../Store/Layout';
+import { mapActions as layoutActions } from '../Store/Layout';
 
 export default {
   components: {
     ...Sections
   },
   methods: {
-    ...layoutMutations(['setSelectedAttribute', 'toggleSidebar']),
-    handleSelection($event) {
-      this.setSelectedAttribute($event);
-      this.toggleSidebar();
+    ...layoutActions(['setSelectedAttribute']),
+    handleSelection({ meta }) {
+      this.setSelectedAttribute(meta);
     }
   }
 };

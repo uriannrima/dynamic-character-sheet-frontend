@@ -17,6 +17,9 @@ export const mutations: MutationTree<LayoutState> = {
   },
   [Mutations.setSelectedAttribute](state, selectedAttribute: any) {
     state.selectedAttribute = selectedAttribute;
+  },
+  [Mutations.setSlideoutPanel](state, panelName: string) {
+    state.panelName = panelName;
   }
 }
 

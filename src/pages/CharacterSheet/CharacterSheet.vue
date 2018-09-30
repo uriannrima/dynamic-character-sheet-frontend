@@ -2,7 +2,7 @@
   <character-sheet-loading>
     <character-sheet-wrapper class="sheet-wrapper"></character-sheet-wrapper>
     <character-sheet-section-menu></character-sheet-section-menu>
-    <character-sheet-panel panel-selector=".sheet-wrapper"></character-sheet-panel>
+    <character-sheet-slideout slideout-selector=".sheet-wrapper"></character-sheet-slideout>
   </character-sheet-loading>
 </template>
 
@@ -10,14 +10,14 @@
 import { CharacterSheetLoading } from './CharacterSheetLoading';
 import { CharacterSheetWrapper } from './CharacterSheetWrapper';
 import { CharacterSheetSectionMenu } from './CharacterSheetSectionMenu';
-import { CharacterSheetPanel } from './CharacterSheetPanel';
+import { CharacterSheetSlideout } from './CharacterSheetSlideout';
 
 export default {
   components: {
     CharacterSheetLoading,
     CharacterSheetWrapper,
     CharacterSheetSectionMenu,
-    CharacterSheetPanel
+    CharacterSheetSlideout
   }
 };
 </script>

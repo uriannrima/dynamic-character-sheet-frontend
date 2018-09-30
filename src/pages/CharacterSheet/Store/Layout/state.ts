@@ -20,4 +20,5 @@ export class LayoutState {
   ];
   selectedSection: string = this.sections[0].value;
   selectedAttribute: any = {};
+  panelName: string = '';
 }

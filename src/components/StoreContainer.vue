@@ -1,4 +1,6 @@
 <script>
+import { createNamespacedHelpers } from 'vuex';
+
 export default {
   props: {
     module: String,
@@ -91,7 +93,6 @@ export default {
     }
   },
   methods: {
-    getStoreState() {},
     getNamespaced(name) {
       return this.namespaced ? `${this.module}/${name}` : name;
     }
@@ -100,6 +101,7 @@ export default {
     const element =
       this.$scopedSlots.default &&
       this.$scopedSlots.default({
+        stateTemp: this.state,
         state: this.mappedState,
         getters: this.mappedGetters,
         mutations: this.mappedMutations,

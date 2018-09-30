@@ -1,4 +1,5 @@
 export const Actions = {
+  setSelectedAttribute: 'setSelectedAttribute'
 }
 
 export const Mutations = {
@@ -6,7 +7,8 @@ export const Mutations = {
   toggleSectionMenu: 'toggleSectionMenu',
   toggleSidebar: 'toggleSidebar',
   setSelectedSection: 'setSelectedSection',
-  setSelectedAttribute: 'setSelectedAttribute'
+  setSelectedAttribute: 'setSelectedAttribute',
+  setSlideoutPanel: 'setSlideoutPanel'
 }
 
 export const Mappings = {
