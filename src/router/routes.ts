@@ -4,7 +4,7 @@ import { RouteConfig } from 'vue-router';
 const routes: RouteConfig[] = [];
 
 /** Require Pages Context */
-const routeRequire = (require as any).context(
+const routeRequire = require.context(
   '@/pages/',
   true,
   /[Rr]oute.(js|ts)$/
