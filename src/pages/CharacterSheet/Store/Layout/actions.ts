@@ -30,16 +30,18 @@ const getMiscelaneous = (characterState: CharacterState, name: string) => {
 }
 
 const getAttribute = (rootState: RootState, name: string, type: AttributeType) => {
-  const characterState = rootState.CharacterSheet.Character;
-  switch (type) {
-    case AttributeType.ABILITY_SCORE:
-      return characterState.abilityScores[name];
-    case AttributeType.SAVING_THROW:
-      const savingThrow = characterState.savingThrows[name];
-      savingThrow.keyAbilityScore = characterState.abilityScores[savingThrow.keyAbility];
-      return savingThrow;
-    case AttributeType.MISCELANEOUS:
-      return getMiscelaneous(characterState, name);
+  if (rootState.CharacterSheet) {
+    const characterState = rootState.CharacterSheet.Character;
+    switch (type) {
+      case AttributeType.ABILITY_SCORE:
+        return characterState.abilityScores[name];
+      case AttributeType.SAVING_THROW:
+        const savingThrow = characterState.savingThrows[name];
+        savingThrow.keyAbilityScore = characterState.abilityScores[savingThrow.keyAbility];
+        return savingThrow;
+      case AttributeType.MISCELANEOUS:
+        return getMiscelaneous(characterState, name);
+    }
   }
 }
 
