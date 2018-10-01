@@ -4,12 +4,28 @@ import { Mutations, Actions } from '@/pages/CharacterSheet/Store/Layout/mappings
 import { LayoutState } from '@/pages/CharacterSheet/Store/Layout/state';
 import { RootState } from '@/store/types';
 import { AttributeType, BasePanel, AbilityScorePanel, SavingThrowPanel } from '@/pages/CharacterSheet/Store/Layout/types';
+import { CharacterState } from '@/pages/CharacterSheet/Store/Character/state';
+import { SpeedDescription, InitiativeDescription } from './descriptions';
 
 const getPanelNameByType = (type: AttributeType, selected: string) => {
   switch (type) {
     case AttributeType.ABILITY_SCORE: return 'ability-score-panel';
     case AttributeType.SAVING_THROW: return 'saving-throw-panel';
     case AttributeType.MISCELANEOUS: return `${selected}-panel`;
+  }
+}
+
+const getMiscelaneous = (characterState: CharacterState, name: string) => {
+  switch (name) {
+    case 'initiative':
+      return {
+        modifiers: characterState.initiativeModifiers,
+        description: InitiativeDescription
+      }
+    case 'speed':
+      return {
+        description: SpeedDescription
+      }
   }
 }
 
@@ -23,12 +39,7 @@ const getAttribute = (rootState: RootState, name: string, type: AttributeType) =
       savingThrow.keyAbilityScore = characterState.abilityScores[savingThrow.keyAbility];
       return savingThrow;
     case AttributeType.MISCELANEOUS:
-      if (name === 'initiative') {
-        return {
-          modifiers: characterState.initiativeModifiers
-        }
-      }
-      break;
+      return getMiscelaneous(characterState, name);
   }
 }
 

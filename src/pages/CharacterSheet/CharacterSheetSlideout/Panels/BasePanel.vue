@@ -28,7 +28,8 @@
         </slot>
         <slot name="panel-body">
           <div class="base-panel__description">
-            <v-md :source="description"></v-md>
+            <v-md class="base-panel__description"
+                  :source="description"></v-md>
           </div>
         </slot>
       </div>
@@ -56,6 +57,8 @@ export default {
 @import '~public/styles/variables.scss';
 
 .base-panel {
+  padding-bottom: 55px;
+
   &__header {
     display: flex;
     align-items: center;
@@ -92,11 +95,12 @@ export default {
   &__snippet {
     font-style: italic;
   }
-
+}
+</style>
+<style lang="scss">
+.base-panel {
   &__description {
-    * {
-      font-size: 75%;
-    }
+    font-size: 85%;
 
     h1,
     h2,

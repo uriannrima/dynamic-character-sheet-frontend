@@ -9,6 +9,7 @@
                   manageable
                   :ability-modifier="mappings.getters.getInitiativeKeyScore.modifier"
                   :modifiers="mappings.state.initiativeModifiers"
+                  :description="selected.description"
                   v-on="$listeners">
       </base-panel>
     </template>
