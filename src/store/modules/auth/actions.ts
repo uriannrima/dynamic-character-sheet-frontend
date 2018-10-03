@@ -9,13 +9,17 @@ import { LoginPayload } from '@/services/auth/LoginPayload'
 export const actions: ActionTree<AuthState, RootState> = {
   async [Actions.login]({ commit }, payload: LoginPayload) {
     commit(Mutations.toggleProcessing, true)
-    var userSession = await AuthService.login(payload)
-    commit(Mutations.toggleProcessing, false)
-    if (userSession && userSession.accessToken) {
-      commit(Mutations.saveUserSession, userSession)
-      return true
+    try {
+      var userSession = await AuthService.login(payload)
+      commit(Mutations.toggleProcessing, false)
+      if (userSession && userSession.accessToken) {
+        commit(Mutations.saveUserSession, userSession)
+        return true
+      }
+    } catch (error) {
+      commit(Mutations.toggleProcessing, false)
+      return false
     }
-    return false
   },
   async [Actions.logout]({ commit }) {
     commit(Mutations.toggleProcessing, true)

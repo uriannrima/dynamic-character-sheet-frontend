@@ -5,6 +5,8 @@ import { IEntity } from '@/domain/interfaces/IEntity'
 import { Modifier } from '@/domain/interfaces/IModified';
 
 export class Character implements IEntity {
+  [index: string]: any;
+  
   _id: string = '';
 
   _type: string = 'Character';

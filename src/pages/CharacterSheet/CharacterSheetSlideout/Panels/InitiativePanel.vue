@@ -9,7 +9,6 @@
                   manageable
                   :ability-modifier="mappings.getters.getInitiativeKeyScore.modifier"
                   :modifiers="mappings.state.initiativeModifiers"
-                  :description="selected.description"
                   v-on="$listeners">
       </base-panel>
     </template>
@@ -19,10 +18,7 @@
 <script>
 import BasePanel from './BasePanel.vue';
 export default {
-  components: { BasePanel },
-  props: {
-    selected: Object
-  }
+  components: { BasePanel }
 };
 </script>
 

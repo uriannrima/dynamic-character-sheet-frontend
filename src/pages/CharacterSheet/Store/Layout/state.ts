@@ -1,4 +1,4 @@
-import { BasePanel } from '@/pages/CharacterSheet/Store/Layout/types';
+import { SelectedAttribute, AttributeType } from './types';
 
 interface Section {
   label: string;
@@ -20,6 +20,6 @@ export class LayoutState {
     { label: 'languages', value: 'languages-section' }
   ];
   selectedSection: string = this.sections[0].value;
-  selectedAttribute: any = {};
+  selectedAttribute: SelectedAttribute = {};
   panelName: string = '';
 }

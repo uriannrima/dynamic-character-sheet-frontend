@@ -7,13 +7,15 @@ import Layout from './Layout'
 import Character from './Character'
 
 import actions from './actions';
+import getters from './getters';
 
-export const { mapActions } = createNamespacedHelpers('CharacterSheet');
+export const { mapActions, mapGetters, mapState } = createNamespacedHelpers('CharacterSheet');
 
 export const CharacterSheet: Module<CharacterSheetState, RootState> = {
   namespaced: true,
   modules: { Layout, Character },
-  actions
+  actions,
+  getters
 }
 
 export default CharacterSheet

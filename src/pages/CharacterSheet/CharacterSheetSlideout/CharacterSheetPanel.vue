@@ -1,14 +1,12 @@
 <template>
   <store-container module="CharacterSheet/Layout"
                    namespaced
-                   :map-state="['panelName', 'selectedAttribute']"
-                   :map-actions="['addModifier', 'removeModifier']">
+                   :map-state="['panelName']">
     <template slot-scope="mappings">
       <div class="character-sheet-panel">
         <component :is="mappings.state.panelName"
-                   :selected="mappings.state.selectedAttribute"
-                   @add-modifier="mappings.actions.addModifier"
-                   @remove-modifier="mappings.actions.removeModifier">
+                   :selected="getSelectedAttribute"
+                   :description="getSelectedAttributeDescription">
         </component>
       </div>
     </template>
@@ -17,9 +15,13 @@
 
 <script>
 import * as Panels from './Panels';
+import { mapGetters } from '@/pages/CharacterSheet/Store';
 
 export default {
-  components: { ...Panels }
+  components: { ...Panels },
+  computed: {
+    ...mapGetters(['getSelectedAttribute', 'getSelectedAttributeDescription'])
+  }
 };
 </script>
 

@@ -3,10 +3,7 @@ import { RootState } from '@/store/types'
 import Auth from '@/store/modules/auth'
 
 export const store: StoreOptions<RootState> = {
-  modules: { Auth },
-  state: {
-    version: '1.0.0'
-  }
+  modules: { Auth }
 }
 
 export default store

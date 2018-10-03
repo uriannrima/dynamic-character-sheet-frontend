@@ -4,8 +4,7 @@
                    :map-state="['speed']">
     <template slot-scope="mappings">
       <base-panel title="Speed"
-                  :sub-title="mappings.state.speed"
-                  :description="selected.description">
+                  :sub-title="mappings.state.speed">
       </base-panel>
     </template>
   </store-container>
