@@ -6,6 +6,7 @@ import { IMap } from '@/domain/interfaces/IMap'
 import * as Modules from '@/domain'
 import ObjectUtils from '@/utils/object.utils'
 import { KeyAbilityType } from '@/domain/enums/key-ability-type'
+import { Modifier } from '@/domain/interfaces/IModified';
 
 export const mutations: MutationTree<CharacterState> = {
   [Mutations.newCharacter](state, newState: CharacterState = new CharacterState()) {
@@ -59,8 +60,8 @@ export const mutations: MutationTree<CharacterState> = {
   [Mutations.updateDamageReduction](state, { damageReduction }: { damageReduction: string }) {
     state.damageReduction = damageReduction
   },
-  [Mutations.updateInitiative](state, { initiativeModifier }: { initiativeModifier: number }) {
-    state.initiativeModifier = initiativeModifier;
+  [Mutations.updateInitiative](state, { initiativeModifiers }: { initiativeModifiers: Modifier[] }) {
+    state.initiativeModifiers = initiativeModifiers;
   },
   [Mutations.updateSavingThrows](state, { savingThrows }: { savingThrows: IMap<Modules.SavingThrow> }) {
     Object.keys(savingThrows).map(savingThrowName => {
