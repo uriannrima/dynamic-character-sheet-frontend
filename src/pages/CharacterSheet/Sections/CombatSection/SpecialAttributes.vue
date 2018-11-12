@@ -15,10 +15,7 @@
 </template>
 
 <script>
-import { ResumeCard } from '@/components/ResumeCards';
-
 export default {
-  components: { ResumeCard },
   props: {
     spellResistance: {
       type: [String, Number],

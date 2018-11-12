@@ -26,11 +26,10 @@
 </template>
 
 <script>
-import { ResumeCards } from '@/components/ResumeCards';
 import InventoryItem from './InventoryItem';
 
 export default {
-  components: { ResumeCards, InventoryItem },
+  components: { InventoryItem },
   props: {
     items: {
       type: Array,

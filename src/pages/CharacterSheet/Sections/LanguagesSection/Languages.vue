@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import { GroupComponent } from '@/components';
-
 export default {
   components: { GroupComponent },
   props: {

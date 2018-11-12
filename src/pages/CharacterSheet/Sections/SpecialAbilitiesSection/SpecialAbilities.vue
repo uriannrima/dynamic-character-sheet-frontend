@@ -18,10 +18,7 @@
 </template>
 
 <script>
-import GroupComponent from '@/components/GroupComponent';
-
 export default {
-  components: { GroupComponent },
   props: {
     specialAbilities: {
       type: Array,

@@ -1,7 +1,7 @@
 <template>
-  <loading-component :loading="isLoading">
+  <loading :loading="isLoading">
     <slot></slot>
-  </loading-component>
+  </loading>
 </template>
 
 <script>

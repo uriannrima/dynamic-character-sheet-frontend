@@ -12,11 +12,10 @@
 </template>
 
 <script>
-import { ResumeCards } from '@/components/ResumeCards';
 import Attack from './Attack';
 
 export default {
-  components: { ResumeCards, Attack },
+  components: { Attack },
   props: {
     attacks: {
       type: Array,

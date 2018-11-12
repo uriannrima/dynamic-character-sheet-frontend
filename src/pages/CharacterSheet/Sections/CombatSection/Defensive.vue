@@ -19,10 +19,7 @@
 </template>
 
 <script>
-import { ResumeCard } from '@/components/ResumeCards';
-
 export default {
-  components: { ResumeCard },
   props: {
     armorClass: {
       type: Number,

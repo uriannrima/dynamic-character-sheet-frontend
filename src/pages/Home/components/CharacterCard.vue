@@ -1,15 +1,6 @@
 <template>
   <div class="character-card-component">
     <div class="character-card-header">
-      <a href
-         @click.prevent="confirmDelete()">
-        <span class="left-icon glyphicon glyphicon-trash"
-              title="Delete character"></span>
-      </a>
-      <router-link :to="{ name: 'character', params: { id : character._id } }">
-        <span class="right-icon glyphicon glyphicon-edit"
-              title="Edit character"></span>
-      </router-link>
       <label>
         {{character.description.name}}
       </label>

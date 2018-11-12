@@ -26,12 +26,10 @@
 </template>
 
 <script>
-import CardinalComponent from '@/components/CardinalComponent';
-
 import SpellsList from './SpellsList';
 
 export default {
-  components: { CardinalComponent, SpellsList },
+  components: { SpellsList },
   props: {
     level: {
       type: [Number, String],

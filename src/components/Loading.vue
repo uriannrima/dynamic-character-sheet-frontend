@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fade-component>
+    <fade>
       <div class="loading-wrapper"
            v-show="loading">
         <section class="loading">
@@ -9,7 +9,7 @@
           <span class="loading__anim"></span>
         </section>
       </div>
-    </fade-component>
+    </fade>
     <div v-show="!loading">
       <slot></slot>
     </div>

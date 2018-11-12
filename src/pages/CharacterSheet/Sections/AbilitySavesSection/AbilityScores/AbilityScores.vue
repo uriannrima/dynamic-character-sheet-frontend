@@ -15,11 +15,10 @@
 </template>
 
 <script>
-import { ResumeCards } from '@/components/ResumeCards';
 import AbilityScore from './AbilityScore';
 
 export default {
-  components: { ResumeCards, AbilityScore },
+  components: { AbilityScore },
   props: {
     abilityScores: {
       type: Object,

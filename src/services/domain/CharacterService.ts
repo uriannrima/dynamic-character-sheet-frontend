@@ -1,8 +1,6 @@
 import { Character } from '@/domain/character'
 import AbstractService from '@/services/domain/AbstractService'
 
-console.debug(Character);
-
 class CharacterService extends AbstractService<Character> {
   constructor() {
     super({ url: '/characters', constructors: [Character] })

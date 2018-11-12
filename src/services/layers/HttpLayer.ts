@@ -7,7 +7,7 @@ var service = axios.create({
 export default class HttpLayer {
   public url: string;
   public service: AxiosInstance;
-  constructor ({ url = '' }: { url: string }) {
+  constructor({ url = '' }) {
     this.url = url
     this.service = service
   }

@@ -1,9 +1,8 @@
 <template>
   <div class="home-component">
-    <loading-component :loading="loading">
+    <loading :loading="loading">
       <character-card-list :characters="characters"></character-card-list>
-      <button>+</button>
-    </loading-component>
+    </loading>
   </div>
 </template>
 
@@ -15,10 +14,7 @@ import { Route, Next } from 'vue-router';
 import { Character } from '@domain/character';
 import CharacterService from '@services/domain/CharacterService';
 
-import CharacterCardList from './components/CharacterCardList.vue';
-import LoadingComponent from '@/components/LoadingComponent.vue';
-
-@Component({ components: { CharacterCardList, LoadingComponent } })
+@Component({})
 export default class Home extends Vue {
   loading: boolean = false;
   characters: Character[] = [];
@@ -26,8 +22,7 @@ export default class Home extends Vue {
   async beforeRouteEnter(_1: Route, _2: Route, next: Next<Home>) {
     next(async vm => {
       vm.loading = true;
-      const chars = (await CharacterService.getAll()) as Character[];
-      vm.characters = chars;
+      vm.characters = (await CharacterService.getAll()) as Character[];
       vm.loading = false;
     });
   }

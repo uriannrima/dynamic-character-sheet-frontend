@@ -3,10 +3,15 @@ import BaseHttpService from '@/services/bases/BaseHttpService'
 import { IEntity } from '@/domain/interfaces/IEntity'
 import { IConstructor } from '@/services/bases/MappingService';
 
+export interface AbstractServiceConstructor<TModel extends IEntity> {
+  url: string;
+  constructors?: Array<IConstructor<TModel>>;
+}
+
 export default abstract class AbstractService<TModel extends IEntity> {
   public service: BaseSocketService<TModel> | BaseHttpService<TModel>;
 
-  constructor({ url, constructors }: { url: string, constructors?: Array<IConstructor<TModel>> }) {
+  constructor({ url, constructors }: AbstractServiceConstructor<TModel>) {
     this.service = process.env.VUE_APP_LAYER === 'HTTP' ? new BaseHttpService({ url, constructors }) : new BaseSocketService<TModel>({ url, constructors })
   }
 

@@ -1,6 +1,4 @@
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
 export default {
   props: {
     module: String,

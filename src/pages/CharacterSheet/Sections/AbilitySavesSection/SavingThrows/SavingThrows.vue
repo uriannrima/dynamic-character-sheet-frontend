@@ -15,11 +15,10 @@
 </template>
 
 <script>
-import { ResumeCards } from '@/components/ResumeCards';
 import SavingThrow from './SavingThrow';
 
 export default {
-  components: { ResumeCards, SavingThrow },
+  components: { SavingThrow },
   props: {
     savingThrows: {
       type: Object,

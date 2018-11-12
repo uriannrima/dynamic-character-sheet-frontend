@@ -9,9 +9,6 @@
 
 <script>
 import Vue from 'vue';
-import { EmotionComponent } from '@/components/Emotion';
-import { withTheme, Theme, ITheme } from '@/components/Theme';
-
 // Text Style
 // return `
 //   font-size: 1em;
@@ -26,7 +23,6 @@ import { withTheme, Theme, ITheme } from '@/components/Theme';
 // `;
 
 const DcsButton = Vue.extend({
-  components: { EmotionComponent },
   props: {
     theme: Theme,
     primary: Boolean

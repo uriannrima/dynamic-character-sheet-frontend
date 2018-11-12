@@ -13,9 +13,6 @@
 
 <script>
 import styled from 'vue-styled-components';
-import FlexContainer from '@/components/FlexContainer';
-import { ThemeProvider } from '@/components/Theme';
-import DcsText from '@/components/DcsText';
 
 export default {
   components: { FlexContainer, ThemeProvider, DcsText },

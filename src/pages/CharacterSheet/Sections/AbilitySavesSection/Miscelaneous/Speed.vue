@@ -8,11 +8,9 @@
 </template>
 
 <script>
-import { ResumeCard } from '@/components/ResumeCards';
 import { SelectableMixin } from '@/mixins/components';
 
 export default {
-  components: { ResumeCard },
   mixins: [SelectableMixin],
   props: {
     speed: {
