@@ -11,69 +11,41 @@
 </template>
 
 <script>
-import LoginForm from './LoginForm'
-import RegistrationForm from './RegistrationForm'
-import { mapState, mapActions } from '@store/modules/auth'
+import { LoginForm, RegisterForm } from './components';
+import { mapState, mapActions } from '@store/modules/auth';
 
 export default {
-  components: { LoginForm, RegistrationForm },
-  data () {
+  components: { LoginForm, RegisterForm },
+  data() {
     return {
       formName: 'login-form',
       disableButton: false
-    }
+    };
   },
   computed: {
     ...mapState(['processing'])
   },
   methods: {
     ...mapActions(['login', 'register']),
-    doLogin: async function (payload) {
-      var loggedIn = await this.login(payload)
+    doLogin: async function(payload) {
+      var loggedIn = await this.login(payload);
       if (loggedIn) {
         if (this.$route.query.redirect) {
-          this.$router.push(this.$route.query.redirect)
+          this.$router.push(this.$route.query.redirect);
         } else {
-          this.$router.push('home')
+          this.$router.push('home');
         }
       }
     },
-    doRegistration: async function (payload) {
-      await this.register(payload)
-      this.toggleForm('login-form')
+    doRegistration: async function(payload) {
+      await this.register(payload);
+      this.toggleForm('login-form');
     },
-    toggleForm: function (formName) {
-      this.formName = formName
+    toggleForm: function(formName) {
+      this.formName = formName;
     }
   }
-}
-/*
-doLogin: async function (login) {
-  try {
-    this.disableButton = true;
-    var loggedIn = await AuthService.login(login);
-    if (loggedIn) {
-      if (this.$route.query.redirect) {
-        this.$router.push(this.$route.query.redirect);
-      } else {
-        this.$router.push('home');
-      }
-    }
-  } catch (error) {
-    console.log(error);
-  }
-  this.disableButton = false;
-},
-doRegistration: async function (login) {
-  try {
-    this.disableButton = true;
-    await UserService.register(login);
-    this.toggleForm('login-form');
-    this.disableButton = false;
-  } catch (error) {
-    this.disableButton = false;
-  }
-} */
+};
 </script>
 
 <style>
@@ -87,7 +59,7 @@ doRegistration: async function (login) {
 .form-container {
   position: relative;
   background: #ffffff;
-  max-width: 360px;
+  max-width: 300px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;

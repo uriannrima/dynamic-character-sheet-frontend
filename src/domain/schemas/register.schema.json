@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Registration",
+  "required": [
+    "name",
+    "email",
+    "password"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 4,
+      "attrs": {
+        "type": "text",
+        "placeholder": "Name"
+      }
+    },
+    "email": {
+      "type": "string",
+      "maxLength": 120,
+      "attrs": {
+        "type": "email",
+        "placeholder": "Email",
+        "autocomplete": "username"
+      }
+    },
+    "password": {
+      "type": "string",
+      "minLength": 4,
+      "attrs": {
+        "type": "password",
+        "placeholder": "Password",
+        "autocomplete": "new-password"
+      }
+    }
+  }
+}
