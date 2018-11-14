@@ -10,6 +10,12 @@ module.exports = {
     '@vue/typescript'
   ],
   rules: {
+    // typescript-eslint-parser bug: https://github.com/eslint/typescript-eslint-parser/issues/535
+    'camelcase': 0,
+    'no-redeclare': 0,
+    'no-dupe-args': 0,
+    'no-use-before-define': 0,
+    // typescript-eslint-parser bug: https://github.com/eslint/typescript-eslint-parser/issues/535
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // Bugged? Styled Component Error.

@@ -29,8 +29,9 @@ export default class Home extends Vue {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .home-component {
+  padding: 0.5em;
   margin-bottom: 55px;
 }
 </style>

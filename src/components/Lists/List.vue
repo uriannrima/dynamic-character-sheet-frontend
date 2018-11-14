@@ -1,13 +1,11 @@
 <template>
-  <div class="list-component">
-    <transition-group name="list"
-                      tag="div"
-                      class="list-component">
-      <slot v-for="item in items"
-            :item="item">
-      </slot>
-    </transition-group>
-  </div>
+  <transition-group name="list-component"
+                    tag="div"
+                    class="list-component">
+    <slot v-for="item in items"
+          :item="item">
+    </slot>
+  </transition-group>
 </template>
 
 <script>

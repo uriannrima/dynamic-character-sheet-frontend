@@ -23,11 +23,12 @@ export default {
           var character = JSON.parse(reader.result)
           resolve(character)
         } else {
-          reject();
+          reject(new Error('Reader result is not a string.'));
         }
       }
       reader.onerror = function (event) {
-        reject(event)
+        reader.abort();
+        reject(new Error("Error ocurred while reading a file."));
       }
     })
   }
