@@ -1,25 +1,46 @@
 <template>
-  <form class="register-form">
-    <form-schema :schema="schema"
-                 v-model="model"
-                 @submit.prevent="doRegister">
-      <button :disabled="disabled">Register</button>
-    </form-schema>
-    <p class="message">Already registered?
-      <a href
-         @click.prevent="$emit('toggleForm', 'login-form')">Sign In</a>
-    </p>
-  </form>
+  <base-form>
+    <mdc-textfield type="email"
+                   label="Email"
+                   required
+                   helptext="e-mail is required"
+                   helptext-validation
+                   v-model="model.email">
+    </mdc-textfield>
+    <mdc-textfield type="password"
+                   label="Password"
+                   required
+                   autocomplete="new-password"
+                   minlength="4"
+                   helptext="password is required and must be at least 4 characters"
+                   helptext-validation
+                   v-model="model.password">
+    </mdc-textfield>
+    <mdc-textfield type="text"
+                   label="Name"
+                   required
+                   minlength="4"
+                   helptext="name is required and must be at least 4 characters"
+                   helptext-validation
+                   v-model="model.name">
+    </mdc-textfield>
+    <mdc-button raised
+                @click.prevent="doRegister">Register</mdc-button>
+    <template slot="footer">
+      <mdc-caption>Already registered? <a href
+           @click.prevent="$emit('toggle-form')">Login</a>
+      </mdc-caption>
+    </template>
+  </base-form>
 </template>
 
 <script>
-import schema from '@/domain/schemas/register.schema';
+import BaseForm from './BaseForm';
 
 export default {
-  props: ['disabled'],
+  components: { BaseForm },
   data() {
     return {
-      schema,
       model: {
         name: '',
         email: '',
@@ -35,16 +56,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.register-form > div {
-  position: relative;
-}
-
-.registration-error-icon {
-  position: absolute;
-  right: 5px;
-  top: 17px;
-  color: red;
-}
-</style>

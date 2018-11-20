@@ -1,7 +1,11 @@
 <template>
   <div class="login-page">
     <login-container>
-      <component :is="'login-form'"></component>
+      <component :is="formName"
+                 @login="doLogin"
+                 @register="doRegistration"
+                 @toggle-form="toggleForm">
+      </component>
     </login-container>
   </div>
 </template>
@@ -14,8 +18,7 @@ export default {
   components: { ...components },
   data() {
     return {
-      formName: 'login-form',
-      disableButton: false
+      formName: 'login-form'
     };
   },
   computed: {
@@ -37,8 +40,12 @@ export default {
       await this.register(payload);
       this.toggleForm('login-form');
     },
-    toggleForm: function(formName) {
-      this.formName = formName;
+    toggleForm: function() {
+      if (this.formName === 'login-form') {
+        this.formName = 'register-form';
+      } else {
+        this.formName = 'login-form';
+      }
     }
   }
 };

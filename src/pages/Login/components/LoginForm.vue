@@ -1,24 +1,34 @@
 <template>
-  <form-schema class="login-form"
-               :schema="schema"
-               v-model="model"
-               @submit.prevent="doLogin">
-    <mdc-button raised :disabled="disabled">Login</mdc-button>
-    <p class="message">Not registered?
-      <a href
-         @click.prevent="$emit('toggleForm', 'register-form')">Create an account</a>
-    </p>
-  </form-schema>
+  <base-form>
+    <mdc-textfield type="email"
+                   label="Email"
+                   required
+                   autocomplete="username"
+                   v-model="model.email">
+    </mdc-textfield>
+    <mdc-textfield type="password"
+                   label="Password"
+                   required
+                   autocomplete="current-password"
+                   v-model="model.password">
+    </mdc-textfield>
+    <mdc-button raised
+                @click.prevent="doLogin">Login</mdc-button>
+    <template slot="footer">
+      <mdc-caption>Not registered? <a href
+           @click.prevent="$emit('toggle-form')">Create an account</a>
+      </mdc-caption>
+    </template>
+  </base-form>
 </template>
 
 <script>
-import schema from '@/domain/schemas/login.schema';
+import BaseForm from './BaseForm';
 
 export default {
-  props: ['disabled'],
+  components: { BaseForm },
   data() {
     return {
-      schema,
       model: {
         email: '',
         password: ''
@@ -33,6 +43,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

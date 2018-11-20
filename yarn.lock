@@ -668,9 +668,9 @@
     lodash "^4.17.10"
     radix-router "^3.0.1"
 
-"@formschema/native@^2.0.0-alpha.2":
-  version "2.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@formschema/native/-/native-2.0.0-alpha.2.tgz#793dabb7bfe5c2359124a3f44aeaa0ab9f309e5d"
+"@formschema/native@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@formschema/native/-/native-1.1.1.tgz#52b69b7ea5c6c28e3083fa229aef2f42f5af21f9"
 
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"

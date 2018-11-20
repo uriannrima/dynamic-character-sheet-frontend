@@ -16,7 +16,7 @@
     "@feathersjs/feathers": "^3.2.3",
     "@feathersjs/rest-client": "^1.4.5",
     "@feathersjs/socketio-client": "^1.1.4",
-    "@formschema/native": "^2.0.0-alpha.2",
+    "@formschema/native": "^1.1.1",
     "axios": "^0.18.0",
     "emotion": "^9.2.10",
     "es6-promise": "^4.2.5",
