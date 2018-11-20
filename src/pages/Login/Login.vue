@@ -1,21 +1,17 @@
 <template>
-  <div class="login-component">
-    <div class="form-container">
-      <component :is="formName"
-                 :disabled="processing"
-                 @toggleForm="toggleForm($event)"
-                 @login="doLogin($event)"
-                 @register="doRegistration($event)"></component>
-    </div>
+  <div class="login-page">
+    <login-container>
+      <component :is="'login-form'"></component>
+    </login-container>
   </div>
 </template>
 
 <script>
-import { LoginForm, RegisterForm } from './components';
+import * as components from './components';
 import { mapState, mapActions } from '@store/modules/auth';
 
 export default {
-  components: { LoginForm, RegisterForm },
+  components: { ...components },
   data() {
     return {
       formName: 'login-form',
@@ -47,8 +43,13 @@ export default {
   }
 };
 </script>
-
-<style>
+<style scoped lang="scss">
+.login-page {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<!-- style>
 .login-component {
   width: 100%;
   padding: 8% 0 0;
@@ -76,19 +77,6 @@ export default {
   box-sizing: border-box;
 }
 
-.form-container button {
-  text-transform: uppercase;
-  outline: 0;
-  background: #9f714a;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  font-size: 14px;
-  transition: all 0.3 ease;
-  cursor: pointer;
-  color: #ffffff;
-}
-
 .form-container button:hover,
 .form-container button:active,
 .form-container button:focus {
@@ -104,4 +92,4 @@ export default {
   color: #c19066;
   text-decoration: none;
 }
-</style>
+</style -->

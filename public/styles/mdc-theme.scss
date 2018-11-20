@@ -1,0 +1,8 @@
+/* theme.scss */
+
+/* Define main colors for material calculate color pallete. */
+$mdc-theme-primary: #607d8b;
+$mdc-theme-accent: #9e9e9e;
+$mdc-theme-background: #F2ECDA;
+
+@import 'vue-mdc-adapter/dist/styles';

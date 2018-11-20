@@ -1,15 +1,14 @@
 <template>
-  <form class="login-form">
-    <form-schema :schema="schema"
-                 v-model="model"
-                 @submit.prevent="doLogin">
-      <button :disabled="disabled">Login</button>
-    </form-schema>
+  <form-schema class="login-form"
+               :schema="schema"
+               v-model="model"
+               @submit.prevent="doLogin">
+    <mdc-button raised :disabled="disabled">Login</mdc-button>
     <p class="message">Not registered?
       <a href
          @click.prevent="$emit('toggleForm', 'register-form')">Create an account</a>
     </p>
-  </form>
+  </form-schema>
 </template>
 
 <script>

@@ -25,6 +25,13 @@ function createCustomMergeConfig(_) {
 }
 
 module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        includePaths: [path.resolve(__dirname, 'node_modules')]
+      }
+    }
+  },
   configureWebpack: config => {
     return createCustomMergeConfig(config)
   }
